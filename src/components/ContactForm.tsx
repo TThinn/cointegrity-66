@@ -50,10 +50,10 @@ const ContactForm = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-up" style={{ animationDelay: "0.1s" }}>
             <span className="text-sm font-semibold text-purple-600 uppercase tracking-wider">Contact Us</span>
-            <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
+            <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">
               Let's Build Your Web3 Future
             </h2>
-            <p className="mt-4 text-lg text-foreground/70">
+            <p className="mt-4 text-lg text-gray-700">
               Have a project in mind or questions about our services? We're here to help you navigate the decentralized landscape.
             </p>
             
@@ -63,7 +63,7 @@ const ContactForm = () => {
                   <Mail size={20} className="text-purple-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-foreground">Email Us</p>
+                  <p className="text-sm font-medium text-gray-700">Email Us</p>
                   <a href="mailto:contact@omega-web3.com" className="text-base text-purple-600 hover:text-purple-700">
                     contact@omega-web3.com
                   </a>
@@ -75,7 +75,7 @@ const ContactForm = () => {
                   <Phone size={20} className="text-blue-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-foreground">Call Us</p>
+                  <p className="text-sm font-medium text-gray-700">Call Us</p>
                   <a href="tel:+11234567890" className="text-base text-blue-600 hover:text-blue-700">
                     +1 (123) 456-7890
                   </a>
@@ -87,8 +87,8 @@ const ContactForm = () => {
                   <MapPin size={20} className="text-purple-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-foreground">Visit Us</p>
-                  <p className="text-base text-foreground/70">
+                  <p className="text-sm font-medium text-gray-700">Visit Us</p>
+                  <p className="text-base text-gray-600">
                     123 Blockchain Ave, Suite 200<br />
                     San Francisco, CA 94103
                   </p>
@@ -101,7 +101,7 @@ const ContactForm = () => {
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="col-span-1">
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground/80 mb-1">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     Your Name
                   </label>
                   <input
@@ -117,7 +117,7 @@ const ContactForm = () => {
                 </div>
                 
                 <div className="col-span-1">
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground/80 mb-1">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                     Email Address
                   </label>
                   <input
@@ -133,7 +133,7 @@ const ContactForm = () => {
                 </div>
                 
                 <div className="col-span-2">
-                  <label htmlFor="company" className="block text-sm font-medium text-foreground/80 mb-1">
+                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
                     Company (Optional)
                   </label>
                   <input
@@ -148,7 +148,7 @@ const ContactForm = () => {
                 </div>
                 
                 <div className="col-span-2">
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground/80 mb-1">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                     Your Message
                   </label>
                   <textarea
