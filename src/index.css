@@ -108,6 +108,29 @@
   .section-padding {
     @apply py-24 md:py-32;
   }
+  
+  /* Enhanced floating animation */
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px) translateX(0px);
+    }
+    25% {
+      transform: translateY(-10px) translateX(5px);
+    }
+    50% {
+      transform: translateY(0px) translateX(0px);
+    }
+    75% {
+      transform: translateY(10px) translateX(-5px);
+    }
+    100% {
+      transform: translateY(0px) translateX(0px);
+    }
+  }
 }
 
 /* Subtle page transition animations */

@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import Container from "./ui/Container";
-import Button from "./ui/Button";
+import Button from "./ui/CustomButton";
 import { Mail, Phone, MapPin, Send, Check, AlertCircle } from "lucide-react";
 
 const ContactForm = () => {
@@ -45,8 +45,14 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white">
-      <Container>
+    <section id="contact" className="py-20 bg-white relative overflow-hidden">
+      {/* Subtle background elements */}
+      <div className="absolute inset-0 z-0 opacity-10">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-400/20 rounded-full blur-[90px]"></div>
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-400/10 rounded-full blur-[70px]"></div>
+      </div>
+      
+      <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-up" style={{ animationDelay: "0.1s" }}>
             <span className="text-sm font-semibold text-purple-600 uppercase tracking-wider">Contact Us</span>
@@ -95,9 +101,27 @@ const ContactForm = () => {
                 </div>
               </div>
             </div>
+            
+            {/* Added visual element */}
+            <div className="mt-10 hidden md:block relative animate-float">
+              <img 
+                src="/lovable-uploads/0a9ba7eb-382a-4fff-a4e6-c616ab19371d.png" 
+                alt="Web3 Technology Visualization" 
+                className="max-w-[180px] h-auto rounded-lg opacity-90"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-lg mix-blend-overlay"></div>
+            </div>
           </div>
           
-          <div className="glass-card animate-fade-up" style={{ animationDelay: "0.3s" }}>
+          <div className="glass-card animate-fade-up relative" style={{ animationDelay: "0.3s" }}>
+            <div className="absolute -top-10 -right-10 w-[150px] h-[150px] animate-pulse opacity-30">
+              <img 
+                src="/lovable-uploads/4e58e92f-3bc5-42cb-ada9-d7b8af5e4c7b.png" 
+                alt="Decorative tech element" 
+                className="w-full h-full object-contain opacity-70"
+              />
+            </div>
+            
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="col-span-1">
