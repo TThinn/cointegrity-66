@@ -15,77 +15,77 @@ const Footer = () => {
               <div className="w-10 h-10 rounded-lg bg-purple-blue-gradient flex items-center justify-center">
                 <span className="text-white font-bold text-lg">Ω</span>
               </div>
-              <span className="font-semibold text-xl text-foreground">Omega</span>
+              <span className="font-semibold text-xl text-gray-800">Omega</span>
             </a>
-            <p className="mt-4 text-sm text-foreground/70">
+            <p className="mt-4 text-sm text-gray-600">
               A premier Web3 consultancy helping businesses navigate the decentralized landscape with confidence.
             </p>
             <div className="mt-6 flex space-x-4">
-              <a href="#" className="text-foreground/60 hover:text-purple-600 transition-colors">
+              <a href="#" className="text-gray-500 hover:text-purple-600 transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-foreground/60 hover:text-purple-600 transition-colors">
+              <a href="#" className="text-gray-500 hover:text-purple-600 transition-colors">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="text-foreground/60 hover:text-purple-600 transition-colors">
+              <a href="#" className="text-gray-500 hover:text-purple-600 transition-colors">
                 <Github size={20} />
               </a>
-              <a href="#" className="text-foreground/60 hover:text-purple-600 transition-colors">
+              <a href="#" className="text-gray-500 hover:text-purple-600 transition-colors">
                 <Youtube size={20} />
               </a>
             </div>
           </div>
           
           <div className="col-span-1">
-            <h3 className="font-semibold text-foreground mb-4">Services</h3>
+            <h3 className="font-semibold text-gray-800 mb-4">Services</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-sm text-foreground/70 hover:text-purple-600 transition-colors">Blockchain Development</a>
+                <a href="#" className="text-sm text-gray-600 hover:text-purple-600 transition-colors">Blockchain Development</a>
               </li>
               <li>
-                <a href="#" className="text-sm text-foreground/70 hover:text-purple-600 transition-colors">Strategic Consulting</a>
+                <a href="#" className="text-sm text-gray-600 hover:text-purple-600 transition-colors">Strategic Consulting</a>
               </li>
               <li>
-                <a href="#" className="text-sm text-foreground/70 hover:text-purple-600 transition-colors">DeFi Solutions</a>
+                <a href="#" className="text-sm text-gray-600 hover:text-purple-600 transition-colors">DeFi Solutions</a>
               </li>
               <li>
-                <a href="#" className="text-sm text-foreground/70 hover:text-purple-600 transition-colors">Security & Compliance</a>
+                <a href="#" className="text-sm text-gray-600 hover:text-purple-600 transition-colors">Security & Compliance</a>
               </li>
             </ul>
           </div>
           
           <div className="col-span-1">
-            <h3 className="font-semibold text-foreground mb-4">Company</h3>
+            <h3 className="font-semibold text-gray-800 mb-4">Company</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-sm text-foreground/70 hover:text-purple-600 transition-colors">About Us</a>
+                <a href="#" className="text-sm text-gray-600 hover:text-purple-600 transition-colors">About Us</a>
               </li>
               <li>
-                <a href="#founders" className="text-sm text-foreground/70 hover:text-purple-600 transition-colors">Our Team</a>
+                <a href="#founders" className="text-sm text-gray-600 hover:text-purple-600 transition-colors">Our Team</a>
               </li>
               <li>
-                <a href="#" className="text-sm text-foreground/70 hover:text-purple-600 transition-colors">Case Studies</a>
+                <a href="#" className="text-sm text-gray-600 hover:text-purple-600 transition-colors">Case Studies</a>
               </li>
               <li>
-                <a href="#" className="text-sm text-foreground/70 hover:text-purple-600 transition-colors">Careers</a>
+                <a href="#" className="text-sm text-gray-600 hover:text-purple-600 transition-colors">Careers</a>
               </li>
             </ul>
           </div>
           
           <div className="col-span-1">
-            <h3 className="font-semibold text-foreground mb-4">Resources</h3>
+            <h3 className="font-semibold text-gray-800 mb-4">Resources</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-sm text-foreground/70 hover:text-purple-600 transition-colors">Blog</a>
+                <a href="#" className="text-sm text-gray-600 hover:text-purple-600 transition-colors">Blog</a>
               </li>
               <li>
-                <a href="#" className="text-sm text-foreground/70 hover:text-purple-600 transition-colors">Web3 Insights</a>
+                <a href="#" className="text-sm text-gray-600 hover:text-purple-600 transition-colors">Web3 Insights</a>
               </li>
               <li>
-                <a href="#" className="text-sm text-foreground/70 hover:text-purple-600 transition-colors">Documentation</a>
+                <a href="#" className="text-sm text-gray-600 hover:text-purple-600 transition-colors">Documentation</a>
               </li>
               <li>
-                <a href="#contact" className="text-sm text-foreground/70 hover:text-purple-600 transition-colors">Contact Us</a>
+                <a href="#contact" className="text-sm text-gray-600 hover:text-purple-600 transition-colors">Contact Us</a>
               </li>
             </ul>
           </div>
@@ -93,13 +93,13 @@ const Footer = () => {
         
         <div className="pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-foreground/60">
+            <p className="text-sm text-gray-500">
               &copy; {currentYear} Omega Web3 Consultancy. All rights reserved.
             </p>
             <div className="mt-4 md:mt-0 flex space-x-6">
-              <a href="#" className="text-xs text-foreground/60 hover:text-purple-600 transition-colors">Privacy Policy</a>
-              <a href="#" className="text-xs text-foreground/60 hover:text-purple-600 transition-colors">Terms of Service</a>
-              <a href="#" className="text-xs text-foreground/60 hover:text-purple-600 transition-colors">Cookie Policy</a>
+              <a href="#" className="text-xs text-gray-500 hover:text-purple-600 transition-colors">Privacy Policy</a>
+              <a href="#" className="text-xs text-gray-500 hover:text-purple-600 transition-colors">Terms of Service</a>
+              <a href="#" className="text-xs text-gray-500 hover:text-purple-600 transition-colors">Cookie Policy</a>
             </div>
           </div>
         </div>

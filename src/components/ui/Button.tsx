@@ -27,9 +27,9 @@ const Button = ({
     {
       "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-button hover:shadow-lg": variant === "primary",
       "bg-blue-600 text-white shadow-button hover:shadow-lg": variant === "secondary",
-      "bg-transparent border border-purple-600 text-purple-400 hover:bg-purple-500/10": variant === "outlined",
+      "bg-transparent border border-purple-600 text-purple-600 hover:bg-purple-500/10": variant === "outlined",
       "bg-transparent text-white hover:bg-white/5": variant === "ghost",
-      "bg-transparent text-blue-400 hover:text-blue-300 p-0 hover:underline focus:ring-0": variant === "link",
+      "bg-transparent text-blue-600 hover:text-blue-700 p-0 hover:underline focus:ring-0": variant === "link",
 
       "text-sm px-3 py-1 h-8": size === "sm",
       "text-base px-4 py-2 h-10": size === "md",

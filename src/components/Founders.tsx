@@ -56,10 +56,10 @@ const Founders = () => {
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-sm font-semibold text-purple-600 uppercase tracking-wider">Our Team</span>
-          <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">
             Meet Our Leadership
           </h2>
-          <p className="mt-4 text-lg text-foreground/70">
+          <p className="mt-4 text-lg text-gray-600">
             Experts in blockchain technology, business strategy, and digital transformation
           </p>
         </div>
@@ -79,23 +79,23 @@ const Founders = () => {
                   className="object-cover w-full h-full"
                 />
               </div>
-              <h3 className="text-xl font-semibold">{founder.name}</h3>
+              <h3 className="text-xl font-semibold text-gray-800">{founder.name}</h3>
               <div className="mt-1 text-sm font-medium text-purple-600">{founder.role}</div>
-              <p className="mt-3 text-sm text-foreground/70">{founder.bio}</p>
+              <p className="mt-3 text-sm text-gray-600">{founder.bio}</p>
               <div className="mt-4 flex space-x-3">
-                <a href={founder.social.twitter} className="text-foreground/60 hover:text-blue-500 transition-colors">
+                <a href={founder.social.twitter} className="text-gray-500 hover:text-blue-500 transition-colors">
                   <Twitter size={18} />
                 </a>
-                <a href={founder.social.linkedin} className="text-foreground/60 hover:text-blue-700 transition-colors">
+                <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
                   <Linkedin size={18} />
                 </a>
-                <a href={founder.social.github} className="text-foreground/60 hover:text-purple-700 transition-colors">
+                <a href={founder.social.github} className="text-gray-500 hover:text-purple-700 transition-colors">
                   <Github size={18} />
                 </a>
               </div>
               <div className="mt-4 flex items-center">
                 <Award size={14} className="text-amber-500 mr-1" />
-                <span className="text-xs text-foreground/60">Web3 Expert</span>
+                <span className="text-xs text-gray-500">Web3 Expert</span>
               </div>
             </div>
           ))}

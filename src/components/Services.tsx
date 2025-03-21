@@ -36,10 +36,10 @@ const Services = () => {
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-sm font-semibold text-purple-600 uppercase tracking-wider">Our Services</span>
-          <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">
             Expert Solutions for Web3 Challenges
           </h2>
-          <p className="mt-4 text-lg text-foreground/70">
+          <p className="mt-4 text-lg text-gray-600">
             We deliver comprehensive services to help your business thrive in the decentralized economy
           </p>
         </div>
@@ -54,16 +54,16 @@ const Services = () => {
               <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-purple-50 to-blue-50 mb-4">
                 {service.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-              <p className="text-foreground/70">{service.description}</p>
+              <h3 className="text-xl font-semibold mb-2 text-gray-800">{service.title}</h3>
+              <p className="text-gray-600">{service.description}</p>
             </div>
           ))}
         </div>
 
         <div className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-gradient-to-r from-purple-50 to-blue-50">
           <div className="flex-1 text-center md:text-left">
-            <h3 className="text-2xl font-bold mb-3">Ready to Transform Your Business?</h3>
-            <p className="text-foreground/70 max-w-md">
+            <h3 className="text-2xl font-bold mb-3 text-gray-800">Ready to Transform Your Business?</h3>
+            <p className="text-gray-600 max-w-md">
               Our expert team is ready to help you navigate the Web3 landscape with confidence.
             </p>
           </div>
