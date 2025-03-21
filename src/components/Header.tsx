@@ -31,36 +31,36 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "py-3 glass shadow-subtle backdrop-blur-lg"
+          ? "py-3 bg-[#080112]/80 backdrop-blur-lg border-b border-white/5"
           : "py-5 bg-transparent"
       }`}
     >
       <Container>
         <div className="flex items-center justify-between">
-          <a href="#" className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-lg bg-purple-blue-gradient flex items-center justify-center">
+          <a href="#" className="flex items-center space-x-2 group">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center transition-transform group-hover:scale-110">
               <span className="text-white font-bold text-lg">Ω</span>
             </div>
-            <span className="font-semibold text-xl text-foreground">Omega</span>
+            <span className="font-semibold text-xl text-white">Omega</span>
           </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <a
               href="#services"
-              className="text-foreground/90 hover:text-purple-600 transition-colors"
+              className="text-white/80 hover:text-white transition-colors"
             >
               Services
             </a>
             <a
               href="#founders"
-              className="text-foreground/90 hover:text-purple-600 transition-colors"
+              className="text-white/80 hover:text-white transition-colors"
             >
               Team
             </a>
             <a
               href="#contact"
-              className="text-foreground/90 hover:text-purple-600 transition-colors"
+              className="text-white/80 hover:text-white transition-colors"
             >
               Contact
             </a>
@@ -69,7 +69,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground"
+            className="md:hidden text-white"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
@@ -82,21 +82,21 @@ const Header = () => {
           <nav className="md:hidden pt-5 pb-2 flex flex-col space-y-4 animate-fade-in">
             <a
               href="#services"
-              className="text-foreground/90 hover:text-purple-600 transition-colors"
+              className="text-white/80 hover:text-white transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Services
             </a>
             <a
               href="#founders"
-              className="text-foreground/90 hover:text-purple-600 transition-colors"
+              className="text-white/80 hover:text-white transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Team
             </a>
             <a
               href="#contact"
-              className="text-foreground/90 hover:text-purple-600 transition-colors"
+              className="text-white/80 hover:text-white transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact

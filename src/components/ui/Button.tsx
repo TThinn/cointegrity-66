@@ -25,11 +25,11 @@ const Button = ({
   const styles = cn(
     "relative inline-flex items-center justify-center rounded-lg font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
     {
-      "bg-purple-blue-gradient text-white shadow-button hover:shadow-lg": variant === "primary",
+      "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-button hover:shadow-lg": variant === "primary",
       "bg-blue-600 text-white shadow-button hover:shadow-lg": variant === "secondary",
-      "bg-transparent border border-purple-600 text-purple-700 hover:bg-purple-50": variant === "outlined",
-      "bg-transparent text-foreground hover:bg-muted": variant === "ghost",
-      "bg-transparent text-blue-600 hover:text-blue-800 p-0 hover:underline focus:ring-0": variant === "link",
+      "bg-transparent border border-purple-600 text-purple-400 hover:bg-purple-500/10": variant === "outlined",
+      "bg-transparent text-white hover:bg-white/5": variant === "ghost",
+      "bg-transparent text-blue-400 hover:text-blue-300 p-0 hover:underline focus:ring-0": variant === "link",
 
       "text-sm px-3 py-1 h-8": size === "sm",
       "text-base px-4 py-2 h-10": size === "md",
@@ -40,9 +40,9 @@ const Button = ({
     className
   );
 
-  if (Component === "a" || href) {
+  if (href) {
     return (
-      <a href={href} className={styles} {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
+      <a href={href} className={styles}>
         {children}
       </a>
     );
