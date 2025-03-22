@@ -1,8 +1,6 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import { Braces, Lightbulb, BarChart3, Shield } from "lucide-react";
-
 const services = [{
   icon: <Braces size={24} className="text-purple-600" />,
   title: "Blockchain Development",
@@ -20,7 +18,6 @@ const services = [{
   title: "Security & Compliance",
   description: "Comprehensive security audits, risk assessments, and regulatory compliance frameworks tailored for blockchain businesses."
 }];
-
 const Services = () => {
   return <section id="services" className="py-20 bg-white relative">
       <Container>
@@ -32,9 +29,7 @@ const Services = () => {
 
         {/* Opening description text box */}
         <div className="mb-12 p-8 rounded-2xl bg-gradient-to-r from-purple-50 to-blue-50">
-          <p className="text-gray-700 leading-relaxed">
-            At our core, we deliver blockchain solutions that transform businesses. Our expert team combines deep technical expertise with strategic insight to help you navigate the complex Web3 landscape. Whether you're just starting your blockchain journey or looking to optimize existing systems, our comprehensive services are designed to meet your unique needs.
-          </p>
+          <p className="text-gray-700 leading-relaxed">We bridge traditional business acumen with blockchain innovation, creating a methodology that harmonizes proven Web2 principles with Web3's transformative potential. This integrated approach allows us to navigate the complex transition between established business models and emerging decentralized technologies with precision and insight.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
