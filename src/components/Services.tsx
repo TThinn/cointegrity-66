@@ -53,10 +53,8 @@ const Services = () => {
 
         <div className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-gradient-to-r from-purple-50 to-blue-50">
           <div className="flex-1 text-center md:text-left">
-            <h3 className="text-2xl font-bold mb-3 text-gray-800">Ready to Transform Your Business?</h3>
-            <p className="text-gray-600 max-w-md">
-              Our expert team is ready to help you navigate the Web3 landscape with confidence.
-            </p>
+            <h3 className="text-2xl font-bold mb-3 text-gray-800">Bring Substance to Your Digital Asset Strategy</h3>
+            <p className="text-gray-600 max-w-md">With deep industry roots—spanning founders, traders, and venture capital networks — we are well positioned to help projects stand out in the fast-moving and evolving crypto ecosystem. </p>
           </div>
           <a href="#contact" className="inline-flex items-center px-6 py-3 rounded-lg bg-purple-blue-gradient text-white font-medium shadow-button hover:shadow-lg transition-all">
             Schedule a Consultation
