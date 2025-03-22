@@ -20,7 +20,7 @@ const Hero = () => {
           }}>
               <span className="text-gradient">Making Web3 for for</span>
               <span className="block mt-3 text-white">Real business</span>
-              <span className="block mt-3 text-gradient">Strategy, </span>
+              <span className="block mt-3 text-gradient text-3xl">Strategy, Tokenomics &amp; Compliance</span>
             </h1>
             
             <p className="mt-8 text-lg text-white/60 max-w-md text-balance animate-fade-up" style={{
