@@ -18,16 +18,14 @@ const Hero = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance animate-fade-up" style={{
             animationDelay: "0.2s"
           }}>
-              <span className="text-gradient">Making Web3 for for</span>
+              <span className="text-gradient">Making Web3 for</span>
               <span className="block mt-3 text-white">Real business</span>
               <span className="block mt-3 text-gradient text-3xl">Strategy, Tokenomics &amp; Compliance</span>
             </h1>
             
             <p className="mt-8 text-lg text-white/60 max-w-md text-balance animate-fade-up" style={{
             animationDelay: "0.3s"
-          }}>
-              We guide businesses through the complex Web3 landscape with expert strategic consulting and seamless implementation services.
-            </p>
+          }}>We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</p>
             
             <div className="mt-10 flex flex-col sm:flex-row items-start gap-5 animate-fade-up" style={{
             animationDelay: "0.4s"
