@@ -19,7 +19,7 @@ const Hero = () => {
             animationDelay: "0.2s"
           }}>
               <span className="text-gradient">Making Web3 for for</span>
-              <span className="block mt-3 text-white">real business</span>
+              <span className="block mt-3 text-white">Real business</span>
               <span className="block mt-3 text-gradient">Strategy, </span>
             </h1>
             
