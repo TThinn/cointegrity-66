@@ -43,11 +43,11 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="flex lg:flex justify-center items-center">
+          <div className="hidden lg:flex justify-center items-center">
             <img 
               src="/lovable-uploads/a595c043-bf2d-40aa-8236-e48bc96dd969.png" 
               alt="Cointegrity Logo" 
-              className="w-[400px] h-auto animate-float"
+              className="w-[300px] h-auto animate-float"
             />
           </div>
         </div>
