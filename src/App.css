@@ -65,6 +65,7 @@
 
 /* Logo filter to remove black background */
 .logo-filter {
-  filter: brightness(0) invert(1);
-  mix-blend-mode: screen;
+  filter: brightness(0) invert(1) drop-shadow(0 0 0 white);
+  mix-blend-mode: lighten;
+  opacity: 0.9;
 }
