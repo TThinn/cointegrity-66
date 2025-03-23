@@ -62,3 +62,8 @@
 .delay-300 {
   animation-delay: 300ms;
 }
+
+/* Logo filter to remove black background */
+.logo-filter {
+  filter: brightness(0) invert(1); /* This converts black to transparent and makes the white parts visible */
+}
