@@ -41,7 +41,7 @@ const Header = () => {
             <img 
               src="/lovable-uploads/0d4c386b-c572-4c92-8715-d6725b80040a.png" 
               alt="Cointegrity Logo" 
-              className="h-12 w-auto object-contain transition-transform group-hover:scale-105"
+              className="h-14 w-auto object-contain transition-transform group-hover:scale-105"
             />
           </a>
 

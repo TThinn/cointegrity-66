@@ -1,7 +1,9 @@
+
 import React from "react";
 import Container from "./ui/Container";
-import Button from "./ui/CustomButton";
+import Button from "./ui/Button";
 import { ArrowRight, ExternalLink } from "lucide-react";
+
 const Hero = () => {
   return <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
       {/* Background elements */}
@@ -13,23 +15,23 @@ const Hero = () => {
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
-            
-            
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance animate-fade-up" style={{
-            animationDelay: "0.2s"
-          }}>
+              animationDelay: "0.2s"
+            }}>
               <span className="text-gradient">Making Web3 for</span>
               <span className="block mt-3 text-white">Real business</span>
-              <span className="block mt-3 text-gradient text-2xl">Strategy, Tokenomics &amp; Compliance</span>
             </h1>
+            <p className="block mt-3 text-pink-600 text-2xl font-medium animate-fade-up" style={{
+              animationDelay: "0.25s"
+            }}>Strategy, Tokenomics &amp; Compliance</p>
             
             <p className="mt-8 text-lg text-white/60 max-w-md text-balance animate-fade-up" style={{
-            animationDelay: "0.3s"
-          }}>We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</p>
+              animationDelay: "0.3s"
+            }}>We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</p>
             
             <div className="mt-10 flex flex-col sm:flex-row items-start gap-5 animate-fade-up" style={{
-            animationDelay: "0.4s"
-          }}>
+              animationDelay: "0.4s"
+            }}>
               <Button href="#contact" size="lg" isGlowing>
                 Talk to an expert
                 <ArrowRight size={16} className="ml-1" />
@@ -41,12 +43,18 @@ const Hero = () => {
             </div>
           </div>
           
-          
+          <div className="hidden lg:flex justify-center items-center">
+            <img 
+              src="/lovable-uploads/a595c043-bf2d-40aa-8236-e48bc96dd969.png" 
+              alt="Cointegrity Logo" 
+              className="w-[300px] h-auto animate-float"
+            />
+          </div>
         </div>
           
         <div className="mt-20 md:mt-32 border-t border-white/10 pt-8 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-up text-center" style={{
-        animationDelay: "0.6s"
-      }}>
+          animationDelay: "0.6s"
+        }}>
           <div>
             <h3 className="text-3xl md:text-4xl font-bold text-white">5+</h3>
             <p className="text-white/60 text-sm mt-1">Years Experience</p>
