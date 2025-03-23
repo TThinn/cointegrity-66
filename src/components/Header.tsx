@@ -37,17 +37,12 @@ const Header = () => {
     >
       <Container>
         <div className="flex items-center justify-between">
-          <a href="#" className="flex items-center space-x-2 group">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center transition-transform group-hover:scale-110">
-              <span className="text-white font-bold text-lg">C</span>
-            </div>
-            <div className="relative h-7">
-              <img 
-                src="/lovable-uploads/fab0fa22-b5a9-4bc7-9d5b-092c5abe5827.png" 
-                alt="Cointegrity" 
-                className="h-full w-auto object-contain logo-filter"
-              />
-            </div>
+          <a href="#" className="flex items-center group">
+            <img 
+              src="/lovable-uploads/0d4c386b-c572-4c92-8715-d6725b80040a.png" 
+              alt="Cointegrity Logo" 
+              className="h-9 w-auto object-contain transition-transform group-hover:scale-105"
+            />
           </a>
 
           {/* Desktop Navigation */}
