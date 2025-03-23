@@ -74,7 +74,7 @@
   
   .button-glow::before {
     content: "";
-    @apply absolute -top-1 -bottom-1 -left-1 -right-1 bg-gradient-to-r from-pink-600 to-pink-600 rounded-xl opacity-0 transition-opacity duration-300 blur-lg;
+    @apply absolute -top-1 -bottom-1 -left-1 -right-1 bg-gradient-to-r from-pink-600 via-pink-500 to-purple-600 rounded-xl opacity-0 transition-opacity duration-300 blur-lg;
     z-index: -1;
   }
   
@@ -87,11 +87,11 @@
   }
   
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-pink-500 via-pink-600 to-pink-700;
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-pink-500 via-pink-600 to-purple-700;
   }
   
   .border-gradient {
-    border-image: linear-gradient(to right, #ea2088, #ea2088) 1;
+    border-image: linear-gradient(to right, #ea2088, #9b62cf) 1;
   }
   
   .mesh-gradient {
@@ -102,7 +102,7 @@
     content: "";
     @apply absolute inset-0 opacity-60 z-0;
     background: radial-gradient(circle at 70% 30%, rgba(234, 32, 136, 0.4), transparent 40%),
-                radial-gradient(circle at 30% 70%, rgba(234, 32, 136, 0.4), transparent 40%);
+                radial-gradient(circle at 30% 70%, rgba(155, 98, 207, 0.4), transparent 40%);
   }
 
   .section-padding {

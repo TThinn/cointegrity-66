@@ -18,7 +18,7 @@ const Hero = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance animate-fade-up" style={{
               animationDelay: "0.2s"
             }}>
-              <span className="text-gradient">Making Web3 for</span>
+              <span className="bg-gradient-to-r from-pink-500 via-pink-600 to-purple-700 bg-clip-text text-transparent">Making Web3 for</span>
               <span className="block mt-3 text-white">Real business</span>
             </h1>
             <p className="block mt-3 text-pink-600 text-2xl font-medium animate-fade-up" style={{
@@ -47,7 +47,7 @@ const Hero = () => {
             <img 
               src="/lovable-uploads/a595c043-bf2d-40aa-8236-e48bc96dd969.png" 
               alt="Cointegrity Logo" 
-              className="w-[300px] h-auto animate-float"
+              className="w-[400px] h-auto animate-float"
             />
           </div>
         </div>
