@@ -41,11 +41,11 @@ const Header = () => {
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center transition-transform group-hover:scale-110">
               <span className="text-white font-bold text-lg">C</span>
             </div>
-            <div className="relative h-7">
+            <div className="h-7">
               <img 
-                src="/lovable-uploads/fab0fa22-b5a9-4bc7-9d5b-092c5abe5827.png" 
+                src="/lovable-uploads/f81ea305-7875-495c-a99b-41ce4cd5b5a6.png" 
                 alt="Cointegrity" 
-                className="h-full w-auto object-contain logo-filter"
+                className="h-full w-auto object-contain"
               />
             </div>
           </a>
