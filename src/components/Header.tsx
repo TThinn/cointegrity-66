@@ -1,7 +1,9 @@
+
 import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
