@@ -12,7 +12,8 @@ const services = [{
 }, {
   icon: <Layers size={24} className="text-blue-600" />,
   title: "Token Architecture",
-  description: "Expert guidance on Web3 transformation, tokenomics design, and blockchain integration strategies for your business."
+  description: "Expert guidance on Web3 transformation, tokenomics design, and blockchain integration strategies for your business.",
+  fullDescription: "Cointegrity's Token Architecture service delivers optimized tokenomics models that drive real business value. We analyze your Web3 commercial architecture and infrastructure, ensuring solid technical foundations. Our experts review and enhance your tokenomics model, balancing utility, incentives, and economic sustainability. We conduct thorough regulatory compliance assessments to mitigate risks across jurisdictions. Drawing on our extensive global network of specialized partners, we develop tailored frameworks that align with your strategic objectives while maximizing token utility. Our approach ensures your token design achieves product-market fit and creates meaningful engagement within your ecosystem, positioning your project for long-term success in the evolving digital asset landscape."
 }, {
   icon: <Scale size={24} className="text-pink-600" />,
   title: "Regulatory Navigation",
