@@ -1,9 +1,7 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
-
 const Hero = () => {
   return <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
       {/* Background elements */}
@@ -15,24 +13,25 @@ const Hero = () => {
       <Container className="relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-balance animate-fade-up" style={{
-            animationDelay: "0.2s",
-            maxWidth: "16ch", // Control the width similar to 0xlabs.tech
-            margin: "0 auto"
-          }}>
-            <span className="bg-gradient-to-r from-pink-500 via-pink-600 to-[#483AA7] bg-clip-text text-transparent">Making Web3 for</span>
+          animationDelay: "0.2s",
+          maxWidth: "16ch",
+          // Control the width similar to 0xlabs.tech
+          margin: "0 auto"
+        }}>
+            <span className="bg-gradient-to-r from-pink-500 to-[#8e7ef8] bg-clip-text text-transparent">Making Web3 for</span>
             <span className="block mt-3 text-white">Real business</span>
           </h1>
-          <p className="block mt-3 text-pink-600 text-2xl font-medium animate-fade-up" style={{
-            animationDelay: "0.25s"
-          }}>Strategy, Tokenomics &amp; Compliance</p>
+          <p style={{
+          animationDelay: "0.25s"
+        }} className="block mt-3 text-2xl font-medium animate-fade-up text-pink-500">Strategy, Tokenomics &amp; Compliance</p>
           
           <p className="mt-8 text-lg text-white/60 max-w-2xl text-balance animate-fade-up" style={{
-            animationDelay: "0.3s"
-          }}>We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</p>
+          animationDelay: "0.3s"
+        }}>We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</p>
           
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up" style={{
-            animationDelay: "0.4s"
-          }}>
+          animationDelay: "0.4s"
+        }}>
             <Button size="lg" className="bg-gradient-to-r from-pink-600 via-pink-500 to-[#483AA7] hover:opacity-90 text-white px-6 py-3 h-12 rounded-lg shadow-button w-full sm:w-auto" asChild>
               <a href="#contact">
                 Talk to an expert
@@ -49,8 +48,8 @@ const Hero = () => {
         </div>
           
         <div className="mt-20 md:mt-32 border-t border-white/10 pt-8 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-up text-center" style={{
-          animationDelay: "0.6s"
-        }}>
+        animationDelay: "0.6s"
+      }}>
           <div>
             <h3 className="text-3xl md:text-4xl font-bold text-white">5+</h3>
             <p className="text-white/60 text-sm mt-1">Years Experience</p>
