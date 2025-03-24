@@ -1,15 +1,15 @@
 
 import React from "react";
 import Container from "./ui/Container";
-import Button from "./ui/Button";
+import Button from "./ui/button";
 import { ArrowRight, ExternalLink } from "lucide-react";
 
 const Hero = () => {
-  return <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
+  return <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#1d2063]">
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/2 w-[800px] h-[800px] bg-purple-500/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-pink-500/20 rounded-full blur-[100px]"></div>
       </div>
       
       <Container className="relative z-10">
@@ -18,7 +18,7 @@ const Hero = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance animate-fade-up" style={{
               animationDelay: "0.2s"
             }}>
-              <span className="bg-gradient-to-r from-pink-500 via-pink-600 to-purple-700 bg-clip-text text-transparent">Making Web3 for</span>
+              <span className="bg-gradient-to-r from-pink-500 via-pink-600 to-purple-950 bg-clip-text text-transparent">Making Web3 for</span>
               <span className="block mt-3 text-white">Real business</span>
             </h1>
             <p className="block mt-3 text-pink-600 text-2xl font-medium animate-fade-up" style={{
