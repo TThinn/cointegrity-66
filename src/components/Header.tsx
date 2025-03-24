@@ -35,7 +35,7 @@ const Header = () => {
           <a href="/" className="relative z-10">
             <div className="flex items-center text-xl font-bold">
               <img
-                src="/lovable-uploads/a595c043-bf2d-40aa-8236-e48bc96dd969.png"
+                src="/lovable-uploads/4a1df2a6-21ec-4f4d-bf1e-0be36a960849.png"
                 alt="Cointegrity Logo"
                 className="h-10 w-auto mr-3"
               />
