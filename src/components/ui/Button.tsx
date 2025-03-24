@@ -10,6 +10,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   as?: React.ElementType;
   href?: string;
+  asChild?: boolean;
 }
 
 const Button = ({
@@ -20,6 +21,7 @@ const Button = ({
   children,
   as: Component = "button",
   href,
+  asChild,
   ...props
 }: ButtonProps) => {
   const styles = cn(
