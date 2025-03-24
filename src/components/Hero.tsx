@@ -1,7 +1,6 @@
 
 import React from "react";
 import Container from "./ui/Container";
-import { ArrowRight, ExternalLink } from "lucide-react";
 import Button from "./ui/Button";
 
 const Hero = () => {
@@ -37,13 +36,11 @@ const Hero = () => {
             <Button size="lg" className="bg-gradient-to-r from-pink-600 via-pink-500 to-[#483AA7] hover:opacity-90 text-white px-6 py-3 h-12 rounded-lg shadow-button w-full sm:w-auto" asChild>
               <a href="#contact">
                 Talk to an expert
-                <ArrowRight size={16} className="ml-1" />
               </a>
             </Button>
-            <Button variant="outline" size="lg" className="border-pink-600 text-pink-600 hover:bg-pink-500/10 px-6 py-3 h-12 rounded-lg bg-transparent w-full sm:w-auto" asChild>
+            <Button variant="outlined" size="lg" className="border-pink-600 text-pink-600 hover:bg-pink-500/10 px-6 py-3 h-12 rounded-lg bg-transparent w-full sm:w-auto" asChild>
               <a href="#services">
                 Our services
-                <ExternalLink size={16} className="ml-1" />
               </a>
             </Button>
           </div>
