@@ -1,12 +1,14 @@
 
-import React from "react";
+import React, { useState } from "react";
 import Container from "./ui/Container";
-import { Target, Layers, Scale, Rocket } from "lucide-react";
+import { Target, Layers, Scale, Rocket, ArrowLeft } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
 
 const services = [{
   icon: <Target size={24} className="text-pink-600" />,
   title: "Strategic Positioning",
-  description: "Custom smart contract development and auditing, dApp development and Web3 infrastructure setup to power your decentralized vision."
+  description: "Cointegrity's Strategic Positioning transforms your Web3 vision into market reality. We evaluate your current approach and develop tailored frameworks aligned with your business objectives.",
+  fullDescription: "Cointegrity's Strategic Positioning transforms your Web3 vision into market reality. We evaluate your current approach and develop tailored frameworks aligned with your business objectives. Our team analyzes market mechanics to identify opportunities while crafting implementation plans that ensure successful execution. We refine your brand identity, messaging strategy, and competitive positioning to help you stand out in the blockchain ecosystem. Leveraging our extensive global network of specialized partners and experts, we identify your ideal audience and create engagement strategies that connect with key stakeholders. With Cointegrity's strategic positioning expertise, your Web3 project navigates complexity with clarity and purpose."
 }, {
   icon: <Layers size={24} className="text-blue-600" />,
   title: "Token Architecture",
@@ -22,6 +24,14 @@ const services = [{
 }];
 
 const Services = () => {
+  const [openDialog, setOpenDialog] = useState(false);
+  const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
+
+  const handleOpenFullDescription = (service: typeof services[0]) => {
+    setSelectedService(service);
+    setOpenDialog(true);
+  };
+
   return <section id="services" className="py-20 bg-white relative">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -43,7 +53,17 @@ const Services = () => {
                 {service.icon}
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-800">{service.title}</h3>
-              <p className="text-gray-600">{service.description}</p>
+              <p className="text-gray-600">
+                {service.description}
+                {service.fullDescription && (
+                  <button 
+                    onClick={() => handleOpenFullDescription(service)}
+                    className="ml-1 text-pink-600 hover:text-pink-700 font-medium"
+                  >
+                    ... more
+                  </button>
+                )}
+              </p>
             </div>)}
         </div>
 
@@ -58,6 +78,26 @@ const Services = () => {
           </a>
         </div>
       </Container>
+
+      {/* Full description dialog */}
+      <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-bold">{selectedService?.title}</DialogTitle>
+          </DialogHeader>
+          <DialogDescription className="text-base text-gray-700 py-4">
+            {selectedService?.fullDescription}
+          </DialogDescription>
+          <div className="mt-4 flex justify-start">
+            <button 
+              onClick={() => setOpenDialog(false)}
+              className="flex items-center text-pink-600 hover:text-pink-700 font-medium"
+            >
+              <ArrowLeft size={16} className="mr-1" /> Back
+            </button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>;
 };
 
