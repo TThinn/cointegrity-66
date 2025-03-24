@@ -17,7 +17,7 @@ const Container = ({
   return (
     <Component
       className={cn(
-        "w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+        "w-full max-w-7xl mx-auto px-12 sm:px-18 lg:px-24",
         className
       )}
       {...props}
