@@ -29,7 +29,7 @@ const Services = () => {
 
         {/* Opening description text box */}
         <div className="mb-12 p-8 rounded-2xl bg-gradient-to-r from-pink-50 to-blue-50">
-          <p className="text-gray-700 leading-relaxed">We bridge traditional business acumen with digital asset innovation, creating a methodology that harmonizes proven Web2 principles with Web3's transformative potential. This integrated approach allows us to navigate the complex transition between established business models and emerging decentralized technologies with precision and insight.</p>
+          <p className="text-gray-700 leading-relaxed">Cointegrity bridges traditional business acumen with digital asset innovation as a strategic advisory firm specializing in Web3 transformation. Our methodology harmonizes proven Web2 principles with blockchain's potential, navigating the complex transition between established models and decentralized technologies. Cointegrity provides comprehensive ecosystem support—from securing banking relationships and accounting solutions to optimizing tokenomics, funding strategies, and exit planning. As your trusted navigator in the regulatory landscape, Cointegrity helps screen potential partners and investment opportunities while ensuring compliance across jurisdictions, delivering precision and insight for your blockchain journey.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
