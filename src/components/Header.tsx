@@ -56,9 +56,9 @@ const Header = () => {
             </a>
             <a href="#contact" className="pl-4">
               <Button size="sm" className="bg-gradient-to-r from-pink-600 via-pink-500 to-[#483AA7] hover:opacity-90 text-white rounded-lg shadow-button" asChild>
-                <a href="#contact">
+                <span>
                   Contact Us
-                </a>
+                </span>
               </Button>
             </a>
           </nav>
