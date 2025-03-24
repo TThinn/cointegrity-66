@@ -81,11 +81,11 @@ const Services = () => {
 
       {/* Full description dialog */}
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md bg-white border-0 text-gray-800 shadow-lg">
           <DialogHeader>
-            <DialogTitle className="text-xl font-bold">{selectedService?.title}</DialogTitle>
+            <DialogTitle className="text-xl font-bold text-gray-800">{selectedService?.title}</DialogTitle>
           </DialogHeader>
-          <DialogDescription className="text-base text-gray-700 py-4">
+          <DialogDescription className="text-base text-gray-700 py-4 bg-gradient-to-r from-pink-50 to-blue-50 rounded-lg p-5">
             {selectedService?.fullDescription}
           </DialogDescription>
           <div className="mt-4 flex justify-start">
