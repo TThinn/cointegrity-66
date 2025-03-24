@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import Container from "./ui/Container";
-import Button from "./ui/button";
+import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
 
 const Header = () => {
