@@ -1,9 +1,8 @@
-
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Container from "./ui/Container";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { Button } from "./ui/button";
+import Button from "./ui/Button";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +23,6 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  
   return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3 bg-black/70 backdrop-blur-lg shadow-md' : 'py-6 bg-transparent'}`}>
       <Container>
         <div className="flex items-center justify-between">
