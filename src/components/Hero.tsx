@@ -19,7 +19,7 @@ const Hero = () => {
           margin: "0 auto"
         }}>
             <span className="bg-gradient-to-r from-pink-500 via-pink-500 to-[#8e7ef8] bg-clip-text text-transparent">Making Web3 for</span>
-            <span className="block mt-3 text-white">Real business</span>
+            <span className="block mt-3 text-white">Real Business</span>
           </h1>
           <p style={{
           animationDelay: "0.25s"
