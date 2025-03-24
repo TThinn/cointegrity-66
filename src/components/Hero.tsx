@@ -1,7 +1,6 @@
-
 import React from "react";
 import Container from "./ui/Container";
-import Button from "./ui/Button";
+import { Button } from "./ui/button";
 
 const Hero = () => {
   return <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
