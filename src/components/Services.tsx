@@ -1,23 +1,26 @@
+
 import React from "react";
 import Container from "./ui/Container";
-import { Braces, Lightbulb, BarChart3, Shield } from "lucide-react";
+import { Target, Layers, Scale, Rocket } from "lucide-react";
+
 const services = [{
-  icon: <Braces size={24} className="text-pink-600" />,
-  title: "Blockchain Development",
+  icon: <Target size={24} className="text-pink-600" />,
+  title: "Strategic Positioning",
   description: "Custom smart contract development and auditing, dApp development and Web3 infrastructure setup to power your decentralized vision."
 }, {
-  icon: <Lightbulb size={24} className="text-blue-600" />,
-  title: "Strategic Consulting",
+  icon: <Layers size={24} className="text-blue-600" />,
+  title: "Token Architecture",
   description: "Expert guidance on Web3 transformation, tokenomics design, and blockchain integration strategies for your business."
 }, {
-  icon: <BarChart3 size={24} className="text-pink-600" />,
-  title: "DeFi Solutions",
+  icon: <Scale size={24} className="text-pink-600" />,
+  title: "Regulatory Navigation",
   description: "End-to-end DeFi platform development, protocol design, and yield optimization strategies to maximize your financial offerings."
 }, {
-  icon: <Shield size={24} className="text-blue-600" />,
-  title: "Security & Compliance",
+  icon: <Rocket size={24} className="text-blue-600" />,
+  title: "Capital Acceleration",
   description: "Comprehensive security audits, risk assessments, and regulatory compliance frameworks tailored for blockchain businesses."
 }];
+
 const Services = () => {
   return <section id="services" className="py-20 bg-white relative">
       <Container>
@@ -45,8 +48,6 @@ const Services = () => {
         </div>
 
         {/* Closing description text box */}
-        
-
         <div className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-gradient-to-r from-pink-50 to-blue-50">
           <div className="flex-1 text-center md:text-left">
             <h3 className="text-2xl font-bold mb-3 text-gray-800">Bring Substance to Your Digital Asset Strategy</h3>
@@ -59,4 +60,5 @@ const Services = () => {
       </Container>
     </section>;
 };
+
 export default Services;
