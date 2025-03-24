@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import Container from "./ui/Container";
-import { Button } from "./ui/button";
+import Button from "./ui/Button";
 import { Menu, X } from "lucide-react";
 
 const Header = () => {
@@ -31,7 +31,7 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "py-3 bg-[#1d2063]/80 backdrop-blur-lg border-b border-white/5"
+          ? "py-3 bg-[#080112]/80 backdrop-blur-lg border-b border-white/5"
           : "py-5 bg-transparent"
       }`}
     >
