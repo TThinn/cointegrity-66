@@ -1,8 +1,8 @@
 
 import React from "react";
 import Container from "./ui/Container";
-import Button from "./ui/Button";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import { Button } from "./ui/button";
 
 const Hero = () => {
   return <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
@@ -13,42 +13,38 @@ const Hero = () => {
       </div>
       
       <Container className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance animate-fade-up" style={{
-              animationDelay: "0.2s"
-            }}>
-              <span className="bg-gradient-to-r from-pink-500 via-pink-600 to-purple-700 bg-clip-text text-transparent">Making Web3 for</span>
-              <span className="block mt-3 text-white">Real business</span>
-            </h1>
-            <p className="block mt-3 text-pink-600 text-2xl font-medium animate-fade-up" style={{
-              animationDelay: "0.25s"
-            }}>Strategy, Tokenomics &amp; Compliance</p>
-            
-            <p className="mt-8 text-lg text-white/60 max-w-md text-balance animate-fade-up" style={{
-              animationDelay: "0.3s"
-            }}>We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</p>
-            
-            <div className="mt-10 flex flex-col sm:flex-row items-start gap-5 animate-fade-up" style={{
-              animationDelay: "0.4s"
-            }}>
-              <Button href="#contact" size="lg" isGlowing>
+        <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-balance animate-fade-up" style={{
+            animationDelay: "0.2s",
+            maxWidth: "16ch", // Control the width similar to 0xlabs.tech
+            margin: "0 auto"
+          }}>
+            <span className="bg-gradient-to-r from-pink-500 via-pink-600 to-[#483AA7] bg-clip-text text-transparent">Making Web3 for</span>
+            <span className="block mt-3 text-white">Real business</span>
+          </h1>
+          <p className="block mt-3 text-pink-600 text-2xl font-medium animate-fade-up" style={{
+            animationDelay: "0.25s"
+          }}>Strategy, Tokenomics &amp; Compliance</p>
+          
+          <p className="mt-8 text-lg text-white/60 max-w-2xl text-balance animate-fade-up" style={{
+            animationDelay: "0.3s"
+          }}>We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</p>
+          
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up" style={{
+            animationDelay: "0.4s"
+          }}>
+            <Button size="lg" className="bg-gradient-to-r from-pink-600 via-pink-500 to-[#483AA7] hover:opacity-90 text-white px-6 py-3 h-12 rounded-lg shadow-button" asChild>
+              <a href="#contact">
                 Talk to an expert
                 <ArrowRight size={16} className="ml-1" />
-              </Button>
-              <Button href="#services" variant="outlined" size="lg">
+              </a>
+            </Button>
+            <Button variant="outline" size="lg" className="border-pink-600 text-pink-600 hover:bg-pink-500/10 px-6 py-3 h-12 rounded-lg" asChild>
+              <a href="#services">
                 Our services
                 <ExternalLink size={16} className="ml-1" />
-              </Button>
-            </div>
-          </div>
-          
-          <div className="hidden lg:flex justify-center items-center">
-            <img 
-              src="/lovable-uploads/a595c043-bf2d-40aa-8236-e48bc96dd969.png" 
-              alt="Cointegrity Logo" 
-              className="w-[300px] h-auto animate-float"
-            />
+              </a>
+            </Button>
           </div>
         </div>
           

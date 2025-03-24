@@ -3,7 +3,7 @@ import * as React from "react"
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog"
 
 import { cn } from "@/lib/utils"
-import Button from "./Button"
+import { Button } from "./button"
 
 const AlertDialog = AlertDialogPrimitive.Root
 
@@ -17,7 +17,7 @@ const AlertDialogOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Overlay
     className={cn(
-      "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
     )}
     {...props}
@@ -103,7 +103,7 @@ const AlertDialogAction = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Action
     ref={ref}
-    className={cn("bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2", className)}
+    className={cn(Button, className)}
     {...props}
   />
 ))
@@ -116,7 +116,8 @@ const AlertDialogCancel = React.forwardRef<
   <AlertDialogPrimitive.Cancel
     ref={ref}
     className={cn(
-      "border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md px-4 py-2 mt-2 sm:mt-0",
+      Button,
+      "mt-2 sm:mt-0",
       className
     )}
     {...props}

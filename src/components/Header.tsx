@@ -1,116 +1,114 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
-import Button from "./ui/Button";
 import { Menu, X } from "lucide-react";
+import { Button } from "./ui/button";
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  
+  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
+      const offset = window.scrollY;
+      if (offset > 50) {
+        setScrolled(true);
       } else {
-        setIsScrolled(false);
+        setScrolled(false);
       }
     };
-
-    window.addEventListener("scroll", handleScroll);
+    
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "py-3 bg-[#080112]/80 backdrop-blur-lg border-b border-white/5"
-          : "py-5 bg-transparent"
-      }`}
-    >
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      scrolled ? 'py-3 bg-black/70 backdrop-blur-lg shadow-md' : 'py-6 bg-transparent'
+    }`}>
       <Container>
         <div className="flex items-center justify-between">
-          <a href="#" className="flex items-center group">
-            <img 
-              src="/lovable-uploads/0d4c386b-c572-4c92-8715-d6725b80040a.png" 
-              alt="Cointegrity Logo" 
-              className="h-14 w-auto object-contain transition-transform group-hover:scale-105"
-            />
+          {/* Logo */}
+          <a href="/" className="relative z-10">
+            <div className="flex items-center text-xl font-bold">
+              <img
+                src="/lovable-uploads/a595c043-bf2d-40aa-8236-e48bc96dd969.png"
+                alt="Cointegrity Logo"
+                className="h-10 w-auto mr-3"
+              />
+              <span className="text-white">Cointegrity</span>
+            </div>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a
-              href="#services"
-              className="text-white/80 hover:text-white transition-colors"
-            >
+          <nav className="hidden md:flex items-center gap-1">
+            <a href="#services" className="px-4 py-2 text-white/80 hover:text-white transition-colors">
               Services
             </a>
-            <a
-              href="#founders"
-              className="text-white/80 hover:text-white transition-colors"
-            >
+            <a href="#founders" className="px-4 py-2 text-white/80 hover:text-white transition-colors">
               Team
             </a>
-            <a
-              href="#contact"
-              className="text-white/80 hover:text-white transition-colors"
-            >
-              Contact
+            <a href="#accreditations" className="px-4 py-2 text-white/80 hover:text-white transition-colors">
+              Accreditations
             </a>
-            <Button href="#contact" isGlowing>Get Started</Button>
+            <a href="#contact" className="pl-4">
+              <Button size="sm" className="bg-gradient-to-r from-pink-600 via-pink-500 to-[#483AA7] hover:opacity-90 text-white rounded-lg shadow-button" asChild>
+                <a href="#contact">
+                  Contact Us
+                </a>
+              </Button>
+            </a>
           </nav>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white"
-            onClick={toggleMobileMenu}
+          <button 
+            className="md:hidden text-white p-2" 
+            onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <nav className="md:hidden pt-5 pb-2 flex flex-col space-y-4 animate-fade-in">
-            <a
-              href="#services"
-              className="text-white/80 hover:text-white transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Services
-            </a>
-            <a
-              href="#founders"
-              className="text-white/80 hover:text-white transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Team
-            </a>
-            <a
-              href="#contact"
-              className="text-white/80 hover:text-white transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Contact
-            </a>
-            <Button 
-              href="#contact" 
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Get Started
-            </Button>
-          </nav>
-        )}
       </Container>
+
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-lg z-40 md:hidden pt-20">
+          <Container>
+            <nav className="flex flex-col gap-4 items-center text-center">
+              <a 
+                href="#services" 
+                className="w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10"
+                onClick={() => setIsOpen(false)}
+              >
+                Services
+              </a>
+              <a 
+                href="#founders" 
+                className="w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10"
+                onClick={() => setIsOpen(false)}
+              >
+                Team
+              </a>
+              <a 
+                href="#accreditations" 
+                className="w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10"
+                onClick={() => setIsOpen(false)}
+              >
+                Accreditations
+              </a>
+              <Button size="lg" className="bg-gradient-to-r from-pink-600 via-pink-500 to-[#483AA7] hover:opacity-90 text-white mt-4 w-full" asChild>
+                <a href="#contact" onClick={() => setIsOpen(false)}>
+                  Contact Us
+                </a>
+              </Button>
+            </nav>
+          </Container>
+        </div>
+      )}
     </header>
   );
 };
