@@ -17,8 +17,7 @@ const services = [{
 }, {
   icon: <Scale size={24} className="text-pink-600" />,
   title: "Regulatory Navigation",
-  description: "End-to-end DeFi platform development, protocol design, and yield optimization strategies to maximize your financial offerings.",
-  fullDescription: "Cointegrity's Regulatory Navigation service guides you through the complex and evolving digital asset compliance landscape. We provide comprehensive regulatory assessments, with a particular focus on the new MiCA framework in Europe. Our team develops robust compliance frameworks tailored to your specific needs, incorporating risk mitigation strategies that protect your project's integrity. We offer expert implementation guidance, ensuring your operations align with current and emerging regulations. Leveraging our extensive network of global collaborators, we provide nuanced insights into country-specific interpretations of digital asset laws. Our service includes critical tax evaluations and assessments, recognizing their make-or-break potential for Web3 projects. With Cointegrity's regulatory expertise, you can navigate compliance challenges confidently, turning potential obstacles into strategic advantages in the digital asset space."
+  description: "End-to-end DeFi platform development, protocol design, and yield optimization strategies to maximize your financial offerings."
 }, {
   icon: <Rocket size={24} className="text-blue-600" />,
   title: "Capital Acceleration",

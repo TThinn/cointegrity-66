@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
+
+import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Menu, X } from "lucide-react";
 import Button from "./ui/Button";
 
 const Header = () => {
