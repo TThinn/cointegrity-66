@@ -18,16 +18,16 @@ const Hero = () => {
           // Control the width similar to 0xlabs.tech
           margin: "0 auto"
         }}>
-            <span className="bg-gradient-to-r from-pink-500 via-pink-500 to-[#8e7ef8] bg-clip-text text-transparent">Making Web3 for</span>
+            <span className="bg-gradient-to-r from-pink-500 via-pink-500 to-[#8e7ef8] bg-clip-text text-pink-500">Making Web3 for</span>
             <span className="block mt-3 text-white">Real Business</span>
           </h1>
           <p style={{
           animationDelay: "0.25s"
         }} className="block mt-3 text-2xl font-medium animate-fade-up text-pink-500">Strategy, Tokenomics &amp; Compliance</p>
           
-          <p className="mt-8 text-lg text-white/60 max-w-2xl text-balance animate-fade-up" style={{
+          <p style={{
           animationDelay: "0.3s"
-        }}>We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</p>
+        }} className="mt-8 text-lg max-w-2xl text-balance animate-fade-up text-purple-200">We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</p>
           
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up" style={{
           animationDelay: "0.4s"
