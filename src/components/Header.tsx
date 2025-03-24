@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Container from "./ui/Container";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import Button from "./ui/button";
+import { Button } from "./ui/button";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
