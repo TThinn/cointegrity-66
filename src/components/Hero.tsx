@@ -18,7 +18,7 @@ const Hero = () => {
           // Control the width similar to 0xlabs.tech
           margin: "0 auto"
         }}>
-            <span className="bg-gradient-to-r from-pink-500 to-[#7161da] bg-clip-text text-transparent">Making Web3 for</span>
+            <span className="bg-gradient-to-r from-pink-500 to-[#8e7ef8] bg-clip-text text-transparent">Making Web3 for</span>
             <span className="block mt-3 text-white">Real business</span>
           </h1>
           <p style={{
