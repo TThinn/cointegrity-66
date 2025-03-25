@@ -1,7 +1,9 @@
+
 import React, { useState } from "react";
 import Container from "./ui/Container";
-import Button from "./ui/CustomButton";
+import Button from "./ui/CustomButtonComponent";
 import { Mail, Phone, MapPin, Send, Check, AlertCircle } from "lucide-react";
+
 const ContactForm = () => {
   const [formState, setFormState] = useState({
     name: "",
@@ -178,4 +180,5 @@ const ContactForm = () => {
       </Container>
     </section>;
 };
+
 export default ContactForm;
