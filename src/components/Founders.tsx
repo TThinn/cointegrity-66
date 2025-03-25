@@ -15,7 +15,7 @@ const founders = [
     name: "Torstein W. Thinn",
     role: "Chairman & Co-Founder",
     bio: "Financial innovator who established the world's first cryptocurrency regulatory task force in 2019, six years ahead of the US. Pioneered AI-driven trading strategies in 2004 when most considered it theoretical...",
-    fullBio: "Financial innovator who established the world's first cryptocurrency regulatory task force in 2019, six years ahead of the US. Pioneered AI-driven trading strategies in 2004 when most considered it theoretical. As CFO ("Master of Coin") at NBX, grew trading volume from 90M to 1.1B NOK and made NBX Europe's first listed crypto exchange. As CEO at AKJ Group, oversaw trading infrastructure supporting $1.6B in traditional and crypto assets while implementing automation that reduced operational overhead by 50%. MSc Finance (NHH). Consistently ahead of industry curves—from quantitative modeling to regulatory frameworks.",
+    fullBio: "Financial innovator who established the world's first cryptocurrency regulatory task force in 2019, six years ahead of the US. Pioneered AI-driven trading strategies in 2004 when most considered it theoretical. As CFO (\"Master of Coin\") at NBX, grew trading volume from 90M to 1.1B NOK and made NBX Europe's first listed crypto exchange. As CEO at AKJ Group, oversaw trading infrastructure supporting $1.6B in traditional and crypto assets while implementing automation that reduced operational overhead by 50%. MSc Finance (NHH). Consistently ahead of industry curves—from quantitative modeling to regulatory frameworks.",
     image: "/lovable-uploads/8a9ae834-c522-4892-836c-ed6830831589.png",
     social: {
       linkedin: "https://www.linkedin.com/in/torstein-thinn-a745552/"
