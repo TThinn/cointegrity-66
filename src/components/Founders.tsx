@@ -1,7 +1,7 @@
 
 import React from "react";
 import Container from "./ui/Container";
-import { Linkedin, X } from "lucide-react";
+import { Linkedin, Github, X } from "lucide-react";
 import { 
   Dialog,
   DialogContent,
@@ -102,8 +102,8 @@ const Founders = () => {
                     alt={founder.name} 
                     className="object-cover w-full h-full" 
                     style={{
-                      objectPosition: "center top", 
-                      transform: "scale(1.5)"
+                      objectPosition: "center 30%", /* Changed from "center top" to move down by 30% */
+                      transform: "scale(1.8)" /* Changed from scale(1.5) to scale(1.8) for 20% enlargement */
                     }} 
                   />
                 ) : (
@@ -211,6 +211,12 @@ const Founders = () => {
                     <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
                       <Linkedin size={18} />
                     </a>
+                    <a href={founder.social.twitter} className="text-gray-500 hover:text-gray-900 transition-colors">
+                      <X size={18} />
+                    </a>
+                    <a href={founder.social.github} className="text-gray-500 hover:text-gray-700 transition-colors">
+                      <Github size={18} />
+                    </a>
                   </div>
                 </>
               )}
@@ -223,3 +229,4 @@ const Founders = () => {
 };
 
 export default Founders;
+
