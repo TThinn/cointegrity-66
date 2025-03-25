@@ -1,4 +1,3 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Twitter, Github, Award } from "lucide-react";
@@ -16,7 +15,7 @@ const founders = [
     role: "Chairman & Co-Founder",
     bio: "Financial innovator who established the world's first cryptocurrency regulatory task force in 2019. Pioneered AI-driven trading strategies in 2004 when most considered it theoretical...",
     fullBio: "Financial innovator who established the world's first cryptocurrency regulatory task force in 2019. Pioneered AI-driven trading strategies in 2004 when most considered it theoretical. As CFO (\"Master of Coin\") at NBX, grew trading volume from 90M to 1.1B NOK and made NBX Europe's first listed crypto exchange. As CEO at AKJ Group, oversaw trading infrastructure supporting $1.6B in traditional and crypto assets while implementing automation that reduced operational overhead by 50%. MSc Finance (NHH). Consistently ahead of industry curves—from quantitative modeling to regulatory frameworks.",
-    image: "/lovable-uploads/19835558-fb21-4847-b38f-3c6e94633ff6.png",
+    image: "/lovable-uploads/2dd79377-6c9c-43cc-8fe1-5d1eb429c567.png",
     social: {
       linkedin: "https://www.linkedin.com/in/torstein-thinn-a745552/"
     }
