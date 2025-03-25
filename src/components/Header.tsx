@@ -7,7 +7,6 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -22,10 +21,10 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
   return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3 bg-black/70 backdrop-blur-lg shadow-md' : 'py-6 bg-transparent'}`}>
       <Container>
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <a href="/" className="relative z-10">
             <div className="flex items-center text-xl font-bold">
               <img src="/lovable-uploads/4a1df2a6-21ec-4f4d-bf1e-0be36a960849.png" alt="Cointegrity Logo" className="h-10 w-auto mr-3" />
@@ -34,7 +33,6 @@ const Header = () => {
             </div>
           </a>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
             <a href="#services" className="px-4 py-2 text-white/80 hover:text-white transition-colors">
               Services
@@ -54,14 +52,12 @@ const Header = () => {
             </a>
           </nav>
 
-          {/* Mobile Menu Button */}
           <button className="md:hidden text-white p-2" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </Container>
 
-      {/* Mobile Navigation */}
       {isOpen && <div className="fixed inset-0 bg-black/90 backdrop-blur-lg z-40 md:hidden pt-20">
           <Container>
             <nav className="flex flex-col gap-4 items-center text-center">
