@@ -1,6 +1,5 @@
 
 import React from "react";
-import { ArrowRight, ChevronRight } from "lucide-react";
 import Container from "./ui/Container";
 import { Button } from "./ui/button";
 
@@ -17,12 +16,12 @@ const Hero = () => {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-balance animate-fade-up" style={{
           animationDelay: "0.2s",
           maxWidth: "16ch",
+          // Control the width similar to 0xlabs.tech
           margin: "0 auto"
         }}>
             <span className="bg-gradient-to-r from-pink-500 via-pink-500 to-[#8e7ef8] bg-clip-text text-pink-500">Making Web3 for</span>
             <span className="block mt-3 text-white">Real Business</span>
           </h1>
-          
           <p style={{
           animationDelay: "0.25s"
         }} className="block mt-3 text-2xl font-medium animate-fade-up text-pink-500">Strategy, Tokenomics &amp; Compliance</p>
