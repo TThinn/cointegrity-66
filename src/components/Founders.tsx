@@ -1,18 +1,17 @@
-
-import React from "react";
+import React, { useState } from "react";
 import Container from "./ui/Container";
-import { Linkedin, Twitter, Github, Award } from "lucide-react";
+import { Linkedin, Twitter, Github, ArrowLeft } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
 
 const founders = [
   {
-    name: "Sarah Chen",
-    role: "CEO & Blockchain Strategist",
-    bio: "Former fintech executive with 12+ years experience in digital transformation and blockchain integration.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80",
+    name: "Torstein W. Thinn",
+    role: "Chairman & Co-Founder",
+    bio: "Financial innovator who established the world's first cryptocurrency regulatory task force in 2019, six years ahead of the US. Pioneered AI-driven trading strategies in 2004 when most considered it theoretical.",
+    fullBio: "Financial innovator who established the world's first cryptocurrency regulatory task force in 2019, six years ahead of the US. Pioneered AI-driven trading strategies in 2004 when most considered it theoretical. As CFO ("Master of Coin") at NBX, grew trading volume from 90M to 1.1B NOK and made NBX Europe's first listed crypto exchange. As CEO at AKJ Group, oversaw trading infrastructure supporting $1.6B in traditional and crypto assets while implementing automation that reduced operational overhead by 50%. MSc Finance (NHH). Consistently ahead of industry curves—from quantitative modeling to regulatory frameworks.",
+    image: "public/lovable-uploads/481f8b29-9c23-4c72-bc56-ca9861fff39e.png",
     social: {
-      twitter: "#",
-      linkedin: "#",
-      github: "#"
+      linkedin: "https://www.linkedin.com/in/torstein-thinn-a745552/"
     }
   },
   {
@@ -51,6 +50,14 @@ const founders = [
 ];
 
 const Founders = () => {
+  const [openDialog, setOpenDialog] = useState(false);
+  const [selectedFounder, setSelectedFounder] = useState<typeof founders[0] | null>(null);
+
+  const handleOpenFullBio = (founder: typeof founders[0]) => {
+    setSelectedFounder(founder);
+    setOpenDialog(true);
+  };
+
   return (
     <section id="founders" className="py-20 bg-gradient-to-b from-white to-purple-50">
       <Container>
@@ -75,26 +82,58 @@ const Founders = () => {
               </div>
               <h3 className="text-xl font-semibold text-gray-800">{founder.name}</h3>
               <div className="mt-1 text-sm font-medium text-pink-600">{founder.role}</div>
-              <p className="mt-3 text-sm text-gray-600">{founder.bio}</p>
+              <p className="mt-3 text-sm text-gray-600">
+                {founder.bio}
+                {founder.fullBio && (
+                  <button 
+                    onClick={() => handleOpenFullBio(founder)}
+                    className="ml-1 text-pink-600 hover:text-pink-700 font-medium"
+                  >
+                    ... more
+                  </button>
+                )}
+              </p>
               <div className="mt-4 flex space-x-3">
-                <a href={founder.social.twitter} className="text-gray-500 hover:text-blue-500 transition-colors">
-                  <Twitter size={18} />
-                </a>
-                <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
-                  <Linkedin size={18} />
-                </a>
-                <a href={founder.social.github} className="text-gray-500 hover:text-pink-600 transition-colors">
-                  <Github size={18} />
-                </a>
-              </div>
-              <div className="mt-4 flex items-center">
-                <Award size={14} className="text-amber-500 mr-1" />
-                <span className="text-xs text-gray-500">Web3 Expert</span>
+                {founder.social.linkedin && (
+                  <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
+                    <Linkedin size={18} />
+                  </a>
+                )}
+                {founder.social.twitter && (
+                  <a href={founder.social.twitter} className="text-gray-500 hover:text-blue-500 transition-colors">
+                    <Twitter size={18} />
+                  </a>
+                )}
+                {founder.social.github && (
+                  <a href={founder.social.github} className="text-gray-500 hover:text-pink-600 transition-colors">
+                    <Github size={18} />
+                  </a>
+                )}
               </div>
             </div>
           ))}
         </div>
       </Container>
+
+      {/* Full bio dialog */}
+      <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+        <DialogContent className="sm:max-w-md bg-white border-0 text-gray-800 shadow-lg">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-bold text-gray-800">{selectedFounder?.name}</DialogTitle>
+          </DialogHeader>
+          <DialogDescription className="text-base text-gray-700 py-4 bg-gradient-to-r from-pink-50 to-blue-50 rounded-lg p-5">
+            {selectedFounder?.fullBio}
+          </DialogDescription>
+          <div className="mt-4 flex justify-start">
+            <button 
+              onClick={() => setOpenDialog(false)}
+              className="flex items-center text-pink-600 hover:text-pink-700 font-medium"
+            >
+              <ArrowLeft size={16} className="mr-1" /> Back
+            </button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
