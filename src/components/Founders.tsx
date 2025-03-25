@@ -208,19 +208,9 @@ const Founders = () => {
                 <>
                   <p className="mt-3 text-sm text-gray-600">{founder.bio}</p>
                   <div className="mt-4 flex space-x-3">
-                    <a href={founder.social.twitter} className="text-gray-500 hover:text-blue-500 transition-colors">
-                      <Twitter size={18} />
-                    </a>
                     <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
                       <Linkedin size={18} />
                     </a>
-                    <a href={founder.social.github} className="text-gray-500 hover:text-pink-600 transition-colors">
-                      <Github size={18} />
-                    </a>
-                  </div>
-                  <div className="mt-4 flex items-center">
-                    <Award size={14} className="text-amber-500 mr-1" />
-                    <span className="text-xs text-gray-500">Web3 Expert</span>
                   </div>
                 </>
               )}
