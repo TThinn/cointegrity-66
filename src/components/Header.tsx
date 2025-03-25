@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Container from "./ui/Container";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

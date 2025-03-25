@@ -81,7 +81,11 @@ const Founders = () => {
                   src={founder.image} 
                   alt={founder.name} 
                   className="object-cover w-full h-full" 
-                  style={index === 0 ? {objectPosition: "center top", objectFit: "cover", transform: "scale(1.2)"} : {}} 
+                  style={index === 0 ? {
+                    objectPosition: "center top", 
+                    objectFit: "cover", 
+                    transform: "scale(1.2)"
+                  } : {}} 
                 />
               </div>
               <h3 className="text-xl font-semibold text-gray-800">{founder.name}</h3>
