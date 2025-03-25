@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Twitter, Github, Award } from "lucide-react";
 import { 
@@ -16,7 +16,7 @@ const founders = [
     role: "Chairman & Co-Founder",
     bio: "Financial innovator who established the world's first cryptocurrency regulatory task force in 2019, six years ahead of the US. Pioneered AI-driven trading strategies in 2004 when most considered it theoretical...",
     fullBio: "Financial innovator who established the world's first cryptocurrency regulatory task force in 2019, six years ahead of the US. Pioneered AI-driven trading strategies in 2004 when most considered it theoretical. As CFO (\"Master of Coin\") at NBX, grew trading volume from 90M to 1.1B NOK and made NBX Europe's first listed crypto exchange. As CEO at AKJ Group, oversaw trading infrastructure supporting $1.6B in traditional and crypto assets while implementing automation that reduced operational overhead by 50%. MSc Finance (NHH). Consistently ahead of industry curves—from quantitative modeling to regulatory frameworks.",
-    image: "/lovable-uploads/8a9ae834-c522-4892-836c-ed6830831589.png",
+    image: "/lovable-uploads/48e948b9-5f75-4539-b342-2a4c8eb9f7ed.png",
     social: {
       linkedin: "https://www.linkedin.com/in/torstein-thinn-a745552/"
     }
@@ -81,7 +81,7 @@ const Founders = () => {
                   src={founder.image} 
                   alt={founder.name} 
                   className="object-cover w-full h-full" 
-                  style={index === 0 ? {objectPosition: "center top"} : {}} 
+                  style={index === 0 ? {objectPosition: "center top", objectFit: "cover", transform: "scale(1.2)"} : {}} 
                 />
               </div>
               <h3 className="text-xl font-semibold text-gray-800">{founder.name}</h3>
