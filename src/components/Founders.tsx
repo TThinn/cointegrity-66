@@ -1,6 +1,7 @@
+
 import React from "react";
 import Container from "./ui/Container";
-import { Linkedin, Twitter, Github, Award } from "lucide-react";
+import { Linkedin, Twitter, Github, Award, X } from "lucide-react";
 import { 
   Dialog,
   DialogContent,
@@ -21,21 +22,21 @@ const founders = [
     }
   },
   {
+    name: "Magnus Jones",
+    role: "Co-Founder & Regulatory Strategist",
+    bio: "Magnus Jones is an international thought leader with 10+ years of blockchain and emerging tech experience, including 9 years as Nordic Blockchain & Innovation Lead at EY...",
+    fullBio: "Magnus Jones is an international thought leader with 10+ years of blockchain and emerging tech experience, including 9 years as Nordic Blockchain & Innovation Lead at EY. His expertise spans Web3 taxation, legal frameworks, forensic investigations, smart contract reviews, tokenomics, and government strategies.\n\nMagnus created the world's first DeFi/NFT tax guidance with Norwegian authorities and built the first government metaverse tax office. He serves on boards including Nordic Blockchain Association and European Web3 Organization, while acting as Norwegian Ambassador for GBBC, member of INTERPOL's Metaverse Expert Group and UN Counter-Terrorism Crypto Group.\n\nHe lectures at universities and works with entities ranging from startups and DeFi projects to banks and governments.",
+    image: "/lovable-uploads/a2b1c3d2-c3ca-4547-8cae-e6eca459eeaa.png",
+    social: {
+      linkedin: "#",
+      twitter: "#"
+    }
+  },
+  {
     name: "Michael Rajput",
     role: "CTO & Smart Contract Expert",
     bio: "Blockchain developer with expertise in Ethereum, Solana, and cross-chain solutions for enterprise applications.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80",
-    social: {
-      twitter: "#",
-      linkedin: "#",
-      github: "#"
-    }
-  },
-  {
-    name: "Alex Thompson",
-    role: "COO & DeFi Specialist",
-    bio: "Former investment banker specialized in cryptocurrency markets and decentralized finance ecosystem development.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80",
     social: {
       twitter: "#",
       linkedin: "#",
@@ -86,6 +87,16 @@ const Founders = () => {
                       transform: "scale(1.7)"
                     }} 
                   />
+                ) : index === 1 ? (
+                  <img 
+                    src={founder.image} 
+                    alt={founder.name} 
+                    className="object-cover w-full h-full" 
+                    style={{
+                      objectPosition: "center top", 
+                      transform: "scale(1.5)"
+                    }} 
+                  />
                 ) : (
                   <img 
                     src={founder.image} 
@@ -122,6 +133,37 @@ const Founders = () => {
                   <div className="mt-4 flex space-x-3">
                     <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
                       <Linkedin size={18} />
+                    </a>
+                  </div>
+                </>
+              ) : index === 1 ? (
+                <>
+                  <p className="mt-3 text-sm text-gray-600">
+                    {founder.bio}
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button className="text-pink-600 hover:text-pink-800 ml-1 inline-flex items-center text-sm font-medium">
+                          more
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="bg-gradient-to-r from-pink-50 to-purple-50 border-none max-w-lg">
+                        <DialogHeader>
+                          <DialogTitle className="text-xl font-semibold text-gray-800">
+                            {founder.name}
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="mt-4">
+                          <p className="text-gray-700 whitespace-pre-line">{founder.fullBio}</p>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </p>
+                  <div className="mt-4 flex space-x-3">
+                    <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
+                      <Linkedin size={18} />
+                    </a>
+                    <a href={founder.social.twitter} className="text-gray-500 hover:text-gray-900 transition-colors">
+                      <X size={18} />
                     </a>
                   </div>
                 </>
