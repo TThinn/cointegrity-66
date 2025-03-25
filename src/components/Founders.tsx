@@ -1,18 +1,24 @@
 
-import React from "react";
+import React, { useState } from "react";
 import Container from "./ui/Container";
 import { Linkedin, Twitter, Github, Award } from "lucide-react";
+import { 
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
 
 const founders = [
   {
-    name: "Sarah Chen",
-    role: "CEO & Blockchain Strategist",
-    bio: "Former fintech executive with 12+ years experience in digital transformation and blockchain integration.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80",
+    name: "Torstein W. Thinn",
+    role: "Chairman & Co-Founder",
+    bio: "Financial innovator who established the world's first cryptocurrency regulatory task force in 2019, six years ahead of the US. Pioneered AI-driven trading strategies in 2004 when most considered it theoretical...",
+    fullBio: "Financial innovator who established the world's first cryptocurrency regulatory task force in 2019, six years ahead of the US. Pioneered AI-driven trading strategies in 2004 when most considered it theoretical. As CFO ("Master of Coin") at NBX, grew trading volume from 90M to 1.1B NOK and made NBX Europe's first listed crypto exchange. As CEO at AKJ Group, oversaw trading infrastructure supporting $1.6B in traditional and crypto assets while implementing automation that reduced operational overhead by 50%. MSc Finance (NHH). Consistently ahead of industry curves—from quantitative modeling to regulatory frameworks.",
+    image: "/lovable-uploads/8a9ae834-c522-4892-836c-ed6830831589.png",
     social: {
-      twitter: "#",
-      linkedin: "#",
-      github: "#"
+      linkedin: "https://www.linkedin.com/in/torstein-thinn-a745552/"
     }
   },
   {
@@ -71,26 +77,64 @@ const Founders = () => {
             >
               <div className="relative mb-4 w-24 h-24 overflow-hidden rounded-full">
                 <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-10 rounded-full"></div>
-                <img src={founder.image} alt={founder.name} className="object-cover w-full h-full" />
+                <img 
+                  src={founder.image} 
+                  alt={founder.name} 
+                  className="object-cover w-full h-full" 
+                  style={index === 0 ? {objectPosition: "center top"} : {}} 
+                />
               </div>
               <h3 className="text-xl font-semibold text-gray-800">{founder.name}</h3>
               <div className="mt-1 text-sm font-medium text-pink-600">{founder.role}</div>
-              <p className="mt-3 text-sm text-gray-600">{founder.bio}</p>
-              <div className="mt-4 flex space-x-3">
-                <a href={founder.social.twitter} className="text-gray-500 hover:text-blue-500 transition-colors">
-                  <Twitter size={18} />
-                </a>
-                <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
-                  <Linkedin size={18} />
-                </a>
-                <a href={founder.social.github} className="text-gray-500 hover:text-pink-600 transition-colors">
-                  <Github size={18} />
-                </a>
-              </div>
-              <div className="mt-4 flex items-center">
-                <Award size={14} className="text-amber-500 mr-1" />
-                <span className="text-xs text-gray-500">Web3 Expert</span>
-              </div>
+              
+              {index === 0 ? (
+                <>
+                  <p className="mt-3 text-sm text-gray-600">
+                    {founder.bio} 
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button className="text-pink-600 hover:text-pink-800 ml-1 inline-flex items-center text-sm font-medium">
+                          more
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="bg-gradient-to-r from-pink-50 to-purple-50 border-none max-w-lg">
+                        <DialogHeader>
+                          <DialogTitle className="text-xl font-semibold text-gray-800">
+                            {founder.name}
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="mt-4">
+                          <p className="text-gray-700">{founder.fullBio}</p>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </p>
+                  <div className="mt-4 flex space-x-3">
+                    <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
+                      <Linkedin size={18} />
+                    </a>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <p className="mt-3 text-sm text-gray-600">{founder.bio}</p>
+                  <div className="mt-4 flex space-x-3">
+                    <a href={founder.social.twitter} className="text-gray-500 hover:text-blue-500 transition-colors">
+                      <Twitter size={18} />
+                    </a>
+                    <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
+                      <Linkedin size={18} />
+                    </a>
+                    <a href={founder.social.github} className="text-gray-500 hover:text-pink-600 transition-colors">
+                      <Github size={18} />
+                    </a>
+                  </div>
+                  <div className="mt-4 flex items-center">
+                    <Award size={14} className="text-amber-500 mr-1" />
+                    <span className="text-xs text-gray-500">Web3 Expert</span>
+                  </div>
+                </>
+              )}
             </div>
           ))}
         </div>
