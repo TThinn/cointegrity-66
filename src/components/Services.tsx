@@ -1,9 +1,7 @@
-
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import { Target, Layers, Scale, Rocket, ArrowLeft } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
-
 const services = [{
   icon: <Target size={24} className="text-pink-600" />,
   title: "Strategic Positioning",
@@ -25,16 +23,13 @@ const services = [{
   description: "Cointegrity's Capital Acceleration service transforms promising Web3 projects into well-funded ventures. We craft targeted community building strategies.",
   fullDescription: "Cointegrity's Capital Acceleration service transforms promising Web3 projects into well-funded ventures. We craft targeted community building strategies that create engaged ecosystems around your offering. Our team ensures your product achieves market fit before approaching investors, maximizing your funding potential. We identify and engage your ideal audience, creating momentum that attracts capital. Drawing on our extensive network of VCs, angel investors, family offices, and investment funds, we connect you with the right financial partners for your stage and vision. Our expert collaborators across global markets provide specialized insights for different investment landscapes. With Cointegrity's guidance, your project gains access to capital sources that align with your long-term objectives, accelerating your growth in the digital asset ecosystem."
 }];
-
 const Services = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
-
   const handleOpenFullDescription = (service: typeof services[0]) => {
     setSelectedService(service);
     setOpenDialog(true);
   };
-
   return <section id="services" className="py-20 bg-white relative">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -45,7 +40,7 @@ const Services = () => {
 
         {/* Opening description text box */}
         <div className="mb-12 p-8 rounded-2xl bg-gradient-to-r from-pink-50 to-blue-50">
-          <p className="text-gray-700 leading-relaxed">Cointegrity bridges traditional business acumen with digital asset innovation as a strategic advisory firm specializing in Web3 transformation. Our methodology harmonizes proven Web2 principles with blockchain's potential, navigating the complex transition between established models and decentralized technologies. Cointegrity provides comprehensive ecosystem support—from securing banking relationships and accounting solutions to optimizing tokenomics, funding strategies, and exit planning. As your trusted navigator in the regulatory landscape, Cointegrity helps screen potential partners and investment opportunities while ensuring compliance across jurisdictions, delivering precision and insight for your blockchain journey.</p>
+          <p className="text-gray-700 leading-relaxed">Cointegrity delivers strategic advisory services that bridge traditional business practices with blockchain innovation. As your trusted navigator in the digital asset landscape, we provide comprehensive ecosystem support—from regulatory compliance, tax optimization and banking solutions to tokenomics optimization and funding strategies. Our expert team simplifies blockchain complexity while amplifying business impact, ensuring your Web3 journey succeeds in this rapidly evolving space.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -58,14 +53,9 @@ const Services = () => {
               <h3 className="text-xl font-semibold mb-2 text-gray-800">{service.title}</h3>
               <p className="text-gray-600">
                 {service.description}
-                {service.fullDescription && (
-                  <button 
-                    onClick={() => handleOpenFullDescription(service)}
-                    className="ml-1 text-pink-600 hover:text-pink-700 font-medium"
-                  >
+                {service.fullDescription && <button onClick={() => handleOpenFullDescription(service)} className="ml-1 text-pink-600 hover:text-pink-700 font-medium">
                     ... more
-                  </button>
-                )}
+                  </button>}
               </p>
             </div>)}
         </div>
@@ -92,10 +82,7 @@ const Services = () => {
             {selectedService?.fullDescription}
           </DialogDescription>
           <div className="mt-4 flex justify-start">
-            <button 
-              onClick={() => setOpenDialog(false)}
-              className="flex items-center text-pink-600 hover:text-pink-700 font-medium"
-            >
+            <button onClick={() => setOpenDialog(false)} className="flex items-center text-pink-600 hover:text-pink-700 font-medium">
               <ArrowLeft size={16} className="mr-1" /> Back
             </button>
           </div>
@@ -103,5 +90,4 @@ const Services = () => {
       </Dialog>
     </section>;
 };
-
 export default Services;
