@@ -1,4 +1,3 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Twitter, Github, Award } from "lucide-react";
@@ -84,7 +83,7 @@ const Founders = () => {
                   style={index === 0 ? {
                     objectPosition: "center top", 
                     objectFit: "cover", 
-                    transform: "scale(1.4)"  // Increased from 1.2 to 1.4 (20% more)
+                    transform: "scale(1.7)"
                   } : {}} 
                 />
               </div>

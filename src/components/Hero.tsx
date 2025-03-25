@@ -1,3 +1,4 @@
+
 import React from "react";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import Container from "./ui/Container";
@@ -18,7 +19,7 @@ const Hero = () => {
           maxWidth: "16ch",
           margin: "0 auto"
         }}>
-            <span className="bg-gradient-to-r from-pink-500 via-pink-500 to-[#8e7ef8] bg-clip-text text-transparent">Making Web3 for</span>
+            <span className="bg-gradient-to-r from-pink-500 via-pink-500 to-[#8e7ef8] bg-clip-text text-pink-500">Making Web3 for</span>
             <span className="block mt-3 text-white">Real Business</span>
           </h1>
           
