@@ -82,7 +82,7 @@ const Founders = () => {
                     alt={founder.name} 
                     className="object-cover w-full h-full" 
                     style={{
-                      objectPosition: "center 60%", 
+                      objectPosition: "center 30%", 
                       transform: "scale(1.7)"
                     }} 
                   />
