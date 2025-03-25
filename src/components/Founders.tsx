@@ -100,10 +100,11 @@ const Founders = () => {
                   <img 
                     src={founder.image} 
                     alt={founder.name} 
-                    className="object-cover w-full h-full" 
+                    className="absolute w-full h-full object-cover" 
                     style={{
-                      objectPosition: "center -30%", 
-                      transform: "scale(1.8)"
+                      top: "30%", /* Move the image down by 30% */
+                      transform: "scale(1.8) translateY(0)",
+                      objectFit: "cover"
                     }} 
                   />
                 ) : (
