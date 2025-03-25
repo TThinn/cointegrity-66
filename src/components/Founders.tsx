@@ -84,7 +84,7 @@ const Founders = () => {
                   style={index === 0 ? {
                     objectPosition: "center top", 
                     objectFit: "cover", 
-                    transform: "scale(1.2)"
+                    transform: "scale(1.4)"  // Increased from 1.2 to 1.4 (20% more)
                   } : {}} 
                 />
               </div>
