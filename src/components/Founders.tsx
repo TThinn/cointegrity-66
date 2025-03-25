@@ -1,7 +1,7 @@
 
 import React from "react";
 import Container from "./ui/Container";
-import { Linkedin, Twitter, Github, Award, X } from "lucide-react";
+import { Linkedin, X } from "lucide-react";
 import { 
   Dialog,
   DialogContent,
@@ -33,14 +33,13 @@ const founders = [
     }
   },
   {
-    name: "Michael Rajput",
-    role: "CTO & Smart Contract Expert",
-    bio: "Blockchain developer with expertise in Ethereum, Solana, and cross-chain solutions for enterprise applications.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80",
+    name: "Feliks Olko",
+    role: "Co-Founder & Technical Strategist",
+    bio: "Metaverse infrastructure pioneer who helped scale one of Web3's most ambitious distributed computing platforms for virtual worlds...",
+    fullBio: "Metaverse infrastructure pioneer who helped scale one of Web3's most ambitious distributed computing platforms for virtual worlds. As VP of Commercial Development at MetaGravity, revolutionized how developers build large-scale simulations, securing partnerships with AAA game studios and web3 projects. Previously founded BlockVerse Consulting, bringing enterprise-level solutions to blockchain startups. Built strategic partnerships at Hadean (2018-2021) after beginning career in finance at J.P. Morgan. Combines deep technical knowledge with financial acumen, holding a Harvard University Computer Science certification and MSc in Banking from Bayes Business School. Known for translating complex Web3 technologies into practical business applications.",
+    image: "/lovable-uploads/e6a83d86-6685-4904-9bb1-f6d5c0a536dc.png",
     social: {
-      twitter: "#",
-      linkedin: "#",
-      github: "#"
+      linkedin: "#"
     }
   },
   {
@@ -88,6 +87,16 @@ const Founders = () => {
                     }} 
                   />
                 ) : index === 1 ? (
+                  <img 
+                    src={founder.image} 
+                    alt={founder.name} 
+                    className="object-cover w-full h-full" 
+                    style={{
+                      objectPosition: "center top", 
+                      transform: "scale(1.5)"
+                    }} 
+                  />
+                ) : index === 2 ? (
                   <img 
                     src={founder.image} 
                     alt={founder.name} 
@@ -164,6 +173,34 @@ const Founders = () => {
                     </a>
                     <a href={founder.social.twitter} className="text-gray-500 hover:text-gray-900 transition-colors">
                       <X size={18} />
+                    </a>
+                  </div>
+                </>
+              ) : index === 2 ? (
+                <>
+                  <p className="mt-3 text-sm text-gray-600">
+                    {founder.bio}
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button className="text-pink-600 hover:text-pink-800 ml-1 inline-flex items-center text-sm font-medium">
+                          more
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="bg-gradient-to-r from-pink-50 to-purple-50 border-none max-w-lg">
+                        <DialogHeader>
+                          <DialogTitle className="text-xl font-semibold text-gray-800">
+                            {founder.name}
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="mt-4">
+                          <p className="text-gray-700">{founder.fullBio}</p>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </p>
+                  <div className="mt-4 flex space-x-3">
+                    <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
+                      <Linkedin size={18} />
                     </a>
                   </div>
                 </>
