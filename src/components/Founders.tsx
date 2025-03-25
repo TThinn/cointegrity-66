@@ -1,4 +1,3 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Github, X } from "lucide-react";
@@ -102,8 +101,8 @@ const Founders = () => {
                     alt={founder.name} 
                     className="object-cover w-full h-full" 
                     style={{
-                      objectPosition: "center 30%", /* Changed from "center top" to move down by 30% */
-                      transform: "scale(1.8)" /* Changed from scale(1.5) to scale(1.8) for 20% enlargement */
+                      objectPosition: "center 60%", 
+                      transform: "scale(1.8)"
                     }} 
                   />
                 ) : (
@@ -229,4 +228,3 @@ const Founders = () => {
 };
 
 export default Founders;
-
