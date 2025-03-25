@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Twitter, Github, Award } from "lucide-react";
 import { 
@@ -83,8 +82,8 @@ const Founders = () => {
                     alt={founder.name} 
                     className="object-cover w-full h-full" 
                     style={{
-                      objectPosition: "center 60%", 
-                      transform: "scale(1.7)"
+                      objectPosition: "center top", 
+                      transform: "scale(1.5)"
                     }} 
                   />
                 ) : (
