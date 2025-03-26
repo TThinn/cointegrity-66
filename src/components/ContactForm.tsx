@@ -56,7 +56,7 @@ const ContactForm = () => {
           <div className="animate-fade-up" style={{
           animationDelay: "0.1s"
         }}>
-            <span className="text-sm font-semibold text-purple-600 uppercase tracking-wider">Contact Us</span>
+            <span className="text-sm font-semibold uppercase tracking-wider text-pink-500">Contact Us</span>
             <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">
               Let's Build Your Web3 Future
             </h2>
