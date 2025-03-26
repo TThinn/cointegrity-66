@@ -101,7 +101,7 @@ const Founders = () => {
                     alt={founder.name} 
                     className="absolute w-full h-full object-cover" 
                     style={{
-                      top: "30%", /* Move the image down by 30% */
+                      top: "30%", 
                       transform: "scale(1.8) translateY(0)",
                       objectFit: "cover"
                     }} 
@@ -112,7 +112,7 @@ const Founders = () => {
                     alt={founder.name} 
                     className="absolute w-full h-full object-cover" 
                     style={{
-                      top: "10%", /* Adjust position to center face */
+                      top: "20%", 
                       transform: "scale(1.7)",
                       objectFit: "cover"
                     }} 
