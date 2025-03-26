@@ -1,8 +1,10 @@
+
 import React from "react";
 import Container from "./ui/Container";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 import { Button } from "./ui/button";
 import { ArrowUpRight } from "lucide-react";
+
 const Accreditations = () => {
   // Logo placeholders with links - in a real project, you would import actual logos
   const brands = [{
@@ -46,6 +48,7 @@ const Accreditations = () => {
     url: "https://www.binance.com/",
     description: "Leading cryptocurrency exchange"
   }];
+
   const certifications = [{
     name: "Certified Blockchain Professional",
     id: 1
@@ -59,9 +62,16 @@ const Accreditations = () => {
     name: "ISO 27001 Information Security",
     id: 4
   }];
-  return <section className="py-24 relative overflow-hidden bg-[#0c0218]">
+
+  return <section className="py-24 relative overflow-hidden bg-[#080112] grid-pattern">
+      {/* Background elements - matching Hero section style */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/2 w-[800px] h-[800px] bg-purple-500/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[100px]"></div>
+      </div>
+      
       <Container>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-fade-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
               Trusted by Industry Leaders
@@ -109,4 +119,5 @@ const Accreditations = () => {
       </Container>
     </section>;
 };
+
 export default Accreditations;
