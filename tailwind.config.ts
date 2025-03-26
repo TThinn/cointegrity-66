@@ -125,6 +125,10 @@ export default {
 					"0%, 100%": { transform: "translateY(0)" },
 					"50%": { transform: "translateY(-10px)" },
 				},
+				carousel: {
+					"0%": { transform: "translateX(0)" },
+					"100%": { transform: "translateX(-50%)" },
+				}
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
@@ -134,6 +138,7 @@ export default {
 				"slide-in-right": "slide-in-right 0.5s ease-out",
 				"blur-in": "blur-in 0.6s ease-out",
 				"float": "float 6s ease-in-out infinite",
+				"carousel": "carousel 30s linear infinite",
 			},
 			fontSize: {
 				"2xs": "0.625rem",

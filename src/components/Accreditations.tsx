@@ -1,18 +1,67 @@
 
 import React from "react";
 import Container from "./ui/Container";
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious 
+} from "./ui/carousel";
+import { Button } from "./ui/button";
+import { ArrowUpRight } from "lucide-react";
 
 const Accreditations = () => {
-  // Logo placeholders - in a real project, you would import actual logos
+  // Logo placeholders with links - in a real project, you would import actual logos
   const brands = [
-    { name: "Ethereum Foundation", id: 1 },
-    { name: "Polkadot Network", id: 2 },
-    { name: "Chainlink", id: 3 },
-    { name: "Avalanche", id: 4 },
-    { name: "Solana", id: 5 },
-    { name: "Near Protocol", id: 6 },
-    { name: "Polygon", id: 7 },
-    { name: "Binance", id: 8 },
+    { 
+      name: "Ethereum Foundation", 
+      id: 1, 
+      url: "https://ethereum.org/foundation/",
+      description: "Supporting the Ethereum ecosystem"
+    },
+    { 
+      name: "Polkadot Network", 
+      id: 2, 
+      url: "https://polkadot.network/",
+      description: "Blockchain interoperability platform"
+    },
+    { 
+      name: "Chainlink", 
+      id: 3, 
+      url: "https://chain.link/",
+      description: "Decentralized oracle network"
+    },
+    { 
+      name: "Avalanche", 
+      id: 4, 
+      url: "https://www.avax.network/",
+      description: "Scalable blockchain platform"
+    },
+    { 
+      name: "Solana", 
+      id: 5, 
+      url: "https://solana.com/",
+      description: "Fast, secure, and censorship-resistant blockchain"
+    },
+    { 
+      name: "Near Protocol", 
+      id: 6, 
+      url: "https://near.org/",
+      description: "Climate-neutral blockchain platform"
+    },
+    { 
+      name: "Polygon", 
+      id: 7, 
+      url: "https://polygon.technology/",
+      description: "Ethereum scaling solutions"
+    },
+    { 
+      name: "Binance", 
+      id: 8, 
+      url: "https://www.binance.com/",
+      description: "Leading cryptocurrency exchange"
+    },
   ];
 
   const certifications = [
@@ -36,19 +85,67 @@ const Accreditations = () => {
             </p>
           </div>
 
-          {/* Brands we work with */}
+          {/* Brands we work with - Carousel implementation */}
           <div className="mb-20">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16 items-center justify-center">
-              {brands.map((brand) => (
-                <div 
-                  key={brand.id} 
-                  className="flex items-center justify-center h-16 px-6 animate-fade-up"
-                  style={{ animationDelay: `${0.1 * brand.id}s` }}
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {brands.map((brand) => (
+                  <CarouselItem 
+                    key={brand.id} 
+                    className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+                  >
+                    <a 
+                      href={brand.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block h-full"
+                    >
+                      <div 
+                        className="bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-lg glass-card w-full h-full flex flex-col items-center justify-center transition-all duration-300 hover:from-purple-500/30 hover:to-blue-500/30 p-6 group"
+                      >
+                        <div className="w-16 h-16 mb-4 relative overflow-hidden rounded-full bg-gradient-to-br from-purple-500/40 to-blue-500/40 flex items-center justify-center">
+                          <span className="text-white text-2xl font-bold">{brand.name.charAt(0)}</span>
+                        </div>
+                        <span className="text-gradient text-lg font-semibold mb-2">{brand.name}</span>
+                        <p className="text-white/60 text-sm text-center mb-3 h-12 overflow-hidden">
+                          {brand.description}
+                        </p>
+                        <div className="flex items-center text-blue-400 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                          Visit <ArrowUpRight className="ml-1 h-3 w-3" />
+                        </div>
+                      </div>
+                    </a>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center mt-8">
+                <CarouselPrevious className="relative static mx-2 bg-transparent border-white/20 hover:bg-white/10" />
+                <CarouselNext className="relative static mx-2 bg-transparent border-white/20 hover:bg-white/10" />
+              </div>
+            </Carousel>
+          </div>
+
+          {/* Auto-sliding carousel for continuous movement */}
+          <div className="mb-20 overflow-hidden">
+            <div className="flex animate-carousel">
+              {[...brands, ...brands].map((brand, index) => (
+                <a 
+                  key={`${brand.id}-${index}`}
+                  href={brand.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-none mx-4 w-40"
                 >
-                  <div className="bg-gradient-to-br from-purple-500/20 to-blue-500/20 p-6 rounded-lg glass-card w-full h-full flex items-center justify-center">
-                    <span className="text-gradient text-lg font-semibold">{brand.name}</span>
+                  <div className="bg-gradient-to-br from-purple-500/10 to-blue-500/10 p-4 rounded-lg flex items-center justify-center h-20">
+                    <span className="text-gradient text-sm font-medium">{brand.name}</span>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
