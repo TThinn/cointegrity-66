@@ -1,20 +1,15 @@
 import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Twitter, Youtube, Github } from "lucide-react";
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
-  return (
-    <footer className="bg-gray-50 pt-16 pb-8">
+  return <footer className="bg-gray-50 pt-16 pb-8">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-1">
             <a href="#" className="flex items-center space-x-2">
-              <div className="w-10 h-10 rounded-lg bg-purple-blue-gradient flex items-center justify-center">
-                <span className="text-white font-bold text-lg">Ω</span>
-              </div>
-              <span className="font-semibold text-xl text-gray-800">Omega</span>
+              
+              <span className="font-semibold text-xl text-gray-800">Cointegrity</span>
             </a>
             <p className="mt-4 text-sm text-gray-600">
               A premier Web3 consultancy helping businesses navigate the decentralized landscape with confidence.
@@ -103,8 +98,6 @@ const Footer = () => {
           </div>
         </div>
       </Container>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
