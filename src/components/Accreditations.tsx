@@ -11,61 +11,73 @@ const Accreditations = () => {
     name: "Ethereum Foundation",
     id: 1,
     url: "https://ethereum.org/foundation/",
-    description: "Supporting the Ethereum ecosystem"
+    description: "Supporting the Ethereum ecosystem",
+    altText: "Ethereum Foundation logo"
   }, {
     name: "Polkadot Network",
     id: 2,
     url: "https://polkadot.network/",
-    description: "Blockchain interoperability platform"
+    description: "Blockchain interoperability platform",
+    altText: "Polkadot Network logo"
   }, {
     name: "Chainlink",
     id: 3,
     url: "https://chain.link/",
-    description: "Decentralized oracle network"
+    description: "Decentralized oracle network",
+    altText: "Chainlink logo"
   }, {
     name: "Avalanche",
     id: 4,
     url: "https://www.avax.network/",
-    description: "Scalable blockchain platform"
+    description: "Scalable blockchain platform",
+    altText: "Avalanche logo"
   }, {
     name: "Solana",
     id: 5,
     url: "https://solana.com/",
-    description: "Fast, secure, and censorship-resistant blockchain"
+    description: "Fast, secure, and censorship-resistant blockchain",
+    altText: "Solana logo"
   }, {
     name: "Near Protocol",
     id: 6,
     url: "https://near.org/",
-    description: "Climate-neutral blockchain platform"
+    description: "Climate-neutral blockchain platform",
+    altText: "Near Protocol logo"
   }, {
     name: "Polygon",
     id: 7,
     url: "https://polygon.technology/",
-    description: "Ethereum scaling solutions"
+    description: "Ethereum scaling solutions",
+    altText: "Polygon logo"
   }, {
     name: "Binance",
     id: 8,
     url: "https://www.binance.com/",
-    description: "Leading cryptocurrency exchange"
+    description: "Leading cryptocurrency exchange",
+    altText: "Binance logo"
   }];
 
   const certifications = [{
     name: "Certified Blockchain Professional",
-    id: 1
+    id: 1,
+    description: "Internationally recognized credential demonstrating blockchain expertise and best practices."
   }, {
     name: "Ethereum Developer Certification",
-    id: 2
+    id: 2,
+    description: "Certifies proficiency in building secure and efficient applications on the Ethereum network."
   }, {
     name: "Web3 Security Specialist",
-    id: 3
+    id: 3,
+    description: "Advanced certification for identifying and mitigating security risks in decentralized applications."
   }, {
     name: "ISO 27001 Information Security",
-    id: 4
+    id: 4,
+    description: "Demonstrates commitment to information security management and data protection standards."
   }];
 
-  return <section className="py-24 relative overflow-hidden bg-[#080112] grid-pattern">
+  return <section id="accreditations" aria-label="Accreditations and Partners" className="py-24 relative overflow-hidden bg-[#080112] grid-pattern">
       {/* Background elements - matching Hero section style */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
         <div className="absolute top-1/4 left-1/2 w-[800px] h-[800px] bg-purple-500/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[100px]"></div>
       </div>
@@ -82,15 +94,39 @@ const Accreditations = () => {
             </p>
           </div>
 
-          {/* Brands we work with - Carousel implementation */}
+          {/* Brands carousel for better display and semantics */}
           <div className="mb-20">
-            
+            <h3 className="sr-only">Our Partners</h3>
+            <Carousel className="w-full">
+              <CarouselContent>
+                {brands.map((brand, index) => (
+                  <CarouselItem key={brand.id} className="md:basis-1/3 lg:basis-1/4">
+                    <a 
+                      href={brand.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="block p-4"
+                      aria-label={`Visit ${brand.name} website`}
+                    >
+                      <div className="bg-gradient-to-br from-purple-500/10 to-blue-500/10 p-6 rounded-lg flex flex-col items-center justify-center h-32 hover:shadow-lg transition-all">
+                        <span className="text-gradient text-lg font-medium mb-2">{brand.name}</span>
+                        <span className="text-white/60 text-sm text-center">{brand.description}</span>
+                      </div>
+                    </a>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center mt-4">
+                <CarouselPrevious className="mr-2" />
+                <CarouselNext />
+              </div>
+            </Carousel>
           </div>
 
           {/* Auto-sliding carousel for continuous movement */}
           <div className="mb-20 overflow-hidden">
             <div className="flex animate-carousel">
-              {[...brands, ...brands].map((brand, index) => <a key={`${brand.id}-${index}`} href={brand.url} target="_blank" rel="noopener noreferrer" className="flex-none mx-4 w-40">
+              {[...brands, ...brands].map((brand, index) => <a key={`${brand.id}-${index}`} href={brand.url} target="_blank" rel="noopener noreferrer" className="flex-none mx-4 w-40" aria-label={`Visit ${brand.name} website`}>
                   <div className="bg-gradient-to-br from-purple-500/10 to-blue-500/10 p-4 rounded-lg flex items-center justify-center h-20">
                     <span className="text-gradient text-sm font-medium">{brand.name}</span>
                   </div>
@@ -98,22 +134,22 @@ const Accreditations = () => {
             </div>
           </div>
 
-          {/* Certifications */}
+          {/* Certifications with improved semantics and accessibility */}
           <div>
             <h3 className="text-2xl md:text-3xl font-bold mb-8 text-white text-center">Accreditations</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {certifications.map(cert => <div key={cert.id} className="glass-card flex flex-col items-center text-center p-6 animate-fade-up" style={{
+            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {certifications.map(cert => <li key={cert.id} className="glass-card flex flex-col items-center text-center p-6 animate-fade-up" style={{
               animationDelay: `${0.1 * cert.id}s`
             }}>
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center mb-4" aria-hidden="true">
                     <span className="text-white text-xl font-bold">{cert.id}</span>
                   </div>
                   <h4 className="text-white text-lg font-medium mb-2">{cert.name}</h4>
                   <p className="text-white/60 text-sm">
-                    Internationally recognized credential demonstrating expertise and best practices.
+                    {cert.description}
                   </p>
-                </div>)}
-            </div>
+                </li>)}
+            </ul>
           </div>
         </div>
       </Container>
