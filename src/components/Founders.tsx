@@ -1,3 +1,4 @@
+
 import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Github, X } from "lucide-react";
@@ -112,7 +113,7 @@ const Founders = () => {
                     alt={founder.name} 
                     className="absolute w-full h-full object-cover" 
                     style={{
-                      top: "20%", 
+                      top: "35%", 
                       transform: "scale(1.7)",
                       objectFit: "cover"
                     }} 
