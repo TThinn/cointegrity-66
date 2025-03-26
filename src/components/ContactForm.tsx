@@ -1,9 +1,7 @@
-
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
 import { Mail, Phone, MapPin, Send, Check, AlertCircle } from "lucide-react";
-
 const ContactForm = () => {
   const [formState, setFormState] = useState({
     name: "",
@@ -66,44 +64,7 @@ const ContactForm = () => {
               Have a project in mind or questions about our services? We're here to help you navigate the decentralized landscape.
             </p>
             
-            <div className="mt-8 space-y-6">
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center">
-                  <Mail size={20} className="text-purple-600" />
-                </div>
-                <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-700">Email Us</p>
-                  <a href="mailto:contact@omega-web3.com" className="text-base text-purple-600 hover:text-purple-700">
-                    contact@omega-web3.com
-                  </a>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
-                  <Phone size={20} className="text-blue-600" />
-                </div>
-                <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-700">Call Us</p>
-                  <a href="tel:+11234567890" className="text-base text-blue-600 hover:text-blue-700">
-                    +1 (123) 456-7890
-                  </a>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center">
-                  <MapPin size={20} className="text-purple-600" />
-                </div>
-                <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-700">Visit Us</p>
-                  <p className="text-base text-gray-600">
-                    123 Blockchain Ave, Suite 200<br />
-                    San Francisco, CA 94103
-                  </p>
-                </div>
-              </div>
-            </div>
+            
             
             {/* Added visual element */}
             <div className="mt-10 hidden md:block relative animate-float">
@@ -180,5 +141,4 @@ const ContactForm = () => {
       </Container>
     </section>;
 };
-
 export default ContactForm;
