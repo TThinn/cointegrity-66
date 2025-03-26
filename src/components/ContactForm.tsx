@@ -114,7 +114,7 @@ const ContactForm = () => {
               <div className="mt-6">
                 <Button 
                   type="submit" 
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg" 
+                  className="w-full bg-gradient-to-r from-pink-600 via-pink-500 to-[#483AA7] hover:opacity-90 text-white shadow-lg" 
                   variant="default" 
                   size="lg" 
                   disabled={isSubmitting}
