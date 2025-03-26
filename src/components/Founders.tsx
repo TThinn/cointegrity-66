@@ -43,14 +43,14 @@ const founders = [
     }
   },
   {
-    name: "David Park",
-    role: "CISO & Security Advisor",
-    bio: "Cybersecurity expert with specialization in blockchain security, smart contract auditing, and crypto compliance.",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80",
+    name: "Ruben Junger",
+    role: "Co-Founder & Web3 Strategist",
+    bio: "Web3 strategist specializing in blockchain innovation, product market fit and market growth. He built and led PG Group's Launchpad as CCO overseeing multiple successful NFT collection launches...",
+    fullBio: "Web3 strategist specializing in blockchain innovation, product market fit and market growth. He built and led PG Group's Launchpad as CCO overseeing multiple successful NFT collection launches. As Global Head of Web3 at MetaGravity, he shaped enterprise level Web3 strategies together with the C-suite and board members. He has a track record of advising bleeding edge projects from a vertical agnostic approach, whereas the recent focus has been on the convergence of blockchain and Ai with projects like iAgent, Playmind and FlowTrade. \n\nWith expertise in Web3 products, tokenomics, go-to-market strategies, and capital sourcing, Ruben is recognized as a connector and facilitator in the crypto sphere, leveraging his global network of Web3 professionals, investors, and institutions to bridge traditional markets with blockchain innovation.",
+    image: "/lovable-uploads/fb3e89a2-2d4e-4103-a6e9-131413d15c60.png",
     social: {
-      twitter: "#",
-      linkedin: "#",
-      github: "#"
+      twitter: "https://x.com/RubenJunger",
+      linkedin: "https://www.linkedin.com/in/ruben-junger-480a6a14a/"
     }
   }
 ];
@@ -111,7 +111,12 @@ const Founders = () => {
                   <img 
                     src={founder.image} 
                     alt={founder.name} 
-                    className="object-cover w-full h-full" 
+                    className="absolute w-full h-full object-cover" 
+                    style={{
+                      top: "10%", /* Adjust position to center face */
+                      transform: "scale(1.3)",
+                      objectFit: "cover"
+                    }} 
                   />
                 )}
               </div>
@@ -207,16 +212,32 @@ const Founders = () => {
                 </>
               ) : (
                 <>
-                  <p className="mt-3 text-sm text-gray-600">{founder.bio}</p>
+                  <p className="mt-3 text-sm text-gray-600">
+                    {founder.bio}
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button className="text-pink-600 hover:text-pink-800 ml-1 inline-flex items-center text-sm font-medium">
+                          more
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="bg-gradient-to-r from-pink-50 to-purple-50 border-none max-w-lg">
+                        <DialogHeader>
+                          <DialogTitle className="text-xl font-semibold text-gray-800">
+                            {founder.name}
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="mt-4">
+                          <p className="text-gray-700 whitespace-pre-line">{founder.fullBio}</p>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </p>
                   <div className="mt-4 flex space-x-3">
                     <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
                       <Linkedin size={18} />
                     </a>
                     <a href={founder.social.twitter} className="text-gray-500 hover:text-gray-900 transition-colors">
                       <X size={18} />
-                    </a>
-                    <a href={founder.social.github} className="text-gray-500 hover:text-gray-700 transition-colors">
-                      <Github size={18} />
                     </a>
                   </div>
                 </>
