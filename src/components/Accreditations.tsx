@@ -1,7 +1,6 @@
 
 import React from "react";
 import Container from "./ui/Container";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 import { Button } from "./ui/button";
 import { ArrowUpRight } from "lucide-react";
 
@@ -92,35 +91,6 @@ const Accreditations = () => {
               We're proud to work with pioneering companies across the blockchain and Web3 ecosystem, 
               helping them innovate and scale with confidence.
             </p>
-          </div>
-
-          {/* Brands carousel for better display and semantics */}
-          <div className="mb-20">
-            <h3 className="sr-only">Our Partners</h3>
-            <Carousel className="w-full">
-              <CarouselContent>
-                {brands.map((brand, index) => (
-                  <CarouselItem key={brand.id} className="md:basis-1/3 lg:basis-1/4">
-                    <a 
-                      href={brand.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="block p-4"
-                      aria-label={`Visit ${brand.name} website`}
-                    >
-                      <div className="bg-gradient-to-br from-purple-500/10 to-blue-500/10 p-6 rounded-lg flex flex-col items-center justify-center h-32 hover:shadow-lg transition-all">
-                        <span className="text-gradient text-lg font-medium mb-2">{brand.name}</span>
-                        <span className="text-white/60 text-sm text-center">{brand.description}</span>
-                      </div>
-                    </a>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="flex justify-center mt-4">
-                <CarouselPrevious className="mr-2" />
-                <CarouselNext />
-              </div>
-            </Carousel>
           </div>
 
           {/* Auto-sliding carousel for continuous movement */}
