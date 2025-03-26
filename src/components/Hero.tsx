@@ -38,7 +38,7 @@ const Hero = () => {
                 Talk to an expert
               </a>
             </Button>
-            <Button variant="ghost" size="lg" className="border-pink-600 text-pink-600 hover:bg-pink-500/10 px-6 py-3 h-12 rounded-lg bg-transparent w-full sm:w-auto" asChild>
+            <Button variant="outline" size="lg" className="border border-pink-600 text-pink-600 hover:bg-pink-500/10 px-6 py-3 h-12 rounded-lg bg-transparent w-full sm:w-auto" asChild>
               <a href="#services">
                 Our services
               </a>
