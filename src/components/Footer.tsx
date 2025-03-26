@@ -1,4 +1,3 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Twitter, Youtube, Github } from "lucide-react";
@@ -94,7 +93,7 @@ const Footer = () => {
         <div className="pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-gray-500">
-              &copy; {currentYear} Omega Web3 Consultancy. All rights reserved.
+              &copy; {currentYear} Cointegrity AS. All rights reserved.
             </p>
             <div className="mt-4 md:mt-0 flex space-x-6">
               <a href="#" className="text-xs text-gray-500 hover:text-purple-600 transition-colors">Privacy Policy</a>
