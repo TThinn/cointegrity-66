@@ -9,7 +9,7 @@ const Hero = () => {
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[100px]"></div>
       </div>
       
-      <Container className="relative z-10 font-normal text-lg">
+      <Container className="relative z-10 text-base font-normal">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-balance animate-fade-up mb-6" style={{
           animationDelay: "0.2s",
@@ -24,7 +24,7 @@ const Hero = () => {
           margin: "0 auto"
         }}>
             <span className="bg-gradient-to-r from-pink-500 via-pink-500 to-[#8e7ef8] bg-clip-text text-pink-500">Making Web3 for</span>
-            <span className="block mt-3 text-white"></span>
+            <span className="block mt-3 text-white">Real Business</span>
           </h2>
           <p style={{
           animationDelay: "0.35s"
