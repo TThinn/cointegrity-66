@@ -27,14 +27,13 @@ const Hero = () => {
         }} className="block mt-3 text-2xl font-medium animate-fade-up text-pink-500">Strategy, Tokenomics &amp; Compliance</p>
           
           <p style={{
-          animationDelay: "0.3s",
-          color: 'white'
-        }} className="mt-8 text-lg max-w-2xl text-balance animate-fade-up">We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</p>
+          animationDelay: "0.3s"
+        }} className="mt-8 text-lg max-w-2xl text-balance animate-fade-up" style={{ color: 'white' }}>We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</p>
           
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up" style={{
           animationDelay: "0.4s"
         }}>
-            <Button size="lg" className="bg-gradient-to-r from-[#6366F1] via-[#10B981] to-[#3B82F6] hover:opacity-90 text-white px-6 py-3 h-12 rounded-lg shadow-button w-full sm:w-auto" asChild>
+            <Button size="lg" className="bg-gradient-to-r from-pink-600 via-pink-500 to-[#483AA7] hover:opacity-90 text-white px-6 py-3 h-12 rounded-lg shadow-button w-full sm:w-auto" asChild>
               <a href="#contact">
                 Talk to an expert
               </a>
