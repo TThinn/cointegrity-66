@@ -28,7 +28,7 @@ const Hero = () => {
           
           <p style={{
           animationDelay: "0.3s"
-        }} className="mt-8 text-lg max-w-2xl text-balance animate-fade-up text-white !important">We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</p>
+        }} className="mt-8 text-lg max-w-2xl text-balance animate-fade-up" style={{ color: 'white' }}>We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</p>
           
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up" style={{
           animationDelay: "0.4s"
