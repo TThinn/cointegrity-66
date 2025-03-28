@@ -11,10 +11,10 @@ const Hero = () => {
       
       <Container className="relative z-10 text-lg font-normal">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-balance animate-fade-up mb-6" style={{
+          <h1 style={{
           animationDelay: "0.2s",
           color: 'white'
-        }}>
+        }} className="text-small lg:text-body tracking-tight text-balance animate-fade-up mb-6 font-normal md:text-base">
             Strategic Web3 Advisory for Tokenomics & Regulatory Compliance
           </h1>
           
