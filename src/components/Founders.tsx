@@ -22,6 +22,17 @@ const founders = [
     }
   },
   {
+    name: "Ruben Junger",
+    role: "Co-Founder & Web3 Strategist",
+    bio: "Web3 strategist specializing in blockchain innovation, product market fit and market growth. He built and led PG Group's Launchpad as CCO overseeing multiple successful NFT collection launches...",
+    fullBio: "Web3 strategist specializing in blockchain innovation, product market fit and market growth. He built and led PG Group's Launchpad as CCO overseeing multiple successful NFT collection launches. As Global Head of Web3 at MetaGravity, he shaped enterprise level Web3 strategies together with the C-suite and board members. He has a track record of advising bleeding edge projects from a vertical agnostic approach, whereas the recent focus has been on the convergence of blockchain and Ai with projects like iAgent, Playmind and FlowTrade. \n\nWith expertise in Web3 products, tokenomics, go-to-market strategies, and capital sourcing, Ruben is recognized as a connector and facilitator in the crypto sphere, leveraging his global network of Web3 professionals, investors, and institutions to bridge traditional markets with blockchain innovation.",
+    image: "/lovable-uploads/1d01d80c-fe6c-4579-9640-773c15a22a79.png",
+    social: {
+      twitter: "https://x.com/RubenJunger",
+      linkedin: "https://www.linkedin.com/in/ruben-junger-480a6a14a/"
+    }
+  },
+  {
     name: "Magnus Jones",
     role: "Co-Founder & Regulatory Strategist",
     bio: "Magnus Jones is an international thought leader with 10+ years of blockchain and emerging tech experience, including 9 years as Nordic Blockchain & Innovation Lead at EY...",
@@ -40,17 +51,6 @@ const founders = [
     image: "/lovable-uploads/e6a83d86-6685-4904-9bb1-f6d5c0a536dc.png",
     social: {
       linkedin: "#"
-    }
-  },
-  {
-    name: "Ruben Junger",
-    role: "Co-Founder & Web3 Strategist",
-    bio: "Web3 strategist specializing in blockchain innovation, product market fit and market growth. He built and led PG Group's Launchpad as CCO overseeing multiple successful NFT collection launches...",
-    fullBio: "Web3 strategist specializing in blockchain innovation, product market fit and market growth. He built and led PG Group's Launchpad as CCO overseeing multiple successful NFT collection launches. As Global Head of Web3 at MetaGravity, he shaped enterprise level Web3 strategies together with the C-suite and board members. He has a track record of advising bleeding edge projects from a vertical agnostic approach, whereas the recent focus has been on the convergence of blockchain and Ai with projects like iAgent, Playmind and FlowTrade. \n\nWith expertise in Web3 products, tokenomics, go-to-market strategies, and capital sourcing, Ruben is recognized as a connector and facilitator in the crypto sphere, leveraging his global network of Web3 professionals, investors, and institutions to bridge traditional markets with blockchain innovation.",
-    image: "/lovable-uploads/1d01d80c-fe6c-4579-9640-773c15a22a79.png",
-    social: {
-      twitter: "https://x.com/RubenJunger",
-      linkedin: "https://www.linkedin.com/in/ruben-junger-480a6a14a/"
     }
   }
 ];
@@ -76,7 +76,7 @@ const Founders = () => {
             >
               <div className="relative mb-4 w-24 h-24 overflow-hidden rounded-full">
                 <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-10 rounded-full"></div>
-                {index === 0 ? (
+                {founder.name === "Torstein W. Thinn" ? (
                   <img 
                     src={founder.image} 
                     alt={founder.name} 
@@ -86,7 +86,7 @@ const Founders = () => {
                       transform: "scale(1.7)"
                     }} 
                   />
-                ) : index === 1 ? (
+                ) : founder.name === "Magnus Jones" ? (
                   <img 
                     src={founder.image} 
                     alt={founder.name} 
@@ -96,7 +96,7 @@ const Founders = () => {
                       transform: "scale(1.5)"
                     }} 
                   />
-                ) : index === 2 ? (
+                ) : founder.name === "Feliks Olko" ? (
                   <img 
                     src={founder.image} 
                     alt={founder.name} 
@@ -107,141 +107,63 @@ const Founders = () => {
                       objectFit: "cover"
                     }} 
                   />
-                ) : (
+                ) : founder.name === "Ruben Junger" ? (
                   <img 
                     src={founder.image} 
                     alt={founder.name} 
                     className="absolute w-full h-full object-cover" 
                     style={{
-                      top: "40%", // Changed from 35% to 40% to move the image down 5%
+                      top: "40%", 
                       transform: "scale(1.75)",
                       objectFit: "cover"
                     }} 
+                  />
+                ) : (
+                  <img 
+                    src={founder.image} 
+                    alt={founder.name} 
+                    className="object-cover w-full h-full" 
                   />
                 )}
               </div>
               <h3 className="text-xl font-semibold text-gray-800">{founder.name}</h3>
               <div className="mt-1 text-sm font-medium text-pink-600">{founder.role}</div>
               
-              {index === 0 ? (
-                <>
-                  <p className="mt-3 text-sm text-gray-600">
-                    {founder.bio} 
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <button className="text-pink-600 hover:text-pink-800 ml-1 inline-flex items-center text-sm font-medium">
-                          more
-                        </button>
-                      </DialogTrigger>
-                      <DialogContent className="bg-gradient-to-r from-pink-50 to-purple-50 border-none max-w-lg">
-                        <DialogHeader>
-                          <DialogTitle className="text-xl font-semibold text-gray-800">
-                            {founder.name}
-                          </DialogTitle>
-                        </DialogHeader>
-                        <div className="mt-4">
-                          <p className="text-gray-700">{founder.fullBio}</p>
-                        </div>
-                      </DialogContent>
-                    </Dialog>
-                  </p>
-                  <div className="mt-4 flex space-x-3">
-                    <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
-                      <Linkedin size={18} />
-                    </a>
-                  </div>
-                </>
-              ) : index === 1 ? (
-                <>
-                  <p className="mt-3 text-sm text-gray-600">
-                    {founder.bio}
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <button className="text-pink-600 hover:text-pink-800 ml-1 inline-flex items-center text-sm font-medium">
-                          more
-                        </button>
-                      </DialogTrigger>
-                      <DialogContent className="bg-gradient-to-r from-pink-50 to-purple-50 border-none max-w-lg">
-                        <DialogHeader>
-                          <DialogTitle className="text-xl font-semibold text-gray-800">
-                            {founder.name}
-                          </DialogTitle>
-                        </DialogHeader>
-                        <div className="mt-4">
-                          <p className="text-gray-700 whitespace-pre-line">{founder.fullBio}</p>
-                        </div>
-                      </DialogContent>
-                    </Dialog>
-                  </p>
-                  <div className="mt-4 flex space-x-3">
-                    <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
-                      <Linkedin size={18} />
-                    </a>
-                    <a href={founder.social.twitter} className="text-gray-500 hover:text-gray-900 transition-colors">
-                      <X size={18} />
-                    </a>
-                  </div>
-                </>
-              ) : index === 2 ? (
-                <>
-                  <p className="mt-3 text-sm text-gray-600">
-                    {founder.bio}
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <button className="text-pink-600 hover:text-pink-800 ml-1 inline-flex items-center text-sm font-medium">
-                          more
-                        </button>
-                      </DialogTrigger>
-                      <DialogContent className="bg-gradient-to-r from-pink-50 to-purple-50 border-none max-w-lg">
-                        <DialogHeader>
-                          <DialogTitle className="text-xl font-semibold text-gray-800">
-                            {founder.name}
-                          </DialogTitle>
-                        </DialogHeader>
-                        <div className="mt-4">
-                          <p className="text-gray-700">{founder.fullBio}</p>
-                        </div>
-                      </DialogContent>
-                    </Dialog>
-                  </p>
-                  <div className="mt-4 flex space-x-3">
-                    <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
-                      <Linkedin size={18} />
-                    </a>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <p className="mt-3 text-sm text-gray-600">
-                    {founder.bio}
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <button className="text-pink-600 hover:text-pink-800 ml-1 inline-flex items-center text-sm font-medium">
-                          more
-                        </button>
-                      </DialogTrigger>
-                      <DialogContent className="bg-gradient-to-r from-pink-50 to-purple-50 border-none max-w-lg">
-                        <DialogHeader>
-                          <DialogTitle className="text-xl font-semibold text-gray-800">
-                            {founder.name}
-                          </DialogTitle>
-                        </DialogHeader>
-                        <div className="mt-4">
-                          <p className="text-gray-700 whitespace-pre-line">{founder.fullBio}</p>
-                        </div>
-                      </DialogContent>
-                    </Dialog>
-                  </p>
-                  <div className="mt-4 flex space-x-3">
-                    <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
-                      <Linkedin size={18} />
-                    </a>
-                    <a href={founder.social.twitter} className="text-gray-500 hover:text-gray-900 transition-colors">
-                      <X size={18} />
-                    </a>
-                  </div>
-                </>
-              )}
+              <p className="mt-3 text-sm text-gray-600">
+                {founder.bio}
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <button className="text-pink-600 hover:text-pink-800 ml-1 inline-flex items-center text-sm font-medium">
+                      more
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="bg-gradient-to-r from-pink-50 to-purple-50 border-none max-w-lg">
+                    <DialogHeader>
+                      <DialogTitle className="text-xl font-semibold text-gray-800">
+                        {founder.name}
+                      </DialogTitle>
+                    </DialogHeader>
+                    <div className="mt-4">
+                      <p className={`text-gray-700 ${founder.name === "Magnus Jones" || founder.name === "Ruben Junger" ? "whitespace-pre-line" : ""}`}>
+                        {founder.fullBio}
+                      </p>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </p>
+              
+              <div className="mt-4 flex space-x-3">
+                {founder.social.linkedin && (
+                  <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
+                    <Linkedin size={18} />
+                  </a>
+                )}
+                {founder.social.twitter && (
+                  <a href={founder.social.twitter} className="text-gray-500 hover:text-gray-900 transition-colors">
+                    <X size={18} />
+                  </a>
+                )}
+              </div>
             </div>
           ))}
         </div>
