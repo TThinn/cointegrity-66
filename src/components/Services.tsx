@@ -33,7 +33,7 @@ const Services = () => {
   return <section id="services" className="py-20 bg-white relative">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-sm font-semibold text-pink-600 uppercase tracking-wider">Our Services</span>
+          <span className="text-sm text-pink-600 uppercase tracking-wider font-medium">Our Services</span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Web3 Solutions with Substance</h2>
           <p className="mt-4 text-lg text-gray-600">Navigating digital asset complexity with clarity, from strategy to compliance</p>
         </div>
