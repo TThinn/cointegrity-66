@@ -47,7 +47,7 @@ const founders = [
     role: "Co-Founder & Web3 Strategist",
     bio: "Web3 strategist specializing in blockchain innovation, product market fit and market growth. He built and led PG Group's Launchpad as CCO overseeing multiple successful NFT collection launches...",
     fullBio: "Web3 strategist specializing in blockchain innovation, product market fit and market growth. He built and led PG Group's Launchpad as CCO overseeing multiple successful NFT collection launches. As Global Head of Web3 at MetaGravity, he shaped enterprise level Web3 strategies together with the C-suite and board members. He has a track record of advising bleeding edge projects from a vertical agnostic approach, whereas the recent focus has been on the convergence of blockchain and Ai with projects like iAgent, Playmind and FlowTrade. \n\nWith expertise in Web3 products, tokenomics, go-to-market strategies, and capital sourcing, Ruben is recognized as a connector and facilitator in the crypto sphere, leveraging his global network of Web3 professionals, investors, and institutions to bridge traditional markets with blockchain innovation.",
-    image: "/lovable-uploads/fb3e89a2-2d4e-4103-a6e9-131413d15c60.png",
+    image: "/lovable-uploads/1d01d80c-fe6c-4579-9640-773c15a22a79.png",
     social: {
       twitter: "https://x.com/RubenJunger",
       linkedin: "https://www.linkedin.com/in/ruben-junger-480a6a14a/"
