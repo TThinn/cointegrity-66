@@ -9,7 +9,7 @@ const Hero = () => {
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[100px]"></div>
       </div>
       
-      <Container className="relative z-10">
+      <Container className="relative z-10 font-normal text-sm text-pink-50">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-balance animate-fade-up mb-6" style={{
           animationDelay: "0.2s",
