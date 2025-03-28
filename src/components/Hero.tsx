@@ -13,25 +13,31 @@ const Hero = () => {
       
       <Container className="relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-balance animate-fade-up" style={{
-          animationDelay: "0.2s",
-          maxWidth: "16ch",
-          // Control the width similar to 0xlabs.tech
-          margin: "0 auto"
-        }}>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-balance animate-fade-up mb-6" style={{
+            animationDelay: "0.2s",
+            color: 'white'
+          }}>
+            Strategic Web3 Advisory for Tokenomics & Regulatory Compliance
+          </h1>
+          
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-balance animate-fade-up" style={{
+            animationDelay: "0.3s",
+            maxWidth: "16ch",
+            margin: "0 auto"
+          }}>
             <span className="bg-gradient-to-r from-pink-500 via-pink-500 to-[#8e7ef8] bg-clip-text text-pink-500">Making Web3 for</span>
             <span className="block mt-3 text-white">Real Business</span>
-          </h1>
+          </h2>
           <p style={{
-          animationDelay: "0.25s"
+          animationDelay: "0.35s"
         }} className="block mt-3 text-2xl font-medium animate-fade-up text-pink-500">Strategy, Tokenomics &amp; Compliance</p>
           
           <p style={{
-          animationDelay: "0.3s"
+          animationDelay: "0.4s"
         }} className="mt-8 text-lg max-w-2xl text-balance animate-fade-up" style={{ color: 'white' }}>We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</p>
           
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up" style={{
-          animationDelay: "0.4s"
+          animationDelay: "0.5s"
         }}>
             <Button size="lg" className="bg-gradient-to-r from-pink-600 via-pink-500 to-[#483AA7] hover:opacity-90 text-white px-6 py-3 h-12 rounded-lg shadow-button w-full sm:w-auto" asChild>
               <a href="#contact">
