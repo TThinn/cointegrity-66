@@ -1,10 +1,11 @@
+
 import React from "react";
 import Container from "./ui/Container";
 import { Button } from "./ui/button";
 const Hero = () => {
-  // Custom inline style for the gradient text - strengthened white gradient
+  // Custom inline style for the gradient text - using the requested indigo-to-blue gradient
   const gradientTextStyle = {
-    background: "linear-gradient(90deg, #FFFFFF 0%, #E0E7FF 70%, #FFFFFF 100%)",
+    background: "linear-gradient(90deg, #6366F1 0%, #818CF8 50%, #3B82F6 100%)",
     backgroundClip: "text",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
