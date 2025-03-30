@@ -121,21 +121,24 @@
       #8B5CF6 0%, 
       #E7DEFD 50%, 
       #9b87f5 100%);
-    background-size: 200% 100%;
+    background-size: 300% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     z-index: 5;
     opacity: 0.3;
-    animation: shimmer 3s ease-in-out infinite alternate;
+    animation: shimmer 4s ease-in-out infinite;
   }
   
   @keyframes shimmer {
     0% {
       background-position: 0% 50%;
     }
-    100% {
+    50% {
       background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
     }
   }
 
