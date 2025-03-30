@@ -16,7 +16,7 @@ const Hero = () => {
           <h1 className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-4 font-normal text-white leading-tight" style={{
           animationDelay: "0.2s"
         }}>
-            Strategic Web3 Advisory for <span className="gradient-word" data-text="Tokenomics">Tokenomics</span> & <span className="gradient-word" data-text="Regulatory">Regulatory</span> <span className="gradient-word" data-text="Compliance">Compliance</span>
+            Strategic Web3 Advisory for <span className="gradient-word" data-text="Tokenomics">Tokenomics</span> & <span className="gradient-word" data-text="Regulatory Compliance">Regulatory Compliance</span>
           </h1>
           
           {/* Accent line - changed to white */}
