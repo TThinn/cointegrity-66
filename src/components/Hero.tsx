@@ -11,7 +11,8 @@ const Hero = () => {
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
     textFillColor: "transparent",
-    display: "inline-block" // Ensures gradient applies to each word individually
+    display: "inline-block", // Ensures gradient applies to each word individually
+    fontWeight: "inherit" // Inherits the font weight from the parent H1 element
   };
 
   return <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">

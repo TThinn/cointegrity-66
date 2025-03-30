@@ -139,6 +139,7 @@
     color: transparent;
     -webkit-text-fill-color: transparent;
     display: inline-block;
+    font-weight: inherit;
   }
 }
 
