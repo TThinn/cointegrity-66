@@ -4,9 +4,9 @@ import Container from "./ui/Container";
 import { Button } from "./ui/button";
 
 const Hero = () => {
-  // Custom inline style for the gradient text
+  // Custom inline style for the gradient text - updated to be mainly white with subtle highlight
   const gradientTextStyle = {
-    background: "linear-gradient(90deg, #6366F1 0%, #818CF8 50%, #3B82F6 100%)",
+    background: "linear-gradient(90deg, #FFFFFF 0%, #E0E7FF 50%, #FFFFFF 100%)",
     backgroundClip: "text",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
