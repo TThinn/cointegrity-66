@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -125,7 +126,7 @@
     background-clip: text;
     color: transparent;
     z-index: 5;
-    opacity: 0.05;
+    opacity: 0.2;
   }
 
   .section-padding {
