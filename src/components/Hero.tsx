@@ -1,3 +1,4 @@
+
 import React from "react";
 import Container from "./ui/Container";
 import { Button } from "./ui/button";
@@ -26,9 +27,6 @@ const Hero = () => {
             <span className="bg-gradient-to-r from-pink-500 via-pink-500 to-[#8e7ef8] bg-clip-text text-pink-500">Making Web3 for</span>
             <span className="block mt-3 text-white">Real Business</span>
           </h2>
-          <p style={{
-          animationDelay: "0.35s"
-        }} className="block mt-3 text-2xl font-medium animate-fade-up text-pink-500">Strategy, Tokenomics &amp; Compliance</p>
           
           <p style={{
           animationDelay: "0.4s"
