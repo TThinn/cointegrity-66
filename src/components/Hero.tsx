@@ -2,6 +2,7 @@
 import React from "react";
 import Container from "./ui/Container";
 import { Button } from "./ui/button";
+
 const Hero = () => {
   return <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
       {/* Background elements */}
@@ -12,27 +13,31 @@ const Hero = () => {
       
       <Container className="relative z-10 text-lg font-normal">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-          <h1 style={{
-          animationDelay: "0.2s",
-          color: 'white'
-        }} className="text-small lg:text-body tracking-tight text-balance animate-fade-up mb-6 font-normal md:text-base">
+          <h1 
+            className="text-small lg:text-body tracking-tight text-balance animate-fade-up mb-6 font-normal md:text-base text-white"
+            style={{animationDelay: "0.2s"}}
+          >
             Strategic Web3 Advisory for Tokenomics & Regulatory Compliance
           </h1>
           
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-balance animate-fade-up" style={{
-          animationDelay: "0.3s",
-          maxWidth: "16ch",
-          margin: "0 auto"
-        }}>
-            <span className="bg-gradient-to-r from-pink-500 via-pink-500 to-[#8e7ef8] bg-clip-text text-pink-500">Making Web3 for</span>
+          <h2 
+            className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-balance animate-fade-up mb-4"
+            style={{
+              animationDelay: "0.3s",
+              maxWidth: "16ch",
+              margin: "0 auto 16px auto"
+            }}
+          >
+            <span className="bg-gradient-to-r from-pink-500 via-pink-500 to-[#8e7ef8] bg-clip-text text-transparent">Making Web3 for</span>
             <span className="block mt-3 text-white">Real Business</span>
           </h2>
           
-          <p style={{
-          animationDelay: "0.4s"
-        }} className="mt-8 text-lg max-w-2xl text-balance animate-fade-up" style={{
-          color: 'white'
-        }}>We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</p>
+          <p 
+            className="hero-description mt-4 text-lg max-w-2xl text-balance animate-fade-up text-white" 
+            style={{animationDelay: "0.4s"}}
+          >
+            We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.
+          </p>
           
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up" style={{
           animationDelay: "0.5s"
