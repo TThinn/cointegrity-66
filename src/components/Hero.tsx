@@ -4,6 +4,16 @@ import Container from "./ui/Container";
 import { Button } from "./ui/button";
 
 const Hero = () => {
+  // Custom inline style for the gradient text
+  const gradientTextStyle = {
+    background: "linear-gradient(90deg, #6366F1 0%, #818CF8 50%, #3B82F6 100%)",
+    backgroundClip: "text",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    textFillColor: "transparent",
+    display: "inline-block" // Ensures gradient applies to each word individually
+  };
+
   return <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -17,7 +27,7 @@ const Hero = () => {
             className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-4 font-normal text-white leading-tight"
             style={{animationDelay: "0.2s"}}
           >
-            Strategic Web3 Advisory for <span className="highlight">Tokenomics</span> & <span className="highlight">Regulatory Compliance</span>
+            Strategic Web3 Advisory for <span style={gradientTextStyle}>Tokenomics</span> & <span style={gradientTextStyle}>Regulatory Compliance</span>
           </h1>
           
           {/* Accent line */}
@@ -87,4 +97,5 @@ const Hero = () => {
       </Container>
     </section>;
 };
+
 export default Hero;

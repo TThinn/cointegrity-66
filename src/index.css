@@ -134,11 +134,12 @@
   
   /* Gradient highlight for text */
   .highlight {
-    background: linear-gradient(90deg, #6366F1, #3B82F6);
+    background: linear-gradient(90deg, #6366F1 0%, #818CF8 50%, #3B82F6 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
+    display: inline-block;
   }
 }
 
