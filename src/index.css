@@ -131,6 +131,15 @@
       transform: translateY(0px) translateX(0px);
     }
   }
+  
+  /* Gradient highlight for text */
+  .highlight {
+    background: linear-gradient(90deg, #6366F1, #3B82F6);
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }
 
 /* ... keep existing code (page transitions and grid patterns) */

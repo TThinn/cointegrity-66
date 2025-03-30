@@ -14,11 +14,20 @@ const Hero = () => {
       <Container className="relative z-10 text-lg font-normal">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
           <h1 
-            className="text-small lg:text-body tracking-tight text-balance animate-fade-up mb-6 font-normal md:text-base text-white"
+            className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-4 font-normal text-white leading-tight"
             style={{animationDelay: "0.2s"}}
           >
-            Strategic Web3 Advisory for Tokenomics & Regulatory Compliance
+            Strategic Web3 Advisory for <span className="highlight">Tokenomics</span> & <span className="highlight">Regulatory Compliance</span>
           </h1>
+          
+          {/* Accent line */}
+          <div 
+            className="w-[120px] h-[1px] mb-6 animate-fade-up" 
+            style={{
+              background: "linear-gradient(90deg, #6366F1, #3B82F6)",
+              animationDelay: "0.25s"
+            }}
+          ></div>
           
           <h2 
             className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-balance animate-fade-up mb-4"
