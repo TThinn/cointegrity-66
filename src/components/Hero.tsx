@@ -33,12 +33,13 @@ const Hero = () => {
           animationDelay: "0.25s"
         }} className="w-[120px] h-[1px] mb-14 animate-fade-up bg-pink-500"></div>
           
-          <p className="text-lg max-w-2xl text-balance animate-fade-up relative mb-20" 
+          <p className="text-lg max-w-2xl text-balance animate-fade-up relative mb-20 text-white" 
              style={{
-               animationDelay: "0.4s",
-               color: "#D6BCFA"
+               animationDelay: "0.4s"
              }}>
-            We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.
+            <span className="gradient-word" data-text="We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders." style={{
+              backgroundPosition: "center center"
+            }}>We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</span>
           </p>
         </div>
           
