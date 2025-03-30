@@ -4,14 +4,18 @@ import Container from "./ui/Container";
 import { Button } from "./ui/button";
 
 const Hero = () => {
-  return <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
+  return (
+    <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
+      {/* Animated background overlay */}
+      <div className="animated-bg absolute inset-0 z-0"></div>
+      
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/2 w-[800px] h-[800px] bg-purple-500/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[100px]"></div>
       </div>
       
-      <Container className="relative z-10 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
+      <Container className="hero-content relative z-10 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto mt-16">
           <h1 className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-8 font-normal leading-tight" style={{
           animationDelay: "0.2s"
@@ -79,7 +83,8 @@ const Hero = () => {
           </div>
         </div>
       </Container>
-    </section>;
+    </section>
+  );
 };
 
 export default Hero;
