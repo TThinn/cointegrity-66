@@ -33,11 +33,26 @@ const Hero = () => {
           animationDelay: "0.25s"
         }} className="w-[120px] h-[1px] mb-14 animate-fade-up bg-pink-500"></div>
           
-          <p className="text-lg max-w-2xl text-balance animate-fade-up text-[#D6BCFA] mb-20" 
+          <p className="text-lg max-w-2xl text-balance animate-fade-up text-white relative mb-20" 
              style={{
-               animationDelay: "0.4s"
+               animationDelay: "0.4s",
+               position: "relative"
              }}>
-            We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.
+            <span className="relative z-10">
+              We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.
+            </span>
+            <span 
+              className="absolute inset-0 z-0" 
+              style={{
+                background: "rgba(7, 1, 27, 0.3)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent"
+              }}
+              aria-hidden="true"
+            >
+              We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.
+            </span>
           </p>
         </div>
           
