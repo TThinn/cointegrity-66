@@ -1,11 +1,42 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "./ui/Container";
 import { Button } from "./ui/button";
 
 const Hero = () => {
+  useEffect(() => {
+    // Load particles.js script
+    const particleScript = document.createElement('script');
+    particleScript.src = 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js';
+    document.head.appendChild(particleScript);
+
+    particleScript.onload = () => {
+      // @ts-ignore
+      window.particlesJS('particles-js', {
+        particles: {
+          number: { value: 30, density: { enable: true, value_area: 800 } },
+          color: { value: '#6366F1' },
+          opacity: { value: 0.3, random: true },
+          size: { value: 3, random: true },
+          line_linked: { enable: true, distance: 150, color: '#C026D3', opacity: 0.2, width: 1 },
+          move: { enable: true, speed: 1, direction: 'none', random: true, out_mode: 'out' }
+        }
+      });
+    };
+
+    // Clean up
+    return () => {
+      if (particleScript.parentNode) {
+        particleScript.parentNode.removeChild(particleScript);
+      }
+    };
+  }, []);
+
   return (
     <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
+      {/* Particles.js container */}
+      <div id="particles-js"></div>
+      
       {/* Animated background overlay */}
       <div className="animated-bg absolute inset-0 z-0"></div>
       
