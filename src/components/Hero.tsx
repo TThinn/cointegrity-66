@@ -1,6 +1,8 @@
+
 import React from "react";
 import Container from "./ui/Container";
 import { Button } from "./ui/button";
+
 const Hero = () => {
   return <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
       {/* Background elements */}
@@ -26,28 +28,22 @@ const Hero = () => {
           }}>Compliance</span>
           </h1>
           
-          {/* Accent line - changed to white */}
+          {/* Accent line */}
           <div style={{
           animationDelay: "0.25s"
         }} className="w-[120px] h-[1px] mb-6 animate-fade-up bg-pink-500"></div>
           
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-balance animate-fade-up mb-4" style={{
-          animationDelay: "0.3s",
-          maxWidth: "16ch",
-          margin: "0 auto 24px auto"
-        }}>
-            <span className="text-pink-500">Making Web3 for</span>
-            <span className="block mt-3 text-white">Real Business</span>
-          </h2>
-          
-          <p className="hero-description text-lg max-w-2xl text-balance animate-fade-up text-white" style={{
-          animationDelay: "0.4s",
-          marginTop: "16px"
+          <p className="hero-description text-lg max-w-2xl text-balance animate-fade-up text-white mb-10 relative" style={{
+          animationDelay: "0.4s"
         }}>
             We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.
+            <span className="absolute inset-0 bg-[#07011b] opacity-30" style={{
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text"
+            }}></span>
           </p>
           
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up" style={{
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up" style={{
           animationDelay: "0.5s"
         }}>
             <Button size="lg" className="bg-gradient-to-r from-pink-600 via-pink-500 to-[#483AA7] hover:opacity-90 text-white px-6 py-3 h-12 rounded-lg shadow-button w-full sm:w-auto" asChild>
@@ -86,4 +82,5 @@ const Hero = () => {
       </Container>
     </section>;
 };
+
 export default Hero;
