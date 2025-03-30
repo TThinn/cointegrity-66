@@ -22,6 +22,7 @@ const Hero = () => {
               backgroundClip: "text",
               WebkitBackgroundClip: "text",
               color: "transparent",
+              textShadow: "0 0 0 white"
             }}>Strategic Web3 Advisory for</span>
             <span className="ml-2 text-white">Tokenomics</span> 
             <span className="gradient-word mx-2" data-text="&" style={{
@@ -30,6 +31,7 @@ const Hero = () => {
               backgroundClip: "text",
               WebkitBackgroundClip: "text",
               color: "transparent",
+              textShadow: "0 0 0 white"
             }}>&</span> 
             <span className="text-white">Regulatory Compliance</span>
           </h1>
