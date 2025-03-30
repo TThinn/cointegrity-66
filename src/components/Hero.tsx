@@ -33,7 +33,7 @@ const Hero = () => {
           animationDelay: "0.25s"
         }} className="w-[120px] h-[1px] mb-14 animate-fade-up bg-pink-500"></div>
           
-          <p className="text-lg max-w-2xl text-balance animate-fade-up text-white mb-20" 
+          <p className="text-lg max-w-2xl text-balance animate-fade-up text-[#D6BCFA] mb-20" 
              style={{
                animationDelay: "0.4s"
              }}>
