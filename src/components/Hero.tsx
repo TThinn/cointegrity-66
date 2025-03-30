@@ -13,19 +13,19 @@ const Hero = () => {
       
       <Container className="relative z-10 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto mt-16">
-          <h1 className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-8 font-normal text-white leading-tight" style={{
+          <h1 className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-8 font-normal leading-tight" style={{
           animationDelay: "0.2s"
         }}>
-            Strategic Web3 Advisory for 
-            <span className="gradient-word ml-2" data-text="Tokenomics" style={{
-            backgroundPosition: "left center"
-          }}>Tokenomics</span> & 
-            <span className="gradient-word mx-2" data-text="Regulatory" style={{
-            backgroundPosition: "center center"
-          }}>Regulatory</span> 
-            <span className="gradient-word" data-text="Compliance" style={{
-            backgroundPosition: "right center"
-          }}>Compliance</span>
+            <span className="gradient-word" data-text="Strategic Web3 Advisory for" style={{
+              backgroundPosition: "center center"
+            }}>Strategic Web3 Advisory for</span>
+            {" "}
+            <span className="text-white" data-text="Tokenomics">Tokenomics</span> {" "}
+            <span className="gradient-word" data-text="&" style={{
+              backgroundPosition: "center center"
+            }}>&</span> {" "}
+            <span className="text-white" data-text="Regulatory">Regulatory</span> {" "}
+            <span className="text-white" data-text="Compliance">Compliance</span>
           </h1>
           
           {/* Accent line */}
@@ -33,11 +33,9 @@ const Hero = () => {
           animationDelay: "0.25s"
         }} className="w-[120px] h-[1px] mb-14 animate-fade-up bg-pink-500"></div>
           
-          <p className="gradient-word text-lg max-w-2xl text-balance animate-fade-up text-white mb-20" 
-             data-text="We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders."
+          <p className="text-lg max-w-2xl text-balance animate-fade-up text-white mb-20" 
              style={{
-               animationDelay: "0.4s",
-               backgroundPosition: "center center"
+               animationDelay: "0.4s"
              }}>
             We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.
           </p>
