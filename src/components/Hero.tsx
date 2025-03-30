@@ -17,13 +17,19 @@ const Hero = () => {
           animationDelay: "0.2s"
         }}>
             <span className="gradient-word" data-text="Strategic Web3 Advisory for" style={{
-              backgroundPosition: "left center",
-              opacity: "0.4"
+              backgroundImage: "linear-gradient(90deg, rgba(7, 1, 27, 0.4) 0%, rgba(7, 1, 27, 0.05) 50%, rgba(7, 1, 27, 0.4) 100%)",
+              backgroundSize: "100% 100%",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              color: "transparent",
             }}>Strategic Web3 Advisory for</span>
             <span className="ml-2 text-white">Tokenomics</span> 
             <span className="gradient-word mx-2" data-text="&" style={{
-              backgroundPosition: "center center",
-              opacity: "0.4"
+              backgroundImage: "linear-gradient(90deg, rgba(7, 1, 27, 0.4) 0%, rgba(7, 1, 27, 0.05) 50%, rgba(7, 1, 27, 0.4) 100%)",
+              backgroundSize: "100% 100%",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              color: "transparent",
             }}>&</span> 
             <span className="text-white">Regulatory Compliance</span>
           </h1>
@@ -33,11 +39,9 @@ const Hero = () => {
           animationDelay: "0.25s"
         }} className="w-[120px] h-[1px] mb-14 animate-fade-up bg-pink-500"></div>
           
-          <p className="gradient-word text-lg max-w-2xl text-balance animate-fade-up text-white mb-20" 
-             data-text="We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders."
+          <p className="text-lg max-w-2xl text-balance animate-fade-up text-white mb-20" 
              style={{
                animationDelay: "0.4s",
-               backgroundPosition: "center center"
              }}>
             We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.
           </p>
