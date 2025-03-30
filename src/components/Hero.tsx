@@ -1,8 +1,6 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import { Button } from "./ui/button";
-
 const Hero = () => {
   return <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
       {/* Background elements */}
@@ -18,20 +16,20 @@ const Hero = () => {
         }}>
             Strategic Web3 Advisory for 
             <span className="gradient-word ml-2" data-text="Tokenomics" style={{
-              backgroundPosition: "left center"
-            }}>Tokenomics</span> & 
+            backgroundPosition: "left center"
+          }}>Tokenomics</span> & 
             <span className="gradient-word mx-2" data-text="Regulatory" style={{
-              backgroundPosition: "center center"
-            }}>Regulatory</span> 
+            backgroundPosition: "center center"
+          }}>Regulatory</span> 
             <span className="gradient-word" data-text="Compliance" style={{
-              backgroundPosition: "right center"
-            }}>Compliance</span>
+            backgroundPosition: "right center"
+          }}>Compliance</span>
           </h1>
           
           {/* Accent line - changed to white */}
-          <div className="w-[120px] h-[1px] mb-6 animate-fade-up bg-white" style={{
+          <div style={{
           animationDelay: "0.25s"
-        }}></div>
+        }} className="w-[120px] h-[1px] mb-6 animate-fade-up bg-pink-500"></div>
           
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-balance animate-fade-up mb-4" style={{
           animationDelay: "0.3s",
@@ -88,5 +86,4 @@ const Hero = () => {
       </Container>
     </section>;
 };
-
 export default Hero;
