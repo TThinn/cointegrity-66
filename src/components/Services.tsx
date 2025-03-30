@@ -40,7 +40,7 @@ const Services = () => {
 
         {/* Opening description text box */}
         <div className="mb-12 p-8 rounded-2xl bg-gradient-to-r from-pink-50 to-blue-50">
-          <p className="text-gray-700 leading-relaxed">Cointegrity delivers strategic advisory services that bridge traditional business practices with blockchain innovation. As your trusted navigator in the digital asset landscape, we provide comprehensive ecosystem support—from regulatory compliance, tax optimization and banking solutions to tokenomics optimization and funding strategies. Our expert team simplifies blockchain complexity while amplifying business impact, ensuring your Web3 journey succeeds in this rapidly evolving space.</p>
+          <p className="text-gray-700 leading-relaxed">Cointegrity delivers strategic advisory services bridging traditional business with blockchain innovation. We navigate the digital asset landscape, providing ecosystem support across regulatory compliance, tax optimization, banking solutions, tokenomics, and funding strategies. Our expertise extends to blockchain-AI intersections, including MCP implementation and AI agent utilization. In short; We simplify complexity and amplify impact!</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
