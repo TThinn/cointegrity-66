@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -109,6 +108,7 @@
   .gradient-word {
     position: relative;
     color: white;
+    z-index: 0;
   }
   
   .gradient-word::before {

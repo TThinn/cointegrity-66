@@ -5,14 +5,13 @@ import { Button } from "./ui/button";
 
 const Hero = () => {
   // Custom inline style for the gradient text - using a semi-transparent indigo-to-blue gradient over white text
-  const gradientTextStyle = {
-    position: "relative",
+  const gradientTextStyle: React.CSSProperties = {
+    position: "relative" as const,
     color: "white",
     display: "inline-block",
     fontWeight: "inherit" // Inherits the font weight from the parent H1 element
   };
 
-  // Pseudo-element style that will be applied via CSS class
   return <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -87,8 +86,7 @@ const Hero = () => {
         </div>
       </Container>
 
-      {/* Add the CSS for the gradient overlay using a <style> tag */}
-      <style jsx>{`
+      <style>{`
         .gradient-word::before {
           content: "";
           position: absolute;
