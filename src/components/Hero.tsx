@@ -2,18 +2,17 @@
 import React from "react";
 import Container from "./ui/Container";
 import { Button } from "./ui/button";
+
 const Hero = () => {
-  // Custom inline style for the gradient text - using the requested indigo-to-blue gradient with transparency
+  // Custom inline style for the gradient text - using a semi-transparent indigo-to-blue gradient over white text
   const gradientTextStyle = {
-    background: "linear-gradient(90deg, rgba(99,102,241,0.8) 0%, rgba(129,140,248,0.8) 50%, rgba(59,130,246,0.8) 100%)",
-    backgroundClip: "text",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    textFillColor: "transparent",
+    position: "relative",
+    color: "white",
     display: "inline-block",
-    // Ensures gradient applies to each word individually
     fontWeight: "inherit" // Inherits the font weight from the parent H1 element
   };
+
+  // Pseudo-element style that will be applied via CSS class
   return <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -26,7 +25,7 @@ const Hero = () => {
           <h1 className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-4 font-normal text-white leading-tight" style={{
           animationDelay: "0.2s"
         }}>
-            Strategic Web3 Advisory for <span style={gradientTextStyle} className="font-normal">Tokenomics</span> & <span style={gradientTextStyle}>Regulatory Compliance</span>
+            Strategic Web3 Advisory for <span className="gradient-word" style={gradientTextStyle}>Tokenomics</span> & <span className="gradient-word" style={gradientTextStyle}>Regulatory Compliance</span>
           </h1>
           
           {/* Accent line - changed to white */}
@@ -87,6 +86,25 @@ const Hero = () => {
           </div>
         </div>
       </Container>
+
+      {/* Add the CSS for the gradient overlay using a <style> tag */}
+      <style jsx>{`
+        .gradient-word::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, rgba(99,102,241,0.8) 0%, rgba(129,140,248,0.8) 50%, rgba(59,130,246,0.8) 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          text-fill-color: transparent;
+          z-index: 1;
+        }
+      `}</style>
     </section>;
 };
+
 export default Hero;
