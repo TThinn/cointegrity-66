@@ -126,20 +126,6 @@
     color: transparent;
     z-index: 5;
     opacity: 0.3;
-    background-size: 200% 100%;
-    animation: gradient-shift 4s ease infinite;
-  }
-  
-  @keyframes gradient-shift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
   }
 
   .section-padding {
