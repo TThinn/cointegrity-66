@@ -131,9 +131,9 @@
     }
   }
   
-  /* Gradient highlight for text */
+  /* Strengthened gradient highlight for text */
   .highlight {
-    background: linear-gradient(90deg, #FFFFFF 0%, #E0E7FF 50%, #FFFFFF 100%);
+    background: linear-gradient(90deg, #FFFFFF 0%, #33C3F0 50%, #FFFFFF 100%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;

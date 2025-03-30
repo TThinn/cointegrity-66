@@ -4,9 +4,9 @@ import Container from "./ui/Container";
 import { Button } from "./ui/button";
 
 const Hero = () => {
-  // Custom inline style for the gradient text - updated to be mainly white with subtle highlight
+  // Custom inline style for the gradient text - strengthened white gradient
   const gradientTextStyle = {
-    background: "linear-gradient(90deg, #FFFFFF 0%, #E0E7FF 50%, #FFFFFF 100%)",
+    background: "linear-gradient(90deg, #FFFFFF 0%, #E0E7FF 70%, #FFFFFF 100%)",
     backgroundClip: "text",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
@@ -30,11 +30,10 @@ const Hero = () => {
             Strategic Web3 Advisory for <span style={gradientTextStyle}>Tokenomics</span> & <span style={gradientTextStyle}>Regulatory Compliance</span>
           </h1>
           
-          {/* Accent line */}
+          {/* Accent line - changed to white */}
           <div 
-            className="w-[120px] h-[1px] mb-6 animate-fade-up" 
+            className="w-[120px] h-[1px] mb-6 animate-fade-up bg-white" 
             style={{
-              background: "linear-gradient(90deg, #6366F1, #3B82F6)",
               animationDelay: "0.25s"
             }}
           ></div>
