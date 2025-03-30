@@ -25,16 +25,16 @@ const Hero = () => {
             style={{
               animationDelay: "0.3s",
               maxWidth: "16ch",
-              margin: "0 auto 16px auto"
+              margin: "0 auto 24px auto"
             }}
           >
-            <span className="bg-gradient-to-r from-pink-500 via-pink-500 to-[#8e7ef8] bg-clip-text text-transparent">Making Web3 for</span>
+            <span className="text-pink-500">Making Web3 for</span>
             <span className="block mt-3 text-white">Real Business</span>
           </h2>
           
           <p 
-            className="hero-description mt-4 text-lg max-w-2xl text-balance animate-fade-up text-white" 
-            style={{animationDelay: "0.4s"}}
+            className="hero-description text-lg max-w-2xl text-balance animate-fade-up text-white" 
+            style={{animationDelay: "0.4s", marginTop: "16px"}}
           >
             We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.
           </p>
