@@ -1,8 +1,6 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import { Button } from "./ui/button";
-
 const Hero = () => {
   // Custom inline style for the gradient text - strengthened white gradient
   const gradientTextStyle = {
@@ -11,10 +9,10 @@ const Hero = () => {
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
     textFillColor: "transparent",
-    display: "inline-block", // Ensures gradient applies to each word individually
+    display: "inline-block",
+    // Ensures gradient applies to each word individually
     fontWeight: "inherit" // Inherits the font weight from the parent H1 element
   };
-
   return <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -24,37 +22,30 @@ const Hero = () => {
       
       <Container className="relative z-10 text-lg font-normal">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-          <h1 
-            className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-4 font-normal text-white leading-tight"
-            style={{animationDelay: "0.2s"}}
-          >
-            Strategic Web3 Advisory for <span style={gradientTextStyle}>Tokenomics</span> & <span style={gradientTextStyle}>Regulatory Compliance</span>
+          <h1 className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-4 font-normal text-white leading-tight" style={{
+          animationDelay: "0.2s"
+        }}>
+            Strategic Web3 Advisory for <span style={gradientTextStyle} className="font-normal">Tokenomics</span> & <span style={gradientTextStyle}>Regulatory Compliance</span>
           </h1>
           
           {/* Accent line - changed to white */}
-          <div 
-            className="w-[120px] h-[1px] mb-6 animate-fade-up bg-white" 
-            style={{
-              animationDelay: "0.25s"
-            }}
-          ></div>
+          <div className="w-[120px] h-[1px] mb-6 animate-fade-up bg-white" style={{
+          animationDelay: "0.25s"
+        }}></div>
           
-          <h2 
-            className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-balance animate-fade-up mb-4"
-            style={{
-              animationDelay: "0.3s",
-              maxWidth: "16ch",
-              margin: "0 auto 24px auto"
-            }}
-          >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-balance animate-fade-up mb-4" style={{
+          animationDelay: "0.3s",
+          maxWidth: "16ch",
+          margin: "0 auto 24px auto"
+        }}>
             <span className="text-pink-500">Making Web3 for</span>
             <span className="block mt-3 text-white">Real Business</span>
           </h2>
           
-          <p 
-            className="hero-description text-lg max-w-2xl text-balance animate-fade-up text-white" 
-            style={{animationDelay: "0.4s", marginTop: "16px"}}
-          >
+          <p className="hero-description text-lg max-w-2xl text-balance animate-fade-up text-white" style={{
+          animationDelay: "0.4s",
+          marginTop: "16px"
+        }}>
             We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.
           </p>
           
@@ -97,5 +88,4 @@ const Hero = () => {
       </Container>
     </section>;
 };
-
 export default Hero;
