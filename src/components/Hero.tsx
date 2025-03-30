@@ -13,19 +13,19 @@ const Hero = () => {
       
       <Container className="relative z-10 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto mt-16">
-          <h1 className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-8 font-normal text-white leading-tight" style={{
+          <h1 className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-8 font-normal leading-tight" style={{
           animationDelay: "0.2s"
         }}>
-            Strategic Web3 Advisory for 
-            <span className="gradient-word ml-2" data-text="Tokenomics" style={{
-            backgroundPosition: "left center"
-          }}>Tokenomics</span> & 
-            <span className="gradient-word mx-2" data-text="Regulatory" style={{
-            backgroundPosition: "center center"
-          }}>Regulatory</span> 
-            <span className="gradient-word" data-text="Compliance" style={{
-            backgroundPosition: "right center"
-          }}>Compliance</span>
+            <span className="gradient-word" data-text="Strategic Web3 Advisory for" style={{
+              backgroundPosition: "left center",
+              opacity: "0.4"
+            }}>Strategic Web3 Advisory for</span>
+            <span className="ml-2 text-white">Tokenomics</span> 
+            <span className="gradient-word mx-2" data-text="&" style={{
+              backgroundPosition: "center center",
+              opacity: "0.4"
+            }}>&</span> 
+            <span className="text-white">Regulatory Compliance</span>
           </h1>
           
           {/* Accent line */}
