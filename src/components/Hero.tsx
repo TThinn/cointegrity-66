@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
@@ -109,9 +108,15 @@ const Hero = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up mb-20" style={{
         animationDelay: "0.5s"
       }}>
-          <Button variant="cta-primary" className="floating-element w-full sm:w-auto" href="#contact" style={{
-            animationDelay: "3s"
-          }}>
+          <Button 
+            variant="cta-primary" 
+            className="floating-element w-full sm:w-auto" 
+            href="#contact" 
+            transitionDuration="5s"
+            style={{
+              animationDelay: "3s"
+            }}
+          >
             Talk to an expert
           </Button>
         </div>
