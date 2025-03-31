@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Container from "./ui/Container";
 import { Target, Layers, Scale, Rocket, ArrowLeft } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
+import Button from "./ui/CustomButtonComponent";
+
 const services = [{
   icon: <Target size={24} className="text-pink-600" />,
   title: "Strategic Positioning",
@@ -23,6 +25,7 @@ const services = [{
   description: "Cointegrity's Capital Acceleration service transforms promising Web3 projects into well-funded ventures. We craft targeted community building strategies.",
   fullDescription: "Cointegrity's Capital Acceleration service transforms promising Web3 projects into well-funded ventures. We craft targeted community building strategies that create engaged ecosystems around your offering. Our team ensures your product achieves market fit before approaching investors, maximizing your funding potential. We identify and engage your ideal audience, creating momentum that attracts capital. Drawing on our extensive network of VCs, angel investors, family offices, and investment funds, we connect you with the right financial partners for your stage and vision. Our expert collaborators across global markets provide specialized insights for different investment landscapes. With Cointegrity's guidance, your project gains access to capital sources that align with your long-term objectives, accelerating your growth in the digital asset ecosystem."
 }];
+
 const Services = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
@@ -66,8 +69,10 @@ const Services = () => {
             <h3 className="text-2xl font-bold mb-3 text-gray-800">Bring Substance to Your Digital Asset Strategy</h3>
             <p className="text-gray-600 max-w-md"></p>
           </div>
-          <a href="#contact" className="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-pink-600 to-purple-600 text-white font-medium shadow-button hover:shadow-lg transition-all">
-            Schedule a Consultation
+          <a href="#contact" className="inline-flex items-center px-6 py-3 rounded-lg text-white font-semibold">
+            <Button variant="cta-primary">
+              Schedule a Consultation
+            </Button>
           </a>
         </div>
       </Container>

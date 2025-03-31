@@ -1,7 +1,9 @@
+
 import React, { useState } from "react";
 import Container from "./ui/Container";
-import { Button } from "./ui/button";
 import { Mail, Phone, MapPin, Send, Check, AlertCircle } from "lucide-react";
+import Button from "./ui/CustomButtonComponent";
+
 const ContactForm = () => {
   const [formState, setFormState] = useState({
     name: "",
@@ -107,7 +109,7 @@ const ContactForm = () => {
               </div>
               
               <div className="mt-6">
-                <Button type="submit" variant="default" size="lg" disabled={isSubmitting} className="w-full bg-gradient-to-r from-pink-600 via-pink-500 to-[#483AA7] hover:opacity-90 text-white shadow-lg">
+                <Button type="submit" variant="cta-primary" disabled={isSubmitting} className="w-full">
                   {isSubmitting ? <span className="flex items-center">
                       <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
