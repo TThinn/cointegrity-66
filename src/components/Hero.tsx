@@ -71,7 +71,7 @@ const Hero = () => {
       
       <Container className="hero-content relative z-10 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto mt-16">
-          <h1 className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-8 font-normal leading-tight" style={{
+          <h1 className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-8 font-normal leading-tight text-shadow" style={{
           animationDelay: "0.2s"
         }}>
             <span className="gradient-word" data-text="Strategic Web3 Advisory for" style={{
