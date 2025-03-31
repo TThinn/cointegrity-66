@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omega Web3 Background Animation</title>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      min-height: 100vh;
+      background-color: #080112;
+      overflow: hidden;
+    }
+
+    /* Grid pattern */
+    .grid-pattern {
+      background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      background-position: 0 0, 20px 20px;
+    }
+
+    /* Main container */
+    .hero-section {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #080112;
+    }
+
+    /* Particles.js container */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    /* Animated background overlay */
+    .animated-bg {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        radial-gradient(ellipse at center, rgba(99, 102, 241, 0.1) 0%, rgba(15, 23, 42, 0) 70%),
+        radial-gradient(ellipse at center, rgba(192, 38, 211, 0.05) 0%, rgba(15, 23, 42, 0) 60%),
+        radial-gradient(ellipse at center, rgba(234, 32, 136, 0.08) 0%, rgba(15, 23, 42, 0) 65%);
+      animation: backgroundShift 15s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes backgroundShift {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(5%, 5%) rotate(3deg); }
+    }
+
+    /* Background elements */
+    .bg-elements {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bg-blob-1 {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      width: 800px;
+      height: 800px;
+      background-color: rgba(139, 92, 246, 0.2);
+      border-radius: 50%;
+      filter: blur(120px);
+      transform: translate(-50%, -50%);
+      animation: float 15s ease-in-out infinite;
+    }
+
+    .bg-blob-2 {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 600px;
+      height: 600px;
+      background-color: rgba(59, 130, 246, 0.2);
+      border-radius: 50%;
+      filter: blur(100px);
+      animation: float2 15s ease-in-out infinite alternate;
+    }
+
+    @keyframes float {
+      0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+      50% { transform: translate(-48%, -52%) scale(1.05) rotate(3deg); }
+      100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    }
+
+    @keyframes float2 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-5%, -5%) scale(1.1); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
+      animation: pulse 15s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero-section grid-pattern">
+    <!-- Particles.js container -->
+    <div id="particles-js"></div>
+    
+    <!-- Animated background overlay -->
+    <div class="animated-bg"></div>
+    
+    <!-- Background elements -->
+    <div class="bg-elements">
+      <div class="bg-blob-1"></div>
+      <div class="bg-blob-2"></div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize particles.js
+    document.addEventListener('DOMContentLoaded', function() {
+      particlesJS('particles-js', {
+        particles: {
+          number: {
+            value: 30,
+            density: {
+              enable: true,
+              value_area: 800
+            }
+          },
+          color: {
+            value: '#6366F1'
+          },
+          opacity: {
+            value: 0.3,
+            random: true
+          },
+          size: {
+            value: 3,
+            random: true
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: '#C026D3',
+            opacity: 0.2,
+            width: 1
+          },
+          move: {
+            enable: true,
+            speed: 1,
+            direction: 'none',
+            random: true,
+            out_mode: 'out'
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
