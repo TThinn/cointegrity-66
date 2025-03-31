@@ -71,7 +71,7 @@ const Hero = () => {
       
       <Container className="hero-content relative z-10 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto mt-16">
-          <h1 className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-8 font-normal leading-tight" style={{
+          <h1 className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-12 font-normal leading-tight" style={{
           animationDelay: "0.2s"
         }}>
             <span className="gradient-word" data-text="Strategic Web3 Advisory for" style={{
@@ -95,9 +95,9 @@ const Hero = () => {
           {/* Accent line */}
           <div style={{
           animationDelay: "0.25s"
-        }} className="w-[120px] h-[1px] mb-14 animate-fade-up bg-pink-500"></div>
+        }} className="w-[120px] h-[1px] mb-12 animate-fade-up bg-pink-500"></div>
           
-          <p className="text-lg max-w-2xl text-balance animate-fade-up relative mb-20 text-white" style={{
+          <p className="text-lg max-w-2xl text-balance animate-fade-up relative mb-16 text-white" style={{
           animationDelay: "0.4s"
         }}>
             <span className="gradient-word" data-text="We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders." style={{
@@ -106,7 +106,7 @@ const Hero = () => {
           </p>
         </div>
           
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up mb-12" style={{
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up mb-16" style={{
         animationDelay: "0.5s"
       }}>
           <Button variant="cta-primary" className="floating-element w-full sm:w-auto" href="#contact" style={{

@@ -69,11 +69,11 @@ const Header = () => {
               <a href="#accreditations" className="w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10" onClick={() => setIsOpen(false)}>
                 Accreditations
               </a>
-              <Button variant="cta-primary" size="lg" className="w-full" asChild>
-                <a href="#contact" onClick={() => setIsOpen(false)}>
+              <a href="#contact" className="w-full py-4 text-xl text-white mt-4" onClick={() => setIsOpen(false)}>
+                <Button variant="cta-primary" size="lg" className="w-full">
                   Contact Us
-                </a>
-              </Button>
+                </Button>
+              </a>
             </nav>
           </Container>
         </div>}
