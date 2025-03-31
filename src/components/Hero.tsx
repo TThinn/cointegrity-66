@@ -1,6 +1,8 @@
+
 import React, { useEffect } from "react";
 import Container from "./ui/Container";
-import { Button } from "./ui/button";
+import Button from "./ui/CustomButtonComponent";
+
 const Hero = () => {
   useEffect(() => {
     // Load particles.js script
@@ -107,17 +109,15 @@ const Hero = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up mb-12" style={{
         animationDelay: "0.5s"
       }}>
-          <Button size="lg" className="floating-element bg-gradient-to-r from-pink-600 via-pink-500 to-[#483AA7] hover:opacity-90 text-white px-6 py-3 h-12 rounded-lg shadow-button w-full sm:w-auto" asChild style={{
-          animationDelay: "3s"
-        }}>
-            <a href="#contact">
-              Talk to an expert
-            </a>
+          <Button variant="cta-primary" className="floating-element w-full sm:w-auto" href="#contact" style={{
+            animationDelay: "3s"
+          }}>
+            Talk to an expert
           </Button>
-          <Button variant="outline" size="lg" className="floating-element border border-pink-600 text-pink-600 hover:bg-pink-500/10 px-6 py-3 h-12 rounded-lg bg-transparent w-full sm:w-auto" asChild style={{
-          animationDelay: "3.3s"
-        }}>
-            
+          <Button variant="cta-secondary" className="floating-element w-full sm:w-auto" href="#about" style={{
+            animationDelay: "3.3s"
+          }}>
+            Contact us
           </Button>
         </div>
           
