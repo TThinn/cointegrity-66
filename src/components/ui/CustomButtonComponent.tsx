@@ -31,11 +31,11 @@ const Button = ({
       "bg-transparent text-white hover:bg-white/5": variant === "ghost",
       "bg-transparent text-blue-600 hover:text-blue-700 p-0 hover:underline focus:ring-0": variant === "link",
       
-      // CTA Primary Button style with 5s transition
-      "bg-gradient-to-br from-[#8B5CF6] to-[#6366F1] border-none px-6 py-3 rounded-lg text-white font-semibold transition-all duration-[5s] shadow-md shadow-indigo-500/10 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-indigo-500/20": variant === "cta-primary",
+      // CTA Primary Button style
+      "bg-gradient-to-br from-[#8B5CF6] to-[#6366F1] border-none px-6 py-3 rounded-lg text-white font-semibold transition-all duration-300 shadow-md shadow-indigo-500/10 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-indigo-500/20": variant === "cta-primary",
       
       // CTA Secondary Button style
-      "bg-transparent border-2 border-[#8B5CF6] px-6 py-3 rounded-lg text-[#8B5CF6] font-semibold transition-all duration-300 hover:bg-[#8B5CF6]/10": variant === "cta-secondary",
+      "bg-transparent border-2 border-[#8B5CF6] px-6 py-3 rounded-lg text-[#8B5CF6] font-semibold transition-all duration-300 hover:bg-[#8B5CF6]/10 hover:translate-y-[-2px]": variant === "cta-secondary",
 
       "text-sm px-3 py-1 h-8": size === "sm",
       "text-base px-4 py-2 h-10": size === "md",
@@ -46,16 +46,22 @@ const Button = ({
     className
   );
 
+  // Updated to provide proper classes for both button and anchor elements
+  const baseProps = {
+    className: styles,
+    ...props
+  };
+
   if (href) {
     return (
-      <a href={href} className={styles}>
+      <a href={href} {...baseProps}>
         {children}
       </a>
     );
   }
 
   return (
-    <Component className={styles} {...props}>
+    <Component {...baseProps}>
       {children}
     </Component>
   );
