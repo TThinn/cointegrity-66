@@ -114,11 +114,6 @@ const Hero = () => {
           }}>
             Talk to an expert
           </Button>
-          <Button variant="cta-secondary" className="floating-element w-full sm:w-auto" href="#about" style={{
-            animationDelay: "3.3s"
-          }}>
-            Contact us
-          </Button>
         </div>
           
         <div className="mt-4 border-t border-white/10 pt-8 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-up text-center" style={{

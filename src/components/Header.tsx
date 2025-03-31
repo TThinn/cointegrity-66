@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import { Menu, X } from "lucide-react";
-import { Button } from "./ui/button";
+import Button from "./ui/CustomButtonComponent";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,10 +45,8 @@ const Header = () => {
               Accreditations
             </a>
             <a href="#contact" className="pl-4">
-              <Button size="sm" className="bg-gradient-to-r from-pink-600 via-pink-500 to-[#483AA7] hover:opacity-90 text-white rounded-lg shadow-button" asChild>
-                <span>
-                  Contact Us
-                </span>
+              <Button variant="cta-primary" size="sm">
+                Contact Us
               </Button>
             </a>
           </nav>
@@ -71,7 +69,7 @@ const Header = () => {
               <a href="#accreditations" className="w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10" onClick={() => setIsOpen(false)}>
                 Accreditations
               </a>
-              <Button size="lg" className="bg-gradient-to-r from-pink-600 via-pink-500 to-[#483AA7] hover:opacity-90 text-white mt-4 w-full" asChild>
+              <Button variant="cta-primary" size="lg" className="w-full" asChild>
                 <a href="#contact" onClick={() => setIsOpen(false)}>
                   Contact Us
                 </a>
