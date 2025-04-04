@@ -1,4 +1,3 @@
-
 import { cn } from "@/lib/utils";
 import React from "react";
 
@@ -11,6 +10,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   as?: React.ElementType;
   href?: string;
   transitionDuration?: string;
+  target?: string;
+  rel?: string;
 }
 
 const Button = ({
@@ -22,6 +23,8 @@ const Button = ({
   as: Component = "button",
   href,
   transitionDuration = "300ms",
+  target,
+  rel,
   ...props
 }: ButtonProps) => {
   const styles = cn(
@@ -50,21 +53,21 @@ const Button = ({
 
   // If href is provided, render an anchor tag
   if (href) {
-    // Only use properties that are valid for anchor elements
-    // We explicitly extract common and anchor-specific props
+    // Extract only the props that are valid for anchor elements
     const { 
-      onClick, 
-      target, 
-      rel, 
-      title, 
-      id, 
-      role, 
-      tabIndex, 
+      onClick,
+      title,
+      id,
+      role,
+      tabIndex,
       'aria-label': ariaLabel,
-      style 
-    } = props;
+      style
+    } = props as any; // Using any temporarily to extract possible anchor props
     
+    // Create safe anchor props 
     const anchorProps = {
+      href,
+      className: styles,
       onClick,
       target,
       rel,
@@ -77,16 +80,13 @@ const Button = ({
     };
     
     return (
-      <a 
-        href={href} 
-        className={styles}
-        {...anchorProps}
-      >
+      <a {...anchorProps}>
         {children}
       </a>
     );
   }
 
+  // Otherwise, render as button or custom component
   return (
     <Component 
       className={styles} 
