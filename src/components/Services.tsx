@@ -68,9 +68,7 @@ const Services = () => {
             <p className="text-white/80 max-w-md">Take your Web3 project to the next level with our expert guidance</p>
           </div>
           <a href="#contact" className="inline-flex items-center">
-            <Button variant="cta-primary">
-              Schedule a Consultation
-            </Button>
+            <Button variant="cta-primary">Talk to an Expert</Button>
           </a>
         </div>
       </Container>
