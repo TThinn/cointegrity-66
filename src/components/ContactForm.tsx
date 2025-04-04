@@ -1,9 +1,7 @@
-
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import { Mail, Phone, MapPin, Send, Check, AlertCircle } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
-
 const ContactForm = () => {
   const [formState, setFormState] = useState({
     name: "",
@@ -48,7 +46,7 @@ const ContactForm = () => {
   };
   return <section id="contact" className="py-20 bg-gradient-to-b from-[#f9f5ff] to-[#fdf2f8] relative overflow-hidden">
       {/* Subtle background elements */}
-      <div className="absolute inset-0 z-0 opacity-20">
+      <div className="absolute inset-0 z-0 opacity-10">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-500/30 rounded-full blur-[90px]"></div>
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-pink-500/20 rounded-full blur-[70px]"></div>
       </div>
