@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import { Target, Layers, Scale, Rocket, ArrowLeft } from "lucide-react";
@@ -33,7 +34,7 @@ const Services = () => {
     setSelectedService(service);
     setOpenDialog(true);
   };
-  return <section id="services" className="py-20 bg-white relative">
+  return <section id="services" className="py-20 bg-gradient-to-b from-[#f8f9fa] to-[#f0f2f5] relative">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-sm text-pink-600 uppercase tracking-wider font-medium">Our Services</span>
@@ -64,12 +65,12 @@ const Services = () => {
         </div>
 
         {/* Closing description text box */}
-        <div className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-gradient-to-r from-pink-50 to-blue-50">
+        <div className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-[#080112] text-white">
           <div className="flex-1 text-center md:text-left">
-            <h3 className="text-2xl font-bold mb-3 text-gray-800">Bring Substance to Your Digital Asset Strategy</h3>
-            <p className="text-gray-600 max-w-md"></p>
+            <h3 className="text-2xl font-bold mb-3 text-white">Bring Substance to Your Digital Asset Strategy</h3>
+            <p className="text-white/80 max-w-md">Take your Web3 project to the next level with our expert guidance</p>
           </div>
-          <a href="#contact" className="inline-flex items-center px-6 py-3 rounded-lg text-white font-semibold">
+          <a href="#contact" className="inline-flex items-center">
             <Button variant="cta-primary">
               Schedule a Consultation
             </Button>
@@ -79,15 +80,15 @@ const Services = () => {
 
       {/* Full description dialog */}
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-        <DialogContent className="sm:max-w-md bg-white border-0 text-gray-800 shadow-lg">
+        <DialogContent className="sm:max-w-md bg-gradient-to-br from-[#120825] to-[#1D0D35] border-0 text-white shadow-lg">
           <DialogHeader>
-            <DialogTitle className="text-xl font-bold text-gray-800">{selectedService?.title}</DialogTitle>
+            <DialogTitle className="text-xl font-bold text-white">{selectedService?.title}</DialogTitle>
           </DialogHeader>
-          <DialogDescription className="text-base text-gray-700 py-4 bg-gradient-to-r from-pink-50 to-blue-50 rounded-lg p-5">
+          <DialogDescription className="text-base text-white/80 py-4 rounded-lg p-5">
             {selectedService?.fullDescription}
           </DialogDescription>
           <div className="mt-4 flex justify-start">
-            <button onClick={() => setOpenDialog(false)} className="flex items-center text-pink-600 hover:text-pink-700 font-medium">
+            <button onClick={() => setOpenDialog(false)} className="flex items-center text-pink-400 hover:text-pink-300 font-medium">
               <ArrowLeft size={16} className="mr-1" /> Back
             </button>
           </div>

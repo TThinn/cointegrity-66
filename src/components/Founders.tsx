@@ -57,7 +57,7 @@ const founders = [
 
 const Founders = () => {
   return (
-    <section id="founders" className="py-20 bg-gradient-to-b from-white to-purple-50">
+    <section id="founders" className="py-20 bg-gradient-to-b from-[#f0f2f5] to-[#e4e7ed]">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-sm font-semibold text-pink-600 uppercase tracking-wider">Our Team</span>
@@ -137,14 +137,14 @@ const Founders = () => {
                       more
                     </button>
                   </DialogTrigger>
-                  <DialogContent className="bg-gradient-to-r from-pink-50 to-purple-50 border-none max-w-lg">
+                  <DialogContent className="bg-gradient-to-br from-[#120825] to-[#1D0D35] border-none max-w-lg text-white">
                     <DialogHeader>
-                      <DialogTitle className="text-xl font-semibold text-gray-800">
+                      <DialogTitle className="text-xl font-semibold text-white">
                         {founder.name}
                       </DialogTitle>
                     </DialogHeader>
                     <div className="mt-4">
-                      <p className={`text-gray-700 ${founder.name === "Magnus Jones" || founder.name === "Ruben Junger" ? "whitespace-pre-line" : ""}`}>
+                      <p className={`text-white/80 ${founder.name === "Magnus Jones" || founder.name === "Ruben Junger" ? "whitespace-pre-line" : ""}`}>
                         {founder.fullBio}
                       </p>
                     </div>
