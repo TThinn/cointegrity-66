@@ -48,16 +48,38 @@ const Button = ({
     className
   );
 
-  // Fix TypeScript error: separate props for anchor vs button
+  // If href is provided, render an anchor tag
   if (href) {
-    // Extract only the props that are valid for anchor elements
-    const { type, disabled, form, formAction, formEncType, formMethod, formNoValidate, formTarget, name, value, ...anchorProps } = props;
+    // Only use properties that are valid for anchor elements
+    // We explicitly extract common and anchor-specific props
+    const { 
+      onClick, 
+      target, 
+      rel, 
+      title, 
+      id, 
+      role, 
+      tabIndex, 
+      'aria-label': ariaLabel,
+      style 
+    } = props;
+    
+    const anchorProps = {
+      onClick,
+      target,
+      rel,
+      title,
+      id,
+      role,
+      tabIndex,
+      'aria-label': ariaLabel,
+      style: { ...style, transitionDuration }
+    };
     
     return (
       <a 
         href={href} 
         className={styles}
-        style={{ transitionDuration }}
         {...anchorProps}
       >
         {children}
