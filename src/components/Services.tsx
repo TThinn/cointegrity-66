@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import { Target, Layers, Scale, Rocket, ArrowLeft } from "lucide-react";
@@ -63,7 +62,7 @@ const Services = () => {
         </div>
 
         {/* Closing description text box - Updated to match "Trusted by Industry Leaders" color scheme */}
-        <div className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-gradient-to-br from-[#120825] to-[#1D0D35] text-white">
+        <div className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-gradient-to-br from-[#070119] to-[#5f2559] text-white">
           <div className="flex-1 text-center md:text-left">
             <h3 className="text-2xl font-bold mb-3 text-white">Bring Substance to Your Digital Asset Strategy</h3>
             <p className="text-white/80 max-w-md">Take your Web3 project to the next level with our expert guidance</p>
