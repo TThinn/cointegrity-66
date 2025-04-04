@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
@@ -74,14 +73,14 @@ const Hero = () => {
           <h1 className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-8 font-normal leading-tight text-shadow" style={{
           animationDelay: "0.2s"
         }}>
-            <span className="gradient-word" data-text="Strategic Web3 Advisory for" style={{
+            <span className="text-white/80" data-text="Strategic Web3 Advisory for" style={{
             backgroundPosition: "center center"
           }}>Strategic Web3 Advisory for</span>
             {" "}
             <span className="text-white floating-element" data-text="Tokenomics" style={{
             animationDelay: "2s"
           }}>Tokenomics</span> {" "}
-            <span className="gradient-word" data-text="&" style={{
+            <span className="text-white/80" data-text="&" style={{
             backgroundPosition: "center center"
           }}>&</span> {" "}
             <span className="text-white floating-element" data-text="Regulatory" style={{
@@ -97,12 +96,10 @@ const Hero = () => {
           animationDelay: "0.25s"
         }} className="w-[120px] h-[1px] mb-8 animate-fade-up bg-pink-500"></div>
           
-          <p className="text-lg max-w-2xl text-balance animate-fade-up relative mb-16 text-white" style={{
+          <p className="text-lg max-w-2xl text-balance animate-fade-up relative mb-16 text-white/80" style={{
           animationDelay: "0.4s"
         }}>
-            <span className="gradient-word" data-text="We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders." style={{
-            backgroundPosition: "center center"
-          }}>We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</span>
+            We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.
           </p>
         </div>
           
