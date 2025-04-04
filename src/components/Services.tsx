@@ -1,17 +1,15 @@
-
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import { Target, Layers, Scale, Rocket, ArrowLeft } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
 import Button from "./ui/CustomButtonComponent";
-
 const services = [{
   icon: <Target size={24} className="text-pink-600" />,
   title: "Strategic Positioning",
   description: "Cointegrity's Strategic Positioning transforms your Web3 vision into market reality. We evaluate your current approach and develop tailored frameworks aligned with your business objectives.",
   fullDescription: "Cointegrity's Strategic Positioning transforms your Web3 vision into market reality. We evaluate your current approach and develop tailored frameworks aligned with your business objectives. Our team analyzes market mechanics to identify opportunities while crafting implementation plans that ensure successful execution. We refine your brand identity, messaging strategy, and competitive positioning to help you stand out in the blockchain ecosystem. Leveraging our extensive global network of specialized partners and experts, we identify your ideal audience and create engagement strategies that connect with key stakeholders. With Cointegrity's strategic positioning expertise, your Web3 project navigates complexity with clarity and purpose."
 }, {
-  icon: <Layers size={24} className="text-blue-600" />,
+  icon: <Layers size={24} className="text-violet-500" />,
   title: "Token Architecture",
   description: "Cointegrity's Token Architecture service delivers optimized tokenomics models that drive real business value. We analyze your Web3 commercial architecture and infrastructure.",
   fullDescription: "Cointegrity's Token Architecture service delivers optimized tokenomics models that drive real business value. We analyze your Web3 commercial architecture and infrastructure, ensuring solid technical foundations. Our experts review and enhance your tokenomics model, balancing utility, incentives, and economic sustainability. We conduct thorough regulatory compliance assessments to mitigate risks across jurisdictions. Drawing on our extensive global network of specialized partners, we develop tailored frameworks that align with your strategic objectives while maximizing token utility. Our approach ensures your token design achieves product-market fit and creates meaningful engagement within your ecosystem, positioning your project for long-term success in the evolving digital asset landscape."
@@ -26,7 +24,6 @@ const services = [{
   description: "Cointegrity's Capital Acceleration service transforms promising Web3 projects into well-funded ventures. We craft targeted community building strategies.",
   fullDescription: "Cointegrity's Capital Acceleration service transforms promising Web3 projects into well-funded ventures. We craft targeted community building strategies that create engaged ecosystems around your offering. Our team ensures your product achieves market fit before approaching investors, maximizing your funding potential. We identify and engage your ideal audience, creating momentum that attracts capital. Drawing on our extensive network of VCs, angel investors, family offices, and investment funds, we connect you with the right financial partners for your stage and vision. Our expert collaborators across global markets provide specialized insights for different investment landscapes. With Cointegrity's guidance, your project gains access to capital sources that align with your long-term objectives, accelerating your growth in the digital asset ecosystem."
 }];
-
 const Services = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
