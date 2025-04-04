@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
@@ -20,10 +21,10 @@ const Hero = () => {
             }
           },
           color: {
-            value: '#6366F1'
+            value: '#E11D8F' // Changed to be more pink
           },
           opacity: {
-            value: 0.3,
+            value: 0.35, // Increased from 0.3
             random: true
           },
           size: {
@@ -33,8 +34,8 @@ const Hero = () => {
           line_linked: {
             enable: true,
             distance: 150,
-            color: '#C026D3',
-            opacity: 0.2,
+            color: '#E11D8F', // Changed to more pink
+            opacity: 0.25, // Increased from 0.2
             width: 1
           },
           move: {
@@ -64,8 +65,8 @@ const Hero = () => {
       
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/2 w-[800px] h-[800px] bg-purple-500/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[100px]"></div>
+        <div className="absolute top-1/4 left-1/2 w-[800px] h-[800px] bg-pink-500/25 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-pink-500/25 rounded-full blur-[100px]"></div>
       </div>
       
       <Container className="hero-content relative z-10 text-lg font-normal flex flex-col min-h-[70vh] justify-between">

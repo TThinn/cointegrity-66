@@ -56,9 +56,9 @@
       width: 200%;
       height: 200%;
       background: 
-        radial-gradient(ellipse at center, rgba(99, 102, 241, 0.1) 0%, rgba(15, 23, 42, 0) 70%),
-        radial-gradient(ellipse at center, rgba(192, 38, 211, 0.05) 0%, rgba(15, 23, 42, 0) 60%),
-        radial-gradient(ellipse at center, rgba(234, 32, 136, 0.08) 0%, rgba(15, 23, 42, 0) 65%);
+        radial-gradient(ellipse at center, rgba(225, 29, 143, 0.15) 0%, rgba(15, 23, 42, 0) 70%), /* More pink */
+        radial-gradient(ellipse at center, rgba(225, 29, 143, 0.08) 0%, rgba(15, 23, 42, 0) 60%), /* More pink */
+        radial-gradient(ellipse at center, rgba(234, 32, 136, 0.12) 0%, rgba(15, 23, 42, 0) 65%); /* Slightly more visible */
       animation: backgroundShift 15s ease-in-out infinite alternate;
       z-index: 0;
     }
@@ -82,7 +82,7 @@
       left: 50%;
       width: 800px;
       height: 800px;
-      background-color: rgba(139, 92, 246, 0.2);
+      background-color: rgba(225, 29, 143, 0.25); /* Changed to pink, more visible */
       border-radius: 50%;
       filter: blur(120px);
       transform: translate(-50%, -50%);
@@ -95,7 +95,7 @@
       right: 0;
       width: 600px;
       height: 600px;
-      background-color: rgba(59, 130, 246, 0.2);
+      background-color: rgba(225, 29, 143, 0.25); /* Changed to pink, more visible */
       border-radius: 50%;
       filter: blur(100px);
       animation: float2 15s ease-in-out infinite alternate;
@@ -120,7 +120,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
+      background: radial-gradient(ellipse at center, rgba(225, 29, 143, 0.18) 0%, rgba(15, 23, 42, 0) 70%); /* More pink & slightly more visible */
       animation: pulse 15s ease-in-out infinite alternate;
       z-index: 0;
     }
@@ -159,10 +159,10 @@
             }
           },
           color: {
-            value: '#6366F1'
+            value: '#E11D8F' // Changed to be more pink
           },
           opacity: {
-            value: 0.3,
+            value: 0.35, // Increased from 0.3
             random: true
           },
           size: {
@@ -172,8 +172,8 @@
           line_linked: {
             enable: true,
             distance: 150,
-            color: '#C026D3',
-            opacity: 0.2,
+            color: '#E11D8F', // Changed to more pink
+            opacity: 0.25, // Increased from 0.2
             width: 1
           },
           move: {
