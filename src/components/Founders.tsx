@@ -1,3 +1,4 @@
+
 import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Github, X } from "lucide-react";
@@ -51,7 +52,7 @@ const Founders = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {founders.map((founder, index) => <div key={index} className="glass-card flex flex-col items-center text-center hover:translate-y-[-4px]" style={{
+          {founders.map((founder, index) => <div key={index} className="glass-card border-pink-100/50 hover:border-pink-200/70 bg-white/70 hover:translate-y-[-4px]" style={{
           animationDelay: `${0.1 + index * 0.1}s`
         }}>
               <div className="relative mb-4 w-24 h-24 overflow-hidden rounded-full">

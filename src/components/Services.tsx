@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import { Target, Layers, Scale, Rocket, ArrowLeft } from "lucide-react";
@@ -45,7 +46,7 @@ const Services = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => <div key={index} className="glass-card hover:translate-y-[-4px]" style={{
+          {services.map((service, index) => <div key={index} className="glass-card border-pink-100/50 hover:border-pink-200/70 bg-white/70 hover:translate-y-[-4px]" style={{
           animationDelay: `${0.1 + index * 0.1}s`
         }}>
               <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-pink-50 to-purple-50 mb-4">
@@ -61,8 +62,8 @@ const Services = () => {
             </div>)}
         </div>
 
-        {/* Closing description text box - Updated to match hero section colors */}
-        <div className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-[#120825] bg-gradient-to-r from-[#120825] to-[#1D0D35] text-white">
+        {/* Closing description text box - Updated to match "Trusted by Industry Leaders" color scheme */}
+        <div className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-gradient-to-br from-[#120825] to-[#1D0D35] text-white">
           <div className="flex-1 text-center md:text-left">
             <h3 className="text-2xl font-bold mb-3 text-white">Bring Substance to Your Digital Asset Strategy</h3>
             <p className="text-white/80 max-w-md">Take your Web3 project to the next level with our expert guidance</p>

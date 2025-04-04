@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import { Mail, Phone, MapPin, Send, Check, AlertCircle } from "lucide-react";
@@ -44,7 +45,7 @@ const ContactForm = () => {
       }, 3000);
     }, 1500);
   };
-  return <section id="contact" className="py-20 bg-gradient-to-b from-[#f9f5ff] to-[#fdf2f8] relative overflow-hidden">
+  return <section id="contact" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative overflow-hidden">
       {/* Subtle background elements */}
       <div className="absolute inset-0 z-0 opacity-10">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-500/30 rounded-full blur-[90px]"></div>
@@ -69,7 +70,7 @@ const ContactForm = () => {
             </div>
           </div>
           
-          <div className="glass-card bg-white/60 backdrop-blur-xl border border-purple-100 animate-fade-up relative" style={{
+          <div className="glass-card bg-white/60 backdrop-blur-xl border border-pink-100/50 hover:border-pink-200/70 animate-fade-up relative" style={{
           animationDelay: "0.3s"
         }}>
             <div className="absolute -top-10 -right-10 w-[150px] h-[150px] animate-pulse opacity-30">

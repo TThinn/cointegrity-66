@@ -1,5 +1,4 @@
 
-
 /* Reset some basic elements */
 * {
   box-sizing: border-box;
@@ -44,6 +43,7 @@
 
 .glass-card:hover {
   box-shadow: 0 10px 15px rgba(139, 92, 246, 0.1);
+  border-color: rgba(236, 189, 240, 0.8);
 }
 
 /* Gradient backgrounds */
@@ -63,4 +63,3 @@
 .delay-300 {
   animation-delay: 300ms;
 }
-

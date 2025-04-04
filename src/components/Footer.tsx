@@ -4,7 +4,7 @@ import Container from "./ui/Container";
 import { Linkedin, Twitter, Youtube, Github } from "lucide-react";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  return <footer className="bg-[#080112] pt-16 pb-8">
+  return <footer className="bg-gradient-to-br from-[#120825] to-[#1D0D35] pt-16 pb-8">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-1">
