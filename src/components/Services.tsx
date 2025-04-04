@@ -4,7 +4,7 @@ import { Target, Layers, Scale, Rocket, ArrowLeft } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
 import Button from "./ui/CustomButtonComponent";
 const services = [{
-  icon: <Target size={24} className="text-pink-600" />,
+  icon: <Target size={24} className="text-pink-500" />,
   title: "Strategic Positioning",
   description: "Cointegrity's Strategic Positioning transforms your Web3 vision into market reality. We evaluate your current approach and develop tailored frameworks aligned with your business objectives.",
   fullDescription: "Cointegrity's Strategic Positioning transforms your Web3 vision into market reality. We evaluate your current approach and develop tailored frameworks aligned with your business objectives. Our team analyzes market mechanics to identify opportunities while crafting implementation plans that ensure successful execution. We refine your brand identity, messaging strategy, and competitive positioning to help you stand out in the blockchain ecosystem. Leveraging our extensive global network of specialized partners and experts, we identify your ideal audience and create engagement strategies that connect with key stakeholders. With Cointegrity's strategic positioning expertise, your Web3 project navigates complexity with clarity and purpose."
