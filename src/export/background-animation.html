@@ -45,9 +45,10 @@
       top: 0;
       left: 0;
       z-index: 1;
+      opacity: 0.6; /* Reduced opacity to better match Hero section */
     }
 
-    /* Animated background overlay */
+    /* Animated background overlay - Made darker to match Hero section */
     .animated-bg {
       content: '';
       position: absolute;
@@ -56,9 +57,9 @@
       width: 200%;
       height: 200%;
       background: 
-        radial-gradient(ellipse at center, rgba(225, 29, 143, 0.15) 0%, rgba(15, 23, 42, 0) 70%), /* More pink */
-        radial-gradient(ellipse at center, rgba(225, 29, 143, 0.08) 0%, rgba(15, 23, 42, 0) 60%), /* More pink */
-        radial-gradient(ellipse at center, rgba(234, 32, 136, 0.12) 0%, rgba(15, 23, 42, 0) 65%); /* Slightly more visible */
+        radial-gradient(ellipse at center, rgba(225, 29, 143, 0.1) 0%, rgba(15, 23, 42, 0) 60%), /* Reduced opacity */
+        radial-gradient(ellipse at center, rgba(225, 29, 143, 0.05) 0%, rgba(15, 23, 42, 0) 50%), /* Reduced opacity */
+        radial-gradient(ellipse at center, rgba(234, 32, 136, 0.08) 0%, rgba(15, 23, 42, 0) 55%); /* Reduced visibility */
       animation: backgroundShift 15s ease-in-out infinite alternate;
       z-index: 0;
     }
@@ -82,9 +83,9 @@
       left: 50%;
       width: 800px;
       height: 800px;
-      background-color: rgba(225, 29, 143, 0.25); /* Changed to pink, more visible */
+      background-color: rgba(225, 29, 143, 0.15); /* Reduced opacity */
       border-radius: 50%;
-      filter: blur(120px);
+      filter: blur(150px); /* Increased blur */
       transform: translate(-50%, -50%);
       animation: float 15s ease-in-out infinite;
     }
@@ -95,9 +96,9 @@
       right: 0;
       width: 600px;
       height: 600px;
-      background-color: rgba(225, 29, 143, 0.25); /* Changed to pink, more visible */
+      background-color: rgba(225, 29, 143, 0.15); /* Reduced opacity */
       border-radius: 50%;
-      filter: blur(100px);
+      filter: blur(130px); /* Increased blur */
       animation: float2 15s ease-in-out infinite alternate;
     }
 
@@ -113,6 +114,16 @@
       100% { transform: translate(0, 0) scale(1); }
     }
 
+    /* Added an overall darkening overlay */
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 1, 18, 0.4); /* Dark overlay to match Hero section */
+      z-index: 2;
+      pointer-events: none;
+    }
+
     .hero-section::before {
       content: '';
       position: absolute;
@@ -120,7 +131,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(ellipse at center, rgba(225, 29, 143, 0.18) 0%, rgba(15, 23, 42, 0) 70%); /* More pink & slightly more visible */
+      background: radial-gradient(ellipse at center, rgba(225, 29, 143, 0.1) 0%, rgba(15, 23, 42, 0) 70%); /* Reduced pink & slightly less visible */
       animation: pulse 15s ease-in-out infinite alternate;
       z-index: 0;
     }
@@ -128,6 +139,18 @@
     @keyframes pulse {
       0% { transform: scale(1); }
       100% { transform: scale(1.1); }
+    }
+
+    /* Added vignette effect to darken edges */
+    .vignette {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow: inset 0 0 150px 60px rgba(8, 1, 18, 0.8); /* Dark vignette around edges */
+      pointer-events: none;
+      z-index: 3;
     }
   </style>
 </head>
@@ -144,6 +167,9 @@
       <div class="bg-blob-1"></div>
       <div class="bg-blob-2"></div>
     </div>
+
+    <!-- Added vignette effect -->
+    <div class="vignette"></div>
   </div>
 
   <script>
@@ -159,10 +185,10 @@
             }
           },
           color: {
-            value: '#E11D8F' // Changed to be more pink
+            value: '#E11D8F' // Pink color
           },
           opacity: {
-            value: 0.35, // Increased from 0.3
+            value: 0.25, // Reduced from 0.35
             random: true
           },
           size: {
@@ -172,8 +198,8 @@
           line_linked: {
             enable: true,
             distance: 150,
-            color: '#E11D8F', // Changed to more pink
-            opacity: 0.25, // Increased from 0.2
+            color: '#E11D8F',
+            opacity: 0.2, // Reduced from 0.25
             width: 1
           },
           move: {
@@ -181,7 +207,22 @@
             speed: 1,
             direction: 'none',
             random: true,
-            out_mode: 'out'
+            out_mode: 'out',
+            attract: {
+              enable: false // Disabled attract to remove mouse interactivity
+            }
+          }
+        },
+        interactivity: {
+          detect_on: 'canvas',
+          events: {
+            onhover: {
+              enable: false // Disabled hover interaction
+            },
+            onclick: {
+              enable: false // Disabled click interaction
+            },
+            resize: true
           }
         }
       });
