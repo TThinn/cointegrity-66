@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import { Target, Layers, Scale, Rocket, ArrowLeft } from "lucide-react";
@@ -31,7 +32,7 @@ const Services = () => {
     setSelectedService(service);
     setOpenDialog(true);
   };
-  return <section id="services" className="py-20 bg-gradient-to-b from-[#f8f9fa] to-[#f0f2f5] relative">
+  return <section id="services" className="py-20 bg-gradient-to-b from-[#f9f5ff] to-[#fdf2f8] relative">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-sm text-pink-600 uppercase tracking-wider font-medium">Our Services</span>
@@ -40,7 +41,7 @@ const Services = () => {
         </div>
 
         {/* Opening description text box */}
-        <div className="mb-12 p-8 rounded-2xl bg-gradient-to-r from-pink-50 to-blue-50">
+        <div className="mb-12 p-8 rounded-2xl bg-gradient-to-r from-pink-50 to-purple-50">
           <p className="text-gray-700 leading-relaxed">Cointegrity delivers strategic advisory services bridging traditional business with blockchain innovation. We navigate the digital asset landscape, providing ecosystem support across regulatory compliance, tax optimization, banking solutions, tokenomics, and funding strategies. Our expertise extends to blockchain-AI intersections, including MCP implementation and AI agent utilization. In short; We simplify complexity and amplify impact!</p>
         </div>
 
@@ -48,7 +49,7 @@ const Services = () => {
           {services.map((service, index) => <div key={index} className="glass-card hover:translate-y-[-4px]" style={{
           animationDelay: `${0.1 + index * 0.1}s`
         }}>
-              <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-pink-50 to-blue-50 mb-4">
+              <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-pink-50 to-purple-50 mb-4">
                 {service.icon}
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-800">{service.title}</h3>
@@ -61,8 +62,8 @@ const Services = () => {
             </div>)}
         </div>
 
-        {/* Closing description text box */}
-        <div className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-[#080112] text-white">
+        {/* Closing description text box - Updated to match hero section colors */}
+        <div className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-[#120825] bg-gradient-to-r from-[#120825] to-[#1D0D35] text-white">
           <div className="flex-1 text-center md:text-left">
             <h3 className="text-2xl font-bold mb-3 text-white">Bring Substance to Your Digital Asset Strategy</h3>
             <p className="text-white/80 max-w-md">Take your Web3 project to the next level with our expert guidance</p>

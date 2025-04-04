@@ -46,7 +46,7 @@ const ContactForm = () => {
       }, 3000);
     }, 1500);
   };
-  return <section id="contact" className="py-20 bg-[#080112] relative overflow-hidden">
+  return <section id="contact" className="py-20 bg-gradient-to-b from-[#f9f5ff] to-[#fdf2f8] relative overflow-hidden">
       {/* Subtle background elements */}
       <div className="absolute inset-0 z-0 opacity-20">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-500/30 rounded-full blur-[90px]"></div>
@@ -58,11 +58,11 @@ const ContactForm = () => {
           <div className="animate-fade-up" style={{
           animationDelay: "0.1s"
         }}>
-            <span className="text-sm font-semibold uppercase tracking-wider text-pink-400">Contact Us</span>
-            <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-white">
+            <span className="text-sm font-semibold uppercase tracking-wider text-pink-600">Contact Us</span>
+            <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">
               Let's Build Your Web3 Future
             </h2>
-            <p className="mt-4 text-lg text-white/80">
+            <p className="mt-4 text-lg text-gray-600">
               Have a project in mind or questions about our services? We're here to help you navigate the decentralized landscape.
             </p>
             
@@ -71,7 +71,7 @@ const ContactForm = () => {
             </div>
           </div>
           
-          <div className="glass-card bg-white/5 backdrop-blur-xl border border-white/10 animate-fade-up relative" style={{
+          <div className="glass-card bg-white/60 backdrop-blur-xl border border-purple-100 animate-fade-up relative" style={{
           animationDelay: "0.3s"
         }}>
             <div className="absolute -top-10 -right-10 w-[150px] h-[150px] animate-pulse opacity-30">
@@ -80,31 +80,31 @@ const ContactForm = () => {
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="col-span-1">
-                  <label htmlFor="name" className="block text-sm font-medium text-white/80 mb-1">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     Your Name
                   </label>
-                  <input type="text" id="name" name="name" value={formState.name} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-white/10 focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all focus:outline-none bg-white/10 text-white" placeholder="John Doe" />
+                  <input type="text" id="name" name="name" value={formState.name} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-purple-100 focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" placeholder="John Doe" />
                 </div>
                 
                 <div className="col-span-1">
-                  <label htmlFor="email" className="block text-sm font-medium text-white/80 mb-1">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                     Email Address
                   </label>
-                  <input type="email" id="email" name="email" value={formState.email} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-white/10 focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all focus:outline-none bg-white/10 text-white" placeholder="john@example.com" />
+                  <input type="email" id="email" name="email" value={formState.email} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-purple-100 focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" placeholder="john@example.com" />
                 </div>
                 
                 <div className="col-span-2">
-                  <label htmlFor="company" className="block text-sm font-medium text-white/80 mb-1">
+                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
                     Company (Optional)
                   </label>
-                  <input type="text" id="company" name="company" value={formState.company} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-white/10 focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all focus:outline-none bg-white/10 text-white" placeholder="Your Company" />
+                  <input type="text" id="company" name="company" value={formState.company} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-purple-100 focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" placeholder="Your Company" />
                 </div>
                 
                 <div className="col-span-2">
-                  <label htmlFor="message" className="block text-sm font-medium text-white/80 mb-1">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                     Your Message
                   </label>
-                  <textarea id="message" name="message" value={formState.message} onChange={handleChange} required rows={4} className="w-full px-4 py-3 rounded-lg border border-white/10 focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all focus:outline-none bg-white/10 text-white" placeholder="Tell us about your project or inquiry..." />
+                  <textarea id="message" name="message" value={formState.message} onChange={handleChange} required rows={4} className="w-full px-4 py-3 rounded-lg border border-purple-100 focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" placeholder="Tell us about your project or inquiry..." />
                 </div>
               </div>
               
@@ -122,12 +122,12 @@ const ContactForm = () => {
                     </span>}
                 </Button>
                 
-                {submitStatus === "success" && <div className="mt-4 p-3 rounded-lg bg-green-900/30 text-green-400 flex items-center">
+                {submitStatus === "success" && <div className="mt-4 p-3 rounded-lg bg-green-900/30 text-green-600 flex items-center">
                     <Check size={18} className="mr-2" />
                     Your message has been sent! We'll be in touch soon.
                   </div>}
                 
-                {submitStatus === "error" && <div className="mt-4 p-3 rounded-lg bg-red-900/30 text-red-400 flex items-center">
+                {submitStatus === "error" && <div className="mt-4 p-3 rounded-lg bg-red-900/30 text-red-600 flex items-center">
                     <AlertCircle size={18} className="mr-2" />
                     There was an error sending your message. Please try again.
                   </div>}
