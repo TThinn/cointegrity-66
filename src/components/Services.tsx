@@ -3,6 +3,7 @@ import Container from "./ui/Container";
 import { Target, Layers, Scale, Rocket, ArrowLeft } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
 import Button from "./ui/CustomButtonComponent";
+
 const services = [{
   icon: <Target size={24} className="text-pink-500" />,
   title: "Strategic Positioning",
@@ -24,6 +25,7 @@ const services = [{
   description: "Cointegrity's Capital Acceleration service transforms promising Web3 projects into well-funded ventures. We craft targeted community building strategies.",
   fullDescription: "Cointegrity's Capital Acceleration service transforms promising Web3 projects into well-funded ventures. We craft targeted community building strategies that create engaged ecosystems around your offering. Our team ensures your product achieves market fit before approaching investors, maximizing your funding potential. We identify and engage your ideal audience, creating momentum that attracts capital. Drawing on our extensive network of VCs, angel investors, family offices, and investment funds, we connect you with the right financial partners for your stage and vision. Our expert collaborators across global markets provide specialized insights for different investment landscapes. With Cointegrity's guidance, your project gains access to capital sources that align with your long-term objectives, accelerating your growth in the digital asset ecosystem."
 }];
+
 const Services = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
@@ -35,8 +37,9 @@ const Services = () => {
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-sm text-pink-600 uppercase tracking-wider font-medium">Our Services</span>
-          <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Web3 Solutions with Substance</h2>
-          <p className="mt-4 text-lg text-gray-600">Navigating digital asset complexity with clarity, from strategy to compliance</p>
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Our Services</h2>
+          <h3 className="mt-4 text-lg text-gray-600">Web3 Solutions with Substance</h3>
+          <p className="mt-2 text-gray-600">Navigating digital asset complexity with clarity, from strategy to compliance</p>
         </div>
 
         {/* Opening description text box */}

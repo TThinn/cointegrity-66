@@ -96,11 +96,11 @@ const Hero = () => {
           animationDelay: "0.25s"
         }} className="w-[120px] h-[1px] mb-8 animate-fade-up bg-pink-500"></div>
           
-          <p className="text-lg max-w-2xl text-balance animate-fade-up relative mb-16 text-white/80" style={{
+          <h2 className="text-lg max-w-2xl text-balance animate-fade-up relative mb-16 text-white/80" style={{
           animationDelay: "0.4s"
         }}>
             We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.
-          </p>
+          </h2>
         </div>
           
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up mb-20" style={{

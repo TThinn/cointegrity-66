@@ -41,8 +41,8 @@ const Header = () => {
             <a href="#founders" className="micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors">
               Team
             </a>
-            <a href="#accreditations" className="micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors">
-              Accreditations
+            <a href="#testimonials" className="micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors">
+              Testimonials
             </a>
             <a href="#contact" className="pl-4 micro-interaction">
               <Button variant="cta-primary" size="sm">
@@ -66,8 +66,8 @@ const Header = () => {
               <a href="#founders" className="micro-interaction w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10" onClick={() => setIsOpen(false)}>
                 Team
               </a>
-              <a href="#accreditations" className="micro-interaction w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10" onClick={() => setIsOpen(false)}>
-                Accreditations
+              <a href="#testimonials" className="micro-interaction w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10" onClick={() => setIsOpen(false)}>
+                Testimonials
               </a>
               <a href="#contact" className="micro-interaction w-full py-4 text-xl text-white mt-4" onClick={() => setIsOpen(false)}>
                 <Button variant="cta-primary" size="lg" className="w-full">
