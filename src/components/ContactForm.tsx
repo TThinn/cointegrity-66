@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import { Mail, Phone, MapPin, Send, Check, AlertCircle } from "lucide-react";
@@ -56,8 +57,8 @@ const ContactForm = () => {
           <div className="animate-fade-up" style={{
           animationDelay: "0.1s"
         }}>
-            <span className="text-sm font-semibold uppercase tracking-wider text-pink-600">Contact Us</span>
-            <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Partner With Us to Bring Your Project to Life</h2>
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-pink-600">Contact Us</h2>
+            <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Partner With Us to Bring Your Project to Life</h3>
             <p className="mt-4 text-lg text-gray-600">
               Have a project in mind or questions about our services? We're here to help you navigate the decentralized landscape.
             </p>
