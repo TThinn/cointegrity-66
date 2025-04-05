@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import { Target, Layers, Scale, Rocket, ArrowLeft } from "lucide-react";
@@ -36,10 +37,9 @@ const Services = () => {
   return <section id="services" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-sm text-pink-600 uppercase tracking-wider font-medium">Our Services</span>
-          <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Our Services</h2>
-          <h3 className="mt-4 text-lg text-gray-600">Web3 Solutions with Substance</h3>
-          <p className="mt-2 text-gray-600">Navigating digital asset complexity with clarity, from strategy to compliance</p>
+          <h2 className="text-sm text-pink-600 uppercase tracking-wider font-medium">Our Services</h2>
+          <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Web3 Solutions with Substance</h3>
+          <p className="mt-4 text-lg text-gray-600">Navigating digital asset complexity with clarity, from strategy to compliance</p>
         </div>
 
         {/* Opening description text box */}
