@@ -1,8 +1,8 @@
-
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import { Mail, Phone, MapPin, Send, Check, AlertCircle } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
+
 const ContactForm = () => {
   const [formState, setFormState] = useState({
     name: "",
@@ -12,6 +12,7 @@ const ContactForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<null | "success" | "error">(null);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {
       name,
@@ -22,6 +23,7 @@ const ContactForm = () => {
       [name]: value
     }));
   };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -45,6 +47,7 @@ const ContactForm = () => {
       }, 3000);
     }, 1500);
   };
+
   return <section id="contact" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative overflow-hidden">
       {/* Subtle background elements */}
       <div className="absolute inset-0 z-0 opacity-10">
@@ -54,7 +57,7 @@ const ContactForm = () => {
       
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="animate-fade-up" style={{
+          <div className="animate-fade-up text-left lg:text-left md:text-center sm:text-center" style={{
           animationDelay: "0.1s"
         }}>
             <h2 className="text-sm font-semibold uppercase tracking-wider text-pink-600">Contact Us</h2>
@@ -135,4 +138,5 @@ const ContactForm = () => {
       </Container>
     </section>;
 };
+
 export default ContactForm;
