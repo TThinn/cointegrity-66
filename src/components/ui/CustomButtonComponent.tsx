@@ -22,38 +22,39 @@ const Button = ({
   children,
   as: Component = "button",
   href,
-  transitionDuration = "300ms",
+  transitionDuration = "400ms",
   target,
   rel,
   ...props
 }: ButtonProps) => {
   const styles = cn(
-    "relative inline-flex items-center justify-center rounded-lg font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
+    "relative inline-flex items-center justify-center rounded-lg font-bold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
     {
-      "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-button hover:shadow-lg": variant === "primary",
-      "bg-blue-600 text-white shadow-button hover:shadow-lg": variant === "secondary",
-      "bg-transparent border border-purple-600 text-purple-600 hover:bg-purple-500/10": variant === "outlined",
-      "bg-transparent text-white hover:bg-white/5": variant === "ghost",
-      "bg-transparent text-blue-600 hover:text-blue-700 p-0 hover:underline focus:ring-0": variant === "link",
+      "bg-gradient-to-r from-[#8B5CF6] to-[#6366F1] text-white px-6 py-3 shadow-[0px_4px_12px_rgba(99,102,241,0.2)] hover:translate-y-[-3px] hover:shadow-[0px_8px_20px_rgba(99,102,241,0.4)]": 
+        variant === "primary" || variant === "cta-primary",
       
-      // CTA Primary Button style
-      "bg-gradient-to-br from-[#8B5CF6] to-[#6366F1] border-none px-6 py-3 rounded-lg text-white font-semibold shadow-md shadow-indigo-500/10 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-indigo-500/20": variant === "cta-primary",
+      "bg-transparent border-2 border-[#8B5CF6] text-[#8B5CF6] px-6 py-3 hover:bg-[#8B5CF6]/10 hover:translate-y-[-3px]": 
+        variant === "secondary" || variant === "cta-secondary",
       
-      // CTA Secondary Button style
-      "bg-transparent border-2 border-[#8B5CF6] px-6 py-3 rounded-lg text-[#8B5CF6] font-semibold hover:bg-[#8B5CF6]/10 hover:translate-y-[-2px]": variant === "cta-secondary",
+      "bg-transparent border border-purple-600 text-purple-600 hover:bg-purple-500/10": 
+        variant === "outlined",
+      
+      "bg-transparent text-white hover:bg-white/5": 
+        variant === "ghost",
+      
+      "bg-transparent text-[#8B5CF6] hover:text-[#6366F1] p-0 hover:underline focus:ring-0": 
+        variant === "link",
 
-      "text-sm px-3 py-1 h-8": size === "sm",
-      "text-base px-4 py-2 h-10": size === "md",
-      "text-lg px-6 py-3 h-12": size === "lg",
+      "text-sm px-4 py-2 text-[14px]": size === "sm",
+      "text-base px-6 py-3 text-[16px]": size === "md",
+      "text-lg px-8 py-4 text-[18px]": size === "lg",
 
       "button-glow": isGlowing,
     },
     className
   );
 
-  // If href is provided, render an anchor tag
   if (href) {
-    // Extract only the props that are valid for anchor elements
     const { 
       onClick,
       title,
@@ -62,9 +63,8 @@ const Button = ({
       tabIndex,
       'aria-label': ariaLabel,
       style
-    } = props as any; // Using any temporarily to extract possible anchor props
+    } = props as any;
     
-    // Create safe anchor props 
     const anchorProps = {
       href,
       className: styles,
@@ -86,7 +86,6 @@ const Button = ({
     );
   }
 
-  // Otherwise, render as button or custom component
   return (
     <Component 
       className={styles} 

@@ -45,7 +45,7 @@ const Header = () => {
               Testimonials
             </a>
             <a href="#contact" className="pl-4 micro-interaction">
-              <Button variant="cta-primary" size="sm">
+              <Button variant="primary" size="sm">
                 Contact Us
               </Button>
             </a>
@@ -70,7 +70,7 @@ const Header = () => {
                 Testimonials
               </a>
               <a href="#contact" className="micro-interaction w-full py-4 text-xl text-white mt-4" onClick={() => setIsOpen(false)}>
-                <Button variant="cta-primary" size="lg" className="w-full">
+                <Button variant="primary" size="sm" className="w-full">
                   Contact Us
                 </Button>
               </a>
