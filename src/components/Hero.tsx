@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
-
 const Hero = () => {
   useEffect(() => {
     // Load particles.js script
@@ -23,7 +22,8 @@ const Hero = () => {
             value: '#E11D8F' // Changed to be more pink
           },
           opacity: {
-            value: 0.35, // Increased from 0.3
+            value: 0.35,
+            // Increased from 0.3
             random: true
           },
           size: {
@@ -33,8 +33,10 @@ const Hero = () => {
           line_linked: {
             enable: true,
             distance: 150,
-            color: '#E11D8F', // Changed to more pink
-            opacity: 0.25, // Increased from 0.2
+            color: '#E11D8F',
+            // Changed to more pink
+            opacity: 0.25,
+            // Increased from 0.2
             width: 1
           },
           move: {
@@ -106,15 +108,9 @@ const Hero = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up mb-20" style={{
         animationDelay: "0.5s"
       }}>
-          <Button 
-            variant="cta-primary" 
-            className="floating-element w-full sm:w-auto" 
-            href="#contact" 
-            transitionDuration="5s"
-            style={{
-              animationDelay: "3s"
-            }}
-          >
+          <Button variant="cta-primary" className="floating-element w-full sm:w-auto" href="#contact" transitionDuration="5s" style={{
+          animationDelay: "3s"
+        }}>
             Talk to an expert
           </Button>
         </div>
@@ -123,19 +119,19 @@ const Hero = () => {
         animationDelay: "0.6s"
       }}>
           <div>
-            <h3 className="text-3xl md:text-4xl font-bold text-white">5+</h3>
+            <h3 className="text-3xl md:text-4xl font-bold text-white">45+</h3>
             <p className="text-white/60 text-sm mt-1">Years Experience</p>
           </div>
           <div>
-            <h3 className="text-3xl md:text-4xl font-bold text-white">$100M+</h3>
-            <p className="text-white/60 text-sm mt-1">Assets Managed</p>
+            <h3 className="text-3xl md:text-4xl font-bold text-white">15+</h3>
+            <p className="text-white/60 text-sm mt-1">Project Jurisdictions</p>
           </div>
           <div>
-            <h3 className="text-3xl md:text-4xl font-bold text-white">25+</h3>
+            <h3 className="text-3xl md:text-4xl font-bold text-white">20+</h3>
             <p className="text-white/60 text-sm mt-1">Enterprise Clients</p>
           </div>
           <div>
-            <h3 className="text-3xl md:text-4xl font-bold text-white">60+</h3>
+            <h3 className="text-3xl md:text-4xl font-bold text-white">40+</h3>
             <p className="text-white/60 text-sm mt-1">Projects Delivered</p>
           </div>
         </div>
