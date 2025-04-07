@@ -99,16 +99,16 @@ const Accreditations = () => {
           </div>
 
           <div className="mb-20 overflow-hidden">
-            <div className="flex animate-carousel">
+            <div className="flex animate-carousel-fast">
               {[...brands, ...brands].map((brand, index) => (
                 <a 
                   key={`${brand.id}-${index}`} 
                   href={brand.url} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex-none mx-4 w-40"
+                  className="flex-none mx-4 w-60"
                 >
-                  <div className="p-4 rounded-lg flex items-center justify-center h-20">
+                  <div className="p-4 rounded-lg flex items-center justify-center h-30">
                     <img 
                       src={brand.logo} 
                       alt={brand.name} 
