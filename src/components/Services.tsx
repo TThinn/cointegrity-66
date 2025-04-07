@@ -40,7 +40,9 @@ const Services = () => {
         </div>
 
         {/* Opening description text box */}
-        
+        <div className="mb-12 p-8 rounded-2xl bg-gradient-to-r from-pink-50 to-purple-50">
+          <p className="text-gray-700 leading-relaxed">Cointegrity bridges traditional business with blockchain innovation. We simplify digital asset complexity through tailored solutions in regulatory compliance, tax optimization, tokenomics, and funding strategies. Our expertise extends to blockchain-AI intersections for transformative growth.</p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => <div key={index} className="glass-card border-pink-100/50 hover:border-pink-200/70 bg-white/70 hover:translate-y-[-4px]" style={{
