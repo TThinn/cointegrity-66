@@ -35,7 +35,7 @@ const Services = () => {
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm text-pink-600 uppercase tracking-wider font-medium">Our Services</h2>
-          <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Web3 Solutions with Substance</h3>
+          <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Strategic Web3 Solutions for Real-World Impact</h3>
           <p className="mt-4 text-lg text-gray-600">Simplifying blockchain complexity, from strategy to compliance.</p>
         </div>
 
