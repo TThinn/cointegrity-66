@@ -1,10 +1,8 @@
-
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import { Target, Layers, Scale, Rocket, ArrowLeft } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
 import Button from "./ui/CustomButtonComponent";
-
 const services = [{
   icon: <Target size={24} className="text-pink-500" />,
   title: "Strategic Positioning",
@@ -26,7 +24,6 @@ const services = [{
   description: "Cointegrity's Capital Acceleration service transforms promising Web3 projects into well-funded ventures. We craft targeted community building strategies.",
   fullDescription: "Cointegrity's Capital Acceleration service transforms promising Web3 projects into well-funded ventures. We craft targeted community building strategies that create engaged ecosystems around your offering. Our team ensures your product achieves market fit before approaching investors, maximizing your funding potential. We identify and engage your ideal audience, creating momentum that attracts capital. Drawing on our extensive network of VCs, angel investors, family offices, and investment funds, we connect you with the right financial partners for your stage and vision. Our expert collaborators across global markets provide specialized insights for different investment landscapes. With Cointegrity's guidance, your project gains access to capital sources that align with your long-term objectives, accelerating your growth in the digital asset ecosystem."
 }];
-
 const Services = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
@@ -44,7 +41,7 @@ const Services = () => {
 
         {/* Opening description text box */}
         <div className="mb-12 p-8 rounded-2xl bg-gradient-to-r from-pink-50 to-purple-50">
-          <p className="text-gray-700 leading-relaxed">Cointegrity delivers strategic advisory services bridging traditional business with blockchain innovation. We navigate the digital asset landscape, providing ecosystem support across regulatory compliance, tax optimization, banking solutions, tokenomics, and funding strategies. Our expertise extends to blockchain-AI intersections, including MCP implementation and AI agent utilization. In short; We simplify complexity and amplify impact!</p>
+          <p className="text-gray-700 leading-relaxed">Cointegrity bridges traditional business with blockchain innovation. We simplify digital asset complexity through tailored solutions in regulatory compliance, tax optimization, tokenomics, and funding strategies. Our expertise extends to blockchain-AI intersections for transformative growth.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
