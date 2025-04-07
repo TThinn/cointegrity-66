@@ -108,11 +108,14 @@ const Accreditations = () => {
                   rel="noopener noreferrer" 
                   className="flex-none mx-4 w-60"
                 >
-                  <div className="p-4 rounded-lg flex items-center justify-center h-30">
+                  <div className="flex items-center justify-center h-24">
                     <img 
                       src={brand.logo} 
                       alt={brand.name} 
-                      className="h-full w-auto object-contain opacity-60" 
+                      className="max-h-20 w-auto object-contain opacity-60"
+                      style={{
+                        maxWidth: brand.name === "EY" ? "80px" : "160px",
+                      }}
                       title={brand.name}
                     />
                   </div>
@@ -142,3 +145,4 @@ const Accreditations = () => {
     </section>;
 };
 export default Accreditations;
+
