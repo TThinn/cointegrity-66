@@ -99,7 +99,7 @@ const Accreditations = () => {
           </div>
 
           <div className="mb-20 overflow-hidden">
-            <div className="flex animate-carousel-fast">
+            <div className="flex animate-carousel-slow">
               {[...brands, ...brands].map((brand, index) => (
                 <a 
                   key={`${brand.id}-${index}`} 
@@ -115,6 +115,8 @@ const Accreditations = () => {
                       className="max-h-20 w-auto object-contain opacity-60"
                       style={{
                         maxWidth: brand.name === "EY" ? "80px" : "160px",
+                        height: "auto",
+                        verticalAlign: "middle"
                       }}
                       title={brand.name}
                     />
@@ -145,4 +147,3 @@ const Accreditations = () => {
     </section>;
 };
 export default Accreditations;
-

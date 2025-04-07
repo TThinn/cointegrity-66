@@ -132,6 +132,10 @@ export default {
 				"carousel-fast": {
 					"0%": { transform: "translateX(0)" },
 					"100%": { transform: "translateX(-50%)" },
+				},
+				"carousel-slow": {
+					"0%": { transform: "translateX(0)" },
+					"100%": { transform: "translateX(-50%)" },
 				}
 			},
 			animation: {
@@ -144,6 +148,7 @@ export default {
 				"float": "float 6s ease-in-out infinite",
 				"carousel": "carousel 30s linear infinite",
 				"carousel-fast": "carousel-fast 15s linear infinite",
+				"carousel-slow": "carousel-slow 30s linear infinite",
 			},
 			fontSize: {
 				"2xs": "0.625rem",
