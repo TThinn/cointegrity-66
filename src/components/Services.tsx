@@ -63,7 +63,7 @@ const Services = () => {
         <div className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-gradient-to-br from-[#070119] to-[#5f2559] text-white">
           <div className="flex-1 text-center md:text-left">
             <h3 className="text-2xl font-bold mb-3 text-white">Bring Substance to Your Digital Asset Strategy</h3>
-            <p className="text-white/80 max-w-md">Take your Web3 project to the next level with our expert guidance</p>
+            
           </div>
           <a href="#contact" className="inline-flex items-center">
             <Button variant="cta-primary">Talk to an Expert</Button>
