@@ -1,9 +1,11 @@
-import React from "react";
+
+import React, { useState } from "react";
 import Container from "./ui/Container";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
-import { Button } from "./ui/button";
-import { ArrowUpRight } from "lucide-react";
+
 const Accreditations = () => {
+  const [pausedRow1, setPausedRow1] = useState(false);
+  const [pausedRow2, setPausedRow2] = useState(false);
+
   const brands = [{
     name: "Skatteetaten",
     id: 1,
@@ -53,20 +55,60 @@ const Accreditations = () => {
     description: "Global investment management corporation",
     logo: "/lovable-uploads/eb9f6633-d391-4a4a-b623-5c220bfeeef2.png"
   }];
-  const certifications = [{
-    name: "Certified Blockchain Professional",
-    id: 1
-  }, {
-    name: "Ethereum Developer Certification",
-    id: 2
-  }, {
-    name: "Web3 Security Specialist",
-    id: 3
-  }, {
-    name: "ISO 27001 Information Security",
-    id: 4
-  }];
-  return <section id="testimonials" className="py-24 relative overflow-hidden bg-[#080112]">
+
+  const testimonials = [
+    {
+      id: 1,
+      quote: "We're grateful for Omega Web3's support in securing grants and connecting us with top blockchain partners. Their expertise unlocked opportunities we couldn't access alone.",
+      name: "Josh Wilson",
+      title: "CEO of Reload Games"
+    },
+    {
+      id: 2,
+      quote: "Working with Omega Web3 has been transformative for our business growth. Their guidance and network were invaluable for our Web3 strategy implementation.",
+      name: "Sarah Johnson",
+      title: "Founder of TechBridge"
+    },
+    {
+      id: 3,
+      quote: "The expertise at Omega Web3 helped us navigate complex regulatory challenges while maintaining our innovative edge in the market.",
+      name: "David Chen",
+      title: "CTO of Blockchain Innovations"
+    },
+    {
+      id: 4,
+      quote: "Omega Web3's tokenomics design transformed our project, creating a sustainable model that's attracted significant investment and user growth.",
+      name: "Michelle Park",
+      title: "Co-founder of TokenWave"
+    },
+    {
+      id: 5,
+      quote: "The strategic positioning advice we received from Omega Web3 was instrumental in differentiating our product in a crowded market.",
+      name: "Alex Rivera",
+      title: "Head of Strategy at Web3 Solutions"
+    },
+    {
+      id: 6,
+      quote: "Their regulatory navigation expertise saved us countless hours and potential pitfalls as we expanded into European markets under MiCA.",
+      name: "Elena Kovacs",
+      title: "Legal Director at DeFi Protocol"
+    },
+    {
+      id: 7,
+      quote: "The capital acceleration program connected us with perfect investors who understood our vision and provided more than just funding.",
+      name: "Thomas Wright",
+      title: "CEO of MetaVerse Platforms"
+    },
+    {
+      id: 8,
+      quote: "Omega Web3's team demonstrated exceptional knowledge of both traditional finance and blockchain technology, bridging gaps we couldn't on our own.",
+      name: "Jennifer Liu",
+      title: "VP of Operations at Crypto Exchange"
+    }
+  ];
+
+  return (
+    <section id="testimonials" className="py-24 relative overflow-hidden bg-[#080112]">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/2 w-[800px] h-[800px] bg-pink-500/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[100px]"></div>
@@ -87,34 +129,95 @@ const Accreditations = () => {
 
           <div className="mb-20 overflow-hidden">
             <div className="flex animate-carousel-slow">
-              {[...brands, ...brands].map((brand, index) => <a key={`${brand.id}-${index}`} href={brand.url} target="_blank" rel="noopener noreferrer" className="flex-none mx-4 w-60">
+              {[...brands, ...brands].map((brand, index) => (
+                <a key={`${brand.id}-${index}`} href={brand.url} target="_blank" rel="noopener noreferrer" className="flex-none mx-4 w-60">
                   <div className="flex items-center justify-center h-24">
-                    <img src={brand.logo} alt={brand.name} className="max-h-20 w-auto object-contain opacity-60" style={{
-                  maxWidth: brand.name === "EY" ? "80px" : "160px",
-                  height: "auto",
-                  verticalAlign: "middle"
-                }} title={brand.name} />
+                    <img 
+                      src={brand.logo} 
+                      alt={brand.name} 
+                      className="max-h-20 w-auto object-contain opacity-60" 
+                      style={{
+                        maxWidth: brand.name === "EY" ? "80px" : "160px",
+                        height: "auto",
+                        verticalAlign: "middle"
+                      }} 
+                      title={brand.name} 
+                    />
                   </div>
-                </a>)}
+                </a>
+              ))}
             </div>
           </div>
 
-          <div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-8 text-white text-center">Client Testimonials</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {certifications.map(cert => <div key={cert.id} className="glass bg-white/5 backdrop-blur-md border border-white/10 flex flex-col items-center text-center p-6 animate-fade-up" style={{
-              animationDelay: `${0.1 * cert.id}s`
-            }}>
-                  
-                  <h4 className="text-white text-lg font-medium mb-2">{cert.name}</h4>
-                  <p className="text-white/60 text-sm">
-                    Internationally recognized credential demonstrating expertise and best practices.
-                  </p>
-                </div>)}
+          <div className="mb-16">
+            <h3 className="text-2xl md:text-3xl font-bold mb-12 text-white text-center">Client Testimonials</h3>
+            
+            {/* Testimonials Carousel - First row (right to left) */}
+            <div className="relative mb-10 overflow-hidden">
+              {/* Fade left edge */}
+              <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#080112] to-transparent z-10"></div>
+              
+              <div 
+                className={`flex ${pausedRow1 ? "" : "animate-carousel-rtl"}`}
+                onMouseEnter={() => setPausedRow1(true)}
+                onMouseLeave={() => setPausedRow1(false)}
+              >
+                {[...testimonials, ...testimonials].slice(0, 10).map((testimonial, index) => (
+                  <div 
+                    key={`row1-${testimonial.id}-${index}`}
+                    className="flex-none w-[350px] mx-4 glass bg-white/5 backdrop-blur-md border border-white/10 p-6 shadow-lg cursor-pointer transition-transform hover:-translate-y-1 duration-300"
+                    onClick={() => setPausedRow1(!pausedRow1)}
+                  >
+                    <div className="text-left">
+                      <p className="text-white/80 text-sm mb-6">"{testimonial.quote}"</p>
+                      <div>
+                        <p className="text-white font-semibold">{testimonial.name}</p>
+                        <p className="text-white/60 text-xs">{testimonial.title}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Fade right edge */}
+              <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#080112] to-transparent z-10"></div>
+            </div>
+            
+            {/* Testimonials Carousel - Second row (left to right) */}
+            <div className="relative overflow-hidden">
+              {/* Fade left edge */}
+              <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#080112] to-transparent z-10"></div>
+              
+              <div 
+                className={`flex ${pausedRow2 ? "" : "animate-carousel-ltr"}`}
+                onMouseEnter={() => setPausedRow2(true)}
+                onMouseLeave={() => setPausedRow2(false)}
+              >
+                {[...testimonials.slice(4), ...testimonials.slice(0, 4), ...testimonials.slice(4)].map((testimonial, index) => (
+                  <div 
+                    key={`row2-${testimonial.id}-${index}`}
+                    className="flex-none w-[350px] mx-4 glass bg-white/5 backdrop-blur-md border border-white/10 p-6 shadow-lg cursor-pointer transition-transform hover:-translate-y-1 duration-300"
+                    onClick={() => setPausedRow2(!pausedRow2)}
+                  >
+                    <div className="text-left">
+                      <p className="text-white/80 text-sm mb-6">"{testimonial.quote}"</p>
+                      <div>
+                        <p className="text-white font-semibold">{testimonial.name}</p>
+                        <p className="text-white/60 text-xs">{testimonial.title}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Fade right edge */}
+              <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#080112] to-transparent z-10"></div>
             </div>
           </div>
         </div>
       </Container>
-    </section>;
+    </section>
+  );
 };
+
 export default Accreditations;

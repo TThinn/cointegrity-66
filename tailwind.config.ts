@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,7 +62,6 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors
 				"blue": {
 					50: "#EFF6FF",
 					100: "#DBEAFE",
@@ -136,6 +134,14 @@ export default {
 				"carousel-slow": {
 					"0%": { transform: "translateX(0)" },
 					"100%": { transform: "translateX(-50%)" },
+				},
+				"carousel-rtl": {
+					"0%": { transform: "translateX(-50%)" },
+					"100%": { transform: "translateX(0)" },
+				},
+				"carousel-ltr": {
+					"0%": { transform: "translateX(0)" },
+					"100%": { transform: "translateX(-50%)" },
 				}
 			},
 			animation: {
@@ -149,6 +155,8 @@ export default {
 				"carousel": "carousel 30s linear infinite",
 				"carousel-fast": "carousel-fast 15s linear infinite",
 				"carousel-slow": "carousel-slow 30s linear infinite",
+				"carousel-rtl": "carousel-rtl 25s linear infinite",
+				"carousel-ltr": "carousel-ltr 25s linear infinite",
 			},
 			fontSize: {
 				"2xs": "0.625rem",
