@@ -71,9 +71,9 @@ const Accreditations = () => {
     },
     {
       id: 3,
-      quote: "The expertise at Omega Web3 helped us navigate complex regulatory challenges while maintaining our innovative edge in the market.",
-      name: "David Chen",
-      title: "CTO of Blockchain Innovations"
+      quote: "Torstein Thinn played a pivotal role in automating and streamlining AKJ's trading and systems processes, significantly enhancing scalability and operational efficiency. His expertise contributed to AKJ's continued success as a global leader in turnkey solutions for fund setup across crypto and traditional markets.",
+      name: "Anders Kvamme Jensen",
+      title: "Founder and Chairman, AKJ group"
     },
     {
       id: 4,
@@ -127,23 +127,28 @@ const Accreditations = () => {
             </p>
           </div>
 
-          <div className="mb-20 overflow-hidden">
-            <div className="flex animate-carousel-slow">
-              {[...brands, ...brands].map((brand, index) => (
-                <a key={`${brand.id}-${index}`} href={brand.url} target="_blank" rel="noopener noreferrer" className="flex-none mx-4 w-60">
-                  <div className="flex items-center justify-center h-24">
-                    <img 
-                      src={brand.logo} 
-                      alt={brand.name} 
-                      className="max-h-20 w-auto object-contain opacity-60" 
-                      style={{
-                        maxWidth: brand.name === "EY" ? "80px" : "160px",
-                        height: "auto",
-                        verticalAlign: "middle"
-                      }} 
-                      title={brand.name} 
-                    />
-                  </div>
+          {/* Static Brand Grid */}
+          <div className="mb-20">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 place-items-center">
+              {brands.map((brand) => (
+                <a 
+                  key={brand.id} 
+                  href={brand.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center justify-center h-24 w-full hover:opacity-80 transition-opacity"
+                >
+                  <img 
+                    src={brand.logo} 
+                    alt={brand.name} 
+                    className="max-h-20 w-auto object-contain opacity-60" 
+                    style={{
+                      maxWidth: brand.name === "EY" ? "80px" : "160px",
+                      height: "auto",
+                      verticalAlign: "middle"
+                    }} 
+                    title={brand.name} 
+                  />
                 </a>
               ))}
             </div>
@@ -165,7 +170,7 @@ const Accreditations = () => {
                 {[...testimonials, ...testimonials].slice(0, 10).map((testimonial, index) => (
                   <div 
                     key={`row1-${testimonial.id}-${index}`}
-                    className="flex-none w-[350px] mx-4 glass bg-white/5 backdrop-blur-md border border-white/10 p-6 shadow-lg cursor-pointer transition-transform hover:-translate-y-1 duration-300"
+                    className="flex-none w-[500px] mx-4 glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg cursor-pointer transition-transform hover:-translate-y-1 duration-300"
                     onClick={() => setPausedRow1(!pausedRow1)}
                   >
                     <div className="text-left">
@@ -196,7 +201,7 @@ const Accreditations = () => {
                 {[...testimonials.slice(4), ...testimonials.slice(0, 4), ...testimonials.slice(4)].map((testimonial, index) => (
                   <div 
                     key={`row2-${testimonial.id}-${index}`}
-                    className="flex-none w-[350px] mx-4 glass bg-white/5 backdrop-blur-md border border-white/10 p-6 shadow-lg cursor-pointer transition-transform hover:-translate-y-1 duration-300"
+                    className="flex-none w-[500px] mx-4 glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg cursor-pointer transition-transform hover:-translate-y-1 duration-300"
                     onClick={() => setPausedRow2(!pausedRow2)}
                   >
                     <div className="text-left">
