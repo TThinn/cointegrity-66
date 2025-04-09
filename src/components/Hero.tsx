@@ -5,7 +5,7 @@ import Button from "./ui/CustomButtonComponent";
 const Hero = () => {
   // Generate random movement parameters and size for each particle
   const generateParticleStyle = () => {
-    const size = 120 + Math.random() * 80; // Random size between 120px and 200px
+    const size = 120 + Math.random() * 150; // Random size between 120px and 200px
     return {
       '--start-x': `${Math.random() * 100}%`,
       '--start-y': `${Math.random() * 100}%`,
