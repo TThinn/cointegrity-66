@@ -8,8 +8,8 @@ const Hero = () => {
       {/* Dynamic light effects */}
       <div className="dynamic-light-effects absolute inset-0 z-0 pointer-events-none"></div>
       
-      {/* Light streaks */}
-      <div className="light-streaks absolute inset-0 z-0 pointer-events-none"></div>
+      {/* Light orbs - replacing the streaks */}
+      <div className="light-orbs absolute inset-0 z-0 pointer-events-none"></div>
       
       {/* Background elements - keeping existing glow elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
