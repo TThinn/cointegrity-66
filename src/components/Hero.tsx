@@ -15,7 +15,7 @@ const Hero = () => {
           {[...Array(15)].map((_, i) => (
             <div 
               key={i}
-              className="absolute w-[150px] h-[150px] rounded-full blur-[50px] animate-light-particle"
+              className="absolute w-[150px] h-[150px] rounded-full blur-[10px] animate-light-particle"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
