@@ -9,8 +9,8 @@ const Hero = () => {
     return {
       '--start-x': `${Math.random() * 100}%`,
       '--start-y': `${Math.random() * 100}%`,
-      '--move-x': `${(Math.random() - 0.5) * 40}vw`,
-      '--move-y': `${(Math.random() - 0.5) * 40}vh`,
+      '--move-x': `${(Math.random() - 0.5) * 80}vw`,
+      '--move-y': `${(Math.random() - 0.5) * 80}vh`,
       '--rotate': `${Math.random() * 360}deg`,
       width: `${size}px`,
       height: `${size}px`,
@@ -28,14 +28,14 @@ const Hero = () => {
           {[...Array(25)].map((_, i) => (
             <div 
               key={i}
-              className="absolute rounded-full blur-[50px] animate-light-particle"
+              className="absolute rounded-full blur-[20px] animate-light-particle"
               style={{
                 ...generateParticleStyle(),
                 background: `rgba(225,29,143,0.5)`, // Increased opacity
                 left: `var(--start-x)`,
                 top: `var(--start-y)`,
                 animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${10 + Math.random() * 15}s`,
+                animationDuration: `${10 + Math.random() * 30}s`,
               }}
             />
           ))}
