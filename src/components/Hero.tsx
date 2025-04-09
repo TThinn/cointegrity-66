@@ -20,7 +20,7 @@ const Hero = () => {
           <div className="absolute inset-0 bg-[linear-gradient(135deg,transparent_45%,rgba(99,102,241,0.03)_50%,transparent_55%)] animate-light-sweep animation-delay-1000 mix-blend-screen"></div>
           
           {/* Layer 3 - Radial pulse */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(225,29,143,0.05)_0%,transparent_20%)] animate-light-pulse mix-blend-screen"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(225,29,143,0.05)_0%,transparent_70%)] animate-light-pulse mix-blend-screen"></div>
         </div>
       </div>
 
