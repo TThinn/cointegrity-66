@@ -3,34 +3,39 @@ import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
 
 const Hero = () => {
-  // Generate random movement parameters for each particle
-  const generateParticleStyle = () => ({
-    '--start-x': `${Math.random() * 100}%`,
-    '--start-y': `${Math.random() * 100}%`,
-    '--move-x': `${(Math.random() - 0.5) * 80}vw`,
-    '--move-y': `${(Math.random() - 0.5) * 80}vh`,
-    '--rotate': `${Math.random() * 360}deg`,
-  });
+  // Generate random movement parameters and size for each particle
+  const generateParticleStyle = () => {
+    const size = 80 + Math.random() * 70; // Random size between 80px and 150px
+    return {
+      '--start-x': `${Math.random() * 100}%`,
+      '--start-y': `${Math.random() * 100}%`,
+      '--move-x': `${(Math.random() - 0.5) * 40}vw`,
+      '--move-y': `${(Math.random() - 0.5) * 40}vh`,
+      '--rotate': `${Math.random() * 360}deg`,
+      width: `${size}px`,
+      height: `${size}px`,
+    };
+  };
 
   return (
-    <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#080112] isolate">
+    <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A] to-[#312E81]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#060115] to-[#060115]"></div>
         
         {/* Animated particles */}
         <div className="absolute inset-0 z-[1] pointer-events-none">
           {[...Array(25)].map((_, i) => (
             <div 
               key={i}
-              className="absolute w-[320px] h-[320px] rounded-full blur-[20px] animate-light-particle"
+              className="absolute rounded-full blur-[50px] animate-light-particle"
               style={{
                 ...generateParticleStyle(),
-                background: `rgba(225,29,143,0.3)`,
+                background: `rgba(225,29,143,0.5)`, // Increased opacity
                 left: `var(--start-x)`,
                 top: `var(--start-y)`,
                 animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${10 + Math.random() * 30}s`,
+                animationDuration: `${10 + Math.random() * 15}s`,
               }}
             />
           ))}
@@ -109,18 +114,18 @@ const Hero = () => {
       <style jsx global>{`
         @keyframes light-particle {
           0% {
-            opacity: 0.2;
+            opacity: 0.4;
             transform: translate(0, 0) scale(1) rotate(0);
           }
           50% {
-            opacity: 0.6;
+            opacity: 0.8;
             transform: 
               translate(var(--move-x), var(--move-y)) 
               scale(1.5) 
               rotate(var(--rotate));
           }
           100% {
-            opacity: 0.2;
+            opacity: 0.4;
             transform: translate(0, 0) scale(1) rotate(0);
           }
         }
