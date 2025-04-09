@@ -5,7 +5,7 @@ import Button from "./ui/CustomButtonComponent";
 const Hero = () => {
   // Generate random movement parameters and size for each particle
   const generateParticleStyle = () => {
-    const size = 120 + Math.random() * 200; // Random size between 120px and 200px
+    const size = 120 + Math.random() * 300; // Random size between 120px and 200px
     return {
       '--start-x': `${Math.random() * 100}%`,
       '--start-y': `${Math.random() * 100}%`,
@@ -28,7 +28,7 @@ const Hero = () => {
           {[...Array(25)].map((_, i) => (
             <div 
               key={i}
-              className="absolute rounded-full blur-[20px] animate-light-particle"
+              className="absolute rounded-full blur-[30px] animate-light-particle"
               style={{
                 ...generateParticleStyle(),
                 background: `rgba(225,29,143,0.4)`, // Increased opacity
