@@ -31,7 +31,7 @@ const Hero = () => {
               className="absolute rounded-full blur-[20px] animate-light-particle"
               style={{
                 ...generateParticleStyle(),
-                background: `rgba(225,29,143,0.6)`, // Increased opacity
+                background: `rgba(225,29,143,0.5)`, // Increased opacity
                 left: `var(--start-x)`,
                 top: `var(--start-y)`,
                 animationDelay: `${Math.random() * 5}s`,
