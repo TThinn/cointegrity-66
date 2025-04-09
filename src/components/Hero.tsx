@@ -15,12 +15,12 @@ const Hero = () => {
           {[...Array(15)].map((_, i) => (
             <div 
               key={i}
-              className="absolute w-[150px] h-[150px] rounded-full blur-[10px] animate-light-particle"
+              className="absolute w-[150px] h-[150px] rounded-full blur-[50px] animate-light-particle"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
                 animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${8 + Math.random() * 12}s`,
+                animationDuration: `${10 + Math.random() * 10}s`,
                 background: `rgba(225,29,143,0.4)`,
               }}
             />
@@ -78,19 +78,19 @@ const Hero = () => {
       <style jsx global>{`
         @keyframes light-particle {
           0% {
-            opacity: 0.3;
-            transform: scale(0.8) translate(0, 0);
+            opacity: 0.4;
+            transform: scale(1) translate(0, 0);
           }
           50% {
-            opacity: 0.7;
-            transform: scale(1.2) translate(
-              ${Math.random() * 40 - 20}px,
-              ${Math.random() * 40 - 20}px
+            opacity: 0.8;
+            transform: scale(1.5) translate(
+              ${Math.random() * 50 - 25}px,
+              ${Math.random() * 50 - 25}px
             );
           }
           100% {
-            opacity: 0.3;
-            transform: scale(0.8) translate(0, 0);
+            opacity: 0.4;
+            transform: scale(1) translate(0, 0);
           }
         }
 
