@@ -23,7 +23,7 @@ const Hero = () => {
           {[...Array(25)].map((_, i) => (
             <div 
               key={i}
-              className="absolute w-[320px] h-[320px] rounded-full blur-[10px] animate-light-particle"
+              className="absolute w-[320px] h-[320px] rounded-full blur-[20px] animate-light-particle"
               style={{
                 ...generateParticleStyle(),
                 background: `rgba(225,29,143,0.3)`,
@@ -109,18 +109,18 @@ const Hero = () => {
       <style jsx global>{`
         @keyframes light-particle {
           0% {
-            opacity: 0.4;
+            opacity: 0.2;
             transform: translate(0, 0) scale(1) rotate(0);
           }
           50% {
-            opacity: 0.8;
+            opacity: 0.6;
             transform: 
               translate(var(--move-x), var(--move-y)) 
               scale(1.5) 
               rotate(var(--rotate));
           }
           100% {
-            opacity: 0.4;
+            opacity: 0.2;
             transform: translate(0, 0) scale(1) rotate(0);
           }
         }
