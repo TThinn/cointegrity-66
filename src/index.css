@@ -294,16 +294,16 @@
     position: absolute;
     inset: 0;
     background: 
-      radial-gradient(circle at 20% 20%, rgba(225, 29, 143, 0.15) 0%, transparent 20%),
-      radial-gradient(circle at 80% 30%, rgba(225, 29, 143, 0.12) 0%, transparent 25%),
-      radial-gradient(circle at 40% 70%, rgba(225, 29, 143, 0.14) 0%, transparent 22%),
-      radial-gradient(circle at 75% 75%, rgba(225, 29, 143, 0.10) 0%, transparent 18%),
-      radial-gradient(circle at 10% 40%, rgba(225, 29, 143, 0.13) 0%, transparent 15%),
-      radial-gradient(circle at 65% 10%, rgba(225, 29, 143, 0.11) 0%, transparent 23%),
-      radial-gradient(circle at 90% 50%, rgba(225, 29, 143, 0.09) 0%, transparent 17%),
-      radial-gradient(circle at 30% 90%, rgba(225, 29, 143, 0.16) 0%, transparent 21%);
-    animation: floating-orbs 20s ease-in-out infinite alternate;
-    opacity: 0.6;
+      radial-gradient(circle at 20% 20%, rgba(225, 29, 143, 0.25) 0%, transparent 25%),
+      radial-gradient(circle at 80% 30%, rgba(225, 29, 143, 0.22) 0%, transparent 30%),
+      radial-gradient(circle at 40% 70%, rgba(225, 29, 143, 0.26) 0%, transparent 28%),
+      radial-gradient(circle at 75% 75%, rgba(225, 29, 143, 0.20) 0%, transparent 24%),
+      radial-gradient(circle at 10% 40%, rgba(225, 29, 143, 0.23) 0%, transparent 22%),
+      radial-gradient(circle at 65% 10%, rgba(225, 29, 143, 0.21) 0%, transparent 28%),
+      radial-gradient(circle at 90% 50%, rgba(225, 29, 143, 0.19) 0%, transparent 23%),
+      radial-gradient(circle at 30% 90%, rgba(225, 29, 143, 0.28) 0%, transparent 27%);
+    animation: floating-orbs 15s ease-in-out infinite alternate;
+    opacity: 0.8;
   }
 
   /* AI-inspired moving dot background */
@@ -350,11 +350,11 @@
 
   @keyframes floating-orbs {
     0% { transform: translate(0, 0) scale(1); }
-    20% { transform: translate(2%, -2%) scale(1.05); }
-    40% { transform: translate(-1%, 3%) scale(0.98); }
-    60% { transform: translate(-3%, -1%) scale(1.03); }
-    80% { transform: translate(1%, 2%) scale(0.95); }
-    100% { transform: translate(2%, -2%) scale(1.02); }
+    20% { transform: translate(3%, -3%) scale(1.1); }
+    40% { transform: translate(-2%, 4%) scale(0.97); }
+    60% { transform: translate(-4%, -2%) scale(1.05); }
+    80% { transform: translate(2%, 3%) scale(0.95); }
+    100% { transform: translate(3%, -3%) scale(1.03); }
   }
 
   /* Multiple light orbs with individual animations */
