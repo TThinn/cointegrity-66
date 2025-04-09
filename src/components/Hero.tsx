@@ -5,12 +5,12 @@ import Button from "./ui/CustomButtonComponent";
 const Hero = () => {
   // Generate random movement parameters and size for each particle
   const generateParticleStyle = () => {
-    const size = 120 + Math.random() * 180; // Random size between 120px and 200px
+    const size = 120 + Math.random() * 200; // Random size between 120px and 200px
     return {
       '--start-x': `${Math.random() * 100}%`,
       '--start-y': `${Math.random() * 100}%`,
-      '--move-x': `${(Math.random() - 0.5) * 40}vw`,
-      '--move-y': `${(Math.random() - 0.5) * 40}vh`,
+      '--move-x': `${(Math.random() - 0.5) * 80}vw`,
+      '--move-y': `${(Math.random() - 0.5) * 80}vh`,
       '--rotate': `${Math.random() * 360}deg`,
       width: `${size}px`,
       height: `${size}px`,
@@ -31,7 +31,7 @@ const Hero = () => {
               className="absolute rounded-full blur-[20px] animate-light-particle"
               style={{
                 ...generateParticleStyle(),
-                background: `rgba(225,29,143,0.5)`, // Increased opacity
+                background: `rgba(225,29,143,0.4)`, // Increased opacity
                 left: `var(--start-x)`,
                 top: `var(--start-y)`,
                 animationDelay: `${Math.random() * 5}s`,
