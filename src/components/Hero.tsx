@@ -5,15 +5,15 @@ import Button from "./ui/CustomButtonComponent";
 const Hero = () => {
   return (
     <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#080112]">
-      {/* New background layers */}
+      {/* Background layers */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* Base gradient layer */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A] via-[#312E81] to-[#0F172A]"></div>
+        {/* Original dark purple gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A] to-[#312E81]"></div>
         
-        {/* Animated light layer */}
+        {/* Validvent-style animation layer */}
         <div className="absolute inset-0 z-[1] pointer-events-none">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(192,38,211,0.15)_0%,_transparent_70%)] animate-light-pulse"></div>
-          <div className="absolute inset-0 bg-[linear-gradient(45deg,_transparent_45%,_rgba(99,102,241,0.1)_50%,_transparent_55%)] animate-light-sweep mix-blend-mode-soft-light"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(99,102,241,0.1)_0%,_transparent_70%)] animate-light-pulse"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(0deg,_transparent_45%,_rgba(192,38,211,0.08)_50%,_transparent_55%)] animate-light-sweep"></div>
         </div>
       </div>
 
@@ -144,8 +144,8 @@ const Hero = () => {
             transform: scale(1);
           }
           50% {
-            opacity: 0.6;
-            transform: scale(1.05);
+            opacity: 0.15;
+            transform: scale(1.2);
           }
           100% {
             opacity: 0.3;
@@ -153,28 +153,22 @@ const Hero = () => {
           }
         }
 
-        /* Light sweep animation for horizontal movement */
+        /* Light sweep animation for vertical movement */
         @keyframes light-sweep {
           0% {
-            transform: translateX(-100%);
+            transform: translateY(100%);
           }
           100% {
-            transform: translateX(100%);
+            transform: translateY(-100%);
           }
         }
 
         .animate-light-pulse {
-          animation: light-pulse 12s infinite alternate;
+          animation: light-pulse 15s infinite linear;
         }
 
         .animate-light-sweep {
           animation: light-sweep 25s infinite linear;
-        }
-
-        /* Preserve existing z-index hierarchy */
-        .hero-content {
-          z-index: 10;
-          position: relative;
         }
       `}</style>
     </section>
