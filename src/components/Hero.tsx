@@ -23,7 +23,7 @@ const Hero = () => {
           {[...Array(25)].map((_, i) => (
             <div 
               key={i}
-              className="absolute w-[320px] h-[320px] rounded-full blur-[20px] animate-light-particle"
+              className="absolute w-[320px] h-[320px] rounded-full blur-[10px] animate-light-particle"
               style={{
                 ...generateParticleStyle(),
                 background: `rgba(225,29,143,0.3)`,
