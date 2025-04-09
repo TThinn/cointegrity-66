@@ -1,70 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
-const Hero = () => {
-  useEffect(() => {
-    // Load particles.js script
-    const particleScript = document.createElement('script');
-    particleScript.src = 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js';
-    document.head.appendChild(particleScript);
-    particleScript.onload = () => {
-      // @ts-ignore
-      window.particlesJS('particles-js', {
-        particles: {
-          number: {
-            value: 30,
-            density: {
-              enable: true,
-              value_area: 800
-            }
-          },
-          color: {
-            value: '#E11D8F' // Changed to be more pink
-          },
-          opacity: {
-            value: 0.35,
-            // Increased from 0.3
-            random: true
-          },
-          size: {
-            value: 3,
-            random: true
-          },
-          line_linked: {
-            enable: true,
-            distance: 150,
-            color: '#E11D8F',
-            // Changed to more pink
-            opacity: 0.25,
-            // Increased from 0.2
-            width: 1
-          },
-          move: {
-            enable: true,
-            speed: 1,
-            direction: 'none',
-            random: true,
-            out_mode: 'out'
-          }
-        }
-      });
-    };
 
-    // Clean up
-    return () => {
-      if (particleScript.parentNode) {
-        particleScript.parentNode.removeChild(particleScript);
-      }
-    };
-  }, []);
-  return <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
-      {/* Particles.js container */}
-      <div id="particles-js"></div>
+const Hero = () => {
+  return (
+    <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden grid-pattern bg-[#080112]">
+      {/* Dynamic light effects */}
+      <div className="dynamic-light-effects absolute inset-0 z-0 pointer-events-none"></div>
       
-      {/* Animated background overlay */}
-      <div className="animated-bg absolute inset-0 z-0"></div>
+      {/* Light streaks */}
+      <div className="light-streaks absolute inset-0 z-0 pointer-events-none"></div>
       
-      {/* Background elements */}
+      {/* Background elements - keeping existing glow elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/2 w-[800px] h-[800px] bg-pink-500/25 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-pink-500/25 rounded-full blur-[100px]"></div>
@@ -136,6 +83,8 @@ const Hero = () => {
           </div>
         </div>
       </Container>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;
