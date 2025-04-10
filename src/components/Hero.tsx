@@ -45,7 +45,7 @@ const Hero = () => {
             animationDelay: "2s"
           }}>
 Digital Assets</span>{" "}
-            <span className="text-white/80" data-text="&">&</span>{" "}
+            <span data-text="&" className="text-white/60">&</span>{" "}
             <span className="text-white floating-element" data-text="Regulatory" style={{
             animationDelay: "2.3s"
           }}>Regulatory</span>{" "}
