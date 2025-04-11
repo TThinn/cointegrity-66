@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Container from "./ui/Container";
 const Accreditations = () => {
@@ -54,12 +55,12 @@ const Accreditations = () => {
   }];
   const testimonials = [{
     id: 1,
-    quote: "We're grateful for Omega Web3's support in securing grants and connecting us with top blockchain partners. Their expertise unlocked opportunities we couldn't access alone.",
+    quote: "We're grateful for Cointegrity's support in securing grants and connecting us with top blockchain partners. Their expertise unlocked opportunities we couldn't access alone.",
     name: "Josh Wilson",
     title: "CEO of Reload Games"
   }, {
     id: 2,
-    quote: "Working with Omega Web3 has been transformative for our business growth. Their guidance and network were invaluable for our Web3 strategy implementation.",
+    quote: "Working with Cointegrity has been transformative for our business growth. Their guidance and network were invaluable for our Web3 strategy implementation.",
     name: "Sarah Johnson",
     title: "Founder of TechBridge"
   }, {
@@ -69,12 +70,12 @@ const Accreditations = () => {
     title: "Founder and Chairman, AKJ group"
   }, {
     id: 4,
-    quote: "Omega Web3's tokenomics design transformed our project, creating a sustainable model that's attracted significant investment and user growth.",
+    quote: "Cointegrity's tokenomics design transformed our project, creating a sustainable model that's attracted significant investment and user growth.",
     name: "Michelle Park",
     title: "Co-founder of TokenWave"
   }, {
     id: 5,
-    quote: "The strategic positioning advice we received from Omega Web3 was instrumental in differentiating our product in a crowded market.",
+    quote: "The strategic positioning advice we received from Cointegrity was instrumental in differentiating our product in a crowded market.",
     name: "Alex Rivera",
     title: "Head of Strategy at Web3 Solutions"
   }, {
@@ -89,7 +90,7 @@ const Accreditations = () => {
     title: "CEO of MetaVerse Platforms"
   }, {
     id: 8,
-    quote: "Omega Web3's team demonstrated exceptional knowledge of both traditional finance and blockchain technology, bridging gaps we couldn't on our own.",
+    quote: "Cointegrity's team demonstrated exceptional knowledge of both traditional finance and blockchain technology, bridging gaps we couldn't on our own.",
     name: "Jennifer Liu",
     title: "VP of Operations at Crypto Exchange"
   }];
