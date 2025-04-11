@@ -92,10 +92,10 @@ const Partners = () => {
           
           {/* Current Partners Section - Modern 3D Card Grid */}
           <div className="mb-20">
-            <h3 className="text-2xl font-bold text-white mb-4">
+            <h3 className="text-2xl font-bold text-white mb-4 text-center">
               Current Partners
             </h3>
-            <p className="text-white/60 max-w-2xl mb-10">
+            <p className="text-white/60 max-w-2xl mb-10 mx-auto text-center">
               Strategic partnerships that enable us to provide cutting-edge blockchain and digital asset solutions.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -131,10 +131,10 @@ const Partners = () => {
           
           {/* Previous Partners Section - Interactive Horizontal Scroll */}
           <div>
-            <h3 className="text-2xl font-bold text-white mb-4">
+            <h3 className="text-2xl font-bold text-white mb-4 text-center">
               Trusted by Industry Leaders
             </h3>
-            <p className="text-white/60 max-w-2xl mb-10">
+            <p className="text-white/60 max-w-2xl mb-10 mx-auto text-center">
               We are proud to have collaborated with these pioneering organizations, driving innovation in blockchain and digital assets.
             </p>
             
