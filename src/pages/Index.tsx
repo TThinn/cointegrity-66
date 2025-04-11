@@ -4,7 +4,8 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Founders from "@/components/Founders";
-import Accreditations from "@/components/Accreditations";
+import Testimonials from "@/components/Testimonials";
+import Partners from "@/components/Partners";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
@@ -66,7 +67,8 @@ const Index = () => {
         <Hero />
         <Services />
         <Founders />
-        <Accreditations />
+        <Partners />
+        <Testimonials />
         <ContactForm />
       </main>
       <Footer />
