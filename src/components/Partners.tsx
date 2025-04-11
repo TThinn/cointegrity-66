@@ -81,9 +81,10 @@ const Partners = () => {
       <Container>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-fade-up">
-            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-white">
-              Our Partners
-            </h2>
+            <h2 className="text-sm text-pink-400 uppercase tracking-wider font-medium">Our Partners</h2>
+            <h3 className="text-3xl md:text-4xl font-bold mb-2 text-white">
+              Building the Future Together
+            </h3>
             <p className="text-white/60 max-w-2xl mx-auto">
               Collaborating with industry leaders to build the future of Web3 technologies and blockchain innovation.
             </p>
@@ -91,9 +92,12 @@ const Partners = () => {
           
           {/* Current Partners Section - Modern 3D Card Grid */}
           <div className="mb-20">
-            <h3 className="text-sm text-pink-400 uppercase tracking-wider font-medium text-center mb-10">
+            <h3 className="text-2xl font-bold text-white mb-4">
               Current Partners
             </h3>
+            <p className="text-white/60 max-w-2xl mb-10">
+              Strategic partnerships that enable us to provide cutting-edge blockchain and digital asset solutions.
+            </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {currentPartners.map(partner => (
                 <a
@@ -127,9 +131,12 @@ const Partners = () => {
           
           {/* Previous Partners Section - Interactive Horizontal Scroll */}
           <div>
-            <h3 className="text-sm text-pink-400 uppercase tracking-wider font-medium text-center mb-10">
+            <h3 className="text-2xl font-bold text-white mb-4">
               Trusted by Industry Leaders
             </h3>
+            <p className="text-white/60 max-w-2xl mb-10">
+              We are proud to have collaborated with these pioneering organizations, driving innovation in blockchain and digital assets.
+            </p>
             
             <div className="relative overflow-hidden">
               {/* Fade left edge */}

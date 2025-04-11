@@ -23,14 +23,14 @@ const Header = () => {
     };
   }, []);
 
-  return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3 bg-black/70 backdrop-blur-lg shadow-md' : 'py-6 bg-transparent'}`}>
+  return (
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3 bg-black/70 backdrop-blur-lg shadow-md' : 'py-6 bg-transparent'}`}>
       <Container>
         <div className="flex items-center justify-between">
           <a href="/" className="relative z-10 micro-interaction">
             <div className="flex items-center text-xl font-bold">
               <img src="/lovable-uploads/4a1df2a6-21ec-4f4d-bf1e-0be36a960849.png" alt="Cointegrity Logo" className="h-10 w-auto mr-3" />
-              <span className="text-white">
-            </span>
+              <span className="text-white"></span>
             </div>
           </a>
 
@@ -40,6 +40,9 @@ const Header = () => {
             </a>
             <a href="#founders" className="micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors">
               Team
+            </a>
+            <a href="#partners" className="micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors">
+              Partners
             </a>
             <a href="#testimonials" className="micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors">
               Testimonials
@@ -57,7 +60,8 @@ const Header = () => {
         </div>
       </Container>
 
-      {isOpen && <div className="fixed inset-0 bg-black/90 backdrop-blur-lg z-40 md:hidden pt-20">
+      {isOpen && (
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-lg z-40 md:hidden pt-20">
           <Container>
             <nav className="flex flex-col gap-4 items-center text-center">
               <a href="#services" className="micro-interaction w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10" onClick={() => setIsOpen(false)}>
@@ -65,6 +69,9 @@ const Header = () => {
               </a>
               <a href="#founders" className="micro-interaction w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10" onClick={() => setIsOpen(false)}>
                 Team
+              </a>
+              <a href="#partners" className="micro-interaction w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10" onClick={() => setIsOpen(false)}>
+                Partners
               </a>
               <a href="#testimonials" className="micro-interaction w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10" onClick={() => setIsOpen(false)}>
                 Testimonials
@@ -76,8 +83,10 @@ const Header = () => {
               </a>
             </nav>
           </Container>
-        </div>}
-    </header>;
+        </div>
+      )}
+    </header>
+  );
 };
 
 export default Header;
