@@ -1,4 +1,3 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
@@ -102,7 +101,7 @@ Digital Assets</span>{" "}
       </Container>
 
       {/* Global animations */}
-      <style>{`
+      <style jsx global>{`
         @keyframes light-particle {
           0% {
             opacity: 0.4;
