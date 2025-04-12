@@ -70,7 +70,7 @@ const Process = () => {
                 
                 <h4 className="text-xl font-bold text-white mb-3">{step.title}</h4>
                 <p className="text-white/70 mb-4 text-sm">{step.description}</p>
-                <p className="text-white/50 text-xs">{step.details}</p>
+                <p className="text-white/60 text-xs">{step.details}</p>
                 
                 {index < processSteps.length - 1 && (
                   <div className="hidden md:block absolute -right-4 top-1/2 transform -translate-y-1/2 text-pink-400/50 group-hover:text-pink-400 transition-colors">
@@ -91,7 +91,7 @@ const Process = () => {
               <a href="#contact" className="micro-interaction">
                 <Button variant="cta-primary" size="md" className="group relative overflow-hidden bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700">
                   <span className="relative z-10">
-                    Schedule a Consultation
+                    Schedule a Meetup
                   </span>
                 </Button>
               </a>
