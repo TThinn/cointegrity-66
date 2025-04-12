@@ -1,8 +1,12 @@
+
 import React, { useState } from "react";
 import Container from "./ui/Container";
+
 const Testimonials = () => {
   const [pausedRow1, setPausedRow1] = useState(false);
   const [pausedRow2, setPausedRow2] = useState(false);
+  const [selectedTestimonial, setSelectedTestimonial] = useState(null);
+  
   const testimonials = [{
     id: 1,
     quote: "We're grateful for Cointegrity's support in securing grants and connecting us with top blockchain partners. Their expertise unlocked opportunities we couldn't access alone.",
@@ -10,7 +14,7 @@ const Testimonials = () => {
     title: "CEO of Reload Games"
   }, {
     id: 2,
-    quote: "Working with Cointegrity has been transformative for our business growth. Their guidance and network were invaluable for our Web3 strategy implementation.",
+    quote: "Working with Cointegrity has been transformative for our business growth. Their guidance helped us navigate the future of finance with confidence.",
     name: "Sarah Johnson",
     title: "Founder of TechBridge"
   }, {
@@ -20,30 +24,36 @@ const Testimonials = () => {
     title: "Founder and Chairman, AKJ group"
   }, {
     id: 4,
-    quote: "Cointegrity's tokenomics design transformed our project, creating a sustainable model that's attracted significant investment and user growth.",
+    quote: "Cointegrity's tokenomics design transformed our project, creating a sustainable model aligned with the future of finance that's attracted significant investment and user growth.",
     name: "Michelle Park",
     title: "Co-founder of TokenWave"
   }, {
     id: 5,
-    quote: "The strategic positioning advice we received from Cointegrity was instrumental in differentiating our product in a crowded market.",
+    quote: "The strategic positioning advice we received from Cointegrity was instrumental in differentiating our product in the evolving future of finance landscape.",
     name: "Alex Rivera",
     title: "Head of Strategy at Web3 Solutions"
   }, {
     id: 6,
-    quote: "Their regulatory navigation expertise saved us countless hours and potential pitfalls as we expanded into European markets under MiCA.",
+    quote: "Their regulatory navigation expertise in MiCA compliance saved us countless hours and potential pitfalls as we expanded into European markets, cementing our position in the future of finance.",
     name: "Elena Kovacs",
     title: "Legal Director at DeFi Protocol"
   }, {
     id: 7,
-    quote: "The capital acceleration program connected us with perfect investors who understood our vision and provided more than just funding.",
+    quote: "The capital acceleration program connected us with perfect investors who understood our vision for the future of finance and provided more than just funding.",
     name: "Thomas Wright",
     title: "CEO of MetaVerse Platforms"
   }, {
     id: 8,
-    quote: "Cointegrity's team demonstrated exceptional knowledge of both traditional finance and blockchain technology, bridging gaps we couldn't on our own.",
+    quote: "Cointegrity's team demonstrated exceptional knowledge of both traditional finance and blockchain technology, bridging gaps in the future of finance that we couldn't on our own.",
     name: "Jennifer Liu",
     title: "VP of Operations at Crypto Exchange"
   }];
+
+  const handleTestimonialClick = (testimonial) => {
+    setSelectedTestimonial(testimonial);
+    setTimeout(() => setSelectedTestimonial(null), 3000);
+  };
+
   return <section id="testimonials" className="py-24 relative overflow-hidden bg-[#080112]">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/2 w-[800px] h-[800px] bg-pink-500/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
@@ -53,9 +63,9 @@ const Testimonials = () => {
       <Container>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-fade-up">
-            <h2 className="text-sm text-pink-400 uppercase tracking-wider font-medium">TESTIMONIALS</h2>
+            <h2 className="text-sm text-pink-400 uppercase tracking-wider font-medium">CLIENT TESTIMONIALS</h2>
             <h3 className="text-3xl md:text-4xl font-bold mb-2 text-white">Voices From Our Network</h3>
-            <p className="text-white/60 max-w-2xl mx-auto">Experiences from working with Cointegrity or our Co-Founders</p>
+            <p className="text-white/60 max-w-2xl mx-auto">Experiences from working with Cointegrity or our Co-Founders in shaping the future of finance</p>
           </div>
 
           <div className="mb-10">
@@ -65,7 +75,13 @@ const Testimonials = () => {
               <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#080112] to-transparent z-10"></div>
               
               <div className={`flex ${pausedRow1 ? "" : "animate-carousel-rtl"}`} onMouseEnter={() => setPausedRow1(true)} onMouseLeave={() => setPausedRow1(false)}>
-                {[...testimonials, ...testimonials].slice(0, 10).map((testimonial, index) => <div key={`row1-${testimonial.id}-${index}`} className="flex-none w-[500px] mx-4 glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg cursor-pointer transition-transform hover:-translate-y-1 duration-300" onClick={() => setPausedRow1(!pausedRow1)}>
+                {[...testimonials, ...testimonials].slice(0, 10).map((testimonial, index) => (
+                  <div 
+                    key={`row1-${testimonial.id}-${index}`} 
+                    className={`flex-none w-[500px] mx-4 glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 ${selectedTestimonial?.id === testimonial.id ? 'scale-105 border-pink-400' : ''}`} 
+                    onClick={() => handleTestimonialClick(testimonial)}
+                    aria-label={`Testimonial from ${testimonial.name}`}
+                  >
                     <div className="text-left">
                       <p className="text-white/80 text-sm mb-6">"{testimonial.quote}"</p>
                       <div>
@@ -73,7 +89,8 @@ const Testimonials = () => {
                         <p className="text-white/60 text-xs">{testimonial.title}</p>
                       </div>
                     </div>
-                  </div>)}
+                  </div>
+                ))}
               </div>
               
               {/* Fade right edge */}
@@ -86,7 +103,13 @@ const Testimonials = () => {
               <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#080112] to-transparent z-10"></div>
               
               <div className={`flex ${pausedRow2 ? "" : "animate-carousel-ltr"}`} onMouseEnter={() => setPausedRow2(true)} onMouseLeave={() => setPausedRow2(false)}>
-                {[...testimonials.slice(4), ...testimonials.slice(0, 4), ...testimonials.slice(4)].map((testimonial, index) => <div key={`row2-${testimonial.id}-${index}`} className="flex-none w-[500px] mx-4 glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg cursor-pointer transition-transform hover:-translate-y-1 duration-300" onClick={() => setPausedRow2(!pausedRow2)}>
+                {[...testimonials.slice(4), ...testimonials.slice(0, 4), ...testimonials.slice(4)].map((testimonial, index) => (
+                  <div 
+                    key={`row2-${testimonial.id}-${index}`} 
+                    className={`flex-none w-[500px] mx-4 glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 ${selectedTestimonial?.id === testimonial.id ? 'scale-105 border-pink-400' : ''}`}
+                    onClick={() => handleTestimonialClick(testimonial)}
+                    aria-label={`Testimonial from ${testimonial.name}`}
+                  >
                     <div className="text-left">
                       <p className="text-white/80 text-sm mb-6">"{testimonial.quote}"</p>
                       <div>
@@ -94,15 +117,25 @@ const Testimonials = () => {
                         <p className="text-white/60 text-xs">{testimonial.title}</p>
                       </div>
                     </div>
-                  </div>)}
+                  </div>
+                ))}
               </div>
               
               {/* Fade right edge */}
               <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#080112] to-transparent z-10"></div>
             </div>
           </div>
+          
+          {/* CTA for testimonials section */}
+          <div className="mt-10 text-center animate-fade-up">
+            <a href="#contact" className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-medium px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/20 animate-pulse-slow">
+              <span>Join the Future of Finance</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            </a>
+          </div>
         </div>
       </Container>
     </section>;
 };
+
 export default Testimonials;

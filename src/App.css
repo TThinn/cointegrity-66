@@ -91,3 +91,131 @@
 .button-secondary:hover {
   background: rgba(139, 92, 246, 0.1);
 }
+
+/* New microinteractions */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* Accessibility improvements for better contrast */
+.high-contrast-text {
+  color: #ffffff;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.micro-interaction {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.micro-interaction::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(217, 70, 239, 0.6), transparent);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.micro-interaction:hover::after {
+  transform: scaleX(1);
+}
+
+/* Animation for carousel */
+@keyframes carousel-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes carousel-ltr {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-carousel-rtl {
+  animation: carousel-rtl 60s linear infinite;
+}
+
+.animate-carousel-ltr {
+  animation: carousel-ltr 60s linear infinite;
+}
+
+/* Button glow effect */
+.button-glow {
+  position: relative;
+  z-index: 1;
+}
+
+.button-glow::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #d946ef, #9333ea);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.button-glow:hover::before {
+  opacity: 1;
+}
+
+/* Semantic focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid #d946ef;
+  outline-offset: 2px;
+}
+
+/* Ensure contrast meets WCAG AA standards */
+.text-enhanced-contrast {
+  color: #f3f4f6; /* Lighter gray that meets contrast requirements */
+}
+
+.bg-enhanced-contrast {
+  background-color: rgba(31, 41, 55, 0.9); /* Darker background with sufficient opacity */
+}
