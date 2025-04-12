@@ -35,7 +35,7 @@ const Hero = () => {
       </div>
 
       {/* Content container */}
-      <Container className="hero-content relative z-10 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
+      <Container className="hero-content relative z-10 text-lg font-normal flex flex-col min-h-[50vh] justify-between">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto mt-16">
           <h1 style={{
           animationDelay: "0.2s"
