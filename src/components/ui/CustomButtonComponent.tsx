@@ -31,7 +31,7 @@ const Button = ({
   const styles = cn(
     "relative inline-flex items-center justify-center rounded-full font-bold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
     {
-      "bg-gradient-to-r from-[#8B5CF6] to-[#6366F1] text-white px-8 py-3 shadow-[0px_4px_12px_rgba(99,102,241,0.2)] hover:translate-y-[-3px] hover:shadow-[0px_8px_20px_rgba(99,102,241,0.4)]": 
+      "bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3 shadow-lg hover:from-pink-600 hover:to-purple-700 hover:translate-y-[-3px] hover:shadow-xl": 
         variant === "primary" || variant === "cta-primary",
       
       "bg-transparent border-2 border-[#8B5CF6] text-[#8B5CF6] px-8 py-3 hover:bg-[#8B5CF6]/10 hover:translate-y-[-3px]": 

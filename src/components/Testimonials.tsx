@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import Container from "./ui/Container";
+import Button from "./ui/CustomButtonComponent";
 
 const Testimonials = () => {
   const [pausedRow1, setPausedRow1] = useState(false);
@@ -54,7 +55,7 @@ const Testimonials = () => {
     setTimeout(() => setSelectedTestimonial(null), 3000);
   };
 
-  return <section id="testimonials" className="py-24 relative overflow-hidden bg-[#080112]">
+  return <section id="testimonials" className="py-24 relative overflow-hidden bg-[#0a0218]">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/2 w-[800px] h-[800px] bg-pink-500/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[100px]"></div>
@@ -72,7 +73,7 @@ const Testimonials = () => {
             {/* Testimonials Carousel - First row (right to left) */}
             <div className="relative mb-10 overflow-hidden">
               {/* Fade left edge */}
-              <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#080112] to-transparent z-10"></div>
+              <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#0a0218] to-transparent z-10"></div>
               
               <div className={`flex ${pausedRow1 ? "" : "animate-carousel-rtl"}`} onMouseEnter={() => setPausedRow1(true)} onMouseLeave={() => setPausedRow1(false)}>
                 {[...testimonials, ...testimonials].slice(0, 10).map((testimonial, index) => (
@@ -94,13 +95,13 @@ const Testimonials = () => {
               </div>
               
               {/* Fade right edge */}
-              <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#080112] to-transparent z-10"></div>
+              <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#0a0218] to-transparent z-10"></div>
             </div>
             
             {/* Testimonials Carousel - Second row (left to right) */}
             <div className="relative overflow-hidden">
               {/* Fade left edge */}
-              <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#080112] to-transparent z-10"></div>
+              <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#0a0218] to-transparent z-10"></div>
               
               <div className={`flex ${pausedRow2 ? "" : "animate-carousel-ltr"}`} onMouseEnter={() => setPausedRow2(true)} onMouseLeave={() => setPausedRow2(false)}>
                 {[...testimonials.slice(4), ...testimonials.slice(0, 4), ...testimonials.slice(4)].map((testimonial, index) => (
@@ -122,15 +123,16 @@ const Testimonials = () => {
               </div>
               
               {/* Fade right edge */}
-              <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#080112] to-transparent z-10"></div>
+              <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#0a0218] to-transparent z-10"></div>
             </div>
           </div>
           
           {/* CTA for testimonials section */}
           <div className="mt-10 text-center animate-fade-up">
-            <a href="#contact" className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-medium px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/20 animate-pulse-slow">
-              <span>Join the Future of Finance</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            <a href="#contact">
+              <Button variant="cta-primary" size="md" className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700">
+                Join the Future of Finance
+              </Button>
             </a>
           </div>
         </div>

@@ -81,26 +81,18 @@ const Process = () => {
             ))}
           </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 p-8 glass bg-white/5 backdrop-blur-md border border-white/10 rounded-xl">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 p-8 glass bg-white/10 backdrop-blur-md border border-white/20 rounded-xl">
             <div className="text-center md:text-left">
               <h4 className="text-xl font-bold text-white mb-2">Ready to Shape the Future of Finance?</h4>
-              <p className="text-white/60">Our experts are ready to guide you through the next steps of your Web3 journey.</p>
+              <p className="text-white/80">Our experts are ready to guide you through the next steps of your Web3 journey.</p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div>
               <a href="#contact" className="micro-interaction">
-                <Button variant="cta-primary" size="md" className="group relative overflow-hidden">
-                  <span className="relative z-10 flex items-center">
+                <Button variant="cta-primary" size="md" className="group relative overflow-hidden bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700">
+                  <span className="relative z-10">
                     Schedule a Consultation
-                    <CheckCircle className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                </Button>
-              </a>
-              
-              <a href="#services" className="micro-interaction">
-                <Button variant="cta-secondary" size="md">
-                  Explore Our Services
                 </Button>
               </a>
             </div>
