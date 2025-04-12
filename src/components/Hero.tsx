@@ -1,4 +1,3 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
@@ -41,18 +40,11 @@ const Hero = () => {
           <h1 className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-8 font-normal leading-tight text-shadow" style={{
           animationDelay: "0.2s"
         }}>
-            <span data-text="Strategic Web3 Advisory for" className="text-white/60">Strategic Advisory for</span>{" "}
-            <span className="text-white floating-element" data-text="Tokenomics" style={{
-            animationDelay: "2s"
-          }}>
-Digital Assets</span>{" "}
-            <span data-text="&" className="text-white/60">&</span>{" "}
-            <span className="text-white floating-element" data-text="Regulatory" style={{
-            animationDelay: "2.3s"
-          }}>Regulatory</span>{" "}
-            <span className="text-white floating-element" data-text="Compliance" style={{
-            animationDelay: "2.6s"
-          }}>Compliance</span>
+            <span data-text="Strategic Web3 Advisory for" className="text-white font-normal">We're a Full-cycle advisory group, leveraging decades of experience to deliver strategic planning, tokenomics design, regulatory navigation, and implementation support to drive blockchain projects from initial concept to market leadership.</span>{" "}
+            {" "}
+            {" "}
+            {" "}
+            
           </h1>
 
           {/* Accent line */}
