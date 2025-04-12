@@ -1,4 +1,3 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import { ArrowRight, CheckCircle, MapPin, Zap, Shield, Award } from "lucide-react";
@@ -37,7 +36,10 @@ const Process = () => {
   ];
 
   return (
-    <section id="process" className="py-24 relative bg-gradient-to-b from-[#080112] to-[#0a0218]">
+    <section 
+      id="process" 
+      className="py-24 relative bg-gradient-to-b from-[#0a0218] to-[#080112]" 
+    >
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[150px]"></div>
         <div className="absolute bottom-1/3 left-1/4 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-[150px]"></div>
