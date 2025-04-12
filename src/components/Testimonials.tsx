@@ -1,13 +1,10 @@
-
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
-
 const Testimonials = () => {
   const [pausedRow1, setPausedRow1] = useState(false);
   const [pausedRow2, setPausedRow2] = useState(false);
   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
-  
   const testimonials = [{
     id: 1,
     quote: "We're grateful for Cointegrity's support in securing grants and connecting us with top blockchain partners. Their expertise unlocked opportunities we couldn't access alone.",
@@ -49,12 +46,10 @@ const Testimonials = () => {
     name: "Jennifer Liu",
     title: "VP of Operations at Crypto Exchange"
   }];
-
-  const handleTestimonialClick = (testimonial) => {
+  const handleTestimonialClick = testimonial => {
     setSelectedTestimonial(testimonial);
     setTimeout(() => setSelectedTestimonial(null), 3000);
   };
-
   return <section id="testimonials" className="py-24 relative overflow-hidden bg-[#0a0218]">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/2 w-[800px] h-[800px] bg-pink-500/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
@@ -65,7 +60,7 @@ const Testimonials = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-fade-up">
             <h2 className="text-sm text-pink-400 uppercase tracking-wider font-medium">CLIENT TESTIMONIALS</h2>
-            <h3 className="text-3xl md:text-4xl font-bold mb-2 text-white">Voices From Our Network</h3>
+            <h3 className="text-3xl md:text-4xl font-bold mb-2 text-white">You will be in good company</h3>
             <p className="text-white/60 max-w-2xl mx-auto">Experiences from working with Cointegrity or our Co-Founders in shaping the future of finance</p>
           </div>
 
@@ -76,13 +71,7 @@ const Testimonials = () => {
               <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#0a0218] to-transparent z-10"></div>
               
               <div className={`flex ${pausedRow1 ? "" : "animate-carousel-rtl"}`} onMouseEnter={() => setPausedRow1(true)} onMouseLeave={() => setPausedRow1(false)}>
-                {[...testimonials, ...testimonials].slice(0, 10).map((testimonial, index) => (
-                  <div 
-                    key={`row1-${testimonial.id}-${index}`} 
-                    className={`flex-none w-[500px] mx-4 glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 ${selectedTestimonial?.id === testimonial.id ? 'scale-105 border-pink-400' : ''}`} 
-                    onClick={() => handleTestimonialClick(testimonial)}
-                    aria-label={`Testimonial from ${testimonial.name}`}
-                  >
+                {[...testimonials, ...testimonials].slice(0, 10).map((testimonial, index) => <div key={`row1-${testimonial.id}-${index}`} className={`flex-none w-[500px] mx-4 glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 ${selectedTestimonial?.id === testimonial.id ? 'scale-105 border-pink-400' : ''}`} onClick={() => handleTestimonialClick(testimonial)} aria-label={`Testimonial from ${testimonial.name}`}>
                     <div className="text-left">
                       <p className="text-white/80 text-sm mb-6">"{testimonial.quote}"</p>
                       <div>
@@ -90,8 +79,7 @@ const Testimonials = () => {
                         <p className="text-white/60 text-xs">{testimonial.title}</p>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  </div>)}
               </div>
               
               {/* Fade right edge */}
@@ -104,13 +92,7 @@ const Testimonials = () => {
               <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#0a0218] to-transparent z-10"></div>
               
               <div className={`flex ${pausedRow2 ? "" : "animate-carousel-ltr"}`} onMouseEnter={() => setPausedRow2(true)} onMouseLeave={() => setPausedRow2(false)}>
-                {[...testimonials.slice(4), ...testimonials.slice(0, 4), ...testimonials.slice(4)].map((testimonial, index) => (
-                  <div 
-                    key={`row2-${testimonial.id}-${index}`} 
-                    className={`flex-none w-[500px] mx-4 glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 ${selectedTestimonial?.id === testimonial.id ? 'scale-105 border-pink-400' : ''}`}
-                    onClick={() => handleTestimonialClick(testimonial)}
-                    aria-label={`Testimonial from ${testimonial.name}`}
-                  >
+                {[...testimonials.slice(4), ...testimonials.slice(0, 4), ...testimonials.slice(4)].map((testimonial, index) => <div key={`row2-${testimonial.id}-${index}`} className={`flex-none w-[500px] mx-4 glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 ${selectedTestimonial?.id === testimonial.id ? 'scale-105 border-pink-400' : ''}`} onClick={() => handleTestimonialClick(testimonial)} aria-label={`Testimonial from ${testimonial.name}`}>
                     <div className="text-left">
                       <p className="text-white/80 text-sm mb-6">"{testimonial.quote}"</p>
                       <div>
@@ -118,8 +100,7 @@ const Testimonials = () => {
                         <p className="text-white/60 text-xs">{testimonial.title}</p>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  </div>)}
               </div>
               
               {/* Fade right edge */}
@@ -139,5 +120,4 @@ const Testimonials = () => {
       </Container>
     </section>;
 };
-
 export default Testimonials;
