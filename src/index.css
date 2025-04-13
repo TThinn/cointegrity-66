@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -377,6 +378,89 @@
     0% { transform: translate(0, 0); }
     50% { transform: translate(-1%, 1%); }
     100% { transform: translate(1%, -1%); }
+  }
+  
+  /* New 2025-style box styling with highlighted corners */
+  .neo-box {
+    @apply relative rounded-xl overflow-hidden transition-all duration-300;
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .neo-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(120deg, 
+      rgba(255, 255, 255, 0) 20%, 
+      rgba(217, 70, 239, 0.3) 30%, 
+      rgba(217, 70, 239, 0.3) 40%, 
+      rgba(255, 255, 255, 0) 50%, 
+      rgba(255, 255, 255, 0) 70%, 
+      rgba(147, 51, 234, 0.3) 80%, 
+      rgba(147, 51, 234, 0.3) 90%, 
+      rgba(255, 255, 255, 0) 100%);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .neo-box::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217, 70, 239, 0.4) 0%, rgba(147, 51, 234, 0.1) 40%, transparent 70%);
+    top: -15px;
+    right: -15px;
+    opacity: 0.7;
+    filter: blur(10px);
+  }
+
+  .neo-box-alt {
+    @apply relative rounded-xl overflow-hidden transition-all duration-300;
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .neo-box-alt::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(120deg, 
+      rgba(255, 255, 255, 0) 20%, 
+      rgba(217, 70, 239, 0.2) 30%, 
+      rgba(217, 70, 239, 0.2) 40%, 
+      rgba(255, 255, 255, 0) 50%, 
+      rgba(255, 255, 255, 0) 70%, 
+      rgba(147, 51, 234, 0.2) 80%, 
+      rgba(147, 51, 234, 0.2) 90%, 
+      rgba(255, 255, 255, 0) 100%);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .neo-box-alt::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217, 70, 239, 0.2) 0%, rgba(147, 51, 234, 0.05) 40%, transparent 70%);
+    top: -10px;
+    left: -10px;
+    opacity: 0.6;
+    filter: blur(10px);
   }
 }
 
