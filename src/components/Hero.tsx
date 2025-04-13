@@ -39,7 +39,7 @@ const Hero = () => {
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto mt-16">
           <h1 style={{
           animationDelay: "0.2s"
-        }} className="text-[25px] lg:text-[39px] tracking-tight text-balance animate-fade-up mb-8 font-normal leading-tight text-shadow">
+        }} className="text-[36px] lg:text-[56px] tracking-tight text-balance animate-fade-up mb-8 font-normal leading-tight text-shadow">
             <span data-text="Strategic Web3 Advisory for" className="text-white font-normal">Full-cycle Web3 Solutions: Bridging AI, Blockchain, and Compliance for Next-Gen Industries</span>{" "}
             {" "}
             {" "}
