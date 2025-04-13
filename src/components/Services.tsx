@@ -36,7 +36,7 @@ const Services = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm text-pink-600 uppercase tracking-wider font-medium">Our Services</h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Full-cycle Advisory for Web3 and Beyond</h3>
-          <p className="mt-4 text-lg text-gray-600">Bridging the gap between established traditional business and the emerging decentralized landscape. We focus on Customer-centric services that deliver Exceptional value.</p>
+          <p className="mt-4 text-lg text-gray-600">We're a holistic advisory group, leveraging decades of experience to deliver strategic planning, tokenomics design, regulatory navigation, and implementation support to drive blockchain projects from initial concept to market leadership. Our aim is to bridge the gap between established traditional business and the emerging decentralized landscape. We focus on Customer-centric services that deliver Exceptional value through our four defined pillars:</p>
         </div>
 
         {/* Opening description text box */}
