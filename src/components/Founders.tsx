@@ -1,7 +1,9 @@
+
 import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Github, X } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
+
 const founders = [{
   name: "Torstein W. Thinn",
   role: "Co-Founder & Chairman",
@@ -41,8 +43,10 @@ const founders = [{
     linkedin: "https://www.linkedin.com/in/feliksolko/"
   }
 }];
+
 const Founders = () => {
-  return <section id="founders" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative">
+  return (
+    <section id="founders" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm font-semibold text-pink-600 uppercase tracking-wider">Our Team</h2>
@@ -51,26 +55,65 @@ const Founders = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {founders.map((founder, index) => <div key={index} className="glass-card border-pink-100/50 hover:border-pink-200/70 bg-white/70 hover:translate-y-[-4px] text-center" style={{
-          animationDelay: `${0.1 + index * 0.1}s`
-        }}>
+          {founders.map((founder, index) => (
+            <div 
+              key={index} 
+              className="team-card p-6 backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 text-center" 
+              style={{
+                animationDelay: `${0.1 + index * 0.1}s`
+              }}
+            >
               <div className="relative mb-4 w-24 h-24 overflow-hidden rounded-full mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-10 rounded-full"></div>
-                {founder.name === "Torstein W. Thinn" ? <img src={founder.image} alt={founder.name} className="object-cover w-full h-full" style={{
-              objectPosition: "center -20%",
-              transform: "scale(1.7)"
-            }} /> : founder.name === "Magnus Jones" ? <img src={founder.image} alt={founder.name} className="object-cover w-full h-full" style={{
-              objectPosition: "center top",
-              transform: "scale(1.5)"
-            }} /> : founder.name === "Feliks Olko" ? <img src={founder.image} alt={founder.name} className="absolute w-full h-full object-cover" style={{
-              top: "30%",
-              transform: "scale(1.8) translateY(0)",
-              objectFit: "cover"
-            }} /> : founder.name === "Ruben Junger" ? <img src={founder.image} alt={founder.name} className="absolute w-full h-full object-cover" style={{
-              top: "40%",
-              transform: "scale(1.75)",
-              objectFit: "cover"
-            }} /> : <img src={founder.image} alt={founder.name} className="object-cover w-full h-full" />}
+                {founder.name === "Torstein W. Thinn" ? (
+                  <img 
+                    src={founder.image} 
+                    alt={founder.name} 
+                    className="object-cover w-full h-full" 
+                    style={{
+                      objectPosition: "center -20%",
+                      transform: "scale(1.7)"
+                    }} 
+                  />
+                ) : founder.name === "Magnus Jones" ? (
+                  <img 
+                    src={founder.image} 
+                    alt={founder.name} 
+                    className="object-cover w-full h-full" 
+                    style={{
+                      objectPosition: "center top",
+                      transform: "scale(1.5)"
+                    }} 
+                  />
+                ) : founder.name === "Feliks Olko" ? (
+                  <img 
+                    src={founder.image} 
+                    alt={founder.name} 
+                    className="absolute w-full h-full object-cover" 
+                    style={{
+                      top: "30%",
+                      transform: "scale(1.8) translateY(0)",
+                      objectFit: "cover"
+                    }} 
+                  />
+                ) : founder.name === "Ruben Junger" ? (
+                  <img 
+                    src={founder.image} 
+                    alt={founder.name} 
+                    className="absolute w-full h-full object-cover" 
+                    style={{
+                      top: "40%",
+                      transform: "scale(1.75)",
+                      objectFit: "cover"
+                    }} 
+                  />
+                ) : (
+                  <img 
+                    src={founder.image} 
+                    alt={founder.name} 
+                    className="object-cover w-full h-full" 
+                  />
+                )}
               </div>
               <h3 className="text-xl font-semibold text-gray-800">{founder.name}</h3>
               <div className="mt-1 text-sm font-medium text-pink-600">{founder.role}</div>
@@ -99,16 +142,29 @@ const Founders = () => {
               </p>
               
               <div className="mt-4 flex space-x-3 justify-center">
-                {founder.social.linkedin && <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors">
+                {founder.social.linkedin && (
+                  <a 
+                    href={founder.social.linkedin} 
+                    className="text-gray-500 hover:text-blue-700 transition-colors"
+                  >
                     <Linkedin size={18} />
-                  </a>}
-                {founder.social.twitter && <a href={founder.social.twitter} className="text-gray-500 hover:text-gray-900 transition-colors">
+                  </a>
+                )}
+                {founder.social.twitter && (
+                  <a 
+                    href={founder.social.twitter} 
+                    className="text-gray-500 hover:text-gray-900 transition-colors"
+                  >
                     <X size={18} />
-                  </a>}
+                  </a>
+                )}
               </div>
-            </div>)}
+            </div>
+          ))}
         </div>
       </Container>
-    </section>;
+    </section>
+  );
 };
+
 export default Founders;
