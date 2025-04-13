@@ -37,12 +37,12 @@ const Services = () => {
   };
   
   return (
-    <section id="services" className="py-20 bg-[#060115] relative">
+    <section id="services" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm text-pink-600 uppercase tracking-wider font-medium">Our Services</h2>
-          <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-white">Full-cycle Advisory for Web3 and Beyond</h3>
-          <p className="mt-4 text-lg text-gray-400">We're a holistic advisory group, leveraging decades of experience to deliver strategic planning, tokenomics design, regulatory navigation, and implementation support to drive blockchain projects from initial concept to market leadership. Our aim is to bridge the gap between established traditional business and the emerging decentralized landscape. We focus on Customer-centric services that deliver Exceptional value through our four defined pillars:</p>
+          <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Full-cycle Advisory for Web3 and Beyond</h3>
+          <p className="mt-4 text-lg text-gray-600">We're a holistic advisory group, leveraging decades of experience to deliver strategic planning, tokenomics design, regulatory navigation, and implementation support to drive blockchain projects from initial concept to market leadership. Our aim is to bridge the gap between established traditional business and the emerging decentralized landscape. We focus on Customer-centric services that deliver Exceptional value through our four defined pillars:</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -54,16 +54,16 @@ const Services = () => {
                 animationDelay: `${0.1 + index * 0.1}s`
               }}
             >
-              <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-pink-900/50 to-purple-900/50 mb-4">
+              <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-pink-50 to-purple-50 mb-4">
                 {service.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">{service.title}</h3>
-              <p className="text-gray-400">
+              <h3 className="text-xl font-semibold mb-2 text-gray-800">{service.title}</h3>
+              <p className="text-gray-600">
                 {service.description}
                 {service.fullDescription && (
                   <button 
                     onClick={() => handleOpenFullDescription(service)} 
-                    className="ml-1 text-pink-500 hover:text-pink-400 font-medium"
+                    className="ml-1 text-pink-600 hover:text-pink-700 font-medium"
                   >
                     ... more
                   </button>
@@ -74,10 +74,7 @@ const Services = () => {
         </div>
 
         {/* CTA box with neo-box styling */}
-        <div className="mt-16 neo-box-alt flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl text-white relative overflow-hidden">
-          <div className="absolute -bottom-20 -right-20 w-[300px] h-[300px] bg-pink-500/30 rounded-full blur-[120px] pointer-events-none"></div>
-          <div className="absolute -top-20 -left-20 w-[300px] h-[300px] bg-purple-600/30 rounded-full blur-[120px] pointer-events-none"></div>
-          
+        <div className="mt-16 neo-box-alt flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-gradient-to-br from-[#070119] to-[#5f2559] text-white relative overflow-hidden">
           <div className="flex-1 text-center md:text-left relative z-10">
             <h3 className="text-2xl font-bold mb-3 text-white">Bring Substance to Your Digital Asset Strategy</h3>
           </div>
