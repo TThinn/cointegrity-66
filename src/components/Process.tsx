@@ -32,7 +32,7 @@ const Process = () => {
   }];
 
   return (
-    <section id="process" className="py-24 relative overflow-hidden bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa]">
+    <section id="process" className="py-24 relative overflow-hidden bg-[#060115]">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-800/20 via-pink-600/10 to-purple-900/20"></div>
         <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-pink-500/10 rounded-full blur-[100px]"></div>
@@ -43,8 +43,8 @@ const Process = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-fade-up">
             <h2 className="text-sm text-pink-600 uppercase tracking-wider font-medium">OUR PROCESS</h2>
-            <h3 className="text-3xl md:text-4xl font-bold mb-2 text-gray-800">Your Journey to Web3 Success</h3>
-            <p className="text-gray-600 max-w-2xl mx-auto">A structured approach to transform your business focusing on delivering maximum value</p>
+            <h3 className="text-3xl md:text-4xl font-bold mb-2 text-white">Your Journey to Web3 Success</h3>
+            <p className="text-gray-400 max-w-2xl mx-auto">A structured approach to transform your business focusing on delivering maximum value</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
@@ -64,8 +64,8 @@ const Process = () => {
                   {step.icon}
                 </div>
                 
-                <h4 className="text-xl font-bold text-gray-800 mb-3">{step.title}</h4>
-                <p className="text-gray-600 mb-4 text-sm">{step.description}</p>
+                <h4 className="text-xl font-bold text-white mb-3">{step.title}</h4>
+                <p className="text-gray-400 mb-4 text-sm">{step.description}</p>
                 <p className="text-gray-500 text-xs">{step.details}</p>
                 
                 {index < processSteps.length - 1 && (
@@ -78,9 +78,12 @@ const Process = () => {
           </div>
 
           <div className="neo-box flex flex-col md:flex-row items-center justify-between gap-8 p-8 backdrop-blur-md relative">
+            <div className="absolute -bottom-20 -right-20 w-[300px] h-[300px] bg-pink-500/30 rounded-full blur-[120px] pointer-events-none"></div>
+            <div className="absolute -top-20 -left-20 w-[300px] h-[300px] bg-purple-600/30 rounded-full blur-[120px] pointer-events-none"></div>
+            
             <div className="text-center md:text-left relative z-10">
-              <h4 className="text-xl font-bold text-gray-800 mb-2">Ready to Shape the Future of Finance?</h4>
-              <p className="text-gray-600">Our experts are ready to guide you through the next steps of your Web3 journey.</p>
+              <h4 className="text-xl font-bold text-white mb-2">Ready to Shape the Future of Finance?</h4>
+              <p className="text-gray-400">Our experts are ready to guide you through the next steps of your Web3 journey.</p>
             </div>
             
             <div className="relative z-10">
