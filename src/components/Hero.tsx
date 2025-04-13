@@ -54,7 +54,7 @@ const Hero = () => {
 
           <h2 className="text-lg max-w-2xl text-balance animate-fade-up relative mb-16 text-white/80" style={{
           animationDelay: "0.4s"
-        }}>Our battle-tested expertise will amplify your impact by simplifying the complexities of digital asset development, enabling you to focus on creating lasting value.</h2>
+        }}>We simplify complexity and amplify impact, enabling you to focus on delivering maximum value to your stakeholders.</h2>
         </div>
 
         {/* CTA Button */}
