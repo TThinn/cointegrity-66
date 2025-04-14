@@ -50,7 +50,7 @@ const services = [
     icon: <Rocket size={24} className="text-violet-500" />,
     title: "CAPITAL ACCELERATION",
     items: [
-      "Investor Network Access (%)",
+      "Investor Network Access",
       "Market Making",
       "Strategic Funding Preparation",
       "Grants",
@@ -81,10 +81,10 @@ const Services = () => {
               className="service-card p-6 backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300"
               style={{ animationDelay: `${0.1 + index * 0.1}s` }}
             >
-              <div className={`w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-${service.color}-50 to-${service.color}-100 mb-4`}>
+              <div className={`w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-${service.color}-50 to-${service.color}-100 mb-2`}>
                 {service.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">{service.title}</h3>
+              <h3 className="text-xl font-semibold mb-2 text-gray-800">{service.title}</h3>
               <ul className="text-gray-600 leading-[1.15]">
                 {service.items.map((item, itemIndex) => (
                   <li key={itemIndex} className="flex items-start">
