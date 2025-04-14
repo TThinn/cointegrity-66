@@ -108,9 +108,7 @@ const Partners = () => {
             <h3 className="text-2xl font-bold text-white mb-4 text-center">
               Trusted by Industry Leaders
             </h3>
-            <p className="text-white/60 max-w-2xl mb-10 mx-auto text-center">
-              We are proud to have collaborated with these pioneering organizations, driving innovation in blockchain and digital assets.
-            </p>
+            <p className="text-white/60 max-w-2xl mb-10 mx-auto text-center">Our founders are proud to have collaborated with these pioneering organizations, driving innovation in blockchain and digital assets.</p>
             
             <div className="relative overflow-hidden">
               {/* Fade left edge */}
