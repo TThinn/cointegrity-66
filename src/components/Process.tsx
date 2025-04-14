@@ -67,7 +67,7 @@ const Process = () => {
 
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 p-8 contact-card backdrop-blur-md">
             <div className="text-center md:text-left">
-              <h4 className="text-xl font-bold text-white mb-2">Ready to Shape the Future of Finance?</h4>
+              <h4 className="text-xl font-bold text-white mb-2">Ready to get your project in motion?</h4>
               <p className="text-white/80">Our experts are ready to guide you through the next steps of your Web3 journey.</p>
             </div>
             
