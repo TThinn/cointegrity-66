@@ -70,7 +70,7 @@ const Services = () => {
           <h2 className="text-sm text-pink-600 uppercase tracking-wider font-medium">Our Services</h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Serving a Diversified Market</h3>
           <p className="mt-4 text-lg text-gray-600">
-            Our typical clients are spread across a diverse range of industries and sectors, including governmental agencies, global consulting firms, launch platforms, gaming companies, VASPs, and more.
+            Our typical clients are spread across a diverse range of industries and sectors, including governmental agencies, global consulting firms, launch platforms, gaming companies, VASPs, and more. In collaboration with our broad Parner network, we are able to offer the following services:
           </p>
         </div>
 
