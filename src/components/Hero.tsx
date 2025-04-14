@@ -64,7 +64,7 @@ const Hero = () => {
         <Button variant="cta-primary" className="floating-element w-full sm:w-auto" href="#contact" transitionDuration="5s" style={{
           animationDelay: "3s"
         }}>
-Talk to an expert
+Connect With Us
         </Button>
       </div>
 
