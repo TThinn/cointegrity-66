@@ -81,7 +81,7 @@ const Services = () => {
               className="service-card p-6 backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300"
               style={{ animationDelay: `${0.1 + index * 0.1}s` }}
             >
-              <div className={`w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-${service.color}-50 to-${service.color}-100 mb-1`}>
+              <div className={`w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-${service.color}-50 to-${service.color}-100 mb-0`}>
                 {service.icon}
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-800">{service.title}</h3>
