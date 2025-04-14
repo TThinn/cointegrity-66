@@ -1,13 +1,10 @@
-
 import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import { Menu, X } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
-
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -22,9 +19,7 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3 bg-black/70 backdrop-blur-lg shadow-md' : 'py-6 bg-transparent'}`}>
+  return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3 bg-black/70 backdrop-blur-lg shadow-md' : 'py-6 bg-transparent'}`}>
       <Container>
         <div className="flex items-center justify-between">
           <a href="/" className="relative z-10 micro-interaction">
@@ -48,9 +43,7 @@ const Header = () => {
               Testimonials
             </a>
             <a href="#contact" className="pl-4 micro-interaction">
-              <Button variant="primary" size="sm">
-                Contact Us
-              </Button>
+              <Button variant="primary" size="sm">Connect</Button>
             </a>
           </nav>
 
@@ -60,8 +53,7 @@ const Header = () => {
         </div>
       </Container>
 
-      {isOpen && (
-        <div className="fixed inset-0 bg-black/90 backdrop-blur-lg z-40 md:hidden pt-20">
+      {isOpen && <div className="fixed inset-0 bg-black/90 backdrop-blur-lg z-40 md:hidden pt-20">
           <Container>
             <nav className="flex flex-col gap-4 items-center text-center">
               <a href="#services" className="micro-interaction w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10" onClick={() => setIsOpen(false)}>
@@ -83,10 +75,7 @@ const Header = () => {
               </a>
             </nav>
           </Container>
-        </div>
-      )}
-    </header>
-  );
+        </div>}
+    </header>;
 };
-
 export default Header;
