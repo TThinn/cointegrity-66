@@ -54,7 +54,7 @@ const Hero = () => {
 
         <h2 className="text-lg max-w-2xl text-balance animate-fade-up relative mb-16 text-white/80" style={{
           animationDelay: "0.4s"
-        }}>We provide Full-cycle Web3 Consulting Solutions in the Intersection of Blockchain, Ai, Gaming, Tax &amp; Compliance.</h2>
+        }}>We provide Full-cycle Web3 Consulting Solutions at the Intersection of Blockchain, Ai, Gaming, Tax & Compliance.</h2>
       </div>
 
       {/* CTA Button */}
