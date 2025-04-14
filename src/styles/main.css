@@ -1,4 +1,9 @@
 
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Import all modular CSS files */
 @import './base/reset.css';
 @import './base/typography.css';
