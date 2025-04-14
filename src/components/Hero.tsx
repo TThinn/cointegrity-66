@@ -34,18 +34,16 @@ const Hero = () => {
       </div>
     </div>
 
-    {/* Content container */}
-    <Container className="hero-content relative z-8 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
-      <div className="flex flex-col items-center text-center max-w-4xl mx-auto mt-16">
-        <h1 style={{
-          animationDelay: "0.2s"
-        }} className="text-[40px] lg:text-[60px] tracking-tight text-balance animate-fade-up mb-8 font-bold leading-tight text-shadow">
-          <span data-text="Strategic Web3 Advisory for" className="text-white font-extrabold">Simplifying Web3 Complexity</span>{" "}
-          {" "}
-          {" "}
-          {" "}
+{/* Content container */}
+<Container className="hero-content relative z-8 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
+  <div className="flex flex-col items-center text-center max-w-4xl mx-auto mt-16">
+    <h1 
+      className="text-[40px] lg:text-[60px] tracking-tight text-balance animate-fade-up mb-8 font-bold leading-tight text-shadow"
+      style={{ animationDelay: "0.2s" }}
+    >
+      <span className="text-white font-extrabold">Simplifying Web3 Complexity</span>
+    </h1>
 
-        </h1>
 
         {/* Accent line */}
         <div className="w-[120px] h-[1px] mb-8 animate-fade-up bg-pink-500" style={{
