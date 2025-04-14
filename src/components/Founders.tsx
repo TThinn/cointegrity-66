@@ -58,7 +58,7 @@ const Founders = () => {
           {founders.map((founder, index) => (
             <div 
               key={index} 
-              className="team-card p-6 backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 text-center" 
+              className="team-card p-6 hover:translate-y-[-4px] transition-all duration-300 text-center" 
               style={{
                 animationDelay: `${0.1 + index * 0.1}s`
               }}

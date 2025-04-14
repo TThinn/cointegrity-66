@@ -47,10 +47,10 @@ const Process = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {processSteps.map((step, index) => <div key={step.id} className="group relative glass bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-xl transition-all duration-500 hover:bg-white/10 hover:scale-[1.02] hover:shadow-xl hover:shadow-pink-500/10" style={{
+            {processSteps.map((step, index) => <div key={step.id} className="group relative process-card p-8 rounded-xl transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-pink-500/10" style={{
             animationDelay: `${0.1 + index * 0.1}s`
           }}>
-                <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-br from-[#120825] to-[#1D0D35] flex items-center justify-center border border-pink-400/30 z-10">
+                <div className="process-number">
                   <span className="text-pink-400 font-bold">{step.id}</span>
                 </div>
                 
@@ -68,7 +68,7 @@ const Process = () => {
               </div>)}
           </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 p-8 glass bg-white/10 backdrop-blur-md border border-white/20 rounded-xl">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 p-8 contact-card">
             <div className="text-center md:text-left">
               <h4 className="text-xl font-bold text-white mb-2">Ready to Shape the Future of Finance?</h4>
               <p className="text-white/80">Our experts are ready to guide you through the next steps of your Web3 journey.</p>
