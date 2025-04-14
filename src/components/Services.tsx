@@ -70,7 +70,7 @@ const Services = () => {
           <h2 className="text-sm text-pink-600 uppercase tracking-wider font-medium">Our Services</h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Serving a Diversified Market</h3>
           <p className="mt-4 text-lg text-gray-600">
-            We're a holistic advisory group, leveraging decades of experience to deliver strategic planning, tokenomics design, regulatory navigation, and implementation support to drive blockchain projects from initial concept to market leadership. Our aim is to bridge the gap between established traditional business and the emerging decentralized landscape. We focus on Customer-centric services that deliver Exceptional value through our four defined pillars:
+            We're a holistic advisory group, leveraging decades of experience to deliver strategic planning, tokenomics design, regulatory navigation, and implementation support to drive blockchain projects from initial concept to market leadership. Our aim is to bridge the gap between established traditional business and the emerging decentralized landscape. We focus on customer-centric services that deliver exceptional value through our four defined pillars:
           </p>
         </div>
 
@@ -78,16 +78,16 @@ const Services = () => {
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="service-card p-6 backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300" 
+              className="service-card p-6 backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300"
               style={{ animationDelay: `${0.1 + index * 0.1}s` }}
             >
               <div className={`w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-${service.color}-50 to-${service.color}-100 mb-4`}>
                 {service.icon}
               </div>
               <h3 className="text-xl font-semibold mb-4 text-gray-800">{service.title}</h3>
-              <ul className="text-gray-600 space-y-2">
+              <ul className="text-gray-600 leading-[1.15]">
                 {service.items.map((item, itemIndex) => (
-                  <li key={itemIndex} className={`flex items-start`}>
+                  <li key={itemIndex} className="flex items-start">
                     <span className={`text-${service.color}-500 mr-2`}>•</span>
                     <span>{item}</span>
                   </li>
@@ -97,7 +97,7 @@ const Services = () => {
           ))}
         </div>
 
-        {/* CTA box with neo-box styling */}
+        {/* CTA box */}
         <div className="mt-16 neo-box-alt flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-gradient-to-br from-[#070119] to-[#5f2559] text-white relative overflow-hidden">
           <div className="flex-1 text-center md:text-left relative z-10">
             <h3 className="text-2xl font-bold mb-3 text-white">Bring Substance to Your Digital Asset Strategy</h3>
