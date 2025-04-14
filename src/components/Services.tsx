@@ -97,6 +97,13 @@ const Services = () => {
           ))}
         </div>
 
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Bridging Traditional Business and Decentralized Innovation</h3>
+          <p className="mt-4 text-lg text-gray-600">
+            We're a holistic advisory group, leveraging decades of experience to deliver strategic planning, tokenomics design, regulatory navigation, and implementation support to drive blockchain projects from initial concept to market leadership. Our aim is to bridge the gap between established traditional business and the emerging decentralized landscape. We focus on customer-centric services that deliver exceptional value.
+          </p>
+        </div>
+
         {/* CTA box */}
         <div className="mt-16 neo-box-alt flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-gradient-to-br from-[#070119] to-[#5f2559] text-white relative overflow-hidden">
           <div className="flex-1 text-center md:text-left relative z-10">
