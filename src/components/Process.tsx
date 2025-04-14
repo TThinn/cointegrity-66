@@ -47,7 +47,7 @@ const Process = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {processSteps.map((step, index) => <div key={step.id} className="group relative process-card p-8 rounded-xl transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-pink-500/10" style={{
+            {processSteps.map((step, index) => <div key={step.id} className="group relative process-card p-8 rounded-xl backdrop-blur-md transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-pink-500/10" style={{
             animationDelay: `${0.1 + index * 0.1}s`
           }}>
                 <div className="process-number">
@@ -68,7 +68,7 @@ const Process = () => {
               </div>)}
           </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 p-8 contact-card">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 p-8 contact-card backdrop-blur-md">
             <div className="text-center md:text-left">
               <h4 className="text-xl font-bold text-white mb-2">Ready to Shape the Future of Finance?</h4>
               <p className="text-white/80">Our experts are ready to guide you through the next steps of your Web3 journey.</p>

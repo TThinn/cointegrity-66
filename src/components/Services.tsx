@@ -49,7 +49,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="service-card p-6 hover:translate-y-[-4px] transition-all duration-300" 
+              className="service-card p-6 backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300" 
               style={{
                 animationDelay: `${0.1 + index * 0.1}s`
               }}
