@@ -1,10 +1,8 @@
-
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import { Target, Layers, Scale, Rocket, ArrowLeft } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
 import Button from "./ui/CustomButtonComponent";
-
 const services = [{
   icon: <Target size={24} className="text-pink-500" />,
   title: "Strategic Positioning",
@@ -26,18 +24,14 @@ const services = [{
   description: "Cointegrity's Capital Acceleration service transforms promising Web3 projects into well-funded ventures. We craft targeted community building strategies.",
   fullDescription: "Cointegrity's Capital Acceleration service transforms promising Web3 projects into well-funded ventures. We craft targeted community building strategies that create engaged ecosystems around your offering. Our team ensures your product achieves market fit before approaching investors, maximizing your funding potential. We identify and engage your ideal audience, creating momentum that attracts capital. Drawing on our extensive network of VCs, angel investors, family offices, and investment funds, we connect you with the right financial partners for your stage and vision. Our expert collaborators across global markets provide specialized insights for different investment landscapes. With Cointegrity's guidance, your project gains access to capital sources that align with your long-term objectives, accelerating your growth in the digital asset ecosystem."
 }];
-
 const Services = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
-  
   const handleOpenFullDescription = (service: typeof services[0]) => {
     setSelectedService(service);
     setOpenDialog(true);
   };
-  
-  return (
-    <section id="services" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative">
+  return <section id="services" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm text-pink-600 uppercase tracking-wider font-medium">Our Services</h2>
@@ -46,31 +40,20 @@ const Services = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => (
-            <div 
-              key={index} 
-              className="service-card p-6 backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300" 
-              style={{
-                animationDelay: `${0.1 + index * 0.1}s`
-              }}
-            >
+          {services.map((service, index) => <div key={index} className="service-card p-6 backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300" style={{
+          animationDelay: `${0.1 + index * 0.1}s`
+        }}>
               <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-pink-50 to-purple-50 mb-4">
                 {service.icon}
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-800">{service.title}</h3>
               <p className="text-gray-600">
                 {service.description}
-                {service.fullDescription && (
-                  <button 
-                    onClick={() => handleOpenFullDescription(service)} 
-                    className="ml-1 text-pink-600 hover:text-pink-700 font-medium"
-                  >
+                {service.fullDescription && <button onClick={() => handleOpenFullDescription(service)} className="ml-1 text-pink-600 hover:text-pink-700 font-medium">
                     ... more
-                  </button>
-                )}
+                  </button>}
               </p>
-            </div>
-          ))}
+            </div>)}
         </div>
 
         {/* CTA box with neo-box styling */}
@@ -79,7 +62,7 @@ const Services = () => {
             <h3 className="text-2xl font-bold mb-3 text-white">Bring Substance to Your Digital Asset Strategy</h3>
           </div>
           <a href="#contact" className="inline-flex items-center relative z-10">
-            <Button variant="cta-primary">Talk to an Expert</Button>
+            <Button variant="cta-primary">Contact us</Button>
           </a>
         </div>
       </Container>
@@ -100,8 +83,6 @@ const Services = () => {
           </div>
         </DialogContent>
       </Dialog>
-    </section>
-  );
+    </section>;
 };
-
 export default Services;
