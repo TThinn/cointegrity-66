@@ -1,9 +1,7 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import { MapPin, Zap, Shield, Award } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
-
 const Process = () => {
   const processSteps = [{
     id: 1,
@@ -30,7 +28,6 @@ const Process = () => {
     description: "With a solid foundation in place, we help you accelerate growth through capital raising, community building, and ongoing optimization.",
     details: "Your success in the future of finance is our priority, with continuous guidance to adapt to regulatory changes and market opportunities."
   }];
-  
   return <section id="process" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-800/20 via-pink-600/10 to-purple-900/20"></div>
@@ -60,7 +57,7 @@ const Process = () => {
                 
                 <h4 className="text-xl font-bold text-white mb-3">{step.title}</h4>
                 <p className="text-white/70 mb-4 text-sm">{step.description}</p>
-                <p className="text-white/60 text-xs">{step.details}</p>
+                
                 
                 {index < processSteps.length - 1 && <div className="hidden md:block absolute -right-4 top-1/2 transform -translate-y-1/2 text-pink-400/50 group-hover:text-pink-400 transition-colors">
                     
@@ -88,5 +85,4 @@ const Process = () => {
       </Container>
     </section>;
 };
-
 export default Process;
