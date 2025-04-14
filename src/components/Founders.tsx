@@ -1,4 +1,3 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Github, X } from "lucide-react";
@@ -53,7 +52,6 @@ const Founders = () => {
           <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">The Minds Behind Cointegrity</h3>
           <p className="mt-2 text-gray-600">Our battle-tested team will amplify your impact by simplifying the complexities of digital asset development, enabling you to focus on creating lasting value.</p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {founders.map((founder, index) => (
             <div 
@@ -146,6 +144,8 @@ const Founders = () => {
                   <a 
                     href={founder.social.linkedin} 
                     className="text-gray-500 hover:text-blue-700 transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <Linkedin size={18} />
                   </a>
@@ -154,6 +154,8 @@ const Founders = () => {
                   <a 
                     href={founder.social.twitter} 
                     className="text-gray-500 hover:text-gray-900 transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <X size={18} />
                   </a>
