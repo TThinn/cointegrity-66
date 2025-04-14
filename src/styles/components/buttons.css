@@ -1,0 +1,72 @@
+
+/* Button Styling - using BEM methodology */
+.button {
+  background: linear-gradient(135deg, #d946ef 0%, #9333ea 100%);
+  color: white;
+  font-weight: bold;
+  padding: 12px 28px;
+  border-radius: 999em; /* Pill shape */
+  font-size: 16px;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0px 4px 12px rgba(217, 70, 239, 0.25);
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 20px rgba(217, 70, 239, 0.4);
+  background: linear-gradient(135deg, #e45cfd 0%, #a34ef8 100%);
+}
+
+.button--secondary {
+  background: transparent;
+  border: 2px solid #d946ef;
+  color: #d946ef;
+  border-radius: 999em; /* Pill shape */
+}
+
+.button--secondary:hover {
+  background: rgba(217, 70, 239, 0.1);
+}
+
+.button--glow {
+  position: relative;
+  z-index: 1;
+}
+
+.button--glow::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #d946ef, #9333ea);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.button--glow:hover::before {
+  opacity: 1;
+}
+
+/* Consistent CTA styling */
+.cta-button {
+  background: linear-gradient(to right, #d946ef, #9333ea);
+  color: white;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 999em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(217, 70, 239, 0.3);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(217, 70, 239, 0.4);
+  background: linear-gradient(to right, #e45cfd, #a34ef8);
+}

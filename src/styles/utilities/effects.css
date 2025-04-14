@@ -1,0 +1,9 @@
+
+/* Gradient backgrounds */
+.purple-blue-gradient {
+  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
+}
+
+.bg-enhanced-contrast {
+  background-color: rgba(31, 41, 55, 0.9); /* Darker background with sufficient opacity */
+}

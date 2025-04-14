@@ -1,0 +1,120 @@
+
+/* Hero section animated background */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
+  animation: pulse 15s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Multiple light orbs with individual animations */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(225, 29, 143, 0.15) 0%, transparent 20%),
+    radial-gradient(circle at 80% 30%, rgba(225, 29, 143, 0.1) 0%, transparent 25%),
+    radial-gradient(circle at 40% 70%, rgba(225, 29, 143, 0.12) 0%, transparent 22%),
+    radial-gradient(circle at 75% 75%, rgba(225, 29, 143, 0.08) 0%, transparent 18%);
+  animation: float-orbs 20s ease-in-out infinite alternate;
+  opacity: 0.7;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Particles.js container */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.animated-bg {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(ellipse at center, rgba(99, 102, 241, 0.1) 0%, rgba(15, 23, 42, 0) 70%),
+    radial-gradient(ellipse at center, rgba(192, 38, 211, 0.05) 0%, rgba(15, 23, 42, 0) 60%),
+    radial-gradient(ellipse at center, rgba(234, 32, 136, 0.08) 0%, rgba(15, 23, 42, 0) 65%);
+  animation: backgroundShift 15s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+/* Dynamic light effect replacing particles.js */
+.dynamic-light-effects::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(192, 38, 211, 0.15) 0%,
+    rgba(15, 23, 42, 0) 70%
+  );
+  animation: light-pulse 12s infinite alternate;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Light orbs replacing the light streaks */
+.light-orbs {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.light-orbs::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(225, 29, 143, 0.25) 0%, transparent 25%),
+    radial-gradient(circle at 80% 30%, rgba(225, 29, 143, 0.22) 0%, transparent 30%),
+    radial-gradient(circle at 40% 70%, rgba(225, 29, 143, 0.26) 0%, transparent 28%),
+    radial-gradient(circle at 75% 75%, rgba(225, 29, 143, 0.20) 0%, transparent 24%),
+    radial-gradient(circle at 10% 40%, rgba(225, 29, 143, 0.23) 0%, transparent 22%),
+    radial-gradient(circle at 65% 10%, rgba(225, 29, 143, 0.21) 0%, transparent 28%),
+    radial-gradient(circle at 90% 50%, rgba(225, 29, 143, 0.19) 0%, transparent 23%),
+    radial-gradient(circle at 30% 90%, rgba(225, 29, 143, 0.28) 0%, transparent 27%);
+  animation: floating-orbs 15s ease-in-out infinite alternate;
+  opacity: 0.8;
+}
+
+/* AI-inspired moving dot background */
+.dynamic-light-effects {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(
+    circle at calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px),
+    rgba(225, 29, 143, 0.4) 0%,
+    rgba(225, 29, 143, 0) 35%
+  );
+  animation: move-lights 15s ease-in-out infinite alternate;
+  opacity: 0.6;
+}
