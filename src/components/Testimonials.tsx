@@ -111,9 +111,7 @@ const Testimonials = () => {
           {/* CTA for testimonials section */}
           <div className="mt-10 text-center animate-fade-up">
             <a href="#contact">
-              <Button variant="cta-primary" size="md" className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700">
-                Join the Future of Finance
-              </Button>
+              <Button variant="cta-primary" size="md" className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700">Join the Good Company</Button>
             </a>
           </div>
         </div>
