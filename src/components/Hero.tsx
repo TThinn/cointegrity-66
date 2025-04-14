@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
+
 const Hero = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Detect mobile devices on component mount
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkMobile();
+    
+    // Add resize listener
+    window.addEventListener('resize', checkMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
   // Generate random movement parameters and size for each particle
   const generateParticleStyle = () => {
-    const size = 120 + Math.random() * 300; // Random size between 120px and 200px
+    const size = 120 + Math.random() * 300; // Random size between 120px and 420px
     return {
       '--start-x': `${Math.random() * 100}%`,
       '--start-y': `${Math.random() * 100}%`,
@@ -15,23 +34,52 @@ const Hero = () => {
       height: `${size}px`
     };
   };
-  return <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
+  
+  return (
+    <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#060115] to-[#060115]"></div>
         
-        {/* Animated particles */}
-        <div className="absolute inset-0 z-[1] pointer-events-none">
-          {[...Array(25)].map((_, i) => <div key={i} className="absolute rounded-full blur-[30px] animate-light-particle" style={{
-          ...generateParticleStyle(),
-          background: `rgba(225,29,143,0.3)`,
-          // Increased opacity
-          left: `var(--start-x)`,
-          top: `var(--start-y)`,
-          animationDelay: `${Math.random() * 5}s`,
-          animationDuration: `${10 + Math.random() * 15}s`
-        }} />)}
-        </div>
+        {/* Conditional rendering based on device type */}
+        {isMobile ? (
+          // Static background for mobile
+          <div className="absolute inset-0 z-[1] pointer-events-none">
+            {/* Reduced number of static particles */}
+            {[...Array(5)].map((_, i) => (
+              <div 
+                key={i} 
+                className="absolute rounded-full blur-[30px]" 
+                style={{
+                  width: `${120 + Math.random() * 200}px`,
+                  height: `${120 + Math.random() * 200}px`,
+                  background: `rgba(225,29,143,0.3)`,
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  opacity: 0.4 + (Math.random() * 0.4)
+                }} 
+              />
+            ))}
+          </div>
+        ) : (
+          // Animated particles for desktop
+          <div className="absolute inset-0 z-[1] pointer-events-none">
+            {[...Array(25)].map((_, i) => (
+              <div 
+                key={i} 
+                className="absolute rounded-full blur-[30px] animate-light-particle" 
+                style={{
+                  ...generateParticleStyle(),
+                  background: `rgba(225,29,143,0.3)`,
+                  left: `var(--start-x)`,
+                  top: `var(--start-y)`,
+                  animationDelay: `${Math.random() * 5}s`,
+                  animationDuration: `${10 + Math.random() * 15}s`
+                }} 
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Content container */}
@@ -92,8 +140,7 @@ const Hero = () => {
       </Container>
 
       {/* Global animations */}
-      <style>
-        {`
+      <style jsx global>{`
         @keyframes light-particle {
           0% {
             opacity: 0.4;
@@ -124,8 +171,9 @@ const Hero = () => {
             opacity: 0.3 !important;
           }
         }
-      `}
-      </style>
-    </section>;
+      `}</style>
+    </section>
+  );
 };
+
 export default Hero;
