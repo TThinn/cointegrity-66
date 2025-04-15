@@ -9,7 +9,7 @@ const Hero = () => {
 
   // Pre-calculate all particle positions and properties
   const particleStyles = useRef(
-    Array.from({ length: 25 }, () => ({
+    Array.from({ length: 15 }, () => ({
       size: 120 + Math.random() * 300,
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -49,7 +49,7 @@ const Hero = () => {
           style={{ opacity: isVisible ? 1 : 0 }}
         >
           {particleStyles
-            .slice(0, isMobileRef.current ? 5 : 25)
+            .slice(0, isMobileRef.current ? 5 : 15)
             .map((style, i) => (
               <div
                 key={`particle-${i}`}
