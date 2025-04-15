@@ -51,11 +51,11 @@ const services = [
     title: "CAPITAL ACCELERATION",
     items: [
       "Investor Network Access",
+      "Investor Relations Support",
       "Market Making",
-      "Strategic Funding Preparation",
       "Grants",
       "Pitch Coaching",
-      "Colateral",
+      "Collateral",
       "Data Room"
     ],
     color: "violet"
