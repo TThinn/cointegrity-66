@@ -17,7 +17,7 @@ const Hero = () => {
       moveY: (Math.random() - 0.5) * 80,
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
-      duration: 10 + Math.random() * 15
+      duration: 10 + Math.random() * 40
     }))
   ).current;
 
