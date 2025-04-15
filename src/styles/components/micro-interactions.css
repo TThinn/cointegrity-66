@@ -34,3 +34,20 @@
 .border-gradient {
   border-image: linear-gradient(to right, #ea2088, #9b62cf) 1;
 }
+
+/* Add specific styles for clickable elements in team cards */
+.team-card .text-pink-600,
+.team-card .text-gray-500 {
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+}
+
+/* Ensure links are clickable */
+.team-card a,
+.team-card button {
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+}
+

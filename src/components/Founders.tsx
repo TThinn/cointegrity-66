@@ -1,7 +1,9 @@
+
 import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Github, X } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
+
 const founders = [{
   name: "Torstein W. Thinn",
   role: "Co-Founder & Chairman",
@@ -41,6 +43,7 @@ const founders = [{
     linkedin: "https://www.linkedin.com/in/feliksolko/"
   }
 }];
+
 const Founders = () => {
   return <section id="founders" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative">
       <Container>
@@ -74,11 +77,11 @@ const Founders = () => {
               <h3 className="text-xl font-semibold text-gray-800">{founder.name}</h3>
               <div className="mt-1 text-sm font-medium text-pink-600">{founder.role}</div>
               
-              <p className="mt-3 text-sm text-gray-600">
+              <p className="mt-3 text-sm text-gray-600 relative">
                 {founder.bio}
                 <Dialog>
                   <DialogTrigger asChild>
-                    <button className="text-pink-600 hover:text-pink-800 ml-1 inline-flex items-center text-sm font-medium">
+                    <button className="text-pink-600 hover:text-pink-800 ml-1 inline-flex items-center text-sm font-medium relative z-20">
                       more
                     </button>
                   </DialogTrigger>
@@ -97,7 +100,7 @@ const Founders = () => {
                 </Dialog>
               </p>
               
-              <div className="mt-4 flex space-x-3 justify-center">
+              <div className="mt-4 flex space-x-3 justify-center relative z-20">
                 {founder.social.linkedin && <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-700 transition-colors" target="_blank" rel="noopener noreferrer">
                     <Linkedin size={18} />
                   </a>}
@@ -110,4 +113,5 @@ const Founders = () => {
       </Container>
     </section>;
 };
+
 export default Founders;
