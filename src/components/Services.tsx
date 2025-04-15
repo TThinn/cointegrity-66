@@ -70,7 +70,7 @@ const Services = () => {
           <h2 className="text-sm text-pink-600 uppercase tracking-wider font-medium">Our Services</h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Serving a Diversified Market</h3>
           <p className="mt-4 text-lg text-gray-600">
-            Our typical clients are spread across a diverse range of industries and sectors, including governmental agencies, global consulting firms, launch platforms, gaming companies, VASPs, and more. In collaboration with our broad Parner network, we are able to offer the following services:
+            Our typical clients are spread across a diverse range of industries and sectors, including governmental agencies, global consulting firms, launch platforms, gaming companies, VASPs, and more.
           </p>
         </div>
 
@@ -95,13 +95,6 @@ const Services = () => {
               </ul>
             </div>
           ))}
-        </div>
-
-        <div className="mt-16 text-center max-w-3xl mx-auto mb-16">
-          <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Simplifying Complexity through Experience</h3>
-          <p className="mt-4 text-lg text-gray-600">
-            We're a holistic advisory group, leveraging decades of experience to deliver strategic planning, tokenomics design, regulatory navigation, and implementation support to drive blockchain projects from initial concept to market leadership. Our aim is to bridge the gap between established traditional business and the emerging decentralized landscape. We focus on customer-centric services that deliver exceptional value.
-          </p>
         </div>
 
         {/* CTA box */}
