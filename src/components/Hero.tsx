@@ -1,11 +1,9 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useLayoutEffect, useState } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
 
 const Hero = () => {
-  const particlesRef = useRef<HTMLDivElement>(null);
-  const isMobileRef = useRef(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(null); // null until determined
 
   // Pre-calculate all particle positions and properties
   const particleStyles = useRef(
@@ -21,35 +19,26 @@ const Hero = () => {
     }))
   ).current;
 
-  useEffect(() => {
-    const handleResize = () => {
-      isMobileRef.current = window.innerWidth < 768;
-    };
-
-    // Initial setup
-    handleResize();
-    setIsVisible(true); // Trigger opacity transition
-    window.addEventListener("resize", handleResize);
-    
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+  // Use useLayoutEffect to set isMobile before first paint
+  useLayoutEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  // Don't render particles until isMobile is determined
+  const particleCount = isMobile === null ? 0 : isMobile ? 5 : 15;
 
   return (
     <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#060115] to-[#060115]" />
-        
         {/* Particle Container */}
-        <div 
-          ref={particlesRef}
-          className="absolute inset-0 z-[1] pointer-events-none transition-opacity duration-500"
-          style={{ opacity: isVisible ? 1 : 0 }}
-        >
+        <div className="absolute inset-0 z-[1] pointer-events-none transition-opacity duration-500 opacity-100">
           {particleStyles
-            .slice(0, isMobileRef.current ? 5 : 15)
+            .slice(0, particleCount)
             .map((style, i) => (
               <div
                 key={`particle-${i}`}
