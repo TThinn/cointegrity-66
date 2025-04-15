@@ -53,7 +53,7 @@ const Hero = () => {
             .map((style, i) => (
               <div
                 key={`particle-${i}`}
-                className="absolute rounded-full blur-[30px] animate-light-particle"
+                className="absolute rounded-full blur-[25px] animate-light-particle"
                 style={{
                   width: `${style.size}px`,
                   height: `${style.size}px`,
