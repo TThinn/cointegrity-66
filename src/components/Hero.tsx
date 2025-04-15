@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
 
 const Hero = () => {
-  const [isReady, setIsReady] = useState(false);
-  const [particleCount, setParticleCount] = useState(25);
+  const particlesRef = useRef<HTMLDivElement>(null);
+  const isMobileRef = useRef(false);
+  const [isVisible, setIsVisible] = useState(false);
 
-  // Pre-generate all possible particle data
-  const particles = useMemo(() => 
-    Array.from({ length: 25 }, (_, i) => ({
-      id: i,
+  // Pre-calculate all particle positions and properties
+  const particleStyles = useRef(
+    Array.from({ length: 25 }, () => ({
       size: 120 + Math.random() * 300,
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -18,19 +18,23 @@ const Hero = () => {
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
       duration: 10 + Math.random() * 15
-    })), []);
+    }))
+  ).current;
 
   useEffect(() => {
     const handleResize = () => {
-      const isMobile = window.innerWidth < 768;
-      setParticleCount(isMobile ? 5 : 25);
-      if (!isReady) setIsReady(true);
+      isMobileRef.current = window.innerWidth < 768;
     };
 
-    handleResize(); // Initial check
+    // Initial setup
+    handleResize();
+    setIsVisible(true); // Trigger opacity transition
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [isReady]);
+    
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
@@ -38,26 +42,32 @@ const Hero = () => {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#060115] to-[#060115]" />
         
-        {/* Particle Container with fade-in */}
-        <div className={`absolute inset-0 z-[1] pointer-events-none transition-opacity duration-1000 ${isReady ? 'opacity-100' : 'opacity-0'}`}>
-          {particles.slice(0, particleCount).map((particle) => (
-            <div
-              key={particle.id}
-              className="absolute rounded-full blur-[30px] animate-light-particle"
-              style={{
-                width: `${particle.size}px`,
-                height: `${particle.size}px`,
-                background: 'rgba(225,29,143,0.3)',
-                left: `${particle.x}%`,
-                top: `${particle.y}%`,
-                animationDelay: `${particle.delay}s`,
-                animationDuration: `${particle.duration}s`,
-                '--move-x': `${particle.moveX}vw`,
-                '--move-y': `${particle.moveY}vh`,
-                '--rotate': `${particle.rotate}deg`
-              }}
-            />
-          ))}
+        {/* Particle Container */}
+        <div 
+          ref={particlesRef}
+          className="absolute inset-0 z-[1] pointer-events-none transition-opacity duration-500"
+          style={{ opacity: isVisible ? 1 : 0 }}
+        >
+          {particleStyles
+            .slice(0, isMobileRef.current ? 5 : 25)
+            .map((style, i) => (
+              <div
+                key={`particle-${i}`}
+                className="absolute rounded-full blur-[30px] animate-light-particle"
+                style={{
+                  width: `${style.size}px`,
+                  height: `${style.size}px`,
+                  background: 'rgba(225,29,143,0.3)',
+                  left: `${style.x}%`,
+                  top: `${style.y}%`,
+                  animationDelay: `${style.delay}s`,
+                  animationDuration: `${style.duration}s`,
+                  '--move-x': `${style.moveX}vw`,
+                  '--move-y': `${style.moveY}vh`,
+                  '--rotate': `${style.rotate}deg`
+                }}
+              />
+            ))}
         </div>
       </div>
 
@@ -104,7 +114,7 @@ const Hero = () => {
             { number: "20+", label: "Enterprise Clients" },
             { number: "40+", label: "Projects Delivered" }
           ].map((stat, i) => (
-            <div key={i}>
+            <div key={`stat-${i}`}>
               <h3 className="text-3xl md:text-4xl font-bold text-white">{stat.number}</h3>
               <p className="text-white/60 text-sm mt-1">{stat.label}</p>
             </div>
@@ -112,7 +122,7 @@ const Hero = () => {
         </div>
       </Container>
 
-      {/* Animations */}
+      {/* Global animations */}
       <style jsx global>{`
         @keyframes light-particle {
           0%, 100% { 
