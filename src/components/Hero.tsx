@@ -130,7 +130,7 @@ const Hero = () => {
             transform: translate(0, 0) scale(1) rotate(0);
           }
           50% { 
-            opacity: 0.8;
+            opacity: 0.9;
             transform: 
               translate(var(--move-x), var(--move-y)) 
               scale(1.5) 
