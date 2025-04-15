@@ -7,7 +7,7 @@ const Hero = () => {
 
   // Pre-calculate all particle positions and properties
   const particleStyles = useRef(
-    Array.from({ length: 15 }, () => ({
+    Array.from({ length: 18 }, () => ({
       size: 120 + Math.random() * 300,
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -28,7 +28,7 @@ const Hero = () => {
   }, []);
 
   // Don't render particles until isMobile is determined
-  const particleCount = isMobile === null ? 0 : isMobile ? 5 : 15;
+  const particleCount = isMobile === null ? 0 : isMobile ? 5 : 18;
 
   return (
     <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
