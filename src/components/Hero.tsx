@@ -1,13 +1,16 @@
-import React, { useRef, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
 
-const Hero = () => {
-  const [isMobile, setIsMobile] = useState(null); // null until determined
+const HERO_PARTICLE_COUNT_DESKTOP = 18;
+const HERO_PARTICLE_COUNT_MOBILE = 5;
 
-  // Pre-calculate all particle positions and properties
-  const particleStyles = useRef(
-    Array.from({ length: 18 }, () => ({
+const Hero = () => {
+  const [particleCount, setParticleCount] = useState(null);
+
+  // Pre-calculate all particle positions and properties ONCE
+  const particles = useRef(
+    Array.from({ length: HERO_PARTICLE_COUNT_DESKTOP }, () => ({
       size: 120 + Math.random() * 300,
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -19,16 +22,21 @@ const Hero = () => {
     }))
   ).current;
 
-  // Use useLayoutEffect to set isMobile before first paint
+  // Synchronous device detection BEFORE first paint
   useLayoutEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    const isMobile = window.innerWidth < 768;
+    setParticleCount(isMobile ? HERO_PARTICLE_COUNT_MOBILE : HERO_PARTICLE_COUNT_DESKTOP);
+
+    const handleResize = () => {
+      const isMobile = window.innerWidth < 768;
+      setParticleCount(isMobile ? HERO_PARTICLE_COUNT_MOBILE : HERO_PARTICLE_COUNT_DESKTOP);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Don't render particles until isMobile is determined
-  const particleCount = isMobile === null ? 0 : isMobile ? 5 : 18;
+  // Don't render particles until device type is known
+  if (particleCount === null) return null;
 
   return (
     <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
@@ -36,27 +44,25 @@ const Hero = () => {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#060115] to-[#060115]" />
         {/* Particle Container */}
-        <div className="absolute inset-0 z-[1] pointer-events-none transition-opacity duration-500 opacity-100">
-          {particleStyles
-            .slice(0, particleCount)
-            .map((style, i) => (
-              <div
-                key={`particle-${i}`}
-                className="absolute rounded-full blur-[25px] animate-light-particle"
-                style={{
-                  width: `${style.size}px`,
-                  height: `${style.size}px`,
-                  background: 'rgba(225,29,143,0.3)',
-                  left: `${style.x}%`,
-                  top: `${style.y}%`,
-                  animationDelay: `${style.delay}s`,
-                  animationDuration: `${style.duration}s`,
-                  '--move-x': `${style.moveX}vw`,
-                  '--move-y': `${style.moveY}vh`,
-                  '--rotate': `${style.rotate}deg`
-                }}
-              />
-            ))}
+        <div className="absolute inset-0 z-[1] pointer-events-none">
+          {particles.slice(0, particleCount).map((p, i) => (
+            <div
+              key={`particle-${i}`}
+              className="absolute rounded-full blur-[25px] animate-light-particle"
+              style={{
+                width: `${p.size}px`,
+                height: `${p.size}px`,
+                background: 'rgba(225,29,143,0.3)',
+                left: `${p.x}%`,
+                top: `${p.y}%`,
+                animationDelay: `${p.delay}s`,
+                animationDuration: `${p.duration}s`,
+                '--move-x': `${p.moveX}vw`,
+                '--move-y': `${p.moveY}vh`,
+                '--rotate': `${p.rotate}deg`
+              }}
+            />
+          ))}
         </div>
       </div>
 
