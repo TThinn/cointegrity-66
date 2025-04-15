@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
 
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // Detect mobile device on mount and on resize
   useEffect(() => {
@@ -13,43 +14,55 @@ const Hero = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Generate random movement parameters and size for each particle
-  const generateParticleStyle = () => {
-    const size = 120 + Math.random() * 300;
-    return {
-      '--start-x': `${Math.random() * 100}%`,
-      '--start-y': `${Math.random() * 100}%`,
-      '--move-x': `${(Math.random() - 0.5) * 80}vw`,
-      '--move-y': `${(Math.random() - 0.5) * 80}vh`,
-      '--rotate': `${Math.random() * 360}deg`,
-      width: `${size}px`,
-      height: `${size}px`
-    };
-  };
+  // Set loaded state after component mounts
+  useEffect(() => {
+    // Short delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Pre-generate particle styles to avoid regeneration on renders
+  const particleCount = useMemo(() => isMobile ? 5 : 25, [isMobile]);
+  
+  const particleStyles = useMemo(() => {
+    return Array.from({ length: 25 }, () => {
+      const size = 120 + Math.random() * 300;
+      return {
+        '--start-x': `${Math.random() * 100}%`,
+        '--start-y': `${Math.random() * 100}%`,
+        '--move-x': `${(Math.random() - 0.5) * 80}vw`,
+        '--move-y': `${(Math.random() - 0.5) * 80}vh`,
+        '--rotate': `${Math.random() * 360}deg`,
+        width: `${size}px`,
+        height: `${size}px`,
+        background: `rgba(225,29,143,0.3)`,
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        ...(isMobile
+          ? { opacity: 0.4 + Math.random() * 0.4 }
+          : {
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${10 + Math.random() * 15}s`
+            })
+      };
+    });
+  }, [isMobile]);
 
   return (
     <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#060115] to-[#060115]"></div>
-        {/* Animated or static particles based on device */}
-        <div className="absolute inset-0 z-[1] pointer-events-none">
-          {[...Array(isMobile ? 5 : 25)].map((_, i) => (
+        {/* Particles with opacity transition */}
+        <div className={`absolute inset-0 z-[1] pointer-events-none transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+          {particleStyles.slice(0, particleCount).map((style, i) => (
             <div
               key={i}
               className={`absolute rounded-full blur-[30px] ${isMobile ? "" : "animate-light-particle"}`}
-              style={{
-                ...generateParticleStyle(),
-                background: `rgba(225,29,143,0.3)`,
-                left: `var(--start-x)`,
-                top: `var(--start-y)`,
-                ...(isMobile
-                  ? { opacity: 0.4 + Math.random() * 0.4 }
-                  : {
-                      animationDelay: `${Math.random() * 5}s`,
-                      animationDuration: `${10 + Math.random() * 15}s`
-                    })
-              }}
+              style={style}
             />
           ))}
         </div>
