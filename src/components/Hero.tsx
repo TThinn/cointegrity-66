@@ -86,7 +86,7 @@ const Hero = () => {
 
         {/* CTA Button */}
         <div
-          className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up mb-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up mb-8"
           style={{ animationDelay: "0.5s" }}
         >
           <Button
