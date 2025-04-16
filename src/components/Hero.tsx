@@ -12,8 +12,8 @@ const Hero = () => {
   const particles = useRef(
     Array.from({ length: HERO_PARTICLE_COUNT_DESKTOP }, () => ({
       size: Math.random() * 700,
-      x: Math.random() * 30,
-      y: Math.random() * 30,
+      x: 5 + Math.random() * 20,
+      y: 5 + Math.random() * 20,
       moveX: (Math.random()) * 80,
       moveY: (Math.random()) * 80,
       rotate: Math.random() * 360,
