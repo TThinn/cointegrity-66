@@ -11,9 +11,9 @@ const Hero = () => {
   // Pre-calculate all particle positions and properties ONCE
   const particles = useRef(
     Array.from({ length: HERO_PARTICLE_COUNT_DESKTOP }, () => ({
-      size: Math.random() * 700,
-      x: 3 + Math.random() * 33,
-      y: 3 + Math.random() * 30,
+      size: Math.random() * 500,
+      x: 1 + Math.random() * 30,
+      y: 1 + Math.random() * 30,
       moveX: (Math.random()) * 80,
       moveY: (Math.random()) * 80,
       rotate: Math.random() * 360,
