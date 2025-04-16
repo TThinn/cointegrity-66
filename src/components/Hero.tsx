@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
 
-const HERO_PARTICLE_COUNT_DESKTOP = 20;
+const HERO_PARTICLE_COUNT_DESKTOP = 15;
 const HERO_PARTICLE_COUNT_MOBILE = 5;
 
 const Hero = () => {
@@ -12,8 +12,8 @@ const Hero = () => {
   const particles = useRef(
     Array.from({ length: HERO_PARTICLE_COUNT_DESKTOP }, () => ({
       size: Math.random() * 700,
-      x: 5 + Math.random() * 20,
-      y: 5 + Math.random() * 20,
+      x: 3 + Math.random() * 35,
+      y: 3 + Math.random() * 35,
       moveX: (Math.random()) * 80,
       moveY: (Math.random()) * 80,
       rotate: Math.random() * 360,
@@ -52,7 +52,7 @@ const Hero = () => {
               style={{
                 width: `${p.size}px`,
                 height: `${p.size}px`,
-                background: 'rgba(225,29,143,0.4)',
+                background: 'rgba(225,29,143,0.35)',
                 left: `${p.x}%`,
                 top: `${p.y}%`,
                 animationDelay: `${p.delay}s`,
@@ -125,7 +125,7 @@ const Hero = () => {
             transform: translate(0, 0) scale(1) rotate(0);
           }
           50% { 
-            opacity: 0.9;
+            opacity: 0.8;
             transform: 
               translate(var(--move-x), var(--move-y)) 
               scale(1.5) 
