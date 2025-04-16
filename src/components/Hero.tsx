@@ -52,7 +52,7 @@ const Hero = () => {
               style={{
                 width: `${p.size}px`,
                 height: `${p.size}px`,
-                background: 'rgba(225,29,143,0.6)',
+                background: 'rgba(225,29,143,0.4)',
                 left: `${p.x}%`,
                 top: `${p.y}%`,
                 animationDelay: `${p.delay}s`,
@@ -86,7 +86,7 @@ const Hero = () => {
 
         {/* CTA Button */}
         <div
-          className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up mb-10"
+          className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up mb-6"
           style={{ animationDelay: "0.5s" }}
         >
           <Button
@@ -100,7 +100,7 @@ const Hero = () => {
 
         {/* Stats grid */}
         <div
-          className="mt-4 border-t border-white/10 pt-8 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-up text-center"
+          className="mt-2 border-t border-white/10 pt-8 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-up text-center"
           style={{ animationDelay: "0.6s" }}
         >
           {[
