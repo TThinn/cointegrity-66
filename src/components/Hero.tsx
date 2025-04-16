@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
 
-const HERO_PARTICLE_COUNT_DESKTOP = 15;
+const HERO_PARTICLE_COUNT_DESKTOP = 18;
 const HERO_PARTICLE_COUNT_MOBILE = 5;
 
 const Hero = () => {
@@ -52,7 +52,7 @@ const Hero = () => {
               style={{
                 width: `${p.size}px`,
                 height: `${p.size}px`,
-                background: 'rgba(225,29,143,0.5)',
+                background: 'rgba(225,29,143,0.6)',
                 left: `${p.x}%`,
                 top: `${p.y}%`,
                 animationDelay: `${p.delay}s`,
