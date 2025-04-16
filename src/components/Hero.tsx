@@ -12,8 +12,8 @@ const Hero = () => {
   const particles = useRef(
     Array.from({ length: HERO_PARTICLE_COUNT_DESKTOP }, () => ({
       size: Math.random() * 700,
-      x: 5 + Math.random() * 40,
-      y: 5 + Math.random() * 40,
+      x: Math.random() * 60,
+      y: Math.random() * 60,
       moveX: (Math.random()) * 80,
       moveY: (Math.random()) * 80,
       rotate: Math.random() * 360,
@@ -100,7 +100,7 @@ const Hero = () => {
 
         {/* Stats grid */}
         <div
-          className="mt-4 border-t border-white/10 pt-2 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-up text-center"
+          className="mt-4 border-t border-white/10 pt-4 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-up text-center"
           style={{ animationDelay: "0.6s" }}
         >
           {[
