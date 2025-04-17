@@ -1,3 +1,4 @@
+
 import React, { useLayoutEffect, useRef, useState } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
@@ -57,10 +58,11 @@ const Hero = () => {
                 top: `${p.y}%`,
                 animationDelay: `${p.delay}s`,
                 animationDuration: `${p.duration}s`,
-                '--move-x': `${p.moveX}vw`,
-                '--move-y': `${p.moveY}vh`,
-                '--rotate': `${p.rotate}deg`
-              }}
+                // Fix: Use CSS variables with proper TypeScript handling
+                ['--move-x' as string]: `${p.moveX}vw`,
+                ['--move-y' as string]: `${p.moveY}vh`,
+                ['--rotate' as string]: `${p.rotate}deg`
+              } as React.CSSProperties}
             />
           ))}
         </div>
@@ -117,32 +119,34 @@ const Hero = () => {
         </div>
       </Container>
 
-      {/* Global animations */}
-      <style jsx global>{`
-        @keyframes light-particle {
-          0%, 100% { 
-            opacity: 0.4;
-            transform: translate(0, 0) scale(1) rotate(0);
+      {/* Global animations - Fix: Correct style element props */}
+      <style>
+        {`
+          @keyframes light-particle {
+            0%, 100% { 
+              opacity: 0.4;
+              transform: translate(0, 0) scale(1) rotate(0);
+            }
+            50% { 
+              opacity: 0.8;
+              transform: 
+                translate(var(--move-x), var(--move-y)) 
+                scale(1.5) 
+                rotate(var(--rotate));
+            }
           }
-          50% { 
-            opacity: 0.8;
-            transform: 
-              translate(var(--move-x), var(--move-y)) 
-              scale(1.5) 
-              rotate(var(--rotate));
-          }
-        }
-        .animate-light-particle {
-          animation: light-particle ease-in-out infinite;
-          mix-blend-mode: screen;
-        }
-        @media (prefers-reduced-motion: reduce) {
           .animate-light-particle {
-            animation: none;
-            opacity: 0.3 !important;
+            animation: light-particle ease-in-out infinite;
+            mix-blend-mode: screen;
           }
-        }
-      `}</style>
+          @media (prefers-reduced-motion: reduce) {
+            .animate-light-particle {
+              animation: none;
+              opacity: 0.3 !important;
+            }
+          }
+        `}
+      </style>
     </section>
   );
 };
