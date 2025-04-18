@@ -33,28 +33,40 @@ const Hero = () => {
   }, []);
 
   // Don't render particles until device type is known
-  if (particleCount === null) return null;
-  return <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
-      {/* Background elements */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#060115] to-[#060115]" />
-        {/* Particle Container */}
-        <div className="absolute inset-0 z-[1] pointer-events-none">
-          {particles.slice(0, particleCount).map((p, i) => <div key={`particle-${i}`} className="absolute rounded-full blur-[25px] animate-light-particle" style={{
-          width: `${p.size}px`,
-          height: `${p.size}px`,
-          background: 'rgba(225,29,143,0.6)',
-          left: `${p.x}%`,
-          top: `${p.y}%`,
-          animationDelay: `${p.delay}s`,
-          animationDuration: `${p.duration}s`,
-          ['--move-x' as string]: `${p.moveX}vw`,
-          ['--move-y' as string]: `${p.moveY}vh`,
-          ['--rotate' as string]: `${p.rotate}deg`
-        } as React.CSSProperties} />)}
-        </div>
+if (particleCount === null) return null;
+return (
+  <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
+    {/* Background elements */}
+    <div className="absolute inset-0 z-0 overflow-hidden">
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(to bottom right, #000624 0%, #003763 100%)"
+        }}
+      />
+      {/* Particle Container */}
+      <div className="absolute inset-0 z-[1] pointer-events-none">
+        {particles.slice(0, particleCount).map((p, i) => (
+          <div
+            key={`particle-${i}`}
+            className="absolute rounded-full blur-[25px] animate-light-particle"
+            style={{
+              width: `${p.size}px`,
+              height: `${p.size}px`,
+              background: 'rgba(225,29,143,0.6)',
+              left: `${p.x}%`,
+              top: `${p.y}%`,
+              animationDelay: `${p.delay}s`,
+              animationDuration: `${p.duration}s`,
+              ['--move-x' as string]: `${p.moveX}vw`,
+              ['--move-y' as string]: `${p.moveY}vh`,
+              ['--rotate' as string]: `${p.rotate}deg`
+            } as React.CSSProperties}
+          />
+        ))}
       </div>
-
+    </div>
+    
       {/* Content container */}
       <Container className="hero-content relative z-8 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
         <div className="flex flex-col items-center text-center mx-auto mt-16 w-full max-w-[90vw] xl:max-w-[1200px]">
