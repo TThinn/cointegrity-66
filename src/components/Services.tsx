@@ -1,3 +1,4 @@
+
 import React from "react";
 import Container from "./ui/Container";
 import { Target, Layers, Scale, Rocket } from "lucide-react";
@@ -5,7 +6,7 @@ import Button from "./ui/CustomButtonComponent";
 
 const services = [
   {
-    icon: <Target size={24} className="text-pink-500" />,
+    icon: <Target size={24} className="text-blue-500" />,
     title: "STRATEGIC POSITIONING",
     items: [
       "Product Market Fit",
@@ -16,10 +17,10 @@ const services = [
       "Market Insight Report",
       "Advisory Board"
     ],
-    color: "pink"
+    color: "blue"
   },
   {
-    icon: <Layers size={24} className="text-violet-500" />,
+    icon: <Layers size={24} className="text-indigo-500" />,
     title: "WEB3 INFRASTRUCTURE",
     items: [
       "Tokenomics",
@@ -30,10 +31,10 @@ const services = [
       "Whitepaper",
       "Ecosystem Audit"
     ],
-    color: "violet"
+    color: "indigo"
   },
   {
-    icon: <Scale size={24} className="text-pink-500" />,
+    icon: <Scale size={24} className="text-blue-500" />,
     title: "REGULATORY NAVIGATION",
     items: [
       "MiCA",
@@ -44,10 +45,10 @@ const services = [
       "Crypto Compliance",
       "AML/KYC/CFT"
     ],
-    color: "pink"
+    color: "blue"
   },
   {
-    icon: <Rocket size={24} className="text-violet-500" />,
+    icon: <Rocket size={24} className="text-indigo-500" />,
     title: "CAPITAL ACCELERATION",
     items: [
       "Investor Network Access",
@@ -58,7 +59,7 @@ const services = [
       "Collateral",
       "Data Room"
     ],
-    color: "violet"
+    color: "indigo"
   }
 ];
 
@@ -67,7 +68,7 @@ const Services = () => {
     <section id="services" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-sm text-pink-600 uppercase tracking-wider font-medium">Our Services</h2>
+          <h2 className="text-sm text-blue-600 uppercase tracking-wider font-medium">Our Services</h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Serving a Diversified Market</h3>
           <p className="mt-4 text-lg text-gray-600">
             Our clients are spread across various industries and sectors, including governmental agencies, global consulting firms, launch platforms, gaming companies, VASPs, and more.
@@ -97,8 +98,8 @@ const Services = () => {
           ))}
         </div>
 
-        {/* CTA box */}
-        <div className="mt-16 neo-box-alt flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-gradient-to-br from-[#070119] to-[#5f2559] text-white relative overflow-hidden">
+        {/* CTA box - Updated with blue gradient */}
+        <div className="mt-16 neo-box-alt flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-gradient-to-br from-[#000624] to-[#282c2f] text-white relative overflow-hidden">
           <div className="flex-1 text-center md:text-left relative z-10">
             <h3 className="text-2xl font-bold mb-3 text-white">Bring Substance to Your Digital Asset Strategy</h3>
           </div>

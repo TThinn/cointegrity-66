@@ -1,32 +1,32 @@
 
 :root {
-  --background: 261 89% 4%;
+  --background: 221 40% 4%;
   --foreground: 0 0% 98%;
 
-  --card: 261 89% 8%;
+  --card: 221 40% 8%;
   --card-foreground: 0 0% 98%;
 
-  --popover: 261 89% 6%;
+  --popover: 221 40% 6%;
   --popover-foreground: 0 0% 98%;
 
-  --primary: 331 85% 52%;
+  --primary: 220 85% 52%;
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 331 85% 52%;
+  --secondary: 220 85% 52%;
   --secondary-foreground: 0 0% 100%;
 
-  --muted: 261 50% 12%;
+  --muted: 221 30% 12%;
   --muted-foreground: 0 0% 80%;
 
-  --accent: 331 85% 52%;
+  --accent: 220 85% 52%;
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
 
-  --border: 258 30% 15%;
-  --input: 258 30% 15%;
-  --ring: 331 85% 52%;
+  --border: 220 30% 15%;
+  --input: 220 30% 15%;
+  --ring: 220 85% 52%;
 
   --radius: 0.75rem;
 

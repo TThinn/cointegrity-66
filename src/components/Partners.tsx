@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Container from "./ui/Container";
 const Partners = () => {
@@ -57,17 +58,17 @@ const Partners = () => {
     logo: "/lovable-uploads/1ec5bfd8-e2e8-46c4-8b86-b6fa09a3b6e2.png"
   }];
   return <section id="partners" className="py-24 relative overflow-hidden">
-      {/* Gradient background similar to Services section */}
+      {/* Gradient background similar to Services section - updated to blue */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-800/20 via-pink-600/10 to-purple-900/20"></div>
-        <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-pink-500/10 rounded-full blur-[100px]"></div>
-        <div className="absolute right-1/4 bottom-1/3 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[100px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-800/20 via-blue-600/10 to-blue-900/20"></div>
+        <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[100px]"></div>
+        <div className="absolute right-1/4 bottom-1/3 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px]"></div>
       </div>
       
       <Container>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-fade-up">
-            <h2 className="text-sm text-pink-400 uppercase tracking-wider font-medium">PARTNERS</h2>
+            <h2 className="text-sm text-blue-400 uppercase tracking-wider font-medium">PARTNERS</h2>
             <h3 className="text-3xl md:text-4xl font-bold mb-2 text-white">
               Building the Future Together
             </h3>
@@ -112,7 +113,7 @@ const Partners = () => {
             
             <div className="relative overflow-hidden">
               {/* Fade left edge */}
-              <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#080112] to-transparent z-10"></div>
+              <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#000624] to-transparent z-10"></div>
               
               <div className={`flex ${pausedRow ? "" : "animate-carousel-rtl"}`} onMouseEnter={() => setPausedRow(true)} onMouseLeave={() => setPausedRow(false)}>
                 {[...previousPartners, ...previousPartners, ...previousPartners].map((partner, index) => <div key={`${partner.id}-${index}`} className="flex-none mx-8 w-60 glass backdrop-blur-md bg-white/5 rounded-xl border border-white/10 p-6 shadow-lg transition-transform hover:-translate-y-1 duration-300">
@@ -129,7 +130,7 @@ const Partners = () => {
               </div>
               
               {/* Fade right edge */}
-              <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#080112] to-transparent z-10"></div>
+              <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#000624] to-transparent z-10"></div>
             </div>
           </div>
         </div>
