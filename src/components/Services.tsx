@@ -1,4 +1,3 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import { Target, Layers, Scale, Rocket } from "lucide-react";
@@ -98,8 +97,12 @@ const Services = () => {
           ))}
         </div>
 
-        {/* CTA box - Updated with blue gradient */}
-        <div className="mt-16 neo-box-alt flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl bg-gradient-to-br from-[#000624] to-[#282c2f] text-white relative overflow-hidden">
+        {/* CTA box - Updated with new blue gradient */}
+        <div className="mt-16 neo-box-alt flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl text-white relative overflow-hidden"
+          style={{
+            background: "linear-gradient(90deg, #000624 0%, #282c2f 100%)"
+          }}
+        >
           <div className="flex-1 text-center md:text-left relative z-10">
             <h3 className="text-2xl font-bold mb-3 text-white">Bring Substance to Your Digital Asset Strategy</h3>
           </div>
