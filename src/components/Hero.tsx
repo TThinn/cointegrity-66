@@ -45,7 +45,7 @@ const Hero = () => {
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to bottom right, #000624 0%, #134f80 100%)"
+            background: "linear-gradient(to bottom right, #000624 0%, #282c2f 100%)"
           }}
         />
         {/* Particle Container */}
