@@ -3,14 +3,6 @@ import Container from "./ui/Container";
 import { MapPin, Zap, Shield, Award } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
 
-// Color definitions
-const colors = {
-  darkest: "#010822",
-  lightest: "#133a63",
-  cardBase: "#133a63",
-  accent: "#3d6b9c"
-};
-
 const processSteps = [
   {
     id: 1,
@@ -18,7 +10,24 @@ const processSteps = [
     title: "Discover",
     description: "We start with a comprehensive session to understand your objectives and challenges. Our team assesses your position, market opportunities, and competitive landscape to set a strong foundation."
   },
-  // ... other process steps with same structure
+  {
+    id: 2,
+    icon: <Zap className="text-[#3d6b9c] w-8 h-8" />,
+    title: "Strategize",
+    description: "We develop a tailored roadmap aligned with your goals, including tokenomics, compliance planning, and strategic positioning to maximize your impact in Web3."
+  },
+  {
+    id: 3,
+    icon: <Shield className="text-[#3d6b9c] w-8 h-8" />,
+    title: "Implement",
+    description: "Our team guides you through execution, ensuring compliance and optimal token architecture. We provide hands-on support and leverage our network to bring your vision to life."
+  },
+  {
+    id: 4,
+    icon: <Award className="text-[#3d6b9c] w-8 h-8" />,
+    title: "Scale",
+    description: "We help accelerate growth through capital raising, community building, and ongoing optimization, with continuous guidance to adapt to regulatory changes and new opportunities."
+  }
 ];
 
 const Process = () => (
