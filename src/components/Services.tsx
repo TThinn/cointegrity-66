@@ -102,7 +102,7 @@ const Services = () => {
         <div 
           className="mt-16 neo-box-alt flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl text-white relative overflow-hidden" 
           style={{
-            background: "linear-gradient(90deg, #000624 0%, #282c2f 100%)"
+            background: "linear-gradient(90deg, #010822 0%, #133a63 100%)"
           }}
         >
           <div className="flex-1 text-center md:text-left relative z-10">
