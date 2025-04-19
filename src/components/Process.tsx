@@ -35,7 +35,7 @@ const Process = () => (
     <div className="absolute inset-0 z-0">
       <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#133a63]"></div>
       <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
-      <div className="absolute right-1/4 bottom-1/3 w-[500px] h-[500px] bg-[#133a63]/10 rounded-full blur-[100px]"></div>
+      {/*<div className="absolute right-1/4 bottom-1/3 w-[500px] h-[500px] bg-[#133a63]/10 rounded-full blur-[100px]"></div>*/}
     </div>
 
     <Container>
