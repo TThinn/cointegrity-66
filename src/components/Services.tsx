@@ -98,7 +98,7 @@ const Services = () => {
           ))}
         </div>
 
-        {/* CTA box - Updated with explicit dark-to-light blue gradient */}
+        {/* CTA box - with explicit dark blue to light blue gradient */}
         <div 
           className="mt-16 neo-box-alt flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl text-white relative overflow-hidden" 
           style={{

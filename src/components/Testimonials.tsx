@@ -1,11 +1,12 @@
-
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
+
 const Testimonials = () => {
   const [pausedRow1, setPausedRow1] = useState(false);
   const [pausedRow2, setPausedRow2] = useState(false);
   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
+  
   const testimonials = [{
     id: 1,
     quote: "We're grateful for Cointegrity's support in securing grants and connecting us with top blockchain partners. Their expertise unlocked opportunities we couldn't access alone.",
@@ -47,10 +48,12 @@ const Testimonials = () => {
     name: "Jennifer Liu",
     title: "VP of Operations at Crypto Exchange"
   }];
+
   const handleTestimonialClick = testimonial => {
     setSelectedTestimonial(testimonial);
     setTimeout(() => setSelectedTestimonial(null), 3000);
   };
+
   return <section id="testimonials" className="py-24 relative overflow-hidden bg-[#000624]">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/2 w-[800px] h-[800px] bg-blue-500/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
@@ -119,4 +122,5 @@ const Testimonials = () => {
       </Container>
     </section>;
 };
+
 export default Testimonials;
