@@ -35,7 +35,6 @@ const Process = () => (
     <div className="absolute inset-0 z-0">
       <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#133a63]"></div>
       <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
-      {/*<div className="absolute right-1/4 bottom-1/3 w-[500px] h-[500px] bg-[#133a63]/10 rounded-full blur-[100px]"></div>*/}
     </div>
 
     <Container>
@@ -53,7 +52,12 @@ const Process = () => (
             <div
               key={step.id}
               className="group relative process-card p-8 rounded-xl backdrop-blur-md transition-all duration-500 hover:scale-[1.02] overflow-visible bg-[#133a63]/20 hover:bg-[#133a63]/30"
-              style={{ animationDelay: `${0.1 + index * 0.1}s` }}
+              style={{
+                animationDelay: `${0.1 + index * 0.1}s`,
+                borderStyle: "solid",
+                borderWidth: "1px",
+                borderImage: "linear-gradient(135deg, #010822 0%, transparent 40%, transparent 60%, #133a63 100%) 1"
+              }}
             >
               <div className="absolute -top-6 -left-6 w-12 h-12 rounded-full bg-gradient-to-br from-[#010822] to-[#0a1a3a] flex items-center justify-center border border-[#3d6b9c]/30 z-10">
                 <span className="text-[#3d6b9c] font-bold">{step.id}</span>
@@ -69,7 +73,14 @@ const Process = () => (
           ))}
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 p-8 contact-card backdrop-blur-md bg-[#133a63]/30 rounded-xl">
+        <div
+          className="flex flex-col md:flex-row items-center justify-between gap-8 p-8 contact-card backdrop-blur-md bg-[#133a63]/30 rounded-xl"
+          style={{
+            borderStyle: "solid",
+            borderWidth: "1px",
+            borderImage: "linear-gradient(135deg, #010822 0%, transparent 40%, transparent 60%, #133a63 100%) 1"
+          }}
+        >
           <div className="text-center md:text-left">
             <h4 className="text-xl font-bold text-white mb-2">Ready to get your project in motion?</h4>
             <p className="text-white/80">Our experts are ready to guide you through the next steps of your Web3 journey.</p>
