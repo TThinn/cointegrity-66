@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import { Mail, Phone, MapPin, Send, Check, AlertCircle } from "lucide-react";
@@ -12,37 +11,29 @@ const ContactForm = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<null | "success" | "error">(null);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const {
-      name,
-      value
-    } = e.target;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormState(prev => ({
       ...prev,
       [name]: value
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitStatus("success");
-
-      // Reset form after submission
       setFormState({
         name: "",
         email: "",
         company: "",
         message: ""
       });
-
-      // Reset status after 3 seconds
       setTimeout(() => {
         setSubmitStatus(null);
       }, 3000);
@@ -50,11 +41,11 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative overflow-hidden">
-      {/* Subtle background elements */}
+    <section id="contact" className="py-20 bg-gradient-to-b from-[#010822] to-[#133a63] relative overflow-hidden">
+      {/* Subtle blue background elements */}
       <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-500/30 rounded-full blur-[90px]"></div>
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-pink-500/20 rounded-full blur-[70px]"></div>
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#133a63]/40 rounded-full blur-[90px]"></div>
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#010822]/30 rounded-full blur-[70px]"></div>
       </div>
       
       <Container className="relative z-10">
@@ -65,19 +56,16 @@ const ContactForm = () => {
               animationDelay: "0.1s"
             }}
           >
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-pink-600">Contact Us</h2>
-            <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Partner With Us to Bring Your Project to Life</h3>
-            <p className="mt-4 text-lg text-gray-600">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-[#3d6b9c]">Contact Us</h2>
+            <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-white">Partner With Us to Bring Your Project to Life</h3>
+            <p className="mt-4 text-lg text-white/80">
               Have a project in mind or questions about our services? We're here to help you navigate the decentralized landscape.
             </p>
-            
-            {/* Added visual element */}
-            <div className="mt-10 hidden md:block relative animate-float">
-            </div>
+            <div className="mt-10 hidden md:block relative animate-float"></div>
           </div>
           
           <div 
-            className="contact-card p-8 backdrop-blur-xl relative" 
+            className="contact-card p-8 backdrop-blur-xl relative bg-[#133a63]/30" 
             style={{
               animationDelay: "0.3s"
             }}
@@ -85,7 +73,7 @@ const ContactForm = () => {
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="col-span-1">
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="name" className="block text-sm font-medium text-white mb-1">
                     Your Name
                   </label>
                   <input 
@@ -95,13 +83,13 @@ const ContactForm = () => {
                     value={formState.name} 
                     onChange={handleChange} 
                     required 
-                    className="w-full px-4 py-3 rounded-lg border border-purple-100 focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" 
+                    className="w-full px-4 py-3 rounded-lg border border-[#133a63] focus:ring-2 focus:ring-[#3d6b9c] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" 
                     placeholder="John Doe" 
                   />
                 </div>
                 
                 <div className="col-span-1">
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="email" className="block text-sm font-medium text-white mb-1">
                     Email Address
                   </label>
                   <input 
@@ -111,13 +99,13 @@ const ContactForm = () => {
                     value={formState.email} 
                     onChange={handleChange} 
                     required 
-                    className="w-full px-4 py-3 rounded-lg border border-purple-100 focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" 
+                    className="w-full px-4 py-3 rounded-lg border border-[#133a63] focus:ring-2 focus:ring-[#3d6b9c] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" 
                     placeholder="john@example.com" 
                   />
                 </div>
                 
                 <div className="col-span-2">
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="company" className="block text-sm font-medium text-white mb-1">
                     Company (Optional)
                   </label>
                   <input 
@@ -126,13 +114,13 @@ const ContactForm = () => {
                     name="company" 
                     value={formState.company} 
                     onChange={handleChange} 
-                    className="w-full px-4 py-3 rounded-lg border border-purple-100 focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" 
+                    className="w-full px-4 py-3 rounded-lg border border-[#133a63] focus:ring-2 focus:ring-[#3d6b9c] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" 
                     placeholder="Your Company" 
                   />
                 </div>
                 
                 <div className="col-span-2">
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="message" className="block text-sm font-medium text-white mb-1">
                     Your Message
                   </label>
                   <textarea 
@@ -142,7 +130,7 @@ const ContactForm = () => {
                     onChange={handleChange} 
                     required 
                     rows={4} 
-                    className="w-full px-4 py-3 rounded-lg border border-purple-100 focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" 
+                    className="w-full px-4 py-3 rounded-lg border border-[#133a63] focus:ring-2 focus:ring-[#3d6b9c] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" 
                     placeholder="Tell us about your project or inquiry..." 
                   />
                 </div>
