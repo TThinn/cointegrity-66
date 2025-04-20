@@ -1,4 +1,3 @@
-
 @layer components {
   /* Glass card styling */
   .glass {
@@ -18,7 +17,11 @@
   /* Neo box styling */
   .neo-box {
     @apply relative rounded-xl overflow-hidden transition-all duration-300;
-    background: linear-gradient(to bottom right, rgba(19, 58, 99, 0.06), rgba(19, 58, 99, 0.02));
+    background: linear-gradient(
+      to bottom right,
+      rgba(19, 58, 99, 0.06),
+      rgba(19, 58, 99, 0.02)
+    );
     box-shadow: 0 4px 20px rgba(1, 8, 34, 0.18);
   }
   .neo-box::before {
@@ -27,35 +30,27 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, 
-      rgba(1, 8, 34, 0.6) 0%, 
-      rgba(1, 8, 34, 0.3) 15%, 
-      rgba(255, 255, 255, 0) 50%, 
-      rgba(255, 255, 255, 0) 80%, 
-      rgba(19, 58, 99, 0.6) 100%);
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box, 
-      linear-gradient(#fff 0 0);
+    background: linear-gradient(
+      135deg,
+      rgba(1, 8, 34, 0.6) 0%,
+      rgba(1, 8, 34, 0.3) 15%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0) 80%,
+      rgba(19, 58, 99, 0.6) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
   }
-  .neo-box::after {
-    content: '';
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(1, 8, 34, 0.35) 0%, rgba(1, 8, 34, 0.15) 40%, transparent 70%);
-    bottom: -40px;
-    right: -40px;
-    opacity: 0.6;
-    filter: blur(20px);
-    pointer-events: none;
-  }
+  /* Removed .neo-box::after (the light bulb) */
 
   .neo-box-alt {
     @apply relative rounded-xl overflow-hidden transition-all duration-300;
-    background: linear-gradient(to bottom right, rgba(19, 58, 99, 0.06), rgba(19, 58, 99, 0.02));
+    background: linear-gradient(
+      to bottom right,
+      rgba(19, 58, 99, 0.06),
+      rgba(19, 58, 99, 0.02)
+    );
     box-shadow: 0 4px 20px rgba(1, 8, 34, 0.18);
   }
   .neo-box-alt::before {
@@ -64,36 +59,28 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(315deg, 
-      rgba(1, 8, 34, 0.6) 0%, 
-      rgba(1, 8, 34, 0.3) 15%, 
-      rgba(255, 255, 255, 0) 50%, 
-      rgba(255, 255, 255, 0) 80%, 
-      rgba(19, 58, 99, 0.6) 100%);
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box, 
-      linear-gradient(#fff 0 0);
+    background: linear-gradient(
+      315deg,
+      rgba(1, 8, 34, 0.6) 0%,
+      rgba(1, 8, 34, 0.3) 15%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0) 80%,
+      rgba(19, 58, 99, 0.6) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
   }
-  .neo-box-alt::after {
-    content: '';
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(1, 8, 34, 0.35) 0%, rgba(1, 8, 34, 0.15) 40%, transparent 70%);
-    top: -40px;
-    left: -40px;
-    opacity: 0.6;
-    filter: blur(20px);
-    pointer-events: none;
-  }
+  /* Removed .neo-box-alt::after (the light bulb) */
 
   /* Service card styling */
   .service-card {
     @apply relative rounded-xl overflow-hidden transition-all duration-300;
-    background: linear-gradient(to bottom right, rgba(19, 58, 99, 0.06), rgba(19, 58, 99, 0.02));
+    background: linear-gradient(
+      to bottom right,
+      rgba(19, 58, 99, 0.06),
+      rgba(19, 58, 99, 0.02)
+    );
     box-shadow: 0 4px 20px rgba(1, 8, 34, 0.12);
   }
   .service-card::before {
@@ -102,15 +89,15 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, 
-      rgba(1, 8, 34, 0.7) 0%, 
-      rgba(1, 8, 34, 0.3) 15%, 
-      rgba(255, 255, 255, 0) 40%, 
-      rgba(255, 255, 255, 0) 70%, 
-      rgba(19, 58, 99, 0.7) 100%);
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box, 
-      linear-gradient(#fff 0 0);
+    background: linear-gradient(
+      135deg,
+      rgba(1, 8, 34, 0.7) 0%,
+      rgba(1, 8, 34, 0.3) 15%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0) 70%,
+      rgba(19, 58, 99, 0.7) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
@@ -120,7 +107,11 @@
   /* Process card styling */
   .process-card {
     @apply relative rounded-xl overflow-hidden transition-all duration-300;
-    background: linear-gradient(to bottom right, rgba(19, 58, 99, 0.06), rgba(19, 58, 99, 0.02));
+    background: linear-gradient(
+      to bottom right,
+      rgba(19, 58, 99, 0.06),
+      rgba(19, 58, 99, 0.02)
+    );
     box-shadow: 0 4px 20px rgba(1, 8, 34, 0.15);
   }
   .process-card::before {
@@ -129,15 +120,15 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, 
-      rgba(1, 8, 34, 0.6) 0%, 
-      rgba(1, 8, 34, 0.3) 15%, 
-      rgba(255, 255, 255, 0) 40%, 
-      rgba(255, 255, 255, 0) 70%, 
-      rgba(19, 58, 99, 0.6) 100%);
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box, 
-      linear-gradient(#fff 0 0);
+    background: linear-gradient(
+      135deg,
+      rgba(1, 8, 34, 0.6) 0%,
+      rgba(1, 8, 34, 0.3) 15%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0) 70%,
+      rgba(19, 58, 99, 0.6) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
@@ -155,7 +146,11 @@
   /* Team card styling */
   .team-card {
     @apply relative rounded-xl overflow-hidden transition-all duration-300;
-    background: linear-gradient(to bottom right, rgba(19, 58, 99, 0.06), rgba(19, 58, 99, 0.02));
+    background: linear-gradient(
+      to bottom right,
+      rgba(19, 58, 99, 0.06),
+      rgba(19, 58, 99, 0.02)
+    );
     box-shadow: 0 4px 20px rgba(1, 8, 34, 0.12);
   }
   .team-card::before {
@@ -164,15 +159,15 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, 
-      rgba(1, 8, 34, 0.6) 0%, 
-      rgba(1, 8, 34, 0.3) 15%, 
-      rgba(255, 255, 255, 0) 50%, 
-      rgba(255, 255, 255, 0) 80%, 
-      rgba(19, 58, 99, 0.6) 100%);
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box, 
-      linear-gradient(#fff 0 0);
+    background: linear-gradient(
+      135deg,
+      rgba(1, 8, 34, 0.6) 0%,
+      rgba(1, 8, 34, 0.3) 15%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0) 80%,
+      rgba(19, 58, 99, 0.6) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
@@ -182,7 +177,11 @@
   /* Contact form card styling */
   .contact-card {
     @apply relative rounded-xl overflow-hidden transition-all duration-300;
-    background: linear-gradient(to bottom right, rgba(19, 58, 99, 0.06), rgba(19, 58, 99, 0.02));
+    background: linear-gradient(
+      to bottom right,
+      rgba(19, 58, 99, 0.06),
+      rgba(19, 58, 99, 0.02)
+    );
     box-shadow: 0 4px 20px rgba(1, 8, 34, 0.12);
   }
   .contact-card::before {
@@ -191,31 +190,19 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, 
-      rgba(1, 8, 34, 0.6) 0%, 
-      rgba(1, 8, 34, 0.3) 15%, 
-      rgba(255, 255, 255, 0) 40%, 
-      rgba(255, 255, 255, 0) 70%, 
-      rgba(19, 58, 99, 0.6) 100%);
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box, 
-      linear-gradient(#fff 0 0);
+    background: linear-gradient(
+      135deg,
+      rgba(1, 8, 34, 0.6) 0%,
+      rgba(1, 8, 34, 0.3) 15%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0) 70%,
+      rgba(19, 58, 99, 0.6) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
     z-index: 5;
   }
-  .contact-card::after {
-    content: '';
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(1, 8, 34, 0.3) 0%, rgba(1, 8, 34, 0.1) 50%, transparent 80%);
-    bottom: -80px;
-    right: -80px;
-    opacity: 0.7;
-    filter: blur(30px);
-    pointer-events: none;
-  }
+  /* Removed .contact-card::after (the light bulb) */
 }
