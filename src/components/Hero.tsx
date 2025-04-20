@@ -58,7 +58,7 @@ const Hero = () => {
               style={{
                 width: `${p.size}px`,
                 height: `${p.size}px`,
-                background: 'rgba(61,107,156,0.3)', // Using brand color #3d6b9c
+                background: 'rgba(51,195,240,0.3)',
                 left: `${p.x}%`,
                 top: `${p.y}%`,
                 animationDelay: `${p.delay}s`,
