@@ -72,10 +72,91 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Rest of your content remains EXACTLY the same */}
-      {/* ... */}
-    </section>
-  );
+     {/* Content container */}
+<Container className="hero-content relative z-8 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
+<div className="flex flex-col items-center text-center mx-auto mt-16 w-full max-w-[90vw] xl:max-w-[1200px]">
+<h1 className="font-bold leading-tight text-shadow mb-4 animate-fade-up text-balance" style={{
+animationDelay: "0.2s",
+fontSize: "clamp(1.9rem, 6vw, 4.5rem)",
+lineHeight: 1.1,
+letterSpacing: "-0.03em"
+}}>
+<span className="text-white font-extrabold">Simplifying Web3 Complexity</span>
+</h1>
+
+<h2 className="text-white/80 animate-fade-up relative mb-8 text-balance" style={{
+animationDelay: "0.4s",
+fontSize: "clamp(0.9rem, 1.5vw, 1.5rem)",
+lineHeight: 1.25,
+fontWeight: 400,
+maxWidth: "40rem"
+}}>
+We provide Full-cycle Web3 Consulting Solutions at the Intersection of Blockchain, Ai, Gaming, Tax & Compliance.
+</h2>
+</div>
+
+{/* CTA Button */}
+<div className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up mb-4" style={{
+animationDelay: "0.5s"
+}}>
+<Button variant="cta-primary" className="floating-element w-full sm:w-auto" href="#contact">
+Connect With Us
+</Button>
+</div>
+
+{/* Stats grid */}
+<div className="mt-24 border-t border-white/10 pt-4 grid grid-cols-2 md:grid-cols-4 gap-10 animate-fade-up text-center" style={{
+animationDelay: "0.6s"
+}}>
+{[{
+number: "45+",
+label: "Years Experience"
+}, {
+number: "15+",
+label: "Project Jurisdictions"
+}, {
+number: "20+",
+label: "Enterprise Clients"
+}, {
+number: "40+",
+label: "Projects Delivered"
+}].map((stat, i) => <div key={`stat-${i}`}>
+<h3 className="text-3xl md:text-4xl font-bold text-white">{stat.number}</h3>
+<p className="text-white/60 text-sm mt-1">{stat.label}</p>
+</div>)}
+</div>
+</Container>
+
+{/* Global animations */}
+<style>
+{`
+@keyframes light-particle {
+0%, 100% {
+opacity: 0.4;
+transform: translate(0, 0) scale(1) rotate(0);
+}
+50% {
+opacity: 0.8;
+transform:
+translate(var(--move-x), var(--move-y))
+scale(1.5)
+rotate(var(--rotate));
+}
+}
+.animate-light-particle {
+animation: light-particle ease-in-out infinite;
+mix-blend-mode: screen;
+}
+@media (prefers-reduced-motion: reduce) {
+.animate-light-particle {
+animation: none;
+opacity: 0.3 !important;
+}
+}
+`}
+</style>
+</section>
+);
 };
 
 export default Hero;
