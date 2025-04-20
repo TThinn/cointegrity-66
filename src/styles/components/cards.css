@@ -1,36 +1,25 @@
-
-/* Glass card styling */
-.glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  padding: 24px;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(229, 246, 250, 0.5);
-  box-shadow: 0 4px 6px rgba(92, 139, 246, 0.05);
-}
-
-.glass-card:hover {
-  box-shadow: 0 10px 15px rgba(92, 139, 246, 0.1);
-  border-color: rgba(189, 236, 240, 0.8);
-}
-
 @layer components {
+  /* Glass card styling */
   .glass {
     @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-glass;
   }
-  
   .glass-card {
     @apply glass rounded-2xl p-6 transition-all duration-300 hover:shadow-glass-md;
+    background: rgba(19, 58, 99, 0.07);
+    border: 1px solid rgba(19, 58, 99, 0.18);
+    box-shadow: 0 4px 6px rgba(1, 8, 34, 0.06);
   }
-  
-  /* New 2025-style box styling with highlighted corners */
-  .neo-box {
-    @apply relative rounded-xl overflow-hidden transition-all duration-300;
-    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  .glass-card:hover {
+    box-shadow: 0 10px 15px rgba(1, 8, 34, 0.12);
+    border-color: rgba(19, 58, 99, 0.32);
   }
 
+  /* Neo box styling */
+  .neo-box {
+    @apply relative rounded-xl overflow-hidden transition-all duration-300;
+    background: linear-gradient(to bottom right, rgba(19, 58, 99, 0.06), rgba(19, 58, 99, 0.02));
+    box-shadow: 0 4px 20px rgba(1, 8, 34, 0.18);
+  }
   .neo-box::before {
     content: '';
     position: absolute;
@@ -38,25 +27,24 @@
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(135deg, 
-      rgba(0, 6, 36, 0.6) 0%, 
-      rgba(0, 6, 36, 0.3) 15%, 
+      rgba(1, 8, 34, 0.6) 0%, 
+      rgba(1, 8, 34, 0.3) 15%, 
       rgba(255, 255, 255, 0) 50%, 
       rgba(255, 255, 255, 0) 80%, 
-      rgba(40, 44, 47, 0.6) 100%);
+      rgba(19, 58, 99, 0.6) 100%);
     -webkit-mask: 
       linear-gradient(#fff 0 0) content-box, 
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
   }
-
   .neo-box::after {
     content: '';
     position: absolute;
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 6, 36, 0.35) 0%, rgba(0, 6, 36, 0.15) 40%, transparent 70%);
+    background: radial-gradient(circle, rgba(1, 8, 34, 0.35) 0%, rgba(1, 8, 34, 0.15) 40%, transparent 70%);
     bottom: -40px;
     right: -40px;
     opacity: 0.6;
@@ -66,10 +54,9 @@
 
   .neo-box-alt {
     @apply relative rounded-xl overflow-hidden transition-all duration-300;
-    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom right, rgba(19, 58, 99, 0.06), rgba(19, 58, 99, 0.02));
+    box-shadow: 0 4px 20px rgba(1, 8, 34, 0.18);
   }
-
   .neo-box-alt::before {
     content: '';
     position: absolute;
@@ -77,25 +64,24 @@
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(315deg, 
-      rgba(0, 6, 36, 0.6) 0%, 
-      rgba(0, 6, 36, 0.3) 15%, 
+      rgba(1, 8, 34, 0.6) 0%, 
+      rgba(1, 8, 34, 0.3) 15%, 
       rgba(255, 255, 255, 0) 50%, 
       rgba(255, 255, 255, 0) 80%, 
-      rgba(40, 44, 47, 0.6) 100%);
+      rgba(19, 58, 99, 0.6) 100%);
     -webkit-mask: 
       linear-gradient(#fff 0 0) content-box, 
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
   }
-
   .neo-box-alt::after {
     content: '';
     position: absolute;
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 6, 36, 0.35) 0%, rgba(0, 6, 36, 0.15) 40%, transparent 70%);
+    background: radial-gradient(circle, rgba(1, 8, 34, 0.35) 0%, rgba(1, 8, 34, 0.15) 40%, transparent 70%);
     top: -40px;
     left: -40px;
     opacity: 0.6;
@@ -106,10 +92,9 @@
   /* Service card styling */
   .service-card {
     @apply relative rounded-xl overflow-hidden transition-all duration-300;
-    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to bottom right, rgba(19, 58, 99, 0.06), rgba(19, 58, 99, 0.02));
+    box-shadow: 0 4px 20px rgba(1, 8, 34, 0.12);
   }
-
   .service-card::before {
     content: '';
     position: absolute;
@@ -117,11 +102,11 @@
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(135deg, 
-      rgba(0, 6, 36, 0.7) 0%, 
-      rgba(0, 6, 36, 0.3) 15%, 
+      rgba(1, 8, 34, 0.7) 0%, 
+      rgba(1, 8, 34, 0.3) 15%, 
       rgba(255, 255, 255, 0) 40%, 
       rgba(255, 255, 255, 0) 70%, 
-      rgba(40, 44, 47, 0.7) 100%);
+      rgba(19, 58, 99, 0.7) 100%);
     -webkit-mask: 
       linear-gradient(#fff 0 0) content-box, 
       linear-gradient(#fff 0 0);
@@ -134,10 +119,9 @@
   /* Process card styling */
   .process-card {
     @apply relative rounded-xl overflow-hidden transition-all duration-300;
-    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(to bottom right, rgba(19, 58, 99, 0.06), rgba(19, 58, 99, 0.02));
+    box-shadow: 0 4px 20px rgba(1, 8, 34, 0.15);
   }
-
   .process-card::before {
     content: '';
     position: absolute;
@@ -145,11 +129,11 @@
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(135deg, 
-      rgba(0, 6, 36, 0.6) 0%, 
-      rgba(0, 6, 36, 0.3) 15%, 
+      rgba(1, 8, 34, 0.6) 0%, 
+      rgba(1, 8, 34, 0.3) 15%, 
       rgba(255, 255, 255, 0) 40%, 
       rgba(255, 255, 255, 0) 70%, 
-      rgba(40, 44, 47, 0.6) 100%);
+      rgba(19, 58, 99, 0.6) 100%);
     -webkit-mask: 
       linear-gradient(#fff 0 0) content-box, 
       linear-gradient(#fff 0 0);
@@ -162,18 +146,17 @@
   /* Process card number styling */
   .process-number {
     @apply absolute -top-4 -left-4 w-12 h-12 rounded-full flex items-center justify-center;
-    background: linear-gradient(to bottom right, #000624, #001f42);
-    border: 1px solid rgba(0, 6, 36, 0.3);
+    background: linear-gradient(to bottom right, #010822, #133a63);
+    border: 1px solid rgba(1, 8, 34, 0.3);
     z-index: 20;
   }
 
   /* Team card styling */
   .team-card {
     @apply relative rounded-xl overflow-hidden transition-all duration-300;
-    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to bottom right, rgba(19, 58, 99, 0.06), rgba(19, 58, 99, 0.02));
+    box-shadow: 0 4px 20px rgba(1, 8, 34, 0.12);
   }
-
   .team-card::before {
     content: '';
     position: absolute;
@@ -181,11 +164,11 @@
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(135deg, 
-      rgba(0, 6, 36, 0.6) 0%, 
-      rgba(0, 6, 36, 0.3) 15%, 
+      rgba(1, 8, 34, 0.6) 0%, 
+      rgba(1, 8, 34, 0.3) 15%, 
       rgba(255, 255, 255, 0) 50%, 
       rgba(255, 255, 255, 0) 80%, 
-      rgba(40, 44, 47, 0.6) 100%);
+      rgba(19, 58, 99, 0.6) 100%);
     -webkit-mask: 
       linear-gradient(#fff 0 0) content-box, 
       linear-gradient(#fff 0 0);
@@ -198,10 +181,9 @@
   /* Contact form card styling */
   .contact-card {
     @apply relative rounded-xl overflow-hidden transition-all duration-300;
-    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to bottom right, rgba(19, 58, 99, 0.06), rgba(19, 58, 99, 0.02));
+    box-shadow: 0 4px 20px rgba(1, 8, 34, 0.12);
   }
-
   .contact-card::before {
     content: '';
     position: absolute;
@@ -209,11 +191,11 @@
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(135deg, 
-      rgba(0, 6, 36, 0.6) 0%, 
-      rgba(0, 6, 36, 0.3) 15%, 
+      rgba(1, 8, 34, 0.6) 0%, 
+      rgba(1, 8, 34, 0.3) 15%, 
       rgba(255, 255, 255, 0) 40%, 
       rgba(255, 255, 255, 0) 70%, 
-      rgba(40, 44, 47, 0.6) 100%);
+      rgba(19, 58, 99, 0.6) 100%);
     -webkit-mask: 
       linear-gradient(#fff 0 0) content-box, 
       linear-gradient(#fff 0 0);
@@ -222,14 +204,13 @@
     pointer-events: none;
     z-index: 5;
   }
-
   .contact-card::after {
     content: '';
     position: absolute;
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 6, 36, 0.3) 0%, rgba(0, 6, 36, 0.1) 50%, transparent 80%);
+    background: radial-gradient(circle, rgba(1, 8, 34, 0.3) 0%, rgba(1, 8, 34, 0.1) 50%, transparent 80%);
     bottom: -80px;
     right: -80px;
     opacity: 0.7;
