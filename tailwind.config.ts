@@ -75,7 +75,19 @@ export default {
 					900: "#1E3A8A",
 					950: "#172554",
 				},
-				// No purple block here
+				"purple": {
+					50: "#F5F3FF",
+					100: "#EDE9FE",
+					200: "#DDD6FE",
+					300: "#C4B5FD",
+					400: "#A78BFA",
+					500: "#8B5CF6",
+					600: "#7C3AED",
+					700: "#6D28D9",
+					800: "#5B21B6",
+					900: "#4C1D95",
+					950: "#2E1065",
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -158,9 +170,10 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'hero-gradient': 'linear-gradient(90deg, rgba(1, 8, 34, 0.15) 0%, rgba(19, 58, 99, 0.15) 100%)',
-				// Only blue gradients:
-				'blue-gradient': 'linear-gradient(135deg, #010822 0%, #133a63 100%)',
+				'hero-gradient': 'linear-gradient(90deg, rgba(45, 37, 126, 0.15) 0%, rgba(71, 100, 204, 0.15) 100%)',
+				'purple-blue-gradient': 'linear-gradient(135deg, #5046E5 0%, #2563EB 100%)',
+				'purple-gradient': 'linear-gradient(135deg, #6D28D9 0%, #7C3AED 100%)',
+				'blue-gradient': 'linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%)',
 			},
 		}
 	},
