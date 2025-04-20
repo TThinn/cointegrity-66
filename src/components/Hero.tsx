@@ -14,8 +14,8 @@ const Hero = () => {
     length: HERO_PARTICLE_COUNT_DESKTOP
   }, () => ({
     size: Math.random() * 300,
-    x: 1 + Math.random() * 80,
-    y: 1 + Math.random() * 80,
+    x: 10 + Math.random() * 90,
+    y: 10 + Math.random() * 90,
     moveX: (Math.random() - 0.5) * 160, // Allows movement in both directions
     moveY: (Math.random() - 0.5) * 160,
     rotate: Math.random() * 360,
