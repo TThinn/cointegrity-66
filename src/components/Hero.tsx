@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
 
-const HERO_PARTICLE_COUNT_DESKTOP = 8;
+const HERO_PARTICLE_COUNT_DESKTOP = 10;
 const HERO_PARTICLE_COUNT_MOBILE = 3;
 
 const Hero = () => {
@@ -14,8 +14,8 @@ const Hero = () => {
     length: HERO_PARTICLE_COUNT_DESKTOP
   }, () => ({
     size: Math.random() * 300,
-    x: 20 + Math.random() * 80,
-    y: 20 + Math.random() * 80,
+    x: 10 + Math.random() * 90,
+    y: 10 + Math.random() * 90,
     moveX: (Math.random() - 0.5) * 300, // Allows movement in both directions
     moveY: (Math.random() - 0.5) * 300,
     rotate: Math.random() * 360,
