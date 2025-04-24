@@ -59,12 +59,6 @@ const Process = () => <section id="process" className="py-24 relative overflow-h
             </div>)}
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 p-8 contact-card backdrop-blur-md bg-[#133a63]/30 rounded-xl" style={{
-        borderStyle: "solid",
-        borderWidth: "1px",
-        borderImage: "linear-gradient(135deg, #010822 0%, transparent 40%, transparent 60%, #133a63 100%) 1"
-      }}>
-
       {/* CTA box - with explicit dark blue to light blue gradient */}
         <div className="mt-16 neo-box-alt flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl text-white relative overflow-hidden" style={{
         background: "linear-gradient(90deg, #010822 0%, #133a63 100%)"
