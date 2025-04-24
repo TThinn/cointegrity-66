@@ -1,10 +1,22 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import { Mail, Phone, MapPin, Send, Check, AlertCircle } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
+import { useToast } from "@/hooks/use-toast";
+
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (cb: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
+  }
+}
+
+const RECAPTCHA_SITE_KEY = "your-recaptcha-site-key"; // Replace with your actual site key
 
 const ContactForm = () => {
+  const { toast } = useToast();
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -13,6 +25,18 @@ const ContactForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<null | "success" | "error">(null);
+
+  useEffect(() => {
+    // Load reCAPTCHA script
+    const script = document.createElement("script");
+    script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {
@@ -25,16 +49,37 @@ const ContactForm = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus("success");
+    try {
+      // Get reCAPTCHA token
+      const token = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'submit' });
 
-      // Reset form after submission
+      // Send to Supabase Edge Function
+      const response = await fetch('/api/send-contact-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formState,
+          recaptchaToken: token,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      setSubmitStatus("success");
+      toast({
+        title: "Success",
+        description: "Your message has been sent! We'll be in touch soon.",
+      });
+
+      // Reset form
       setFormState({
         name: "",
         email: "",
@@ -46,7 +91,16 @@ const ContactForm = () => {
       setTimeout(() => {
         setSubmitStatus(null);
       }, 3000);
-    }, 1500);
+    } catch (error) {
+      setSubmitStatus("error");
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
