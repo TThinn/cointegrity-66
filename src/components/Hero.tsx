@@ -100,7 +100,7 @@ We provide Full-cycle Web3 Consulting Solutions at the Intersection of Blockchai
 animationDelay: "0.5s"
 }}>
 <Button variant="cta-primary" className="floating-element w-full sm:w-auto" href="#contact">
-Connect With Us
+Get in Touch
 </Button>
 </div>
 
