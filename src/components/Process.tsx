@@ -64,17 +64,20 @@ const Process = () => <section id="process" className="py-24 relative overflow-h
         borderWidth: "1px",
         borderImage: "linear-gradient(135deg, #010822 0%, transparent 40%, transparent 60%, #133a63 100%) 1"
       }}>
-          <div className="text-center md:text-left">
-            <h4 className="text-xl font-bold text-white mb-2">Ready to get your project in motion?</h4>
-            <p className="text-white/80">Our experts are ready to guide you through the next steps of your Web3 journey.</p>
+
+      {/* CTA box - with explicit dark blue to light blue gradient */}
+        <div className="mt-16 neo-box-alt flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl text-white relative overflow-hidden" style={{
+        background: "linear-gradient(90deg, #010822 0%, #133a63 100%)"
+      }}>
+          <div className="flex-1 text-center md:text-left relative z-10">
+            <h3 className="text-2xl font-bold mb-3 text-white">Ready to get your project in motion?</h3>
           </div>
-          <div>
-            <a href="#contact" className="micro-interaction">
-              <Button variant="cta-primary" size="md" className="group relative overflow-hidden bg-gradient-to-r from-[#0a1a3a] to-[#133a63] hover:from-[#133a63] hover:to-[#0a1a3a]">
-                <span className="relative z-10">Schedule a Meetup</span>
-              </Button>
-            </a>
-          </div>
+          <a href="#contact" className="inline-flex items-center relative z-10">
+            <Button variant="cta-primary">Contact Us</Button>
+          </a>
+        </div>
+           
+         
         </div>
       </div>
     </Container>
