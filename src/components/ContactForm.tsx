@@ -13,7 +13,7 @@ declare global {
   }
 }
 
-const RECAPTCHA_SITE_KEY = "your-recaptcha-site-key"; // Replace with your actual site key
+const RECAPTCHA_SITE_KEY = "6Lc_BCMrAAAAAAJ53CbmGbCdpq1plgfqyOJjInN1";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -29,7 +29,7 @@ const ContactForm = () => {
   useEffect(() => {
     // Load reCAPTCHA script
     const script = document.createElement("script");
-    script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+    script.src = `https://www.google.com/recaptcha/api.js?render=${6Lc_BCMrAAAAAAJ53CbmGbCdpq1plgfqyOJjInN1}`;
     script.async = true;
     document.body.appendChild(script);
 
