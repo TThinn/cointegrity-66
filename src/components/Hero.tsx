@@ -20,7 +20,7 @@ const Hero = () => {
     moveY: (Math.random() - 0.5) * 160,
     rotate: Math.random() * 360,
     delay: Math.random() * 5,
-    duration: 1 + Math.random() * 40
+    duration: 1 + Math.random() * 4
   }))).current;
 
   // Synchronous device detection BEFORE first paint
