@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
 
-const HERO_PARTICLE_COUNT_DESKTOP = 10;
+const HERO_PARTICLE_COUNT_DESKTOP = 30;
 const HERO_PARTICLE_COUNT_MOBILE = 3;
 
 const Hero = () => {
@@ -13,14 +13,14 @@ const Hero = () => {
   const particles = useRef(Array.from({
     length: HERO_PARTICLE_COUNT_DESKTOP
   }, () => ({
-    size: Math.random() * 300,
+    size: Math.random() * 100,
     x: 10 + Math.random() * 90,
     y: 10 + Math.random() * 90,
     moveX: (Math.random() - 0.5) * 300, // Allows movement in both directions
     moveY: (Math.random() - 0.5) * 300,
-    rotate: Math.random() * 180,
+    rotate: Math.random() * 360,
     delay: Math.random() * 5,
-    duration: 10 + Math.random() * 30
+    duration: 10 + Math.random() * 40
   }))).current;
 
   // Synchronous device detection BEFORE first paint
@@ -58,7 +58,7 @@ const Hero = () => {
               style={{
                 width: `${p.size}px`,
                 height: `${p.size}px`,
-                background: 'rgba(51,195,240,0.4)',
+                background: 'rgba(51,195,240,0.3)',
                 left: `${p.x}%`,
                 top: `${p.y}%`,
                 animationDelay: `${p.delay}s`,
