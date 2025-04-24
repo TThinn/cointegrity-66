@@ -58,7 +58,7 @@ const Hero = () => {
               style={{
                 width: `${p.size}px`,
                 height: `${p.size}px`,
-                background: 'rgba(51,195,240,0.3)',
+                background: 'rgba(51,195,240,0.4)',
                 left: `${p.x}%`,
                 top: `${p.y}%`,
                 animationDelay: `${p.delay}s`,
