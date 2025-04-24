@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Container from "./ui/Container";
-import { Mail, Phone, MapPin, Send, Check, AlertCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
 import { useToast } from "@/hooks/use-toast";
 
@@ -24,7 +24,32 @@ const ContactForm = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<null | "success" | "error">(null);
+
+  // Helper function to reset form state
+  const resetForm = useCallback(() => {
+    setFormState({
+      name: "",
+      email: "",
+      company: "",
+      message: ""
+    });
+  }, []);
+
+  // Helper function to show toast notifications
+  const showNotification = useCallback((type: "success" | "error", message: string) => {
+    if (type === "success") {
+      toast({
+        title: "Success",
+        description: message,
+      });
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: message,
+      });
+    }
+  }, [toast]);
 
   useEffect(() => {
     // Load reCAPTCHA script
@@ -33,16 +58,17 @@ const ContactForm = () => {
     script.async = true;
     document.body.appendChild(script);
 
+    // Improved cleanup function with error handling
     return () => {
-      document.body.removeChild(script);
+      // Check if the script element still exists before removing
+      if (script && document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
     };
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const {
-      name,
-      value
-    } = e.target;
+    const { name, value } = e.target;
     setFormState(prev => ({
       ...prev,
       [name]: value
@@ -73,31 +99,11 @@ const ContactForm = () => {
         throw new Error('Failed to send message');
       }
 
-      setSubmitStatus("success");
-      toast({
-        title: "Success",
-        description: "Your message has been sent! We'll be in touch soon.",
-      });
-
-      // Reset form
-      setFormState({
-        name: "",
-        email: "",
-        company: "",
-        message: ""
-      });
-
-      // Reset status after 3 seconds
-      setTimeout(() => {
-        setSubmitStatus(null);
-      }, 3000);
+      // Show success notification and reset form
+      showNotification("success", "Your message has been sent! We'll be in touch soon.");
+      resetForm();
     } catch (error) {
-      setSubmitStatus("error");
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-      });
+      showNotification("error", "Failed to send message. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -219,20 +225,6 @@ const ContactForm = () => {
                     </span>
                   )}
                 </Button>
-                
-                {submitStatus === "success" && (
-                  <div className="mt-4 p-3 rounded-lg bg-green-900/30 text-green-600 flex items-center">
-                    <Check size={18} className="mr-2" />
-                    Your message has been sent! We'll be in touch soon.
-                  </div>
-                )}
-                
-                {submitStatus === "error" && (
-                  <div className="mt-4 p-3 rounded-lg bg-red-900/30 text-red-600 flex items-center">
-                    <AlertCircle size={18} className="mr-2" />
-                    There was an error sending your message. Please try again.
-                  </div>
-                )}
               </div>
             </form>
           </div>
