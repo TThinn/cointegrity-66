@@ -2,7 +2,6 @@ import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Github, X } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
-
 const founders = [{
   name: "Torstein W. Thinn",
   role: "Co-Founder & Chairman",
@@ -42,12 +41,11 @@ const founders = [{
     linkedin: "https://www.linkedin.com/in/feliksolko/"
   }
 }];
-
 const Founders = () => {
   return <section id="founders" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-sm font-semibold text-blue-600 uppercase tracking-wider">Our Team</h2>
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-[#cb46b3]">Our Team</h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">The Minds Behind Cointegrity</h3>
           <p className="mt-2 text-gray-600">Our battle-tested team will amplify your impact by simplifying the complexities of digital asset development, enabling you to focus on creating lasting value.</p>
         </div>
@@ -112,5 +110,4 @@ const Founders = () => {
       </Container>
     </section>;
 };
-
 export default Founders;
