@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
 
-const HERO_PARTICLE_COUNT_DESKTOP = 18;
+const HERO_PARTICLE_COUNT_DESKTOP = 25;
 const HERO_PARTICLE_COUNT_MOBILE = 3;
 
 const Hero = () => {
