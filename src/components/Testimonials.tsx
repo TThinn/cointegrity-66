@@ -59,7 +59,7 @@ const Testimonials = () => {
       <Container>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-fade-up">
-            <h2 className="text-sm text-blue-400 uppercase tracking-wider font-medium">CLIENT TESTIMONIALS</h2>
+            <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3]">CLIENT TESTIMONIALS</h2>
             <h3 className="text-3xl md:text-4xl font-bold mb-2 text-white">You will be in good company</h3>
             <p className="text-white/60 max-w-2xl mx-auto">Experiences from working with Cointegrity or our Co-Founders in shaping the future of finance</p>
           </div>
