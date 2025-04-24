@@ -78,7 +78,7 @@ const Founders = () => {
                 {founder.bio}
                 <Dialog>
                   <DialogTrigger asChild>
-                    <button className="text-blue-600 hover:text-blue-700 ml-1 inline-flex items-center text-sm font-medium relative z-20">
+                    <button className="text-[#cb46b3] hover:text-[#881ec9] ml-1 inline-flex items-center text-sm font-medium relative z-20">
                       more
                     </button>
                   </DialogTrigger>
