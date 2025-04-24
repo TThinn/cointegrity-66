@@ -72,7 +72,7 @@ const Founders = () => {
             }} /> : <img src={founder.image} alt={founder.name} className="object-cover w-full h-full" />}
               </div>
               <h3 className="text-xl font-semibold text-gray-800">{founder.name}</h3>
-              <div className="mt-1 text-sm font-medium text-blue-600">{founder.role}</div>
+              <div className="mt-1 text-sm font-medium text-[#cb46b3]">{founder.role}</div>
               
               <p className="mt-3 text-sm text-gray-600 relative">
                 {founder.bio}
