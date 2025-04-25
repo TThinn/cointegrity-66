@@ -59,7 +59,7 @@ const Services = () => {
             <h3 className="text-2xl font-bold mb-3 text-white">Bring Substance to Your Digital Asset Strategy</h3>
           </div>
           <a href="#contact" className="inline-flex items-center relative z-10">
-            <Button variant="cta-primary">Contact Us</Button>
+            <Button variant="cta-primary">Let's get started</Button>
           </a>
         </div>
       </Container>
