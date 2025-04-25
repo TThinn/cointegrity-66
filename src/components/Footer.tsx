@@ -1,4 +1,3 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Twitter, Youtube, Github } from "lucide-react";
@@ -93,8 +92,8 @@ const Footer = () => {
             </p>
             <div className="mt-4 md:mt-0 flex space-x-6">
               <a href="#" className="text-xs text-white/50 hover:text-blue-400 transition-colors">Privacy Policy</a>
-              <a href="#" className="text-xs text-white/50 hover:text-blue-400 transition-colors">Terms of Service</a>
-              <a href="#" className="text-xs text-white/50 hover:text-blue-400 transition-colors">Cookie Policy</a>
+              
+              
             </div>
           </div>
         </div>
