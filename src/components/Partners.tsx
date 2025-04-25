@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Container from "./ui/Container";
-
 const Partners = () => {
   const [pausedRow, setPausedRow] = useState(false);
 
@@ -57,7 +56,6 @@ const Partners = () => {
     description: "Global professional services organization",
     logo: "/lovable-uploads/1ec5bfd8-e2e8-46c4-8b86-b6fa09a3b6e2.png"
   }];
-  
   return <section id="partners" className="py-24 relative overflow-hidden">
       {/* Updated background to match Process section */}
       <div className="absolute inset-0 z-0">
@@ -68,7 +66,7 @@ const Partners = () => {
       <Container>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-fade-up">
-            <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3]">PARTNERS</h2>
+            <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">PARTNERS</h2>
             <h3 className="text-3xl md:text-4xl font-bold mb-2 text-white">
               Building the Future Together
             </h3>
@@ -137,5 +135,4 @@ const Partners = () => {
       </Container>
     </section>;
 };
-
 export default Partners;
