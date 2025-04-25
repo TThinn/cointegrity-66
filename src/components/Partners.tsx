@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Container from "./ui/Container";
+
 const Partners = () => {
   const [pausedRow, setPausedRow] = useState(false);
 
@@ -56,12 +57,12 @@ const Partners = () => {
     description: "Global professional services organization",
     logo: "/lovable-uploads/1ec5bfd8-e2e8-46c4-8b86-b6fa09a3b6e2.png"
   }];
+  
   return <section id="partners" className="py-24 relative overflow-hidden">
-      {/* Gradient background similar to Services section - updated to blue */}
+      {/* Updated background to match Process section */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-800/20 via-blue-600/10 to-blue-900/20"></div>
-        <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[100px]"></div>
-        <div className="absolute right-1/4 bottom-1/3 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#133a63]"></div>
+        <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
       </div>
       
       <Container>
@@ -111,8 +112,8 @@ const Partners = () => {
             <p className="text-white/60 max-w-2xl mb-10 mx-auto text-center">Our founders are proud to have worked at, and collaborated with these pioneering organizations, driving innovation in blockchain and digital assets.</p>
             
             <div className="relative overflow-hidden">
-              {/* Fade left edge */}
-              <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#000624] to-transparent z-10"></div>
+              {/* Fade left edge - updated to match Process section colors */}
+              <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#010822] to-transparent z-10"></div>
               
               <div className={`flex ${pausedRow ? "" : "animate-carousel-rtl"}`} onMouseEnter={() => setPausedRow(true)} onMouseLeave={() => setPausedRow(false)}>
                 {[...previousPartners, ...previousPartners, ...previousPartners].map((partner, index) => <div key={`${partner.id}-${index}`} className="flex-none mx-8 w-60 glass backdrop-blur-md bg-white/5 rounded-xl border border-white/10 p-6 shadow-lg transition-transform hover:-translate-y-1 duration-300">
@@ -128,12 +129,13 @@ const Partners = () => {
                   </div>)}
               </div>
               
-              {/* Fade right edge */}
-              <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#000624] to-transparent z-10"></div>
+              {/* Fade right edge - updated to match Process section colors */}
+              <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#010822] to-transparent z-10"></div>
             </div>
           </div>
         </div>
       </Container>
     </section>;
 };
+
 export default Partners;
