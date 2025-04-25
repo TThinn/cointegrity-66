@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
-
 const Testimonials = () => {
   const [pausedRow1, setPausedRow1] = useState(false);
   const [pausedRow2, setPausedRow2] = useState(false);
   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
-  
   const testimonials = [{
     id: 1,
     quote: "We're grateful for Cointegrity's support in securing grants and connecting us with top blockchain partners. Their expertise unlocked opportunities we couldn't access alone.",
@@ -48,12 +46,10 @@ const Testimonials = () => {
     name: "Jennifer Liu",
     title: "VP of Operations at Crypto Exchange"
   }];
-  
   const handleTestimonialClick = testimonial => {
     setSelectedTestimonial(testimonial);
     setTimeout(() => setSelectedTestimonial(null), 3000);
   };
-  
   return <section id="testimonials" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#133a63]"></div>
@@ -63,7 +59,7 @@ const Testimonials = () => {
       <Container>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-fade-up">
-            <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3]">CLIENT TESTIMONIALS</h2>
+            <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">CLIENT TESTIMONIALS</h2>
             <h3 className="text-3xl md:text-4xl font-bold mb-2 text-white">You will be in good company</h3>
             <p className="text-white/60 max-w-2xl mx-auto">Experiences from working with Cointegrity or our Co-Founders in reshaping the industry</p>
           </div>
@@ -122,5 +118,4 @@ const Testimonials = () => {
       </Container>
     </section>;
 };
-
 export default Testimonials;
