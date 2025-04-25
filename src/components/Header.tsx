@@ -16,7 +16,7 @@ const Header = () => {
       setScrolled(offset > 50);
 
       // Handle section highlighting
-      const sections = ['services', 'partners', 'team', 'testimonials'];
+      const sections = ['services', 'partners', 'founders', 'testimonials'];
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -47,7 +47,7 @@ const Header = () => {
             {[
               { href: "#services", label: "Services" },
               { href: "#partners", label: "Partners" },
-              { href: "#team", label: "Team" },
+              { href: "#founders", label: "Team" },
               { href: "#testimonials", label: "Testimonials" }
             ].map(({ href, label }) => (
               <a 
@@ -77,7 +77,7 @@ const Header = () => {
               {[
                 { href: "#services", label: "Services" },
                 { href: "#partners", label: "Partners" },
-                { href: "#team", label: "Team" },
+                { href: "#founders", label: "Team" },
                 { href: "#testimonials", label: "Testimonials" }
               ].map(({ href, label }) => (
                 <a

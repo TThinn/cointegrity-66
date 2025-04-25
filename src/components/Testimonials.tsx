@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
+
 const Testimonials = () => {
-  const [pausedRow1, setPausedRow1] = useState(false);
-  const [pausedRow2, setPausedRow2] = useState(false);
-  const [selectedTestimonial, setSelectedTestimonial] = useState(null);
+  const [activeTestimonials, setActiveTestimonials] = useState<number[]>([0, 1, 2, 3]);
+  const [transitioning, setTransitioning] = useState(false);
+
   const testimonials = [{
     id: 1,
     quote: "We're grateful for Cointegrity's support in securing grants and connecting us with top blockchain partners. Their expertise unlocked opportunities we couldn't access alone.",
@@ -46,11 +48,29 @@ const Testimonials = () => {
     name: "Jennifer Liu",
     title: "VP of Operations at Crypto Exchange"
   }];
-  const handleTestimonialClick = testimonial => {
-    setSelectedTestimonial(testimonial);
-    setTimeout(() => setSelectedTestimonial(null), 3000);
-  };
-  return <section id="testimonials" className="py-24 relative overflow-hidden">
+
+  useEffect(() => {
+    let currentBoxIndex = 0;
+    const interval = setInterval(() => {
+      setTransitioning(true);
+      
+      setTimeout(() => {
+        setActiveTestimonials(prev => {
+          const newTestimonials = [...prev];
+          const nextTestimonialIndex = (Math.max(...prev) + 1) % testimonials.length;
+          newTestimonials[currentBoxIndex] = nextTestimonialIndex;
+          return newTestimonials;
+        });
+        setTransitioning(false);
+        currentBoxIndex = (currentBoxIndex + 1) % 4;
+      }, 300); // Fade out duration
+    }, 10000); // Change every 10 seconds
+
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
+
+  return (
+    <section id="testimonials" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#133a63]"></div>
         <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
@@ -64,51 +84,25 @@ const Testimonials = () => {
             <p className="text-white/60 max-w-2xl mx-auto">Experiences from working with Cointegrity or our Co-Founders in reshaping the industry</p>
           </div>
 
-          <div className="mb-10">
-            {/* Testimonials Carousel - First row (right to left) */}
-            <div className="relative mb-10 overflow-hidden">
-              {/* Fade left edge */}
-              <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#010822] to-transparent z-10"></div>
-              
-              <div className={`flex ${pausedRow1 ? "" : "animate-carousel-rtl"}`} onMouseEnter={() => setPausedRow1(true)} onMouseLeave={() => setPausedRow1(false)}>
-                {[...testimonials, ...testimonials].slice(0, 10).map((testimonial, index) => <div key={`row1-${testimonial.id}-${index}`} className={`flex-none w-[500px] mx-4 glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 ${selectedTestimonial?.id === testimonial.id ? 'scale-105 border-blue-400' : ''}`} onClick={() => handleTestimonialClick(testimonial)} aria-label={`Testimonial from ${testimonial.name}`}>
-                    <div className="text-left">
-                      <p className="text-white/80 text-sm mb-6">"{testimonial.quote}"</p>
-                      <div>
-                        <p className="text-white font-semibold">{testimonial.name}</p>
-                        <p className="text-white/60 text-xs">{testimonial.title}</p>
-                      </div>
-                    </div>
-                  </div>)}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-10">
+            {[0, 1, 2, 3].map((position) => (
+              <div
+                key={position}
+                className={`glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg transition-opacity duration-300 ${
+                  transitioning ? 'opacity-0' : 'opacity-100'
+                }`}
+              >
+                <div className="text-left">
+                  <p className="text-white/80 text-sm mb-6">"{testimonials[activeTestimonials[position]].quote}"</p>
+                  <div>
+                    <p className="text-white font-semibold">{testimonials[activeTestimonials[position]].name}</p>
+                    <p className="text-white/60 text-xs">{testimonials[activeTestimonials[position]].title}</p>
+                  </div>
+                </div>
               </div>
-              
-              {/* Fade right edge */}
-              <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#010822] to-transparent z-10"></div>
-            </div>
-            
-            {/* Testimonials Carousel - Second row (left to right) */}
-            <div className="relative overflow-hidden">
-              {/* Fade left edge */}
-              <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#010822] to-transparent z-10"></div>
-              
-              <div className={`flex ${pausedRow2 ? "" : "animate-carousel-ltr"}`} onMouseEnter={() => setPausedRow2(true)} onMouseLeave={() => setPausedRow2(false)}>
-                {[...testimonials.slice(4), ...testimonials.slice(0, 4), ...testimonials.slice(4)].map((testimonial, index) => <div key={`row2-${testimonial.id}-${index}`} className={`flex-none w-[500px] mx-4 glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 ${selectedTestimonial?.id === testimonial.id ? 'scale-105 border-blue-400' : ''}`} onClick={() => handleTestimonialClick(testimonial)} aria-label={`Testimonial from ${testimonial.name}`}>
-                    <div className="text-left">
-                      <p className="text-white/80 text-sm mb-6">"{testimonial.quote}"</p>
-                      <div>
-                        <p className="text-white font-semibold">{testimonial.name}</p>
-                        <p className="text-white/60 text-xs">{testimonial.title}</p>
-                      </div>
-                    </div>
-                  </div>)}
-              </div>
-              
-              {/* Fade right edge */}
-              <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#010822] to-transparent z-10"></div>
-            </div>
+            ))}
           </div>
           
-          {/* CTA for testimonials section */}
           <div className="mt-10 text-center animate-fade-up">
             <a href="#contact">
               <Button variant="cta-primary" size="md">Partner with us</Button>
@@ -116,6 +110,8 @@ const Testimonials = () => {
           </div>
         </div>
       </Container>
-    </section>;
+    </section>
+  );
 };
+
 export default Testimonials;
