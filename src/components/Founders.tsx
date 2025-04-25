@@ -58,10 +58,10 @@ const Founders = () => {
           {founders.map((founder, index) => (
             <div 
               key={index} 
-              className="hover:translate-y-[-4px] transition-all duration-300"
+              className="hover:translate-y-[-4px] transition-all duration-300 h-full"
             >
               <div 
-                className="p-6 backdrop-blur-sm text-center rounded-lg bg-white/20"
+                className="p-6 backdrop-blur-sm text-center rounded-lg bg-white/20 flex flex-col h-full"
                 style={{
                   animationDelay: `${0.1 + index * 0.1}s`,
                   boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
@@ -90,28 +90,36 @@ const Founders = () => {
                 <h3 className="text-[clamp(1rem,0.9rem+0.25vw,1.2rem)] font-semibold text-gray-800">{founder.name}</h3>
                 <div className="mt-1 text-[clamp(0.75rem,0.7rem+0.15vw,0.875rem)] font-medium text-[#cb46b3]">{founder.role}</div>
                 
-                <p className="mt-3 text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] text-gray-600 relative">
-                  {founder.bio}
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <button className="text-[#cb46b3] hover:text-[#881ec9] ml-1 inline-flex items-center text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] font-medium relative z-20">
-                        more
-                      </button>
-                    </DialogTrigger>
-                    <DialogContent className="bg-gradient-to-br from-[#000624] to-[#282c2f] border-none max-w-lg text-white">
-                      <DialogHeader>
-                        <DialogTitle className="text-xl font-semibold text-white">
-                          {founder.name}
-                        </DialogTitle>
-                      </DialogHeader>
-                      <div className="mt-4">
-                        <p className={`text-white/80 ${founder.name === "Magnus Jones" || founder.name === "Ruben Junger" ? "whitespace-pre-line" : ""}`}>
-                          {founder.fullBio}
-                        </p>
-                      </div>
-                    </DialogContent>
-                  </Dialog>
-                </p>
+                <div className="mt-3 flex-grow overflow-hidden" style={{
+                  display: "-webkit-box",
+                  WebkitLineClamp: 4,
+                  WebkitBoxOrient: "vertical",
+                  textOverflow: "ellipsis"
+                }}>
+                  <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] text-gray-600">
+                    {founder.bio}
+                  </p>
+                </div>
+                
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <button className="text-[#cb46b3] hover:text-[#881ec9] mt-2 inline-flex items-center text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] font-medium relative z-20">
+                      more
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="bg-gradient-to-br from-[#000624] to-[#282c2f] border-none max-w-lg text-white">
+                    <DialogHeader>
+                      <DialogTitle className="text-xl font-semibold text-white">
+                        {founder.name}
+                      </DialogTitle>
+                    </DialogHeader>
+                    <div className="mt-4">
+                      <p className={`text-white/80 ${founder.name === "Magnus Jones" || founder.name === "Ruben Junger" ? "whitespace-pre-line" : ""}`}>
+                        {founder.fullBio}
+                      </p>
+                    </div>
+                  </DialogContent>
+                </Dialog>
                 
                 <div className="mt-4 flex space-x-3 justify-center relative z-20">
                   {founder.social.linkedin && <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">
