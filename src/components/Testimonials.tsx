@@ -5,6 +5,7 @@ import Button from "./ui/CustomButtonComponent";
 
 const Testimonials = () => {
   const [activeTestimonials, setActiveTestimonials] = useState<number[]>([0, 1, 2, 3]);
+  const [changingIndex, setChangingIndex] = useState<number | null>(null);
   const [transitioning, setTransitioning] = useState(false);
 
   const testimonials = [{
@@ -52,19 +53,30 @@ const Testimonials = () => {
   useEffect(() => {
     let currentBoxIndex = 0;
     const interval = setInterval(() => {
+      // Set which box is changing
+      setChangingIndex(currentBoxIndex);
+      // Start transition (fade out)
       setTransitioning(true);
       
       setTimeout(() => {
+        // Update the testimonial after fade out
         setActiveTestimonials(prev => {
           const newTestimonials = [...prev];
           const nextTestimonialIndex = (Math.max(...prev) + 1) % testimonials.length;
           newTestimonials[currentBoxIndex] = nextTestimonialIndex;
           return newTestimonials;
         });
-        setTransitioning(false);
+        
+        // End transition (fade in)
+        setTimeout(() => {
+          setTransitioning(false);
+          setChangingIndex(null);
+        }, 50); // Small delay to ensure state updates properly
+        
+        // Move to next box for next interval
         currentBoxIndex = (currentBoxIndex + 1) % 4;
       }, 300); // Fade out duration
-    }, 10000); // Change every 10 seconds
+    }, 5000); // Change every 5 seconds now, reduced from 10
 
     return () => clearInterval(interval);
   }, [testimonials.length]);
@@ -88,9 +100,9 @@ const Testimonials = () => {
             {[0, 1, 2, 3].map((position) => (
               <div
                 key={position}
-                className={`glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg transition-opacity duration-300 ${
-                  transitioning ? 'opacity-0' : 'opacity-100'
-                }`}
+                className={`glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg ${
+                  changingIndex === position && transitioning ? 'opacity-0' : 'opacity-100'
+                } transition-opacity duration-300`}
               >
                 <div className="text-left">
                   <p className="text-white/80 text-sm mb-6">"{testimonials[activeTestimonials[position]].quote}"</p>
