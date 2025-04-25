@@ -75,10 +75,14 @@ const Process = () => {
             ))}
           </div>
 
-          {/* CTA box - with explicit dark blue to light blue gradient */}
-          <div className="mt-16 neo-box-alt flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl text-white relative overflow-hidden" style={{
-          background: "linear-gradient(90deg, #010822 0%, #133a63 100%)"
-        }}>
+          {/* CTA box - with same styling as cards */}
+          <div 
+            className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-lg backdrop-blur-sm bg-white/15 relative overflow-hidden"
+            style={{
+              boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
+              border: "1px solid rgba(255, 255, 255, 0.15)"
+            }}
+          >
             <div className="flex-1 text-center md:text-left relative z-10">
               <h3 className="text-[clamp(1.25rem,1.1rem+0.8vw,2rem)] font-bold mb-3 text-white">Ready to get your project in motion?</h3>
             </div>
