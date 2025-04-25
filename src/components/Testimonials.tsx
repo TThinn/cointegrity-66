@@ -111,14 +111,12 @@ const Testimonials = () => {
               <div
                 key={position}
                 className={`glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg transition-all duration-300 ${
-                  changingIndex === position ? 'transform scale-[1.02]' : ''
+                  changingIndex === position && !isVisible 
+                    ? 'opacity-0 transform scale-95' 
+                    : 'opacity-100 transform scale-100'
                 }`}
               >
-                <div 
-                  className={`text-left transition-all duration-300 ${
-                    changingIndex === position && !isVisible ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
-                  }`}
-                >
+                <div className="text-left">
                   <p className="text-white/80 text-sm mb-6">"{testimonials[activeTestimonials[position]].quote}"</p>
                   <div>
                     <p className="text-white font-semibold">{testimonials[activeTestimonials[position]].name}</p>
