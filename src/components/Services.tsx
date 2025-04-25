@@ -61,7 +61,7 @@ const Services = () => {
               <h3 className={`text-[clamp(0.9rem,0.85rem+0.25vw,1.1rem)] font-semibold mb-3 ${isDarkBackground ? 'text-white' : 'text-gray-800'}`}>
                 {service.title}
               </h3>
-              <ul className={`text-[clamp(0.75rem,0.7rem+0.15vw,0.9rem)] leading-[1.3] list-none ${isDarkBackground ? 'text-gray-200' : 'text-gray-600'}`}>
+              <ul className={`text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] list-none ${isDarkBackground ? 'text-gray-200' : 'text-gray-600'}`}>
                 {service.items.map((item, itemIndex) => (
                   <li key={itemIndex} className="flex items-start mb-[0.35rem]">
                     <span style={{ color: service.color }} className="mr-2">•</span>
