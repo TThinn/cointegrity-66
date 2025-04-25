@@ -5,23 +5,23 @@ import Button from "./ui/CustomButtonComponent";
 
 const processSteps = [{
   id: 1,
-  icon: <MapPin className="text-[#3d6b9c] w-8 h-8" />,
-  title: "Discover",
+  icon: <MapPin className="text-[#cb46b3] w-8 h-8" />,
+  title: "DISCOVER",
   description: "We start with a comprehensive session to understand your objectives and challenges. Our team assesses your position, market opportunities, and competitive landscape to set a strong foundation."
 }, {
   id: 2,
-  icon: <Zap className="text-[#3d6b9c] w-8 h-8" />,
-  title: "Strategize",
+  icon: <Zap className="text-[#cb46b3] w-8 h-8" />,
+  title: "STRATEGIZE",
   description: "We develop a tailored roadmap aligned with your goals, including tokenomics, compliance planning, and strategic positioning to maximize your impact in Web3."
 }, {
   id: 3,
-  icon: <Shield className="text-[#3d6b9c] w-8 h-8" />,
-  title: "Implement",
+  icon: <Shield className="text-[#cb46b3] w-8 h-8" />,
+  title: "IMPLEMENT",
   description: "Our team guides you through execution, ensuring compliance and optimal token architecture. We provide hands-on support and leverage our network to bring your vision to life."
 }, {
   id: 4,
-  icon: <Award className="text-[#3d6b9c] w-8 h-8" />,
-  title: "Scale",
+  icon: <Award className="text-[#cb46b3] w-8 h-8" />,
+  title: "SCALE",
   description: "We help accelerate growth through capital raising, community building, and ongoing optimization, with continuous guidance to adapt to regulatory changes and new opportunities."
 }];
 
@@ -62,10 +62,10 @@ const Process = () => {
                 }}
               >
                 <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" 
-                    style={{ background: `linear-gradient(135deg, #3d6b9c30, #3d6b9c50)` }}>
+                    style={{ background: `linear-gradient(135deg, rgba(203, 70, 179, 0.2), rgba(203, 70, 179, 0.3))` }}>
                   {step.icon}
                 </div>
-                <h3 className={`text-[clamp(0.9rem,0.85rem+0.25vw,1.1rem)] font-semibold mb-3 ${isDarkBackground ? 'text-white' : 'text-gray-800'}`}>
+                <h3 className={`text-[clamp(1.1rem,1rem+0.3vw,1.3rem)] font-semibold mb-3 ${isDarkBackground ? 'text-white' : 'text-gray-800'}`}>
                   {step.title}
                 </h3>
                 <p className={`text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] ${isDarkBackground ? 'text-gray-200' : 'text-gray-600'}`}>
@@ -80,7 +80,7 @@ const Process = () => {
           background: "linear-gradient(90deg, #010822 0%, #133a63 100%)"
         }}>
             <div className="flex-1 text-center md:text-left relative z-10">
-              <h3 className="text-2xl font-bold mb-3 text-white">Ready to get your project in motion?</h3>
+              <h3 className="text-[clamp(1.25rem,1.1rem+0.8vw,2rem)] font-bold mb-3 text-white">Ready to get your project in motion?</h3>
             </div>
             <a href="#contact" className="inline-flex items-center relative z-10">
               <Button variant="cta-primary">Let's Roll</Button>
