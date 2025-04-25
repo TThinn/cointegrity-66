@@ -4,9 +4,10 @@ import React from 'react';
 interface FormInputProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   label: string;
   isTextArea?: boolean;
+  rows?: number; // Add the rows property
 }
 
-const FormInput = ({ label, isTextArea, ...props }: FormInputProps) => {
+const FormInput = ({ label, isTextArea, rows = 4, ...props }: FormInputProps) => {
   const inputClasses = "w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800";
   
   return (
@@ -17,6 +18,7 @@ const FormInput = ({ label, isTextArea, ...props }: FormInputProps) => {
       {isTextArea ? (
         <textarea
           {...props as React.TextareaHTMLAttributes<HTMLTextAreaElement>}
+          rows={rows}
           className={inputClasses}
         />
       ) : (
