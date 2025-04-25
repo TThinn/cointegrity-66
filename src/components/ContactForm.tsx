@@ -1,8 +1,10 @@
+
 import React, { useState, useEffect, useCallback } from "react";
 import Container from "./ui/Container";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 declare global {
   interface Window {
@@ -18,9 +20,7 @@ declare global {
 const RECAPTCHA_SITE_KEY = "6Lc_BCMrAAAAAAJ53CbmGbCdpq1plgfqyOJjInN1";
 
 const ContactForm = () => {
-  // Explicitly set this section to have a light background
   const isDarkBackground = false;
-  
   const { toast } = useToast();
   const [formState, setFormState] = useState({
     name: "",
@@ -90,25 +90,35 @@ const ContactForm = () => {
       });
 
       // Send to Supabase Edge Function
-      const response = await fetch('/api/send-contact-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
           ...formState,
           recaptchaToken: token
-        })
+        }
       });
-      if (!response.ok) {
-        throw new Error('Failed to send message');
+
+      if (error) {
+        throw new Error(error.message);
       }
 
       // Show success notification and reset form
-      showNotification("success", "Your message has been sent! We'll be in touch soon.");
-      resetForm();
+      toast({
+        title: "Success",
+        description: "Your message has been sent! We'll be in touch soon."
+      });
+      setFormState({
+        name: "",
+        email: "",
+        company: "",
+        message: ""
+      });
     } catch (error) {
-      showNotification("error", "Failed to send message. Please try again.");
+      console.error('Contact form submission error:', error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to send message. Please try again."
+      });
     } finally {
       setIsSubmitting(false);
     }
