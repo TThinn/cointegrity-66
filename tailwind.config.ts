@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -16,6 +17,13 @@ const config: Config = {
       fontFamily: {
         kanit: ['Kanit', 'sans-serif'],
       },
+      borderColor: {
+        border: 'hsl(var(--border))',
+      },
+      boxShadow: {
+        'glass': '0 4px 15px 0 rgba(0, 0, 0, 0.1)',
+        'glass-md': '0 8px 30px 0 rgba(0, 0, 0, 0.12)',
+      }
     },
   },
   plugins: [],
