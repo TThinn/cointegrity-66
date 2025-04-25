@@ -3,7 +3,6 @@ import Container from "./ui/Container";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
 import { useToast } from "@/hooks/use-toast";
-
 declare global {
   interface Window {
     grecaptcha: {
@@ -14,14 +13,11 @@ declare global {
     };
   }
 }
-
 const RECAPTCHA_SITE_KEY = "6Lc_BCMrAAAAAAJ53CbmGbCdpq1plgfqyOJjInN1";
-
 const ContactForm = () => {
-  // Explicitly set this section to have a light background
-  const isDarkBackground = false;
-  
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -55,7 +51,6 @@ const ContactForm = () => {
       });
     }
   }, [toast]);
-
   useEffect(() => {
     // Load reCAPTCHA script
     const script = document.createElement("script");
@@ -71,15 +66,16 @@ const ContactForm = () => {
       }
     };
   }, []);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
+    const {
+      name,
+      value
+    } = e.target;
     setFormState(prev => ({
       ...prev,
       [name]: value
     }));
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -113,7 +109,6 @@ const ContactForm = () => {
       setIsSubmitting(false);
     }
   };
-
   return <section id="contact" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative overflow-hidden">
       {/* Subtle background elements */}
       <div className="absolute inset-0 z-0 opacity-10">
@@ -137,18 +132,9 @@ const ContactForm = () => {
             </div>
           </div>
           
-          <div 
-            className={`contact-card p-8 backdrop-blur-sm rounded-lg ${isDarkBackground ? 'bg-white/10' : 'bg-white/95'} relative`}
-            style={{
-              animationDelay: "0.3s",
-              boxShadow: isDarkBackground 
-                ? "0 4px 15px rgba(0, 0, 0, 0.1)" 
-                : "0 4px 15px rgba(0, 0, 0, 0.05)",
-              border: isDarkBackground 
-                ? "1px solid rgba(255, 255, 255, 0.1)" 
-                : "1px solid rgba(230, 230, 230, 0.7)"
-            }}
-          >
+          <div className="contact-card p-8 backdrop-blur-xl relative" style={{
+          animationDelay: "0.3s"
+        }}>
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="col-span-1">
@@ -200,5 +186,4 @@ const ContactForm = () => {
       </Container>
     </section>;
 };
-
 export default ContactForm;
