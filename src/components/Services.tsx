@@ -42,22 +42,24 @@ const Services = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => <div 
             key={index} 
-            className="service-card p-6 backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 rounded-lg bg-white/95"
+            className="service-card p-6 backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 rounded-lg"
             style={{
               animationDelay: `${0.1 + index * 0.1}s`,
-              boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
-              border: "1px solid rgba(230, 230, 230, 0.7)",
-              borderImage: "none", // Explicitly reset any border-image
-              borderStyle: "solid", // Ensure solid border style
-              borderColor: "rgba(230, 230, 230, 0.7)" // Consistent border color
+              boxShadow: isDarkBackground 
+                ? "0 4px 15px rgba(0, 0, 0, 0.1)" 
+                : "0 4px 15px rgba(0, 0, 0, 0.05)",
+              border: "1px solid transparent",
+              background: isDarkBackground 
+                ? "linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)) padding-box, linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)) border-box"
+                : "linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)) padding-box, linear-gradient(to right, rgba(230, 230, 230, 0.7), rgba(230, 230, 230, 0.7)) border-box"
             }}
           >
               <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" 
-                  style={{ background: `linear-gradient(135deg, ${service.color}20, ${service.color}40)` }}>
+                  style={{ background: `linear-gradient(135deg, ${service.color}${isDarkBackground ? '30' : '20'}, ${service.color}${isDarkBackground ? '50' : '40'})` }}>
                 {service.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-800">{service.title}</h3>
-              <ul className="leading-[1.15] list-none text-gray-600">
+              <h3 className={`text-xl font-semibold mb-3 ${isDarkBackground ? 'text-white' : 'text-gray-800'}`}>{service.title}</h3>
+              <ul className={`leading-[1.15] list-none ${isDarkBackground ? 'text-gray-200' : 'text-gray-600'}`}>
                 {service.items.map((item, itemIndex) => <li key={itemIndex} className="flex items-start">
                     <span style={{ color: service.color }} className="mr-2">•</span>
                     <span>{item}</span>
