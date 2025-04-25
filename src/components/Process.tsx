@@ -1,9 +1,7 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import { MapPin, Zap, Shield, Award } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
-
 const processSteps = [{
   id: 1,
   icon: <MapPin className="text-[#3d6b9c] w-8 h-8" />,
@@ -25,9 +23,7 @@ const processSteps = [{
   title: "Scale",
   description: "We help accelerate growth through capital raising, community building, and ongoing optimization, with continuous guidance to adapt to regulatory changes and new opportunities."
 }];
-
-const Process = () => (
-  <section id="process" className="py-24 relative overflow-hidden">
+const Process = () => <section id="process" className="py-24 relative overflow-hidden">
     <div className="absolute inset-0 z-0">
       <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#133a63]"></div>
       <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
@@ -44,17 +40,12 @@ const Process = () => (
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {processSteps.map((step, index) => (
-            <div 
-              key={step.id} 
-              className="group relative process-card p-8 rounded-xl backdrop-blur-md transition-all duration-500 hover:scale-[1.02] overflow-visible bg-[#133a63]/20 hover:bg-[#133a63]/30" 
-              style={{
-                animationDelay: `${0.1 + index * 0.1}s`,
-                borderStyle: "solid",
-                borderWidth: "1px",
-                borderImage: "linear-gradient(135deg, #010822 0%, transparent 40%, transparent 60%, #133a63 100%) 1"
-              }}
-            >
+          {processSteps.map((step, index) => <div key={step.id} className="group relative process-card p-8 rounded-xl backdrop-blur-md transition-all duration-500 hover:scale-[1.02] overflow-visible bg-[#133a63]/20 hover:bg-[#133a63]/30" style={{
+          animationDelay: `${0.1 + index * 0.1}s`,
+          borderStyle: "solid",
+          borderWidth: "1px",
+          borderImage: "linear-gradient(135deg, #010822 0%, transparent 40%, transparent 60%, #133a63 100%) 1"
+        }}>
               <div className="absolute -top-6 -left-6 w-12 h-12 rounded-full bg-gradient-to-br from-[#010822] to-[#0a1a3a] flex items-center justify-center border border-[#3d6b9c]/30 z-10">
                 <span className="text-[#3d6b9c] font-bold">{step.id}</span>
               </div>
@@ -65,8 +56,7 @@ const Process = () => (
 
               <h4 className="text-xl font-bold text-white mb-2">{step.title}</h4>
               <p className="text-white/70 text-sm">{step.description}</p>
-            </div>
-          ))}
+            </div>)}
         </div>
 
               {/* CTA box - with explicit dark blue to light blue gradient */}
@@ -77,13 +67,11 @@ const Process = () => (
             <h3 className="text-2xl font-bold mb-3 text-white">Ready to get your project in motion?</h3>
           </div>
           <a href="#contact" className="inline-flex items-center relative z-10">
-            <Button variant="cta-primary">Contact Us</Button>
+            <Button variant="cta-primary">Let's Roll</Button>
           </a>
         </div>
 
       </div>
     </Container>
-  </section>
-);
-
+  </section>;
 export default Process;
