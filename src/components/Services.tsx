@@ -43,7 +43,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div 
               key={index} 
-              className={`p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 ${isDarkBackground ? 'bg-white/15' : 'bg-white/85'}`}
+              className={`p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 ${isDarkBackground ? 'bg-white/15' : 'bg-white/75'}`}
               style={{
                 animationDelay: `${0.1 + index * 0.1}s`,
                 boxShadow: isDarkBackground 
