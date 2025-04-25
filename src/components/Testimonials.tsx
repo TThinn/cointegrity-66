@@ -67,16 +67,15 @@ const Testimonials = () => {
           return newTestimonials;
         });
         
-        // End transition (fade in)
+        // End transition (fade in with slight delay)
         setTimeout(() => {
           setTransitioning(false);
-          setChangingIndex(null);
         }, 50); // Small delay to ensure state updates properly
         
         // Move to next box for next interval
         currentBoxIndex = (currentBoxIndex + 1) % 4;
       }, 300); // Fade out duration
-    }, 5000); // Change every 5 seconds now, reduced from 10
+    }, 3000); // Change every 3 seconds now, reduced from 5
 
     return () => clearInterval(interval);
   }, [testimonials.length]);
@@ -100,15 +99,25 @@ const Testimonials = () => {
             {[0, 1, 2, 3].map((position) => (
               <div
                 key={position}
-                className={`glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg ${
-                  changingIndex === position && transitioning ? 'opacity-0' : 'opacity-100'
-                } transition-opacity duration-300`}
+                className="glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg"
               >
                 <div className="text-left">
-                  <p className="text-white/80 text-sm mb-6">"{testimonials[activeTestimonials[position]].quote}"</p>
+                  <p 
+                    className={`text-white/80 text-sm mb-6 transition-opacity duration-300 ${
+                      changingIndex === position && transitioning ? 'opacity-0' : 'opacity-100'
+                    }`}
+                  >"{testimonials[activeTestimonials[position]].quote}"</p>
                   <div>
-                    <p className="text-white font-semibold">{testimonials[activeTestimonials[position]].name}</p>
-                    <p className="text-white/60 text-xs">{testimonials[activeTestimonials[position]].title}</p>
+                    <p 
+                      className={`text-white font-semibold transition-opacity duration-300 ${
+                        changingIndex === position && transitioning ? 'opacity-0' : 'opacity-100'
+                      }`}
+                    >{testimonials[activeTestimonials[position]].name}</p>
+                    <p 
+                      className={`text-white/60 text-xs transition-opacity duration-300 ${
+                        changingIndex === position && transitioning ? 'opacity-0' : 'opacity-100'
+                      }`}
+                    >{testimonials[activeTestimonials[position]].title}</p>
                   </div>
                 </div>
               </div>
