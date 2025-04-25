@@ -54,9 +54,8 @@ const Header = () => {
                 key={href}
                 href={href} 
                 className={`micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors relative
-                  ${activeSection === href.slice(1) ? 'text-white after:scale-x-100' : 'after:scale-x-0'}
-                  after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] 
-                  after:bg-white/60 after:transition-transform after:duration-300`}
+                  ${activeSection === href.slice(1) ? 'text-white' : 'hover:text-white'}
+                  ${activeSection === href.slice(1) ? 'font-semibold' : ''}`}
               >
                 {label}
               </a>
