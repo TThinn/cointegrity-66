@@ -50,14 +50,14 @@ const Services = () => {
                 border: "none"
               }}
             >
-              <div className={`p-6 rounded-lg backdrop-blur-sm ${isDarkBackground ? 'bg-white/10' : 'bg-white/95'}`} 
+              <div className={`p-6 rounded-lg backdrop-blur-sm ${isDarkBackground ? 'bg-white/15' : 'bg-white/85'}`} 
                 style={{
                   boxShadow: isDarkBackground 
                     ? "0 4px 15px rgba(0, 0, 0, 0.1)" 
                     : "0 4px 15px rgba(0, 0, 0, 0.05)",
                   border: isDarkBackground 
-                    ? "1px solid rgba(255, 255, 255, 0.1)" 
-                    : "1px solid rgba(230, 230, 230, 0.7)"
+                    ? "1px solid rgba(255, 255, 255, 0.15)" 
+                    : "1px solid rgba(255, 255, 255, 0.7)"
                 }}
               >
                 <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" 
