@@ -40,17 +40,15 @@
   --sidebar-ring: 217.2 91.2% 59.8%;
 }
 
-@layer base {
-  * {
-    @apply border-[hsl(var(--border))];
-  }
+* {
+  @apply border-border;
+}
 
-  html {
-    scroll-behavior: smooth;
-    font-family: 'Inter', sans-serif;
-  }
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif;
+}
 
-  body {
-    @apply bg-background text-foreground antialiased font-sans;
-  }
+body {
+  @apply bg-background text-foreground antialiased font-sans;
 }

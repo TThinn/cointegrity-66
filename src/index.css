@@ -44,14 +44,6 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  @font-face {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(https://fonts.gstatic.com/s/kanit/v12/nKKU-Go6G5tXcr4-ORWzVaF9.woff2) format('woff2');
-  }
-
   * {
     @apply border-border;
   }
