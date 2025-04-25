@@ -21,7 +21,7 @@ export const useContactForm = () => {
     message: ""
   });
 
-  const { getToken } = useRecaptcha();
+  const { getToken, isLoaded } = useRecaptcha();
 
   const resetForm = useCallback(() => {
     setFormState({
@@ -42,19 +42,38 @@ export const useContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!isLoaded) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Please wait for the page to fully load before submitting."
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
+    
     try {
+      console.log("Getting reCAPTCHA token...");
       const token = await getToken();
+      console.log("Token received, sending to edge function...");
+      
+      if (!token) {
+        throw new Error("Failed to generate reCAPTCHA token");
+      }
 
-      const { error } = await supabase.functions.invoke('send-contact-email', {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
         body: {
           ...formState,
           recaptchaToken: token
         }
       });
 
+      console.log("Response from edge function:", { data, error });
+
       if (error) {
-        throw new Error(error.message);
+        throw new Error(error.message || "An error occurred while sending your message");
       }
 
       toast({
@@ -78,6 +97,7 @@ export const useContactForm = () => {
     formState,
     isSubmitting,
     handleChange,
-    handleSubmit
+    handleSubmit,
+    isLoaded
   };
 };

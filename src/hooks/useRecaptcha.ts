@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const RECAPTCHA_SITE_KEY = "6Lc_BCMrAAAAAAJ53CbmGbCdpq1plgfqyOJjInN1";
 
@@ -15,10 +15,25 @@ declare global {
 }
 
 export const useRecaptcha = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
+    // Check if reCAPTCHA script is already loaded
+    if (window.grecaptcha) {
+      setIsLoaded(true);
+      return;
+    }
+
     const script = document.createElement("script");
     script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
     script.async = true;
+    
+    script.onload = () => {
+      window.grecaptcha.ready(() => {
+        setIsLoaded(true);
+      });
+    };
+    
     document.body.appendChild(script);
 
     return () => {
@@ -29,10 +44,20 @@ export const useRecaptcha = () => {
   }, []);
 
   const getToken = async () => {
-    return await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, {
-      action: 'submit'
-    });
+    if (!isLoaded) {
+      console.log('reCAPTCHA not loaded yet');
+      return '';
+    }
+    
+    try {
+      return await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, {
+        action: 'submit'
+      });
+    } catch (error) {
+      console.error('Error getting reCAPTCHA token:', error);
+      return '';
+    }
   };
 
-  return { getToken };
+  return { getToken, isLoaded };
 };
