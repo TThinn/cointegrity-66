@@ -1,12 +1,12 @@
-
 import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
 
 const Testimonials = () => {
-  const [activeTestimonials, setActiveTestimonials] = useState<number[]>();
+  const [activeTestimonials, setActiveTestimonials] = useState<number[]>([0, 1, 2, 3]);
   const [changingIndex, setChangingIndex] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(true);
+
   const testimonials = [{
     id: 1,
     quote: "We're grateful for Cointegrity's support in securing grants and connecting us with top blockchain partners. Their expertise unlocked opportunities we couldn't access alone.",
@@ -50,25 +50,8 @@ const Testimonials = () => {
   }];
 
   useEffect(() => {
-    // Initialize with random testimonials
-    if (!activeTestimonials) {
-      const initialTestimonials = [];
-      const usedIndices = new Set();
-      for (let i = 0; i < 4; i++) {
-        let randomIndex;
-        do {
-          randomIndex = Math.floor(Math.random() * testimonials.length);
-        } while (usedIndices.has(randomIndex));
-        
-        usedIndices.add(randomIndex);
-        initialTestimonials.push(randomIndex);
-      }
-      
-      setActiveTestimonials(initialTestimonials);
-    }
-
     let currentBoxIndex = 0;
-
+    
     const rotateTestimonial = () => {
       // Set which box is changing
       setChangingIndex(currentBoxIndex);
@@ -101,23 +84,20 @@ const Testimonials = () => {
         }, 100); // Very short delay before reappearing
       }, 300); // Time while card is invisible
     };
-
-    // Start the rotation after a delay to ensure initial testimonials are set
-    const timeout = setTimeout(() => {
-      const interval = setInterval(rotateTestimonial, 3000);
-      return () => clearInterval(interval);
-    }, 1000);
-
-    return () => clearTimeout(timeout);
-  }, [testimonials.length, activeTestimonials]);
-
-  // If testimonials aren't loaded yet, show loading state
-  if (!activeTestimonials) {
-    return <div>Loading...</div>;
-  }
+    
+    // Start the rotation
+    const interval = setInterval(rotateTestimonial, 3000);
+    
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
 
   return (
     <section id="testimonials" className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#133a63]"></div>
+        <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
+      </div>
+      
       <Container>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-fade-up">
@@ -131,12 +111,14 @@ const Testimonials = () => {
               <div
                 key={position}
                 className={`glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg transition-all duration-300 ${
-                  changingIndex === position && !isVisible 
-                    ? 'opacity-0 transform scale-95' 
-                    : 'opacity-100 transform scale-100'
+                  changingIndex === position ? 'transform scale-[1.02]' : ''
                 }`}
               >
-                <div className="text-left">
+                <div 
+                  className={`text-left transition-all duration-300 ${
+                    changingIndex === position && !isVisible ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
+                  }`}
+                >
                   <p className="text-white/80 text-sm mb-6">"{testimonials[activeTestimonials[position]].quote}"</p>
                   <div>
                     <p className="text-white font-semibold">{testimonials[activeTestimonials[position]].name}</p>
