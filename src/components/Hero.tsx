@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
 
@@ -22,6 +22,16 @@ const Hero = () => {
     delay: Math.random() * 5,
     duration: 20 + Math.random() * 40
   }))).current;
+
+  // Font loading effect
+  useEffect(() => {
+    const font = new FontFace('Kanit Script', 'url(https://fonts.gstatic.com/s/kanitscript/v1/MjQPmK52BBHwCiZdZ0OvNjV1L2E.woff2)');
+    font.load().then(() => {
+      document.fonts.add(font);
+    }).catch((err) => {
+      console.error('Error loading Kanit Script font:', err);
+    });
+  }, []);
 
   // Synchronous device detection BEFORE first paint
   useLayoutEffect(() => {
@@ -75,7 +85,7 @@ const Hero = () => {
      {/* Content container */}
 <Container className="hero-content relative z-8 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
 <div className="flex flex-col items-center text-center mx-auto mt-16 w-full max-w-[90vw] xl:max-w-[1200px]">
-<h1 className="font-bold leading-tight text-shadow mb-4 animate-fade-up text-balance" style={{
+<h1 className="font-kanit-script font-bold leading-tight text-shadow mb-4 animate-fade-up text-balance" style={{
 animationDelay: "0.2s",
 fontSize: "clamp(1.9rem, 6vw, 4.5rem)",
 lineHeight: 1.1,
