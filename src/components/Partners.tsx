@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Container from "./ui/Container";
+
 const Partners = () => {
   const [pausedRow, setPausedRow] = useState(false);
 
@@ -56,6 +57,7 @@ const Partners = () => {
     description: "Global professional services organization",
     logo: "/lovable-uploads/1ec5bfd8-e2e8-46c4-8b86-b6fa09a3b6e2.png"
   }];
+
   return <section id="partners" className="py-24 relative overflow-hidden">
       {/* Updated background to match Process section */}
       <div className="absolute inset-0 z-0">
@@ -107,27 +109,38 @@ const Partners = () => {
             <h3 className="text-2xl font-bold text-white mb-4 text-center">
               Trusted by Industry Leaders
             </h3>
-            <p className="text-white/60 max-w-2xl mb-10 mx-auto text-center">Our founders are proud to have worked at, and collaborated with these pioneering organizations, driving innovation in blockchain and digital assets.</p>
+            <p className="text-white/60 max-w-2xl mb-10 mx-auto text-center">
+              Our founders are proud to have worked at, and collaborated with these pioneering organizations, driving innovation in blockchain and digital assets.
+            </p>
             
             <div className="relative overflow-hidden">
-              {/* Fade left edge - updated to match Process section colors */}
+              {/* Fade left edge */}
               <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#010822] to-transparent z-10"></div>
               
               <div className={`flex ${pausedRow ? "" : "animate-carousel-rtl"}`} onMouseEnter={() => setPausedRow(true)} onMouseLeave={() => setPausedRow(false)}>
-                {[...previousPartners, ...previousPartners, ...previousPartners].map((partner, index) => <div key={`${partner.id}-${index}`} className="flex-none mx-8 w-60 glass backdrop-blur-md bg-white/5 rounded-xl border border-white/10 p-6 shadow-lg transition-transform hover:-translate-y-1 duration-300">
+                {[...previousPartners, ...previousPartners, ...previousPartners].map((partner, index) => (
+                  <div 
+                    key={`${partner.id}-${index}`} 
+                    className="flex-none mx-8 w-60 glass backdrop-blur-md bg-white/5 rounded-xl border border-white/10 p-6 shadow-lg transition-all duration-300 hover:-translate-y-1"
+                  >
                     <a href={partner.url} target="_blank" rel="noopener noreferrer" className="block h-full">
                       <div className="h-24 flex items-center justify-center mb-4">
-                        <img src={partner.logo} alt={partner.name} className="max-h-16 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" />
+                        <img 
+                          src={partner.logo} 
+                          alt={partner.name} 
+                          className="max-h-16 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" 
+                        />
                       </div>
                       <div className="text-center">
                         <p className="text-white font-medium">{partner.name}</p>
                         <p className="text-white/60 text-xs">{partner.description}</p>
                       </div>
                     </a>
-                  </div>)}
+                  </div>
+                ))}
               </div>
               
-              {/* Fade right edge - updated to match Process section colors */}
+              {/* Fade right edge */}
               <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#010822] to-transparent z-10"></div>
             </div>
           </div>
@@ -135,4 +148,5 @@ const Partners = () => {
       </Container>
     </section>;
 };
+
 export default Partners;

@@ -7,20 +7,30 @@ import Button from "./ui/CustomButtonComponent";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
 
   useEffect(() => {
     const handleScroll = () => {
+      // Handle background change on scroll
       const offset = window.scrollY;
-      if (offset > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(offset > 50);
+
+      // Handle section highlighting
+      const sections = ['services', 'partners', 'team', 'testimonials'];
+      const currentSection = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+
+      setActiveSection(currentSection || '');
     };
+
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3 bg-black/70 backdrop-blur-lg shadow-md' : 'py-6 bg-transparent'}`}>
@@ -34,18 +44,23 @@ const Header = () => {
           </a>
 
           <nav className="hidden md:flex items-center gap-1">
-            <a href="#services" className="micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors">
-              Services
-            </a>
-            <a href="#founders" className="micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors">
-              Team
-            </a>
-            <a href="#partners" className="micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors">
-              Partners
-            </a>
-            <a href="#testimonials" className="micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors">
-              Testimonials
-            </a>
+            {[
+              { href: "#services", label: "Services" },
+              { href: "#partners", label: "Partners" },
+              { href: "#team", label: "Team" },
+              { href: "#testimonials", label: "Testimonials" }
+            ].map(({ href, label }) => (
+              <a 
+                key={href}
+                href={href} 
+                className={`micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors relative
+                  ${activeSection === href.slice(1) ? 'text-white after:scale-x-100' : 'after:scale-x-0'}
+                  after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] 
+                  after:bg-white/60 after:transition-transform after:duration-300`}
+              >
+                {label}
+              </a>
+            ))}
             <a href="#contact" className="pl-4 micro-interaction">
               <Button variant="primary" size="sm">Connect</Button>
             </a>
@@ -60,18 +75,22 @@ const Header = () => {
       {isOpen && <div className="fixed inset-0 bg-black/90 backdrop-blur-lg z-40 md:hidden pt-20">
           <Container>
             <nav className="flex flex-col gap-4 items-center text-center">
-              <a href="#services" className="micro-interaction w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10" onClick={() => setIsOpen(false)}>
-                Services
-              </a>
-              <a href="#founders" className="micro-interaction w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10" onClick={() => setIsOpen(false)}>
-                Team
-              </a>
-              <a href="#partners" className="micro-interaction w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10" onClick={() => setIsOpen(false)}>
-                Partners
-              </a>
-              <a href="#testimonials" className="micro-interaction w-full py-4 text-xl text-white/90 hover:text-white border-b border-white/10" onClick={() => setIsOpen(false)}>
-                Testimonials
-              </a>
+              {[
+                { href: "#services", label: "Services" },
+                { href: "#partners", label: "Partners" },
+                { href: "#team", label: "Team" },
+                { href: "#testimonials", label: "Testimonials" }
+              ].map(({ href, label }) => (
+                <a
+                  key={href}
+                  href={href}
+                  className={`micro-interaction w-full py-4 text-xl border-b border-white/10
+                    ${activeSection === href.slice(1) ? 'text-white' : 'text-white/90 hover:text-white'}`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {label}
+                </a>
+              ))}
               <a href="#contact" className="micro-interaction w-full py-4 text-xl text-white mt-4" onClick={() => setIsOpen(false)}>
                 <Button variant="primary" size="sm" className="w-full">
                   Contact Us
