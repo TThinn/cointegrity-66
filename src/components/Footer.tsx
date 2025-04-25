@@ -1,14 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Container from "./ui/Container";
 import { Linkedin, Twitter, Youtube, Github } from "lucide-react";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  return <footer className="bg-gradient-to-br from-[#000624] to-[#282c2f] pt-16 pb-8">
+  return (
+    <footer className="bg-gradient-to-br from-[#000624] to-[#282c2f] pt-16 pb-8">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-1">
             <a href="#" className="flex items-center space-x-2">
-              
               <span className="font-semibold text-xl text-white">Cointegrity</span>
             </a>
             <p className="mt-4 text-sm text-white/70">
@@ -91,13 +93,15 @@ const Footer = () => {
               &copy; {currentYear} Cointegrity AS. All rights reserved.
             </p>
             <div className="mt-4 md:mt-0 flex space-x-6">
-              <a href="#" className="text-xs text-white/50 hover:text-blue-400 transition-colors">Privacy Policy</a>
-              
-              
+              <Link to="/privacy" className="text-xs text-white/50 hover:text-blue-400 transition-colors">
+                Privacy Policy
+              </Link>
             </div>
           </div>
         </div>
       </Container>
-    </footer>;
+    </footer>
+  );
 };
+
 export default Footer;
