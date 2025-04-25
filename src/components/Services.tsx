@@ -43,7 +43,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div 
               key={index} 
-              className={`p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 ${isDarkBackground ? 'bg-white/15' : 'bg-white/30'}`}
+              className={`p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 ${isDarkBackground ? 'bg-white/15' : 'bg-white/20'}`}
               style={{
                 animationDelay: `${0.1 + index * 0.1}s`,
                 boxShadow: isDarkBackground 
@@ -58,10 +58,12 @@ const Services = () => {
                   style={{ background: `linear-gradient(135deg, ${service.color}${isDarkBackground ? '30' : '20'}, ${service.color}${isDarkBackground ? '50' : '40'})` }}>
                 {service.icon}
               </div>
-              <h3 className={`text-xl font-semibold mb-3 ${isDarkBackground ? 'text-white' : 'text-gray-800'}`}>{service.title}</h3>
-              <ul className={`leading-[1.15] list-none ${isDarkBackground ? 'text-gray-200' : 'text-gray-600'}`}>
+              <h3 className={`text-[clamp(0.9rem,0.85rem+0.25vw,1.1rem)] font-semibold mb-3 ${isDarkBackground ? 'text-white' : 'text-gray-800'}`}>
+                {service.title}
+              </h3>
+              <ul className={`text-[clamp(0.75rem,0.7rem+0.15vw,0.9rem)] leading-[1.3] list-none ${isDarkBackground ? 'text-gray-200' : 'text-gray-600'}`}>
                 {service.items.map((item, itemIndex) => (
-                  <li key={itemIndex} className="flex items-start">
+                  <li key={itemIndex} className="flex items-start mb-[0.35rem]">
                     <span style={{ color: service.color }} className="mr-2">•</span>
                     <span>{item}</span>
                   </li>
