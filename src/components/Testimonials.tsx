@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
@@ -6,7 +5,7 @@ import Button from "./ui/CustomButtonComponent";
 const Testimonials = () => {
   const [activeTestimonials, setActiveTestimonials] = useState<number[]>([0, 1, 2, 3]);
   const [changingIndex, setChangingIndex] = useState<number | null>(null);
-  const [transitioning, setTransitioning] = useState(false);
+  const [fadeState, setFadeState] = useState<'visible' | 'fading-out' | 'changing' | 'fading-in'>('visible');
 
   const testimonials = [{
     id: 1,
@@ -52,32 +51,49 @@ const Testimonials = () => {
 
   useEffect(() => {
     let currentBoxIndex = 0;
-    const interval = setInterval(() => {
-      // Set which box is changing
+    let timeoutId: NodeJS.Timeout;
+    
+    const rotateTestimonials = () => {
+      // Start fade out
       setChangingIndex(currentBoxIndex);
-      // Start transition (fade out)
-      setTransitioning(true);
+      setFadeState('fading-out');
       
-      setTimeout(() => {
-        // Update the testimonial after fade out
+      // After fade out completes, change the content
+      timeoutId = setTimeout(() => {
+        setFadeState('changing');
         setActiveTestimonials(prev => {
           const newTestimonials = [...prev];
-          const nextTestimonialIndex = (Math.max(...prev) + 1) % testimonials.length;
+          // Find a testimonial that's not currently displayed
+          const currentlyDisplayed = new Set(prev);
+          let nextTestimonialIndex;
+          do {
+            nextTestimonialIndex = Math.floor(Math.random() * testimonials.length);
+          } while (currentlyDisplayed.has(nextTestimonialIndex));
+          
           newTestimonials[currentBoxIndex] = nextTestimonialIndex;
           return newTestimonials;
         });
         
-        // End transition (fade in with slight delay)
-        setTimeout(() => {
-          setTransitioning(false);
-        }, 50); // Small delay to ensure state updates properly
-        
-        // Move to next box for next interval
-        currentBoxIndex = (currentBoxIndex + 1) % 4;
+        // Start fade in
+        timeoutId = setTimeout(() => {
+          setFadeState('fading-in');
+          
+          // Complete fade in and prepare for next change
+          timeoutId = setTimeout(() => {
+            setFadeState('visible');
+            currentBoxIndex = (currentBoxIndex + 1) % 4;
+            
+            // Schedule next rotation
+            timeoutId = setTimeout(rotateTestimonials, 2500); // Wait before starting next rotation
+          }, 300); // Fade in duration
+        }, 50); // Small delay before fade in starts
       }, 300); // Fade out duration
-    }, 3000); // Change every 3 seconds now, reduced from 5
-
-    return () => clearInterval(interval);
+    };
+    
+    // Start the first rotation
+    timeoutId = setTimeout(rotateTestimonials, 1000);
+    
+    return () => clearTimeout(timeoutId);
   }, [testimonials.length]);
 
   return (
@@ -90,7 +106,7 @@ const Testimonials = () => {
       <Container>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-fade-up">
-            <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">CLIENT TESTIMONIALS</h2>
+            <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3]">CLIENT TESTIMONIALS</h2>
             <h3 className="text-3xl md:text-4xl font-bold mb-2 text-white">You will be in good company</h3>
             <p className="text-white/60 max-w-2xl mx-auto">Experiences from working with Cointegrity or our Co-Founders in reshaping the industry</p>
           </div>
@@ -99,23 +115,37 @@ const Testimonials = () => {
             {[0, 1, 2, 3].map((position) => (
               <div
                 key={position}
-                className="glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg"
+                className={`glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg transition-all duration-300 ${
+                  changingIndex === position && fadeState !== 'visible' ? 'transform scale-[1.02]' : ''
+                }`}
               >
-                <div className="text-left">
+                <div className="text-left h-full flex flex-col">
                   <p 
-                    className={`text-white/80 text-sm mb-6 transition-opacity duration-300 ${
-                      changingIndex === position && transitioning ? 'opacity-0' : 'opacity-100'
+                    className={`text-white/80 text-sm mb-6 flex-grow transition-opacity duration-300 ${
+                      changingIndex === position && (fadeState === 'fading-out' || fadeState === 'changing') 
+                        ? 'opacity-0' 
+                        : changingIndex === position && fadeState === 'fading-in'
+                        ? 'opacity-100 transition-opacity duration-300' 
+                        : 'opacity-100'
                     }`}
                   >"{testimonials[activeTestimonials[position]].quote}"</p>
                   <div>
                     <p 
                       className={`text-white font-semibold transition-opacity duration-300 ${
-                        changingIndex === position && transitioning ? 'opacity-0' : 'opacity-100'
+                        changingIndex === position && (fadeState === 'fading-out' || fadeState === 'changing') 
+                          ? 'opacity-0' 
+                          : changingIndex === position && fadeState === 'fading-in'
+                          ? 'opacity-100 transition-opacity duration-300' 
+                          : 'opacity-100'
                       }`}
                     >{testimonials[activeTestimonials[position]].name}</p>
                     <p 
                       className={`text-white/60 text-xs transition-opacity duration-300 ${
-                        changingIndex === position && transitioning ? 'opacity-0' : 'opacity-100'
+                        changingIndex === position && (fadeState === 'fading-out' || fadeState === 'changing') 
+                          ? 'opacity-0' 
+                          : changingIndex === position && fadeState === 'fading-in'
+                          ? 'opacity-100 transition-opacity duration-300' 
+                          : 'opacity-100'
                       }`}
                     >{testimonials[activeTestimonials[position]].title}</p>
                   </div>
