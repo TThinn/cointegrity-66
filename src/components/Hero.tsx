@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
 
@@ -8,6 +8,7 @@ const HERO_PARTICLE_COUNT_MOBILE = 3;
 const Hero = () => {
   const [particleCount, setParticleCount] = useState<number | null>(null);
   const [isReady, setIsReady] = useState(false);
+  const [fontLoaded, setFontLoaded] = useState(false);
 
   // Pre-calculate all particle positions and properties ONCE
   const particles = useRef(Array.from({
@@ -22,6 +23,23 @@ const Hero = () => {
     delay: Math.random() * 5,
     duration: 20 + Math.random() * 40
   }))).current;
+
+  // Font loading effect
+  useEffect(() => {
+    const font = new FontFace(
+      'Kanit',
+      'url(https://fonts.gstatic.com/s/kanit/v12/nKKU-Go6G5tXcr4-ORWzVaF9.woff2)',
+      { weight: '700' }
+    );
+
+    font.load().then(() => {
+      document.fonts.add(font);
+      setFontLoaded(true);
+    }).catch((err) => {
+      console.error('Error loading font:', err);
+      setFontLoaded(true); // Set to true anyway to prevent UI from hanging
+    });
+  }, []);
 
   // Synchronous device detection BEFORE first paint
   useLayoutEffect(() => {
@@ -75,14 +93,17 @@ const Hero = () => {
      {/* Content container */}
 <Container className="hero-content relative z-8 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
 <div className="flex flex-col items-center text-center mx-auto mt-16 w-full max-w-[90vw] xl:max-w-[1200px]">
-<h1 className="font-bold leading-tight text-shadow mb-4 animate-fade-up text-balance" style={{
-animationDelay: "0.2s",
-fontSize: "clamp(1.9rem, 6vw, 4.5rem)",
-lineHeight: 1.1,
-letterSpacing: "-0.03em"
-}}>
-<span className="text-white font-extrabold">Simplifying Web3 Complexity</span>
-</h1>
+          <h1 
+            className={`font-bold leading-tight text-shadow mb-4 animate-fade-up font-kanit ${fontLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`} 
+            style={{
+              animationDelay: "0.2s",
+              fontSize: "clamp(1.9rem, 6vw, 4.5rem)",
+              lineHeight: 1.1,
+              letterSpacing: "-0.03em"
+            }}
+          >
+            <span className="text-white font-extrabold">Simplifying Web3 Complexity</span>
+          </h1>
 
 <h2 className="text-white/80 animate-fade-up relative mb-8 text-balance" style={{
 animationDelay: "0.4s",
@@ -156,7 +177,7 @@ opacity: 0.3 !important;
 `}
 </style>
 </section>
-);
+  );
 };
 
 export default Hero;
