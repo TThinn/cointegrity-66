@@ -3,6 +3,7 @@ import Container from "./ui/Container";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
 import { useToast } from "@/hooks/use-toast";
+
 declare global {
   interface Window {
     grecaptcha: {
@@ -13,11 +14,14 @@ declare global {
     };
   }
 }
+
 const RECAPTCHA_SITE_KEY = "6Lc_BCMrAAAAAAJ53CbmGbCdpq1plgfqyOJjInN1";
+
 const ContactForm = () => {
-  const {
-    toast
-  } = useToast();
+  // Explicitly set this section to have a dark background
+  const isDarkBackground = true;
+  
+  const { toast } = useToast();
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -51,6 +55,7 @@ const ContactForm = () => {
       });
     }
   }, [toast]);
+
   useEffect(() => {
     // Load reCAPTCHA script
     const script = document.createElement("script");
@@ -66,16 +71,15 @@ const ContactForm = () => {
       }
     };
   }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const {
-      name,
-      value
-    } = e.target;
+    const { name, value } = e.target;
     setFormState(prev => ({
       ...prev,
       [name]: value
     }));
   };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -109,11 +113,12 @@ const ContactForm = () => {
       setIsSubmitting(false);
     }
   };
-  return <section id="contact" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative overflow-hidden">
-      {/* Subtle background elements */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#133a63]/30 rounded-full blur-[90px]"></div>
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#010822]/20 rounded-full blur-[70px]"></div>
+
+  return <section id="contact" className="py-20 relative overflow-hidden">
+      {/* Updated background to match Process section */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#133a63]"></div>
+        <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
       </div>
       
       <Container className="relative z-10">
@@ -122,8 +127,8 @@ const ContactForm = () => {
           animationDelay: "0.1s"
         }}>
             <h2 className="font-semibold uppercase tracking-wider text-[cb46b3] text-[#cb46b3]">Contact Us</h2>
-            <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Partner With Us to Bring Your Project to Life</h3>
-            <p className="mt-4 text-lg text-gray-600">
+            <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-white">Partner With Us to Bring Your Project to Life</h3>
+            <p className="mt-4 text-lg text-white/60">
               Have a project in mind or questions about our services? We're here to help you navigate the decentralized landscape.
             </p>
             
@@ -132,37 +137,42 @@ const ContactForm = () => {
             </div>
           </div>
           
-          <div className="contact-card p-8 backdrop-blur-xl relative" style={{
-          animationDelay: "0.3s"
-        }}>
+          <div 
+            className="p-8 backdrop-blur-sm rounded-lg bg-white/15 relative"
+            style={{
+              animationDelay: "0.3s",
+              boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
+              border: "1px solid rgba(255, 255, 255, 0.15)"
+            }}
+          >
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="col-span-1">
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="name" className="block text-sm font-medium text-white mb-1">
                     Your Name
                   </label>
-                  <input type="text" id="name" name="name" value={formState.name} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" placeholder="John Doe" />
+                  <input type="text" id="name" name="name" value={formState.name} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/10 text-white" placeholder="John Doe" />
                 </div>
                 
                 <div className="col-span-1">
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="email" className="block text-sm font-medium text-white mb-1">
                     Email Address
                   </label>
-                  <input type="email" id="email" name="email" value={formState.email} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" placeholder="john@example.com" />
+                  <input type="email" id="email" name="email" value={formState.email} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/10 text-white" placeholder="john@example.com" />
                 </div>
                 
                 <div className="col-span-2">
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="company" className="block text-sm font-medium text-white mb-1">
                     Company (Optional)
                   </label>
-                  <input type="text" id="company" name="company" value={formState.company} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" placeholder="Your Company" />
+                  <input type="text" id="company" name="company" value={formState.company} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/10 text-white" placeholder="Your Company" />
                 </div>
                 
                 <div className="col-span-2">
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="message" className="block text-sm font-medium text-white mb-1">
                     Your Message
                   </label>
-                  <textarea id="message" name="message" value={formState.message} onChange={handleChange} required rows={4} className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" placeholder="Tell us about your project or inquiry..." />
+                  <textarea id="message" name="message" value={formState.message} onChange={handleChange} required rows={4} className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/10 text-white" placeholder="Tell us about your project or inquiry..." />
                 </div>
               </div>
               
@@ -186,4 +196,5 @@ const ContactForm = () => {
       </Container>
     </section>;
 };
+
 export default ContactForm;
