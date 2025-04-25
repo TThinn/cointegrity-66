@@ -11,7 +11,7 @@ const services = [{
   icon: <Layers size={24} className="text-[#cb46b3]" />,
   title: "WEB3 INFRASTRUCTURE",
   items: ["Tokenomics", "Smart Contracts", "Web3 Development", "Community Development", "Exchange Listings", "Whitepaper", "Ecosystem Audit"],
-  color: "pink"
+  color: "text-[#cb46b3]"
 }, {
   icon: <Scale size={24} className="text-[#4884a6]" />,
   title: "REGULATORY NAVIGATION",
@@ -21,7 +21,7 @@ const services = [{
   icon: <Rocket size={24} className="text-[#cb46b3]" />,
   title: "CAPITAL ACCELERATION",
   items: ["Investor Network Access", "Investor Relations Support", "Market Making", "Grants", "Pitch Coaching", "Collateral", "Data Room"],
-  color: "pink"
+  color: "text-[#cb46b3]"
 }];
 const Services = () => {
   return <section id="services" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative">
