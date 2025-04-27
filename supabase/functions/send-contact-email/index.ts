@@ -1,3 +1,4 @@
+
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
 
@@ -13,6 +14,12 @@ const corsHeaders = {
 };
 
 serve(async (req) => {
+  console.log('Received request:', {
+    method: req.method,
+    url: req.url,
+    headers: Object.fromEntries(req.headers.entries()),
+  });
+
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -20,8 +27,15 @@ serve(async (req) => {
 
   try {
     const { name, email, company, message, recaptchaToken } = await req.json();
+    
+    // Enhanced input validation
+    if (!name || !email || !message || !recaptchaToken) {
+      console.error('Missing required fields:', { name, email, message, recaptchaToken });
+      throw new Error('Missing required fields');
+    }
 
-    // Verify reCAPTCHA token
+    // Enhanced reCAPTCHA validation with detailed logging
+    console.log('Verifying reCAPTCHA token...');
     const recaptchaResponse = await fetch('https://www.google.com/recaptcha/api/siteverify', {
       method: 'POST',
       headers: {
@@ -31,45 +45,66 @@ serve(async (req) => {
     });
 
     const recaptchaResult = await recaptchaResponse.json();
-    if (!recaptchaResult.success || recaptchaResult.score < 0.5) {
-      return new Response(
-        JSON.stringify({ error: 'reCAPTCHA verification failed' }),
-        { status: 400, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
-      );
+    console.log('reCAPTCHA verification result:', recaptchaResult);
+
+    if (!recaptchaResult.success) {
+      console.error('reCAPTCHA verification failed:', recaptchaResult['error-codes']);
+      throw new Error('Security verification failed');
     }
 
-    // Send email
-    const client = new SmtpClient();
-    await client.connectTLS({
-      hostname: SMTP_HOSTNAME,
-      port: SMTP_PORT,
-      username: SMTP_USERNAME,
-      password: SMTP_PASSWORD,
-    });
+    if (recaptchaResult.score < 0.5) {
+      console.error('reCAPTCHA score too low:', recaptchaResult.score);
+      throw new Error('Security verification score too low');
+    }
 
-    await client.send({
-      from: SMTP_USERNAME,
-      to: "requests@cointegrity.io",
-      subject: `New Contact Form Submission from ${name}`,
-      content: `
+    // Send email with enhanced error handling
+    console.log('Initializing SMTP client...');
+    const client = new SmtpClient();
+    
+    try {
+      console.log('Connecting to SMTP server...');
+      await client.connectTLS({
+        hostname: SMTP_HOSTNAME,
+        port: SMTP_PORT,
+        username: SMTP_USERNAME,
+        password: SMTP_PASSWORD,
+      });
+
+      console.log('Sending email...');
+      await client.send({
+        from: SMTP_USERNAME,
+        to: "requests@cointegrity.io",
+        subject: `New Contact Form Submission from ${name}`,
+        content: `
 Name: ${name}
 Email: ${email}
 Company: ${company}
 Message: ${message}
-      `,
-    });
+        `,
+      });
 
-    await client.close();
+      console.log('Email sent successfully');
+      await client.close();
 
-    return new Response(
-      JSON.stringify({ message: 'Email sent successfully' }),
-      { status: 200, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
-    );
+      return new Response(
+        JSON.stringify({ message: 'Email sent successfully' }),
+        { status: 200, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+      );
+    } catch (emailError) {
+      console.error('SMTP error:', emailError);
+      throw new Error('Failed to send email');
+    }
   } catch (error) {
     console.error('Error in send-contact-email function:', error);
     return new Response(
-      JSON.stringify({ error: 'Failed to send email' }),
-      { status: 500, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+      JSON.stringify({ 
+        error: error.message || 'Failed to send email',
+        timestamp: new Date().toISOString()
+      }),
+      { 
+        status: error.status || 500, 
+        headers: { 'Content-Type': 'application/json', ...corsHeaders } 
+      }
     );
   }
 });

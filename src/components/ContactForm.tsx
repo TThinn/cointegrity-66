@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from "react";
 import Container from "./ui/Container";
 import { Mail, Send } from "lucide-react";
@@ -20,7 +19,6 @@ declare global {
 const RECAPTCHA_SITE_KEY = "6Lc_BCMrAAAAAAJ53CbmGbCdpq1plgfqyOJjInN1";
 
 const ContactForm = () => {
-  const isDarkBackground = false;
   const { toast } = useToast();
   const [formState, setFormState] = useState({
     name: "",
@@ -29,8 +27,8 @@ const ContactForm = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
 
-  // Helper function to reset form state
   const resetForm = useCallback(() => {
     setFormState({
       name: "",
@@ -40,7 +38,6 @@ const ContactForm = () => {
     });
   }, []);
 
-  // Helper function to show toast notifications
   const showNotification = useCallback((type: "success" | "error", message: string) => {
     if (type === "success") {
       toast({
@@ -57,20 +54,34 @@ const ContactForm = () => {
   }, [toast]);
 
   useEffect(() => {
-    // Load reCAPTCHA script
-    const script = document.createElement("script");
-    script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
-    script.async = true;
-    document.body.appendChild(script);
+    const loadRecaptcha = async () => {
+      try {
+        const script = document.createElement("script");
+        script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+        script.async = true;
+        script.onload = () => setRecaptchaLoaded(true);
+        script.onerror = () => {
+          console.error("Failed to load reCAPTCHA");
+          toast({
+            variant: "destructive",
+            title: "Error",
+            description: "Failed to load security verification. Please refresh the page."
+          });
+        };
+        document.body.appendChild(script);
 
-    // Improved cleanup function with error handling
-    return () => {
-      // Check if the script element still exists before removing
-      if (script && document.body.contains(script)) {
-        document.body.removeChild(script);
+        return () => {
+          if (script && document.body.contains(script)) {
+            document.body.removeChild(script);
+          }
+        };
+      } catch (error) {
+        console.error("Error loading reCAPTCHA:", error);
       }
     };
-  }, []);
+
+    loadRecaptcha();
+  }, [toast]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -83,13 +94,40 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
     try {
-      // Get reCAPTCHA token
-      const token = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, {
-        action: 'submit'
+      if (!formState.name || !formState.email || !formState.message) {
+        throw new Error("Please fill in all required fields");
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formState.email)) {
+        throw new Error("Please enter a valid email address");
+      }
+
+      if (!recaptchaLoaded) {
+        throw new Error("Security verification not loaded. Please refresh the page.");
+      }
+
+      const recaptchaPromise = new Promise<string>((resolve, reject) => {
+        const timeout = setTimeout(() => {
+          reject(new Error("Security verification timed out"));
+        }, 10000);
+
+        window.grecaptcha
+          .execute(RECAPTCHA_SITE_KEY, { action: 'submit' })
+          .then((token: string) => {
+            clearTimeout(timeout);
+            resolve(token);
+          })
+          .catch((error: Error) => {
+            clearTimeout(timeout);
+            reject(error);
+          });
       });
 
-      // Send to Supabase Edge Function
+      const token = await recaptchaPromise;
+
       const { data, error } = await supabase.functions.invoke('send-contact-email', {
         body: {
           ...formState,
@@ -98,26 +136,20 @@ const ContactForm = () => {
       });
 
       if (error) {
-        throw new Error(error.message);
+        throw new Error(error.message || "Failed to send message");
       }
 
-      // Show success notification and reset form
       toast({
         title: "Success",
         description: "Your message has been sent! We'll be in touch soon."
       });
-      setFormState({
-        name: "",
-        email: "",
-        company: "",
-        message: ""
-      });
-    } catch (error) {
+      resetForm();
+    } catch (error: any) {
       console.error('Contact form submission error:', error);
       toast({
         variant: "destructive",
         title: "Error",
-        description: "Failed to send message. Please try again."
+        description: error.message || "Failed to send message. Please try again."
       });
     } finally {
       setIsSubmitting(false);
@@ -125,7 +157,6 @@ const ContactForm = () => {
   };
 
   return <section id="contact" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative overflow-hidden">
-      {/* Subtle background elements */}
       <div className="absolute inset-0 z-0 opacity-10">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#133a63]/30 rounded-full blur-[90px]"></div>
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#010822]/20 rounded-full blur-[70px]"></div>
@@ -142,7 +173,6 @@ const ContactForm = () => {
               Have a project in mind or questions about our services? We're here to help you navigate the decentralized landscape.
             </p>
             
-            {/* Added visual element */}
             <div className="mt-10 hidden md:block relative animate-float">
             </div>
           </div>
