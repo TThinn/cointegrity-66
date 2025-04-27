@@ -86,7 +86,7 @@ const Testimonials = () => {
     };
     
     // Start the rotation
-    const interval = setInterval(rotateTestimonial, 3000);
+    const interval = setInterval(rotateTestimonial, 4000);
     
     return () => clearInterval(interval);
   }, [testimonials.length]);
