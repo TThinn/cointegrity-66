@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
-import Container from "./ui/Container";
-import { Mail, Send } from "lucide-react";
-import Button from "./ui/CustomButtonComponent";
+import { Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import Container from "./ui/Container";
+import Button from "./ui/CustomButtonComponent";
+import { placeholders, PlaceholderData } from "@/utils/contactPlaceholders";
 
 declare global {
   interface Window {
@@ -28,6 +29,28 @@ const ContactForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
+  const [currentPlaceholder, setCurrentPlaceholder] = useState<PlaceholderData>(placeholders[0]);
+  const [isTyping, setIsTyping] = useState(false);
+
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout;
+    
+    if (!isTyping) {
+      intervalId = setInterval(() => {
+        setCurrentPlaceholder(prev => {
+          const currentIndex = placeholders.findIndex(p => p.name === prev.name);
+          const nextIndex = (currentIndex + 1) % placeholders.length;
+          return placeholders[nextIndex];
+        });
+      }, 5000);
+    }
+
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [isTyping]);
 
   const resetForm = useCallback(() => {
     setFormState({
@@ -85,6 +108,7 @@ const ContactForm = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    setIsTyping(true);
     setFormState(prev => ({
       ...prev,
       [name]: value
@@ -191,28 +215,63 @@ const ContactForm = () => {
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     Your Name
                   </label>
-                  <input type="text" id="name" name="name" value={formState.name} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" placeholder="John Doe" />
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formState.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800"
+                    placeholder={currentPlaceholder.name}
+                  />
                 </div>
                 
                 <div className="col-span-1">
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                     Email Address
                   </label>
-                  <input type="email" id="email" name="email" value={formState.email} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" placeholder="john@example.com" />
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800"
+                    placeholder={currentPlaceholder.email}
+                  />
                 </div>
                 
                 <div className="col-span-2">
                   <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
                     Company (Optional)
                   </label>
-                  <input type="text" id="company" name="company" value={formState.company} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" placeholder="Your Company" />
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formState.company}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800"
+                    placeholder={currentPlaceholder.company}
+                  />
                 </div>
                 
                 <div className="col-span-2">
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                     Your Message
                   </label>
-                  <textarea id="message" name="message" value={formState.message} onChange={handleChange} required rows={4} className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800" placeholder="Tell us about your project or inquiry..." />
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formState.message}
+                    onChange={handleChange}
+                    required
+                    rows={4}
+                    className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800"
+                    placeholder={currentPlaceholder.message}
+                  />
                 </div>
               </div>
               
