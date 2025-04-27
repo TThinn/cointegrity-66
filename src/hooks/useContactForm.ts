@@ -87,6 +87,14 @@ export const useContactForm = () => {
         console.warn("reCAPTCHA not loaded or not available");
       }
 
+      console.log("Submitting form with data:", { 
+        name: formState.name,
+        email: formState.email,
+        company: formState.company,
+        messageLength: formState.message.length,
+        recaptchaTokenLength: token.length
+      });
+
       // Call the edge function with the form data and token
       const { data, error } = await supabase.functions.invoke('send-contact-email', {
         body: {
@@ -94,6 +102,8 @@ export const useContactForm = () => {
           recaptchaToken: token
         }
       });
+
+      console.log("Edge function response:", data, error);
 
       if (error) {
         throw new Error(error.message || "Failed to send message");
