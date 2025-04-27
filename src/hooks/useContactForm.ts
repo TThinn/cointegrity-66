@@ -11,6 +11,9 @@ interface FormState {
   message: string;
 }
 
+// Use the same RECAPTCHA site key that's defined in ContactForm
+const RECAPTCHA_SITE_KEY = "6Lc_BCMrAAAAAAJ53CbmGbCdpq1plgfqyOJjInN1";
+
 export const useContactForm = () => {
   const { toast } = useToast();
   const [formState, setFormState] = useState<FormState>({
@@ -64,7 +67,7 @@ export const useContactForm = () => {
 
         if (typeof window.grecaptcha !== 'undefined') {
           window.grecaptcha
-            .execute(process.env.REACT_APP_RECAPTCHA_SITE_KEY || "", { action: 'submit' })
+            .execute(RECAPTCHA_SITE_KEY, { action: 'submit' })
             .then((token: string) => {
               clearTimeout(timeout);
               resolve(token);
@@ -118,4 +121,3 @@ export const useContactForm = () => {
     handleSubmit
   };
 };
-
