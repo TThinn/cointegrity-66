@@ -62,16 +62,21 @@ export const useContactForm = () => {
           reject(new Error("Security verification timed out"));
         }, 10000);
 
-        window.grecaptcha
-          .execute(process.env.REACT_APP_RECAPTCHA_SITE_KEY || "", { action: 'submit' })
-          .then((token: string) => {
-            clearTimeout(timeout);
-            resolve(token);
-          })
-          .catch((error: Error) => {
-            clearTimeout(timeout);
-            reject(error);
-          });
+        if (typeof window.grecaptcha !== 'undefined') {
+          window.grecaptcha
+            .execute(process.env.REACT_APP_RECAPTCHA_SITE_KEY || "", { action: 'submit' })
+            .then((token: string) => {
+              clearTimeout(timeout);
+              resolve(token);
+            })
+            .catch((error: Error) => {
+              clearTimeout(timeout);
+              reject(error);
+            });
+        } else {
+          clearTimeout(timeout);
+          reject(new Error("ReCAPTCHA not available"));
+        }
       });
 
       const token = await recaptchaPromise;
@@ -113,3 +118,4 @@ export const useContactForm = () => {
     handleSubmit
   };
 };
+
