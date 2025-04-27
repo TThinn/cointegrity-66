@@ -9,9 +9,9 @@ const Testimonials = () => {
 
   const testimonials = [{
     id: 1,
-    quote: "We're grateful for Cointegrity's support in securing grants and connecting us with top blockchain partners. Their expertise unlocked opportunities we couldn't access alone.",
-    name: "Josh Wilson",
-    title: "CEO of Reload Games"
+    quote: "Torstein Thinn was instrumental in identifying the challenges posed by cryptocurrencies and establishing what became the world's first dedicated crypto task force. I have come to know him as a positive, solution-oriented leader, and his collaborative approach both internally and externally positioned Norway as a global pioneer in the tax treatment of digital assets. Overall his personality matched well with my vision for the Tax administration, to be a Digital Innovator",
+    name: "Hans Christian Holte",
+    title: "Former Director of the Norwegian Tax Administration, currently Labour and Welfare Director (NAV)"
   }, {
     id: 2,
     quote: "Working with Cointegrity has been transformative for our business growth. Their guidance helped us navigate the future of finance with confidence.",
