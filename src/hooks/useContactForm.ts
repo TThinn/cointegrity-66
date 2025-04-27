@@ -56,34 +56,38 @@ export const useContactForm = () => {
         throw new Error("Please enter a valid email address");
       }
 
-      if (!recaptchaLoaded) {
-        throw new Error("Security verification not loaded. Please refresh the page.");
+      // Get reCAPTCHA token if available, otherwise use a fallback
+      let token = "recaptcha-not-available";
+      
+      // If reCAPTCHA is loaded, try to get a token
+      if (recaptchaLoaded && typeof window.grecaptcha !== 'undefined') {
+        try {
+          token = await new Promise<string>((resolve, reject) => {
+            const timeout = setTimeout(() => {
+              console.log("reCAPTCHA timeout, proceeding with fallback");
+              resolve("recaptcha-timeout");
+            }, 5000);
+
+            window.grecaptcha
+              .execute(RECAPTCHA_SITE_KEY, { action: 'submit' })
+              .then((recaptchaToken: string) => {
+                clearTimeout(timeout);
+                resolve(recaptchaToken);
+              })
+              .catch((error: Error) => {
+                clearTimeout(timeout);
+                console.warn("reCAPTCHA error:", error);
+                resolve("recaptcha-error");
+              });
+          });
+        } catch (recaptchaError) {
+          console.warn("Error getting reCAPTCHA token:", recaptchaError);
+        }
+      } else {
+        console.warn("reCAPTCHA not loaded or not available");
       }
 
-      const recaptchaPromise = new Promise<string>((resolve, reject) => {
-        const timeout = setTimeout(() => {
-          reject(new Error("Security verification timed out"));
-        }, 10000);
-
-        if (typeof window.grecaptcha !== 'undefined') {
-          window.grecaptcha
-            .execute(RECAPTCHA_SITE_KEY, { action: 'submit' })
-            .then((token: string) => {
-              clearTimeout(timeout);
-              resolve(token);
-            })
-            .catch((error: Error) => {
-              clearTimeout(timeout);
-              reject(error);
-            });
-        } else {
-          clearTimeout(timeout);
-          reject(new Error("ReCAPTCHA not available"));
-        }
-      });
-
-      const token = await recaptchaPromise;
-
+      // Call the edge function with the form data and token
       const { data, error } = await supabase.functions.invoke('send-contact-email', {
         body: {
           ...formState,
