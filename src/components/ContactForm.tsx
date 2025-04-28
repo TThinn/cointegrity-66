@@ -31,7 +31,7 @@ const ContactForm = () => {
           const nextIndex = (currentIndex + 1) % placeholders.length;
           return placeholders[nextIndex];
         });
-      }, 9000); // The time each element will show in the prefill
+      }, 7000); // Changed from 5000 to 7000 (7 seconds)
     }
 
     return () => {

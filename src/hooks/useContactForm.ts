@@ -66,7 +66,7 @@ export const useContactForm = () => {
             const timeout = setTimeout(() => {
               console.log("reCAPTCHA timeout, proceeding with fallback");
               resolve("recaptcha-timeout");
-            }, 5000);
+            }, 7000); // Updated from 5000 to 7000
 
             window.grecaptcha
               .execute(RECAPTCHA_SITE_KEY, { action: 'submit' })
@@ -96,17 +96,38 @@ export const useContactForm = () => {
       });
 
       // Call the edge function with the form data and token
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+      const { data: mainData, error: mainError } = await supabase.functions.invoke('send-contact-email', {
         body: {
           ...formState,
           recaptchaToken: token
         }
       });
 
-      console.log("Edge function response:", data, error);
+      console.log("Edge function response:", mainData, mainError);
 
-      if (error) {
-        throw new Error(error.message || "Failed to send message");
+      if (mainError) {
+        throw new Error(mainError.message || "Failed to send message");
+      }
+
+      // Send confirmation email to the customer
+      try {
+        const { data: confirmData, error: confirmError } = await supabase.functions.invoke('send-confirmation-email', {
+          body: {
+            name: formState.name,
+            email: formState.email,
+            company: formState.company
+          }
+        });
+
+        if (confirmError) {
+          console.warn("Failed to send confirmation email:", confirmError);
+          // Don't throw error here, we still want to count the submission as successful
+        } else {
+          console.log("Confirmation email sent successfully:", confirmData);
+        }
+      } catch (confirmSendError) {
+        console.warn("Error sending confirmation email:", confirmSendError);
+        // Don't block the success flow if confirmation email fails
       }
 
       toast({
