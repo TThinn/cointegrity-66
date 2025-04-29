@@ -2,7 +2,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://omega-web3.com/sitemap.xml
+Sitemap: https://cointegrity.io/sitemap.xml
 
 # Allow specific crawlers
 User-agent: Googlebot
