@@ -19,9 +19,9 @@ const Testimonials = () => {
     title: "Former Director of the Norwegian Tax Administration, currently Labour and Welfare Director (NAV)"
   }, {
     id: 2,
-    quote: "Working with Cointegrity has been transformative for our business growth. Their guidance helped us navigate the future of finance with confidence.",
-    name: "Sarah Johnson",
-    title: "Founder of TechBridge"
+    quote: "I’ve known Ruben for years and he is without a doubt one of the most ethical and hard working people I am proud to call a friend. His devotion to his craft and perfecting it is unmatched, and his pursuit of perfecting the client experience is at the highest level. He’s taken several orgs from the ground up and helped shape their path to success, and I look forward to watching the continued growth of Cointegrity",
+    name: "Anthony Gonzalez or 'Tony'",
+    title: "Founder of WebThree Consulting"
   }, {
     id: 3,
     quote: "Torstein Thinn played a pivotal role in automating and streamlining AKJ's trading and systems processes, significantly enhancing scalability and operational efficiency. His expertise contributed to AKJ's continued success as a global leader in turnkey solutions for fund setup across crypto and traditional markets.",
@@ -29,9 +29,9 @@ const Testimonials = () => {
     title: "Founder and Chairman, AKJ group"
   }, {
     id: 4,
-    quote: "Cointegrity's tokenomics design transformed our project, creating a sustainable model aligned with the future of finance that's attracted significant investment and user growth.",
-    name: "Michelle Park",
-    title: "Co-founder of TokenWave"
+    quote: "When building in Web3, it’s not just about who you know, but who believes in you and opens the right doors. Ruben from the Cointegrity team didn’t just show up with advice, he rolled up his sleeves and helped. The moment he joined, he helped us find partners, navigate early-stage challenges, and make introductions that led to real opportunities. His team was outstanding as well, a group of professionals with deep expertise in fundraising, growth, legal and ecosystem development. They didn't just talk, they delivered.",
+    name: "Jamie Batzorig",
+    title: "Co-founder of iAgent"
   }, {
     id: 5,
     quote: "The strategic positioning advice we received from Cointegrity was instrumental in differentiating our product in the evolving future of finance landscape.",
