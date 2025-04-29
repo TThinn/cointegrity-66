@@ -1,8 +1,8 @@
 
 import { useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/hooks/use-toast";
 import { PlaceholderData } from "@/utils/contactPlaceholders";
+import { showSuccessToast, showErrorToast } from "@/components/ui/custom-toast";
 
 interface FormState {
   name: string;
@@ -15,7 +15,6 @@ interface FormState {
 const RECAPTCHA_SITE_KEY = "6Lc_BCMrAAAAAAJ53CbmGbCdpq1plgfqyOJjInN1";
 
 export const useContactForm = () => {
-  const { toast } = useToast();
   const [formState, setFormState] = useState<FormState>({
     name: "",
     email: "",
@@ -130,17 +129,22 @@ export const useContactForm = () => {
         // Don't block the success flow if confirmation email fails
       }
 
-      toast({
-        title: "Success",
-        description: "Your message has been sent! We'll be in touch soon."
+      showSuccessToast({
+        title: "Thank you for reaching out! 🚀",
+        description: "We've received your message and our team of wizards is on it.\nA confirmation email is heading your way - keep an eye on your inbox!"
       });
+      
       resetForm();
     } catch (error: any) {
       console.error('Contact form submission error:', error);
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: error.message || "Failed to send message. Please try again."
+      
+      showErrorToast({
+        title: "Message Not Sent",
+        errorMessage: error.message || "Failed to send message. Please try again.",
+        formData: {
+          name: formState.name,
+          message: formState.message
+        }
       });
     } finally {
       setIsSubmitting(false);

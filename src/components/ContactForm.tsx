@@ -5,6 +5,7 @@ import Container from "./ui/Container";
 import ContactFormFields from "./contact/ContactFormFields";
 import SubmitButton from "./contact/SubmitButton";
 import { useContactForm } from "@/hooks/useContactForm";
+import { Toaster } from "sonner";
 
 const RECAPTCHA_SITE_KEY = "6Lc_BCMrAAAAAAJ53CbmGbCdpq1plgfqyOJjInN1";
 
@@ -73,6 +74,7 @@ const ContactForm = () => {
 
   return (
     <section id="contact" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative overflow-hidden">
+      <Toaster position="top-center" closeButton />
       <div className="absolute inset-0 z-0 opacity-10">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#133a63]/30 rounded-full blur-[90px]"></div>
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#010822]/20 rounded-full blur-[70px]"></div>
