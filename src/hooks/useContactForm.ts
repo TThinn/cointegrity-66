@@ -129,6 +129,7 @@ export const useContactForm = () => {
         // Don't block the success flow if confirmation email fails
       }
 
+      // Use the custom showSuccessToast function instead of toast.success
       showSuccessToast({
         title: "Thank you for reaching out! 🚀",
         description: "We've received your message and our team of wizards is on it.\nA confirmation email is heading your way - keep an eye on your inbox!"
@@ -138,6 +139,7 @@ export const useContactForm = () => {
     } catch (error: any) {
       console.error('Contact form submission error:', error);
       
+      // Use the custom showErrorToast function instead of toast.error
       showErrorToast({
         title: "Message Not Sent",
         errorMessage: error.message || "Failed to send message. Please try again.",
