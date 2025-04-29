@@ -177,7 +177,7 @@ const Testimonials = () => {
           </div>
           
           {/* Button placement with consistent spacing */}
-          <div className="mt-10 text-center animate-fade-up">
+          <div className="mt-5 text-center animate-fade-up">
             <a href="#contact">
               <Button variant="cta-primary" size="md">Partner with us</Button>
             </a>
