@@ -33,6 +33,7 @@ export const showSuccessToast = ({ title, description }: SuccessToastProps) => {
     </div>
   ), {
     duration: 6000,
+    className: "backdrop-blur-lg bg-black/5",
   });
 };
 
@@ -102,6 +103,7 @@ ${formData.name}`;
       </div>
     </div>
   ), {
-    duration: 15000, // Show for longer since there's an action to take
+    duration: 15000,
+    className: "backdrop-blur-lg bg-black/5", 
   });
 };

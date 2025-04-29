@@ -26,7 +26,18 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
-          <Toaster position="top-center" closeButton />
+          <Toaster 
+            position="top-center" 
+            closeButton
+            toastOptions={{
+              className: "toast-blur-container",
+              style: {
+                background: "transparent",
+                border: "none",
+                boxShadow: "none",
+              }
+            }}
+          />
         </TooltipProvider>
       </QueryClientProvider>
     </HelmetProvider>
