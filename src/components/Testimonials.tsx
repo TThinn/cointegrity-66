@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
@@ -9,11 +8,9 @@ const Testimonials = () => {
   const [isVisible, setIsVisible] = useState(true);
   const testimonialsGridRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const buttonSpacerRef = useRef<HTMLDivElement>(null);
   
-  // Track section height for stable layout
-  const [sectionHeight, setSectionHeight] = useState<number>(0);
-  const [buttonSpacing, setButtonSpacing] = useState<number>(0);
+  // Track maximum section height to prevent layout shifts
+  const [maxSectionHeight, setMaxSectionHeight] = useState<number>(0);
 
   const testimonials = [{
     id: 1,
@@ -57,27 +54,32 @@ const Testimonials = () => {
     title: "VP of Operations at Crypto Exchange"
   }];
 
-  // Record initial heights and maintain consistent section height
+  // Record and maintain maximum section height to prevent layout shifts
   useEffect(() => {
-    const calculateHeights = () => {
-      if (testimonialsGridRef.current && sectionRef.current && buttonSpacerRef.current) {
-        // Set the initial section height
-        setSectionHeight(testimonialsGridRef.current.offsetHeight);
-        
-        // Calculate the standard spacing between button and grid
-        const buttonSpacerHeight = buttonSpacerRef.current.offsetHeight;
-        setButtonSpacing(buttonSpacerHeight);
+    const calculateMaxHeight = () => {
+      if (testimonialsGridRef.current) {
+        const currentHeight = testimonialsGridRef.current.offsetHeight;
+        // Keep track of the maximum height we've seen
+        setMaxSectionHeight(prev => Math.max(prev, currentHeight));
       }
     };
     
     // Calculate on mount and whenever window resizes
-    calculateHeights();
-    window.addEventListener('resize', calculateHeights);
+    calculateMaxHeight();
+    window.addEventListener('resize', calculateMaxHeight);
     
     return () => {
-      window.removeEventListener('resize', calculateHeights);
+      window.removeEventListener('resize', calculateMaxHeight);
     };
   }, []);
+  
+  // Recalculate max height when testimonials change
+  useEffect(() => {
+    if (testimonialsGridRef.current) {
+      const currentHeight = testimonialsGridRef.current.offsetHeight;
+      setMaxSectionHeight(prev => Math.max(prev, currentHeight));
+    }
+  }, [activeTestimonials]);
   
   useEffect(() => {
     let currentBoxIndex = 0;
@@ -109,10 +111,11 @@ const Testimonials = () => {
         setTimeout(() => {
           setIsVisible(true);
           
-          // Update height after transition
+          // After transition completes, check if we need to update max height
           setTimeout(() => {
             if (testimonialsGridRef.current) {
-              setSectionHeight(testimonialsGridRef.current.offsetHeight);
+              const currentHeight = testimonialsGridRef.current.offsetHeight;
+              setMaxSectionHeight(prev => Math.max(prev, currentHeight));
             }
           }, 300);
           
@@ -143,8 +146,11 @@ const Testimonials = () => {
             <p className="text-white/60 max-w-2xl mx-auto">Experiences from working with Cointegrity or our Co-Founders in reshaping the industry</p>
           </div>
 
-          {/* Wrapping div with fixed height to prevent layout shifts */}
-          <div className="transition-all duration-300" style={{ height: `${sectionHeight}px` }}>
+          {/* Fixed height wrapper to prevent layout shifts */}
+          <div 
+            className="transition-all duration-300" 
+            style={{ minHeight: `${maxSectionHeight}px` }}
+          >
             <div 
               ref={testimonialsGridRef}
               className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto"
@@ -170,11 +176,8 @@ const Testimonials = () => {
             </div>
           </div>
           
-          {/* Button with fixed spacing */}
-          <div 
-            ref={buttonSpacerRef} 
-            className="mt-10 text-center animate-fade-up"
-          >
+          {/* Button placement with consistent spacing */}
+          <div className="mt-10 text-center animate-fade-up">
             <a href="#contact">
               <Button variant="cta-primary" size="md">Partner with us</Button>
             </a>

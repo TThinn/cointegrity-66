@@ -1,9 +1,10 @@
-
 import React, { useState } from "react";
 import Container from "./ui/Container";
+
 const Accreditations = () => {
   const [pausedRow1, setPausedRow1] = useState(false);
   const [pausedRow2, setPausedRow2] = useState(false);
+  
   const brands = [{
     name: "Skatteetaten",
     id: 1,
@@ -53,6 +54,7 @@ const Accreditations = () => {
     description: "Global investment management corporation",
     logo: "/lovable-uploads/eb9f6633-d391-4a4a-b623-5c220bfeeef2.png"
   }];
+  
   const testimonials = [{
     id: 1,
     quote: "We're grateful for Cointegrity's support in securing grants and connecting us with top blockchain partners. Their expertise unlocked opportunities we couldn't access alone.",
@@ -94,7 +96,9 @@ const Accreditations = () => {
     name: "Jennifer Liu",
     title: "VP of Operations at Crypto Exchange"
   }];
-  return <section id="testimonials" className="py-24 relative overflow-hidden bg-[#080112]">
+  
+  return (
+    <section id="testimonials" className="py-24 relative overflow-hidden bg-[#080112]">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/2 w-[800px] h-[800px] bg-pink-500/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[100px]"></div>
@@ -170,6 +174,8 @@ const Accreditations = () => {
           </div>
         </div>
       </Container>
-    </section>;
+    </section>
+  );
 };
+
 export default Accreditations;
