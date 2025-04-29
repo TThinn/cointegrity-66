@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
 
@@ -6,6 +6,11 @@ const Testimonials = () => {
   const [activeTestimonials, setActiveTestimonials] = useState<number[]>([0, 1, 2, 3]);
   const [changingIndex, setChangingIndex] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(true);
+  const [sectionHeight, setSectionHeight] = useState<number>(0);
+  const testimonialsGridRef = useRef<HTMLDivElement>(null);
+  
+  // Track max height to create a stable layout
+  const [maxHeight, setMaxHeight] = useState<number>(0);
 
   const testimonials = [{
     id: 1,
@@ -50,6 +55,13 @@ const Testimonials = () => {
   }];
 
   useEffect(() => {
+    // Initialize max height on component mount
+    if (testimonialsGridRef.current) {
+      const initialHeight = testimonialsGridRef.current.offsetHeight;
+      setMaxHeight(initialHeight);
+      setSectionHeight(initialHeight);
+    }
+    
     let currentBoxIndex = 0;
     
     const rotateTestimonial = () => {
@@ -79,6 +91,21 @@ const Testimonials = () => {
         setTimeout(() => {
           setIsVisible(true);
           
+          // After reappearing, check and update the height if needed
+          setTimeout(() => {
+            if (testimonialsGridRef.current) {
+              const newHeight = testimonialsGridRef.current.offsetHeight;
+              
+              // Update max height if current height is larger
+              if (newHeight > maxHeight) {
+                setMaxHeight(newHeight);
+              }
+              
+              // Always update current section height
+              setSectionHeight(newHeight);
+            }
+          }, 100);
+          
           // Move to next box for next interval
           currentBoxIndex = (currentBoxIndex + 1) % 4;
         }, 100); // Very short delay before reappearing
@@ -89,7 +116,10 @@ const Testimonials = () => {
     const interval = setInterval(rotateTestimonial, 4000);
     
     return () => clearInterval(interval);
-  }, [testimonials.length]);
+  }, [testimonials.length, maxHeight]);
+
+  // Calculate buffer height (difference between max height and current height)
+  const bufferHeight = maxHeight - sectionHeight;
 
   return (
     <section id="testimonials" className="py-24 relative overflow-hidden">
@@ -106,7 +136,10 @@ const Testimonials = () => {
             <p className="text-white/60 max-w-2xl mx-auto">Experiences from working with Cointegrity or our Co-Founders in reshaping the industry</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-10">
+          <div 
+            ref={testimonialsGridRef}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-10"
+          >
             {[0, 1, 2, 3].map((position) => (
               <div
                 key={position}
@@ -132,6 +165,11 @@ const Testimonials = () => {
               <Button variant="cta-primary" size="md">Partner with us</Button>
             </a>
           </div>
+          
+          {/* Dynamic buffer to compensate for height changes */}
+          {bufferHeight > 0 && (
+            <div style={{ height: `${bufferHeight}px` }} className="transition-all duration-300" aria-hidden="true" />
+          )}
         </div>
       </Container>
     </section>
