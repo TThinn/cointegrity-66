@@ -1,6 +1,6 @@
 
 import React from "react";
-import { toast as sonnerToast, Toast } from "sonner";
+import { toast as sonnerToast } from "sonner";
 import { Mail, Copy, Check } from "lucide-react";
 import Button from "./CustomButtonComponent";
 
