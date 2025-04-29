@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
@@ -6,11 +7,13 @@ const Testimonials = () => {
   const [activeTestimonials, setActiveTestimonials] = useState<number[]>([0, 1, 2, 3]);
   const [changingIndex, setChangingIndex] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(true);
-  const [sectionHeight, setSectionHeight] = useState<number>(0);
   const testimonialsGridRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const buttonSpacerRef = useRef<HTMLDivElement>(null);
   
-  // Track max height to create a stable layout
-  const [maxHeight, setMaxHeight] = useState<number>(0);
+  // Track section height for stable layout
+  const [sectionHeight, setSectionHeight] = useState<number>(0);
+  const [buttonSpacing, setButtonSpacing] = useState<number>(0);
 
   const testimonials = [{
     id: 1,
@@ -54,14 +57,29 @@ const Testimonials = () => {
     title: "VP of Operations at Crypto Exchange"
   }];
 
+  // Record initial heights and maintain consistent section height
   useEffect(() => {
-    // Initialize max height on component mount
-    if (testimonialsGridRef.current) {
-      const initialHeight = testimonialsGridRef.current.offsetHeight;
-      setMaxHeight(initialHeight);
-      setSectionHeight(initialHeight);
-    }
+    const calculateHeights = () => {
+      if (testimonialsGridRef.current && sectionRef.current && buttonSpacerRef.current) {
+        // Set the initial section height
+        setSectionHeight(testimonialsGridRef.current.offsetHeight);
+        
+        // Calculate the standard spacing between button and grid
+        const buttonSpacerHeight = buttonSpacerRef.current.offsetHeight;
+        setButtonSpacing(buttonSpacerHeight);
+      }
+    };
     
+    // Calculate on mount and whenever window resizes
+    calculateHeights();
+    window.addEventListener('resize', calculateHeights);
+    
+    return () => {
+      window.removeEventListener('resize', calculateHeights);
+    };
+  }, []);
+  
+  useEffect(() => {
     let currentBoxIndex = 0;
     
     const rotateTestimonial = () => {
@@ -91,20 +109,12 @@ const Testimonials = () => {
         setTimeout(() => {
           setIsVisible(true);
           
-          // After reappearing, check and update the height if needed
+          // Update height after transition
           setTimeout(() => {
             if (testimonialsGridRef.current) {
-              const newHeight = testimonialsGridRef.current.offsetHeight;
-              
-              // Update max height if current height is larger
-              if (newHeight > maxHeight) {
-                setMaxHeight(newHeight);
-              }
-              
-              // Always update current section height
-              setSectionHeight(newHeight);
+              setSectionHeight(testimonialsGridRef.current.offsetHeight);
             }
-          }, 100);
+          }, 300);
           
           // Move to next box for next interval
           currentBoxIndex = (currentBoxIndex + 1) % 4;
@@ -116,13 +126,10 @@ const Testimonials = () => {
     const interval = setInterval(rotateTestimonial, 4000);
     
     return () => clearInterval(interval);
-  }, [testimonials.length, maxHeight]);
-
-  // Calculate buffer height (difference between max height and current height)
-  const bufferHeight = maxHeight - sectionHeight;
+  }, [testimonials.length]);
 
   return (
-    <section id="testimonials" className="py-24 relative overflow-hidden">
+    <section id="testimonials" className="py-24 relative overflow-hidden" ref={sectionRef}>
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#133a63]"></div>
         <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
@@ -136,40 +143,42 @@ const Testimonials = () => {
             <p className="text-white/60 max-w-2xl mx-auto">Experiences from working with Cointegrity or our Co-Founders in reshaping the industry</p>
           </div>
 
-          <div 
-            ref={testimonialsGridRef}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-10"
-          >
-            {[0, 1, 2, 3].map((position) => (
-              <div
-                key={position}
-                className={`glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg transition-all duration-300 ${
-                  changingIndex === position && !isVisible 
-                    ? 'opacity-0 transform scale-95' 
-                    : 'opacity-100 transform scale-100'
-                }`}
-              >
-                <div className="text-left">
-                  <p className="text-white/80 text-sm mb-6">"{testimonials[activeTestimonials[position]].quote}"</p>
-                  <div>
-                    <p className="text-white font-semibold">{testimonials[activeTestimonials[position]].name}</p>
-                    <p className="text-white/60 text-xs">{testimonials[activeTestimonials[position]].title}</p>
+          {/* Wrapping div with fixed height to prevent layout shifts */}
+          <div className="transition-all duration-300" style={{ height: `${sectionHeight}px` }}>
+            <div 
+              ref={testimonialsGridRef}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto"
+            >
+              {[0, 1, 2, 3].map((position) => (
+                <div
+                  key={position}
+                  className={`glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg transition-all duration-300 ${
+                    changingIndex === position && !isVisible 
+                      ? 'opacity-0 transform scale-95' 
+                      : 'opacity-100 transform scale-100'
+                  }`}
+                >
+                  <div className="text-left">
+                    <p className="text-white/80 text-sm mb-6">"{testimonials[activeTestimonials[position]].quote}"</p>
+                    <div>
+                      <p className="text-white font-semibold">{testimonials[activeTestimonials[position]].name}</p>
+                      <p className="text-white/60 text-xs">{testimonials[activeTestimonials[position]].title}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
           
-          <div className="mt-10 text-center animate-fade-up">
+          {/* Button with fixed spacing */}
+          <div 
+            ref={buttonSpacerRef} 
+            className="mt-10 text-center animate-fade-up"
+          >
             <a href="#contact">
               <Button variant="cta-primary" size="md">Partner with us</Button>
             </a>
           </div>
-          
-          {/* Dynamic buffer to compensate for height changes */}
-          {bufferHeight > 0 && (
-            <div style={{ height: `${bufferHeight}px` }} className="transition-all duration-300" aria-hidden="true" />
-          )}
         </div>
       </Container>
     </section>
