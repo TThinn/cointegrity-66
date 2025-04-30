@@ -126,7 +126,14 @@ const Footer = () => {
         </div>
         
         <div className="pt-8 border-t border-white/10">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col md:flex-row md:justify-between items-center">
+            <div className="mb-4 md:mb-0">
+              <img 
+                src="/lovable-uploads/32e8bd55-2f0b-4772-bab3-657297e9573f.png" 
+                alt="Cointegrity Logo" 
+                className="h-10 w-auto" 
+              />
+            </div>
             <p className="text-sm text-white/50">
               &copy; {currentYear} Cointegrity AS. All rights reserved.
             </p>
