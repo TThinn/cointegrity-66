@@ -1,7 +1,9 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import Container from "./ui/Container";
 import { Linkedin, Twitter, Youtube, Github } from "lucide-react";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return <footer className="bg-gradient-to-br from-[#000624] to-[#282c2f] pt-16 pb-8">
@@ -34,16 +36,16 @@ const Footer = () => {
             <h3 className="font-semibold text-white mb-4">Services</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Strategic Positioning</a>
+                <a href="#services" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Strategic Positioning</a>
               </li>
               <li>
-                <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Strateic Consulting</a>
+                <a href="#services" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Strateic Consulting</a>
               </li>
               <li>
-                <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Regulatory Navigatioin</a>
+                <a href="#services" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Regulatory Navigatioin</a>
               </li>
               <li>
-                <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Capital Acceleration</a>
+                <a href="#services" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Capital Acceleration</a>
               </li>
             </ul>
           </div>
