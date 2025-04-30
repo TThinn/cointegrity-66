@@ -47,7 +47,7 @@ const Footer = () => {
                 <a href="#services" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Strategic Positioning</a>
               </li>
               <li>
-                <a href="#services" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Strateic Consulting</a>
+                <a href="#services" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Web3 Infrastructure</a>
               </li>
               <li>
                 <a href="#services" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Regulatory Navigatioin</a>
