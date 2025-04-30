@@ -37,9 +37,12 @@ const Header = () => {
       <Container>
         <div className="flex items-center justify-between">
           <a href="/" className="relative z-10 micro-interaction">
-            <div className="flex items-center text-xl font-bold">
-              <img src="/lovable-uploads/1bac2890-8c6e-4688-994e-10abf9d0d9be.png" alt="Cointegrity Logo" className="h-10 w-auto mr-3" />
-              <span className="text-white"></span>
+            <div className="flex items-center">
+              <img 
+                src="/lovable-uploads/23b8985f-164c-4c02-a983-2dfa808c0689.png" 
+                alt="Cointegrity Logo" 
+                className="h-10 w-auto" 
+              />
             </div>
           </a>
 
