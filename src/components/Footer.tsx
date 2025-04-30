@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import Container from "./ui/Container";
@@ -75,7 +76,9 @@ const Footer = () => {
                 <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Blog</a>
               </li>
               <li>
-                <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Web3 Insights</a>
+                <Link to="/privacy" className="text-sm text-white/70 hover:text-blue-400 transition-colors">
+                  Privacy Policy
+                </Link>
               </li>
               <li>
                 <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Documentation</a>
@@ -92,11 +95,6 @@ const Footer = () => {
             <p className="text-sm text-white/50">
               &copy; {currentYear} Cointegrity AS. All rights reserved.
             </p>
-            <div className="mt-4 md:mt-0 flex space-x-6">
-              <Link to="/privacy" className="text-xs text-white/50 hover:text-blue-400 transition-colors">
-                Privacy Policy
-              </Link>
-            </div>
           </div>
         </div>
       </Container>
