@@ -1,13 +1,10 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import Container from "./ui/Container";
 import { Linkedin, Twitter, Youtube, Github } from "lucide-react";
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  return (
-    <footer className="bg-gradient-to-br from-[#000624] to-[#282c2f] pt-16 pb-8">
+  return <footer className="bg-gradient-to-br from-[#000624] to-[#282c2f] pt-16 pb-8">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-1">
@@ -37,16 +34,16 @@ const Footer = () => {
             <h3 className="font-semibold text-white mb-4">Services</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Blockchain Development</a>
+                <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Strategic Positioning</a>
               </li>
               <li>
-                <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Strategic Consulting</a>
+                <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Strateic Consulting</a>
               </li>
               <li>
-                <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">DeFi Solutions</a>
+                <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Regulatory Navigatioin</a>
               </li>
               <li>
-                <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Security & Compliance</a>
+                <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Capital Acceleration</a>
               </li>
             </ul>
           </div>
@@ -98,8 +95,6 @@ const Footer = () => {
           </div>
         </div>
       </Container>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
