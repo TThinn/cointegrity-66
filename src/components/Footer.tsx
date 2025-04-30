@@ -1,21 +1,19 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import Container from "./ui/Container";
 import { Linkedin, Twitter, Youtube, Github } from "lucide-react";
 import { useAnalytics } from "@/hooks/useAnalytics";
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { trackEvent } = useAnalytics();
-  
+  const {
+    trackEvent
+  } = useAnalytics();
   const handleSocialClick = (platform: string) => {
-    trackEvent('social_click', { 
+    trackEvent('social_click', {
       category: 'Social',
       label: platform
     });
   };
-
   return <footer className="bg-gradient-to-br from-[#000624] to-[#282c2f] pt-16 pb-8">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
@@ -27,32 +25,16 @@ const Footer = () => {
               A premier Web3 consultancy helping businesses navigate the decentralized landscape with confidence.
             </p>
             <div className="mt-6 flex space-x-4">
-              <a 
-                href="#" 
-                className="text-white/50 hover:text-blue-400 transition-colors"
-                onClick={() => handleSocialClick('twitter')}
-              >
+              <a href="#" className="text-white/50 hover:text-blue-400 transition-colors" onClick={() => handleSocialClick('twitter')}>
                 <Twitter size={20} />
               </a>
-              <a 
-                href="#" 
-                className="text-white/50 hover:text-blue-400 transition-colors"
-                onClick={() => handleSocialClick('linkedin')}
-              >
+              <a href="#" className="text-white/50 hover:text-blue-400 transition-colors" onClick={() => handleSocialClick('linkedin')}>
                 <Linkedin size={20} />
               </a>
-              <a 
-                href="#" 
-                className="text-white/50 hover:text-blue-400 transition-colors"
-                onClick={() => handleSocialClick('github')}
-              >
+              <a href="#" className="text-white/50 hover:text-blue-400 transition-colors" onClick={() => handleSocialClick('github')}>
                 <Github size={20} />
               </a>
-              <a 
-                href="#" 
-                className="text-white/50 hover:text-blue-400 transition-colors"
-                onClick={() => handleSocialClick('youtube')}
-              >
+              <a href="#" className="text-white/50 hover:text-blue-400 transition-colors" onClick={() => handleSocialClick('youtube')}>
                 <Youtube size={20} />
               </a>
             </div>
@@ -101,11 +83,7 @@ const Footer = () => {
                 <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Blog</a>
               </li>
               <li>
-                <Link 
-                  to="/privacy" 
-                  className="text-sm text-white/70 hover:text-blue-400 transition-colors"
-                  onClick={() => trackEvent('privacy_policy_click')}
-                >
+                <Link to="/privacy" className="text-sm text-white/70 hover:text-blue-400 transition-colors" onClick={() => trackEvent('privacy_policy_click')}>
                   Privacy Policy
                 </Link>
               </li>
@@ -113,11 +91,7 @@ const Footer = () => {
                 <a href="#" className="text-sm text-white/70 hover:text-blue-400 transition-colors">Documentation</a>
               </li>
               <li>
-                <a 
-                  href="#contact" 
-                  className="text-sm text-white/70 hover:text-blue-400 transition-colors"
-                  onClick={() => trackEvent('footer_contact_click')}
-                >
+                <a href="#contact" className="text-sm text-white/70 hover:text-blue-400 transition-colors" onClick={() => trackEvent('footer_contact_click')}>
                   Contact Us
                 </a>
               </li>
@@ -128,11 +102,7 @@ const Footer = () => {
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row md:justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <img 
-                src="/lovable-uploads/32e8bd55-2f0b-4772-bab3-657297e9573f.png" 
-                alt="Cointegrity Logo" 
-                className="h-10 w-auto" 
-              />
+              <img src="/lovable-uploads/32e8bd55-2f0b-4772-bab3-657297e9573f.png" alt="Cointegrity Logo" className="h-5 w-auto" />
             </div>
             <p className="text-sm text-white/50">
               &copy; {currentYear} Cointegrity AS. All rights reserved.
