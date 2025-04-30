@@ -32,7 +32,7 @@ const Footer = () => {
                 <Linkedin size={20} />
               </a>
               <a href="#" className="text-white/50 hover:text-blue-400 transition-colors" onClick={() => handleSocialClick('github')}>
-                <Github size={20} />
+                
               </a>
               <a href="#" className="text-white/50 hover:text-blue-400 transition-colors" onClick={() => handleSocialClick('youtube')}>
                 
