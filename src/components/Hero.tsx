@@ -112,7 +112,7 @@ const Hero = () => {
           lineHeight: 1.1,
           letterSpacing: "-0.03em"
         }}>
-            <span className="text-white font-semibold">Simplifying Web3 Complexity</span>
+            <span className="text-white font-bold">Simplifying Web3 Complexity</span>
           </h1>
 
           <h2 className="text-white/80 animate-fade-up relative mb-8 text-balance" style={{
