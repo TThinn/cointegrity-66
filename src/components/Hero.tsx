@@ -46,7 +46,7 @@ const Hero = () => {
       size: 30 + Math.random() * 180,
       x: ctaPosition.x - 15 + Math.random() * 15,
       // Centered around CTA
-      y: ctaPosition.y - 35 + Math.random() * 20,
+      y: ctaPosition.y - 25 + Math.random() * 20,
       // More vertical spread
       moveX: (Math.random() - 0.5) * 25,
       // Horizontal movement
@@ -63,7 +63,7 @@ const Hero = () => {
   useEffect(() => {
     particles.forEach(p => {
       p.x = ctaPosition.x - 15 + Math.random() * 15;
-      p.y = ctaPosition.y - 35 + Math.random() * 20; // Match initial spread
+      p.y = ctaPosition.y - 25 + Math.random() * 20; // Match initial spread
     });
   }, [ctaPosition]);
 
