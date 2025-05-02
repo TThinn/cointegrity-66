@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Container from "./ui/Container";
 
-const HERO_PARTICLE_COUNT_DESKTOP = 15;
+const HERO_PARTICLE_COUNT_DESKTOP = 18;
 const HERO_PARTICLE_COUNT_MOBILE = 5;
 
 const Hero = () => {
@@ -45,7 +45,7 @@ const Hero = () => {
     ];
     return {
       size: 30 + Math.random() * 180,
-      x: ctaPosition.x - 10 + Math.random() * 20, // Centered around CTA
+      x: ctaPosition.x - 15 + Math.random() * 20, // Centered around CTA
       y: ctaPosition.y - 35 + Math.random() * 30, // More vertical spread
       moveX: (Math.random() - 0.5) * 25, // Horizontal movement
       moveY: (Math.random() - 0.5) * 30, // Increased vertical movement
@@ -59,7 +59,7 @@ const Hero = () => {
   // Update particle positions when CTA position changes
   useEffect(() => {
     particles.forEach(p => {
-      p.x = ctaPosition.x - 10 + Math.random() * 20;
+      p.x = ctaPosition.x - 15 + Math.random() * 20;
       p.y = ctaPosition.y - 35 + Math.random() * 30; // Match initial spread
     });
   }, [ctaPosition]);
