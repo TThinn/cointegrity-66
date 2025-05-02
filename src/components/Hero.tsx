@@ -36,7 +36,7 @@ const Hero = () => {
   const particles = useRef(Array.from({
     length: HERO_PARTICLE_COUNT_DESKTOP
   }, () => {
-    const colors = ['rgba(225,29,143,0.7)',
+    const colors = ['rgba(225,29,143,0.8)',
     // Pink
     'rgba(147,51,234,0.5)',
     // Purple
