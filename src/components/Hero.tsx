@@ -37,7 +37,7 @@ const Hero = () => {
       baseY: ctaPosition.y,
       radius: radius,
       angle: angle,
-      speed: 0.1 + Math.random() * 0.6,
+      speed: 0.1 + Math.random() * 2,
       color: colors[Math.floor(Math.random() * colors.length)],
       delay: Math.random() * 5,
       duration: 10 + Math.random() * 20
