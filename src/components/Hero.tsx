@@ -44,11 +44,11 @@ const Hero = () => {
       'rgba(255,255,255,0.1)' // White
     ];
     return {
-      size: 30 + Math.random() * 160,
-      x: ctaPosition.x - 20 + Math.random() * 20, // Centered around CTA
-      y: ctaPosition.y - 15 + Math.random() * 30, // More vertical spread
+      size: 30 + Math.random() * 180,
+      x: ctaPosition.x - 25 + Math.random() * 20, // Centered around CTA
+      y: ctaPosition.y - 20 + Math.random() * 30, // More vertical spread
       moveX: (Math.random() - 0.5) * 25, // Horizontal movement
-      moveY: (Math.random() - 0.5) * 40, // Increased vertical movement
+      moveY: (Math.random() - 0.5) * 30, // Increased vertical movement
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
       duration: 5 + Math.random() * 10,
