@@ -11,15 +11,19 @@ const Hero = () => {
   const [ctaPosition, setCtaPosition] = useState({ x: 50, y: 50 });
 
   // Get CTA button position for particle centering
-  useLayoutEffect(() => {
-    if (ctaRef.current) {
-      const rect = ctaRef.current.getBoundingClientRect();
-      setCtaPosition({
-        x: (rect.left + rect.width/2) / window.innerWidth * 100,
-        y: (rect.top + rect.height/2) / window.innerHeight * 100
-      });
-    }
-  }, []);
+useLayoutEffect(() => {
+  if (ctaRef.current) {
+    const box = ctaRef.current.getBoundingClientRect();
+    const xCenter = (box.left + box.right) / 2;
+    const yCenter = (box.top + box.bottom) / 2;
+    
+    // Convert to percentage of viewport
+    setCtaPosition({
+      x: (xCenter / window.innerWidth) * 100,
+      y: (yCenter / window.innerHeight) * 100
+    });
+  }
+}, []);
 
   // Particle configuration with circular constraint
   const particles = useRef(Array.from({
