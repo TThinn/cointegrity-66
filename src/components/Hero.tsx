@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
 
-const HERO_PARTICLE_COUNT_DESKTOP = 15;
+const HERO_PARTICLE_COUNT_DESKTOP = 10;
 const HERO_PARTICLE_COUNT_MOBILE = 5;
 
 const Hero = () => {
@@ -43,14 +43,14 @@ const Hero = () => {
     ];
     
     return {
-      size: 50 + Math.random() * 200,
+      size: 50 + Math.random() * 150,
       x: ctaPosition.x - 10 + Math.random() * 20, // Centered around CTA
-      y: ctaPosition.y - 5 + Math.random() * 20, // Centered around CTA
-      moveX: (Math.random() - 0.5) * 30, // Limited movement range
-      moveY: (Math.random() - 0.5) * 30, // Limited movement range
+      y: ctaPosition.y - 1 + Math.random() * 20, // Centered around CTA
+      moveX: (Math.random() - 0.5) * 25, // Limited movement range
+      moveY: (Math.random() - 0.5) * 25, // Limited movement range
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
-      duration: 5 + Math.random() * 15,
+      duration: 5 + Math.random() * 10,
       color: colors[Math.floor(Math.random() * colors.length)]
     };
   })).current;
