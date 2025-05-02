@@ -19,8 +19,8 @@ const Hero = () => {
       size: Math.random() * 300,
       x: 40 + Math.random() * 20, // Centered around CTA area
       y: 50 + Math.random() * 20, // Centered vertically
-      moveX: (Math.random() - 0.5) * 200, // Reduced movement range
-      moveY: (Math.random() - 0.5) * 200,
+      moveX: (Math.random() - 0.5) * 50, // Reduced movement range
+      moveY: (Math.random() - 0.5) * 50,
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
       duration: 20 + Math.random() * 40,
