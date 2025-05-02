@@ -1,9 +1,7 @@
 import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Container from "./ui/Container";
-
 const HERO_PARTICLE_COUNT_DESKTOP = 18;
 const HERO_PARTICLE_COUNT_MOBILE = 5;
-
 const Hero = () => {
   const [particleCount, setParticleCount] = useState(null);
   const ctaRef = useRef(null);
@@ -38,17 +36,22 @@ const Hero = () => {
   const particles = useRef(Array.from({
     length: HERO_PARTICLE_COUNT_DESKTOP
   }, () => {
-    const colors = [
-      'rgba(225,29,143,0.8)', // Pink
-      'rgba(147,51,234,0.4)', // Purple
-      'rgba(255,255,255,0.1)' // White
+    const colors = ['rgba(225,29,143,0.8)',
+    // Pink
+    'rgba(147,51,234,0.4)',
+    // Purple
+    'rgba(255,255,255,0.1)' // White
     ];
     return {
       size: 30 + Math.random() * 180,
-      x: ctaPosition.x - 15 + Math.random() * 20, // Centered around CTA
-      y: ctaPosition.y - 35 + Math.random() * 30, // More vertical spread
-      moveX: (Math.random() - 0.5) * 25, // Horizontal movement
-      moveY: (Math.random() - 0.5) * 30, // Increased vertical movement
+      x: ctaPosition.x - 15 + Math.random() * 20,
+      // Centered around CTA
+      y: ctaPosition.y - 35 + Math.random() * 30,
+      // More vertical spread
+      moveX: (Math.random() - 0.5) * 25,
+      // Horizontal movement
+      moveY: (Math.random() - 0.5) * 30,
+      // Increased vertical movement
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
       duration: 7 + Math.random() * 15,
@@ -78,7 +81,6 @@ const Hero = () => {
 
   // Don't render particles until device type is known
   if (particleCount === null) return null;
-  
   return <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -128,9 +130,7 @@ const Hero = () => {
         animationDelay: "0.5s"
       }}>
           <a href="#contact" className="inline-block">
-            <button className="bg-white/20 backdrop-blur-sm text-white px-8 py-3 rounded-full 
-                        border border-white/30 hover:bg-white/30 transition-all
-                        transform hover:scale-105 duration-300 text-lg font-semibold">
+            <button className="bg-white/10 backdrop-blur-sm text-white px-8 py-3 rounded-full \n                        border border-white/30 hover:bg-white/30 transition-all\n                        transform hover:scale-105 duration-300 text-lg font-semibold">
               Connect With Us
             </button>
           </a>
@@ -203,5 +203,4 @@ const Hero = () => {
       </style>
     </section>;
 };
-
 export default Hero;
