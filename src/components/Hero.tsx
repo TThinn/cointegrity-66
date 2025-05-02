@@ -47,7 +47,7 @@ const Hero = () => {
       size: 50 + Math.random() * 180,
       x: ctaPosition.x - 10 + Math.random() * 20,
       // Centered around CTA
-      y: ctaPosition.y - 1 + Math.random() * 20,
+      y: ctaPosition.y - 20 + Math.random() * 20,
       // Centered around CTA
       moveX: (Math.random() - 0.5) * 25,
       // Limited movement range
