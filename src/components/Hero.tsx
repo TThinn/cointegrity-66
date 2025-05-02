@@ -1,8 +1,9 @@
 import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Container from "./ui/Container";
-import Button from "./ui/CustomButtonComponent";
+
 const HERO_PARTICLE_COUNT_DESKTOP = 10;
 const HERO_PARTICLE_COUNT_MOBILE = 5;
+
 const Hero = () => {
   const [particleCount, setParticleCount] = useState(null);
   const ctaRef = useRef(null);
@@ -37,22 +38,17 @@ const Hero = () => {
   const particles = useRef(Array.from({
     length: HERO_PARTICLE_COUNT_DESKTOP
   }, () => {
-    const colors = ['rgba(225,29,143,0.8)',
-    // Pink
-    'rgba(147,51,234,0.6)',
-    // Purple
-    'rgba(255,255,255,0.1)' // White
+    const colors = [
+      'rgba(225,29,143,0.8)', // Pink
+      'rgba(147,51,234,0.6)', // Purple
+      'rgba(255,255,255,0.1)' // White
     ];
     return {
       size: 30 + Math.random() * 160,
-      x: ctaPosition.x - 10 + Math.random() * 20,
-      // Centered around CTA
-      y: ctaPosition.y - 20 + Math.random() * 20,
-      // Centered around CTA
-      moveX: (Math.random() - 0.5) * 25,
-      // Limited movement range
-      moveY: (Math.random() - 0.5) * 25,
-      // Limited movement range
+      x: ctaPosition.x - 10 + Math.random() * 20, // Centered around CTA
+      y: ctaPosition.y - 15 + Math.random() * 30, // More vertical spread
+      moveX: (Math.random() - 0.5) * 25, // Horizontal movement
+      moveY: (Math.random() - 0.5) * 40, // Increased vertical movement
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
       duration: 5 + Math.random() * 10,
@@ -64,7 +60,7 @@ const Hero = () => {
   useEffect(() => {
     particles.forEach(p => {
       p.x = ctaPosition.x - 10 + Math.random() * 20;
-      p.y = ctaPosition.y - 10 + Math.random() * 20;
+      p.y = ctaPosition.y - 15 + Math.random() * 30; // Match initial spread
     });
   }, [ctaPosition]);
 
@@ -82,6 +78,7 @@ const Hero = () => {
 
   // Don't render particles until device type is known
   if (particleCount === null) return null;
+  
   return <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -170,11 +167,25 @@ const Hero = () => {
               opacity: 0.4;
               transform: translate(0, 0) scale(1) rotate(0);
             }
+            25% {
+              opacity: 0.6;
+              transform: 
+                translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * -0.7)) 
+                scale(1.2) 
+                rotate(calc(var(--rotate) * 0.3));
+            }
             50% { 
               opacity: 0.8;
               transform: 
                 translate(var(--move-x), var(--move-y)) 
                 scale(1.5) 
+                rotate(calc(var(--rotate) * 0.6));
+            }
+            75% {
+              opacity: 0.6;
+              transform: 
+                translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * 0.7)) 
+                scale(1.3) 
                 rotate(var(--rotate));
             }
           }
@@ -192,4 +203,5 @@ const Hero = () => {
       </style>
     </section>;
 };
+
 export default Hero;
