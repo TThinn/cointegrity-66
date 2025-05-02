@@ -84,11 +84,31 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Rest of the Hero component remains the same */}
       <Container className="hero-content relative z-10 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
-        {/* ... existing content ... */}
-        
-        {/* CTA Button with ref */}
+        <div className="flex flex-col items-center text-center mx-auto mt-16 w-full max-w-[90vw] xl:max-w-[1200px]">
+          <h1 className="font-bold leading-tight text-shadow mb-4 animate-fade-up text-balance"
+              style={{
+                animationDelay: "0.2s",
+                fontSize: "clamp(1.9rem, 6vw, 4.5rem)",
+                lineHeight: 1.1,
+                letterSpacing: "-0.03em"
+              }}>
+            <span className="text-white font-bold">Simplifying Web3 Complexity</span>
+          </h1>
+
+          <h2 className="text-white/80 animate-fade-up relative mb-8 text-balance"
+              style={{
+                animationDelay: "0.4s",
+                fontSize: "clamp(0.9rem, 1.5vw, 1.5rem)",
+                lineHeight: 1.25,
+                fontWeight: 400,
+                maxWidth: "40rem"
+              }}>
+            We provide Full-cycle Web3 Consulting Solutions at the Intersection of Blockchain, AI, Gaming, Tax & Compliance.
+          </h2>
+        </div>
+
+        {/* Custom CTA Button */}
         <div ref={ctaRef} className="flex justify-center animate-fade-up mb-4"
              style={{ animationDelay: "0.5s" }}>
           <a href="#contact" className="inline-block">
@@ -101,14 +121,35 @@ const Hero = () => {
           </a>
         </div>
 
-        {/* ... rest of the component ... */}
+        {/* Stats grid */}
+        <div className="mt-24 border-t border-white/10 pt-4 grid grid-cols-2 md:grid-cols-4 gap-10 animate-fade-up text-center"
+             style={{ animationDelay: "0.6s" }}>
+          {[{
+            number: "45+",
+            label: "Years Experience"
+          }, {
+            number: "15+",
+            label: "Project Jurisdictions"
+          }, {
+            number: "20+",
+            label: "Enterprise Clients"
+          }, {
+            number: "40+",
+            label: "Projects Delivered"
+          }].map((stat, i) => (
+            <div key={`stat-${i}`}>
+              <h3 className="text-3xl md:text-4xl font-bold text-white">{stat.number}</h3>
+              <p className="text-white/60 text-sm mt-1">{stat.label}</p>
+            </div>
+          ))}
+        </div>
       </Container>
 
       <style>
         {`
           @keyframes orb-float {
             0%, 100% {
-              opacity: 0.4;
+              opacity: 0.2;
               transform: 
                 translate(
                   calc(cos(var(--angle)) * var(--radius)), 
