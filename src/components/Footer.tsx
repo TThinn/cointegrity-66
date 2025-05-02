@@ -3,17 +3,20 @@ import { Link } from "react-router-dom";
 import Container from "./ui/Container";
 import { Linkedin, Twitter, Youtube, Github } from "lucide-react";
 import { useAnalytics } from "@/hooks/useAnalytics";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const {
     trackEvent
   } = useAnalytics();
+  
   const handleSocialClick = (platform: string) => {
     trackEvent('social_click', {
       category: 'Social',
       label: platform
     });
   };
+  
   return <footer className="bg-gradient-to-br from-[#000624] to-[#282c2f] pt-16 pb-8">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
@@ -32,10 +35,10 @@ const Footer = () => {
                 <Linkedin size={20} />
               </a>
               <a href="#" className="text-white/50 hover:text-blue-400 transition-colors" onClick={() => handleSocialClick('github')}>
-                
+                <Github size={20} />
               </a>
               <a href="#" className="text-white/50 hover:text-blue-400 transition-colors" onClick={() => handleSocialClick('youtube')}>
-                
+                <Youtube size={20} />
               </a>
             </div>
           </div>

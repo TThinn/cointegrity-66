@@ -44,6 +44,7 @@ serve(async (req) => {
     const fallbackFromEmail = "Cointegrity <onboarding@resend.dev>";
     
     console.log('Attempting to send confirmation email to:', email);
+    console.log('Using Resend API key:', Deno.env.get('RESEND_API_KEY') ? 'Found' : 'Not found');
     
     const { data, error } = await resend.emails.send({
       from: fromEmail,

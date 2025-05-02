@@ -36,6 +36,11 @@ serve(async (req) => {
     
     // Log the form data received
     console.log('Form data received:', { name, email, company, message: message.substring(0, 50) + '...' });
+    console.log('SMTP credentials found:', {
+      hostname: SMTP_HOSTNAME ? 'Yes' : 'No',
+      username: SMTP_USERNAME ? 'Yes' : 'No',
+      password: SMTP_PASSWORD ? 'Yes (length: ' + SMTP_PASSWORD.length + ')' : 'No'
+    });
     
     // Skip reCAPTCHA verification in development or if token is missing
     // but log a warning
