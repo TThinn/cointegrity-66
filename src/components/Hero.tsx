@@ -25,9 +25,9 @@ const Hero = () => {
   const particles = useRef(Array.from({
     length: HERO_PARTICLE_COUNT_DESKTOP
   }, () => {
-    const colors = ['rgba(236,72,153,0.8)'];
+    const colors = ['rgba(236,72,153,0.8)','rgba(147,51,234,0.6)','rgba(255,255,255,0.2)'];
     const angle = Math.random() * Math.PI * 2;
-    const radius = Math.random() * 25;
+    const radius = Math.random() * 20;
     
     return {
       size: 50 + Math.random() * 150,
@@ -38,7 +38,7 @@ const Hero = () => {
       radius: radius,
       angle: angle,
       speed: 0.1 + Math.random() * 0.6,
-      color: colors,
+      color: colors[Math.floor(Math.random() * colors.length)],
       delay: Math.random() * 5,
       duration: 10 + Math.random() * 20
     }
