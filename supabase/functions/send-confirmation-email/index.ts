@@ -45,7 +45,7 @@ serve(async (req) => {
       throw new Error('RESEND_API_KEY not found in environment variables');
     }
     
-    // Using fetch directly instead of the Resend client library
+    // Using fetch directly 
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
         <h2 style="color: #133a63;">Thank You for Contacting Cointegrity</h2>
@@ -62,6 +62,7 @@ serve(async (req) => {
       </div>
     `;
     
+    console.log('Sending email via Resend API');
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -69,7 +70,7 @@ serve(async (req) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: 'Cointegrity <onboarding@resend.dev>',
+        from: 'Cointegrity <hello@cointegrity.io>',
         to: [email],
         subject: `Confirmation: We've Received Your Request (${referenceNumber})`,
         html: emailHtml,
@@ -77,14 +78,22 @@ serve(async (req) => {
       })
     });
     
+    const responseText = await response.text();
+    console.log(`Resend API response status: ${response.status}`);
+    console.log(`Resend API response body: ${responseText}`);
+    
     if (!response.ok) {
-      const errorData = await response.text();
-      console.error('Resend API error response:', errorData);
-      throw new Error(`Resend API error: ${response.status} ${response.statusText}`);
+      throw new Error(`Resend API error: ${response.status} ${response.statusText} - ${responseText}`);
     }
     
-    const data = await response.json();
-    console.log('Confirmation email sent successfully:', data);
+    let data;
+    try {
+      data = JSON.parse(responseText);
+      console.log('Confirmation email sent successfully:', data);
+    } catch (parseError) {
+      console.warn('Could not parse response as JSON:', responseText);
+      data = { id: 'unknown', message: 'Email sent but response could not be parsed' };
+    }
     
     return new Response(
       JSON.stringify({ 
