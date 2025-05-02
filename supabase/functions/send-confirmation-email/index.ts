@@ -70,7 +70,7 @@ serve(async (req) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: 'Cointegrity <onboarding@resend.dev>',
+        from: 'Cointegrity <enquiry@cointegrity.com>',
         to: [email],
         subject: `Confirmation: We've Received Your Request (${referenceNumber})`,
         html: emailHtml,
