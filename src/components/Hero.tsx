@@ -130,7 +130,7 @@ const Hero = () => {
         animationDelay: "0.5s"
       }}>
           <a href="#contact" className="inline-block">
-            <button className="bg-white/10 backdrop-blur-sm text-white px-8 py-3 rounded-full \n                        border border-white/30 hover:bg-white/30 transition-all\n                        transform hover:scale-105 duration-300 text-lg font-semibold">
+            <button className="bg-white/5 backdrop-blur-sm text-white px-8 py-3 rounded-full \n                        border border-white/20 hover:bg-white/30 transition-all\n                        transform hover:scale-105 duration-300 text-lg font-semibold">
               Connect With Us
             </button>
           </a>
