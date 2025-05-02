@@ -44,7 +44,7 @@ const Hero = () => {
       const radius = distributionFactor * FIXED_RADIUS;
       
       return {
-        size: 10 + Math.random() * 80,
+        size: 40 + Math.random() * 100,
         x: ctaPosition.x + Math.cos(angle) * radius,
         y: ctaPosition.y + Math.sin(angle) * radius,
         baseX: ctaPosition.x,
