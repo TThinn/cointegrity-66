@@ -30,7 +30,7 @@ const Hero = () => {
     const radius = Math.random() * 30;
     
     return {
-      size: 10 + Math.random() * 50,
+      size: 50 + Math.random() * 150,
       x: ctaPosition.x + Math.cos(angle) * radius,
       y: ctaPosition.y + Math.sin(angle) * radius,
       baseX: ctaPosition.x,
