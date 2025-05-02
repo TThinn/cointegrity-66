@@ -3,7 +3,7 @@ import Container from "./ui/Container";
 
 const HERO_PARTICLE_COUNT_DESKTOP = 30;
 const HERO_PARTICLE_COUNT_MOBILE = 3;
-const FIXED_RADIUS = 150; // Fixed radius for all particles
+const FIXED_RADIUS = 180; // Increased radius for more movement space
 
 const Hero = () => {
   const [particleCount, setParticleCount] = useState<number | null>(null);
@@ -39,22 +39,24 @@ const Hero = () => {
       const angle = Math.random() * Math.PI * 2;
       
       // Use sqrt to distribute particles evenly throughout the circle area
-      // Without sqrt, particles would cluster toward the center
       const distributionFactor = Math.sqrt(Math.random());
       const radius = distributionFactor * FIXED_RADIUS;
       
       return {
-        size: 20 + Math.random() * 50,
+        // Smaller particle sizes for better movement-to-size ratio
+        size: 15 + Math.random() * 45,
         x: ctaPosition.x + Math.cos(angle) * radius,
         y: ctaPosition.y + Math.sin(angle) * radius,
         baseX: ctaPosition.x,
         baseY: ctaPosition.y,
         radius: radius,
         angle: angle,
-        speed: 0.1 + Math.random() * 4,
+        // More controlled speed range for smoother movement
+        speed: 0.5 + Math.random() * 1.5,
         color: colors[Math.floor(Math.random() * colors.length)],
         delay: Math.random() * 5,
-        duration: 10 + Math.random() * 20
+        // Shorter duration for more frequent movement
+        duration: 8 + Math.random() * 12
       };
     });
   };
@@ -180,15 +182,23 @@ const Hero = () => {
                 translate(
                   calc(cos(var(--angle)) * var(--radius)), 
                   calc(sin(var(--angle)) * var(--radius))
-                );
+                ) scale(0.8);
             }
-            50% {
-              opacity: 0.8;
+            33% {
+              opacity: 0.6;
               transform: 
                 translate(
-                  calc(cos(calc(var(--angle) + var(--speed))) * var(--radius)), 
-                  calc(sin(calc(var(--angle) + var(--speed))) * var(--radius))
-                );
+                  calc(cos(calc(var(--angle) + var(--speed))) * var(--radius) * 0.8), 
+                  calc(sin(calc(var(--angle) + var(--speed))) * var(--radius) * 1.2)
+                ) scale(1.1);
+            }
+            66% {
+              opacity: 0.4;
+              transform: 
+                translate(
+                  calc(cos(calc(var(--angle) - var(--speed))) * var(--radius) * 1.1), 
+                  calc(sin(calc(var(--angle) - var(--speed))) * var(--radius) * 0.9)
+                ) scale(0.9);
             }
           }
           .animate-orb-float {
