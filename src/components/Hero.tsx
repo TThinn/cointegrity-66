@@ -1,8 +1,9 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Container from "./ui/Container";
 
 const HERO_PARTICLE_COUNT_DESKTOP = 20;
 const HERO_PARTICLE_COUNT_MOBILE = 3;
+const FIXED_RADIUS = 30; // Fixed radius for all particles
 
 const Hero = () => {
   const [particleCount, setParticleCount] = useState<number | null>(null);
@@ -11,42 +12,63 @@ const Hero = () => {
   const [ctaPosition, setCtaPosition] = useState({ x: 50, y: 50 });
 
   // Get CTA button position for particle centering
-useLayoutEffect(() => {
-  if (ctaRef.current) {
-    const box = ctaRef.current.getBoundingClientRect();
-    const xCenter = (box.left + box.right) / 2;
-    const yCenter = (box.top + box.bottom) / 2;
+  useLayoutEffect(() => {
+    const updateCtaPosition = () => {
+      if (ctaRef.current) {
+        const box = ctaRef.current.getBoundingClientRect();
+        const xCenter = (box.left + box.right) / 2;
+        const yCenter = (box.top + box.bottom) / 2;
+        
+        // Convert to percentage of viewport
+        setCtaPosition({
+          x: (xCenter / window.innerWidth) * 100,
+          y: (yCenter / window.innerHeight) * 100
+        });
+      }
+    };
     
-    // Convert to percentage of viewport
-    setCtaPosition({
-      x: (xCenter / window.innerWidth) * 100,
-      y: (yCenter / window.innerHeight) * 100
-    });
-  }
-}, []);
+    updateCtaPosition();
+    window.addEventListener('resize', updateCtaPosition);
+    return () => window.removeEventListener('resize', updateCtaPosition);
+  }, []);
 
-  // Particle configuration with circular constraint
-  const particles = useRef(Array.from({
-    length: HERO_PARTICLE_COUNT_DESKTOP
-  }, () => {
-    const colors = ['rgba(236,72,153,0.9)','rgba(147,51,234,0.6)','rgba(255,255,255,0.2)'];
-    const angle = Math.random() * Math.PI * 2;
-    const radius = Math.random() * 30;
-    
-    return {
-      size: 50 + Math.random() * 150,
-      x: ctaPosition.x + Math.cos(angle) * radius,
-      y: ctaPosition.y + Math.sin(angle) * radius,
-      baseX: ctaPosition.x,
-      baseY: ctaPosition.y,
-      radius: radius,
-      angle: angle,
-      speed: 0.1 + Math.random() * 4,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      delay: Math.random() * 5,
-      duration: 10 + Math.random() * 20
-    }
-  })).current;
+  // Generate particles with fixed circular constraint
+  const generateParticles = () => {
+    return Array.from({ length: HERO_PARTICLE_COUNT_DESKTOP }, () => {
+      const colors = ['rgba(236,72,153,0.9)','rgba(147,51,234,0.6)','rgba(255,255,255,0.2)'];
+      const angle = Math.random() * Math.PI * 2;
+      
+      // Use sqrt to distribute particles evenly throughout the circle area
+      // Without sqrt, particles would cluster toward the center
+      const distributionFactor = Math.sqrt(Math.random());
+      const radius = distributionFactor * FIXED_RADIUS;
+      
+      return {
+        size: 50 + Math.random() * 150,
+        x: ctaPosition.x + Math.cos(angle) * radius,
+        y: ctaPosition.y + Math.sin(angle) * radius,
+        baseX: ctaPosition.x,
+        baseY: ctaPosition.y,
+        radius: radius,
+        angle: angle,
+        speed: 0.1 + Math.random() * 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        delay: Math.random() * 5,
+        duration: 10 + Math.random() * 20
+      };
+    });
+  };
+
+  // Create particles reference
+  const particles = useRef(generateParticles()).current;
+
+  // Update particle positions when CTA position changes
+  useEffect(() => {
+    particles.forEach(p => {
+      p.baseX = ctaPosition.x;
+      p.baseY = ctaPosition.y;
+    });
+  }, [ctaPosition, particles]);
 
   // Device detection and particle count
   useLayoutEffect(() => {
@@ -74,13 +96,13 @@ useLayoutEffect(() => {
               width: `${p.size}px`,
               height: `${p.size}px`,
               background: p.color,
-              left: `${p.x}%`,
-              top: `${p.y}%`,
+              left: `${p.baseX}%`,
+              top: `${p.baseY}%`,
               animationDelay: `${p.delay}s`,
               animationDuration: `${p.duration}s`,
               ['--base-x' as string]: `${p.baseX}%`,
               ['--base-y' as string]: `${p.baseY}%`,
-              ['--radius' as string]: `${p.radius}%`,
+              ['--radius' as string]: `${FIXED_RADIUS}%`,
               ['--angle' as string]: `${p.angle}rad`,
               ['--speed' as string]: p.speed
             } as React.CSSProperties}
