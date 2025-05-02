@@ -1,14 +1,15 @@
 import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Container from "./ui/Container";
 import Button from "./ui/CustomButtonComponent";
-
 const HERO_PARTICLE_COUNT_DESKTOP = 10;
 const HERO_PARTICLE_COUNT_MOBILE = 5;
-
 const Hero = () => {
   const [particleCount, setParticleCount] = useState(null);
   const ctaRef = useRef(null);
-  const [ctaPosition, setCtaPosition] = useState({ x: 50, y: 50 });
+  const [ctaPosition, setCtaPosition] = useState({
+    x: 50,
+    y: 50
+  });
 
   // Get CTA button position for particle centering
   useLayoutEffect(() => {
@@ -17,15 +18,15 @@ const Hero = () => {
         const box = ctaRef.current.getBoundingClientRect();
         const xCenter = (box.left + box.right) / 2;
         const yCenter = (box.top + box.bottom) / 2;
-        
+
         // Convert to percentage of viewport
         setCtaPosition({
-          x: (xCenter / window.innerWidth) * 100,
-          y: (yCenter / window.innerHeight) * 100
+          x: xCenter / window.innerWidth * 100,
+          y: yCenter / window.innerHeight * 100
         });
       }
     };
-    
+
     // Update position after a short delay to ensure layout is complete
     setTimeout(updateCtaPosition, 100);
     window.addEventListener('resize', updateCtaPosition);
@@ -36,18 +37,22 @@ const Hero = () => {
   const particles = useRef(Array.from({
     length: HERO_PARTICLE_COUNT_DESKTOP
   }, () => {
-    const colors = [
-      'rgba(225,29,143,0.8)', // Pink
-      'rgba(147,51,234,0.4)', // Purple
-      'rgba(255,255,255,0.2)' // White
+    const colors = ['rgba(225,29,143,0.8)',
+    // Pink
+    'rgba(147,51,234,0.4)',
+    // Purple
+    'rgba(255,255,255,0.2)' // White
     ];
-    
     return {
       size: 50 + Math.random() * 150,
-      x: ctaPosition.x - 10 + Math.random() * 20, // Centered around CTA
-      y: ctaPosition.y - 1 + Math.random() * 20, // Centered around CTA
-      moveX: (Math.random() - 0.5) * 25, // Limited movement range
-      moveY: (Math.random() - 0.5) * 25, // Limited movement range
+      x: ctaPosition.x - 10 + Math.random() * 20,
+      // Centered around CTA
+      y: ctaPosition.y - 1 + Math.random() * 20,
+      // Centered around CTA
+      moveX: (Math.random() - 0.5) * 25,
+      // Limited movement range
+      moveY: (Math.random() - 0.5) * 25,
+      // Limited movement range
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
       duration: 5 + Math.random() * 10,
@@ -77,7 +82,6 @@ const Hero = () => {
 
   // Don't render particles until device type is known
   if (particleCount === null) return null;
-  
   return <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -108,7 +112,7 @@ const Hero = () => {
           lineHeight: 1.1,
           letterSpacing: "-0.03em"
         }}>
-            <span className="text-white font-extrabold">Simplifying Web3 Complexity</span>
+            <span className="text-white font-semibold">Simplifying Web3 Complexity</span>
           </h1>
 
           <h2 className="text-white/80 animate-fade-up relative mb-8 text-balance" style={{
@@ -127,8 +131,7 @@ const Hero = () => {
         animationDelay: "0.5s"
       }}>
           <a href="#contact" className="inline-block">
-            <button 
-              className="bg-white/20 backdrop-blur-sm text-white px-8 py-3 rounded-full 
+            <button className="bg-white/20 backdrop-blur-sm text-white px-8 py-3 rounded-full 
                         border border-white/30 hover:bg-white/30 transition-all
                         transform hover:scale-105 duration-300 text-lg font-semibold">
               Connect With Us
@@ -189,5 +192,4 @@ const Hero = () => {
       </style>
     </section>;
 };
-
 export default Hero;
