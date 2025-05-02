@@ -35,7 +35,7 @@ const Footer = () => {
                 
               </a>
               <a href="#" className="text-white/50 hover:text-blue-400 transition-colors" onClick={() => handleSocialClick('youtube')}>
-                <Youtube size={20} />
+                
               </a>
             </div>
           </div>
