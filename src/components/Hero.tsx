@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import Container from "./ui/Container";
 
-const HERO_PARTICLE_COUNT_DESKTOP = 6;
+const HERO_PARTICLE_COUNT_DESKTOP = 15;
 const HERO_PARTICLE_COUNT_MOBILE = 3;
 
 const Hero = () => {
@@ -25,7 +25,7 @@ const Hero = () => {
   const particles = useRef(Array.from({
     length: HERO_PARTICLE_COUNT_DESKTOP
   }, () => {
-    const colors = ['rgba(255,255,255,0.3)','rgba(236,72,153,0.6)', 'rgba(147,51,234,0.6)'];
+    const colors = ['rgba(255,255,255,0.6)','rgba(236,72,153,0.6)', 'rgba(147,51,234,0.6)'];
     const angle = Math.random() * Math.PI * 2;
     const radius = Math.random() * 20;
     
