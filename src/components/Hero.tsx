@@ -1,9 +1,9 @@
 import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Container from "./ui/Container";
 
-const HERO_PARTICLE_COUNT_DESKTOP = 30;
+const HERO_PARTICLE_COUNT_DESKTOP = 40;
 const HERO_PARTICLE_COUNT_MOBILE = 3;
-const FIXED_RADIUS = 180; // Increased radius for more movement space
+const FIXED_RADIUS = 180; // Fixed radius for all particles
 
 const Hero = () => {
   const [particleCount, setParticleCount] = useState<number | null>(null);
@@ -35,28 +35,30 @@ const Hero = () => {
   // Generate particles with fixed circular constraint
   const generateParticles = () => {
     return Array.from({ length: HERO_PARTICLE_COUNT_DESKTOP }, () => {
-      const colors = ['rgba(236,72,153,0.9)','rgba(147,51,234,0.5)','rgba(255,255,255,0.2)'];
+      const colors = ['rgba(236,72,153,0.8)','rgba(147,51,234,0.6)','rgba(255,255,255,0.4)'];
       const angle = Math.random() * Math.PI * 2;
       
-      // Use sqrt to distribute particles evenly throughout the circle area
-      const distributionFactor = Math.sqrt(Math.random());
+      // More varied distribution
+      const distributionFactor = Math.pow(Math.random(), 0.5); // Less clustering at center
       const radius = distributionFactor * FIXED_RADIUS;
       
       return {
-        // Smaller particle sizes for better movement-to-size ratio
-        size: 15 + Math.random() * 45,
+        // More varied sizes
+        size: 5 + Math.random() * 30,
         x: ctaPosition.x + Math.cos(angle) * radius,
         y: ctaPosition.y + Math.sin(angle) * radius,
         baseX: ctaPosition.x,
         baseY: ctaPosition.y,
         radius: radius,
         angle: angle,
-        // More controlled speed range for smoother movement
-        speed: 0.5 + Math.random() * 1.5,
+        // Much more varied speeds for independent movement
+        speed: 0.2 + Math.random() * 3,
+        // Independent movement patterns
+        movementType: Math.floor(Math.random() * 3), // 0, 1, or 2 for different patterns
         color: colors[Math.floor(Math.random() * colors.length)],
-        delay: Math.random() * 5,
-        // Shorter duration for more frequent movement
-        duration: 8 + Math.random() * 12
+        delay: Math.random() * 3,
+        // Shorter durations for more frequent changes
+        duration: 5 + Math.random() * 10
       };
     });
   };
@@ -93,7 +95,7 @@ const Hero = () => {
         {particles.slice(0, particleCount).map((p, i) => (
           <div 
             key={`particle-${i}`} 
-            className="absolute rounded-full blur-[50px] animate-orb-float"
+            className={`absolute rounded-full blur-[30px] animate-orb-float-${p.movementType + 1}`}
             style={{
               width: `${p.size}px`,
               height: `${p.size}px`,
@@ -104,7 +106,7 @@ const Hero = () => {
               animationDuration: `${p.duration}s`,
               ['--base-x' as string]: `${p.baseX}%`,
               ['--base-y' as string]: `${p.baseY}%`,
-              ['--radius' as string]: `${FIXED_RADIUS}%`,
+              ['--radius' as string]: `${p.radius}%`,
               ['--angle' as string]: `${p.angle}rad`,
               ['--speed' as string]: p.speed
             } as React.CSSProperties}
@@ -175,38 +177,143 @@ const Hero = () => {
 
       <style>
         {`
-          @keyframes orb-float {
-            0%, 100% {
-              opacity: 0.2;
+          @keyframes orb-float-1 {
+            0% {
+              opacity: 0.3;
               transform: 
                 translate(
                   calc(cos(var(--angle)) * var(--radius)), 
                   calc(sin(var(--angle)) * var(--radius))
                 ) scale(0.8);
             }
-            33% {
-              opacity: 0.6;
+            25% {
+              opacity: 0.7;
               transform: 
                 translate(
-                  calc(cos(calc(var(--angle) + var(--speed))) * var(--radius) * 0.8), 
-                  calc(sin(calc(var(--angle) + var(--speed))) * var(--radius) * 1.2)
+                  calc(cos(calc(var(--angle) + var(--speed))) * var(--radius) * 0.7), 
+                  calc(sin(calc(var(--angle) - var(--speed) * 0.5)) * var(--radius) * 1.1)
+                ) scale(1.2);
+            }
+            50% {
+              opacity: 0.5;
+              transform: 
+                translate(
+                  calc(cos(calc(var(--angle) - var(--speed) * 0.8)) * var(--radius) * 1.2), 
+                  calc(sin(calc(var(--angle) + var(--speed) * 1.2)) * var(--radius) * 0.8)
+                ) scale(0.9);
+            }
+            75% {
+              opacity: 0.8;
+              transform: 
+                translate(
+                  calc(cos(calc(var(--angle) + var(--speed) * 1.5)) * var(--radius) * 0.9), 
+                  calc(sin(calc(var(--angle) - var(--speed) * 0.7)) * var(--radius) * 1.3)
                 ) scale(1.1);
             }
-            66% {
+            100% {
+              opacity: 0.3;
+              transform: 
+                translate(
+                  calc(cos(var(--angle)) * var(--radius)), 
+                  calc(sin(var(--angle)) * var(--radius))
+                ) scale(0.8);
+            }
+          }
+          
+          @keyframes orb-float-2 {
+            0% {
               opacity: 0.4;
               transform: 
                 translate(
-                  calc(cos(calc(var(--angle) - var(--speed))) * var(--radius) * 1.1), 
-                  calc(sin(calc(var(--angle) - var(--speed))) * var(--radius) * 0.9)
+                  calc(cos(var(--angle)) * var(--radius)), 
+                  calc(sin(var(--angle)) * var(--radius))
+                ) scale(1);
+            }
+            33% {
+              opacity: 0.8;
+              transform: 
+                translate(
+                  calc(cos(calc(var(--angle) - var(--speed) * 1.2)) * var(--radius) * 0.9), 
+                  calc(sin(calc(var(--angle) + var(--speed) * 0.8)) * var(--radius) * 1.1)
+                ) scale(0.7);
+            }
+            66% {
+              opacity: 0.6;
+              transform: 
+                translate(
+                  calc(cos(calc(var(--angle) + var(--speed) * 0.6)) * var(--radius) * 1.3), 
+                  calc(sin(calc(var(--angle) - var(--speed) * 1.1)) * var(--radius) * 0.7)
+                ) scale(1.3);
+            }
+            100% {
+              opacity: 0.4;
+              transform: 
+                translate(
+                  calc(cos(var(--angle)) * var(--radius)), 
+                  calc(sin(var(--angle)) * var(--radius))
+                ) scale(1);
+            }
+          }
+          
+          @keyframes orb-float-3 {
+            0% {
+              opacity: 0.5;
+              transform: 
+                translate(
+                  calc(cos(var(--angle)) * var(--radius)), 
+                  calc(sin(var(--angle)) * var(--radius))
+                ) scale(0.9);
+            }
+            20% {
+              opacity: 0.3;
+              transform: 
+                translate(
+                  calc(cos(calc(var(--angle) + var(--speed) * 0.4)) * var(--radius) * 1.1), 
+                  calc(sin(calc(var(--angle) - var(--speed) * 0.9)) * var(--radius) * 0.8)
+                ) scale(1.1);
+            }
+            40% {
+              opacity: 0.7;
+              transform: 
+                translate(
+                  calc(cos(calc(var(--angle) - var(--speed) * 1.3)) * var(--radius) * 0.8), 
+                  calc(sin(calc(var(--angle) + var(--speed) * 0.3)) * var(--radius) * 1.2)
+                ) scale(0.8);
+            }
+            60% {
+              opacity: 0.9;
+              transform: 
+                translate(
+                  calc(cos(calc(var(--angle) + var(--speed) * 0.7)) * var(--radius) * 1.3), 
+                  calc(sin(calc(var(--angle) - var(--speed) * 1.4)) * var(--radius) * 0.9)
+                ) scale(1.2);
+            }
+            80% {
+              opacity: 0.4;
+              transform: 
+                translate(
+                  calc(cos(calc(var(--angle) - var(--speed) * 0.5)) * var(--radius) * 0.7), 
+                  calc(sin(calc(var(--angle) + var(--speed) * 1.0)) * var(--radius) * 1.1)
+                ) scale(0.7);
+            }
+            100% {
+              opacity: 0.5;
+              transform: 
+                translate(
+                  calc(cos(var(--angle)) * var(--radius)), 
+                  calc(sin(var(--angle)) * var(--radius))
                 ) scale(0.9);
             }
           }
-          .animate-orb-float {
-            animation: orb-float ease-in-out infinite;
+          
+          .animate-orb-float-1, .animate-orb-float-2, .animate-orb-float-3 {
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
             mix-blend-mode: screen;
           }
+          
           @media (prefers-reduced-motion: reduce) {
-            .animate-orb-float {
+            .animate-orb-float-1, .animate-orb-float-2, .animate-orb-float-3 {
               animation: none;
               opacity: 0.3 !important;
             }
