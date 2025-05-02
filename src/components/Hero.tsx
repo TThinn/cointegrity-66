@@ -3,7 +3,7 @@ import Container from "./ui/Container";
 
 const HERO_PARTICLE_COUNT_DESKTOP = 20;
 const HERO_PARTICLE_COUNT_MOBILE = 3;
-const FIXED_RADIUS = 30; // Fixed radius for all particles
+const FIXED_RADIUS = 60; // Fixed radius for all particles
 
 const Hero = () => {
   const [particleCount, setParticleCount] = useState<number | null>(null);
@@ -44,7 +44,7 @@ const Hero = () => {
       const radius = distributionFactor * FIXED_RADIUS;
       
       return {
-        size: 50 + Math.random() * 150,
+        size: 10 + Math.random() * 80,
         x: ctaPosition.x + Math.cos(angle) * radius,
         y: ctaPosition.y + Math.sin(angle) * radius,
         baseX: ctaPosition.x,
