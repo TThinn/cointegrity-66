@@ -35,7 +35,7 @@ const Hero = () => {
   // Generate particles with fixed circular constraint
   const generateParticles = () => {
     return Array.from({ length: HERO_PARTICLE_COUNT_DESKTOP }, () => {
-      const colors = ['rgba(236,72,153,0.8)','rgba(147,51,234,0.6)','rgba(255,255,255,0.4)'];
+      const colors = ['rgba(236,72,153,1)','rgba(147,51,234,1)','rgba(255,255,255,1)'];
       const angle = Math.random() * Math.PI * 2;
       
       // More varied distribution
