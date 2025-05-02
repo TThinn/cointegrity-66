@@ -43,7 +43,7 @@ const Hero = () => {
     'rgba(255,255,255,0.1)' // White
     ];
     return {
-      size: 30 + Math.random() * 180,
+      size: 30 + Math.random() * 170,
       x: ctaPosition.x - 15 + Math.random() * 15,
       // Centered around CTA
       y: ctaPosition.y - 15 + Math.random() * 20,
