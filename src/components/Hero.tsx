@@ -39,12 +39,12 @@ const Hero = () => {
   }, () => {
     const colors = ['rgba(225,29,143,0.8)',
     // Pink
-    'rgba(147,51,234,0.4)',
+    'rgba(147,51,234,0.6)',
     // Purple
-    'rgba(255,255,255,0.2)' // White
+    'rgba(255,255,255,0.1)' // White
     ];
     return {
-      size: 50 + Math.random() * 150,
+      size: 50 + Math.random() * 180,
       x: ctaPosition.x - 10 + Math.random() * 20,
       // Centered around CTA
       y: ctaPosition.y - 1 + Math.random() * 20,
