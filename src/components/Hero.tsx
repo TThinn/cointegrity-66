@@ -59,8 +59,8 @@ const Hero = () => {
   // Update particle positions when CTA position changes
   useEffect(() => {
     particles.forEach(p => {
-      p.x = ctaPosition.x - 10 + Math.random() * 20;
-      p.y = ctaPosition.y - 15 + Math.random() * 30; // Match initial spread
+      p.x = ctaPosition.x - 20 + Math.random() * 20;
+      p.y = ctaPosition.y + 20 + Math.random() * 30; // Match initial spread
     });
   }, [ctaPosition]);
 
