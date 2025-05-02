@@ -45,8 +45,8 @@ const Hero = () => {
     ];
     return {
       size: 30 + Math.random() * 180,
-      x: ctaPosition.x - 25 + Math.random() * 20, // Centered around CTA
-      y: ctaPosition.y - 20 + Math.random() * 30, // More vertical spread
+      x: ctaPosition.x - 20 + Math.random() * 20, // Centered around CTA
+      y: ctaPosition.y - 1 + Math.random() * 30, // More vertical spread
       moveX: (Math.random() - 0.5) * 25, // Horizontal movement
       moveY: (Math.random() - 0.5) * 30, // Increased vertical movement
       rotate: Math.random() * 360,
