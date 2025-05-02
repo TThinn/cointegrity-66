@@ -1,9 +1,9 @@
 import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Container from "./ui/Container";
 
-const HERO_PARTICLE_COUNT_DESKTOP = 20;
+const HERO_PARTICLE_COUNT_DESKTOP = 30;
 const HERO_PARTICLE_COUNT_MOBILE = 3;
-const FIXED_RADIUS = 60; // Fixed radius for all particles
+const FIXED_RADIUS = 80; // Fixed radius for all particles
 
 const Hero = () => {
   const [particleCount, setParticleCount] = useState<number | null>(null);
@@ -35,7 +35,7 @@ const Hero = () => {
   // Generate particles with fixed circular constraint
   const generateParticles = () => {
     return Array.from({ length: HERO_PARTICLE_COUNT_DESKTOP }, () => {
-      const colors = ['rgba(236,72,153,0.9)','rgba(147,51,234,0.6)','rgba(255,255,255,0.2)'];
+      const colors = ['rgba(236,72,153,0.9)','rgba(147,51,234,0.5)','rgba(255,255,255,0.2)'];
       const angle = Math.random() * Math.PI * 2;
       
       // Use sqrt to distribute particles evenly throughout the circle area
