@@ -29,10 +29,11 @@ const services = [{
 
 const Services = () => {
   const isDarkBackground = false;
-  const ctaRef = useRef(null);
+  const ctaRef = useRef<HTMLAnchorElement | null>(null);
   const [ctaPosition, setCtaPosition] = useState({ x: 50, y: 50 });
-  const [particleCount, setParticleCount] = useState(null);
+  const [particleCount, setParticleCount] = useState<number | null>(null);
 
+  // Update CTA position for particle centering
   useLayoutEffect(() => {
     const updateCtaPosition = () => {
       if (ctaRef.current) {
@@ -51,25 +52,33 @@ const Services = () => {
     return () => window.removeEventListener('resize', updateCtaPosition);
   }, []);
 
+  // Pre-calculate all particle positions and properties ONCE
   const particles = useRef(Array.from({ length: CTA_PARTICLE_COUNT_DESKTOP }, () => ({
-    size: 10 + Math.random() * 40,
-    x: ctaPosition.x - 5 + Math.random() * 10,
-    y: ctaPosition.y - 5 + Math.random() * 10,
-    moveX: (Math.random() - 0.5) * 10,
-    moveY: (Math.random() - 0.5) * 15,
+    size: 14 + Math.random() * 30,
+    x: ctaPosition.x - 6 + Math.random() * 12,
+    y: ctaPosition.y - 6 + Math.random() * 12,
+    moveX: (Math.random() - 0.5) * 15,
+    moveY: (Math.random() - 0.5) * 20,
     rotate: Math.random() * 360,
     delay: Math.random() * 5,
     duration: 7 + Math.random() * 15,
-    color: ['rgba(225,29,143,0.6)', 'rgba(147,51,234,0.3)', 'rgba(255,255,255,0.08)'][Math.floor(Math.random() * 3)]
+    color: [
+      'rgba(225,29,143,0.7)',  // Pink
+      'rgba(147,51,234,0.5)',  // Purple
+      'rgba(255,255,255,0.15)' // White
+    ][Math.floor(Math.random() * 3)]
   }))).current;
 
+  // Update particle positions when CTA position changes
   useEffect(() => {
     particles.forEach(p => {
-      p.x = ctaPosition.x - 5 + Math.random() * 10;
-      p.y = ctaPosition.y - 5 + Math.random() * 10;
+      p.x = ctaPosition.x - 6 + Math.random() * 12;
+      p.y = ctaPosition.y - 6 + Math.random() * 12;
     });
+    // eslint-disable-next-line
   }, [ctaPosition]);
 
+  // Device detection for particle count
   useLayoutEffect(() => {
     const isMobile = window.innerWidth < 768;
     setParticleCount(isMobile ? CTA_PARTICLE_COUNT_MOBILE : CTA_PARTICLE_COUNT_DESKTOP);
@@ -128,32 +137,37 @@ const Services = () => {
           ))}
         </div>
 
-        <div className="mt-16 neo-box-alt flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl text-white relative overflow-hidden" 
-             style={{ background: "linear-gradient(90deg, #010822 0%, #010822 100%)" }}>
+        {/* CTA Section */}
+        <div className="mt-16 neo-box-alt flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl text-white relative overflow-hidden"
+          style={{ background: "linear-gradient(90deg, #010822 0%, #010822 100%)" }}>
           
-          <div className="absolute inset-0 z-0 pointer-events-none">
+          {/* Dark background layer */}
+          <div className="absolute inset-0 z-0 bg-[#010822]/95" />
+
+          {/* Particle bulbs - between background and content */}
+          <div className="absolute inset-0 z-[1] pointer-events-none">
             {particles.slice(0, particleCount).map((p, i) => (
-              <div key={`cta-particle-${i}`} 
-                   className="absolute rounded-full blur-[15px] animate-light-particle"
-                   style={{
-                     width: `${p.size}px`,
-                     height: `${p.size}px`,
-                     background: p.color,
-                     left: `${p.x}%`,
-                     top: `${p.y}%`,
-                     animationDelay: `${p.delay}s`,
-                     animationDuration: `${p.duration}s`,
-                     ['--move-x' as string]: `${p.moveX}vw`,
-                     ['--move-y' as string]: `${p.moveY}vh`,
-                     ['--rotate' as string]: `${p.rotate}deg`
-                   } as React.CSSProperties} />
+              <div key={`cta-particle-${i}`}
+                className="absolute rounded-full blur-[10px] animate-light-particle"
+                style={{
+                  width: `${p.size}px`,
+                  height: `${p.size}px`,
+                  background: p.color,
+                  left: `${p.x}%`,
+                  top: `${p.y}%`,
+                  animationDelay: `${p.delay}s`,
+                  animationDuration: `${p.duration}s`,
+                  ['--move-x' as string]: `${p.moveX}vw`,
+                  ['--move-y' as string]: `${p.moveY}vh`,
+                  ['--rotate' as string]: `${p.rotate}deg`
+                } as React.CSSProperties} />
             ))}
           </div>
 
+          {/* Content (z-10) */}
           <div className="flex-1 text-center md:text-left relative z-10">
             <h3 className="text-2xl font-bold mb-3 text-white">Bring Substance to Your Digital Asset Strategy</h3>
           </div>
-          
           <a href="#contact" className="inline-flex items-center relative z-10" ref={ctaRef}>
             <button className="bg-white/5 backdrop-blur-sm text-white px-6 py-3 rounded-full
                              border border-white/20 hover:bg-white/30 transition-all
@@ -164,8 +178,10 @@ const Services = () => {
         </div>
       </Container>
 
+      {/* Particle animation keyframes */}
       <style>
-        {`@keyframes light-particle {
+        {`
+          @keyframes light-particle {
             0%, 100% { 
               opacity: 0.4;
               transform: translate(0, 0) scale(1) rotate(0);
@@ -201,7 +217,8 @@ const Services = () => {
               animation: none;
               opacity: 0.3 !important;
             }
-          }`}
+          }
+        `}
       </style>
     </section>
   );
