@@ -1,64 +1,91 @@
+import React from "react";
+import Container from "./ui/Container";
+import { Target, Layers, Scale, Rocket } from "lucide-react";
+import Button from "./ui/CustomButtonComponent";
 
-import React from 'react';
-import { Container } from './ui/Container';
+const services = [{
+  icon: <Target size={24} className="text-[#cb46b3]" />,
+  title: "STRATEGIC POSITIONING",
+  items: ["Product Market Fit", "Go-To-Market", "Messaging", "Partnerships", "Ecosystem Mapping", "Market Insight Report", "Advisory Board"],
+  color: "#cb46b3"
+}, {
+  icon: <Layers size={24} className="text-[#cb46b3]" />,
+  title: "WEB3 INFRASTRUCTURE",
+  items: ["Tokenomics", "Smart Contracts", "Web3 Development", "Community Development", "Exchange Listings", "Whitepaper", "Ecosystem Audit"],
+  color: "#cb46b3"
+}, {
+  icon: <Scale size={24} className="text-[#cb46b3]" />,
+  title: "REGULATORY NAVIGATION",
+  items: ["MiCA", "Crypto Tax Returns", "Tax & Legal Mapping", "Banking, Accounting & Auditing", "Due Diligence Reports", "Crypto Compliance", "AML/KYC/CFT"],
+  color: "#cb46b3"
+}, {
+  icon: <Rocket size={24} className="text-[#cb46b3]" />,
+  title: "CAPITAL ACCELERATION",
+  items: ["Investor Network Access", "Investor Relations Support", "Market Making", "Grants", "Pitch Coaching", "Collateral", "Data Room"],
+  color: "#cb46b3"
+}];
 
-export const Services = () => {
-  return (
-    <section id="services" className="py-20 bg-gradient-to-b from-slate-50 to-white">
+const Services = () => {
+  // Explicitly set this section to have a light background
+  const isDarkBackground = false;
+  
+  return <section id="services" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative">
       <Container>
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Our Services</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            We provide comprehensive consulting services for businesses navigating the digital asset ecosystem.
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3]">Our Services</h2>
+          <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Serving a Diversified Market</h3>
+          <p className="mt-4 text-lg text-gray-600">
+            Our clients are spread across various industries and sectors, including governmental agencies, global consulting firms, launch platforms, gaming companies, VASPs, and more.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <ServiceCard
-            title="Tokenomics Design"
-            icon="💹"
-            description="Design sustainable token economic models that align incentives across your ecosystem while ensuring compliance with evolving regulations."
-          />
-          <ServiceCard
-            title="Regulatory Compliance"
-            icon="📜"
-            description="Navigate complex regulatory frameworks including MiCA, ensuring your blockchain initiatives meet all legal and compliance requirements."
-          />
-          <ServiceCard
-            title="Strategy Consulting"
-            icon="🧠"
-            description="Develop comprehensive Web3 strategies tailored to your business objectives, from token launches to decentralized governance structures."
-          />
-          <ServiceCard
-            title="Technical Implementation"
-            icon="⚙️"
-            description="Expert guidance on blockchain selection, smart contract development, and security best practices for your digital asset initiatives."
-          />
-          <ServiceCard
-            title="Market Analysis"
-            icon="📊"
-            description="Data-driven insights into market trends, competitor analysis, and opportunity identification in the rapidly evolving Web3 landscape."
-          />
-          <ServiceCard
-            title="Education & Training"
-            icon="🎓"
-            description="Customized workshops and training programs to build internal capabilities and understanding of blockchain technologies."
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {services.map((service, index) => (
+            <div 
+              key={index} 
+              className={`p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 ${isDarkBackground ? 'bg-white/15' : 'bg-white/20'}`}
+              style={{
+                animationDelay: `${0.1 + index * 0.1}s`,
+                boxShadow: isDarkBackground 
+                  ? "0 4px 15px rgba(0, 0, 0, 0.1)" 
+                  : "0 4px 15px rgba(0, 0, 0, 0.05)",
+                border: isDarkBackground 
+                  ? "1px solid rgba(255, 255, 255, 0.15)" 
+                  : "1px solid rgba(255, 255, 255, 0.7)"
+              }}
+            >
+              <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" 
+                  style={{ background: `linear-gradient(135deg, ${service.color}${isDarkBackground ? '30' : '20'}, ${service.color}${isDarkBackground ? '50' : '40'})` }}>
+                {service.icon}
+              </div>
+              <h3 className={`text-[clamp(0.9rem,0.85rem+0.25vw,1.1rem)] font-semibold mb-3 ${isDarkBackground ? 'text-white' : 'text-gray-800'}`}>
+                {service.title}
+              </h3>
+              <ul className={`text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] list-none ${isDarkBackground ? 'text-gray-200' : 'text-gray-600'}`}>
+                {service.items.map((item, itemIndex) => (
+                  <li key={itemIndex} className="flex items-start mb-[0.35rem]">
+                    <span style={{ color: service.color }} className="mr-2">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA box - with explicit dark blue (code opens for transition color, but for now it is one color */}
+        <div className="mt-16 neo-box-alt flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl text-white relative overflow-hidden" style={{
+        background: "linear-gradient(90deg, #010822 0%, #010822 100%)"
+      }}>
+          <div className="flex-1 text-center md:text-left relative z-10">
+            <h3 className="text-2xl font-bold mb-3 text-white">Bring Substance to Your Digital Asset Strategy</h3>
+          </div>
+          <a href="#contact" className="inline-flex items-center relative z-10">
+            <Button variant="cta-primary">Let's get started</Button>
+          </a>
         </div>
       </Container>
-    </section>
-  );
+    </section>;
 };
 
-const ServiceCard = ({ title, icon, description }: { title: string; icon: string; description: string }) => {
-  return (
-    <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-      <div className="text-3xl mb-4">{icon}</div>
-      <h3 className="text-xl font-bold mb-3 text-gray-900">{title}</h3>
-      <p className="text-gray-600">{description}</p>
-    </div>
-  );
-};
-
-// Export as default as well to maintain compatibility
 export default Services;
