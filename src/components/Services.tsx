@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Container from "./ui/Container";
 import { Target, Layers, Scale, Rocket } from "lucide-react";
 
-const CTA_PARTICLE_COUNT_DESKTOP = 8;
+const CTA_PARTICLE_COUNT_DESKTOP = 15;
 const CTA_PARTICLE_COUNT_MOBILE = 3;
 
 const services = [{
