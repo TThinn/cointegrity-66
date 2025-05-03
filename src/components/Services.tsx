@@ -178,8 +178,8 @@ const Services = () => {
             className="inline-flex items-center relative z-10"
             ref={ctaRef}
           >
-            <button className="bg-white/5 backdrop-blur-sm text-white px-6 py-3 rounded-full
-                             border border-white/20 hover:bg-white/30 transition-all
+            <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
+                             border border-white/30 hover:bg-white/40 transition-all
                              transform hover:scale-105 duration-300 text-base font-semibold">
               Let's get started
             </button>
