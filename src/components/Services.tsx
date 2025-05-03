@@ -54,7 +54,7 @@ const Services = () => {
 
   // Pre-calculate all particle positions and properties ONCE
   const particles = useRef(Array.from({ length: CTA_PARTICLE_COUNT_DESKTOP }, () => ({
-    size: 14 + Math.random() * 30,
+    size: 14 + Math.random() * 50,
     x: ctaPosition.x - 6 + Math.random() * 12,
     y: ctaPosition.y - 6 + Math.random() * 12,
     moveX: (Math.random() - 0.5) * 15,
@@ -63,8 +63,8 @@ const Services = () => {
     delay: Math.random() * 5,
     duration: 7 + Math.random() * 15,
     color: [
-      'rgba(225,29,143,0.7)',  // Pink
-      'rgba(147,51,234,0.5)',  // Purple
+      'rgba(225,29,143,0.9)',  // Pink
+      'rgba(147,51,234,0.6)',  // Purple
       'rgba(255,255,255,0.15)' // White
     ][Math.floor(Math.random() * 3)]
   }))).current;
