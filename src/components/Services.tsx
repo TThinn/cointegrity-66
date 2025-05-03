@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Container from "./ui/Container";
 import { Target, Layers, Scale, Rocket } from "lucide-react";
 
-const CTA_PARTICLE_COUNT_DESKTOP = 8;
+const CTA_PARTICLE_COUNT_DESKTOP = 15;
 const CTA_PARTICLE_COUNT_MOBILE = 3;
 
 const services = [{
@@ -58,7 +58,7 @@ const Services = () => {
 
   // Particle configuration
   const particles = useRef(Array.from({ length: CTA_PARTICLE_COUNT_DESKTOP }, () => ({
-    size: 12 + Math.random() * 28,  // 12-40px
+    size: 12 + Math.random() * 90,  // 12-90px
     x: ctaPosition.x - 8 + Math.random() * 16,
     y: ctaPosition.y - 8 + Math.random() * 16,
     moveX: (Math.random() - 0.5) * 12,  // ±6vw
@@ -67,8 +67,8 @@ const Services = () => {
     delay: Math.random() * 5,
     duration: 8 + Math.random() * 12,
     color: [
-      'rgba(225,29,143,0.7)',  // Pink
-      'rgba(147,51,234,0.5)',  // Purple
+      'rgba(225,29,143,0.9)',  // Pink
+      'rgba(147,51,234,0.6)',  // Purple
       'rgba(255,255,255,0.15)' // White
     ][Math.floor(Math.random() * 3)]
   }))).current;
