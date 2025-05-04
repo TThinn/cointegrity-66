@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef, useState, useEffect, useMemo } from "react";
 import Container from "./ui/Container";
 
-const CTA_PARTICLE_COUNT_DESKTOP = 12;
+const CTA_PARTICLE_COUNT_DESKTOP = 15;
 const CTA_PARTICLE_COUNT_MOBILE = 4;
 
 const testimonials = [{
@@ -84,11 +84,11 @@ const Testimonials = () => {
   const particles = useMemo(() => {
     if (!particleCount) return [];
     return Array.from({ length: particleCount }, () => ({
-      size: 20 + Math.random() * 90,
+      size: 20 + Math.random() * 120,
       x: ctaPosition.x - 10 + Math.random() * 20,
      y: ctaPosition.y - spread * 1.4 + Math.random() * (2 * spread * 0.8),
-      moveX: (Math.random() - 0.5) * 20,
-      moveY: (Math.random() - 0.5) * 25,
+      moveX: (Math.random() - 0.5) * 30,
+      moveY: (Math.random() - 0.5) * 40,
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
       duration: 8 + Math.random() * 12,
