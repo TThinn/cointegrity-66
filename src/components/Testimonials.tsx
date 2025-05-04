@@ -11,7 +11,7 @@ const testimonials = [{
   title: "Former Director of the Norwegian Tax Administration, currently Labour and Welfare Director (NAV)"
 }, {
   id: 2,
-  quote: "I’ve known Ruben for years and he is without a doubt one of the most ethical and hard working people I am proud to call a friend. His devotion to his craft and perfecting it is unmatched, and his pursuit of perfecting the client experience is at the highest level. He’s taken several orgs from the ground up and helped shape their path to success, and I look forward to watching the continued growth of Cointegrity",
+  quote: "I've known Ruben for years and he is without a doubt one of the most ethical and hard working people I am proud to call a friend. His devotion to his craft and perfecting it is unmatched, and his pursuit of perfecting the client experience is at the highest level. He's taken several orgs from the ground up and helped shape their path to success, and I look forward to watching the continued growth of Cointegrity",
   name: "Anthony Gonzalez or 'Tony'",
   title: "Founder of WebThree Consulting"
 }, {
@@ -21,7 +21,7 @@ const testimonials = [{
   title: "Founder and Chairman, AKJ group"
 }, {
   id: 4,
-  quote: "When building in Web3, it’s not just about who you know, but who believes in you and opens the right doors. Ruben from the Cointegrity team didn’t just show up with advice, he rolled up his sleeves and helped. The moment he joined, he helped us find partners, navigate early-stage challenges, and make introductions that led to real opportunities. His team was outstanding as well, a group of professionals with deep expertise in fundraising, growth, legal and ecosystem development. They didn't just talk, they delivered.",
+  quote: "When building in Web3, it's not just about who you know, but who believes in you and opens the right doors. Ruben from the Cointegrity team didn't just show up with advice, he rolled up his sleeves and helped. The moment he joined, he helped us find partners, navigate early-stage challenges, and make introductions that led to real opportunities. His team was outstanding as well, a group of professionals with deep expertise in fundraising, growth, legal and ecosystem development. They didn't just talk, they delivered.",
   name: "Jamie Batzorig",
   title: "Co-founder of iAgent"
 }, {
@@ -86,7 +86,7 @@ const Testimonials = () => {
     return Array.from({ length: particleCount }, () => ({
       size: 30 + Math.random() * 180,
       x: ctaPosition.x - 15 + Math.random() * 20,
-     y: ctaPosition.y - spread * 1.4 + Math.random() * (2 * spread ),
+      y: ctaPosition.y - spread * 1.4 + Math.random() * (2 * spread),
       moveX: (Math.random() - 0.5) * 20,
       moveY: (Math.random() - 0.5) * 30,
       rotate: Math.random() * 360,
@@ -183,12 +183,13 @@ const Testimonials = () => {
             <p className="text-white/60 max-w-2xl mx-auto">Experiences from working with Cointegrity or our Co-Founders in reshaping the industry</p>
           </div>
 
-          <div className="transition-all duration-300" style={{ minHeight: `${maxSectionHeight}px` }}>
+          {/* Added relative positioning and z-index to ensure proper stacking context */}
+          <div className="transition-all duration-300 relative z-30" style={{ minHeight: `${maxSectionHeight}px` }}>
             <div ref={testimonialsGridRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
               {[0, 1, 2, 3].map(position => (
                 <div 
                   key={position} 
-                  className={`glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg transition-all duration-300 ${
+                  className={`glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg transition-all duration-300 relative z-30 ${
                     changingIndex === position && !isVisible 
                       ? 'opacity-0 transform scale-95' 
                       : 'opacity-100 transform scale-100'
@@ -206,9 +207,11 @@ const Testimonials = () => {
             </div>
           </div>
           
-          <div className="mt-5 text-center animate-fade-up relative">
+          {/* Adjusted z-index for the button container */}
+          <div className="mt-5 text-center animate-fade-up relative z-20">
             <div className="inline-block relative">
-              <div className="absolute -inset-8 z-0 pointer-events-none">
+              {/* Lowered z-index for particles container */}
+              <div className="absolute -inset-8 z-10 pointer-events-none">
                 {particles.map((p, i) => (
                   <div
                     key={`testimonial-particle-${i}`}
@@ -231,7 +234,7 @@ const Testimonials = () => {
               <a 
                 href="#contact" 
                 ref={buttonRef}
-                className="inline-flex items-center relative z-10"
+                className="inline-flex items-center relative z-20"
               >
                 <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
                                 border border-white/30 hover:bg-white/40 transition-all
