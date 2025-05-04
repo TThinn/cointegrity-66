@@ -83,7 +83,7 @@ const Testimonials = () => {
     return Array.from({ length: particleCount }, () => ({
       size: 20 + Math.random() * 60,
       x: ctaPosition.x - 10 + Math.random() * 20,
-      y: ctaPosition.y - 10 + Math.random() * 20,
+      y: ctaPosition.y - spread + Math.random() * (2 * spread),
       moveX: (Math.random() - 0.5) * 10,
       moveY: (Math.random() - 0.5) * 14,
       rotate: Math.random() * 360,
