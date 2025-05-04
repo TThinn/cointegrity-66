@@ -111,7 +111,7 @@ const Process = () => {
             {processSteps.map((step, index) => (
               <div 
                 key={step.id} 
-                className={`p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 ${isDarkBackground ? 'bg-white/08' : 'bg-white/20'}`} 
+                className={`p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 ${isDarkBackground ? 'bg-white/8' : 'bg-white/20'}`} 
                 style={{
                   animationDelay: `${0.1 + index * 0.1}s`,
                   boxShadow: isDarkBackground ? "0 4px 15px rgba(0, 0, 0, 0.1)" : "0 4px 15px rgba(0, 0, 0, 0.05)",
@@ -135,7 +135,7 @@ const Process = () => {
           {/* Updated CTA Section */}
           <div 
             ref={ctaSectionRef}
-            className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-lg backdrop-blur-sm bg-white/15 relative overflow-hidden"
+            className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-lg backdrop-blur-sm bg-white/8 relative overflow-hidden"
             style={{
               boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
               border: "1px solid rgba(255, 255, 255, 0.15)"
