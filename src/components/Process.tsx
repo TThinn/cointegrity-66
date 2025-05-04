@@ -10,17 +10,17 @@ const processSteps = [{
   id: 1,
   icon: <MapPin className="text-[#cb46b3] w-8 h-8" />,
   title: "DISCOVER",
-  description: "We start with a comprehensive session to understand your objectives and challenges. Our team assesses your position, market opportunities, and competitive landscape to set a strong foundation."
+  description: "First it's important to understand who you, your team and your company are, What are your objectives, what problems are you solving and which challenges are you facing. Our team will go through a comprehensive screening together with you."
 }, {
   id: 2,
   icon: <Zap className="text-[#cb46b3] w-8 h-8" />,
   title: "STRATEGIZE",
-  description: "We develop a tailored roadmap aligned with your goals, including tokenomics, compliance planning, and strategic positioning to maximize your impact in Web3."
+  description: "Together we'll develop a tailored roadmap that aligns all your Web3 related concerns with compliance planning, strategic positioning  and go-to-market to maximize your impact and reach all your goals in an emerging market.  "
 }, {
   id: 3,
   icon: <Shield className="text-[#cb46b3] w-8 h-8" />,
   title: "IMPLEMENT",
-  description: "Our team guides you through execution, ensuring compliance and optimal token architecture. We provide hands-on support and leverage our network to bring your vision to life."
+  description: "Our team guides you through execution, ensuring that there is constant felt progress and confidence in internal decision making. We will make you comfortable operating in the Web3 market."
 }, {
   id: 4,
   icon: <Award className="text-[#cb46b3] w-8 h-8" />,
