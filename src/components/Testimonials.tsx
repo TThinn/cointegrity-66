@@ -57,6 +57,9 @@ const Testimonials = () => {
   const [particleCount, setParticleCount] = useState<number | null>(null);
   const [maxSectionHeight, setMaxSectionHeight] = useState<number>(0);
 
+  // Define the spread value that was missing
+  const spread = 20; // This controls how far particles can spread from the center point
+
   useLayoutEffect(() => {
     const updateButtonPosition = () => {
       if (buttonRef.current && sectionRef.current) {
