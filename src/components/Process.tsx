@@ -111,7 +111,7 @@ const Process = () => {
             {processSteps.map((step, index) => (
               <div 
                 key={step.id} 
-                className={`p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 ${isDarkBackground ? 'bg-white/15' : 'bg-white/20'}`} 
+                className={`p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 ${isDarkBackground ? 'bg-white/08' : 'bg-white/20'}`} 
                 style={{
                   animationDelay: `${0.1 + index * 0.1}s`,
                   boxShadow: isDarkBackground ? "0 4px 15px rgba(0, 0, 0, 0.1)" : "0 4px 15px rgba(0, 0, 0, 0.05)",
