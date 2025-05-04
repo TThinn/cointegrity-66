@@ -84,14 +84,14 @@ const Testimonials = () => {
   const particles = useMemo(() => {
     if (!particleCount) return [];
     return Array.from({ length: particleCount }, () => ({
-      size: 20 + Math.random() * 140,
+      size: 30 + Math.random() * 180,
       x: ctaPosition.x - 10 + Math.random() * 20,
      y: ctaPosition.y - spread * 1.4 + Math.random() * (2 * spread ),
       moveX: (Math.random() - 0.5) * 30,
       moveY: (Math.random() - 0.5) * 40,
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
-      duration: 10 + Math.random() * 20,
+      duration: 20 + Math.random() * 40,
       color: [
         'rgba(225,29,143,0.9)',
         'rgba(147,51,234,0.6)',
