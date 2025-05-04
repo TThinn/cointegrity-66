@@ -59,7 +59,7 @@ const Process = () => {
   const particles = useMemo(() => {
     if (!particleCount) return [];
     return Array.from({ length: particleCount }, () => ({
-      size: 20 + Math.random() * 80,
+      size: 20 + Math.random() * 70,
       x: ctaPosition.x - 8 + Math.random() * 16,
       y: ctaPosition.y - 8 + Math.random() * 16,
       moveX: (Math.random() - 0.5) * 12,
