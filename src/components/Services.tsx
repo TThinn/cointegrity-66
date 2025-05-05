@@ -60,11 +60,11 @@ const Services = () => {
   const particles = useMemo(() => {
     if (!particleCount) return [];
     return Array.from({ length: particleCount }, () => ({
-      size: 20 + Math.random() * 80,  // 12-40px
-      x: ctaPosition.x - 8 + Math.random() * 16,
-      y: ctaPosition.y - 8 + Math.random() * 16,
-      moveX: (Math.random() - 0.5) * 12,  // ±6vw
-      moveY: (Math.random() - 0.5) * 16,  // ±8vh
+      size: 20 + Math.random() * 80,
+      x: ctaPosition.x - 4 + (Math.random()-0.5) * 12,
+      y: ctaPosition.y - 4 + (Math.random()-0.5) * 12,
+      moveX: (Math.random() - 0.5) * 10,
+      moveY: (Math.random() - 0.5) * 14,
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
       duration: 8 + Math.random() * 12,
