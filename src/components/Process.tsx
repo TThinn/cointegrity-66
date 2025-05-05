@@ -60,7 +60,7 @@ const Process = () => {
     if (!particleCount) return [];
     return Array.from({ length: particleCount }, () => ({
       size: 30 + Math.random() * 80,
-      x: ctaPosition.x - 15 + (Math.random()-0.5) * 16,
+      x: ctaPosition.x - 25 + (Math.random()-0.5) * 16,
       y: ctaPosition.y - 4 + (Math.random()-0.5) * 16,
       moveX: (Math.random() - 0.5) * 12,
       moveY: (Math.random() - 0.5) * 16,
