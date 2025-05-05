@@ -50,6 +50,9 @@ const Testimonials = () => {
   const [activeTestimonials, setActiveTestimonials] = useState<number[]>([0, 1, 2, 3]);
   const [changingIndex, setChangingIndex] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(true);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const rotationIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const testimonialsGridRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLAnchorElement>(null);
@@ -57,7 +60,7 @@ const Testimonials = () => {
   const [particleCount, setParticleCount] = useState<number | null>(null);
   const [maxSectionHeight, setMaxSectionHeight] = useState<number>(0);
 
-  // Define the spread value that was missing
+  // Define the spread value
   const spread = 20; // This controls how far particles can spread from the center point
 
   useLayoutEffect(() => {
@@ -133,9 +136,14 @@ const Testimonials = () => {
     }
   }, [activeTestimonials]);
 
+  // Modified rotation logic with pause functionality
   useEffect(() => {
     let currentBoxIndex = 0;
+    
     const rotateTestimonial = () => {
+      // Skip rotation if paused
+      if (isPaused) return;
+      
       setChangingIndex(currentBoxIndex);
       setIsVisible(false);
 
@@ -164,9 +172,25 @@ const Testimonials = () => {
       }, 300);
     };
 
-    const interval = setInterval(rotateTestimonial, 4000);
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
+    rotationIntervalRef.current = setInterval(rotateTestimonial, 4000);
+    
+    return () => {
+      if (rotationIntervalRef.current) {
+        clearInterval(rotationIntervalRef.current);
+      }
+    };
+  }, [testimonials.length, isPaused]);
+
+  // Card hover handlers
+  const handleCardMouseEnter = (position: number) => {
+    setHoveredCard(position);
+    setIsPaused(true);
+  };
+
+  const handleCardMouseLeave = () => {
+    setHoveredCard(null);
+    setIsPaused(false);
+  };
 
   return (
     <section id="testimonials" className="py-8 relative overflow-hidden" ref={sectionRef}>
@@ -193,7 +217,13 @@ const Testimonials = () => {
                     changingIndex === position && !isVisible 
                       ? 'opacity-0 transform scale-95' 
                       : 'opacity-100 transform scale-100'
+                  } ${
+                    hoveredCard === position 
+                      ? 'transform -translate-y-2 shadow-xl border-white/20' 
+                      : ''
                   }`}
+                  onMouseEnter={() => handleCardMouseEnter(position)}
+                  onMouseLeave={handleCardMouseLeave}
                 >
                   <div className="text-left">
                     <p className="text-white/80 text-sm mb-6">"{testimonials[activeTestimonials[position]].quote}"</p>
