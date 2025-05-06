@@ -62,7 +62,7 @@ const Services = () => {
     if (!particleCount) return [];
     return Array.from({ length: particleCount }, () => ({
       size: 40 + Math.random() * 120, // Increased size for better visibility
-      x: ctaPosition.x - 10 + (Math.random()-0.5) * 20, // Wider spread
+      x: ctaPosition.x - 15 + (Math.random()-0.5) * 20, // Wider spread
       y: ctaPosition.y - 4 + (Math.random()-0.5) * 20, // Wider spread
       moveX: (Math.random() - 0.5) * 20, // Increased movement
       moveY: (Math.random() - 0.5) * 25, // Increased movement
