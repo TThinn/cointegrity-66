@@ -2,8 +2,8 @@
 import React, { useLayoutEffect, useRef, useState, useEffect, useMemo } from "react";
 import Container from "./ui/Container";
 
-const CTA_PARTICLE_COUNT_DESKTOP = 8;
-const CTA_PARTICLE_COUNT_MOBILE = 3;
+const CTA_PARTICLE_COUNT_DESKTOP = 12; // Increased from 8 to make more visible
+const CTA_PARTICLE_COUNT_MOBILE = 5;   // Increased from 3 to make more visible
 
 const AboutUs = () => {
   const ctaRef = useRef<HTMLAnchorElement | null>(null);
@@ -37,19 +37,20 @@ const AboutUs = () => {
   const particles = useMemo(() => {
     if (!particleCount) return [];
     return Array.from({ length: particleCount }, () => ({
-      size: 20 + Math.random() * 80,
-      x: ctaPosition.x - 4 + (Math.random()-0.5) * 12,
-      y: ctaPosition.y - 4 + (Math.random()-0.5) * 12,
-      moveX: (Math.random() - 0.5) * 10,
-      moveY: (Math.random() - 0.5) * 14,
+      size: 20 + Math.random() * 120, // Increased max size from 80 to 120
+      x: ctaPosition.x - 4 + (Math.random()-0.5) * 20, // Wider spread
+      y: ctaPosition.y - 4 + (Math.random()-0.5) * 20, // Wider spread
+      moveX: (Math.random() - 0.5) * 15, // Increased movement
+      moveY: (Math.random() - 0.5) * 20, // Increased movement
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
       duration: 8 + Math.random() * 12,
       color: [
-        'rgba(225,29,143,0.9)',  // Pink
-        'rgba(147,51,234,0.6)',  // Purple
-        'rgba(255,255,255,0.15)' // White
-      ][Math.floor(Math.random() * 3)]
+        'rgba(225,29,143,0.95)',  // Pink - increased opacity
+        'rgba(147,51,234,0.8)',   // Purple - increased opacity
+        'rgba(51,195,240,0.8)',   // Added bright blue for contrast
+        'rgba(255,255,255,0.25)'  // White - adjusted opacity
+      ][Math.floor(Math.random() * 4)]
     }));
   }, [ctaPosition, particleCount]);
 
@@ -87,13 +88,14 @@ const AboutUs = () => {
             <div 
               ref={ctaSectionRef}
               className="relative flex justify-center mt-8 mb-6"
+              style={{ height: "120px" }} // Added fixed height to ensure visibility
             >
               {/* Particles */}
-              <div className="absolute inset-0 pointer-events-none overflow-visible">
+              <div className="absolute inset-0 pointer-events-none overflow-visible z-0">
                 {particles.map((p, i) => (
                   <div
                     key={`cta-particle-${i}`}
-                    className="absolute rounded-full blur-[12px] animate-light-particle"
+                    className="absolute rounded-full blur-[16px] animate-light-particle" // Increased blur
                     style={{
                       width: `${p.size}px`,
                       height: `${p.size}px`,
@@ -113,12 +115,13 @@ const AboutUs = () => {
               {/* Button */}
               <a 
                 href="#contact" 
-                className="inline-flex items-center z-10"
+                className="inline-flex items-center z-10 relative" // Added relative positioning
                 ref={ctaRef}
               >
-                <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
-                                 border border-white/30 hover:bg-white/25 transition-all
-                                 transform hover:scale-105 duration-300 text-base font-semibold">
+                <button className="bg-white/25 backdrop-blur-md text-white px-6 py-3 rounded-full
+                                 border border-white/40 hover:bg-white/35 transition-all
+                                 transform hover:scale-105 duration-300 text-base font-semibold
+                                 shadow-lg">
                   Connect With Us
                 </button>
               </a>
@@ -145,25 +148,25 @@ const AboutUs = () => {
         {`
           @keyframes light-particle {
             0%, 100% { 
-              opacity: 0.4;
-              transform: translate(0, 0) scale(1) rotate(0);
+              opacity: 0.5;
+              transform: translate(0, 0) scale(0.9) rotate(0);
             }
             25% {
-              opacity: 0.6;
+              opacity: 0.8;
               transform: 
                 translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * -0.7)) 
                 scale(1.2) 
                 rotate(calc(var(--rotate) * 0.3));
             }
             50% { 
-              opacity: 0.8;
+              opacity: 1;
               transform: 
                 translate(var(--move-x), var(--move-y)) 
                 scale(1.5) 
                 rotate(calc(var(--rotate) * 0.6));
             }
             75% {
-              opacity: 0.6;
+              opacity: 0.8;
               transform: 
                 translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * 0.7)) 
                 scale(1.3) 
@@ -171,13 +174,13 @@ const AboutUs = () => {
             }
           }
           .animate-light-particle {
-            animation: light-particle ease-in-out infinite;
+            animation: light-particle 10s ease-in-out infinite;
             mix-blend-mode: screen;
           }
           @media (prefers-reduced-motion: reduce) {
             .animate-light-particle {
               animation: none;
-              opacity: 0.3 !important;
+              opacity: 0.5 !important;
             }
           }
         `}
