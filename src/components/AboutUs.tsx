@@ -38,17 +38,16 @@ const AboutUs = () => {
     if (!particleCount) return [];
     return Array.from({ length: particleCount }, () => ({
       size: 40 + Math.random() * 120, // Increased max size from 80 to 120
-      x: ctaPosition.x - 10 + (Math.random()-0.5) * 20, // Wider spread
-      y: ctaPosition.y - 4 + (Math.random()-0.5) * 20, // Wider spread
-      moveX: (Math.random() - 0.5) * 20, // Increased movement
-      moveY: (Math.random() - 0.5) * 25, // Increased movement
+      x: ctaPosition.x - 10 + (Math.random()-0.5) * 25, // Wider spread
+      y: ctaPosition.y - 4 + (Math.random()-0.5) * 25, // Wider spread
+      moveX: (Math.random() - 0.5) * 25, // Increased movement
+      moveY: (Math.random() - 0.5) * 30, // Increased movement
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
       duration: 8 + Math.random() * 12,
       color: [
-        'rgba(225,29,143,0.95)',  // Pink - increased opacity
+        'rgba(225,29,143,0.9)',  // Pink - increased opacity
         'rgba(147,51,234,0.6)',   // Purple - increased opacity
-        'rgba(1, 8, 34,0.6)',   // Added blue for contrast
       ][Math.floor(Math.random() * 4)]
     }));
   }, [ctaPosition, particleCount]);
