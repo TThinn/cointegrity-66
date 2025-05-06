@@ -137,14 +137,15 @@ const Services = () => {
           ))}
         </div>
 
-        {/* CTA Section with Particles - Updated to match service card styles */}
+        {/* CTA Section with Particles - Updated to match the height of Process CTA section */}
         <div 
           ref={ctaSectionRef}
           className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-lg backdrop-blur-sm transition-all duration-300 bg-white/20 border border-white/70"
           style={{ 
             boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
             position: "relative",
-            overflow: "hidden"
+            overflow: "hidden",
+            minHeight: "160px" // Added to match the height in Process component
           }}
         >
           {/* Content */}
@@ -153,7 +154,7 @@ const Services = () => {
           </div>
           
           {/* Button Container with particles */}
-          <div className="relative z-10" style={{ height: "120px" }}>
+          <div className="relative z-10" style={{ height: "100px" }}> {/* Adjusted height */}
             {/* Particles */}
             <div className="absolute inset-0 pointer-events-none overflow-visible">
               {particles.map((p, i) => (
@@ -176,14 +177,14 @@ const Services = () => {
               ))}
             </div>
             
-            {/* Button - Styled like in AboutUs */}
+            {/* Button - Updated to match Process section style */}
             <a 
               href="#contact" 
-              className="inline-flex items-center relative z-10 mt-10"
+              className="inline-flex items-center relative z-10"
               ref={ctaRef}
             >
-              <button className="bg-black/5 backdrop-blur-md text-white px-6 py-3 rounded-full
-                           border border-black/10 hover:bg-black/15 transition-all
+              <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
+                           border border-white/30 hover:bg-white/40 transition-all
                            transform hover:scale-105 duration-300 text-base font-semibold
                            shadow-lg">
                 Let's get started
