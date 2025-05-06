@@ -1,3 +1,4 @@
+
 import React, { useLayoutEffect, useRef, useState, useEffect, useMemo } from "react";
 import Container from "./ui/Container";
 import { Target, Layers, Scale, Rocket } from "lucide-react";
@@ -60,19 +61,18 @@ const Services = () => {
   const particles = useMemo(() => {
     if (!particleCount) return [];
     return Array.from({ length: particleCount }, () => ({
-      size: 20 + Math.random() * 80,
-      x: ctaPosition.x - 4 + (Math.random()-0.5) * 12,
-      y: ctaPosition.y - 4 + (Math.random()-0.5) * 12,
-      moveX: (Math.random() - 0.5) * 10,
-      moveY: (Math.random() - 0.5) * 14,
+      size: 40 + Math.random() * 120, // Increased size for better visibility
+      x: ctaPosition.x - 10 + (Math.random()-0.5) * 20, // Wider spread
+      y: ctaPosition.y - 4 + (Math.random()-0.5) * 20, // Wider spread
+      moveX: (Math.random() - 0.5) * 20, // Increased movement
+      moveY: (Math.random() - 0.5) * 25, // Increased movement
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
       duration: 8 + Math.random() * 12,
       color: [
-        'rgba(225,29,143,0.9)',  // Pink
-        'rgba(147,51,234,0.6)',  // Purple
-        'rgba(255,255,255,0.15)' // White
-      ][Math.floor(Math.random() * 3)]
+        'rgba(225,29,143,0.7)',  // Pink - increased opacity
+        'rgba(147,51,234,0.5)',   // Purple - increased opacity
+      ][Math.floor(Math.random() * 2)]
     }));
   }, [ctaPosition, particleCount]);
 
@@ -137,53 +137,59 @@ const Services = () => {
           ))}
         </div>
 
-        {/* CTA Section with Particles */}
+        {/* CTA Section with Particles - Updated to match service card styles */}
         <div 
           ref={ctaSectionRef}
-          className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl text-white relative overflow-hidden"
-          style={{ background: "linear-gradient(90deg, #010822 0%, #010822 100%)" }}
+          className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-lg backdrop-blur-sm transition-all duration-300 bg-white/20 border border-white/70"
+          style={{ 
+            boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
+            position: "relative",
+            overflow: "hidden"
+          }}
         >
-          {/* Dark Background Layer */}
-          <div className="absolute inset-0 z-0 bg-[#010822]/95" />
-
-          {/* Particles */}
-          <div className="absolute inset-0 z-[1] pointer-events-none">
-            {particles.map((p, i) => (
-              <div
-                key={`cta-particle-${i}`}
-                className="absolute rounded-full blur-[12px] animate-light-particle"
-                style={{
-                  width: `${p.size}px`,
-                  height: `${p.size}px`,
-                  background: p.color,
-                  left: `${p.x}%`,
-                  top: `${p.y}%`,
-                  animationDelay: `${p.delay}s`,
-                  animationDuration: `${p.duration}s`,
-                  ['--move-x' as string]: `${p.moveX}vw`,
-                  ['--move-y' as string]: `${p.moveY}vh`,
-                  ['--rotate' as string]: `${p.rotate}deg`
-                }}
-              />
-            ))}
-          </div>
-
           {/* Content */}
           <div className="flex-1 text-center md:text-left relative z-10">
-            <h3 className="text-2xl font-bold mb-3 text-white">Bring Substance to Your Digital Asset Strategy</h3>
+            <h3 className="text-2xl font-bold mb-3 text-gray-800">Bring Substance to Your Digital Asset Strategy</h3>
           </div>
           
-          <a 
-            href="#contact" 
-            className="inline-flex items-center relative z-10"
-            ref={ctaRef}
-          >
-            <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
-                             border border-white/30 hover:bg-white/40 transition-all
-                             transform hover:scale-105 duration-300 text-base font-semibold">
-              Let's get started
-            </button>
-          </a>
+          {/* Button Container with particles */}
+          <div className="relative z-10" style={{ height: "120px" }}>
+            {/* Particles */}
+            <div className="absolute inset-0 pointer-events-none overflow-visible">
+              {particles.map((p, i) => (
+                <div
+                  key={`cta-particle-${i}`}
+                  className="absolute rounded-full blur-[16px] animate-light-particle"
+                  style={{
+                    width: `${p.size}px`,
+                    height: `${p.size}px`,
+                    background: p.color,
+                    left: `${p.x}%`,
+                    top: `${p.y}%`,
+                    animationDelay: `${p.delay}s`,
+                    animationDuration: `${p.duration}s`,
+                    ['--move-x' as string]: `${p.moveX}vw`,
+                    ['--move-y' as string]: `${p.moveY}vh`,
+                    ['--rotate' as string]: `${p.rotate}deg`
+                  }}
+                />
+              ))}
+            </div>
+            
+            {/* Button - Styled like in AboutUs */}
+            <a 
+              href="#contact" 
+              className="inline-flex items-center relative z-10 mt-10"
+              ref={ctaRef}
+            >
+              <button className="bg-black/5 backdrop-blur-md text-white px-6 py-3 rounded-full
+                           border border-black/10 hover:bg-black/15 transition-all
+                           transform hover:scale-105 duration-300 text-base font-semibold
+                           shadow-lg">
+                Let's get started
+              </button>
+            </a>
+          </div>
         </div>
       </Container>
 
@@ -192,25 +198,25 @@ const Services = () => {
         {`
           @keyframes light-particle {
             0%, 100% { 
-              opacity: 0.4;
-              transform: translate(0, 0) scale(1) rotate(0);
+              opacity: 0.5;
+              transform: translate(0, 0) scale(0.9) rotate(0);
             }
             25% {
-              opacity: 0.6;
+              opacity: 0.8;
               transform: 
                 translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * -0.7)) 
                 scale(1.2) 
                 rotate(calc(var(--rotate) * 0.3));
             }
             50% { 
-              opacity: 0.8;
+              opacity: 1;
               transform: 
                 translate(var(--move-x), var(--move-y)) 
                 scale(1.5) 
                 rotate(calc(var(--rotate) * 0.6));
             }
             75% {
-              opacity: 0.6;
+              opacity: 0.8;
               transform: 
                 translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * 0.7)) 
                 scale(1.3) 
@@ -218,13 +224,13 @@ const Services = () => {
             }
           }
           .animate-light-particle {
-            animation: light-particle ease-in-out infinite;
+            animation: light-particle 10s ease-in-out infinite;
             mix-blend-mode: screen;
           }
           @media (prefers-reduced-motion: reduce) {
             .animate-light-particle {
               animation: none;
-              opacity: 0.3 !important;
+              opacity: 0.5 !important;
             }
           }
         `}
