@@ -89,7 +89,7 @@ const AboutUs = () => {
               className="relative flex justify-center mt-8 mb-6"
             >
               {/* Particles */}
-              <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute inset-0 pointer-events-none overflow-visible">
                 {particles.map((p, i) => (
                   <div
                     key={`cta-particle-${i}`}
@@ -116,8 +116,8 @@ const AboutUs = () => {
                 className="inline-flex items-center z-10"
                 ref={ctaRef}
               >
-                <button className="bg-[#010822]/90 backdrop-blur-sm text-white px-6 py-3 rounded-full
-                                 border border-white/30 hover:bg-[#010822]/70 transition-all
+                <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
+                                 border border-white/30 hover:bg-white/25 transition-all
                                  transform hover:scale-105 duration-300 text-base font-semibold">
                   Connect With Us
                 </button>
