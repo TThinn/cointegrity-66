@@ -47,7 +47,7 @@ const Founders = () => {
   // Explicitly set this section to have a light background
   const isDarkBackground = false;
   
-  return <section id="founders" className="py-20 bg-gradient-to-b from-[#fbf9ff] to-[#fdf5fa] relative">
+  return <section id="founders" className="py-20 bg-gradient-to-b from-[#FEFCFD] to-[#FDF9FC] relative">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm font-semibold uppercase tracking-wider text-[#cb46b3]">Our Team</h2>
