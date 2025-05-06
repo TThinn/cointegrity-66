@@ -42,7 +42,7 @@ const Services = () => {
         const btnBox = ctaRef.current.getBoundingClientRect();
         const sectionBox = ctaSectionRef.current.getBoundingClientRect();
         
-        // The key change: Calculate position relative to the button itself,
+        // Calculate position relative to the button itself,
         // not relative to the entire section
         const x = 50; // Center horizontally
         const y = 50; // Center vertically
@@ -64,9 +64,9 @@ const Services = () => {
     if (!particleCount) return [];
     return Array.from({ length: particleCount }, () => ({
       size: 20 + Math.random() * 80,
-      // Spread particles more evenly around the button
+      // Distribute particles below the button (higher y values)
       x: ctaPosition.x - 15 + (Math.random() * 30),
-      y: ctaPosition.y - 15 + (Math.random() * 30),
+      y: ctaPosition.y + (Math.random() * 25), // Focus particles below the button
       moveX: (Math.random() - 0.5) * 10,
       moveY: (Math.random() - 0.5) * 14,
       rotate: Math.random() * 360,
@@ -140,7 +140,7 @@ const Services = () => {
           ))}
         </div>
 
-        {/* CTA Section with Particles - Updated to match the height of Process CTA section */}
+        {/* CTA Section - Adjusted to match Process CTA section exactly */}
         <div 
           ref={ctaSectionRef}
           className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-lg backdrop-blur-sm transition-all duration-300 bg-white/20 border border-white/70"
@@ -148,7 +148,7 @@ const Services = () => {
             boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
             position: "relative",
             overflow: "hidden",
-            minHeight: "160px" // Match Process component height
+            minHeight: "140px" // Reduced from 160px to match Process section
           }}
         >
           {/* Content */}
@@ -156,9 +156,9 @@ const Services = () => {
             <h3 className="text-2xl font-bold mb-3 text-gray-800">Bring Substance to Your Digital Asset Strategy</h3>
           </div>
           
-          {/* Button Container with particles */}
-          <div className="relative" style={{ height: "100px" }}> {/* Fixed height container */}
-            {/* Particles - Repositioned to be centered around the button */}
+          {/* Button Container with particles - Adjusted for vertical centering */}
+          <div className="flex items-center justify-center h-full relative"> 
+            {/* Particles - Repositioned to be below the button */}
             <div className="absolute inset-0 pointer-events-none overflow-visible w-full h-full">
               {particles.map((p, i) => (
                 <div
@@ -168,7 +168,6 @@ const Services = () => {
                     width: `${p.size}px`,
                     height: `${p.size}px`,
                     background: p.color,
-                    // Center positions relative to the button container
                     left: `${p.x}%`,
                     top: `${p.y}%`,
                     animationDelay: `${p.delay}s`,
@@ -209,7 +208,7 @@ const Services = () => {
             25% {
               opacity: 0.8;
               transform: 
-                translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * -0.7)) 
+                translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * 0.7)) 
                 scale(1.2) 
                 rotate(calc(var(--rotate) * 0.3));
             }
@@ -223,7 +222,7 @@ const Services = () => {
             75% {
               opacity: 0.8;
               transform: 
-                translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * 0.7)) 
+                translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * -0.7)) 
                 scale(1.3) 
                 rotate(var(--rotate));
             }
