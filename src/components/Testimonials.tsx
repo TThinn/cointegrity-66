@@ -186,7 +186,7 @@ const Testimonials = () => {
           <div className="text-center mb-16 animate-fade-up">
             <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">CLIENT TESTIMONIALS</h2>
             <h3 className="text-3xl md:text-4xl font-bold mb-2 text-white">Why Work With Us</h3>
-            <p className="text-white/60 max-w-2xl mx-auto">We believe in a knowledge-first approach to Web3 transformation. We fully understand that navigating the decentralized landscape is a critical strategic challenge for any organization. Our team of specialists brings deep expertise across strategy, product development, tax & compliance, and capital acceleration - delivering solutions that bridge the gap between traditional business and web3 innovation, acting as a dependable guide through your complex Web3 challenges. </p>
+            <p className="text-white/60 max-w-2xl mx-auto">We believe in a knowledge-first approach to Web3 transformation. We fully understand that navigating the decentralized landscape is a critical strategic challenge for any organization. Our team of specialists brings deep expertise across strategy, product development, tax & compliance, and capital acceleration - delivering solutions that bridge the gap between traditional business and web3 innovation, acting as a dependable guide through your complex Web3 challenges. Don't just take our word for it, here are some testimonials from people we have worked with:</p>
           </div>
 
           {/* Added relative positioning and z-index to ensure proper stacking context */}
