@@ -116,8 +116,8 @@ const AboutUs = () => {
                 className="inline-flex items-center z-10 relative" // Added relative positioning
                 ref={ctaRef}
               >
-                <button className="bg-white/25 backdrop-blur-md text-white px-6 py-3 rounded-full
-                                 border border-white/40 hover:bg-white/35 transition-all
+                <button className="bg-black/10 backdrop-blur-md text-white px-6 py-3 rounded-full
+                                 border border-black/30 hover:bg-white/35 transition-all
                                  transform hover:scale-105 duration-300 text-base font-semibold
                                  shadow-lg">
                   Connect With Us
