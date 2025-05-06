@@ -3,6 +3,7 @@ import React from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
+import AboutUs from "@/components/AboutUs";
 import Founders from "@/components/Founders";
 import Testimonials from "@/components/Testimonials";
 import Partners from "@/components/Partners";
@@ -144,8 +145,10 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
+        <AboutUs />
         <Services />
         <Process />
+        <Services />
         <Partners />
         <Founders />
         <Testimonials />
