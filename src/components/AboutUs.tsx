@@ -40,15 +40,15 @@ const AboutUs = () => {
       size: 40 + Math.random() * 120, // Increased max size from 80 to 120
       x: ctaPosition.x - 4 + (Math.random()-0.5) * 20, // Wider spread
       y: ctaPosition.y - 4 + (Math.random()-0.5) * 20, // Wider spread
-      moveX: (Math.random() - 0.5) * 15, // Increased movement
-      moveY: (Math.random() - 0.5) * 20, // Increased movement
+      moveX: (Math.random() - 0.5) * 20, // Increased movement
+      moveY: (Math.random() - 0.5) * 25, // Increased movement
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
       duration: 8 + Math.random() * 12,
       color: [
         'rgba(225,29,143,0.95)',  // Pink - increased opacity
         'rgba(147,51,234,0.6)',   // Purple - increased opacity
-        'rgba(51,195,240,0.6)',   // Added bright blue for contrast
+        'rgba(1, 8, 34,0.6)',   // Added blue for contrast
       ][Math.floor(Math.random() * 4)]
     }));
   }, [ctaPosition, particleCount]);
