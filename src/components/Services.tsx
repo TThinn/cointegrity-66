@@ -42,8 +42,10 @@ const Services = () => {
         const btnBox = ctaRef.current.getBoundingClientRect();
         const sectionBox = ctaSectionRef.current.getBoundingClientRect();
         
-        const x = ((btnBox.left + btnBox.right)/2 - sectionBox.left) / sectionBox.width * 100;
-        const y = ((btnBox.top + btnBox.bottom)/2 - sectionBox.top) / sectionBox.height * 100;
+        // The key change: Calculate position relative to the button itself,
+        // not relative to the entire section
+        const x = 50; // Center horizontally
+        const y = 50; // Center vertically
 
         setCtaPosition({ x, y });
       }
@@ -61,9 +63,10 @@ const Services = () => {
   const particles = useMemo(() => {
     if (!particleCount) return [];
     return Array.from({ length: particleCount }, () => ({
-            size: 20 + Math.random() * 80,
-      x: ctaPosition.x - 4 + (Math.random() - 0.5) * 12,
-      y: ctaPosition.y - 4 + (Math.random() - 0.5) * 12,
+      size: 20 + Math.random() * 80,
+      // Spread particles more evenly around the button
+      x: ctaPosition.x - 15 + (Math.random() * 30),
+      y: ctaPosition.y - 15 + (Math.random() * 30),
       moveX: (Math.random() - 0.5) * 10,
       moveY: (Math.random() - 0.5) * 14,
       rotate: Math.random() * 360,
@@ -145,7 +148,7 @@ const Services = () => {
             boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
             position: "relative",
             overflow: "hidden",
-            minHeight: "160px" // Added to match the height in Process component
+            minHeight: "160px" // Match Process component height
           }}
         >
           {/* Content */}
@@ -154,9 +157,9 @@ const Services = () => {
           </div>
           
           {/* Button Container with particles */}
-          <div className="relative z-10" style={{ height: "100px" }}> {/* Adjusted height */}
-            {/* Particles */}
-            <div className="absolute inset-0 pointer-events-none overflow-visible">
+          <div className="relative" style={{ height: "100px" }}> {/* Fixed height container */}
+            {/* Particles - Repositioned to be centered around the button */}
+            <div className="absolute inset-0 pointer-events-none overflow-visible w-full h-full">
               {particles.map((p, i) => (
                 <div
                   key={`cta-particle-${i}`}
@@ -165,6 +168,7 @@ const Services = () => {
                     width: `${p.size}px`,
                     height: `${p.size}px`,
                     background: p.color,
+                    // Center positions relative to the button container
                     left: `${p.x}%`,
                     top: `${p.y}%`,
                     animationDelay: `${p.delay}s`,
@@ -177,7 +181,7 @@ const Services = () => {
               ))}
             </div>
             
-            {/* Button - Updated to match Process section style */}
+            {/* Button - Using same style as Process section */}
             <a 
               href="#contact" 
               className="inline-flex items-center relative z-10"
