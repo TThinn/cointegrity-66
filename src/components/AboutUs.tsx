@@ -75,15 +75,14 @@ const AboutUs = () => {
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3]">About Us</h2>
-          <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Who We Are</h3>
         </div>
 
         <div className="flex flex-col md:flex-row gap-10 mb-16">
           {/* Left column */}
           <div className="w-full md:w-2/5">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800 leading-tight">
+            <h3 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800 leading-tight">
               We are an Agile and Seasoned Team of Web3 Specialists.
-            </h2>
+            </h3>
           </div>
           
           {/* Right column */}
