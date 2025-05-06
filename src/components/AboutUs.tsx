@@ -2,11 +2,10 @@
 import React, { useLayoutEffect, useRef, useState, useEffect, useMemo } from "react";
 import Container from "./ui/Container";
 
-const CTA_PARTICLE_COUNT_DESKTOP = 15;
+const CTA_PARTICLE_COUNT_DESKTOP = 8;
 const CTA_PARTICLE_COUNT_MOBILE = 3;
 
 const AboutUs = () => {
-  const isDarkBackground = false;
   const ctaRef = useRef<HTMLAnchorElement | null>(null);
   const ctaSectionRef = useRef<HTMLDivElement | null>(null);
   const [ctaPosition, setCtaPosition] = useState({ x: 50, y: 50 });
@@ -83,6 +82,47 @@ const AboutUs = () => {
             <h3 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800 leading-tight">
               We are an Agile and Seasoned Team of Web3 Specialists.
             </h3>
+
+            {/* CTA with particles - moved to left column */}
+            <div 
+              ref={ctaSectionRef}
+              className="relative flex justify-center mt-8 mb-6"
+            >
+              {/* Particles */}
+              <div className="absolute inset-0 pointer-events-none">
+                {particles.map((p, i) => (
+                  <div
+                    key={`cta-particle-${i}`}
+                    className="absolute rounded-full blur-[12px] animate-light-particle"
+                    style={{
+                      width: `${p.size}px`,
+                      height: `${p.size}px`,
+                      background: p.color,
+                      left: `${p.x}%`,
+                      top: `${p.y}%`,
+                      animationDelay: `${p.delay}s`,
+                      animationDuration: `${p.duration}s`,
+                      ['--move-x' as string]: `${p.moveX}vw`,
+                      ['--move-y' as string]: `${p.moveY}vh`,
+                      ['--rotate' as string]: `${p.rotate}deg`
+                    }}
+                  />
+                ))}
+              </div>
+
+              {/* Button */}
+              <a 
+                href="#contact" 
+                className="inline-flex items-center z-10"
+                ref={ctaRef}
+              >
+                <button className="bg-[#010822]/90 backdrop-blur-sm text-white px-6 py-3 rounded-full
+                                 border border-white/30 hover:bg-[#010822]/70 transition-all
+                                 transform hover:scale-105 duration-300 text-base font-semibold">
+                  Connect With Us
+                </button>
+              </a>
+            </div>
           </div>
           
           {/* Right column */}
@@ -97,55 +137,6 @@ const AboutUs = () => {
               We are committed to bringing integrity and clarity to the Web3 landscape, striking the perfect balance between innovation and compliance, opportunity and security, vision and execution.
             </p>
           </div>
-        </div>
-
-        {/* CTA Section with Particles */}
-        <div 
-          ref={ctaSectionRef}
-          className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-2xl text-white relative overflow-hidden"
-          style={{ background: "linear-gradient(90deg, #010822 0%, #010822 100%)" }}
-        >
-          {/* Dark Background Layer */}
-          <div className="absolute inset-0 z-0 bg-[#010822]/95" />
-
-          {/* Particles */}
-          <div className="absolute inset-0 z-[1] pointer-events-none">
-            {particles.map((p, i) => (
-              <div
-                key={`cta-particle-${i}`}
-                className="absolute rounded-full blur-[12px] animate-light-particle"
-                style={{
-                  width: `${p.size}px`,
-                  height: `${p.size}px`,
-                  background: p.color,
-                  left: `${p.x}%`,
-                  top: `${p.y}%`,
-                  animationDelay: `${p.delay}s`,
-                  animationDuration: `${p.duration}s`,
-                  ['--move-x' as string]: `${p.moveX}vw`,
-                  ['--move-y' as string]: `${p.moveY}vh`,
-                  ['--rotate' as string]: `${p.rotate}deg`
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 text-center md:text-left relative z-10">
-            <h3 className="text-2xl font-bold mb-3 text-white">Ready to Start Your Web3 Journey?</h3>
-          </div>
-          
-          <a 
-            href="#contact" 
-            className="inline-flex items-center relative z-10"
-            ref={ctaRef}
-          >
-            <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
-                             border border-white/30 hover:bg-white/40 transition-all
-                             transform hover:scale-105 duration-300 text-base font-semibold">
-              Connect With Us
-            </button>
-          </a>
         </div>
       </Container>
 
