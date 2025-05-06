@@ -37,7 +37,7 @@ const AboutUs = () => {
   const particles = useMemo(() => {
     if (!particleCount) return [];
     return Array.from({ length: particleCount }, () => ({
-      size: 20 + Math.random() * 120, // Increased max size from 80 to 120
+      size: 40 + Math.random() * 120, // Increased max size from 80 to 120
       x: ctaPosition.x - 4 + (Math.random()-0.5) * 20, // Wider spread
       y: ctaPosition.y - 4 + (Math.random()-0.5) * 20, // Wider spread
       moveX: (Math.random() - 0.5) * 15, // Increased movement
@@ -47,9 +47,8 @@ const AboutUs = () => {
       duration: 8 + Math.random() * 12,
       color: [
         'rgba(225,29,143,0.95)',  // Pink - increased opacity
-        'rgba(147,51,234,0.8)',   // Purple - increased opacity
-        'rgba(51,195,240,0.8)',   // Added bright blue for contrast
-        'rgba(255,255,255,0.25)'  // White - adjusted opacity
+        'rgba(147,51,234,0.6)',   // Purple - increased opacity
+        'rgba(51,195,240,0.6)',   // Added bright blue for contrast
       ][Math.floor(Math.random() * 4)]
     }));
   }, [ctaPosition, particleCount]);
