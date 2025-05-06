@@ -1,4 +1,3 @@
-
 import React from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -146,7 +145,6 @@ const Index = () => {
       <main>
         <Hero />
         <AboutUs />
-        <Services />
         <Process />
         <Services />
         <Partners />
