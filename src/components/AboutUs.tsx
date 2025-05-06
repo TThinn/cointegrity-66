@@ -46,8 +46,8 @@ const AboutUs = () => {
       delay: Math.random() * 5,
       duration: 8 + Math.random() * 12,
       color: [
-        'rgba(225,29,143,0.8)',  // Pink - increased opacity
-        'rgba(147,51,234,0.6)',   // Purple - increased opacity
+        'rgba(225,29,143,0.6)',  // Pink - increased opacity
+        'rgba(147,51,234,0.4)',   // Purple - increased opacity
       ][Math.floor(Math.random() * 4)]
     }));
   }, [ctaPosition, particleCount]);
