@@ -71,7 +71,7 @@ const AboutUs = () => {
   if (particleCount === null) return null;
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-[#FEFCFD] to-[#FDF9FC] relative">
+    <section id="about" className="py-20 bg-white relative">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3]">About Us</h2>
