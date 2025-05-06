@@ -38,7 +38,7 @@ const AboutUs = () => {
     if (!particleCount) return [];
     return Array.from({ length: particleCount }, () => ({
       size: 40 + Math.random() * 120, // Increased max size from 80 to 120
-      x: ctaPosition.x - 4 + (Math.random()-0.5) * 20, // Wider spread
+      x: ctaPosition.x - 10 + (Math.random()-0.5) * 20, // Wider spread
       y: ctaPosition.y - 4 + (Math.random()-0.5) * 20, // Wider spread
       moveX: (Math.random() - 0.5) * 20, // Increased movement
       moveY: (Math.random() - 0.5) * 25, // Increased movement
