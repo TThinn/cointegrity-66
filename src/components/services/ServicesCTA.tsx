@@ -36,8 +36,8 @@ const ServicesCTA = () => {
   const particles = useMemo(() => {
     if (!particleCount) return [];
     return Array.from({ length: particleCount }, () => ({
-      size: 20 + Math.random() * 80,
-      x: ctaPosition.x - 25 + (Math.random() - 0.5) * 12, // Tighter distribution
+      size: 20 + Math.random() * 60,
+      x: ctaPosition.x - 30 + (Math.random() - 0.5) * 12, // Tighter distribution
       y: ctaPosition.y - 1 + (Math.random() - 0.5) * 12, // Tighter distribution
       moveX: (Math.random() - 0.5) * 10,
       moveY: (Math.random() - 0.5) * 14,
