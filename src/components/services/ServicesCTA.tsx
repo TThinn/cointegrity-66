@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useLayoutEffect, useMemo } from "react";
 
 const CTA_PARTICLE_COUNT_DESKTOP = 15;
@@ -17,10 +16,9 @@ const ServicesCTA = () => {
         const btnBox = ctaRef.current.getBoundingClientRect();
         const sectionBox = ctaSectionRef.current.getBoundingClientRect();
         
-        // Calculate position relative to the button itself,
-        // not relative to the entire section
-        const x = 50; // Center horizontally
-        const y = 50; // Center vertically
+        // Calculate position based on the button's position within the container
+        const x = ((btnBox.left + btnBox.right)/2 - sectionBox.left) / sectionBox.width * 100;
+        const y = ((btnBox.top + btnBox.bottom)/2 - sectionBox.top) / sectionBox.height * 100;
 
         setCtaPosition({ x, y });
       }
@@ -39,9 +37,9 @@ const ServicesCTA = () => {
     if (!particleCount) return [];
     return Array.from({ length: particleCount }, () => ({
       size: 20 + Math.random() * 80,
-      // Distribute particles below the button (higher y values)
+      // Distribute particles around the button
       x: ctaPosition.x - 15 + (Math.random() * 30),
-      y: ctaPosition.y + (Math.random() * 25), // Focus particles below the button
+      y: ctaPosition.y - 10 + (Math.random() * 20), // Adjusted to center particles more
       moveX: (Math.random() - 0.5) * 10,
       moveY: (Math.random() - 0.5) * 14,
       rotate: Math.random() * 360,
@@ -77,7 +75,7 @@ const ServicesCTA = () => {
       style={{ 
         boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
         position: "relative",
-        overflow: "hidden",
+        overflow: "visible", // Changed from "hidden" to "visible"
         minHeight: "140px" // Matched with Process section
       }}
     >
@@ -88,8 +86,8 @@ const ServicesCTA = () => {
       
       {/* Button Container with particles - Adjusted for vertical centering */}
       <div className="flex items-center justify-center h-full relative"> 
-        {/* Particles - Positioned below the button */}
-        <div className="absolute inset-0 pointer-events-none overflow-visible w-full h-full">
+        {/* Particles - Positioned around the button */}
+        <div className="absolute inset-0 pointer-events-none overflow-visible w-full h-full z-0">
           {particles.map((p, i) => (
             <div
               key={`cta-particle-${i}`}
@@ -102,8 +100,8 @@ const ServicesCTA = () => {
                 top: `${p.y}%`,
                 animationDelay: `${p.delay}s`,
                 animationDuration: `${p.duration}s`,
-                ['--move-x' as string]: `${p.moveX}vw`,
-                ['--move-y' as string]: `${p.moveY}vh`,
+                ['--move-x' as string]: `${p.moveX}%`, // Changed from vw to %
+                ['--move-y' as string]: `${p.moveY}%`, // Changed from vh to %
                 ['--rotate' as string]: `${p.rotate}deg`
               }}
             />
@@ -136,7 +134,7 @@ const ServicesCTA = () => {
             25% {
               opacity: 0.8;
               transform: 
-                translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * 0.7)) 
+                translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * -0.7)) 
                 scale(1.2) 
                 rotate(calc(var(--rotate) * 0.3));
             }
@@ -150,7 +148,7 @@ const ServicesCTA = () => {
             75% {
               opacity: 0.8;
               transform: 
-                translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * -0.7)) 
+                translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * 0.7)) 
                 scale(1.3) 
                 rotate(var(--rotate));
             }
