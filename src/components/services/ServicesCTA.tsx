@@ -1,6 +1,6 @@
 import React, { useRef, useState, useLayoutEffect, useMemo } from "react";
 
-const CTA_PARTICLE_COUNT_DESKTOP = 15;
+const CTA_PARTICLE_COUNT_DESKTOP = 18;
 const CTA_PARTICLE_COUNT_MOBILE = 3;
 
 const ServicesCTA = () => {
