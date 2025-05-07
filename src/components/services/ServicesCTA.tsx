@@ -6,7 +6,9 @@ const CTA_PARTICLE_COUNT_MOBILE = 3;
 const ServicesCTA = () => {
   const ctaRef = useRef<HTMLAnchorElement | null>(null);
   const ctaSectionRef = useRef<HTMLDivElement | null>(null);
-  const [ctaPosition, setCtaPosition] = useState({ x: 50, y: 50 });
+  const x = ((btnBox.left + btnBox.right)/2 - sectionBox.left) / sectionBox.width * 100;
+  const y = ((btnBox.top + btnBox.bottom)/2 - sectionBox.top) / sectionBox.height * 100;
+  const [ctaPosition, setCtaPosition] = useState({ x, y });
   const [particleCount, setParticleCount] = useState<number | null>(null);
 
   // Particle positioning relative to CTA section
