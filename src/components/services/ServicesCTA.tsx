@@ -39,8 +39,8 @@ const ServicesCTA = () => {
       size: 15 + Math.random() * 60,
       x: ctaPosition.x - 40 + (Math.random() - 0.5) * 15, // Tighter distribution
       y: ctaPosition.y - 1 + (Math.random() - 0.5) * 15, // Tighter distribution
-      moveX: (Math.random() - 0.5) * 10,
-      moveY: (Math.random() - 0.5) * 14,
+      moveX: (Math.random() - 0.5) * 15,
+      moveY: (Math.random() - 0.5) * 20,
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
       duration: 8 + Math.random() * 12,
