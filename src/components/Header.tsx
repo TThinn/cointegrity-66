@@ -16,7 +16,7 @@ const Header = () => {
       setScrolled(offset > 50);
 
       // Handle section highlighting
-      const sections = ['services', 'partners', 'founders', 'testimonials'];
+      const sections = ['about', 'services', 'partners', 'founders', 'testimonials'];
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -48,6 +48,7 @@ const Header = () => {
 
           <nav className="hidden md:flex items-center gap-1">
             {[
+              { href: "#about", label: "About Us" },
               { href: "#services", label: "Services" },
               { href: "#partners", label: "Partners" },
               { href: "#founders", label: "Team" },
@@ -78,6 +79,7 @@ const Header = () => {
           <Container>
             <nav className="flex flex-col gap-4 items-center text-center">
               {[
+                { href: "#about", label: "About Us" },
                 { href: "#services", label: "Services" },
                 { href: "#partners", label: "Partners" },
                 { href: "#founders", label: "Team" },
