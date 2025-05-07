@@ -32,25 +32,25 @@ const ServicesCTA = () => {
     };
   }, []);
 
-  // Particle configuration
-  const particles = useMemo(() => {
-    if (!particleCount) return [];
-    return Array.from({ length: particleCount }, () => ({
-      size: 20 + Math.random() * 80,
-      // Distribute particles around the button
-      x: ctaPosition.x - 15 + (Math.random() * 30),
-      y: ctaPosition.y - 10 + (Math.random() * 20), // Adjusted to center particles more
-      moveX: (Math.random() - 0.5) * 10,
-      moveY: (Math.random() - 0.5) * 14,
-      rotate: Math.random() * 360,
-      delay: Math.random() * 5,
-      duration: 8 + Math.random() * 12,
-      color: [
-        'rgba(225,29,143,0.7)',  // Pink - increased opacity
-        'rgba(147,51,234,0.5)',   // Purple - increased opacity
-      ][Math.floor(Math.random() * 2)]
-    }));
-  }, [ctaPosition, particleCount]);
+// Particle configuration
+const particles = useMemo(() => {
+  if (!particleCount) return [];
+  return Array.from({ length: particleCount }, () => ({
+    size: 20 + Math.random() * 80,
+    // Position particles evenly around the button with 20% spread in all directions
+    x: ctaPosition.x - 20 + (Math.random() * 40), // 20% spread on each side
+    y: ctaPosition.y - 20 + (Math.random() * 40), // 20% spread above and below
+    moveX: (Math.random() - 0.5) * 20, // Horizontal movement
+    moveY: (Math.random() - 0.5) * 20, // Vertical movement
+    rotate: Math.random() * 360,
+    delay: Math.random() * 5,
+    duration: 8 + Math.random() * 12,
+    color: [
+      'rgba(225,29,143,0.7)',  // Pink
+      'rgba(147,51,234,0.5)',   // Purple
+    ][Math.floor(Math.random() * 2)]
+  }));
+}, [ctaPosition, particleCount]);
 
   // Responsive particle count
   useLayoutEffect(() => {
@@ -75,8 +75,8 @@ const ServicesCTA = () => {
       style={{ 
         boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
         position: "relative",
-        overflow: "visible", // Changed from "hidden" to "visible"
-        minHeight: "140px" // Matched with Process section
+        overflow: "hidden", // Keep particles within the box
+        minHeight: "140px"
       }}
     >
       {/* Content */}
@@ -84,10 +84,10 @@ const ServicesCTA = () => {
         <h3 className="text-2xl font-bold mb-3 text-gray-800">Bring Substance to Your Digital Asset Strategy</h3>
       </div>
       
-      {/* Button Container with particles - Adjusted for vertical centering */}
+      {/* Button Container with particles */}
       <div className="flex items-center justify-center h-full relative"> 
-        {/* Particles - Positioned around the button */}
-        <div className="absolute inset-0 pointer-events-none overflow-visible w-full h-full z-0">
+        {/* Particles - Positioned below the button */}
+        <div className="absolute inset-0 pointer-events-none w-full h-full z-0">
           {particles.map((p, i) => (
             <div
               key={`cta-particle-${i}`}
@@ -100,8 +100,8 @@ const ServicesCTA = () => {
                 top: `${p.y}%`,
                 animationDelay: `${p.delay}s`,
                 animationDuration: `${p.duration}s`,
-                ['--move-x' as string]: `${p.moveX}%`, // Changed from vw to %
-                ['--move-y' as string]: `${p.moveY}%`, // Changed from vh to %
+                ['--move-x' as string]: `${p.moveX}%`,
+                ['--move-y' as string]: `${p.moveY}%`,
                 ['--rotate' as string]: `${p.rotate}deg`
               }}
             />
@@ -134,7 +134,7 @@ const ServicesCTA = () => {
             25% {
               opacity: 0.8;
               transform: 
-                translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * -0.7)) 
+                translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * 0.7)) 
                 scale(1.2) 
                 rotate(calc(var(--rotate) * 0.3));
             }
@@ -148,7 +148,7 @@ const ServicesCTA = () => {
             75% {
               opacity: 0.8;
               transform: 
-                translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * 0.7)) 
+                translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * -0.7)) 
                 scale(1.3) 
                 rotate(var(--rotate));
             }
