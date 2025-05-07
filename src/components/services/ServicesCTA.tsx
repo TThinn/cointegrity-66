@@ -16,7 +16,6 @@ const ServicesCTA = () => {
         const btnBox = ctaRef.current.getBoundingClientRect();
         const sectionBox = ctaSectionRef.current.getBoundingClientRect();
         
-        // Calculate position based on the button's position within the container
         const x = ((btnBox.left + btnBox.right)/2 - sectionBox.left) / sectionBox.width * 100;
         const y = ((btnBox.top + btnBox.bottom)/2 - sectionBox.top) / sectionBox.height * 100;
 
@@ -32,25 +31,24 @@ const ServicesCTA = () => {
     };
   }, []);
 
-// Particle configuration
-const particles = useMemo(() => {
-  if (!particleCount) return [];
-  return Array.from({ length: particleCount }, () => ({
-    size: 20 + Math.random() * 80,
-    // Position particles evenly around the button with 20% spread in all directions
-    x: ctaPosition.x - 20 + (Math.random() * 40), // 20% spread on each side
-    y: ctaPosition.y - 20 + (Math.random() * 40), // 20% spread above and below
-    moveX: (Math.random() - 0.5) * 20, // Horizontal movement
-    moveY: (Math.random() - 0.5) * 20, // Vertical movement
-    rotate: Math.random() * 360,
-    delay: Math.random() * 5,
-    duration: 8 + Math.random() * 12,
-    color: [
-      'rgba(225,29,143,0.7)',  // Pink
-      'rgba(147,51,234,0.5)',   // Purple
-    ][Math.floor(Math.random() * 2)]
-  }));
-}, [ctaPosition, particleCount]);
+  // Particle configuration
+  const particles = useMemo(() => {
+    if (!particleCount) return [];
+    return Array.from({ length: particleCount }, () => ({
+      size: 20 + Math.random() * 80,
+      x: ctaPosition.x - 4 + (Math.random() - 0.5) * 12, // Tighter distribution
+      y: ctaPosition.y - 4 + (Math.random() - 0.5) * 12, // Tighter distribution
+      moveX: (Math.random() - 0.5) * 10,
+      moveY: (Math.random() - 0.5) * 14,
+      rotate: Math.random() * 360,
+      delay: Math.random() * 5,
+      duration: 8 + Math.random() * 12,
+      color: [
+        'rgba(225,29,143,0.7)',  // Pink
+        'rgba(147,51,234,0.5)',   // Purple
+      ][Math.floor(Math.random() * 2)]
+    }));
+  }, [ctaPosition, particleCount]);
 
   // Responsive particle count
   useLayoutEffect(() => {
@@ -75,7 +73,7 @@ const particles = useMemo(() => {
       style={{ 
         boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
         position: "relative",
-        overflow: "hidden", // Keep particles within the box
+        overflow: "hidden",
         minHeight: "140px"
       }}
     >
@@ -86,12 +84,12 @@ const particles = useMemo(() => {
       
       {/* Button Container with particles */}
       <div className="flex items-center justify-center h-full relative"> 
-        {/* Particles - Positioned below the button */}
-        <div className="absolute inset-0 pointer-events-none w-full h-full z-0">
+        {/* Particles */}
+        <div className="absolute inset-0 z-[1] pointer-events-none">
           {particles.map((p, i) => (
             <div
               key={`cta-particle-${i}`}
-              className="absolute rounded-full blur-[16px] animate-light-particle"
+              className="absolute rounded-full blur-[12px] animate-light-particle"
               style={{
                 width: `${p.size}px`,
                 height: `${p.size}px`,
@@ -100,8 +98,8 @@ const particles = useMemo(() => {
                 top: `${p.y}%`,
                 animationDelay: `${p.delay}s`,
                 animationDuration: `${p.duration}s`,
-                ['--move-x' as string]: `${p.moveX}%`,
-                ['--move-y' as string]: `${p.moveY}%`,
+                ['--move-x' as string]: `${p.moveX}vw`,
+                ['--move-y' as string]: `${p.moveY}vh`,
                 ['--rotate' as string]: `${p.rotate}deg`
               }}
             />
@@ -128,39 +126,39 @@ const particles = useMemo(() => {
         {`
           @keyframes light-particle {
             0%, 100% { 
-              opacity: 0.5;
-              transform: translate(0, 0) scale(0.9) rotate(0);
+              opacity: 0.4;
+              transform: translate(0, 0) scale(1) rotate(0);
             }
             25% {
-              opacity: 0.8;
+              opacity: 0.6;
               transform: 
-                translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * 0.7)) 
+                translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * -0.7)) 
                 scale(1.2) 
                 rotate(calc(var(--rotate) * 0.3));
             }
             50% { 
-              opacity: 1;
+              opacity: 0.8;
               transform: 
                 translate(var(--move-x), var(--move-y)) 
                 scale(1.5) 
                 rotate(calc(var(--rotate) * 0.6));
             }
             75% {
-              opacity: 0.8;
+              opacity: 0.6;
               transform: 
-                translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * -0.7)) 
+                translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * 0.7)) 
                 scale(1.3) 
                 rotate(var(--rotate));
             }
           }
           .animate-light-particle {
-            animation: light-particle 10s ease-in-out infinite;
+            animation: light-particle ease-in-out infinite;
             mix-blend-mode: screen;
           }
           @media (prefers-reduced-motion: reduce) {
             .animate-light-particle {
               animation: none;
-              opacity: 0.5 !important;
+              opacity: 0.3 !important;
             }
           }
         `}
