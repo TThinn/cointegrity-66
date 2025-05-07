@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useLayoutEffect, useMemo } from "react";
 
 const CTA_PARTICLE_COUNT_DESKTOP = 15;
@@ -7,7 +6,8 @@ const CTA_PARTICLE_COUNT_MOBILE = 3;
 const ServicesCTA = () => {
   const ctaRef = useRef<HTMLAnchorElement | null>(null);
   const ctaSectionRef = useRef<HTMLDivElement | null>(null);
-  const [ctaPosition, setCtaPosition] = useState({ x: 50, y: 50 }); // Initialize with default values
+  // Initialize with default values - don't try to calculate before refs exist
+  const [ctaPosition, setCtaPosition] = useState({ x: 50, y: 50 });
   const [particleCount, setParticleCount] = useState<number | null>(null);
 
   // Particle positioning relative to CTA section
