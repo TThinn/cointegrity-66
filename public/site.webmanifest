@@ -1,0 +1,25 @@
+
+{
+  "name": "Cointegrity - Web3 and Blockchain Solutions",
+  "short_name": "Cointegrity",
+  "icons": [
+    {
+      "src": "/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#080112",
+  "background_color": "#080112",
+  "display": "standalone",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "description": "Leading Web3 consultancy specialized in blockchain technology, tokenomics design, and regulatory compliance for enterprises."
+}

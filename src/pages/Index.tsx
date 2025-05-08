@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
@@ -10,8 +11,38 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Process from "@/components/Process";
 import { Helmet } from "react-helmet-async";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 const Index = () => {
+  const { trackEvent } = useAnalytics();
+
+  // Track section views for better analytics insights
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          // Update URL without triggering page reload (for better analytics tracking)
+          if (sectionId) {
+            window.history.replaceState({}, '', `#${sectionId}`);
+            trackEvent('section_view', {
+              category: 'Navigation',
+              label: sectionId,
+              nonInteraction: true
+            });
+          }
+        }
+      });
+    }, { threshold: 0.3 });
+
+    // Observe all sections for visibility
+    document.querySelectorAll('section[id]').forEach(section => {
+      observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, [trackEvent]);
+
   // Enhanced JSON-LD structured data with more detailed service descriptions and emphasis on Web3 compliance
   const structuredData = {
     "@context": "https://schema.org",
@@ -19,7 +50,8 @@ const Index = () => {
     "name": "Cointegrity Web3 Consultancy",
     "description": "Leading Web3 consultancy helping businesses navigate blockchain technology and digital asset transformation with expert strategic consulting and implementation services for the future of finance.",
     "url": "https://cointegrity.io",
-    "logo": "https://cointegrity.io/logo.png",
+    "logo": "https://cointegrity.io/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png",
+    "image": "https://cointegrity.io/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png",
     "sameAs": [
       "https://twitter.com/Cointegrity",
       "https://linkedin.com/company/cointegrity",
@@ -35,6 +67,10 @@ const Index = () => {
     "email": "contact@cointegrity.io",
     "keywords": "Web3 compliance, MiCA regulation, tokenomics, blockchain consulting, digital asset compliance, future of finance, decentralized finance, crypto regulation, Web3 strategy, token design",
     "slogan": "Shaping the Future of Finance",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://cointegrity.io"
+    },
     "service": [
       {
         "@type": "Service",
@@ -73,6 +109,28 @@ const Index = () => {
         }
       }
     ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Web3 Consulting Services",
+      "itemListElement": [
+        {
+          "@type": "OfferCatalogItem",
+          "name": "Blockchain Strategy",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Blockchain Strategy Consultation"
+          }
+        },
+        {
+          "@type": "OfferCatalogItem",
+          "name": "Tokenomics Design",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Token Economics Design"
+          }
+        }
+      ]
+    },
     "review": [
       {
         "@type": "Review",
@@ -84,7 +142,8 @@ const Index = () => {
         "reviewRating": {
           "@type": "Rating",
           "ratingValue": "5"
-        }
+        },
+        "datePublished": "2025-02-15"
       },
       {
         "@type": "Review",
@@ -96,12 +155,13 @@ const Index = () => {
         "reviewRating": {
           "@type": "Rating",
           "ratingValue": "5"
-        }
+        },
+        "datePublished": "2025-03-20"
       }
     ]
   };
 
-  // FAQ structured data for enhanced SEO
+  // FAQ structured data for enhanced SEO - expanded with more questions
   const faqData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -129,8 +189,85 @@ const Index = () => {
           "@type": "Answer",
           "text": "We analyze your Web3 commercial architecture and develop optimized tokenomics models that drive real business value, balancing utility, incentives, and economic sustainability for the future of finance."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Where is Cointegrity based?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cointegrity is based in Norway but provides Web3 and blockchain consulting services globally for businesses seeking expert guidance on digital asset transformation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I contact Cointegrity for a consultation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can contact Cointegrity through our website contact form, by emailing contact@cointegrity.io, or by calling +4712345678 during our business hours."
+        }
       }
     ]
+  };
+
+  // Section specific structured data for improved anchor link indexing
+  const sectionsData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://cointegrity.io/#about",
+      "name": "About Cointegrity",
+      "description": "Learn about Cointegrity's mission to simplify Web3 complexity and our comprehensive approach to blockchain consulting.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://cointegrity.io/#website"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://cointegrity.io/#services",
+      "name": "Our Web3 & Blockchain Services",
+      "description": "Discover our comprehensive Web3 services including strategic positioning, tokenomics design, regulatory compliance, and capital acceleration solutions.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://cointegrity.io/#website"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://cointegrity.io/#founders",
+      "name": "Meet Our Expert Team",
+      "description": "Meet the talented team of Web3 specialists behind Cointegrity's success with decades of experience in blockchain technology.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://cointegrity.io/#website"
+      },
+      "inLanguage": "en-US"
+    }
+  ];
+
+  // Website structured data
+  const websiteData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://cointegrity.io/#website",
+    "url": "https://cointegrity.io/",
+    "name": "Cointegrity - Web3 & Blockchain Solutions",
+    "description": "Leading Web3 consultancy specialized in blockchain technology and digital asset transformation",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Cointegrity",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cointegrity.io/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    "inLanguage": "en-US"
   };
 
   // Get the current URL path and hash
@@ -181,20 +318,46 @@ const Index = () => {
       <Helmet>
         <title>{getSectionTitle()}</title>
         <meta name="description" content={getSectionDescription()} />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        
+        {/* Open Graph / Facebook */}
         <meta property="og:title" content={getSectionTitle()} />
         <meta property="og:description" content={getSectionDescription()} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" />
+        <meta property="og:image" content="https://cointegrity.io/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" />
+        <meta property="og:image:alt" content="Cointegrity Logo" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:url" content={`https://cointegrity.io${currentPath}${currentHash}`} />
         <meta property="og:site_name" content="Cointegrity" />
+        <meta property="og:locale" content="en_US" />
+        
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@Cointegrity" />
         <meta name="twitter:title" content={getSectionTitle()} />
         <meta name="twitter:description" content={getSectionDescription()} />
-        <meta name="twitter:image" content="/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" />
+        <meta name="twitter:image" content="https://cointegrity.io/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" />
+        <meta name="twitter:image:alt" content="Cointegrity Logo" />
+        
+        {/* LinkedIn */}
+        <meta property="linkedin:owner" content="Cointegrity" />
+        
+        {/* Favicon */}
         <link rel="icon" href="/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" />
+        <link rel="shortcut icon" href="/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" />
+        
+        {/* Canonical */}
+        <link rel="canonical" href={`https://cointegrity.io${currentPath}${currentHash}`} />
+        
+        {/* Structured Data */}
         <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
         <script type="application/ld+json">{JSON.stringify(faqData)}</script>
+        <script type="application/ld+json">{JSON.stringify(websiteData)}</script>
+        {sectionsData.map((data, index) => (
+          <script key={index} type="application/ld+json">{JSON.stringify(data)}</script>
+        ))}
       </Helmet>
       <Header />
       <main>

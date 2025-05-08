@@ -1,13 +1,14 @@
 
+# Cointegrity Robots.txt
 User-agent: *
 Allow: /
 
-Sitemap: https://cointegrity.io/sitemap.xml
-
-# Allow specific crawlers
+# Set crawl priority for Google
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
+# Allow specific crawlers
 User-agent: Bingbot
 Allow: /
 
@@ -17,6 +18,12 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: LinkedInBot
+Allow: /
+
 # Disallow specific paths
 Disallow: /api/
 Disallow: /admin/
+
+# Sitemap
+Sitemap: https://cointegrity.io/sitemap.xml
