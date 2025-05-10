@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { SectionStructuredData } from "./SectionStructuredData";
+import { getStructuredData } from "./SectionStructuredData";
 
 interface SeoHeadProps {
   currentPath: string;
@@ -48,6 +48,9 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
     }
   };
 
+  // Get all structured data objects
+  const structuredDataObjects = getStructuredData();
+
   return (
     <Helmet>
       <title>{getSectionTitle()}</title>
@@ -86,7 +89,11 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       <link rel="canonical" href={`https://cointegrity.io${currentPath}${currentHash}`} />
       
       {/* Include all structured data directly */}
-      <SectionStructuredData />
+      {structuredDataObjects.map((data, index) => (
+        <script key={index} type="application/ld+json">
+          {JSON.stringify(data)}
+        </script>
+      ))}
     </Helmet>
   );
 };
