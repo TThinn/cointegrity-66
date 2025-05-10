@@ -7,6 +7,8 @@ import {
   SECTIONS_STRUCTURED_DATA
 } from "./structuredData";
 
+// Return just the script elements, not wrapped in Helmet
+// These will be included inside the parent Helmet component
 export const SectionStructuredData: React.FC = () => {
   return (
     <>

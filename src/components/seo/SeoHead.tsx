@@ -85,7 +85,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       {/* Canonical */}
       <link rel="canonical" href={`https://cointegrity.io${currentPath}${currentHash}`} />
       
-      {/* Include all structured data */}
+      {/* Include all structured data directly */}
       <SectionStructuredData />
     </Helmet>
   );
