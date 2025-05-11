@@ -1,6 +1,6 @@
 
 import React from "react";
-import { LucideIcon } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -39,8 +39,14 @@ const ServiceCard = ({
       </h3>
       <ul className={`text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] list-none ${isDarkBackground ? 'text-gray-200' : 'text-gray-600'}`}>
         {items.map((item, itemIndex) => (
-          <li key={itemIndex} className="flex items-start mb-[0.35rem]">
-            <span style={{ color }} className="mr-2">•</span>
+          <li key={itemIndex} className="flex items-start mb-[0.35rem] group">
+            <span className="mr-2 transform -translate-y-[1px]">
+              <CheckCircle 
+                size={15}
+                className="text-[#cb46b3] opacity-90 group-hover:opacity-100 transition-opacity" 
+                strokeWidth={2.5}
+              />
+            </span>
             <span>{item}</span>
           </li>
         ))}
