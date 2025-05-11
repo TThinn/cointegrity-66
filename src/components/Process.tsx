@@ -81,7 +81,7 @@ const Process = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   if (particleCount === null) return null;
-  return <section id="process" className="py-24 relative overflow-hidden">
+  return <section id="process" className="py-20 relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]"></div>
         <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
@@ -91,8 +91,8 @@ const Process = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-fade-up">
             <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">OUR PROCESS</h2>
-            <h3 className="text-3xl md:text-4xl font-bold mb-2 text-white">Your Journey to Web3 Success</h3>
-            <p className="text-white/60 max-w-2xl mx-auto">A structured approach to transform your business, focusing on delivering maximum value</p>
+            <h3 className="mt-2 text-3xl md:text-4xl font-bold mb-2 text-white">Your Journey to Web3 Success</h3>
+            <p className="mt-2 text-white/60 max-w-2xl mx-auto">A structured approach to transform your business, focusing on delivering maximum value</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
@@ -104,15 +104,15 @@ const Process = () => {
                 <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" style={{
               background: `linear-gradient(135deg, rgba(203, 70, 179, 0.2), rgba(203, 70, 179, 0.3))`
             }}>
-                  {step.icon}
-                </div>
-                <h3 className={`text-[clamp(1.1rem,1rem+0.3vw,1.3rem)] font-semibold mb-3 ${isDarkBackground ? 'text-white' : 'text-gray-800'}`}>
-                  {step.title}
-                </h3>
-                <p className={`text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] ${isDarkBackground ? 'text-gray-200' : 'text-gray-600'}`}>
-                  {step.description}
-                </p>
-              </div>)}
+              {step.icon}
+            </div>
+            <h3 className={`text-[clamp(1.1rem,1rem+0.3vw,1.3rem)] font-semibold mb-3 ${isDarkBackground ? 'text-white' : 'text-gray-800'}`}>
+              {step.title}
+            </h3>
+            <p className={`text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] ${isDarkBackground ? 'text-gray-200' : 'text-gray-600'}`}>
+              {step.description}
+            </p>
+          </div>)}
           </div>
 
           {/* Updated CTA Section */}

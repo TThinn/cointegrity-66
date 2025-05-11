@@ -87,7 +87,7 @@ const ContactForm = () => {
             <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">
               Partner With Us to Bring Your Project to Life
             </h3>
-            <p className="mt-4 text-lg text-gray-600">
+            <p className="mt-2 text-lg text-gray-600">
               Have a project in mind or questions about our services? We're here to help you navigate the decentralized landscape.
             </p>
             <div className="mt-10 hidden md:block relative animate-float"></div>

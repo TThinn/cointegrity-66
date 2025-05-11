@@ -58,7 +58,7 @@ const Partners = () => {
     logo: "/lovable-uploads/1ec5bfd8-e2e8-46c4-8b86-b6fa09a3b6e2.png"
   }];
 
-  return <section id="partners" className="py-24 relative overflow-hidden">
+  return <section id="partners" className="py-20 relative overflow-hidden">
       {/* Updated background to match Process section */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]"></div>
@@ -69,10 +69,10 @@ const Partners = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-fade-up">
             <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">PARTNERS</h2>
-            <h3 className="text-3xl md:text-4xl font-bold mb-2 text-white">
+            <h3 className="mt-2 text-3xl md:text-4xl font-bold text-white">
               Building the Future Together
             </h3>
-            <p className="text-white/60 max-w-2xl mx-auto">
+            <p className="mt-2 text-white/60 max-w-2xl mx-auto">
               Collaborating with industry leaders to build the future of Web3 technologies and blockchain innovation.
             </p>
           </div>

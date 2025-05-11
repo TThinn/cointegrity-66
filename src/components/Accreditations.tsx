@@ -98,7 +98,7 @@ const Accreditations = () => {
   }];
   
   return (
-    <section id="testimonials" className="py-24 relative overflow-hidden bg-[#080112]">
+    <section id="testimonials" className="py-20 relative overflow-hidden bg-[#080112]">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/2 w-[800px] h-[800px] bg-pink-500/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[100px]"></div>
@@ -108,10 +108,10 @@ const Accreditations = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-fade-up">
             <h2 className="text-sm text-pink-400 uppercase tracking-wider font-medium">Testimonials</h2>
-            <h3 className="text-3xl md:text-4xl font-bold mb-2 text-white">
+            <h3 className="mt-2 text-3xl md:text-4xl font-bold text-white">
               Trusted by Industry Leaders
             </h3>
-            <p className="text-white/60 max-w-2xl mx-auto">We are proud to have worked with pioneering projects and companies across the blockchain and Web3 ecosystem, helping them innovate and scale with confidence.</p>
+            <p className="mt-2 text-white/60 max-w-2xl mx-auto">We are proud to have worked with pioneering projects and companies across the blockchain and Web3 ecosystem, helping them innovate and scale with confidence.</p>
           </div>
 
           {/* Static Brand Grid */}

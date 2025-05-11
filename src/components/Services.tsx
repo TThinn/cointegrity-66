@@ -14,7 +14,7 @@ const Services = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3]">Our Services</h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Serving a Diversified Market</h3>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-2 text-lg text-gray-600">
             Our clients are spread across various industries and sectors, including governmental agencies, global consulting firms, launch platforms, gaming companies, VASPs, and more.
           </p>
         </div>
