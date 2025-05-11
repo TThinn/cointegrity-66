@@ -207,7 +207,7 @@ const Testimonials = () => {
           </div>
           
           {/* Keep the original bottom spacing */}
-          <div className="mt-5 text-center relative z-20">
+          <div className="mt-5 -mb-4 text-center relative z-20">
             <div className="inline-block relative">
               <div className="absolute -inset-8 z-10 pointer-events-none">
                 {particles.map((p, i) => <div key={`testimonial-particle-${i}`} className="absolute rounded-full blur-[12px] animate-light-particle" style={{
