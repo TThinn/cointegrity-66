@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { placeholders, PlaceholderData } from "@/utils/contactPlaceholders";
 import Container from "./ui/Container";
@@ -80,9 +79,7 @@ const ContactForm = () => {
       
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="animate-fade-up text-left lg:text-left md:text-center sm:text-center" style={{
-            animationDelay: "0.1s"
-          }}>
+          <div className="text-left lg:text-left md:text-center sm:text-center">
             <h2 className="font-semibold uppercase tracking-wider text-[cb46b3] text-[#cb46b3]">Contact Us</h2>
             <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">
               Partner With Us to Bring Your Project to Life
