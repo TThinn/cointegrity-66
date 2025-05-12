@@ -123,9 +123,7 @@ const AboutUs = () => {
           <div className="w-full md:w-3/5 text-gray-600">
             <p className="mb-4">We provide comprehensive blockchain consulting and execution services, bridging the gap between traditional business and Web3 infrastructure. Our expertise spans strategic positioning, decentralized product development, go-to-market strategies, AI-powered solutions, Regulatory &amp; Tax Compliance, and growth capital - delivering solutions that simplify complexity and amplify opportunity.</p>
             <p className="mb-4">Specializing in blockchain integration and regulatory navigation, we help transform your digital vision into reality. Whether you're launching a token, building a compliant platform, or seeking funding for your Web3 initiative, our team guides you through the entire digital transformation journey.</p>
-            <p>
-              We are committed to bringing integrity and clarity to the Web3 landscape, striking the perfect balance between innovation and compliance, opportunity and security, vision and execution.
-            </p>
+            <p>We are committed to bringing integrity and clarity to the decentralized landscape, striking the perfect balance between innovation and compliance, opportunity and security, vision and execution.</p>
           </div>
         </div>
       </Container>
