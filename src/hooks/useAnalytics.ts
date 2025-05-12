@@ -16,7 +16,7 @@ export const useAnalytics = () => {
   const pageView = (path: string, title?: string) => {
     if (!window.gtag) return;
     
-    window.gtag('config', 'G-MEASUREMENT_ID', {
+    window.gtag('config', 'G-6BG7LRFYFG', {
       page_path: path,
       page_title: title
     });
