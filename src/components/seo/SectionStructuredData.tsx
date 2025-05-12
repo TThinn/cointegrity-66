@@ -4,7 +4,7 @@ import {
   FAQ_STRUCTURED_DATA,
   WEBSITE_STRUCTURED_DATA,
   SECTIONS_STRUCTURED_DATA
-} from "./structuredData/index";
+} from "./structuredData";
 
 // Return structured data objects instead of React components
 export const getStructuredData = () => {

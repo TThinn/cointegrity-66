@@ -116,3 +116,112 @@ export const BUSINESS_STRUCTURED_DATA = {
     }
   ]
 };
+
+// FAQ structured data for enhanced SEO
+export const FAQ_STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What services does Cointegrity offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cointegrity offers strategic positioning, token architecture, regulatory navigation focused on MiCA compliance, and capital acceleration services for businesses navigating the future of finance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Cointegrity help with MiCA compliance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our regulatory navigation service guides you through the complex digital asset compliance landscape with a focus on the MiCA framework in Europe, developing robust compliance strategies tailored to your specific needs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Cointegrity's approach to tokenomics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We analyze your Web3 commercial architecture and develop optimized tokenomics models that drive real business value, balancing utility, incentives, and economic sustainability for the future of finance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is Cointegrity based?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cointegrity is based in Norway but provides Web3 and blockchain consulting services globally for businesses seeking expert guidance on digital asset transformation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I contact Cointegrity for a consultation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can contact Cointegrity through our website contact form, by emailing contact@cointegrity.io, or by calling +4712345678 during our business hours."
+      }
+    }
+  ]
+};
+
+// Section specific structured data for improved anchor link indexing
+export const SECTIONS_STRUCTURED_DATA = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://cointegrity.io/#about",
+    "name": "About Cointegrity",
+    "description": "Learn about Cointegrity's mission to simplify Web3 complexity and our comprehensive approach to blockchain consulting.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://cointegrity.io/#website"
+    },
+    "inLanguage": "en-US"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://cointegrity.io/#services",
+    "name": "Our Web3 & Blockchain Services",
+    "description": "Discover our comprehensive Web3 services including strategic positioning, tokenomics design, regulatory compliance, and capital acceleration solutions.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://cointegrity.io/#website"
+    },
+    "inLanguage": "en-US"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://cointegrity.io/#founders",
+    "name": "Meet Our Expert Team",
+    "description": "Meet the talented team of Web3 specialists behind Cointegrity's success with decades of experience in blockchain technology.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://cointegrity.io/#website"
+    },
+    "inLanguage": "en-US"
+  }
+];
+
+// Website structured data
+export const WEBSITE_STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://cointegrity.io/#website",
+  "url": "https://cointegrity.io/",
+  "name": "Cointegrity - Web3 & Blockchain Solutions",
+  "description": "Leading Web3 consultancy specialized in blockchain technology and digital asset transformation",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cointegrity",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cointegrity.io/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png",
+      "width": 512,
+      "height": 512
+    }
+  },
+  "inLanguage": "en-US"
+};

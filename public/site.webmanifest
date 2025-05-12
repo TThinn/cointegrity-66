@@ -1,6 +1,6 @@
 
 {
-  "name": "Strategic Consulting & Web3 Infrastructure Solutions | Cointegrity",
+  "name": "Cointegrity - Web3 and Blockchain Solutions",
   "short_name": "Cointegrity",
   "icons": [
     {
@@ -21,5 +21,5 @@
   "display": "standalone",
   "start_url": "/?source=pwa",
   "scope": "/",
-  "description": "Cointegrity delivers expert consulting across government, Web3, and corporate sectors. Our team enhances service delivery through AI-powered solutions while strongly focusing on personal collaboration."
+  "description": "Leading Web3 consultancy specialized in blockchain technology, tokenomics design, and regulatory compliance for enterprises."
 }

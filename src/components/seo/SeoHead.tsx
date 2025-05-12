@@ -25,7 +25,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       case "#contact":
         return "Contact Cointegrity | Web3 & Blockchain Consultation";
       default:
-        return "Strategic Consulting & Web3 Infrastructure Solutions | Cointegrity";
+        return "Cointegrity Web3 Consultancy - Blockchain Solutions & Tokenomics Experts";
     }
   };
   
@@ -44,7 +44,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       case "#contact":
         return "Connect with Cointegrity's Web3 experts for consultation on blockchain technology, tokenomics, and regulatory compliance solutions.";
       default:
-        return "Cointegrity delivers expert consulting across government, Web3, and corporate sectors. Our team enhances service delivery through AI-powered solutions while strongly focusing on personal collaboration. Specializing in Digital Strategy, Web3 infrastructure, Tax & Compliance, and providing growth capital.";
+        return "Leading Web3 consultancy specialized in blockchain strategy, tokenomics design, and MiCA regulatory compliance for enterprises building the future of finance.";
     }
   };
 

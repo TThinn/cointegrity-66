@@ -121,9 +121,13 @@ const AboutUs = () => {
           
           {/* Right column */}
           <div className="w-full md:w-3/5 text-gray-600">
-            <p className="mb-4">We provide comprehensive <strong>blockchain consulting</strong> and execution services, bridging the gap between traditional business and <strong>Web3 infrastructure</strong>. Our expertise spans strategic positioning, decentralized product development, go-to-market strategies, AI-powered solutions, <strong>Regulatory &amp; Tax Compliance</strong>, and growth capital - delivering solutions that simplify complexity and amplify opportunity.</p>
-            <p className="mb-4">Specializing in <strong>blockchain integration</strong> and regulatory navigation, we help transform your digital vision into reality. Whether you're launching a token, building a compliant platform, or seeking funding for your <strong>Web3 initiative</strong>, our team guides you through the entire <strong>digital transformation</strong> journey.</p>
-            <p>We are committed to bringing <strong>integrity and clarity</strong> to the decentralized landscape, striking the perfect balance between innovation and compliance, opportunity and security, vision and execution.</p>
+            <p className="mb-4">We provide comprehensive Web3 advisory and execution services, bridging the gap between traditional business and decentralized innovation. Our expertise spans strategy, product development, go-to-market, AI as a service, tax &amp; compliance, and capital acceleration - delivering solutions that simplify complexity and amplify opportunity.</p>
+            <p className="mb-4">
+              Specializing in blockchain integration and regulatory navigation, we help you transform your vision into reality. Whether you're launching a token, building a compliant platform, or seeking funding for your Web3 initiative, our team guides you from concept to execution.
+            </p>
+            <p>
+              We are committed to bringing integrity and clarity to the Web3 landscape, striking the perfect balance between innovation and compliance, opportunity and security, vision and execution.
+            </p>
           </div>
         </div>
       </Container>
