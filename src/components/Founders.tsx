@@ -127,7 +127,7 @@ const Founders = () => {
                 
                 <div className="mt-3 flex-grow flex flex-col">
                   <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] text-gray-600 line-clamp-5">
-                    {founder.fullBio}
+                    {founder.bio}
                   </p>
                   <Dialog>
                     <DialogTrigger asChild>
