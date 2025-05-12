@@ -1,6 +1,8 @@
+
 import React from "react";
 import Container from "./ui/Container";
 import { Link } from "react-router-dom";
+
 const Footer = () => {
   // Helper function to determine if we should use Link or anchor
   const NavLink = ({
@@ -18,17 +20,18 @@ const Footer = () => {
     rel?: string;
     "aria-label"?: string;
   }) => {
-    // Use Link for internal routes without hash
-    if (to.startsWith('/') && !to.includes('#')) {
+    // Use Link for internal routes
+    if (to.startsWith('/')) {
       return <Link to={to} className={className}>
           {children}
         </Link>;
     }
-    // Use anchor for hash navigation (section links) or external URLs
+    // Use anchor for external URLs
     return <a href={to} className={className} target={target} rel={rel} aria-label={ariaLabel}>
         {children}
       </a>;
   };
+  
   return <footer className="bg-[#080112] text-white py-12 border-t border-white/10">
       <Container>
         <div className="flex flex-col md:flex-row justify-between">
@@ -44,22 +47,22 @@ const Footer = () => {
           <div className="w-full md:w-1/3 mb-8 md:mb-0">
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <div className="grid grid-cols-2 gap-2">
-              <NavLink to="#about" className="text-white/70 hover:text-white transition-colors py-1">
+              <NavLink to="/about" className="text-white/70 hover:text-white transition-colors py-1">
                 About Us
               </NavLink>
-              <NavLink to="#services" className="text-white/70 hover:text-white transition-colors py-1">
+              <NavLink to="/services" className="text-white/70 hover:text-white transition-colors py-1">
                 Services
               </NavLink>
-              <NavLink to="#partners" className="text-white/70 hover:text-white transition-colors py-1">
+              <NavLink to="/partners" className="text-white/70 hover:text-white transition-colors py-1">
                 Partners
               </NavLink>
-              <NavLink to="#founders" className="text-white/70 hover:text-white transition-colors py-1">
+              <NavLink to="/team" className="text-white/70 hover:text-white transition-colors py-1">
                 Team
               </NavLink>
-              <NavLink to="#testimonials" className="text-white/70 hover:text-white transition-colors py-1">
+              <NavLink to="/testimonials" className="text-white/70 hover:text-white transition-colors py-1">
                 Testimonials
               </NavLink>
-              <NavLink to="#contact" className="text-white/70 hover:text-white transition-colors py-1">
+              <NavLink to="/contact" className="text-white/70 hover:text-white transition-colors py-1">
                 Contact
               </NavLink>
               <NavLink to="/privacy" className="text-white/70 hover:text-white transition-colors py-1">
@@ -101,4 +104,5 @@ const Footer = () => {
       </Container>
     </footer>;
 };
+
 export default Footer;

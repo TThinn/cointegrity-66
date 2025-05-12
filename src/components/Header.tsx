@@ -3,13 +3,11 @@ import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import { Menu, X } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("");
   const location = useLocation();
 
   useEffect(() => {
@@ -17,63 +15,21 @@ const Header = () => {
       // Handle background change on scroll
       const offset = window.scrollY;
       setScrolled(offset > 50);
-
-      // Handle section highlighting
-      const sections = ['about', 'services', 'partners', 'founders', 'testimonials'];
-      const currentSection = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-
-      setActiveSection(currentSection || '');
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Helper function to determine if we should use Link or anchor
-  const NavLink = ({ 
-    to, 
-    children, 
-    className, 
-    onClick,
-    target,
-    rel,
-    "aria-label": ariaLabel 
-  }: { 
-    to: string; 
-    children: React.ReactNode; 
-    className?: string; 
-    onClick?: () => void;
-    target?: string;
-    rel?: string;
-    "aria-label"?: string;
-  }) => {
-    // Use Link for internal routes without hash
-    if (to.startsWith('/') && !to.includes('#')) {
-      return (
-        <Link to={to} className={className} onClick={onClick}>
-          {children}
-        </Link>
-      );
-    }
-    // Use anchor for hash navigation (section links) or external URLs
-    return (
-      <a href={to} className={className} onClick={onClick} target={target} rel={rel} aria-label={ariaLabel}>
-        {children}
-      </a>
-    );
+  // Helper function to determine if a route is active
+  const isActive = (path: string) => {
+    return location.pathname === path;
   };
 
   return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3 bg-black/70 backdrop-blur-lg shadow-md' : 'py-6 bg-transparent'}`}>
       <Container>
         <div className="flex items-center justify-between">
-          <NavLink to="/" className="relative z-10 micro-interaction">
+          <Link to="/" className="relative z-10 micro-interaction">
             <div className="flex items-center">
               <img 
                 src="/lovable-uploads/23b8985f-164c-4c02-a983-2dfa808c0689.png" 
@@ -81,29 +37,28 @@ const Header = () => {
                 className="h-10 w-auto" 
               />
             </div>
-          </NavLink>
+          </Link>
 
           <nav className="hidden md:flex items-center gap-1">
             {[
-              { href: "#about", label: "About Us" },
-              { href: "#services", label: "Services" },
-              { href: "#partners", label: "Partners" },
-              { href: "#founders", label: "Team" },
-              { href: "#testimonials", label: "Testimonials" }
-            ].map(({ href, label }) => (
-              <NavLink 
-                key={href}
-                to={href} 
-                className={`micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors relative
-                  ${activeSection === href.slice(1) ? 'text-white' : 'hover:text-white'}
-                  ${activeSection === href.slice(1) ? 'font-semibold' : ''}`}
+              { to: "/about", label: "About Us" },
+              { to: "/services", label: "Services" },
+              { to: "/partners", label: "Partners" },
+              { to: "/team", label: "Team" },
+              { to: "/testimonials", label: "Testimonials" }
+            ].map(({ to, label }) => (
+              <Link 
+                key={to}
+                to={to} 
+                className={`micro-interaction px-4 py-2 transition-colors relative
+                  ${isActive(to) ? 'text-white font-semibold' : 'text-white/80 hover:text-white'}`}
               >
                 {label}
-              </NavLink>
+              </Link>
             ))}
-            <NavLink to="#contact" className="pl-4 micro-interaction">
+            <Link to="/contact" className="pl-4 micro-interaction">
               <Button variant="primary" size="sm">Connect</Button>
-            </NavLink>
+            </Link>
           </nav>
 
           <button className="md:hidden text-white p-2 micro-interaction" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
@@ -116,27 +71,27 @@ const Header = () => {
           <Container>
             <nav className="flex flex-col gap-4 items-center text-center">
               {[
-                { href: "#about", label: "About Us" },
-                { href: "#services", label: "Services" },
-                { href: "#partners", label: "Partners" },
-                { href: "#founders", label: "Team" },
-                { href: "#testimonials", label: "Testimonials" }
-              ].map(({ href, label }) => (
-                <NavLink
-                  key={href}
-                  to={href}
+                { to: "/about", label: "About Us" },
+                { to: "/services", label: "Services" },
+                { to: "/partners", label: "Partners" },
+                { to: "/team", label: "Team" },
+                { to: "/testimonials", label: "Testimonials" }
+              ].map(({ to, label }) => (
+                <Link
+                  key={to}
+                  to={to}
                   className={`micro-interaction w-full py-4 text-xl border-b border-white/10
-                    ${activeSection === href.slice(1) ? 'text-white' : 'text-white/90 hover:text-white'}`}
+                    ${isActive(to) ? 'text-white' : 'text-white/90 hover:text-white'}`}
                   onClick={() => setIsOpen(false)}
                 >
                   {label}
-                </NavLink>
+                </Link>
               ))}
-              <NavLink to="#contact" className="micro-interaction w-full py-4 text-xl text-white mt-4" onClick={() => setIsOpen(false)}>
+              <Link to="/contact" className="micro-interaction w-full py-4 text-xl text-white mt-4" onClick={() => setIsOpen(false)}>
                 <Button variant="primary" size="sm" className="w-full">
                   Contact Us
                 </Button>
-              </NavLink>
+              </Link>
             </nav>
           </Container>
         </div>}

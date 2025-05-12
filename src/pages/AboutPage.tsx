@@ -1,25 +1,23 @@
 
 import React from "react";
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import Process from "@/components/Process";
+import AboutUs from "@/components/AboutUs";
 import { SeoHead } from "@/components/seo/SeoHead";
 
-const Index = () => {
+const AboutPage = () => {
   return (
     <div className="min-h-screen bg-[#080112]">
       {/* SEO Head with metadata and structured data */}
-      <SeoHead currentPath="/" currentHash="" />
+      <SeoHead currentPath="/about" currentHash="" />
       
       <Header />
-      <main>
-        <Hero />
-        <Process />
+      <main className="pt-20">
+        <AboutUs />
       </main>
       <Footer />
     </div>
   );
 };
 
-export default Index;
+export default AboutPage;
