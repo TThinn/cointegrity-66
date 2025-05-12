@@ -25,7 +25,7 @@ export const services: ServiceData[] = [{
   color: "#cb46b3"
 }, {
   icon: createIcon(Scale),
-  title: "Tax & Compliance",
+  title: "TAX & COMPLIANCE",
   items: ["MiCA", "Crypto Tax Returns", "Tax & Legal Mapping", "Banking, Accounting & Auditing", "Due Diligence Reports", "Crypto Compliance", "AML/KYC/CFT"],
   color: "#cb46b3"
 }, {
