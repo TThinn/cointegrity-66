@@ -74,13 +74,12 @@ const AboutUs = () => {
   if (particleCount === null) return null;
   return <section id="about" className="py-20 bg-gradient-to-b from-[#FEFCFD] to-[#FDF9FC] relative">
       <Container>
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3]">About Us</h2>
-        </div>
-
         <div className="flex flex-col md:flex-row gap-10 mb-16">
           {/* Left column */}
           <div className="w-full md:w-2/5">
+            {/* Moved h2 heading here with left alignment */}
+            <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3] mb-4">About Us</h2>
+            
             <h3 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800 leading-tight">
               We are an Agile and Seasoned Team of Web3 Specialists.
             </h3>
