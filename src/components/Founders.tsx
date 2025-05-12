@@ -3,7 +3,6 @@ import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Github, X } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
-import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 
 const founders = [{
   name: "Torstein W. Thinn",
