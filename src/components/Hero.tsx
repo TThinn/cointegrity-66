@@ -120,9 +120,7 @@ const Hero = () => {
           lineHeight: 1.25,
           fontWeight: 400,
           maxWidth: "40rem"
-        }}>
-            We provide Full-cycle Web3 Consulting Solutions at the Intersection of Blockchain, AI, Gaming, Tax & Compliance.
-          </h2>
+        }}>We provide Full-cycle Web3 Consulting Solutions at the Intersection of Blockchain, AI Automation, Gaming, Tax &amp; Compliance.</h2>
         </div>
 
         {/* CTA Button with ref for positioning */}
