@@ -73,10 +73,55 @@ const Founders = () => {
               >
                 <div className="relative mb-4 w-24 h-24 overflow-hidden rounded-full mx-auto">
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800 opacity-10 rounded-full"></div>
-                  <Avatar className="w-full h-full">
-                    <AvatarImage src={founder.image} alt={founder.name} />
-                    <AvatarFallback>{founder.name.charAt(0)}</AvatarFallback>
-                  </Avatar>
+                  {founder.name === "Torstein W. Thinn" ? (
+                    <img 
+                      src={founder.image} 
+                      alt={founder.name} 
+                      className="object-cover w-full h-full" 
+                      style={{
+                        objectPosition: "center -20%",
+                        transform: "scale(1.7)"
+                      }} 
+                    />
+                  ) : founder.name === "Magnus Jones" ? (
+                    <img 
+                      src={founder.image} 
+                      alt={founder.name} 
+                      className="object-cover w-full h-full" 
+                      style={{
+                        objectPosition: "center top",
+                        transform: "scale(1.5)"
+                      }} 
+                    />
+                  ) : founder.name === "Feliks Olko" ? (
+                    <img 
+                      src={founder.image} 
+                      alt={founder.name} 
+                      className="absolute w-full h-full object-cover" 
+                      style={{
+                        top: "30%",
+                        transform: "scale(1.8) translateY(0)",
+                        objectFit: "cover"
+                      }} 
+                    />
+                  ) : founder.name === "Ruben Junger" ? (
+                    <img 
+                      src={founder.image} 
+                      alt={founder.name} 
+                      className="absolute w-full h-full object-cover" 
+                      style={{
+                        top: "40%",
+                        transform: "scale(1.75)",
+                        objectFit: "cover"
+                      }} 
+                    />
+                  ) : (
+                    <img 
+                      src={founder.image} 
+                      alt={founder.name} 
+                      className="object-cover w-full h-full" 
+                    />
+                  )}
                 </div>
                 <h3 className="text-[clamp(1rem,0.9rem+0.25vw,1.2rem)] font-semibold text-gray-800">{founder.name}</h3>
                 <div className="mt-1 text-[clamp(0.75rem,0.7rem+0.15vw,0.875rem)] font-medium text-[#cb46b3]">{founder.role}</div>
