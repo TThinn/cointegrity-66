@@ -37,7 +37,23 @@ const Header = () => {
   }, []);
 
   // Helper function to determine if we should use Link or anchor
-  const NavLink = ({ to, children, className, onClick }: { to: string; children: React.ReactNode; className?: string; onClick?: () => void }) => {
+  const NavLink = ({ 
+    to, 
+    children, 
+    className, 
+    onClick,
+    target,
+    rel,
+    "aria-label": ariaLabel 
+  }: { 
+    to: string; 
+    children: React.ReactNode; 
+    className?: string; 
+    onClick?: () => void;
+    target?: string;
+    rel?: string;
+    "aria-label"?: string;
+  }) => {
     // Use Link for internal routes without hash
     if (to.startsWith('/') && !to.includes('#')) {
       return (
@@ -48,7 +64,7 @@ const Header = () => {
     }
     // Use anchor for hash navigation (section links) or external URLs
     return (
-      <a href={to} className={className} onClick={onClick}>
+      <a href={to} className={className} onClick={onClick} target={target} rel={rel} aria-label={ariaLabel}>
         {children}
       </a>
     );
