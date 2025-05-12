@@ -1,8 +1,6 @@
-
 import React, { useLayoutEffect, useRef, useState, useEffect, useMemo } from "react";
 import Container from "./ui/Container";
 import { Link } from "react-router-dom";
-
 const CTA_PARTICLE_COUNT_DESKTOP = 12; // Increased from 8 to make more visible
 const CTA_PARTICLE_COUNT_MOBILE = 5; // Increased from 3 to make more visible
 
@@ -74,9 +72,7 @@ const AboutUs = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  
   if (particleCount === null) return null;
-  
   return <section id="about" className="py-20 bg-gradient-to-b from-[#FEFCFD] to-[#FDF9FC] relative">
       <Container>
         <div className="flex flex-col md:flex-row gap-10 mb-16">
@@ -125,7 +121,7 @@ const AboutUs = () => {
           
           {/* Right column */}
           <div className="w-full md:w-3/5 text-gray-600">
-            <p className="mb-4">We provide comprehensive Web3 advisory and execution services, bridging the gap between traditional business and decentralized innovation. Our expertise spans strategy, product development, go-to-market, tax & compliance, and capital acceleration - delivering solutions that simplify complexity and amplify opportunity.</p>
+            <p className="mb-4">We provide comprehensive Web3 advisory and execution services, bridging the gap between traditional business and decentralized innovation. Our expertise spans strategy, product development, go-to-market, AI as a service, tax &amp; compliance, and capital acceleration - delivering solutions that simplify complexity and amplify opportunity.</p>
             <p className="mb-4">
               Specializing in blockchain integration and regulatory navigation, we help you transform your vision into reality. Whether you're launching a token, building a compliant platform, or seeking funding for your Web3 initiative, our team guides you from concept to execution.
             </p>
