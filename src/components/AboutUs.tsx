@@ -1,5 +1,8 @@
+
 import React, { useLayoutEffect, useRef, useState, useEffect, useMemo } from "react";
 import Container from "./ui/Container";
+import { Link } from "react-router-dom";
+
 const CTA_PARTICLE_COUNT_DESKTOP = 12; // Increased from 8 to make more visible
 const CTA_PARTICLE_COUNT_MOBILE = 5; // Increased from 3 to make more visible
 
@@ -71,7 +74,9 @@ const AboutUs = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  
   if (particleCount === null) return null;
+  
   return <section id="about" className="py-20 bg-gradient-to-b from-[#FEFCFD] to-[#FDF9FC] relative">
       <Container>
         <div className="flex flex-col md:flex-row gap-10 mb-16">
@@ -106,7 +111,7 @@ const AboutUs = () => {
               }} />)}
               </div>
 
-              {/* Button */}
+              {/* Button - using a fragment with href for simplicity with animations, but will navigate to the ID */}
               <a href="#contact" className="inline-flex items-center z-10 relative" // Added relative positioning
             ref={ctaRef}>
                 <button className="bg-[#010822]/5 backdrop-blur-md text-white px-6 py-3 rounded-full

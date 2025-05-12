@@ -3,11 +3,14 @@ import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import { Menu, X } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,10 +36,28 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Helper function to determine if we should use Link or anchor
+  const NavLink = ({ to, children, className, onClick }: { to: string; children: React.ReactNode; className?: string; onClick?: () => void }) => {
+    // Use Link for internal routes without hash
+    if (to.startsWith('/') && !to.includes('#')) {
+      return (
+        <Link to={to} className={className} onClick={onClick}>
+          {children}
+        </Link>
+      );
+    }
+    // Use anchor for hash navigation (section links) or external URLs
+    return (
+      <a href={to} className={className} onClick={onClick}>
+        {children}
+      </a>
+    );
+  };
+
   return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3 bg-black/70 backdrop-blur-lg shadow-md' : 'py-6 bg-transparent'}`}>
       <Container>
         <div className="flex items-center justify-between">
-          <a href="/" className="relative z-10 micro-interaction">
+          <NavLink to="/" className="relative z-10 micro-interaction">
             <div className="flex items-center">
               <img 
                 src="/lovable-uploads/23b8985f-164c-4c02-a983-2dfa808c0689.png" 
@@ -44,7 +65,7 @@ const Header = () => {
                 className="h-10 w-auto" 
               />
             </div>
-          </a>
+          </NavLink>
 
           <nav className="hidden md:flex items-center gap-1">
             {[
@@ -54,19 +75,19 @@ const Header = () => {
               { href: "#founders", label: "Team" },
               { href: "#testimonials", label: "Testimonials" }
             ].map(({ href, label }) => (
-              <a 
+              <NavLink 
                 key={href}
-                href={href} 
+                to={href} 
                 className={`micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors relative
                   ${activeSection === href.slice(1) ? 'text-white' : 'hover:text-white'}
                   ${activeSection === href.slice(1) ? 'font-semibold' : ''}`}
               >
                 {label}
-              </a>
+              </NavLink>
             ))}
-            <a href="#contact" className="pl-4 micro-interaction">
+            <NavLink to="#contact" className="pl-4 micro-interaction">
               <Button variant="primary" size="sm">Connect</Button>
-            </a>
+            </NavLink>
           </nav>
 
           <button className="md:hidden text-white p-2 micro-interaction" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
@@ -85,21 +106,21 @@ const Header = () => {
                 { href: "#founders", label: "Team" },
                 { href: "#testimonials", label: "Testimonials" }
               ].map(({ href, label }) => (
-                <a
+                <NavLink
                   key={href}
-                  href={href}
+                  to={href}
                   className={`micro-interaction w-full py-4 text-xl border-b border-white/10
                     ${activeSection === href.slice(1) ? 'text-white' : 'text-white/90 hover:text-white'}`}
                   onClick={() => setIsOpen(false)}
                 >
                   {label}
-                </a>
+                </NavLink>
               ))}
-              <a href="#contact" className="micro-interaction w-full py-4 text-xl text-white mt-4" onClick={() => setIsOpen(false)}>
+              <NavLink to="#contact" className="micro-interaction w-full py-4 text-xl text-white mt-4" onClick={() => setIsOpen(false)}>
                 <Button variant="primary" size="sm" className="w-full">
                   Contact Us
                 </Button>
-              </a>
+              </NavLink>
             </nav>
           </Container>
         </div>}
