@@ -15,7 +15,7 @@ const createIcon = (Icon: any) => React.createElement(Icon, { size: 24, classNam
 
 export const services: ServiceData[] = [{
   icon: createIcon(Target),
-  title: "STRATEGIC POSITIONING",
+  title: "DIGITAL STRATEGY",
   items: ["Product Market Fit", "Go-To-Market", "Messaging", "Partnerships", "Ecosystem Mapping", "Market Insight Report", "Advisory Board"],
   color: "#cb46b3"
 }, {
@@ -30,7 +30,7 @@ export const services: ServiceData[] = [{
   color: "#cb46b3"
 }, {
   icon: createIcon(Rocket),
-  title: "CAPITAL ACCELERATION",
+  title: "GROWTH CAPITAL",
   items: ["Investor Network Access", "Investor Relations Support", "Market Making", "Grants", "Pitch Coaching", "Collateral", "Data Room"],
   color: "#cb46b3"
 }];
