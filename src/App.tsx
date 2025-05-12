@@ -8,12 +8,6 @@ import { HelmetProvider } from "react-helmet-async"
 import Index from "./pages/Index"
 import NotFound from "./pages/NotFound"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
-import AboutPage from "./pages/AboutPage"
-import ServicesPage from "./pages/ServicesPage"
-import PartnersPage from "./pages/PartnersPage"
-import TeamPage from "./pages/TeamPage"
-import TestimonialsPage from "./pages/TestimonialsPage"
-import ContactPage from "./pages/ContactPage"
 import { useAnalytics } from "./hooks/useAnalytics"
 import './index.css'
 import './App.css'
@@ -43,12 +37,6 @@ const App = () => (
             <RouteTracker />
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/partners" element={<PartnersPage />} />
-              <Route path="/team" element={<TeamPage />} />
-              <Route path="/testimonials" element={<TestimonialsPage />} />
-              <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

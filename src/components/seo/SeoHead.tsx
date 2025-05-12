@@ -11,18 +11,18 @@ interface SeoHeadProps {
 export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) => {
   // Determine which section is being viewed to customize meta tags
   const getSectionTitle = () => {
-    switch(currentPath) {
-      case "/team":
+    switch(currentHash) {
+      case "#founders":
         return "Meet Our Expert Team | Cointegrity Web3 Consultancy";
-      case "/services":
+      case "#services":
         return "Our Web3 & Blockchain Services | Cointegrity";
-      case "/partners":
+      case "#partners":
         return "Our Industry Partners | Cointegrity";
-      case "/testimonials":
+      case "#testimonials":
         return "Client Success Stories | Cointegrity";
-      case "/about":
+      case "#about":
         return "About Cointegrity | Web3 & Blockchain Experts";
-      case "/contact":
+      case "#contact":
         return "Contact Cointegrity | Web3 & Blockchain Consultation";
       default:
         return "Strategic Consulting & Web3 Infrastructure Solutions | Cointegrity";
@@ -30,18 +30,18 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
   };
   
   const getSectionDescription = () => {
-    switch(currentPath) {
-      case "/team":
+    switch(currentHash) {
+      case "#founders":
         return "Meet the talented team of Web3 specialists behind Cointegrity's success. Our founders bring decades of experience in blockchain technology and digital asset transformation.";
-      case "/services":
+      case "#services":
         return "Discover our comprehensive Web3 services including strategic positioning, tokenomics design, regulatory compliance, and capital acceleration solutions.";
-      case "/partners":
+      case "#partners":
         return "Explore our network of trusted industry partners helping us deliver exceptional blockchain solutions and digital asset services.";
-      case "/testimonials":
+      case "#testimonials":
         return "Read what our clients say about Cointegrity's Web3 consultancy services. Real success stories from businesses we've helped transform.";
-      case "/about":
+      case "#about":
         return "Learn about Cointegrity's mission to simplify Web3 complexity and our comprehensive approach to blockchain consulting and implementation.";
-      case "/contact":
+      case "#contact":
         return "Connect with Cointegrity's Web3 experts for consultation on blockchain technology, tokenomics, and regulatory compliance solutions.";
       default:
         return "Cointegrity delivers expert consulting across government, Web3, and corporate sectors. Our team enhances service delivery through AI-powered solutions while strongly focusing on personal collaboration. Specializing in Digital Strategy, Web3 infrastructure, Tax & Compliance, and providing growth capital.";
@@ -50,8 +50,6 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
 
   // Get all structured data objects
   const structuredDataObjects = getStructuredData();
-
-  const fullUrl = `https://cointegrity.io${currentPath}${currentHash}`;
 
   return (
     <Helmet>
@@ -67,7 +65,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       <meta property="og:image:alt" content="Cointegrity Logo" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:url" content={fullUrl} />
+      <meta property="og:url" content={`https://cointegrity.io${currentPath}${currentHash}`} />
       <meta property="og:site_name" content="Cointegrity" />
       <meta property="og:locale" content="en_US" />
       
@@ -88,7 +86,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       <link rel="shortcut icon" href="/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" />
       
       {/* Canonical */}
-      <link rel="canonical" href={fullUrl} />
+      <link rel="canonical" href={`https://cointegrity.io${currentPath}${currentHash}`} />
       
       {/* Include all structured data directly */}
       {structuredDataObjects.map((data, index) => (
