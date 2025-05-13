@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { getStructuredData } from "./SectionStructuredData";
@@ -24,6 +23,8 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
         return "About Cointegrity | Web3 & Blockchain Experts";
       case "#contact":
         return "Contact Cointegrity | Web3 & Blockchain Consultation";
+      case "#faq":
+        return "Frequently Asked Questions | Web3 & Blockchain | Cointegrity";
       default:
         return "Cointegrity Web3 Consultancy - Blockchain Solutions & Tokenomics Experts";
     }
@@ -43,6 +44,8 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
         return "Learn about Cointegrity's mission to simplify Web3 complexity and our comprehensive approach to blockchain consulting and implementation.";
       case "#contact":
         return "Connect with Cointegrity's Web3 experts for consultation on blockchain technology, tokenomics, and regulatory compliance solutions.";
+      case "#faq":
+        return "Get answers to common questions about blockchain, Web3, tokenomics, and MiCA compliance from Cointegrity's expert consultants.";
       default:
         return "Leading Web3 consultancy specialized in blockchain strategy, tokenomics design, and MiCA regulatory compliance for enterprises building the future of finance.";
     }
