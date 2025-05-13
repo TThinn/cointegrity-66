@@ -21,18 +21,15 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, isLast }) => {
   const iconElement = iconComponents[step.icon as keyof typeof iconComponents];
 
   return (
-    <div className="process-card p-6 animate-fade-up">
-      <div className="flex items-start">
-        <div className="mr-6 flex-shrink-0">
-          <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-white/5 border border-white/10">
-            {iconElement}
-          </div>
+    <div className="neo-box p-6 animate-fade-up bg-enhanced-contrast rounded-lg hover:translate-y-[-4px] transition-all duration-300">
+      <div className="mb-4 flex-shrink-0">
+        <div className="flex items-center justify-center w-14 h-14 rounded-lg bg-[#1f2937]/60 border border-white/5">
+          {iconElement}
         </div>
-        <div>
-          <h4 className="text-xl font-semibold text-white mb-2">{step.title}</h4>
-          <p className="text-white/70 leading-relaxed">{step.description}</p>
-          {!isLast && <div className="mt-8 h-8 border-l border-dashed border-white/10 ml-8"></div>}
-        </div>
+      </div>
+      <div>
+        <h4 className="text-xl font-semibold text-white mb-3">{step.title}</h4>
+        <p className="text-white/70 leading-relaxed">{step.description}</p>
       </div>
     </div>
   );

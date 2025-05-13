@@ -5,5 +5,9 @@
 }
 
 .bg-enhanced-contrast {
-  background-color: rgba(31, 41, 55, 0.9); /* Darker background with sufficient opacity */
+  background-color: rgba(16, 24, 39, 0.85); /* Darker background with sufficient opacity */
+}
+
+.process-icon-bg {
+  background: linear-gradient(135deg, #2d1846 0%, #3a1e57 100%);
 }
