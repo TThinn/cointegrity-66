@@ -33,8 +33,8 @@ const Index = () => {
       {/* SEO Head with all metadata and structured data */}
       <SeoHead currentPath={currentPath} currentHash={currentHash} />
       
-      <Header role="banner" />
-      <main id="main" role="main">
+      <Header />
+      <main id="main">
         <Hero />
         <AboutUs />
         <Process />
@@ -44,7 +44,7 @@ const Index = () => {
         <Testimonials />
         <ContactForm />
       </main>
-      <Footer role="contentinfo" />
+      <Footer />
     </div>
   );
 };

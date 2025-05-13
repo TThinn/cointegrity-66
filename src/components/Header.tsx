@@ -3,14 +3,14 @@ import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import { Menu, X } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
   const location = useLocation();
+  const isHomepage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,23 +18,25 @@ const Header = () => {
       const offset = window.scrollY;
       setScrolled(offset > 50);
 
-      // Handle section highlighting
-      const sections = ['about', 'services', 'partners', 'founders', 'testimonials'];
-      const currentSection = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
+      if (isHomepage) {
+        // Handle section highlighting on homepage
+        const sections = ['about', 'services', 'partners', 'founders', 'testimonials'];
+        const currentSection = sections.find(section => {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            return rect.top <= 100 && rect.bottom >= 100;
+          }
+          return false;
+        });
 
-      setActiveSection(currentSection || '');
+        setActiveSection(currentSection || '');
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHomepage]);
 
   // Helper function to determine if we should use Link or anchor
   const NavLink = ({ 
@@ -54,23 +56,60 @@ const Header = () => {
     rel?: string;
     "aria-label"?: string;
   }) => {
-    // Use Link for internal routes without hash
-    if (to.startsWith('/') && !to.includes('#')) {
+    // For hash links on homepage
+    if (isHomepage && to.startsWith('#')) {
       return (
-        <Link to={to} className={className} onClick={onClick}>
+        <a href={to} className={className} onClick={onClick} target={target} rel={rel} aria-label={ariaLabel}>
           {children}
-        </Link>
+        </a>
       );
     }
-    // Use anchor for hash navigation (section links) or external URLs
+    // For external links
+    if (to.startsWith('http') || to.startsWith('mailto:')) {
+      return (
+        <a href={to} className={className} onClick={onClick} target={target} rel={rel} aria-label={ariaLabel}>
+          {children}
+        </a>
+      );
+    }
+    // For internal navigation
     return (
-      <a href={to} className={className} onClick={onClick} target={target} rel={rel} aria-label={ariaLabel}>
+      <Link to={to} className={className} onClick={onClick}>
         {children}
-      </a>
+      </Link>
     );
   };
 
-  return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3 bg-black/70 backdrop-blur-lg shadow-md' : 'py-6 bg-transparent'}`}>
+  const navigation = [
+    { 
+      href: isHomepage ? "#about" : "/about", 
+      label: "About Us",
+      section: "about"
+    },
+    { 
+      href: isHomepage ? "#services" : "/services", 
+      label: "Services",
+      section: "services"
+    },
+    { 
+      href: isHomepage ? "#partners" : "/partners", 
+      label: "Partners",
+      section: "partners"
+    },
+    { 
+      href: isHomepage ? "#founders" : "/team", 
+      label: "Team",
+      section: "founders"
+    },
+    { 
+      href: isHomepage ? "#testimonials" : "/testimonials", 
+      label: "Testimonials",
+      section: "testimonials"
+    }
+  ];
+
+  return (
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3 bg-black/70 backdrop-blur-lg shadow-md' : 'py-6 bg-transparent'}`}>
       <Container>
         <div className="flex items-center justify-between">
           <NavLink to="/" className="relative z-10 micro-interaction">
@@ -84,63 +123,64 @@ const Header = () => {
           </NavLink>
 
           <nav className="hidden md:flex items-center gap-1">
-            {[
-              { href: "#about", label: "About Us" },
-              { href: "#services", label: "Services" },
-              { href: "#partners", label: "Partners" },
-              { href: "#founders", label: "Team" },
-              { href: "#testimonials", label: "Testimonials" }
-            ].map(({ href, label }) => (
+            {navigation.map(({ href, label, section }) => (
               <NavLink 
                 key={href}
                 to={href} 
                 className={`micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors relative
-                  ${activeSection === href.slice(1) ? 'text-white' : 'hover:text-white'}
-                  ${activeSection === href.slice(1) ? 'font-semibold' : ''}`}
+                  ${(activeSection === section || location.pathname === `/${section === 'founders' ? 'team' : section}`) ? 'text-white font-semibold' : 'hover:text-white'}`}
               >
                 {label}
               </NavLink>
             ))}
-            <NavLink to="#contact" className="pl-4 micro-interaction">
+            <NavLink 
+              to={isHomepage ? "#contact" : "/contact"} 
+              className="pl-4 micro-interaction"
+            >
               <Button variant="primary" size="sm">Connect</Button>
             </NavLink>
           </nav>
 
-          <button className="md:hidden text-white p-2 micro-interaction" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+          <button 
+            className="md:hidden text-white p-2 micro-interaction" 
+            onClick={() => setIsOpen(!isOpen)} 
+            aria-label="Toggle menu"
+          >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </Container>
 
-      {isOpen && <div className="fixed inset-0 bg-black/90 backdrop-blur-lg z-40 md:hidden pt-20">
+      {isOpen && (
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-lg z-40 md:hidden pt-20">
           <Container>
             <nav className="flex flex-col gap-4 items-center text-center">
-              {[
-                { href: "#about", label: "About Us" },
-                { href: "#services", label: "Services" },
-                { href: "#partners", label: "Partners" },
-                { href: "#founders", label: "Team" },
-                { href: "#testimonials", label: "Testimonials" }
-              ].map(({ href, label }) => (
+              {navigation.map(({ href, label, section }) => (
                 <NavLink
                   key={href}
                   to={href}
                   className={`micro-interaction w-full py-4 text-xl border-b border-white/10
-                    ${activeSection === href.slice(1) ? 'text-white' : 'text-white/90 hover:text-white'}`}
+                    ${(activeSection === section || location.pathname === `/${section === 'founders' ? 'team' : section}`) ? 'text-white' : 'text-white/90 hover:text-white'}`}
                   onClick={() => setIsOpen(false)}
                 >
                   {label}
                 </NavLink>
               ))}
-              <NavLink to="#contact" className="micro-interaction w-full py-4 text-xl text-white mt-4" onClick={() => setIsOpen(false)}>
+              <NavLink 
+                to={isHomepage ? "#contact" : "/contact"} 
+                className="micro-interaction w-full py-4 text-xl text-white mt-4" 
+                onClick={() => setIsOpen(false)}
+              >
                 <Button variant="primary" size="sm" className="w-full">
                   Contact Us
                 </Button>
               </NavLink>
             </nav>
           </Container>
-        </div>}
-    </header>;
+        </div>
+      )}
+    </header>
+  );
 };
 
 export default Header;

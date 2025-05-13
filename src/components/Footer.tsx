@@ -1,7 +1,12 @@
+
 import React from "react";
 import Container from "./ui/Container";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
 const Footer = () => {
+  const location = useLocation();
+  const isHomepage = location.pathname === '/';
+  
   // Helper function to determine if we should use Link or anchor
   const NavLink = ({
     to,
@@ -18,18 +23,45 @@ const Footer = () => {
     rel?: string;
     "aria-label"?: string;
   }) => {
+    // For hash links on homepage
+    if (isHomepage && to.startsWith('#')) {
+      return (
+        <a href={to} className={className} target={target} rel={rel} aria-label={ariaLabel}>
+          {children}
+        </a>
+      );
+    }
+    
     // Use Link for internal routes without hash
     if (to.startsWith('/') && !to.includes('#')) {
-      return <Link to={to} className={className}>
+      return (
+        <Link to={to} className={className}>
           {children}
-        </Link>;
+        </Link>
+      );
     }
-    // Use anchor for hash navigation (section links) or external URLs
-    return <a href={to} className={className} target={target} rel={rel} aria-label={ariaLabel}>
+    
+    // Use anchor for external URLs
+    return (
+      <a href={to} className={className} target={target} rel={rel} aria-label={ariaLabel}>
         {children}
-      </a>;
+      </a>
+    );
   };
-  return <footer className="bg-[#080112] text-white py-12 border-t border-white/10">
+  
+  // Navigation links configuration
+  const quickLinks = [
+    { to: isHomepage ? "#about" : "/about", label: "About Us" },
+    { to: isHomepage ? "#services" : "/services", label: "Services" },
+    { to: isHomepage ? "#partners" : "/partners", label: "Partners" },
+    { to: isHomepage ? "#founders" : "/team", label: "Team" },
+    { to: isHomepage ? "#testimonials" : "/testimonials", label: "Testimonials" },
+    { to: isHomepage ? "#contact" : "/contact", label: "Contact" },
+    { to: "/privacy", label: "Privacy Policy" },
+  ];
+
+  return (
+    <footer className="bg-[#080112] text-white py-12 border-t border-white/10">
       <Container>
         <div className="flex flex-col md:flex-row justify-between">
           {/* Logo and intro */}
@@ -44,27 +76,15 @@ const Footer = () => {
           <div className="w-full md:w-1/3 mb-8 md:mb-0">
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <div className="grid grid-cols-2 gap-2">
-              <NavLink to="#about" className="text-white/70 hover:text-white transition-colors py-1">
-                About Us
-              </NavLink>
-              <NavLink to="#services" className="text-white/70 hover:text-white transition-colors py-1">
-                Services
-              </NavLink>
-              <NavLink to="#partners" className="text-white/70 hover:text-white transition-colors py-1">
-                Partners
-              </NavLink>
-              <NavLink to="#founders" className="text-white/70 hover:text-white transition-colors py-1">
-                Team
-              </NavLink>
-              <NavLink to="#testimonials" className="text-white/70 hover:text-white transition-colors py-1">
-                Testimonials
-              </NavLink>
-              <NavLink to="#contact" className="text-white/70 hover:text-white transition-colors py-1">
-                Contact
-              </NavLink>
-              <NavLink to="/privacy" className="text-white/70 hover:text-white transition-colors py-1">
-                Privacy Policy
-              </NavLink>
+              {quickLinks.map((link) => (
+                <NavLink 
+                  key={link.label}
+                  to={link.to} 
+                  className="text-white/70 hover:text-white transition-colors py-1"
+                >
+                  {link.label}
+                </NavLink>
+              ))}
             </div>
           </div>
           
@@ -99,6 +119,8 @@ const Footer = () => {
           </p>
         </div>
       </Container>
-    </footer>;
+    </footer>
+  );
 };
+
 export default Footer;

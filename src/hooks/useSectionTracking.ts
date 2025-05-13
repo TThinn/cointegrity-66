@@ -1,11 +1,23 @@
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAnalytics } from "@/hooks/useAnalytics";
+import { useLocation } from "react-router-dom";
 
 export const useSectionTracking = () => {
   const { trackEvent } = useAnalytics();
+  const location = useLocation();
+  const [currentHash, setCurrentHash] = useState(location.hash);
+  const isHomepage = location.pathname === '/';
 
   useEffect(() => {
+    // Update the hash when location changes
+    setCurrentHash(location.hash);
+  }, [location]);
+
+  useEffect(() => {
+    // Only track sections on the homepage
+    if (!isHomepage) return;
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -13,6 +25,7 @@ export const useSectionTracking = () => {
           // Update URL without triggering page reload (for better analytics tracking)
           if (sectionId) {
             window.history.replaceState({}, '', `#${sectionId}`);
+            setCurrentHash(`#${sectionId}`);
             trackEvent('section_view', {
               category: 'Navigation',
               label: sectionId,
@@ -29,11 +42,10 @@ export const useSectionTracking = () => {
     });
 
     return () => observer.disconnect();
-  }, [trackEvent]);
+  }, [isHomepage, trackEvent]);
 
   // Get the current URL path and hash
-  const currentPath = window.location.pathname;
-  const currentHash = window.location.hash;
+  const currentPath = location.pathname;
 
   return { currentPath, currentHash };
 };

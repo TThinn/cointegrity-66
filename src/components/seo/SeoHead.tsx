@@ -2,6 +2,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { getStructuredData } from "./SectionStructuredData";
+import { useLocation } from "react-router-dom";
 
 interface SeoHeadProps {
   currentPath: string;
@@ -9,8 +10,27 @@ interface SeoHeadProps {
 }
 
 export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) => {
+  const location = useLocation();
+  const pathWithoutSlash = location.pathname.replace(/^\/+/, '');
+  
   // Determine which section is being viewed to customize meta tags
   const getSectionTitle = () => {
+    // Handle path-based pages first
+    if (pathWithoutSlash === 'about') {
+      return "About Cointegrity | Web3 & Blockchain Experts";
+    } else if (pathWithoutSlash === 'services') {
+      return "Our Web3 & Blockchain Services | Cointegrity";
+    } else if (pathWithoutSlash === 'partners') {
+      return "Our Industry Partners | Cointegrity";
+    } else if (pathWithoutSlash === 'team') {
+      return "Meet Our Expert Team | Cointegrity Web3 Consultancy";
+    } else if (pathWithoutSlash === 'testimonials') {
+      return "Client Success Stories | Cointegrity";
+    } else if (pathWithoutSlash === 'contact') {
+      return "Contact Cointegrity | Web3 & Blockchain Consultation";
+    }
+    
+    // Handle hash-based navigation on homepage
     switch(currentHash) {
       case "#founders":
         return "Meet Our Expert Team | Cointegrity Web3 Consultancy";
@@ -32,6 +52,22 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
   };
   
   const getSectionDescription = () => {
+    // Handle path-based pages first
+    if (pathWithoutSlash === 'about') {
+      return "Learn about Cointegrity's mission to simplify Web3 complexity and our comprehensive approach to blockchain consulting and implementation.";
+    } else if (pathWithoutSlash === 'services') {
+      return "Discover our comprehensive Web3 services including strategic positioning, tokenomics design, regulatory compliance, and capital acceleration solutions.";
+    } else if (pathWithoutSlash === 'partners') {
+      return "Explore our network of trusted industry partners helping us deliver exceptional blockchain solutions and digital asset services.";
+    } else if (pathWithoutSlash === 'team') {
+      return "Meet the talented team of Web3 specialists behind Cointegrity's success. Our founders bring decades of experience in blockchain technology and digital asset transformation.";
+    } else if (pathWithoutSlash === 'testimonials') {
+      return "Read what our clients say about Cointegrity's Web3 consultancy services. Real success stories from businesses we've helped transform.";
+    } else if (pathWithoutSlash === 'contact') {
+      return "Connect with Cointegrity's Web3 experts for consultation on blockchain technology, tokenomics, and regulatory compliance solutions.";
+    }
+    
+    // Handle hash-based navigation on homepage
     switch(currentHash) {
       case "#founders":
         return "Meet the talented team of Web3 specialists behind Cointegrity's success. Our founders bring decades of experience in blockchain technology and digital asset transformation.";
@@ -52,6 +88,24 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
     }
   };
 
+  // Get canonical URL based on whether it's path or hash based
+  const getCanonicalUrl = () => {
+    const basePath = "https://cointegrity.io";
+    
+    // For dedicated section pages, use the path
+    if (pathWithoutSlash) {
+      return `${basePath}/${pathWithoutSlash}`;
+    }
+    
+    // For homepage with hash, use the hash
+    if (currentHash) {
+      return `${basePath}/${currentHash}`;
+    }
+    
+    // Default to homepage
+    return basePath;
+  };
+
   // Get all structured data objects
   const structuredDataObjects = getStructuredData();
 
@@ -70,7 +124,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       <meta property="og:image:alt" content="Cointegrity Logo" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:url" content={`https://cointegrity.io${currentPath}${currentHash}`} />
+      <meta property="og:url" content={getCanonicalUrl()} />
       <meta property="og:site_name" content="Cointegrity" />
       <meta property="og:locale" content="en_US" />
       
@@ -91,7 +145,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       <link rel="shortcut icon" href="/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" />
       
       {/* Canonical */}
-      <link rel="canonical" href={`https://cointegrity.io${currentPath}${currentHash}`} />
+      <link rel="canonical" href={getCanonicalUrl()} />
       
       {/* Preload critical resources */}
       <link rel="preload" href="/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" as="image" />
