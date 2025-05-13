@@ -97,7 +97,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   categories: ["blockchain_technology", "mining_staking"],
   related: ["Green Crypto", "Proof of Stake", "Carbon Offsetting"],
   trending: 9
-}
+},
   
   // Cryptocurrency Types
  {
