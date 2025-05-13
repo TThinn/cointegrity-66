@@ -93,8 +93,8 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <p className="text-white/70 mb-2">
               <span className="block font-medium text-white">Email:</span>
-              <NavLink to="mailto:contact@cointegrity.io" className="hover:text-white transition-colors">
-                contact@cointegrity.io
+              <NavLink to="mailto:hello@cointegrity.io" className="hover:text-white transition-colors">
+                hello@cointegrity.io
               </NavLink>
             </p>
             
