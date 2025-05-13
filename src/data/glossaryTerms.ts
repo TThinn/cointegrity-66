@@ -213,7 +213,7 @@ trending: 8
 },
 
 {
-term: "Speculative Tokens ("Shitcoins")",
+term: "Speculative Tokens (Shitcoins)",
 definition: "Cryptocurrencies created primarily for short-term speculation with minimal underlying utility, technological innovation, or long-term vision. Unlike memecoins which often develop strong communities, these tokens typically lack substantive development activity and are characterized by extreme volatility, anonymous teams, and marketing-driven narratives. They represent high-risk assets often associated with pump-and-dump schemes.",
 categories: ["cryptocurrency_types"],
 related: ["Market Speculation", "Token Launches", "Pump and Dump", "Due Diligence"],
