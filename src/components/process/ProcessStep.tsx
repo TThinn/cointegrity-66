@@ -1,47 +1,37 @@
 
 import React from "react";
+import { MapPin, Zap, Shield, Award } from "lucide-react";
 import { ProcessStep as ProcessStepType } from "./processData";
+
+// Create a mapping from icon names to actual icon components
+const iconComponents = {
+  MapPin: <MapPin className="text-[#cb46b3] w-8 h-8" />,
+  Zap: <Zap className="text-[#cb46b3] w-8 h-8" />,
+  Shield: <Shield className="text-[#cb46b3] w-8 h-8" />,
+  Award: <Award className="text-[#cb46b3] w-8 h-8" />
+};
 
 interface ProcessStepProps {
   step: ProcessStepType;
-  index: number;
-  isDarkBackground?: boolean;
+  isLast: boolean;
 }
 
-const ProcessStep: React.FC<ProcessStepProps> = ({ 
-  step, 
-  index, 
-  isDarkBackground = true 
-}) => {
+const ProcessStep: React.FC<ProcessStepProps> = ({ step, isLast }) => {
+  // Get the icon component based on the icon name
+  const iconElement = iconComponents[step.icon as keyof typeof iconComponents];
+
   return (
-    <div 
-      className={`p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 ${
-        isDarkBackground ? 'bg-white/10' : 'bg-white/20'
-      }`}
-      style={{
-        animationDelay: `${0.1 + index * 0.1}s`,
-        boxShadow: isDarkBackground ? "0 4px 15px rgba(0, 0, 0, 0.1)" : "0 4px 15px rgba(0, 0, 0, 0.05)",
-        border: isDarkBackground ? "1px solid rgba(255, 255, 255, 0.15)" : "1px solid rgba(255, 255, 255, 0.7)"
-      }}
-    >
-      <div 
-        className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" 
-        style={{
-          background: `linear-gradient(135deg, rgba(203, 70, 179, 0.2), rgba(203, 70, 179, 0.3))`
-        }}
-      >
-        {step.icon}
+    <div className="flex mb-12 last:mb-0 animate-fade-up items-start">
+      <div className="mr-6 flex-shrink-0">
+        <div className="flex items-center justify-center w-16 h-16 rounded-full bg-white/5 border border-white/10">
+          {iconElement}
+        </div>
       </div>
-      <h3 className={`text-[clamp(1.1rem,1rem+0.3vw,1.3rem)] font-semibold mb-3 ${
-        isDarkBackground ? 'text-white' : 'text-gray-800'
-      }`}>
-        {step.title}
-      </h3>
-      <p className={`text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] ${
-        isDarkBackground ? 'text-gray-200' : 'text-gray-600'
-      }`}>
-        {step.description}
-      </p>
+      <div>
+        <h4 className="text-xl font-semibold text-white mb-2">{step.title}</h4>
+        <p className="text-white/70 leading-relaxed">{step.description}</p>
+        {!isLast && <div className="mt-8 h-8 border-l border-dashed border-white/10 ml-8"></div>}
+      </div>
     </div>
   );
 };
