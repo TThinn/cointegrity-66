@@ -119,9 +119,9 @@ const AboutUs = () => {
           
           {/* Right column */}
           <div className="w-full md:w-3/5 text-gray-600">
-            <p className="mb-4">We provide comprehensive <strong>blockchain consulting</strong> and execution services, bridging the gap between traditional business and <strong>Web3 infrastructure</strong>. Our expertise spans strategic positioning, decentralized product development, go-to-market strategies, AI-powered solutions, <strong>Regulatory &amp; Tax Compliance</strong>, and growth capital - delivering solutions that simplify complexity and amplify opportunity.</p>
-            <p className="mb-4">Specializing in <strong>blockchain integration</strong> and regulatory navigation, we help transform your digital vision into reality. Whether you're launching a token, building a compliant platform, or seeking funding for your <strong>Web3 initiative</strong>, our team guides you through the entire <strong>digital transformation</strong> journey.</p>
-            <p>We are committed to bringing <strong>integrity and clarity</strong> to the decentralized landscape, striking the perfect balance between innovation and compliance, opportunity and security, vision and execution.</p>
+            <p className="mb-4">We transform traditional businesses into <strong>Web3 leaders</strong> through proven blockchain solutions that significantly <strong>reduce costs</strong> and <strong>accelerate time-to-market</strong>. Our expertise spans strategic positioning, decentralized product development, go-to-market strategies, AI-powered solutions, <strong>Regulatory &amp; Tax Compliance</strong>, and growth capital - delivering solutions that simplify complexity and amplify opportunity.</p>
+            <p className="mb-4">Eliminate regulatory headaches and technical barriers with our <strong>battle-tested blockchain integration</strong> framework. Whether you're launching a token, building a compliant platform, or seeking funding for your <strong>Web3 initiative</strong>, our team guides you through the entire <strong>digital transformation</strong> journey.</p>
+            <p>Sleep soundly knowing your Web3 project combines <strong>cutting-edge innovation</strong> with <strong>bulletproof compliance</strong>, striking the perfect balance between innovation and compliance, opportunity and security, vision and execution.</p>
           </div>
         </div>
       </Container>
