@@ -89,3 +89,49 @@ export const calculateAspectRatio = (width: number, height: number): number => {
 export const shouldLazyLoad = (position: 'above-fold' | 'below-fold' | 'critical' | 'non-critical'): boolean => {
   return position !== 'above-fold' && position !== 'critical';
 };
+
+/**
+ * Check if the browser supports WebP format
+ * @returns Promise that resolves to a boolean
+ */
+export const supportsWebP = async (): Promise<boolean> => {
+  if (typeof window === 'undefined') return false;
+  
+  if ('createImageBitmap' in window && 'ImageDecoder' in window) {
+    // Modern browsers that support ImageDecoder API
+    return true;
+  }
+  
+  // Fallback check using canvas
+  const canvas = document.createElement('canvas');
+  if (canvas.getContext && canvas.getContext('2d')) {
+    // Check if toDataURL with WebP produces a WebP string
+    return canvas.toDataURL('image/webp').startsWith('data:image/webp');
+  }
+  
+  return false;
+};
+
+/**
+ * Returns the WebP version of an image URL if supported
+ * @param url Original image URL
+ * @param quality WebP quality (0-100)
+ * @returns WebP version of the URL if possible, original URL otherwise
+ */
+export const getWebPUrl = async (url: string, quality: number = 80): Promise<string> => {
+  // Skip WebP conversion for already WebP, GIFs, or SVGs
+  if (url.endsWith('.webp') || url.endsWith('.gif') || url.endsWith('.svg')) {
+    return url;
+  }
+  
+  const webpSupported = await supportsWebP();
+  if (!webpSupported) return url;
+  
+  if (url.startsWith('/')) {
+    // Local image
+    return `${url}?format=webp&q=${quality}`;
+  }
+  
+  // For remote URLs, we would need a CDN or backend that supports WebP conversion
+  return url;
+};
