@@ -8,22 +8,22 @@ const processSteps = [{
   id: 1,
   icon: <MapPin className="text-[#cb46b3] w-8 h-8" />,
   title: "DISCOVER",
-  description: "First it's important to understand who you, your team and your company are, What are your objectives, what problems are you solving and which challenges are you facing. Our team will go through a comprehensive screening together with you."
+  description: "We begin by thoroughly understanding your organization's unique position and objectives. Through structured analysis, we identify specific blockchain opportunities and potential regulatory considerations relevant to your business. This comprehensive assessment provides a clear picture of your current Web3 readiness and establishes a solid foundation for strategic planning."
 }, {
   id: 2,
   icon: <Zap className="text-[#cb46b3] w-8 h-8" />,
   title: "STRATEGIZE",
-  description: "Together we'll develop a tailored roadmap that aligns all your Web3 related concerns with compliance planning, strategic positioning  and go-to-market to maximize your impact and reach all your goals in an emerging market.  "
+  description: "Based on our discovery insights, we develop a tailored Web3 roadmap aligned with your business objectives. This practical blueprint addresses compliance requirements, technical implementation steps, and market positioning considerations. Our structured approach helps transform complex blockchain concepts into clear, actionable plans with defined milestones and resource requirements."
 }, {
   id: 3,
   icon: <Shield className="text-[#cb46b3] w-8 h-8" />,
   title: "IMPLEMENT",
-  description: "Our team guides you through execution, ensuring that there is constant felt progress and confidence in internal decision making. We will make you comfortable operating in the Web3 market."
+  description: "Our team provides hands-on guidance throughout the execution phase, ensuring methodical progress and building internal competence. We focus on knowledge transfer and practical skill development, helping your team gain confidence in Web3 operations. Regular progress reviews and adjustments ensure implementation remains aligned with strategic objectives."
 }, {
   id: 4,
   icon: <Award className="text-[#cb46b3] w-8 h-8" />,
   title: "SCALE",
-  description: "We help accelerate growth through capital raising, community building, and ongoing optimization, with continuous guidance to adapt to regulatory changes and new opportunities."
+  description: "Once your Web3 initiative is operational, we support sustainable growth through practical approaches to funding, community engagement, and ongoing optimization. Our continuous monitoring of regulatory developments helps you adapt to changes efficiently, while identifying new opportunities for blockchain application within your business context."
 }];
 const Process = () => {
   const isDarkBackground = true;
