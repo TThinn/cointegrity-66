@@ -81,7 +81,7 @@ const AboutUs = () => {
             {/* Moved h2 heading here with left alignment */}
             <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3] mb-4">DIGITAL ASSET PIONEERS</h2>
             
-            <h3 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800 leading-tight">Trusted Web3 Experts Solving Complex Blockchain Challenges Since 2018.</h3>
+            <h3 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800 leading-tight">Trusted Web3 Experts Solving Complex Blockchain Challenges Since 2018</h3>
 
             {/* CTA with particles - moved to left column */}
             <div ref={ctaSectionRef} className="relative flex justify-center mt-8 mb-6" style={{
