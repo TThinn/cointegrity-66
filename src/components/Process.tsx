@@ -137,9 +137,7 @@ const Process = () => {
             </div>
 
             <div className="flex-1 text-center md:text-left relative z-10">
-              <h3 className="text-[clamp(1.25rem,1.1rem+0.8vw,2rem)] font-bold mb-3 text-white">
-                Ready to get your project in motion?
-              </h3>
+              <h3 className="text-[clamp(1.25rem,1.1rem+0.8vw,2rem)] font-bold mb-3 text-white">Interested in discussing your Web3 possibilities?</h3>
             </div>
             
             <a href="#contact" className="inline-flex items-center relative z-10" ref={ctaRef}>
