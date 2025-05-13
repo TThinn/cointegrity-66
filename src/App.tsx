@@ -14,6 +14,7 @@ import PartnersPage from "./pages/PartnersPage"
 import TeamPage from "./pages/TeamPage"
 import TestimonialsPage from "./pages/TestimonialsPage"
 import ContactPage from "./pages/ContactPage"
+import GlossaryPage from "./pages/GlossaryPage"
 import { useAnalytics } from "./hooks/useAnalytics"
 import './index.css'
 import './App.css'
@@ -50,6 +51,7 @@ const App = () => (
               <Route path="/testimonials" element={<TestimonialsPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/glossary" element={<GlossaryPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
