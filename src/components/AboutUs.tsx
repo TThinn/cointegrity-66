@@ -79,7 +79,7 @@ const AboutUs = () => {
           {/* Left column */}
           <div className="w-full md:w-2/5">
             {/* Moved h2 heading here with left alignment */}
-            <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3] mb-4">About Us</h2>
+            <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3] mb-4">DIGITAL ASSET PIONEERS</h2>
             
             <h3 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800 leading-tight">Trusted Web3 Experts Solving Complex Blockchain Challenges Since 2018.</h3>
 
