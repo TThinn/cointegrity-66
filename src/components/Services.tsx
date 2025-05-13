@@ -9,7 +9,7 @@ const Services = () => {
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3]">Enterprise Blockchain Services &amp; Web3 Solutions</h2>
-          <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Web3 Consulting &amp; Blockchain Infrastructure Solutions</h3>
+          <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">Tailored Implementation Strategies for Complex Organizations</h3>
           <p className="mt-2 text-gray-600">Cointegrity provides specialized Web3 consulting and blockchain implementation for Government, Corporate, and emerging Web3 sectors. We combine personalized expert collaboration with AI-enhanced delivery methods, helping organizations navigate digital transformation efficiently while ensuring regulatory compliance and technical scalability.</p>
         </div>
 
