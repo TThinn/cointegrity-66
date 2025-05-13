@@ -14,13 +14,48 @@ import { glossaryTerms } from "@/data/glossaryTerms";
 import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
 import Footer from "@/components/Footer";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
-// Define category types for proper filtering
-type CategoryType = "blockchain" | "web3" | "ai" | "regulatory" | "tokenomics" | "gaming" | "strategy";
+// Define category types for proper filtering - this should match your glossaryTerms.ts type
+type CategoryType = 
+  | "blockchain" 
+  | "web3" 
+  | "ai" 
+  | "regulatory" 
+  | "tokenomics" 
+  | "gaming" 
+  | "strategy"
+  | "defi"
+  | "nft"
+  | "dao"
+  | "identity"
+  | "infrastructure"
+  | "security"
+  | "metaverse";
+
+// Category metadata for display
+const categoryMeta = [
+  { value: "all", label: "All Terms", description: "Browse all glossary terms" },
+  { value: "blockchain", label: "Blockchain", description: "Core blockchain concepts" },
+  { value: "web3", label: "Web3", description: "Decentralized web concepts" },
+  { value: "ai", label: "AI", description: "Artificial intelligence concepts" },
+  { value: "regulatory", label: "Regulatory", description: "Compliance and regulation" },
+  { value: "tokenomics", label: "Tokenomics", description: "Token economics" },
+  { value: "gaming", label: "Gaming", description: "Blockchain gaming" },
+  { value: "strategy", label: "Strategy", description: "Strategic implementation" },
+  { value: "defi", label: "DeFi", description: "Decentralized finance" },
+  { value: "nft", label: "NFTs", description: "Non-fungible tokens" },
+  { value: "dao", label: "DAOs", description: "Decentralized organizations" },
+  { value: "identity", label: "Identity", description: "Digital identity solutions" },
+  { value: "infrastructure", label: "Infrastructure", description: "Web3 infrastructure" },
+  { value: "security", label: "Security", description: "Blockchain security" },
+  { value: "metaverse", label: "Metaverse", description: "Virtual worlds" }
+];
 
 const GlossaryPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState<CategoryType | "all">("all");
+  const [activeTab, setActiveTab] = useState<string>("categories");
   const location = useLocation();
   
   // Sort terms alphabetically
@@ -54,18 +89,6 @@ const GlossaryPage: React.FC = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  // Categories for filtering
-  const categories = [
-    { label: "All", value: "all" },
-    { label: "Blockchain", value: "blockchain" },
-    { label: "Web3", value: "web3" },
-    { label: "AI", value: "ai" },
-    { label: "Regulatory", value: "regulatory" },
-    { label: "Tokenomics", value: "tokenomics" },
-    { label: "Gaming", value: "gaming" },
-    { label: "Strategy", value: "strategy" }
-  ];
 
   return (
     <>
@@ -102,19 +125,61 @@ const GlossaryPage: React.FC = () => {
                 <Search className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
               </div>
 
-              <div className="flex flex-wrap gap-2 mb-6">
-                {categories.map((category) => (
-                  <Button
-                    key={category.value}
-                    variant={activeCategory === category.value ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setActiveCategory(category.value as CategoryType | "all")}
-                    className="rounded-full"
-                  >
-                    {category.label}
-                  </Button>
-                ))}
-              </div>
+              <Tabs defaultValue="categories" value={activeTab} onValueChange={setActiveTab} className="mb-6">
+                <TabsList className="mb-4">
+                  <TabsTrigger value="categories">Categories</TabsTrigger>
+                  <TabsTrigger value="all">All Terms</TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="categories" className="space-y-6">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+                    {categoryMeta.map((category) => (
+                      <Card 
+                        key={category.value} 
+                        className={cn(
+                          "cursor-pointer transition-all",
+                          activeCategory === category.value ? "border-primary" : "hover:border-primary/50"
+                        )}
+                        onClick={() => setActiveCategory(category.value as CategoryType | "all")}
+                      >
+                        <CardContent className="p-4">
+                          <h3 className="font-semibold">{category.label}</h3>
+                          {category.value !== "all" && (
+                            <p className="text-xs text-muted-foreground mt-1">{category.description}</p>
+                          )}
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                  
+                  {activeCategory !== "all" && (
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => setActiveCategory("all")}
+                      className="mt-2"
+                    >
+                      Clear filter
+                    </Button>
+                  )}
+                </TabsContent>
+                
+                <TabsContent value="all">
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {categoryMeta.slice(1).map((category) => (
+                      <Button
+                        key={category.value}
+                        variant={activeCategory === category.value ? "default" : "outline"}
+                        size="sm"
+                        onClick={() => setActiveCategory(category.value as CategoryType)}
+                        className="rounded-full"
+                      >
+                        {category.label}
+                      </Button>
+                    ))}
+                  </div>
+                </TabsContent>
+              </Tabs>
 
               {searchTerm && filteredTerms.length === 0 ? (
                 <Card>
