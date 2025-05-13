@@ -2,7 +2,6 @@ import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Github, X } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
-
 const founders = [{
   name: "Torstein W. Thinn",
   role: "Co-Founder & Chairman",
@@ -42,33 +41,24 @@ const founders = [{
     linkedin: "https://www.linkedin.com/in/feliksolko/"
   }
 }];
-
 const Founders = () => {
   // Explicitly set this section to have a light background
   const isDarkBackground = false;
-  
   return <section id="founders" className="py-20 bg-gradient-to-b from-[#FEFCFD] to-[#FDF9FC] relative">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm font-semibold uppercase tracking-wider text-[#cb46b3]">Our Team</h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">The Minds Behind Cointegrity</h3>
-          <p className="mt-2 text-gray-600">Our battle-tested team will amplify your impact by simplifying the complexities of digital asset development, enabling you to focus on creating lasting value.</p>
+          <p className="mt-2 text-gray-600">Our blockchain-experienced team simplifies Web3 implementation and digital asset development, allowing you to focus on business value creation. With expertise spanning regulatory compliance, technical infrastructure, and strategic market positioning, we transform complex blockchain challenges into practical solutions for enterprise and government.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {founders.map((founder, index) => (
-            <div 
-              key={index} 
-              className="hover:translate-y-[-4px] transition-all duration-300 h-full"
-            >
-              <div 
-                className="p-6 backdrop-blur-sm text-center rounded-lg bg-white/20 flex flex-col h-full"
-                style={{
-                  animationDelay: `${0.1 + index * 0.1}s`,
-                  boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
-                  border: "1px solid rgba(255, 255, 255, 0.7)",
-                  willChange: "transform"
-                }}
-              >
+          {founders.map((founder, index) => <div key={index} className="hover:translate-y-[-4px] transition-all duration-300 h-full">
+              <div className="p-6 backdrop-blur-sm text-center rounded-lg bg-white/20 flex flex-col h-full" style={{
+            animationDelay: `${0.1 + index * 0.1}s`,
+            boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
+            border: "1px solid rgba(255, 255, 255, 0.7)",
+            willChange: "transform"
+          }}>
                 <div className="relative mb-4 w-24 h-24 overflow-hidden rounded-full mx-auto">
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800 opacity-10 rounded-full"></div>
                   {founder.name === "Torstein W. Thinn" ? <img src={founder.image} alt={founder.name} className="object-cover w-full h-full" style={{
@@ -124,11 +114,9 @@ const Founders = () => {
                     </a>}
                 </div>
               </div>
-            </div>
-          ))}
+            </div>)}
         </div>
       </Container>
     </section>;
 };
-
 export default Founders;
