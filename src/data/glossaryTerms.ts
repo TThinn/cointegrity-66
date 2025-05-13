@@ -218,7 +218,7 @@ definition: "Cryptocurrencies created primarily for short-term speculation with 
 categories: ["cryptocurrency_types"],
 related: ["Market Speculation", "Token Launches", "Pump and Dump", "Due Diligence"],
 trending: 6
-}
+},
   
   // Web3
   {
@@ -339,7 +339,7 @@ trending: 6
   categories: ["web3"],
   related: ["Web2", "Web3", "DAO Governance", "User Ownership"],
   trending: 9
-}
+},
   
   // DeFi
 {
@@ -460,7 +460,7 @@ definition: "Decentralized finance solutions designed for traditional financial 
 categories: ["defi", "compliance"],
 related: ["KYC/AML", "Permissioned DeFi", "Regulatory Compliance", "Institutional Adoption"],
 trending: 9
-}
+},
   
   // CeFi
   {
@@ -581,7 +581,7 @@ trending: 9
   categories: ["cefi", "crypto_economics"],
   related: ["Index Funds", "Algorithmic Trading", "Tax-Loss Harvesting", "Portfolio Rebalancing"],
   trending: 8
-}
+},
   
   // NFTs and Digital Collectibles
  {
@@ -678,7 +678,7 @@ definition: "Technical specifications that define how non-fungible tokens functi
 categories: ["nfts_collectibles", "blockchain_technology"],
 related: ["ERC-721", "ERC-1155", "ERC-7857", "Token Metadata"],
 trending: 8
-}
+},
   
   // Tokenomics
   {
@@ -775,7 +775,7 @@ definition: "Mathematical modeling and stress-testing of token economic systems 
 categories: ["tokenomics", "crypto_economics"],
 related: ["Economic Modeling", "Agent-Based Simulation", "Parameter Optimization", "Stress Testing"],
 trending: 8
-}
+},
   
   // Exchanges and Trading
  {
@@ -944,7 +944,7 @@ definition: "A cryptocurrency trading platform with centralized infrastructure m
 categories: ["exchanges_trading", "cefi"],
 related: ["Order Books", "KYC/AML", "Custodial Wallets", "Trading Pairs"],
 trending: 9
-}
+},
   
   // Wallets and Security
  {
@@ -1057,7 +1057,7 @@ definition: "Innovative cryptocurrency wallets that enable account recovery thro
 categories: ["wallets_security", "social_community"],
 related: ["Guardians", "Smart Contract Wallets", "Account Recovery", "Argent"],
 trending: 8
-}
+},
   
   // Mining and Staking
  {
@@ -1178,7 +1178,7 @@ definition: "A process that allows miners to simultaneously mine multiple crypto
 categories: ["mining_staking", "blockchain_technology"],
 related: ["Auxiliary Proof of Work", "Dogecoin", "Litecoin", "Scrypt Algorithm"],
 trending: 7
-}
+},
 
 // Regulatory Frameworks
 
@@ -1195,7 +1195,7 @@ definition: "Controlled testing environments established by financial regulators
 categories: ["regulatory_frameworks", "compliance"],
 related: ["Innovation Hubs", "Regulatory Innovation", "Fintech Development", "Supervised Testing"],
 trending: 7
-}
+},
 {
 term: "Markets in Crypto-Assets Regulation (MiCA)",
 definition: "The first comprehensive EU-wide regulatory framework for cryptocurrencies that establishes harmonized rules for crypto-asset issuers and service providers. MiCA introduces licensing requirements, operational standards, and consumer protection measures across all 27 EU member states, creating a unified approach to crypto regulation that enables passporting of services throughout the European Union.",
@@ -1230,7 +1230,7 @@ definition: "Regulatory bodies designated by each EU member state to implement a
 categories: ["regulatory_frameworks", "compliance"],
 related: ["Financial Regulators", "Supervision", "Enforcement Actions", "MiCA Implementation"],
 trending: 7
-}
+},
 {
 term: "Crypto-Asset Reporting Framework (CARF)",
 definition: "A global regulatory standard developed by the OECD that requires Crypto-Asset Service Providers to collect and report information on cryptocurrency transactions for tax purposes. CARF mandates the automatic exchange of tax-relevant information between jurisdictions, covering cryptocurrencies, stablecoins, and certain NFTs, with implementation expected to begin in 2025 for 2024 transactions.",
@@ -1272,7 +1272,7 @@ definition: "A standardized system where tax authorities automatically share tax
 categories: ["regulatory_frameworks", "compliance", "tax"],
 related: ["CRS", "CARF", "Tax Transparency", "Information Security"],
 trending: 7
-}
+},
 
 // Compliance 
 
@@ -1434,7 +1434,7 @@ trending: 7
   categories: ["compliance", "defi"],
   related: ["Smart Contract Audits", "Protocol Governance", "Anonymity Pools", "Decentralized Identity"],
   trending: 8
-}
+},
 {
 term: "Anti-Money Laundering Act",
 definition: "The foundational legislation requiring crypto businesses to implement controls preventing financial crime. The Act mandates that virtual currency service providers register with authorities, implement customer due diligence measures, monitor transactions, and report suspicious activities. Under regulations like the EU's MiCA, providers of exchange and custody services for virtual currencies are designated as obliged entities subject to comprehensive AML requirements.",
@@ -1455,7 +1455,7 @@ definition: "EU Regulation 2023/1113 requiring crypto-asset service providers to
 categories: ["compliance", "regulatory_frameworks"],
 related: ["Travel Rule", "FATF Recommendations", "MiCA", "Transaction Monitoring"],
 trending: 9
-}
+},
 
 // History
 
@@ -1664,7 +1664,7 @@ definition: "Specialized tools that continuously track blockchain network health
 categories: ["infrastructure_applications", "blockchain_technology"],
 related: ["Network Analytics", "Performance Metrics", "Alert Systems", "Preventive Maintenance"],
 trending: 7
-}
+},
 
 // Gaming and Metaverse
 
@@ -1794,7 +1794,7 @@ definition: "A blockchain-based virtual world that empowers players to create, o
 categories: ["gaming_metaverse", "nfts_collectibles"],
 related: ["SAND Token", "VoxEdit", "Game Maker", "User-Generated Content"],
 trending: 8
-}
+},
 
 // Social and Community
 
@@ -1900,7 +1900,7 @@ definition: "Online platforms where community members discuss proposals, share i
 categories: ["social_community", "web3"],
 related: ["Community Discussion", "Proposal Refinement", "Deliberative Process", "Consensus Building"],
 trending: 7
-}
+},
 
 // AI and Data Solutions
 
@@ -2022,7 +2022,7 @@ definition: "The development of artificial intelligence systems optimized for sp
 categories: ["ai_data"],
 related: ["Domain-specific AI", "Targeted Optimization", "Performance Enhancement", "Use Case Focus"],
 trending: 7
-}
+},
 
 // DePIN
 
@@ -2104,7 +2104,7 @@ definition: "The emerging trend of specialized entities that deploy and manage i
 categories: ["depin", "infrastructure_applications"],
 related: ["Node Management", "Infrastructure Scaling", "Operational Efficiency", "Multi-network Deployment"],
 trending: 8
-}
+},
 
 // Cross-chain Technology
 
@@ -2171,7 +2171,7 @@ definition: "Decentralized finance applications that operate across multiple blo
 categories: ["cross_chain", "defi"],
 related: ["Liquidity Aggregation", "Cross-chain Lending", "Multi-chain Yield", "DeFi Interoperability"],
 trending: 9
-}
+},
 
 // Smart Contracts
 
@@ -2253,7 +2253,7 @@ definition: "Blockchain networks specifically designed to support the creation, 
 categories: ["smart_contracts", "blockchain_technology"],
 related: ["Ethereum", "EOS", "Stellar", "Development Frameworks"],
 trending: 9
-}
+},
 
 // Technical analysis
 
@@ -2335,7 +2335,7 @@ definition: "Straight lines drawn on cryptocurrency charts connecting a series o
 categories: ["technical_analysis", "exchanges_trading"],
 related: ["Uptrends", "Downtrends", "Trend Reversals", "Price Channels"],
 trending: 8
-}
+},
 
 // Privacy coins and tech
 
@@ -2417,7 +2417,7 @@ definition: "A cryptocurrency that offers optional privacy features through its 
 categories: ["privacy_technology", "cryptocurrency_types"],
 related: ["PrivateSend", "CoinJoin", "Optional Privacy", "Transaction Mixing"],
 trending: 7
-}
+},
 
 // Layer 2 Solutions
 
@@ -2499,11 +2499,9 @@ definition: "Cryptographic proofs used in ZK-Rollups to verify the correctness o
 categories: ["layer2_solutions", "privacy_technology"],
 related: ["ZK-Rollups", "zk-SNARKs", "zk-STARKs", "Cryptographic Proofs"],
 trending: 9
-}
+},
 
 // Tokenization
-
-
 
 {
 term: "Asset Tokenization",
@@ -2575,7 +2573,7 @@ definition: "The initial phase of tokenization where issuers identify and evalua
 categories: ["tokenization", "regulatory_frameworks"],
 related: ["Asset Evaluation", "Regulatory Assessment", "Legal Framework", "Tokenization Planning"],
 trending: 7
-}
+},
 
 // Crypto economics
 
