@@ -1,4 +1,3 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import TestimonialCard from "./testimonials/TestimonialCard";
@@ -6,7 +5,6 @@ import ParticleEffect from "./testimonials/ParticleEffect";
 import { useTestimonials } from "./testimonials/useTestimonials";
 import { useParticles } from "./testimonials/useParticles";
 import { testimonials } from "./testimonials/testimonialsData";
-
 const Testimonials = () => {
   const {
     activeTestimonials,
@@ -18,11 +16,12 @@ const Testimonials = () => {
     testimonialsGridRef,
     maxSectionHeight
   } = useTestimonials();
-  
-  const { particles, sectionRef, buttonRef } = useParticles();
-
-  return (
-    <section id="testimonials" className="py-20 relative overflow-hidden" ref={sectionRef}>
+  const {
+    particles,
+    sectionRef,
+    buttonRef
+  } = useParticles();
+  return <section id="testimonials" className="py-20 relative overflow-hidden" ref={sectionRef}>
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]"></div>
         <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
@@ -31,27 +30,18 @@ const Testimonials = () => {
       <Container>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">CLIENT TESTIMONIALS</h2>
-            <h3 className="mt-2 text-3xl md:text-4xl font-bold text-white">Why Work With Us</h3>
+            <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">Client Success Stories</h2>
+            <h3 className="mt-2 text-3xl md:text-4xl font-bold text-white">Why Leading Organizations Choose Our Web3 Expertise</h3>
             <p className="mt-2 text-white/60 max-w-2xl mx-auto">
               We believe in a knowledge-first approach to Web3 transformation. We fully understand that navigating the decentralized landscape is a critical strategic challenge for any organization. Our team of specialists brings deep expertise across strategy, product development, tax & compliance, and capital acceleration - delivering solutions that bridge the gap between traditional business and web3 innovation, acting as a dependable guide through your complex Web3 challenges. Don't just take our word for it, here are some testimonials from people we have worked with:
             </p>
           </div>
 
-          <div className="transition-all duration-300 relative z-30" style={{ minHeight: `${maxSectionHeight}px` }}>
+          <div className="transition-all duration-300 relative z-30" style={{
+          minHeight: `${maxSectionHeight}px`
+        }}>
             <div ref={testimonialsGridRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {[0, 1, 2, 3].map(position => (
-                <TestimonialCard
-                  key={position}
-                  testimonial={testimonials[activeTestimonials[position]]}
-                  position={position}
-                  isChanging={changingIndex === position}
-                  isVisible={isVisible}
-                  isHovered={hoveredCard === position}
-                  onMouseEnter={handleCardMouseEnter}
-                  onMouseLeave={handleCardMouseLeave}
-                />
-              ))}
+              {[0, 1, 2, 3].map(position => <TestimonialCard key={position} testimonial={testimonials[activeTestimonials[position]]} position={position} isChanging={changingIndex === position} isVisible={isVisible} isHovered={hoveredCard === position} onMouseEnter={handleCardMouseEnter} onMouseLeave={handleCardMouseLeave} />)}
             </div>
           </div>
           
@@ -111,8 +101,6 @@ const Testimonials = () => {
           }
         `}
       </style>
-    </section>
-  );
+    </section>;
 };
-
 export default Testimonials;
