@@ -90,9 +90,9 @@ const Process = () => {
       <Container>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-fade-up">
-            <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">OUR PROCESS</h2>
-            <h3 className="mt-2 text-3xl md:text-4xl font-bold mb-2 text-white">Your Journey to Web3 Success</h3>
-            <p className="mt-2 text-white/60 max-w-2xl mx-auto">A structured approach to transform your business, focusing on delivering maximum value</p>
+            <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">Results-Focused Approach</h2>
+            <h3 className="mt-2 text-3xl md:text-4xl font-bold mb-2 text-white">From Web3 Complexity to Blockchain Success </h3>
+            <p className="mt-2 text-white/60 max-w-2xl mx-auto">Our Proven 4-Step Process</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
