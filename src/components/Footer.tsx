@@ -69,7 +69,7 @@ const Footer = () => {
             <NavLink to="/" className="inline-block mb-4">
               <img src="/lovable-uploads/23b8985f-164c-4c02-a983-2dfa808c0689.png" alt="Cointegrity Logo" className="h-10 w-auto" />
             </NavLink>
-            <p className="text-white/70 mb-4">Your trusted partner in Web3 & Blockchain consultancy, providing strategy consulting and technical expertise.</p>
+            <p className="text-white/70 mb-4">Expert blockchain strategy, regulatory compliance, and Web3 implementation services for organizations navigating digital asset transformation and decentralized infrastructure.</p>
           </div>
           
           {/* Quick links */}
