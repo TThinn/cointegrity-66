@@ -123,7 +123,7 @@ const ProcessCTA: React.FC = () => {
       </a>
 
       {/* Animation Styles */}
-      <style jsx>{`
+      <style>{`
         @keyframes light-particle {
           0%, 100% { 
             opacity: 0.4;

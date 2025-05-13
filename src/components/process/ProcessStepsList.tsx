@@ -16,8 +16,7 @@ const ProcessStepsList: React.FC<ProcessStepsListProps> = ({
         <ProcessStep 
           key={step.id} 
           step={step} 
-          index={index} 
-          isDarkBackground={isDarkBackground}
+          isLast={index === processSteps.length - 1}
         />
       ))}
     </div>
