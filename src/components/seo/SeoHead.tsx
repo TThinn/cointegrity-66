@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { getStructuredData } from "./SectionStructuredData";
@@ -59,6 +60,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       <title>{getSectionTitle()}</title>
       <meta name="description" content={getSectionDescription()} />
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       
       {/* Open Graph / Facebook */}
       <meta property="og:title" content={getSectionTitle()} />
@@ -90,6 +92,9 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       
       {/* Canonical */}
       <link rel="canonical" href={`https://cointegrity.io${currentPath}${currentHash}`} />
+      
+      {/* Preload critical resources */}
+      <link rel="preload" href="/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" as="image" />
       
       {/* Include all structured data directly */}
       {structuredDataObjects.map((data, index) => (
