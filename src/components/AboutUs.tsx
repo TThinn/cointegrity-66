@@ -110,9 +110,7 @@ const AboutUs = () => {
             ref={ctaRef}>
                 <button className="bg-[#010822]/5 backdrop-blur-md text-white px-6 py-3 rounded-full
                    border border-[#010822]/10 hover:bg-[#010822]/15 transition-all
-                   transform hover:scale-105 duration-300 text-base font-semibold shadow-lg">
-                  Connect With Us
-                </button>
+                   transform hover:scale-105 duration-300 text-base font-semibold shadow-lg">Solve Your Web3 Challenges</button>
               </a>
             </div>
           </div>
