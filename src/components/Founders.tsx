@@ -47,7 +47,7 @@ const Founders = () => {
   return <section id="founders" className="py-20 bg-gradient-to-b from-[#FEFCFD] to-[#FDF9FC] relative">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-[#cb46b3]">Our Team</h2>
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-[#cb46b3]">BLOCKCHAIN EXPERTISE &amp; LEADERSHIP</h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">The Minds Behind Cointegrity</h3>
           <p className="mt-2 text-gray-600">Our blockchain-experienced team simplifies Web3 implementation and digital asset development, allowing you to focus on business value creation. With expertise spanning regulatory compliance, technical infrastructure, and strategic market positioning, we transform complex blockchain challenges into practical solutions for enterprise and government.</p>
         </div>
