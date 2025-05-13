@@ -32,9 +32,7 @@ const Testimonials = () => {
           <div className="text-center mb-16">
             <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">Client Success Stories</h2>
             <h3 className="mt-2 text-3xl md:text-4xl font-bold text-white">Why Leading Organizations Choose Our Web3 Expertise</h3>
-            <p className="mt-2 text-white/60 max-w-2xl mx-auto">
-              We believe in a knowledge-first approach to Web3 transformation. We fully understand that navigating the decentralized landscape is a critical strategic challenge for any organization. Our team of specialists brings deep expertise across strategy, product development, tax & compliance, and capital acceleration - delivering solutions that bridge the gap between traditional business and web3 innovation, acting as a dependable guide through your complex Web3 challenges. Don't just take our word for it, here are some testimonials from people we have worked with:
-            </p>
+            <p className="mt-2 text-white/60 max-w-2xl mx-auto">Our knowledge-first approach to Web3 transformation helps organizations successfully navigate the complex decentralized landscape. With deep expertise in blockchain strategy, product development, tax compliance, and capital acceleration, our specialists bridge the gap between traditional business and Web3 innovation. As your dependable guide through complex blockchain challenges, we deliver solutions that create measurable value. Don't just take our word for it-read what our clients say about working with our team:</p>
           </div>
 
           <div className="transition-all duration-300 relative z-30" style={{
