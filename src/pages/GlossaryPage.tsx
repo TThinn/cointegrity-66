@@ -28,6 +28,9 @@ const GlossaryPage: React.FC = () => {
   // Notify on initial load about total terms
   useEffect(() => {
     console.log(`Displaying ${filteredTerms.length} terms out of ${totalTermsCount} total glossary terms`);
+    if (totalTermsCount < 100) {
+      console.warn("Warning: The glossary terms count seems low. Expected 335+ terms but found:", totalTermsCount);
+    }
   }, [filteredTerms.length, totalTermsCount]);
 
   // For smooth scrolling to sections

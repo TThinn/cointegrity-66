@@ -14,6 +14,14 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
   letters,
   groupedTerms,
 }) => {
+  // Log the total number of terms being received by the component
+  console.log(`GlossaryTermsList received ${letters.length} letters with terms`);
+  const totalTermsInGroups = Object.values(groupedTerms).reduce(
+    (count, terms) => count + terms.length, 
+    0
+  );
+  console.log(`Total terms in grouped data: ${totalTermsInGroups}`);
+
   return (
     <>
       {letters.map((letter) => (

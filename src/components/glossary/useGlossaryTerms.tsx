@@ -1,5 +1,5 @@
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { glossaryTerms } from "@/data/glossaryTerms";
 import { CategoryType } from "./types";
 
@@ -8,7 +8,10 @@ export const useGlossaryTerms = (
   activeCategory: CategoryType | "all"
 ) => {
   // Ensure we're using the complete glossaryTerms array
-  const allTerms = useMemo(() => glossaryTerms, []);
+  const allTerms = useMemo(() => {
+    console.log("Loading glossary terms from data source, count:", glossaryTerms.length);
+    return glossaryTerms;
+  }, []);
   
   // Sort terms alphabetically
   const sortedTerms = useMemo(() => {
