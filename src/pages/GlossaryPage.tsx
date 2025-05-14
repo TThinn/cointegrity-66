@@ -18,43 +18,82 @@ import { useGlossaryTerms } from "@/components/glossary/useGlossaryTerms";
 import { useGlossaryTermsDebug } from "@/components/glossary/useGlossaryTermsDebug";
 import { glossaryTerms } from "@/data/glossaryTerms"; // Direct import for diagnostics
 import { glossaryTermsNew } from "@/data/glossaryTermsNew"; // Import our new test data
+import { glossaryTermsTemp } from "@/data/temp"; // Import the temp data
 import { GlossaryDataTest } from "@/components/glossary/GlossaryDataTest"; // Import diagnostic component
-import { GlossaryDiagnosticPage } from "@/components/glossary/GlossaryDiagnosticPage"; // Import our new diagnostic page
+import { GlossaryDiagnosticPage } from "@/components/glossary/GlossaryDiagnosticPage"; // Import our diagnostic page
 import { toast } from "sonner";
 
+// Add a version query parameter to bust cache
+const VERSION = "1.0.1";
+
 const GlossaryPage: React.FC = () => {
-  // Switch to toggle between data sources for testing
-  const [useNewDataSource, setUseNewDataSource] = useState(false);
+  // Get data source preference from localStorage
+  const getInitialDataSource = (): "original" | "new" | "temp" => {
+    const stored = localStorage.getItem("glossary_data_source");
+    if (stored === "new" || stored === "temp") {
+      return stored;
+    }
+    return "original";
+  };
+  
+  const [useDebugMode, setUseDebugMode] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState<CategoryType | "all">("all");
   const [activeTab, setActiveTab] = useState<string>("categories");
+  const [dataSource, setDataSource] = useState<"original" | "new" | "temp">(getInitialDataSource());
   const location = useLocation();
   
-  // Get data from both hooks to compare
+  // Get data from hooks
   const originalHookData = useGlossaryTerms(searchTerm, activeCategory);
   const debugHookData = useGlossaryTermsDebug(searchTerm, activeCategory);
   
   // Use either the original or debug hook data based on toggle
   const { filteredTerms, groupedTerms, letters, totalTermsCount } = 
-    useNewDataSource ? debugHookData : originalHookData;
+    useDebugMode ? debugHookData : originalHookData;
   
-  // Direct check of the data source - compare original module vs new test module
+  // Check URL parameters on load
   useEffect(() => {
-    // Check if URL contains a debug parameter
     const urlParams = new URLSearchParams(window.location.search);
+    
+    // Check for debug mode
     if (urlParams.has('debug')) {
-      setUseNewDataSource(true);
-      toast.info("Using debug data source");
+      setUseDebugMode(true);
+      toast.info("Debug mode enabled");
     }
     
+    // Check for data source override
+    const sourceParam = urlParams.get('source');
+    if (sourceParam === 'new' || sourceParam === 'temp' || sourceParam === 'original') {
+      setDataSource(sourceParam);
+      localStorage.setItem("glossary_data_source", sourceParam);
+      toast.info(`Using ${sourceParam} data source`);
+    }
+    
+    // Direct check of the data sources - compare counts
     console.log("🔍 GlossaryPage - Comparing data sources:");
     console.log("🔍 Original glossaryTerms count:", glossaryTerms.length);
     console.log("🔍 New glossaryTermsNew count:", glossaryTermsNew.length);
+    console.log("🔍 Temp glossaryTermsTemp count:", glossaryTermsTemp.length);
+    
+    // Verify if the full data is being loaded from any source
+    if (glossaryTermsTemp.length > 300) {
+      console.log("🔍 Full data available in temp source");
+    } else if (glossaryTermsNew.length > 300) {
+      console.log("🔍 Full data available in new source");
+    } else if (glossaryTerms.length > 300) {
+      console.log("🔍 Full data available in original source");
+    } else {
+      console.error("🔍 Critical - No data source has the full 335+ terms!");
+      
+      toast.error(
+        "Critical data issue: None of the data sources contain the full 335+ glossary terms.",
+        { duration: 5000 }
+      );
+    }
     
     // Check for module loading issues
     console.log("🔍 Module system information:");
     try {
-      // @ts-ignore - This is for debugging purposes
       console.log("🔍 Import meta:", import.meta.url);
     } catch (e) {
       console.log("🔍 Error accessing import.meta:", e);
@@ -63,7 +102,6 @@ const GlossaryPage: React.FC = () => {
     if (glossaryTerms.length < 100) {
       console.error("🔍 Critical - glossaryTerms direct import contains too few items!");
       
-      // Show toast notification about the data issue for immediate feedback
       toast.error(
         "Glossary data issue detected. Only showing a limited set of terms. Please check the diagnostic page.",
         { duration: 5000 }
@@ -78,6 +116,18 @@ const GlossaryPage: React.FC = () => {
       console.warn("Warning: The glossary terms count seems low. Expected 335+ terms but found:", totalTermsCount);
     }
   }, [filteredTerms.length, totalTermsCount]);
+
+  // Change data source
+  const switchDataSource = (source: "original" | "new" | "temp") => {
+    setDataSource(source);
+    localStorage.setItem("glossary_data_source", source);
+    
+    // Reload with the new source parameter
+    const url = new URL(window.location.href);
+    url.searchParams.set("source", source);
+    url.searchParams.set("v", VERSION); // Add version to bust cache
+    window.location.href = url.toString();
+  };
 
   // For smooth scrolling to sections
   const scrollToSection = (letter: string) => {
@@ -115,20 +165,50 @@ const GlossaryPage: React.FC = () => {
           {/* Original diagnostic component */}
           <GlossaryDataTest />
           
-          {/* Toggle for testing different data sources */}
-          <div className="flex justify-end mb-4">
-            <Button 
-              variant="outline" 
-              onClick={() => {
-                setUseNewDataSource(!useNewDataSource);
-                toast.info(useNewDataSource ? 
-                  "Switched to original data source" : 
-                  "Switched to new test data source"
-                );
-              }}
-            >
-              {useNewDataSource ? "Use Original Data" : "Use Test Data"}
-            </Button>
+          {/* Data source selection controls */}
+          <div className="flex flex-col sm:flex-row justify-between gap-4 mb-6 p-4 bg-gray-50 rounded-lg border">
+            <div>
+              <h3 className="font-bold mb-2">Current Data Source: <span className="text-primary">{dataSource}</span></h3>
+              <div className="flex flex-wrap gap-2">
+                <Button 
+                  variant={dataSource === "original" ? "default" : "outline"} 
+                  size="sm"
+                  onClick={() => switchDataSource("original")}
+                >
+                  Use Original Data
+                </Button>
+                <Button 
+                  variant={dataSource === "new" ? "default" : "outline"}
+                  size="sm" 
+                  onClick={() => switchDataSource("new")}
+                >
+                  Use New Data
+                </Button>
+                <Button 
+                  variant={dataSource === "temp" ? "default" : "outline"}
+                  size="sm" 
+                  onClick={() => switchDataSource("temp")}
+                >
+                  Use Temp Data
+                </Button>
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="font-bold mb-2">Debug Mode</h3>
+              <Button 
+                variant={useDebugMode ? "default" : "outline"}
+                onClick={() => {
+                  setUseDebugMode(!useDebugMode);
+                  toast.info(useDebugMode ? 
+                    "Switched to regular mode" : 
+                    "Switched to debug mode"
+                  );
+                }}
+              >
+                {useDebugMode ? "Disable Debug" : "Enable Debug"}
+              </Button>
+            </div>
           </div>
           
           {/* Display a warning banner if data issue is detected */}
@@ -147,7 +227,7 @@ const GlossaryPage: React.FC = () => {
                     instead of the expected 335+ terms. This may be due to a data loading issue.
                     <br />
                     <span className="font-bold">
-                      Current data source: {useNewDataSource ? "Test data (glossaryTermsNew.ts)" : "Original data (glossaryTerms.ts)"}
+                      Current data source: {dataSource}
                     </span>
                   </p>
                 </div>
@@ -201,7 +281,7 @@ const GlossaryPage: React.FC = () => {
                 </TabsContent>
               </Tabs>
 
-              {/* Advanced debugging actions */}
+              {/* Advanced troubleshooting actions */}
               <div className="mb-6 p-4 border border-gray-200 rounded-md bg-gray-50">
                 <h3 className="font-bold mb-2">Troubleshooting Tools</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
