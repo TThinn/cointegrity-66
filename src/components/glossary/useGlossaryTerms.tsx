@@ -1,15 +1,26 @@
 
 import { useState, useMemo, useEffect } from "react";
-import { glossaryTerms } from "@/data/glossaryTerms";
+import { glossaryTerms } from "@/data/glossaryTerms"; // Verify this import path
 import { CategoryType } from "./types";
 
 export const useGlossaryTerms = (
   searchTerm: string,
   activeCategory: CategoryType | "all"
 ) => {
-  // Ensure we're using the complete glossaryTerms array
+  // Enhanced debug logging to identify data source issues
   const allTerms = useMemo(() => {
-    console.log("Loading glossary terms from data source, count:", glossaryTerms.length);
+    console.log("DIAGNOSTIC: Attempting to load glossary terms from data source");
+    console.log("DIAGNOSTIC: Import path being used:", "@/data/glossaryTerms");
+    console.log("DIAGNOSTIC: Type of imported glossaryTerms:", typeof glossaryTerms);
+    console.log("DIAGNOSTIC: Is glossaryTerms an array?", Array.isArray(glossaryTerms));
+    console.log("DIAGNOSTIC: Loading glossary terms from data source, count:", glossaryTerms.length);
+    
+    // Detailed logging of the first few items to verify content
+    if (glossaryTerms.length > 0) {
+      console.log("DIAGNOSTIC: First 3 terms sample:", 
+        glossaryTerms.slice(0, 3).map(t => t.term));
+    }
+    
     return glossaryTerms;
   }, []);
   

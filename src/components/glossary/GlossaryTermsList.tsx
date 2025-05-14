@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -14,13 +14,29 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
   letters,
   groupedTerms,
 }) => {
-  // Log the total number of terms being received by the component
-  console.log(`GlossaryTermsList received ${letters.length} letters with terms`);
-  const totalTermsInGroups = Object.values(groupedTerms).reduce(
-    (count, terms) => count + terms.length, 
-    0
-  );
-  console.log(`Total terms in grouped data: ${totalTermsInGroups}`);
+  // Enhanced debugging for data verification
+  useEffect(() => {
+    console.log("DIAGNOSTIC: GlossaryTermsList - Component mounted");
+    console.log(`DIAGNOSTIC: Direct import glossaryTerms length: ${glossaryTerms.length}`);
+    console.log(`DIAGNOSTIC: GlossaryTermsList received ${letters.length} letters with terms`);
+    
+    const totalTermsInGroups = Object.values(groupedTerms).reduce(
+      (count, terms) => count + terms.length, 
+      0
+    );
+    console.log(`DIAGNOSTIC: Total terms in grouped data: ${totalTermsInGroups}`);
+    
+    // Check if the data source seems to match what's expected
+    if (glossaryTerms.length !== totalTermsInGroups) {
+      console.warn(`DIAGNOSTIC: Data source mismatch! Direct import: ${glossaryTerms.length}, Grouped terms: ${totalTermsInGroups}`);
+    }
+    
+    // Log sample of direct import to compare
+    if (glossaryTerms.length > 0) {
+      console.log("DIAGNOSTIC: Direct import sample terms:", 
+        glossaryTerms.slice(0, 3).map(t => t.term));
+    }
+  }, [letters, groupedTerms]);
 
   return (
     <>
