@@ -11,7 +11,7 @@ export type GlossaryTerm = {
 export const glossaryTerms: GlossaryTerm[] = [
   // Blockchain Technology
   {
-  term: "Blockchain-as-a-Service (BaaS)",
+  term: "Blockchain-as-a-Service - BaaS",
   definition: "A cloud-based service model that allows customers to leverage blockchain technology for building and hosting their own blockchain applications and smart contracts without managing the infrastructure themselves, enhancing business efficiency and operational security.",
   categories: ["blockchain_technology", "infrastructure_applications"],
   related: ["Cloud Computing", "Enterprise Blockchain", "Distributed Ledger Technology"],
@@ -101,7 +101,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   
   // Cryptocurrency Types
  {
-term: "Bitcoin (BTC)",
+term: "Bitcoin - BTC",
 definition: "The original cryptocurrency created in 2009 by the pseudonymous Satoshi Nakamoto. Bitcoin functions as a decentralized payment system and store of value with a mathematically limited supply of 21 million coins. It operates on a proof-of-work consensus mechanism and serves as the benchmark against which other cryptocurrencies are measured.",
 categories: ["cryptocurrency_types", "blockchain_technology"],
 related: ["Proof of Work", "Digital Gold", "Satoshi Nakamoto", "UTXO Model"],
@@ -109,8 +109,8 @@ trending: 10
 },
 
 {
-term: "Ethereum (ETH)",
-definition: "A decentralized blockchain platform featuring smart contract functionality. Ethereum serves as both a cryptocurrency and an infrastructure layer that enables developers to build and deploy decentralized applications (dApps). Since transitioning to Proof of Stake, Ethereum has significantly reduced its energy consumption while maintaining its position as the leading smart contract platform.",
+term: "Ethereum - ETH",
+definition: "A decentralized blockchain platform featuring smart contract functionality. Ethereum serves as both a cryptocurrency and an infrastructure layer that enables developers to build and deploy decentralized applications - dApps. Since transitioning to Proof of Stake, Ethereum has significantly reduced its energy consumption while maintaining its position as the leading smart contract platform.",
 categories: ["cryptocurrency_types", "blockchain_technology", "smart_contracts"],
 related: ["Smart Contracts", "ERC-20", "Gas Fees", "Proof of Stake"],
 trending: 10
@@ -118,7 +118,7 @@ trending: 10
 
 {
 term: "Stablecoins",
-definition: "Cryptocurrencies designed to minimize price volatility by pegging their value to stable assets like fiat currencies, commodities, or through algorithmic mechanisms. The three main types are fiat-collateralized (like USDT and USDC), crypto-collateralized (like DAI), and algorithmic stablecoins. They serve critical functions in trading, remittances, and as a bridge between traditional finance and cryptocurrency markets.",
+definition: "Cryptocurrencies designed to minimize price volatility by pegging their value to stable assets like fiat currencies, commodities, or through algorithmic mechanisms. The three main types are fiat-collateralized like USDT and USDC, crypto-collateralized like DAI, and algorithmic stablecoins. They serve critical functions in trading, remittances, and as a bridge between traditional finance and cryptocurrency markets.",
 categories: ["cryptocurrency_types", "defi"],
 related: ["Tether", "USD Coin", "DAI", "Algorithmic Stablecoins", "Collateralization"],
 trending: 9
@@ -126,7 +126,7 @@ trending: 9
 
 {
 term: "Privacy Coins",
-definition: "Cryptocurrencies specifically designed to provide enhanced privacy and anonymity for users by obscuring transaction details. These coins employ various cryptographic techniques like zero-knowledge proofs, ring signatures, or stealth addresses to mask sender, receiver, and transaction amount information. Notable examples include Monero (XMR), Zcash (ZEC), and Dash.",
+definition: "Cryptocurrencies specifically designed to provide enhanced privacy and anonymity for users by obscuring transaction details. These coins employ various cryptographic techniques like zero-knowledge proofs, ring signatures, or stealth addresses to mask sender, receiver, and transaction amount information. Notable examples include Monero - XMR, Zcash - ZEC, and Dash.",
 categories: ["cryptocurrency_types", "privacy_technology"],
 related: ["Monero", "Zcash", "Ring Signatures", "Zero-knowledge Proofs"],
 trending: 7
@@ -150,14 +150,14 @@ trending: 8
 
 {
 term: "Memecoins",
-definition: "Cryptocurrencies initially created based on internet memes or jokes that have developed strong community followings. While originally lacking utility beyond speculation, some memecoins have evolved to incorporate genuine use cases and ecosystem development. Their value derives primarily from community sentiment and cultural relevance rather than technological innovation. Examples include Dogecoin (DOGE) and Shiba Inu (SHIB).",
+definition: "Cryptocurrencies initially created based on internet memes or jokes that have developed strong community followings. While originally lacking utility beyond speculation, some memecoins have evolved to incorporate genuine use cases and ecosystem development. Their value derives primarily from community sentiment and cultural relevance rather than technological innovation. Examples include Dogecoin - DOGE and Shiba Inu - SHIB.",
 categories: ["cryptocurrency_types", "social_community"],
 related: ["Dogecoin", "Shiba Inu", "Community Tokens", "Viral Marketing"],
 trending: 8
 },
 
 {
-term: "Central Bank Digital Currencies (CBDCs)",
+term: "Central Bank Digital Currencies - CBDCs",
 definition: "Digital currencies issued by national central banks that represent the digital form of a country's fiat currency. Unlike decentralized cryptocurrencies, CBDCs are centralized, regulated, and serve as legal tender. They come in two forms: retail CBDCs for public use and wholesale CBDCs for financial institutions. Most implementations do not utilize traditional blockchain technology but rather centralized digital ledgers with some distributed elements.",
 categories: ["cryptocurrency_types", "regulatory_frameworks"],
 related: ["Digital Yuan", "Digital Euro", "Monetary Policy", "Financial Inclusion"],
@@ -165,7 +165,7 @@ trending: 9
 },
 
 {
-term: "Tokenized Assets (RWAs)",
+term: "Tokenized Assets - RWAs",
 definition: "Digital representations of real-world assets on blockchain networks, including real estate, commodities, art, securities, and other traditional assets. These tokens enable fractional ownership, increased liquidity, automated compliance, and 24/7 trading of traditionally illiquid assets. The tokenization process creates programmable assets that can interact with decentralized finance protocols while maintaining a connection to tangible value.",
 categories: ["cryptocurrency_types", "tokenization", "defi"],
 related: ["Security Tokens", "Asset-backed Tokens", "Fractional Ownership", "Compliance"],
@@ -198,7 +198,7 @@ trending: 7
 
 {
 term: "DePIN Tokens",
-definition: "Cryptocurrencies that power Decentralized Physical Infrastructure Networks, which connect blockchain technology to real-world infrastructure like wireless networks, computing resources, and energy grids. These tokens incentivize participants to contribute physical resources to decentralized networks, creating alternatives to centralized service providers. Examples include Helium (HNT) for wireless networks and Filecoin (FIL) for storage.",
+definition: "Cryptocurrencies that power Decentralized Physical Infrastructure Networks, which connect blockchain technology to real-world infrastructure like wireless networks, computing resources, and energy grids. These tokens incentivize participants to contribute physical resources to decentralized networks, creating alternatives to centralized service providers. Examples include Helium - HNT - for wireless networks and Filecoin - FIL - for storage.",
 categories: ["cryptocurrency_types", "depin", "infrastructure_applications"],
 related: ["Physical Infrastructure", "IoT", "Decentralized Storage", "Wireless Networks"],
 trending: 7
@@ -213,7 +213,7 @@ trending: 8
 },
 
 {
-  term: "Speculative Tokens (Shitcoins)",
+  term: "Speculative Tokens - Shitcoins",
   definition: `Cryptocurrencies created primarily for short-term speculation with minimal underlying utility, technological innovation, or long-term vision. Unlike memecoins which often develop strong communities, these tokens typically lack substantive 
 development activity and are characterized by extreme volatility, anonymous teams, and marketing-driven narratives. They represent high-risk assets often associated with pump-and-dump schemes.`,
   categories: ["cryptocurrency_types"],
@@ -226,7 +226,7 @@ development activity and are characterized by extreme volatility, anonymous team
   term: "Web3",
   definition: "The third generation of the internet, characterized by decentralization, user ownership, and blockchain-based infrastructure. Web3 enables peer-to-peer interactions, tokenized economies, and self-sovereign identities, shifting control from centralized corporations to users.",
   categories: ["web3"],
-  related: ["Decentralized Applications (dApps)", "Smart Contracts", "DAO Governance", "Tokenization"],
+  related: ["Decentralized Applications - dApps", "Smart Contracts", "DAO Governance", "Tokenization"],
   trending: 10
 },
 
@@ -239,7 +239,7 @@ development activity and are characterized by extreme volatility, anonymous team
 },
 
 {
-  term: "Decentralized Applications (dApps)",
+  term: "Decentralized Applications - dApps",
   definition: "Applications built on blockchain or decentralized networks that operate without a central authority. dApps enable peer-to-peer transactions, censorship resistance, and transparent operations, forming the backbone of the Web3 ecosystem.",
   categories: ["web3", "blockchain_technology"],
   related: ["Smart Contracts", "Ethereum", "User Ownership"],
@@ -247,7 +247,7 @@ development activity and are characterized by extreme volatility, anonymous team
 },
 
 {
-  term: "Self-Sovereign Identity (SSI)",
+  term: "Self-Sovereign Identity - SSI",
   definition: "A digital identity model where individuals own and control their credentials without relying on centralized authorities. SSI leverages blockchain and cryptographic proofs to enable privacy-preserving authentication and verification.",
   categories: ["web3", "privacy_technology"],
   related: ["Decentralized Identity", "Verifiable Credentials", "Zero-Knowledge Proofs"],
@@ -258,12 +258,12 @@ development activity and are characterized by extreme volatility, anonymous team
   term: "Tokenization",
   definition: "The process of converting real-world or digital assets into blockchain-based tokens, enabling fractional ownership, greater liquidity, and programmable asset management within decentralized platforms.",
   categories: ["web3", "tokenization"],
-  related: ["NFTs", "Real World Assets (RWA)", "DeFi"],
+  related: ["NFTs", "Real World Assets - RWA", "DeFi"],
   trending: 9
 },
 
 {
-  term: "Zero-Knowledge Proofs (ZKPs)",
+  term: "Zero-Knowledge Proofs - ZKPs",
   definition: "Cryptographic techniques that allow one party to prove to another that a statement is true without revealing any underlying information. ZKPs are used in Web3 for privacy-preserving transactions and scalable blockchain solutions.",
   categories: ["web3", "privacy_technology"],
   related: ["zkEVM", "Privacy Coins", "Layer 2 Solutions"],
