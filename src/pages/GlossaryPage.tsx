@@ -15,6 +15,7 @@ import { AlphabeticalIndex } from "@/components/glossary/AlphabeticalIndex";
 import { GlossaryTermsList } from "@/components/glossary/GlossaryTermsList";
 import { ContactCTA } from "@/components/glossary/ContactCTA";
 import { useGlossaryTerms } from "@/components/glossary/useGlossaryTerms";
+import { toast } from "sonner";
 
 const GlossaryPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -22,7 +23,12 @@ const GlossaryPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("categories");
   const location = useLocation();
   
-  const { filteredTerms, groupedTerms, letters } = useGlossaryTerms(searchTerm, activeCategory);
+  const { filteredTerms, groupedTerms, letters, totalTermsCount } = useGlossaryTerms(searchTerm, activeCategory);
+
+  // Notify on initial load about total terms
+  useEffect(() => {
+    console.log(`Displaying ${filteredTerms.length} terms out of ${totalTermsCount} total glossary terms`);
+  }, [filteredTerms.length, totalTermsCount]);
 
   // For smooth scrolling to sections
   const scrollToSection = (letter: string) => {
@@ -56,6 +62,14 @@ const GlossaryPage: React.FC = () => {
         >
           <div className="flex flex-col lg:flex-row gap-8 mb-8">
             <div className="lg:w-3/4">
+              <div className="mb-4">
+                <p className="text-muted-foreground">
+                  Glossary contains {totalTermsCount} terms. 
+                  {filteredTerms.length !== totalTermsCount && 
+                    ` Currently showing ${filteredTerms.length} terms based on your filters.`}
+                </p>
+              </div>
+            
               <GlossarySearch searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
               <Tabs defaultValue="categories" value={activeTab} onValueChange={setActiveTab} className="mb-6">
@@ -92,10 +106,20 @@ const GlossaryPage: React.FC = () => {
                 </TabsContent>
               </Tabs>
 
-              {searchTerm && filteredTerms.length === 0 ? (
+              {filteredTerms.length === 0 ? (
                 <Card>
                   <div className="p-8 text-center">
                     <p>No terms match your search criteria.</p>
+                    {searchTerm && (
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        onClick={() => setSearchTerm("")}
+                        className="mt-4"
+                      >
+                        Clear search
+                      </Button>
+                    )}
                   </div>
                 </Card>
               ) : (

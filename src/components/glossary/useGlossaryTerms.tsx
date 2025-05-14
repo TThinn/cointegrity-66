@@ -7,20 +7,32 @@ export const useGlossaryTerms = (
   searchTerm: string,
   activeCategory: CategoryType | "all"
 ) => {
+  // Ensure we're using the complete glossaryTerms array
+  const allTerms = useMemo(() => glossaryTerms, []);
+  
   // Sort terms alphabetically
   const sortedTerms = useMemo(() => {
-    return [...glossaryTerms].sort((a, b) => a.term.localeCompare(b.term));
-  }, []);
+    return [...allTerms].sort((a, b) => a.term.localeCompare(b.term));
+  }, [allTerms]);
 
   // Filter terms based on search and category
   const filteredTerms = useMemo(() => {
     return sortedTerms.filter(term => {
-      const matchesSearch = term.term.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      const matchesSearch = searchTerm === '' || 
+                          term.term.toLowerCase().includes(searchTerm.toLowerCase()) || 
                           term.definition.toLowerCase().includes(searchTerm.toLowerCase());
+      
       const matchesCategory = activeCategory === "all" || term.categories.includes(activeCategory as CategoryType);
+      
       return matchesSearch && matchesCategory;
     });
   }, [sortedTerms, searchTerm, activeCategory]);
+
+  // Log for debugging
+  console.log(`Total terms in glossaryTerms: ${allTerms.length}`);
+  console.log(`Filtered terms count: ${filteredTerms.length}`);
+  console.log(`Active category: ${activeCategory}`);
+  console.log(`Search term: "${searchTerm}"`);
 
   // Group terms by first letter for alphabetical index
   const groupedTerms = useMemo(() => {
@@ -42,6 +54,7 @@ export const useGlossaryTerms = (
   return {
     filteredTerms,
     groupedTerms,
-    letters
+    letters,
+    totalTermsCount: allTerms.length
   };
 };
