@@ -213,11 +213,12 @@ trending: 8
 },
 
 {
-term: "Speculative Tokens (Shitcoins)",
-definition: "Cryptocurrencies created primarily for short-term speculation with minimal underlying utility, technological innovation, or long-term vision. Unlike memecoins which often develop strong communities, these tokens typically lack substantive development activity and are characterized by extreme volatility, anonymous teams, and marketing-driven narratives. They represent high-risk assets often associated with pump-and-dump schemes.",
-categories: ["cryptocurrency_types"],
-related: ["Market Speculation", "Token Launches", "Pump and Dump", "Due Diligence"],
-trending: 6
+  term: "Speculative Tokens (Shitcoins)",
+  definition: `Cryptocurrencies created primarily for short-term speculation with minimal underlying utility, technological innovation, or long-term vision. Unlike memecoins which often develop strong communities, these tokens typically lack substantive 
+development activity and are characterized by extreme volatility, anonymous teams, and marketing-driven narratives. They represent high-risk assets often associated with pump-and-dump schemes.`,
+  categories: ["cryptocurrency_types"],
+  related: ["Market Speculation", "Token Launches", "Pump and Dump", "Due Diligence"],
+  trending: 6
 },
   
   // Web3
@@ -1183,18 +1184,22 @@ trending: 7
 // Regulatory Frameworks
 
 {
-term: "Global Crypto Regulation Divergence",
-definition: "The significant differences in regulatory approaches to cryptocurrencies across major jurisdictions worldwide, creating compliance challenges for businesses operating internationally. While the EU establishes comprehensive rules through MiCA, other regions like the United States rely on existing securities laws and enforcement actions, creating a fragmented global regulatory landscape that crypto businesses must navigate.",
-categories: ["regulatory_frameworks", "compliance"],
-related: ["Regulatory Arbitrage", "Cross-Border Compliance", "Jurisdiction Shopping", "International Standards"],
-trending: 9
+  term: "Global Crypto Regulation Divergence",
+  definition: `The significant differences in regulatory approaches to cryptocurrencies across major jurisdictions worldwide, creating compliance challenges for businesses operating 
+internationally. While the EU establishes comprehensive rules through MiCA, other regions like the United States rely on existing securities laws and enforcement 
+actions, creating a fragmented global regulatory landscape that crypto businesses must navigate.`,
+  categories: ["regulatory_frameworks", "compliance"],
+  related: ["Regulatory Arbitrage", "Cross-Border Compliance", "Jurisdiction Shopping", "International Standards"],
+  trending: 9
 },
 {
-term: "Regulatory Sandbox",
-definition: "Controlled testing environments established by financial regulators that allow fintech and crypto companies to experiment with innovative products under regulatory supervision. These programs enable businesses to test concepts with real customers while receiving regulatory guidance, helping bridge the gap between innovation and compliance in rapidly evolving technological landscapes.",
-categories: ["regulatory_frameworks", "compliance"],
-related: ["Innovation Hubs", "Regulatory Innovation", "Fintech Development", "Supervised Testing"],
-trending: 7
+  term: "Regulatory Sandbox",
+  definition: `Controlled testing environments established by financial regulators that allow 
+fintech and crypto companies to experiment with innovative products under regulatory supervision. These programs enable businesses to test concepts with real customers 
+while receiving regulatory guidance, helping bridge the gap between innovation and compliance in rapidly evolving technological landscapes.`,
+  categories: ["regulatory_frameworks", "compliance"],
+  related: ["Innovation Hubs", "Regulatory Innovation", "Fintech Development", "Supervised Testing"],
+  trending: 7
 },
 {
 term: "Markets in Crypto-Assets Regulation (MiCA)",
@@ -1225,12 +1230,14 @@ related: ["Grandfathering", "MiCA Implementation", "Compliance Timeline", "Autho
 trending: 8
 },
 {
-term: "National Competent Authorities (NCAs)",
-definition: "Regulatory bodies designated by each EU member state to implement and enforce crypto regulations like MiCA. These authorities handle licensing applications, conduct supervision, and ensure compliance with regulatory requirements, with varying approaches to implementation timelines and transition periods across different jurisdictions.",
-categories: ["regulatory_frameworks", "compliance"],
-related: ["Financial Regulators", "Supervision", "Enforcement Actions", "MiCA Implementation"],
-trending: 7
+  term: "National Competent Authorities (NCAs)",
+  definition: `Regulatory bodies designated by each EU member state to implement and enforce crypto regulations like MiCA. These authorities handle licensing applications, conduct 
+supervision, and ensure compliance with regulatory requirements, with varying approaches to implementation timelines and transition periods across different jurisdictions.`,
+  categories: ["regulatory_frameworks", "compliance"],
+  related: ["Financial Regulators", "Supervision", "Enforcement Actions", "MiCA Implementation"],
+  trending: 7
 },
+
 {
 term: "Crypto-Asset Reporting Framework (CARF)",
 definition: "A global regulatory standard developed by the OECD that requires Crypto-Asset Service Providers to collect and report information on cryptocurrency transactions for tax purposes. CARF mandates the automatic exchange of tax-relevant information between jurisdictions, covering cryptocurrencies, stablecoins, and certain NFTs, with implementation expected to begin in 2025 for 2024 transactions.",
@@ -1253,12 +1260,14 @@ related: ["AEOI", "Tax Transparency", "Financial Account Reporting", "CARF"],
 trending: 8
 },
 {
-term: "Financial Action Task Force (FATF)",
-definition: "An intergovernmental organization that develops global standards to combat money laundering and terrorist financing, including specific recommendations for virtual assets. FATF classifies jurisdictions into 'High-Risk Jurisdictions subject to a Call for Action' (blacklist) and 'Jurisdictions under Increased Monitoring' (greylist) based on their AML/CFT compliance.",
-categories: ["regulatory_frameworks", "compliance"],
-related: ["Travel Rule", "VASP Regulation", "AML/CFT", "Country Risk Assessment"],
-trending: 9
+  term: "Financial Action Task Force (FATF)",
+  definition: `An intergovernmental organization that develops global standards to combat money laundering and terrorist financing, including specific recommendations for virtual 
+assets. FATF classifies jurisdictions into high-risk jurisdictions subject to a Call for Action (blacklist) and jurisdictions under increased monitoring (greylist) based on their AML/CFT compliance.`,
+  categories: ["regulatory_frameworks", "compliance"],
+  related: ["Travel Rule", "VASP Regulation", "AML/CFT", "Country Risk Assessment"],
+  trending: 9
 },
+
 {
 term: "Reporting Crypto-Asset Service Provider (RCASP)",
 definition: "Entities that fall under CARF reporting obligations, including cryptocurrency exchanges, brokers, dealers, and certain DeFi platforms that have sufficient control to comply with reporting requirements. RCASPs must conduct due diligence on users through self-certifications, verify the reasonableness of provided information, and report transaction data to tax authorities.",
@@ -1516,12 +1525,15 @@ related: ["Multi-signature Wallets", "Phishing Attacks", "Custody Solutions", "L
 trending: 8
 },
 {
-term: "Bybit Hack",
-definition: "The largest cryptocurrency exchange breach in history occurring in early 2025, when attackers compromised Bybit's security systems and extracted approximately $1.4 billion in various cryptocurrencies. This unprecedented hack surpassed all previous records and sent shockwaves through the cryptocurrency industry, leading to enhanced security measures across major exchanges and renewed calls for regulatory oversight of exchange operations.",
-categories: ["crypto_history", "wallets_security", "exchanges_trading"]
-related: ["Exchange Security", "Hot Wallet Vulnerabilities", "Cryptocurrency Insurance", "Security Audits"],
-trending: 10
+  term: "Bybit Hack",
+  definition: `The largest cryptocurrency exchange breach in history occurring in early 2025, when attackers compromised Bybit's security systems and extracted approximately 
+$1.4 billion in various cryptocurrencies. This unprecedented hack surpassed all previous records and sent shockwaves through the cryptocurrency industry, leading 
+to enhanced security measures across major exchanges and renewed calls for regulatory oversight of exchange operations.`,
+  categories: ["crypto_history", "wallets_security", "exchanges_trading"],
+  related: ["Exchange Security", "Hot Wallet Vulnerabilities", "Cryptocurrency Insurance", "Security Audits"],
+  trending: 10
 },
+
 {
 term: "Pre-Bitcoin Digital Currencies",
 definition: "The conceptual and technological precursors to Bitcoin that emerged between 1983-2008. These early attempts at digital money included David Chaum's ecash (1983), DigiCash (1989), E-Gold (1996), Wei Dai's b-money (1998), and Nick Szabo's bit gold (1998). While these systems introduced important concepts like cryptographic signatures and decentralization, they ultimately failed to achieve widespread adoption due to technical limitations and centralization issues.",
@@ -1544,19 +1556,25 @@ related: ["Bitcoin", "Genesis Block", "Cryptography", "Digital Signatures"],
 trending: 8
 },
 {
-term: "Bitcoin Genesis Block",
-definition: "The first block in the Bitcoin blockchain (Block 0), mined by Satoshi Nakamoto on January 3, 2009. This foundational block contained the now-famous message 'The Times 03/Jan/2009 Chancellor on brink of second bailout for banks,' referencing a headline from The Times newspaper. This embedded text served both as a timestamp and commentary on the traditional banking system's instability. Unlike subsequent blocks, the 50 BTC reward from this block cannot be spent, effectively removing them from circulation.",
-categories: ["crypto_history", "blockchain_technology"],
-related: ["Bitcoin", "Satoshi Nakamoto", "Block Reward", "Proof of Work"],
-trending: 8
+  term: "Bitcoin Genesis Block",
+  definition: `The first block in the Bitcoin blockchain (Block 0), mined by Satoshi Nakamoto on January 3, 2009. This foundational block contained the now-famous message from 
+The Times newspaper about the Chancellor on brink of second bailout for banks. This embedded text served both as a timestamp and commentary on the traditional 
+banking system's instability. Unlike subsequent blocks, the 50 BTC reward from this block cannot be spent, effectively removing them from circulation.`,
+  categories: ["crypto_history", "blockchain_technology"],
+  related: ["Bitcoin", "Satoshi Nakamoto", "Block Reward", "Proof of Work"],
+  trending: 8
 },
+
 {
-term: "First Bitcoin Transaction",
-definition: "The inaugural transfer of Bitcoin between two users, occurring on January 12, 2009 (Block 170), when Satoshi Nakamoto sent 10 BTC to programmer Hal Finney. This historic transaction marked the first practical use of Bitcoin as a medium of exchange between individuals and demonstrated the functionality of the newly created peer-to-peer electronic cash system. Finney, who had previously tweeted 'Running bitcoin' on January 11, became one of Bitcoin's earliest supporters and contributors.",
-categories: ["crypto_history", "blockchain_technology"],
-related: ["Hal Finney", "Satoshi Nakamoto", "Bitcoin", "Block 170"],
-trending: 7
+  term: "First Bitcoin Transaction",
+  definition: `The inaugural transfer of Bitcoin between two users, occurring on January 12, 2009 (Block 170), when Satoshi Nakamoto sent 10 BTC to programmer Hal Finney. This 
+historic transaction marked the first practical use of Bitcoin as a medium of exchange between individuals and demonstrated the functionality of the newly created 
+peer-to-peer electronic cash system. Finney became one of Bitcoin's earliest supporters and contributors.`,
+  categories: ["crypto_history", "blockchain_technology"],
+  related: ["Hal Finney", "Satoshi Nakamoto", "Bitcoin", "Block 170"],
+  trending: 7
 },
+
 {
 term: "Mt. Gox Collapse",
 definition: "The February 24, 2014 failure of Mt. Gox, once the world's largest Bitcoin exchange handling over 70% of all Bitcoin transactions. After claiming technical issues and halting withdrawals, the exchange filed for bankruptcy, revealing the loss of approximately 850,000 BTC (worth about $450 million at the time) due to theft occurring over several years. This event severely damaged market confidence and highlighted the need for improved security and regulation in the cryptocurrency industry.",
