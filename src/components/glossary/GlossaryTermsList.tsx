@@ -16,27 +16,60 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
 }) => {
   // Enhanced debugging for data verification
   useEffect(() => {
-    console.log("DIAGNOSTIC: GlossaryTermsList - Component mounted");
-    console.log(`DIAGNOSTIC: Direct import glossaryTerms length: ${glossaryTerms.length}`);
-    console.log(`DIAGNOSTIC: GlossaryTermsList received ${letters.length} letters with terms`);
+    console.log("🔎 GlossaryTermsList - Component mounted");
+    console.log(`🔎 Direct import glossaryTerms length: ${glossaryTerms.length}`);
+    console.log(`🔎 GlossaryTermsList received ${letters.length} letters with terms`);
     
     const totalTermsInGroups = Object.values(groupedTerms).reduce(
       (count, terms) => count + terms.length, 
       0
     );
-    console.log(`DIAGNOSTIC: Total terms in grouped data: ${totalTermsInGroups}`);
+    console.log(`🔎 Total terms in grouped data: ${totalTermsInGroups}`);
     
     // Check if the data source seems to match what's expected
     if (glossaryTerms.length !== totalTermsInGroups) {
-      console.warn(`DIAGNOSTIC: Data source mismatch! Direct import: ${glossaryTerms.length}, Grouped terms: ${totalTermsInGroups}`);
+      console.warn(`🔎 Data source mismatch! Direct import: ${glossaryTerms.length}, Grouped terms: ${totalTermsInGroups}`);
     }
     
     // Log sample of direct import to compare
     if (glossaryTerms.length > 0) {
-      console.log("DIAGNOSTIC: Direct import sample terms:", 
+      console.log("🔎 Direct import sample terms:", 
         glossaryTerms.slice(0, 3).map(t => t.term));
     }
+    
+    // Check for empty or incorrect data
+    if (letters.length === 0) {
+      console.warn("🔎 No letters provided to GlossaryTermsList");
+    }
+    
+    // Check for potential data structure issues
+    if (Object.keys(groupedTerms).length === 0) {
+      console.warn("🔎 Empty groupedTerms object provided");
+    } else {
+      // Verify the first group has expected structure
+      const firstLetter = letters[0];
+      if (firstLetter && groupedTerms[firstLetter]) {
+        try {
+          const firstGroup = groupedTerms[firstLetter];
+          console.log(`🔎 First letter group (${firstLetter}) has ${firstGroup.length} terms`);
+          if (firstGroup.length > 0) {
+            console.log("🔎 Sample term from first group:", firstGroup[0].term);
+          }
+        } catch (e) {
+          console.error("🔎 Error accessing first group:", e);
+        }
+      }
+    }
   }, [letters, groupedTerms]);
+
+  // Handle the case where no letters/terms are provided
+  if (letters.length === 0) {
+    return (
+      <Card className="p-6">
+        <p>No glossary terms found. This could indicate a data loading issue.</p>
+      </Card>
+    );
+  }
 
   return (
     <>
@@ -48,7 +81,7 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
           </div>
           
           <div className="space-y-4">
-            {groupedTerms[letter].map((term, index) => (
+            {groupedTerms[letter] && groupedTerms[letter].map((term, index) => (
               <Card key={`${term.term}-${index}`}>
                 <CardHeader className="pb-2">
                   <div className="flex justify-between items-start flex-wrap">
@@ -56,7 +89,7 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
                       {term.term}
                     </CardTitle>
                     <div className="flex flex-wrap gap-2 mt-1">
-                      {term.categories.map((category) => (
+                      {term.categories && term.categories.map((category) => (
                         <Badge key={category} variant="outline" className="text-xs">
                           {category}
                         </Badge>

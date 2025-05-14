@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { SectionContainer } from "@/components/ui/SectionContainer";
@@ -14,34 +15,62 @@ import { AlphabeticalIndex } from "@/components/glossary/AlphabeticalIndex";
 import { GlossaryTermsList } from "@/components/glossary/GlossaryTermsList";
 import { ContactCTA } from "@/components/glossary/ContactCTA";
 import { useGlossaryTerms } from "@/components/glossary/useGlossaryTerms";
+import { useGlossaryTermsDebug } from "@/components/glossary/useGlossaryTermsDebug";
 import { glossaryTerms } from "@/data/glossaryTerms"; // Direct import for diagnostics
+import { glossaryTermsNew } from "@/data/glossaryTermsNew"; // Import our new test data
 import { GlossaryDataTest } from "@/components/glossary/GlossaryDataTest"; // Import diagnostic component
+import { GlossaryDiagnosticPage } from "@/components/glossary/GlossaryDiagnosticPage"; // Import our new diagnostic page
 import { toast } from "sonner";
 
 const GlossaryPage: React.FC = () => {
+  // Switch to toggle between data sources for testing
+  const [useNewDataSource, setUseNewDataSource] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState<CategoryType | "all">("all");
   const [activeTab, setActiveTab] = useState<string>("categories");
   const location = useLocation();
   
-  // Direct check of the data source
+  // Get data from both hooks to compare
+  const originalHookData = useGlossaryTerms(searchTerm, activeCategory);
+  const debugHookData = useGlossaryTermsDebug(searchTerm, activeCategory);
+  
+  // Use either the original or debug hook data based on toggle
+  const { filteredTerms, groupedTerms, letters, totalTermsCount } = 
+    useNewDataSource ? debugHookData : originalHookData;
+  
+  // Direct check of the data source - compare original module vs new test module
   useEffect(() => {
-    console.log("DIAGNOSTIC: GlossaryPage - Direct check of glossaryTerms");
-    console.log("DIAGNOSTIC: Direct glossaryTerms import count:", glossaryTerms.length);
+    // Check if URL contains a debug parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('debug')) {
+      setUseNewDataSource(true);
+      toast.info("Using debug data source");
+    }
+    
+    console.log("🔍 GlossaryPage - Comparing data sources:");
+    console.log("🔍 Original glossaryTerms count:", glossaryTerms.length);
+    console.log("🔍 New glossaryTermsNew count:", glossaryTermsNew.length);
+    
+    // Check for module loading issues
+    console.log("🔍 Module system information:");
+    try {
+      // @ts-ignore - This is for debugging purposes
+      console.log("🔍 Import meta:", import.meta.url);
+    } catch (e) {
+      console.log("🔍 Error accessing import.meta:", e);
+    }
     
     if (glossaryTerms.length < 100) {
-      console.error("DIAGNOSTIC: Critical - glossaryTerms direct import contains too few items!");
+      console.error("🔍 Critical - glossaryTerms direct import contains too few items!");
       
       // Show toast notification about the data issue for immediate feedback
       toast.error(
-        "Glossary data issue detected. Only showing a limited set of terms. Please refresh or contact support.",
+        "Glossary data issue detected. Only showing a limited set of terms. Please check the diagnostic page.",
         { duration: 5000 }
       );
     }
   }, []);
   
-  const { filteredTerms, groupedTerms, letters, totalTermsCount } = useGlossaryTerms(searchTerm, activeCategory);
-
   // Notify on initial load about total terms
   useEffect(() => {
     console.log(`Displaying ${filteredTerms.length} terms out of ${totalTermsCount} total glossary terms`);
@@ -80,8 +109,27 @@ const GlossaryPage: React.FC = () => {
           subtitle="A comprehensive guide to terminology in the Web3, Blockchain, and AI space"
           className="py-12"
         >
-          {/* Add our diagnostic component */}
+          {/* Advanced diagnostic component */}
+          <GlossaryDiagnosticPage />
+          
+          {/* Original diagnostic component */}
           <GlossaryDataTest />
+          
+          {/* Toggle for testing different data sources */}
+          <div className="flex justify-end mb-4">
+            <Button 
+              variant="outline" 
+              onClick={() => {
+                setUseNewDataSource(!useNewDataSource);
+                toast.info(useNewDataSource ? 
+                  "Switched to original data source" : 
+                  "Switched to new test data source"
+                );
+              }}
+            >
+              {useNewDataSource ? "Use Original Data" : "Use Test Data"}
+            </Button>
+          </div>
           
           {/* Display a warning banner if data issue is detected */}
           {totalTermsCount < 100 && (
@@ -97,6 +145,10 @@ const GlossaryPage: React.FC = () => {
                   <p className="text-sm">
                     The glossary is currently displaying a limited set of {totalTermsCount} terms 
                     instead of the expected 335+ terms. This may be due to a data loading issue.
+                    <br />
+                    <span className="font-bold">
+                      Current data source: {useNewDataSource ? "Test data (glossaryTermsNew.ts)" : "Original data (glossaryTerms.ts)"}
+                    </span>
                   </p>
                 </div>
               </div>
@@ -149,18 +201,56 @@ const GlossaryPage: React.FC = () => {
                 </TabsContent>
               </Tabs>
 
-              {/* Add a manual reload button to help resolve caching issues */}
-              <div className="mb-4">
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    // Force refresh the page to clear any potential caching issues
-                    window.location.reload();
-                    toast.info("Refreshing glossary data...");
-                  }}
-                >
-                  Refresh Glossary Data
-                </Button>
+              {/* Advanced debugging actions */}
+              <div className="mb-6 p-4 border border-gray-200 rounded-md bg-gray-50">
+                <h3 className="font-bold mb-2">Troubleshooting Tools</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      window.location.reload();
+                      toast.info("Refreshing page...");
+                    }}
+                  >
+                    Refresh Page
+                  </Button>
+                  
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      const timestamp = new Date().getTime();
+                      window.location.href = `${window.location.pathname}?nocache=${timestamp}`;
+                      toast.info("Forcing cache refresh...");
+                    }}
+                  >
+                    Clear Cache
+                  </Button>
+                  
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      window.location.href = window.location.pathname + "?debug=true";
+                      toast.info("Loading with debug mode...");
+                    }}
+                  >
+                    Debug Mode
+                  </Button>
+                  
+                  <Button
+                    variant="destructive"
+                    onClick={() => {
+                      localStorage.clear();
+                      sessionStorage.clear();
+                      caches.keys().then(names => {
+                        for (let name of names) caches.delete(name);
+                      });
+                      window.location.reload();
+                      toast.info("Clearing all caches...");
+                    }}
+                  >
+                    Reset All
+                  </Button>
+                </div>
               </div>
 
               {filteredTerms.length === 0 ? (
