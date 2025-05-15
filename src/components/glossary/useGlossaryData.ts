@@ -85,8 +85,7 @@ export const useGlossaryData = (
         grouped[firstLetter] = [];
       }
       
-      // Use type assertion to safely add the term
-      grouped[firstLetter].push(term as GlossaryTerm);
+      grouped[firstLetter].push(term);
     });
     
     return grouped;

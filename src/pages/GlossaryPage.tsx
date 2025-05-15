@@ -84,7 +84,7 @@ const GlossaryPage: React.FC = () => {
           
           {/* Warning if fewer terms than expected */}
           {totalTermsCount < 100 && !isLoading && (
-            <Alert variant="warning" className="mb-6">
+            <Alert variant="destructive" className="mb-6">
               <AlertTriangle className="h-4 w-4" />
               <AlertTitle>Data Source Warning</AlertTitle>
               <AlertDescription>
