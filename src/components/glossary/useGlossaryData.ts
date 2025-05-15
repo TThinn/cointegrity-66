@@ -66,7 +66,10 @@ export const useGlossaryData = (
       
       // Handle category filtering with type safety
       const matchesCategory = activeCategory === "all" || 
-                        term.categories.some(cat => cat === activeCategory);
+                        term.categories.some(cat => 
+                          // Ensure the category is treated as a valid CategoryType
+                          cat === activeCategory
+                        );
       
       return matchesSearch && matchesCategory;
     });
@@ -81,7 +84,9 @@ export const useGlossaryData = (
       if (!grouped[firstLetter]) {
         grouped[firstLetter] = [];
       }
-      grouped[firstLetter].push(term);
+      
+      // Use type assertion to safely add the term
+      grouped[firstLetter].push(term as GlossaryTerm);
     });
     
     return grouped;

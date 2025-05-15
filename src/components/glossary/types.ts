@@ -26,7 +26,9 @@ export type CategoryType =
   | "tax"
   | "trading_strategy"
   | "hardware_security"
-  | "crypto_economics";
+  | "crypto_economics"
+  | "regulatory_frameworks"
+  | "tokenization";
 
 // Category metadata for display
 export const categoryMeta = [
@@ -56,7 +58,9 @@ export const categoryMeta = [
   { value: "tax", label: "Tax", description: "Cryptocurrency taxation" },
   { value: "trading_strategy", label: "Trading Strategy", description: "Cryptocurrency trading strategies" },
   { value: "hardware_security", label: "Hardware Security", description: "Hardware security for cryptocurrencies" },
-  { value: "crypto_economics", label: "Cryptoeconomics", description: "Economic principles of cryptocurrencies" }
+  { value: "crypto_economics", label: "Cryptoeconomics", description: "Economic principles of cryptocurrencies" },
+  { value: "regulatory_frameworks", label: "Regulatory Frameworks", description: "Legal frameworks for cryptocurrencies" },
+  { value: "tokenization", label: "Tokenization", description: "Converting assets to tokens" }
 ];
 
 // Define a data source selection type
