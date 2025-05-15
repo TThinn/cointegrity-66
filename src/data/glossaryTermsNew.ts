@@ -12,7 +12,7 @@ export interface GlossaryTerm {
 // Export the glossary terms array
 export const glossaryTermsNew: GlossaryTerm[] = [
   {
-    term: "Blockchain",
+    term: "hubaluba",
     definition: "A decentralized digital ledger that records transactions across many computers in a way that the registered transactions cannot be altered retroactively.",
     categories: ["blockchain"],
     related: ["Cryptocurrency", "Distributed Ledger Technology"]
