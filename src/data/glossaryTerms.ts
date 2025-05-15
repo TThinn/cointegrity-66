@@ -1973,7 +1973,7 @@ definition: "Datasets used for machine learning model development that leverage 
 categories: ["ai_data", "blockchain_technology"],
 related: ["Data Provenance", "Bias Mitigation", "Audit Trails", "Regulatory Compliance"],
 trending: 7
-}
+},
 {
 term: "Model Context Protocol (MCP)",
 definition: "An open protocol that standardizes how applications provide context to large language models, functioning like a universal connector for AI applications. MCP enables seamless integration between AI models and various data sources including blockchain networks, allowing AI agents to access real-time on-chain data, execute smart contracts, and perform complex analyses across multiple blockchains without requiring custom integrations for each platform.",
