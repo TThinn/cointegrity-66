@@ -11,7 +11,7 @@ export type GlossaryTerm = {
 export const glossaryTerms: GlossaryTerm[] = [
   // Blockchain Technology
   {
-  term: "Blockchain-as-a-Service - BaaS",
+  term: "Blockchain-as-a-Service (BaaS)",
   definition: "A cloud-based service model that allows customers to leverage blockchain technology for building and hosting their own blockchain applications and smart contracts without managing the infrastructure themselves, enhancing business efficiency and operational security.",
   categories: ["blockchain_technology", "infrastructure_applications"],
   related: ["Cloud Computing", "Enterprise Blockchain", "Distributed Ledger Technology"],
@@ -101,7 +101,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   
   // Cryptocurrency Types
  {
-term: "Bitcoin - BTC",
+term: "Bitcoin (BTC)",
 definition: "The original cryptocurrency created in 2009 by the pseudonymous Satoshi Nakamoto. Bitcoin functions as a decentralized payment system and store of value with a mathematically limited supply of 21 million coins. It operates on a proof-of-work consensus mechanism and serves as the benchmark against which other cryptocurrencies are measured.",
 categories: ["cryptocurrency_types", "blockchain_technology"],
 related: ["Proof of Work", "Digital Gold", "Satoshi Nakamoto", "UTXO Model"],
@@ -109,8 +109,8 @@ trending: 10
 },
 
 {
-term: "Ethereum - ETH",
-definition: "A decentralized blockchain platform featuring smart contract functionality. Ethereum serves as both a cryptocurrency and an infrastructure layer that enables developers to build and deploy decentralized applications - dApps. Since transitioning to Proof of Stake, Ethereum has significantly reduced its energy consumption while maintaining its position as the leading smart contract platform.",
+term: "Ethereum (ETH)",
+definition: "A decentralized blockchain platform featuring smart contract functionality. Ethereum serves as both a cryptocurrency and an infrastructure layer that enables developers to build and deploy decentralized applications (dApps). Since transitioning to Proof of Stake, Ethereum has significantly reduced its energy consumption while maintaining its position as the leading smart contract platform.",
 categories: ["cryptocurrency_types", "blockchain_technology", "smart_contracts"],
 related: ["Smart Contracts", "ERC-20", "Gas Fees", "Proof of Stake"],
 trending: 10
@@ -118,7 +118,7 @@ trending: 10
 
 {
 term: "Stablecoins",
-definition: "Cryptocurrencies designed to minimize price volatility by pegging their value to stable assets like fiat currencies, commodities, or through algorithmic mechanisms. The three main types are fiat-collateralized like USDT and USDC, crypto-collateralized like DAI, and algorithmic stablecoins. They serve critical functions in trading, remittances, and as a bridge between traditional finance and cryptocurrency markets.",
+definition: "Cryptocurrencies designed to minimize price volatility by pegging their value to stable assets like fiat currencies, commodities, or through algorithmic mechanisms. The three main types are fiat-collateralized (like USDT and USDC), crypto-collateralized (like DAI), and algorithmic stablecoins. They serve critical functions in trading, remittances, and as a bridge between traditional finance and cryptocurrency markets.",
 categories: ["cryptocurrency_types", "defi"],
 related: ["Tether", "USD Coin", "DAI", "Algorithmic Stablecoins", "Collateralization"],
 trending: 9
@@ -126,7 +126,7 @@ trending: 9
 
 {
 term: "Privacy Coins",
-definition: "Cryptocurrencies specifically designed to provide enhanced privacy and anonymity for users by obscuring transaction details. These coins employ various cryptographic techniques like zero-knowledge proofs, ring signatures, or stealth addresses to mask sender, receiver, and transaction amount information. Notable examples include Monero - XMR, Zcash - ZEC, and Dash.",
+definition: "Cryptocurrencies specifically designed to provide enhanced privacy and anonymity for users by obscuring transaction details. These coins employ various cryptographic techniques like zero-knowledge proofs, ring signatures, or stealth addresses to mask sender, receiver, and transaction amount information. Notable examples include Monero (XMR), Zcash (ZEC), and Dash.",
 categories: ["cryptocurrency_types", "privacy_technology"],
 related: ["Monero", "Zcash", "Ring Signatures", "Zero-knowledge Proofs"],
 trending: 7
@@ -150,14 +150,14 @@ trending: 8
 
 {
 term: "Memecoins",
-definition: "Cryptocurrencies initially created based on internet memes or jokes that have developed strong community followings. While originally lacking utility beyond speculation, some memecoins have evolved to incorporate genuine use cases and ecosystem development. Their value derives primarily from community sentiment and cultural relevance rather than technological innovation. Examples include Dogecoin - DOGE and Shiba Inu - SHIB.",
+definition: "Cryptocurrencies initially created based on internet memes or jokes that have developed strong community followings. While originally lacking utility beyond speculation, some memecoins have evolved to incorporate genuine use cases and ecosystem development. Their value derives primarily from community sentiment and cultural relevance rather than technological innovation. Examples include Dogecoin (DOGE) and Shiba Inu (SHIB).",
 categories: ["cryptocurrency_types", "social_community"],
 related: ["Dogecoin", "Shiba Inu", "Community Tokens", "Viral Marketing"],
 trending: 8
 },
 
 {
-term: "Central Bank Digital Currencies - CBDCs",
+term: "Central Bank Digital Currencies (CBDCs)",
 definition: "Digital currencies issued by national central banks that represent the digital form of a country's fiat currency. Unlike decentralized cryptocurrencies, CBDCs are centralized, regulated, and serve as legal tender. They come in two forms: retail CBDCs for public use and wholesale CBDCs for financial institutions. Most implementations do not utilize traditional blockchain technology but rather centralized digital ledgers with some distributed elements.",
 categories: ["cryptocurrency_types", "regulatory_frameworks"],
 related: ["Digital Yuan", "Digital Euro", "Monetary Policy", "Financial Inclusion"],
@@ -165,7 +165,7 @@ trending: 9
 },
 
 {
-term: "Tokenized Assets - RWAs",
+term: "Tokenized Assets (RWAs)",
 definition: "Digital representations of real-world assets on blockchain networks, including real estate, commodities, art, securities, and other traditional assets. These tokens enable fractional ownership, increased liquidity, automated compliance, and 24/7 trading of traditionally illiquid assets. The tokenization process creates programmable assets that can interact with decentralized finance protocols while maintaining a connection to tangible value.",
 categories: ["cryptocurrency_types", "tokenization", "defi"],
 related: ["Security Tokens", "Asset-backed Tokens", "Fractional Ownership", "Compliance"],
@@ -198,7 +198,7 @@ trending: 7
 
 {
 term: "DePIN Tokens",
-definition: "Cryptocurrencies that power Decentralized Physical Infrastructure Networks, which connect blockchain technology to real-world infrastructure like wireless networks, computing resources, and energy grids. These tokens incentivize participants to contribute physical resources to decentralized networks, creating alternatives to centralized service providers. Examples include Helium - HNT - for wireless networks and Filecoin - FIL - for storage.",
+definition: "Cryptocurrencies that power Decentralized Physical Infrastructure Networks, which connect blockchain technology to real-world infrastructure like wireless networks, computing resources, and energy grids. These tokens incentivize participants to contribute physical resources to decentralized networks, creating alternatives to centralized service providers. Examples include Helium (HNT) for wireless networks and Filecoin (FIL) for storage.",
 categories: ["cryptocurrency_types", "depin", "infrastructure_applications"],
 related: ["Physical Infrastructure", "IoT", "Decentralized Storage", "Wireless Networks"],
 trending: 7
@@ -213,12 +213,11 @@ trending: 8
 },
 
 {
-  term: "Speculative Tokens - Shitcoins",
-  definition: `Cryptocurrencies created primarily for short-term speculation with minimal underlying utility, technological innovation, or long-term vision. Unlike memecoins which often develop strong communities, these tokens typically lack substantive 
-development activity and are characterized by extreme volatility, anonymous teams, and marketing-driven narratives. They represent high-risk assets often associated with pump-and-dump schemes.`,
-  categories: ["cryptocurrency_types"],
-  related: ["Market Speculation", "Token Launches", "Pump and Dump", "Due Diligence"],
-  trending: 6
+term: "Speculative Tokens (Shitcoins)",
+definition: "Cryptocurrencies created primarily for short-term speculation with minimal underlying utility, technological innovation, or long-term vision. Unlike memecoins which often develop strong communities, these tokens typically lack substantive development activity and are characterized by extreme volatility, anonymous teams, and marketing-driven narratives. They represent high-risk assets often associated with pump-and-dump schemes.",
+categories: ["cryptocurrency_types"],
+related: ["Market Speculation", "Token Launches", "Pump and Dump", "Due Diligence"],
+trending: 6
 },
   
   // Web3
@@ -226,7 +225,7 @@ development activity and are characterized by extreme volatility, anonymous team
   term: "Web3",
   definition: "The third generation of the internet, characterized by decentralization, user ownership, and blockchain-based infrastructure. Web3 enables peer-to-peer interactions, tokenized economies, and self-sovereign identities, shifting control from centralized corporations to users.",
   categories: ["web3"],
-  related: ["Decentralized Applications - dApps", "Smart Contracts", "DAO Governance", "Tokenization"],
+  related: ["Decentralized Applications (dApps)", "Smart Contracts", "DAO Governance", "Tokenization"],
   trending: 10
 },
 
@@ -239,7 +238,7 @@ development activity and are characterized by extreme volatility, anonymous team
 },
 
 {
-  term: "Decentralized Applications - dApps",
+  term: "Decentralized Applications (dApps)",
   definition: "Applications built on blockchain or decentralized networks that operate without a central authority. dApps enable peer-to-peer transactions, censorship resistance, and transparent operations, forming the backbone of the Web3 ecosystem.",
   categories: ["web3", "blockchain_technology"],
   related: ["Smart Contracts", "Ethereum", "User Ownership"],
@@ -247,7 +246,7 @@ development activity and are characterized by extreme volatility, anonymous team
 },
 
 {
-  term: "Self-Sovereign Identity - SSI",
+  term: "Self-Sovereign Identity (SSI)",
   definition: "A digital identity model where individuals own and control their credentials without relying on centralized authorities. SSI leverages blockchain and cryptographic proofs to enable privacy-preserving authentication and verification.",
   categories: ["web3", "privacy_technology"],
   related: ["Decentralized Identity", "Verifiable Credentials", "Zero-Knowledge Proofs"],
@@ -258,12 +257,12 @@ development activity and are characterized by extreme volatility, anonymous team
   term: "Tokenization",
   definition: "The process of converting real-world or digital assets into blockchain-based tokens, enabling fractional ownership, greater liquidity, and programmable asset management within decentralized platforms.",
   categories: ["web3", "tokenization"],
-  related: ["NFTs", "Real World Assets - RWA", "DeFi"],
+  related: ["NFTs", "Real World Assets (RWA)", "DeFi"],
   trending: 9
 },
 
 {
-  term: "Zero-Knowledge Proofs - ZKPs",
+  term: "Zero-Knowledge Proofs (ZKPs)",
   definition: "Cryptographic techniques that allow one party to prove to another that a statement is true without revealing any underlying information. ZKPs are used in Web3 for privacy-preserving transactions and scalable blockchain solutions.",
   categories: ["web3", "privacy_technology"],
   related: ["zkEVM", "Privacy Coins", "Layer 2 Solutions"],
@@ -272,7 +271,7 @@ development activity and are characterized by extreme volatility, anonymous team
 
 {
   term: "DAO Governance",
-  definition: "A decentralized governance model where decision-making is conducted by token holders or community members through transparent, on-chain voting mechanisms. DAOs - Decentralized Autonomous Organizations - manage protocols, treasuries, and upgrades in the Web3 ecosystem.",
+  definition: "A decentralized governance model where decision-making is conducted by token holders or community members through transparent, on-chain voting mechanisms. DAOs (Decentralized Autonomous Organizations) manage protocols, treasuries, and upgrades in the Web3 ecosystem.",
   categories: ["web3", "social_community"],
   related: ["DAOs", "Token-Weighted Voting", "Quadratic Voting"],
   trending: 9
@@ -319,7 +318,7 @@ development activity and are characterized by extreme volatility, anonymous team
 },
 
 {
-  term: "InterPlanetary File System - IPFS",
+  term: "InterPlanetary File System (IPFS)",
   definition: "A decentralized file storage protocol that allows users to store and share data across a distributed network. IPFS is foundational for Web3 applications requiring censorship resistance and data permanence.",
   categories: ["web3", "infrastructure_applications"],
   related: ["Decentralized Storage", "Filecoin", "Data Sovereignty"],
@@ -336,7 +335,7 @@ development activity and are characterized by extreme volatility, anonymous team
 
 {
   term: "Web2 vs Web3",
-  definition: "Web2 is the current, centralized internet model dominated by corporations, while Web3 is a decentralized, user-owned paradigm powered by blockchain technology. Key differences include data ownership - corporate vs user, governance - centralized vs DAO, payments - fiat vs crypto, and censorship - platform vs community.",
+  definition: "Web2 is the current, centralized internet model dominated by corporations, while Web3 is a decentralized, user-owned paradigm powered by blockchain technology. Key differences include data ownership (corporate vs user), governance (centralized vs DAO), payments (fiat vs crypto), and censorship (platform vs community).",
   categories: ["web3"],
   related: ["Web2", "Web3", "DAO Governance", "User Ownership"],
   trending: 9
@@ -344,7 +343,7 @@ development activity and are characterized by extreme volatility, anonymous team
   
   // DeFi
 {
-term: "DeFi - Decentralized Finance",
+term: "DeFi (Decentralized Finance)",
 definition: "A blockchain-based financial ecosystem that recreates traditional financial services without centralized intermediaries. DeFi applications enable lending, borrowing, trading, investing, and asset management through smart contracts and decentralized protocols, providing open access to financial services globally.",
 categories: ["defi", "web3"],
 related: ["Smart Contracts", "Lending Protocols", "DEX", "Yield Farming"],
@@ -352,7 +351,7 @@ trending: 10
 },
 
 {
-term: "Real-World Asset Tokenization - RWA",
+term: "Real-World Asset Tokenization (RWA)",
 definition: "The process of representing traditional assets like real estate, bonds, commodities, and art as digital tokens on blockchain networks. RWA tokenization bridges traditional finance with DeFi, enabling fractional ownership, increased liquidity, and programmable functionality for previously illiquid assets while maintaining their connection to tangible value.",
 categories: ["defi", "tokenization"],
 related: ["Security Tokens", "Fractional Ownership", "Asset-Backed Tokens", "Compliance"],
@@ -368,7 +367,7 @@ trending: 9
 },
 
 {
-term: "Automated Market Maker - AMM",
+term: "Automated Market Maker (AMM)",
 definition: "A decentralized exchange protocol that uses liquidity pools and mathematical formulas to determine asset prices rather than traditional order books. AMMs enable permissionless trading without intermediaries by allowing users to trade against algorithmically managed liquidity pools, with prices adjusted automatically based on the ratio of assets in each pool.",
 categories: ["defi", "exchanges_trading"],
 related: ["Liquidity Pools", "Impermanent Loss", "Constant Product Formula", "DEX"],
@@ -392,7 +391,7 @@ trending: 8
 },
 
 {
-term: "Decentralized Exchange - DEX",
+term: "Decentralized Exchange (DEX)",
 definition: "A cryptocurrency exchange that operates without a central authority, enabling peer-to-peer trading through smart contracts. DEXs eliminate counterparty risk and custody issues by allowing users to trade directly from their wallets while maintaining control of their private keys throughout the transaction process.",
 categories: ["defi", "exchanges_trading"],
 related: ["AMM", "Order Book DEX", "Liquidity Pools", "Uniswap"],
@@ -400,7 +399,7 @@ trending: 9
 },
 
 {
-term: "Collateralized Debt Position - CDP",
+term: "Collateralized Debt Position (CDP)",
 definition: "A lending mechanism where users lock cryptocurrency as collateral to generate stablecoins or other assets as debt. CDPs maintain stability through overcollateralization, requiring borrowers to deposit more value than they withdraw, with automatic liquidation processes if collateral values fall below required thresholds.",
 categories: ["defi"],
 related: ["Overcollateralization", "Liquidation", "Stablecoins", "MakerDAO"],
@@ -440,7 +439,7 @@ trending: 8
 },
 
 {
-term: "Total Value Locked - TVL",
+term: "Total Value Locked (TVL)",
 definition: "A metric measuring the aggregate value of assets deposited in a DeFi protocol, used to evaluate the protocol's size, adoption, and market share. TVL represents the sum of all cryptocurrencies committed to a platform's smart contracts for activities like lending, liquidity provision, or staking.",
 categories: ["defi", "crypto_economics"],
 related: ["DeFi Metrics", "Protocol Growth", "Market Share", "Liquidity"],
@@ -465,7 +464,7 @@ trending: 9
   
   // CeFi
   {
-  term: "CeFi - Centralized Finance",
+  term: "CeFi (Centralized Finance)",
   definition: "Traditional financial services adapted for cryptocurrency, operated by centralized institutions like exchanges and custodians. CeFi platforms manage user assets, facilitate trading, and provide banking-like services while maintaining control over funds and requiring regulatory compliance.",
   categories: ["cefi"],
   related: ["KYC/AML", "Custodial Wallets", "Centralized Exchanges", "Fiat On-Ramps"],
@@ -489,7 +488,7 @@ trending: 9
 },
 
 {
-  term: "Over-the-Counter - OTC",
+  term: "Over-the-Counter (OTC) Trading",
   definition: "Peer-to-peer cryptocurrency trading facilitated by centralized brokers for large institutional transactions. OTC desks provide personalized service, price negotiation, and minimized market impact for high-volume trades that would disrupt public order books.",
   categories: ["cefi", "exchanges_trading"],
   related: ["Block Trading", "Institutional Trading", "Liquidity Providers", "Price Slippage"],
@@ -513,7 +512,7 @@ trending: 9
 },
 
 {
-  term: "Centralized Exchange - CEX",
+  term: "Centralized Exchange (CEX)",
   definition: "Platforms that match buyers and sellers through order books while maintaining custody of user funds. CEXs provide liquidity, advanced trading tools, and fiat integration but require users to trust the exchange's security and solvency.",
   categories: ["cefi", "exchanges_trading"],
   related: ["Order Books", "Market Makers", "Trading Pairs", "Withdrawal Limits"],
@@ -530,7 +529,7 @@ trending: 9
 
 {
   term: "Regulatory Compliance",
-  definition: "Processes implemented by CeFi platforms to adhere to financial regulations, including anti-money laundering - AML - checks, transaction monitoring, and reporting suspicious activities. These measures aim to prevent illicit activities while maintaining banking partnerships.",
+  definition: "Processes implemented by CeFi platforms to adhere to financial regulations, including anti-money laundering (AML) checks, transaction monitoring, and reporting suspicious activities. These measures aim to prevent illicit activities while maintaining banking partnerships.",
   categories: ["cefi", "compliance"],
   related: ["KYC Verification", "Travel Rule", "Sanctions Screening", "Transaction Monitoring"],
   trending: 9
@@ -586,7 +585,7 @@ trending: 9
   
   // NFTs and Digital Collectibles
  {
-term: "NFTs - Non-Fungible Tokens",
+term: "NFTs (Non-Fungible Tokens)",
 definition: "Distinct cryptographic tokens that represent ownership or authenticity certification of specific digital or physical items on a blockchain. Unlike cryptocurrencies, each NFT has unique properties making it non-interchangeable, enabling verifiable digital scarcity, ownership, and authenticity for digital assets.",
 categories: ["nfts_collectibles", "web3"],
 related: ["Digital Collectibles", "Tokenization", "Digital Ownership", "Blockchain Art"],
@@ -595,7 +594,7 @@ trending: 8
 
 {
 term: "AI-Generated NFTs",
-definition: "Digital collectibles created using artificial intelligence algorithms, representing a growing segment of the NFT market. These intelligent NFTs - iNFTs - operate under the ERC-7857 standard introduced in January 2025, which enables secure transfer of AI agents and re-encryption of sensitive data for new owners, giving creators more control over their earnings.",
+definition: "Digital collectibles created using artificial intelligence algorithms, representing a growing segment of the NFT market. These intelligent NFTs (iNFTs) operate under the ERC-7857 standard introduced in January 2025, which enables secure transfer of AI agents and re-encryption of sensitive data for new owners, giving creators more control over their earnings.",
 categories: ["nfts_collectibles", "ai_data"],
 related: ["Generative Art", "iNFTs", "ERC-7857", "AI NFT Generators"],
 trending: 10
@@ -642,7 +641,7 @@ trending: 9
 },
 
 {
-term: "PFP - Profile Picture - NFTs",
+term: "PFP (Profile Picture) NFTs",
 definition: "Collections of unique digital avatars designed primarily for use as social media profile pictures, often featuring variations of a central theme or character. These identity-focused NFTs serve as digital status symbols and community identifiers, with projects like Bored Ape Yacht Club and CryptoPunks establishing the category that experienced significant market fluctuations between 2021-2025.",
 categories: ["nfts_collectibles", "social_community"],
 related: ["Digital Identity", "Avatar Collections", "Community Membership", "Status Symbols"],
@@ -675,7 +674,7 @@ trending: 8
 
 {
 term: "NFT Standards",
-definition: "Technical specifications that define how non-fungible tokens function on blockchain networks, establishing interoperability and functionality parameters. Beyond the original ERC-721 standard, newer implementations like ERC-7857 for intelligent NFTs - introduced January 2025 - enable advanced features including AI agent transfer and secure data re-encryption for new owners.",
+definition: "Technical specifications that define how non-fungible tokens function on blockchain networks, establishing interoperability and functionality parameters. Beyond the original ERC-721 standard, newer implementations like ERC-7857 for intelligent NFTs (introduced January 2025) enable advanced features including AI agent transfer and secure data re-encryption for new owners.",
 categories: ["nfts_collectibles", "blockchain_technology"],
 related: ["ERC-721", "ERC-1155", "ERC-7857", "Token Metadata"],
 trending: 8
@@ -692,7 +691,7 @@ trending: 9
 
 {
 term: "Token Supply",
-definition: "The total quantity of tokens that will ever exist for a particular cryptocurrency, establishing its scarcity profile. Supply models range from fixed caps - like Bitcoin's 21 million limit - to inflationary models with ongoing issuance. The supply mechanism significantly impacts a token's potential value and market behavior over time.",
+definition: "The total quantity of tokens that will ever exist for a particular cryptocurrency, establishing its scarcity profile. Supply models range from fixed caps (like Bitcoin's 21 million limit) to inflationary models with ongoing issuance. The supply mechanism significantly impacts a token's potential value and market behavior over time.",
 categories: ["tokenomics"],
 related: ["Circulating Supply", "Maximum Supply", "Token Burning", "Inflation Rate"],
 trending: 8
@@ -732,7 +731,7 @@ trending: 7
 
 {
 term: "Initial Token Offerings",
-definition: "Fundraising mechanisms where projects sell tokens to early investors and community members. These include Initial Coin Offerings - ICOs, Security Token Offerings - STOs, and Initial Exchange Offerings - IEOs, each with different regulatory considerations and distribution approaches that form a critical component of a project's tokenomics strategy.",
+definition: "Fundraising mechanisms where projects sell tokens to early investors and community members. These include Initial Coin Offerings (ICOs), Security Token Offerings (STOs), and Initial Exchange Offerings (IEOs), each with different regulatory considerations and distribution approaches that form a critical component of a project's tokenomics strategy.",
 categories: ["tokenomics", "crypto_economics"],
 related: ["ICOs", "STOs", "IEOs", "Token Sales"],
 trending: 7
@@ -748,7 +747,7 @@ trending: 8
 
 {
 term: "Emission Schedule",
-definition: "The predetermined rate at which new tokens are created and released into circulation over time. Emission schedules can be fixed, decreasing - like Bitcoin's halving events, or algorithmic based on network parameters, directly impacting token inflation rates and long-term value propositions.",
+definition: "The predetermined rate at which new tokens are created and released into circulation over time. Emission schedules can be fixed, decreasing (like Bitcoin's halving events), or algorithmic based on network parameters, directly impacting token inflation rates and long-term value propositions.",
 categories: ["tokenomics", "mining_staking"],
 related: ["Block Rewards", "Inflation Rate", "Halving Events", "Token Release"],
 trending: 8
@@ -781,14 +780,14 @@ trending: 8
   // Exchanges and Trading
  {
 term: "Arbitrage Trading",
-definition: "A trading strategy that exploits price differences of the same cryptocurrency across different exchanges or markets. Arbitrage traders profit by simultaneously buying an asset where it's priced lower and selling it where it's priced higher. This strategy includes several variations such as spatial arbitrage - between exchanges, triangular arbitrage - among three crypto pairs, and cross-border arbitrage - leveraging regional price differences.",
+definition: "A trading strategy that exploits price differences of the same cryptocurrency across different exchanges or markets. Arbitrage traders profit by simultaneously buying an asset where it's priced lower and selling it where it's priced higher. This strategy includes several variations such as spatial arbitrage (between exchanges), triangular arbitrage (among three crypto pairs), and cross-border arbitrage (leveraging regional price differences).",
 categories: ["exchanges_trading", "trading_strategy"],
 related: ["Price Discrepancies", "Market Inefficiency", "Exchange Rates", "Triangular Arbitrage"],
 trending: 7
 },
 
 {
-term: "High-Frequency Trading - HFT",
+term: "High-Frequency Trading (HFT)",
 definition: "An advanced form of algorithmic trading where sophisticated computer programs execute thousands of orders in fractions of a second. HFT strategies capitalize on minuscule price discrepancies that may exist for only milliseconds, requiring specialized hardware, ultra-low latency connections, and proximity to exchange servers. This approach focuses on extremely short-term opportunities across multiple markets simultaneously.",
 categories: ["exchanges_trading", "ai_data"],
 related: ["Algorithmic Trading", "Latency", "Market Microstructure", "Co-location"],
@@ -805,7 +804,7 @@ trending: 8
 
 {
 term: "Trend Trading",
-definition: "A trading strategy that aims to capture gains by identifying and following the directional momentum of an asset over time. Trend traders look for sustained price movements in a particular direction - uptrends or downtrends - rather than attempting to predict market tops or bottoms. This approach focuses on recognizing overarching market direction through technical indicators and entering positions that align with the established trend.",
+definition: "A trading strategy that aims to capture gains by identifying and following the directional momentum of an asset over time. Trend traders look for sustained price movements in a particular direction (uptrends or downtrends) rather than attempting to predict market tops or bottoms. This approach focuses on recognizing overarching market direction through technical indicators and entering positions that align with the established trend.",
 categories: ["exchanges_trading", "technical_analysis"],
 related: ["Moving Averages", "Momentum Indicators", "Uptrend", "Downtrend"],
 trending: 8
@@ -829,7 +828,7 @@ trending: 9
 
 {
 term: "Spread",
-definition: "The difference between the highest price someone is willing to buy at - bid - and the lowest price someone is willing to sell at - ask - in cryptocurrency markets. This gap represents the transaction cost for traders and is essentially the price paid for the immediacy of executing trades. Tighter spreads indicate more liquid markets, while wider spreads typically occur in less liquid markets or during periods of high volatility.",
+definition: "The difference between the highest price someone is willing to buy at (bid) and the lowest price someone is willing to sell at (ask) in cryptocurrency markets. This gap represents the transaction cost for traders and is essentially the price paid for the immediacy of executing trades. Tighter spreads indicate more liquid markets, while wider spreads typically occur in less liquid markets or during periods of high volatility.",
 categories: ["exchanges_trading"],
 related: ["Bid-Ask Spread", "Liquidity", "Market Makers", "Trading Costs"],
 trending: 8
@@ -885,7 +884,7 @@ trending: 8
 
 {
 term: "Advanced Order Types",
-definition: "Sophisticated trading instructions beyond basic market orders, including limit orders, stop-loss orders, and time-weighted average price - TWAP - orders. While traditionally available only on centralized exchanges, protocols now bring CEX-style limit and DCA orders to decentralized exchanges. These order types give traders greater control over execution parameters and risk management.",
+definition: "Sophisticated trading instructions beyond basic market orders, including limit orders, stop-loss orders, and time-weighted average price (TWAP) orders. While traditionally available only on centralized exchanges, protocols now bring CEX-style limit and DCA orders to decentralized exchanges. These order types give traders greater control over execution parameters and risk management.",
 categories: ["exchanges_trading", "defi", "cefi"],
 related: ["Limit Orders", "Stop-Loss", "TWAP", "Take-Profit Orders"],
 trending: 8
@@ -932,7 +931,7 @@ trending: 8
 },
 
 {
-term: "Decentralized Exchange - DEX",
+term: "Decentralized Exchange (DEX)",
 definition: "A peer-to-peer marketplace where cryptocurrency transactions occur directly between traders without intermediaries, using smart contracts instead of centralized order books. DEXs settle transactions directly on the blockchain, exclusively trade crypto-to-crypto pairs, and typically utilize liquidity pools rather than traditional order matching systems, preserving user custody of funds throughout the trading process.",
 categories: ["exchanges_trading", "defi"],
 related: ["Liquidity Pools", "Automated Market Makers", "Smart Contracts", "Non-custodial Trading"],
@@ -940,7 +939,7 @@ trending: 9
 },
 
 {
-term: "Centralized Exchange - CEX",
+term: "Centralized Exchange (CEX)",
 definition: "A cryptocurrency trading platform with centralized infrastructure managed by a single entity that acts as an intermediary between buyers and sellers. CEXs maintain order books to match trades, provide custody services for user funds, and offer high liquidity with diverse trading pairs including fiat-to-crypto options, making them accessible to both novice and experienced traders.",
 categories: ["exchanges_trading", "cefi"],
 related: ["Order Books", "KYC/AML", "Custodial Wallets", "Trading Pairs"],
@@ -974,7 +973,7 @@ trending: 9
 
 {
 term: "Hardware Wallets",
-definition: "Physical devices specifically designed to securely store cryptocurrency private keys offline while allowing users to sign transactions when connected to a computer. Leading solutions like Ledger Flex, Trezor Safe 3, and NGRAVE ZERO use secure element chips with various certification levels - EAL6+, EAL7 - to protect keys from both physical and virtual attacks.",
+definition: "Physical devices specifically designed to securely store cryptocurrency private keys offline while allowing users to sign transactions when connected to a computer. Leading solutions like Ledger Flex, Trezor Safe 3, and NGRAVE ZERO use secure element chips with various certification levels (EAL6+, EAL7) to protect keys from both physical and virtual attacks.",
 categories: ["wallets_security"],
 related: ["Ledger", "Trezor", "NGRAVE", "Secure Element Chips"],
 trending: 10
@@ -997,7 +996,7 @@ trending: 8
 },
 
 {
-term: "Multi-party Computation - MPC",
+term: "Multi-party Computation (MPC) Wallets",
 definition: "Advanced cryptocurrency security solutions that distribute private key control across multiple parties using cryptographic techniques, eliminating single points of failure. MPC technology, pioneered by companies like Fireblocks, enables institutional-grade security by requiring multiple approvals for transactions while maintaining operational efficiency, making it particularly valuable for enterprise applications.",
 categories: ["wallets_security", "cefi"],
 related: ["Fireblocks", "Distributed Key Management", "Institutional Security", "Threshold Signatures"],
@@ -1006,7 +1005,7 @@ trending: 9
 
 {
 term: "Multi-signature Wallets",
-definition: "Security-enhanced cryptocurrency wallets requiring multiple private key signatures to authorize transactions, creating additional protection against unauthorized access. These wallets implement M-of-N signature schemes where a specified number of keys - M - from a larger set - N - must approve each transaction, making them ideal for shared treasury management and enhanced individual security.",
+definition: "Security-enhanced cryptocurrency wallets requiring multiple private key signatures to authorize transactions, creating additional protection against unauthorized access. These wallets implement M-of-N signature schemes where a specified number of keys (M) from a larger set (N) must approve each transaction, making them ideal for shared treasury management and enhanced individual security.",
 categories: ["wallets_security", "blockchain_technology"],
 related: ["Shared Control", "Treasury Management", "M-of-N Signatures", "Gnosis Safe"],
 trending: 7
@@ -1038,14 +1037,14 @@ trending: 7
 
 {
 term: "Secure Element Chips",
-definition: "Specialized hardware components in cryptocurrency wallets that store private keys and execute cryptographic operations in an isolated, tamper-resistant environment. These chips, with certifications like EAL6+ - Ledger - or EAL7 - NGRAVE, protect against physical attacks, side-channel analysis, and other sophisticated threats by preventing direct access to sensitive cryptographic material.",
+definition: "Specialized hardware components in cryptocurrency wallets that store private keys and execute cryptographic operations in an isolated, tamper-resistant environment. These chips, with certifications like EAL6+ (Ledger) or EAL7 (NGRAVE), protect against physical attacks, side-channel analysis, and other sophisticated threats by preventing direct access to sensitive cryptographic material.",
 categories: ["wallets_security", "hardware_security"],
 related: ["Tamper Resistance", "Hardware Security", "Side-channel Protection", "Certification Standards"],
 trending: 8
 },
 
 {
-term: "Wallet-as-a-Service - WaaS",
+term: "Wallet-as-a-Service (WaaS)",
 definition: "Enterprise-grade cryptocurrency wallet infrastructure provided as a service, allowing businesses to integrate secure digital asset management into their applications without building proprietary security systems. Companies like Fireblocks offer WaaS solutions with MPC technology, enabling institutions to maintain security while achieving operational efficiency for treasury management and customer-facing services.",
 categories: ["wallets_security", "infrastructure_applications"],
 related: ["Fireblocks", "Institutional Adoption", "API Integration", "Custody Solutions"],
@@ -1062,7 +1061,7 @@ trending: 8
   
   // Mining and Staking
  {
-term: "Proof of Work - PoW",
+term: "Proof of Work (PoW)",
 definition: "A consensus mechanism where miners compete to solve complex cryptographic puzzles, requiring significant computational effort to validate transactions and secure blockchain networks. First formalized in 1999 by Jakobsson and Juels and later popularized by Bitcoin, PoW creates an asymmetric system where calculations are difficult for miners but easy for the network to verify, preventing Sybil attacks through hardware and energy requirements.",
 categories: ["mining_staking", "blockchain_technology"],
 related: ["Mining", "Hash Function", "ASIC Mining", "Energy Consumption"],
@@ -1070,7 +1069,7 @@ trending: 8
 },
 
 {
-term: "Proof of Stake - PoS",
+term: "Proof of Stake (PoS)",
 definition: "A consensus mechanism where validators are selected to create new blocks based on the amount of cryptocurrency they hold and are willing to 'stake' as collateral. PoS eliminates the energy-intensive computational work of PoW systems, instead securing the network through economic incentives where validators risk losing their staked assets if they attempt to validate fraudulent transactions.",
 categories: ["mining_staking", "blockchain_technology"],
 related: ["Staking", "Validators", "Slashing", "Energy Efficiency"],
@@ -1113,13 +1112,13 @@ trending: 7
 term: "Staking Rewards",
 definition: "Incentives earned by cryptocurrency holders for participating in network validation through staking, similar to interest in traditional finance. Reward rates vary significantly between protocols, with some networks like Binance Coin offering up to 14.4% APY for locked staking, while others like Ethereum provide more modest returns around 3-7%, depending on validator performance and network participation.",
 categories: ["mining_staking", "tokenomics"],
-related: ["Annual Percentage Yield - APY", "Validator Rewards", "Compounding", "Lock-up Periods"],
+related: ["Annual Percentage Yield (APY)", "Validator Rewards", "Compounding", "Lock-up Periods"],
 trending: 9
 },
 
 {
 term: "Validator Nodes",
-definition: "Participants in proof-of-stake networks responsible for proposing, verifying, and adding new blocks to the blockchain. Validators must stake a minimum amount of the network's cryptocurrency as collateral - such as 32 ETH for Ethereum - and maintain reliable hardware running validation software, earning rewards for honest participation while risking penalties for downtime or malicious behavior.",
+definition: "Participants in proof-of-stake networks responsible for proposing, verifying, and adding new blocks to the blockchain. Validators must stake a minimum amount of the network's cryptocurrency as collateral (such as 32 ETH for Ethereum) and maintain reliable hardware running validation software, earning rewards for honest participation while risking penalties for downtime or malicious behavior.",
 categories: ["mining_staking", "blockchain_technology"],
 related: ["Staking Requirements", "Node Operation", "Block Validation", "Consensus"],
 trending: 8
@@ -1167,7 +1166,7 @@ trending: 7
 
 {
 term: "ASIC-resistant Algorithms",
-definition: "Mining algorithms specifically designed to prevent or reduce the efficiency advantage of specialized ASIC hardware over consumer-grade equipment. Cryptocurrencies like Monero - RandomX, Ravencoin - KAWPOW, and Vertcoin - Lyra2REv3 - implement these algorithms to maintain mining decentralization by ensuring CPUs or GPUs remain competitive, preventing mining centralization by large ASIC operations.",
+definition: "Mining algorithms specifically designed to prevent or reduce the efficiency advantage of specialized ASIC hardware over consumer-grade equipment. Cryptocurrencies like Monero (RandomX), Ravencoin (KAWPOW), and Vertcoin (Lyra2REv3) implement these algorithms to maintain mining decentralization by ensuring CPUs or GPUs remain competitive, preventing mining centralization by large ASIC operations.",
 categories: ["mining_staking", "blockchain_technology"],
 related: ["CPU Mining", "GPU Mining", "Decentralization", "Algorithm Switching"],
 trending: 6
@@ -1184,32 +1183,28 @@ trending: 7
 // Regulatory Frameworks
 
 {
-  term: "Global Crypto Regulation Divergence",
-  definition: `The significant differences in regulatory approaches to cryptocurrencies across major jurisdictions worldwide, creating compliance challenges for businesses operating 
-internationally. While the EU establishes comprehensive rules through MiCA, other regions like the United States rely on existing securities laws and enforcement 
-actions, creating a fragmented global regulatory landscape that crypto businesses must navigate.`,
-  categories: ["regulatory_frameworks", "compliance"],
-  related: ["Regulatory Arbitrage", "Cross-Border Compliance", "Jurisdiction Shopping", "International Standards"],
-  trending: 9
+term: "Global Crypto Regulation Divergence",
+definition: "The significant differences in regulatory approaches to cryptocurrencies across major jurisdictions worldwide, creating compliance challenges for businesses operating internationally. While the EU establishes comprehensive rules through MiCA, other regions like the United States rely on existing securities laws and enforcement actions, creating a fragmented global regulatory landscape that crypto businesses must navigate.",
+categories: ["regulatory_frameworks", "compliance"],
+related: ["Regulatory Arbitrage", "Cross-Border Compliance", "Jurisdiction Shopping", "International Standards"],
+trending: 9
 },
 {
-  term: "Regulatory Sandbox",
-  definition: `Controlled testing environments established by financial regulators that allow 
-fintech and crypto companies to experiment with innovative products under regulatory supervision. These programs enable businesses to test concepts with real customers 
-while receiving regulatory guidance, helping bridge the gap between innovation and compliance in rapidly evolving technological landscapes.`,
-  categories: ["regulatory_frameworks", "compliance"],
-  related: ["Innovation Hubs", "Regulatory Innovation", "Fintech Development", "Supervised Testing"],
-  trending: 7
+term: "Regulatory Sandbox",
+definition: "Controlled testing environments established by financial regulators that allow fintech and crypto companies to experiment with innovative products under regulatory supervision. These programs enable businesses to test concepts with real customers while receiving regulatory guidance, helping bridge the gap between innovation and compliance in rapidly evolving technological landscapes.",
+categories: ["regulatory_frameworks", "compliance"],
+related: ["Innovation Hubs", "Regulatory Innovation", "Fintech Development", "Supervised Testing"],
+trending: 7
 },
 {
-term: "Markets in Crypto-Assets Regulation - MiCA",
+term: "Markets in Crypto-Assets Regulation (MiCA)",
 definition: "The first comprehensive EU-wide regulatory framework for cryptocurrencies that establishes harmonized rules for crypto-asset issuers and service providers. MiCA introduces licensing requirements, operational standards, and consumer protection measures across all 27 EU member states, creating a unified approach to crypto regulation that enables passporting of services throughout the European Union.",
 categories: ["regulatory_frameworks", "compliance"],
 related: ["CASP Licensing", "Stablecoin Regulation", "Whitepaper Requirements", "EU Passporting"],
 trending: 10
 },
 {
-term: "Crypto-Asset Service Provider - CASP",
+term: "Crypto-Asset Service Provider (CASP)",
 definition: "Entities providing crypto-related services that require authorization under MiCA regulation, including exchanges, custody providers, and advisory services. CASPs must implement robust governance frameworks, meet fit-and-proper management requirements, follow anti-market abuse measures, and comply with consumer protection standards including transparent fee disclosures and conflict-of-interest management.",
 categories: ["regulatory_frameworks", "compliance"],
 related: ["MiCA", "Exchange Regulation", "Custody Services", "Licensing Requirements"],
@@ -1217,67 +1212,63 @@ trending: 9
 },
 {
 term: "Stablecoin Regulation",
-definition: "Regulatory frameworks specifically targeting cryptocurrencies designed to maintain stable value, with MiCA distinguishing between Asset-Referenced Tokens - ARTs - and E-Money Tokens - EMTs. These regulations impose reserve requirements, whitepaper disclosures, and authorization processes to ensure stablecoins are fully backed and subject to continuous oversight for consumer protection and financial stability.",
+definition: "Regulatory frameworks specifically targeting cryptocurrencies designed to maintain stable value, with MiCA distinguishing between Asset-Referenced Tokens (ARTs) and E-Money Tokens (EMTs). These regulations impose reserve requirements, whitepaper disclosures, and authorization processes to ensure stablecoins are fully backed and subject to continuous oversight for consumer protection and financial stability.",
 categories: ["regulatory_frameworks", "cryptocurrency_types"],
 related: ["Asset-Referenced Tokens", "E-Money Tokens", "Reserve Requirements", "MiCA"],
 trending: 8
 },
 {
 term: "Regulatory Transition Period",
-definition: "A grace period allowing existing crypto businesses to continue operations while seeking formal authorization under new regulatory frameworks. Under MiCA, EU member states can implement transition periods lasting up to 18 months - until July 1, 2026, during which companies already providing crypto services can continue operating while pursuing full compliance and authorization.",
+definition: "A grace period allowing existing crypto businesses to continue operations while seeking formal authorization under new regulatory frameworks. Under MiCA, EU member states can implement transition periods lasting up to 18 months (until July 1, 2026), during which companies already providing crypto services can continue operating while pursuing full compliance and authorization.",
 categories: ["regulatory_frameworks", "compliance"],
 related: ["Grandfathering", "MiCA Implementation", "Compliance Timeline", "Authorization Process"],
 trending: 8
 },
 {
-  term: "National Competent Authorities - NCAs",
-  definition: `Regulatory bodies designated by each EU member state to implement and enforce crypto regulations like MiCA. These authorities handle licensing applications, conduct 
-supervision, and ensure compliance with regulatory requirements, with varying approaches to implementation timelines and transition periods across different jurisdictions.`,
-  categories: ["regulatory_frameworks", "compliance"],
-  related: ["Financial Regulators", "Supervision", "Enforcement Actions", "MiCA Implementation"],
-  trending: 7
+term: "National Competent Authorities (NCAs)",
+definition: "Regulatory bodies designated by each EU member state to implement and enforce crypto regulations like MiCA. These authorities handle licensing applications, conduct supervision, and ensure compliance with regulatory requirements, with varying approaches to implementation timelines and transition periods across different jurisdictions.",
+categories: ["regulatory_frameworks", "compliance"],
+related: ["Financial Regulators", "Supervision", "Enforcement Actions", "MiCA Implementation"],
+trending: 7
 },
-
 {
-term: "Crypto-Asset Reporting Framework - CARF",
+term: "Crypto-Asset Reporting Framework (CARF)",
 definition: "A global regulatory standard developed by the OECD that requires Crypto-Asset Service Providers to collect and report information on cryptocurrency transactions for tax purposes. CARF mandates the automatic exchange of tax-relevant information between jurisdictions, covering cryptocurrencies, stablecoins, and certain NFTs, with implementation expected to begin in 2025 for 2024 transactions.",
 categories: ["regulatory_frameworks", "compliance", "tax"],
 related: ["Reporting Crypto-Asset Service Providers", "Tax Transparency", "Information Exchange", "DAC8"],
 trending: 10
 },
 {
-term: "DAC8 - Directive on Administrative Cooperation 8",
+term: "DAC8 (Directive on Administrative Cooperation 8)",
 definition: "The European implementation of CARF that amends the EU's Directive on Administrative Cooperation to enhance tax transparency for crypto-assets. DAC8 closely follows OECD CARF provisions but includes additional requirements such as blocking users from transactions if they fail to provide required information after two reminders within 60 days.",
 categories: ["regulatory_frameworks", "compliance", "tax"],
 related: ["CARF", "EU Regulation", "Tax Reporting", "Information Exchange"],
 trending: 9
 },
 {
-term: "Common Reporting Standard - CRS",
+term: "Common Reporting Standard (CRS)",
 definition: "An information standard for the automatic exchange of financial account information developed by the OECD. Recently amended to include certain crypto-assets, the CRS requires financial institutions to report non-resident account holder information to their tax authorities, who then exchange this information with the account holders' countries of residence.",
 categories: ["regulatory_frameworks", "compliance", "tax"],
 related: ["AEOI", "Tax Transparency", "Financial Account Reporting", "CARF"],
 trending: 8
 },
 {
-  term: "Financial Action Task Force - FATF",
-  definition: `An intergovernmental organization that develops global standards to combat money laundering and terrorist financing, including specific recommendations for virtual 
-assets. FATF classifies jurisdictions into high-risk jurisdictions subject to a Call for Action - blacklist - and jurisdictions under increased monitoring - greylist - based on their AML/CFT compliance.`,
-  categories: ["regulatory_frameworks", "compliance"],
-  related: ["Travel Rule", "VASP Regulation", "AML/CFT", "Country Risk Assessment"],
-  trending: 9
+term: "Financial Action Task Force (FATF)",
+definition: "An intergovernmental organization that develops global standards to combat money laundering and terrorist financing, including specific recommendations for virtual assets. FATF classifies jurisdictions into 'High-Risk Jurisdictions subject to a Call for Action' (blacklist) and 'Jurisdictions under Increased Monitoring' (greylist) based on their AML/CFT compliance.",
+categories: ["regulatory_frameworks", "compliance"],
+related: ["Travel Rule", "VASP Regulation", "AML/CFT", "Country Risk Assessment"],
+trending: 9
 },
-
 {
-term: "Reporting Crypto-Asset Service Provider - RCASP",
+term: "Reporting Crypto-Asset Service Provider (RCASP)",
 definition: "Entities that fall under CARF reporting obligations, including cryptocurrency exchanges, brokers, dealers, and certain DeFi platforms that have sufficient control to comply with reporting requirements. RCASPs must conduct due diligence on users through self-certifications, verify the reasonableness of provided information, and report transaction data to tax authorities.",
 categories: ["regulatory_frameworks", "compliance", "tax"],
 related: ["CARF", "DAC8", "Due Diligence", "Self-Certification"],
 trending: 8
 },
 {
-term: "Automatic Exchange of Information - AEOI",
-definition: "A standardized system where tax authorities automatically share taxpayer information with foreign tax authorities to combat offshore tax evasion. AEOI frameworks include the Common Reporting Standard - CRS - for traditional financial accounts and CARF for crypto-assets, creating a global network of information exchange agreements.",
+term: "Automatic Exchange of Information (AEOI)",
+definition: "A standardized system where tax authorities automatically share taxpayer information with foreign tax authorities to combat offshore tax evasion. AEOI frameworks include the Common Reporting Standard (CRS) for traditional financial accounts and CARF for crypto-assets, creating a global network of information exchange agreements.",
 categories: ["regulatory_frameworks", "compliance", "tax"],
 related: ["CRS", "CARF", "Tax Transparency", "Information Security"],
 trending: 7
@@ -1286,7 +1277,7 @@ trending: 7
 // Compliance 
 
 {
-  term: "KYC - Know Your Customer",
+  term: "KYC (Know Your Customer)",
   definition: "Mandatory process where crypto businesses verify client identities through government-issued documents and biometric checks. Includes collecting name, DOB, address, and ID validation, with automated solutions enabling verification in seconds while screening against sanctions lists.",
   categories: ["compliance"],
   related: ["AML", "CDD", "EDD", "Identity Verification"],
@@ -1294,7 +1285,7 @@ trending: 7
 },
 
 {
-  term: "AML - Anti-Money Laundering",
+  term: "AML (Anti-Money Laundering)",
   definition: "Regulatory framework requiring crypto businesses to implement controls preventing financial crime. Combines KYC checks, transaction monitoring, and suspicious activity reporting to combat illicit fund flows through blockchain networks.",
   categories: ["compliance"],
   related: ["CFT", "SAR", "Risk Assessment", "Travel Rule"],
@@ -1302,7 +1293,7 @@ trending: 7
 },
 
 {
-  term: "CFT - Countering Financing of Terrorism",
+  term: "CFT (Countering Financing of Terrorism)",
   definition: "Specific AML measures targeting terror financing through crypto assets. Requires continuous transaction monitoring and reporting of suspicious patterns indicating potential terrorist organization links.",
   categories: ["compliance"],
   related: ["AML", "Sanctions Screening", "Wallet Screening", "FATF Recommendations"],
@@ -1310,7 +1301,7 @@ trending: 7
 },
 
 {
-  term: "CDD - Customer Due Diligence",
+  term: "CDD (Customer Due Diligence)",
   definition: "Baseline verification process establishing customer risk profiles. Includes identity confirmation, business relationship purpose assessment, and ongoing activity monitoring as required by MiCA and FATF regulations.",
   categories: ["compliance"],
   related: ["EDD", "Risk-Based Approach", "PEP Screening", "Source of Funds"],
@@ -1318,7 +1309,7 @@ trending: 7
 },
 
 {
-  term: "EDD - Enhanced Due Diligence",
+  term: "EDD (Enhanced Due Diligence)",
   definition: "Heightened scrutiny for high-risk customers like PEPs or large transaction volumes. Requires verifying fund sources, wealth origins, and implementing tighter transaction limits under EU AMLD6 regulations.",
   categories: ["compliance"],
   related: ["CDD", "PEP", "Source of Wealth", "Adverse Media Screening"],
@@ -1326,7 +1317,7 @@ trending: 7
 },
 
 {
-  term: "PEP - Politically Exposed Person",
+  term: "PEP (Politically Exposed Person)",
   definition: "High-risk individuals holding prominent public positions or family members/associates. Requires mandatory EDD under AMLD6 and MiCA regulations to prevent corruption-related money laundering through crypto assets.",
   categories: ["compliance"],
   related: ["EDD", "Sanctions Lists", "Source of Wealth", "Reputational Risk"],
@@ -1334,7 +1325,7 @@ trending: 7
 },
 
 {
-  term: "SAR - Suspicious Activity Report",
+  term: "SAR (Suspicious Activity Report)",
   definition: "Mandatory disclosure filed with regulators like FinCEN when detecting potential financial crimes. Crypto businesses must report transactions showing structuring patterns, mixing service use, or darknet market links within 30 days of detection.",
   categories: ["compliance"],
   related: ["AML", "Transaction Monitoring", "Chainalysis Reactor", "Regulatory Reporting"],
@@ -1342,7 +1333,7 @@ trending: 7
 },
 
 {
-  term: "VASP - Virtual Asset Service Provider",
+  term: "VASP (Virtual Asset Service Provider)",
   definition: "Regulated entities under FATF guidelines offering crypto exchange, transfer, or custody services. Must implement TRM Labs-like blockchain analytics for real-time transaction monitoring and wallet screening.",
   categories: ["compliance", "regulatory_frameworks"],
   related: ["CASP", "Travel Rule", "MiCA", "Crypto Exchange"],
@@ -1367,7 +1358,7 @@ trending: 7
 
 {
   term: "Risk Assessment",
-  definition: "Mandatory evaluation of customer/product risks under AMLD6. Crypto businesses must score risks based on geography - high-risk countries, product type - privacy coins, and customer profiles - PEPs.",
+  definition: "Mandatory evaluation of customer/product risks under AMLD6. Crypto businesses must score risks based on geography (high-risk countries), product type (privacy coins), and customer profiles (PEPs).",
   categories: ["compliance"],
   related: ["CDD", "Risk-Based Approach", "Geographical Risk", "Product Risk Scoring"],
   trending: 8
@@ -1407,7 +1398,7 @@ trending: 7
 
 {
   term: "Compliance Officer",
-  definition: "Certified professional - CAMS/CCAS - overseeing AML program implementation. Responsible for policy development, staff training, and coordinating audits/reporting in crypto institutions under MiCA Article 34 requirements.",
+  definition: "Certified professional (CAMS/CCAS) overseeing AML program implementation. Responsible for policy development, staff training, and coordinating audits/reporting in crypto institutions under MiCA Article 34 requirements.",
   categories: ["compliance"],
   related: ["MLRO", "Regulatory Audit", "Policy Framework", "Staff Training"],
   trending: 7
@@ -1415,14 +1406,14 @@ trending: 7
 
 {
   term: "Regulatory Reporting",
-  definition: "Mandatory submissions including SARs, CTRs - Cash Transaction Reports, and CARF/DAC8 tax data. Crypto businesses must automate reporting through solutions like Scorechain to meet FATF/G20 requirements.",
+  definition: "Mandatory submissions including SARs, CTRs (Cash Transaction Reports), and CARF/DAC8 tax data. Crypto businesses must automate reporting through solutions like Scorechain to meet FATF/G20 requirements.",
   categories: ["compliance"],
   related: ["SAR", "CRS", "DAC8", "FATF Travel Rule"],
   trending: 8
 },
 
 {
-  term: "Source of Funds - SoF",
+  term: "Source of Funds (SoF)",
   definition: "Verification process documenting crypto asset origins. For large transactions, requires bank statements, mining rewards proof, or KYC-verified exchange withdrawal records under AMLD6 Article 13.",
   categories: ["compliance"],
   related: ["EDD", "Wealth Origin", "Transaction History", "Proof of Funds"],
@@ -1430,7 +1421,7 @@ trending: 7
 },
 
 {
-  term: "Source of Wealth - SoW",
+  term: "Source of Wealth (SoW)",
   definition: "Enhanced verification of customer asset origins beyond immediate transactions. Requires documenting inheritance, business revenue, or investment returns for PEPs/high-net-worth individuals under MiCA Article 45.",
   categories: ["compliance"],
   related: ["SoF", "PEP", "Beneficial Ownership", "Wealth Documentation"],
@@ -1459,7 +1450,7 @@ related: ["VASP", "CASP", "AML Compliance", "Regulatory Reporting"],
 trending: 9
 },
 {
-term: "Traceability of Transfers Regulation - TFR",
+term: "Traceability of Transfers Regulation (TFR)",
 definition: "EU Regulation 2023/1113 requiring crypto-asset service providers to collect and make available information about the sender and beneficiary of all crypto-asset transfers, regardless of transaction amount. Taking effect December 30, 2024, this regulation extends traditional wire transfer rules to crypto transactions to ensure financial transparency and combat money laundering and terrorist financing.",
 categories: ["compliance", "regulatory_frameworks"],
 related: ["Travel Rule", "FATF Recommendations", "MiCA", "Transaction Monitoring"],
@@ -1470,7 +1461,7 @@ trending: 9
 
 {
 term: "Bitcoin Pizza Day",
-definition: "May 22, 2010, when programmer Laszlo Hanyecz made the first documented purchase of physical goods using Bitcoin, buying two pizzas for 10,000 BTC - worth approximately $41 at the time. This transaction established Bitcoin's real-world value and is celebrated annually by the crypto community. The same amount of Bitcoin would be worth over $1 billion in 2025, making this the most expensive pizzas ever purchased and symbolizing cryptocurrency's extraordinary growth.",
+definition: "May 22, 2010, when programmer Laszlo Hanyecz made the first documented purchase of physical goods using Bitcoin, buying two pizzas for 10,000 BTC (worth approximately $41 at the time). This transaction established Bitcoin's real-world value and is celebrated annually by the crypto community. The same amount of Bitcoin would be worth over $1 billion in 2025, making this the most expensive pizzas ever purchased and symbolizing cryptocurrency's extraordinary growth.",
 categories: ["crypto_history", "blockchain_technology"],
 related: ["Bitcoin", "Cryptocurrency Adoption", "Store of Value", "Digital Currency"],
 trending: 8
@@ -1525,18 +1516,15 @@ related: ["Multi-signature Wallets", "Phishing Attacks", "Custody Solutions", "L
 trending: 8
 },
 {
-  term: "Bybit Hack",
-  definition: `The largest cryptocurrency exchange breach in history occurring in early 2025, when attackers compromised Bybit's security systems and extracted approximately 
-$1.4 billion in various cryptocurrencies. This unprecedented hack surpassed all previous records and sent shockwaves through the cryptocurrency industry, leading 
-to enhanced security measures across major exchanges and renewed calls for regulatory oversight of exchange operations.`,
-  categories: ["crypto_history", "wallets_security", "exchanges_trading"],
-  related: ["Exchange Security", "Hot Wallet Vulnerabilities", "Cryptocurrency Insurance", "Security Audits"],
-  trending: 10
-},
-
+term: "Bybit Hack",
+definition: "The largest cryptocurrency exchange breach in history occurring in early 2025, when attackers compromised Bybit's security systems and extracted approximately $1.4 billion in various cryptocurrencies. This unprecedented hack surpassed all previous records and sent shockwaves through the cryptocurrency industry, leading to enhanced security measures across major exchanges and renewed calls for regulatory oversight of exchange operations.",
+categories: ["crypto_history", "wallets_security", "exchanges_trading"],
+related: ["Exchange Security", "Hot Wallet Vulnerabilities", "Cryptocurrency Insurance", "Security Audits"],
+trending: 10
+}
 {
 term: "Pre-Bitcoin Digital Currencies",
-definition: "The conceptual and technological precursors to Bitcoin that emerged between 1983-2008. These early attempts at digital money included David Chaum's ecash - 1983, DigiCash - 1989, E-Gold - 1996, Wei Dai's b-money - 1998, and Nick Szabo's bit gold - 1998. While these systems introduced important concepts like cryptographic signatures and decentralization, they ultimately failed to achieve widespread adoption due to technical limitations and centralization issues.",
+definition: "The conceptual and technological precursors to Bitcoin that emerged between 1983-2008. These early attempts at digital money included David Chaum's ecash (1983), DigiCash (1989), E-Gold (1996), Wei Dai's b-money (1998), and Nick Szabo's bit gold (1998). While these systems introduced important concepts like cryptographic signatures and decentralization, they ultimately failed to achieve widespread adoption due to technical limitations and centralization issues.",
 categories: ["crypto_history", "blockchain_technology"],
 related: ["David Chaum", "DigiCash", "Bit Gold", "B-money", "Hashcash"],
 trending: 6
@@ -1556,49 +1544,43 @@ related: ["Bitcoin", "Genesis Block", "Cryptography", "Digital Signatures"],
 trending: 8
 },
 {
-  term: "Bitcoin Genesis Block",
-  definition: `The first block in the Bitcoin blockchain - Block 0, mined by Satoshi Nakamoto on January 3, 2009. This foundational block contained the now-famous message from 
-The Times newspaper about the Chancellor on brink of second bailout for banks. This embedded text served both as a timestamp and commentary on the traditional 
-banking system's instability. Unlike subsequent blocks, the 50 BTC reward from this block cannot be spent, effectively removing them from circulation.`,
-  categories: ["crypto_history", "blockchain_technology"],
-  related: ["Bitcoin", "Satoshi Nakamoto", "Block Reward", "Proof of Work"],
-  trending: 8
+term: "Bitcoin Genesis Block",
+definition: "The first block in the Bitcoin blockchain (Block 0), mined by Satoshi Nakamoto on January 3, 2009. This foundational block contained the now-famous message 'The Times 03/Jan/2009 Chancellor on brink of second bailout for banks,' referencing a headline from The Times newspaper. This embedded text served both as a timestamp and commentary on the traditional banking system's instability. Unlike subsequent blocks, the 50 BTC reward from this block cannot be spent, effectively removing them from circulation.",
+categories: ["crypto_history", "blockchain_technology"],
+related: ["Bitcoin", "Satoshi Nakamoto", "Block Reward", "Proof of Work"],
+trending: 8
 },
-
 {
-  term: "First Bitcoin Transaction",
-  definition: `The inaugural transfer of Bitcoin between two users, occurring on January 12, 2009 - Block 170, when Satoshi Nakamoto sent 10 BTC to programmer Hal Finney. This 
-historic transaction marked the first practical use of Bitcoin as a medium of exchange between individuals and demonstrated the functionality of the newly created 
-peer-to-peer electronic cash system. Finney became one of Bitcoin's earliest supporters and contributors.`,
-  categories: ["crypto_history", "blockchain_technology"],
-  related: ["Hal Finney", "Satoshi Nakamoto", "Bitcoin", "Block 170"],
-  trending: 7
+term: "First Bitcoin Transaction",
+definition: "The inaugural transfer of Bitcoin between two users, occurring on January 12, 2009 (Block 170), when Satoshi Nakamoto sent 10 BTC to programmer Hal Finney. This historic transaction marked the first practical use of Bitcoin as a medium of exchange between individuals and demonstrated the functionality of the newly created peer-to-peer electronic cash system. Finney, who had previously tweeted 'Running bitcoin' on January 11, became one of Bitcoin's earliest supporters and contributors.",
+categories: ["crypto_history", "blockchain_technology"],
+related: ["Hal Finney", "Satoshi Nakamoto", "Bitcoin", "Block 170"],
+trending: 7
 },
-
 {
 term: "Mt. Gox Collapse",
-definition: "The February 24, 2014 failure of Mt. Gox, once the world's largest Bitcoin exchange handling over 70% of all Bitcoin transactions. After claiming technical issues and halting withdrawals, the exchange filed for bankruptcy, revealing the loss of approximately 850,000 BTC - worth about $450 million at the time - due to theft occurring over several years. This event severely damaged market confidence and highlighted the need for improved security and regulation in the cryptocurrency industry.",
+definition: "The February 24, 2014 failure of Mt. Gox, once the world's largest Bitcoin exchange handling over 70% of all Bitcoin transactions. After claiming technical issues and halting withdrawals, the exchange filed for bankruptcy, revealing the loss of approximately 850,000 BTC (worth about $450 million at the time) due to theft occurring over several years. This event severely damaged market confidence and highlighted the need for improved security and regulation in the cryptocurrency industry.",
 categories: ["crypto_history", "exchanges_trading", "wallets_security"],
 related: ["Bitcoin", "Exchange Security", "Cryptocurrency Regulation", "Mark Karpelès"],
 trending: 7
 },
 {
 term: "Ethereum Launch",
-definition: "The July 30, 2015 genesis block mining that officially launched the Ethereum network, introducing programmable smart contracts to blockchain technology. Created by Vitalik Buterin and a team of co-founders, Ethereum expanded blockchain's capabilities beyond simple transactions to include complex, self-executing agreements and decentralized applications - dApps. This innovation established Ethereum as the second-largest cryptocurrency ecosystem and sparked the development of numerous blockchain applications.",
+definition: "The July 30, 2015 genesis block mining that officially launched the Ethereum network, introducing programmable smart contracts to blockchain technology. Created by Vitalik Buterin and a team of co-founders, Ethereum expanded blockchain's capabilities beyond simple transactions to include complex, self-executing agreements and decentralized applications (dApps). This innovation established Ethereum as the second-largest cryptocurrency ecosystem and sparked the development of numerous blockchain applications.",
 categories: ["crypto_history", "blockchain_technology", "smart_contracts"],
 related: ["Vitalik Buterin", "Smart Contracts", "Decentralized Applications", "ERC-20 Tokens"],
 trending: 9
 },
 {
 term: "The DAO Hack and Ethereum Fork",
-definition: "The June 2016 exploitation of a vulnerability in The DAO, a decentralized autonomous organization built on Ethereum, resulting in the theft of approximately $50 million worth of ETH. The controversial response led to Ethereum splitting into two blockchains on July 20, 2016: Ethereum - ETH, which implemented a hard fork to reverse the hack, and Ethereum Classic - ETC, which maintained the original, immutable blockchain. This event raised fundamental questions about blockchain immutability versus community governance.",
+definition: "The June 2016 exploitation of a vulnerability in The DAO, a decentralized autonomous organization built on Ethereum, resulting in the theft of approximately $50 million worth of ETH. The controversial response led to Ethereum splitting into two blockchains on July 20, 2016: Ethereum (ETH), which implemented a hard fork to reverse the hack, and Ethereum Classic (ETC), which maintained the original, immutable blockchain. This event raised fundamental questions about blockchain immutability versus community governance.",
 categories: ["crypto_history", "wallets_security", "smart_contracts"],
 related: ["The DAO", "Hard Fork", "Ethereum Classic", "Blockchain Immutability"],
 trending: 7
 },
 {
 term: "Bitcoin Halving Events",
-definition: "Programmed reductions in Bitcoin's block reward that occur approximately every four years - 210,000 blocks, cutting the new supply rate in half. These events include the first halving on November 28, 2012 - 50 to 25 BTC, the second on July 9, 2016 - 25 to 12.5 BTC, the third on May 11, 2020 - 12.5 to 6.25 BTC, and the fourth on April 20, 2024 - 6.25 to 3.125 BTC. Halvings are fundamental to Bitcoin's deflationary monetary policy, creating supply scarcity that has historically preceded bull markets.",
+definition: "Programmed reductions in Bitcoin's block reward that occur approximately every four years (210,000 blocks), cutting the new supply rate in half. These events include the first halving on November 28, 2012 (50 to 25 BTC), the second on July 9, 2016 (25 to 12.5 BTC), the third on May 11, 2020 (12.5 to 6.25 BTC), and the fourth on April 20, 2024 (6.25 to 3.125 BTC). Halvings are fundamental to Bitcoin's deflationary monetary policy, creating supply scarcity that has historically preceded bull markets.",
 categories: ["crypto_history", "mining_staking", "tokenomics"],
 related: ["Block Reward", "Bitcoin Supply", "Mining Difficulty", "Stock-to-Flow Model"],
 trending: 8
@@ -1636,7 +1618,7 @@ trending: 8
 },
 {
 term: "Layer-1 Networks",
-definition: "Base blockchain protocols like Bitcoin and Ethereum that process and finalize transactions on their own blockchain. Layer-1 scaling solutions modify the base protocol rules directly to increase capacity, including consensus improvements - shifting from Proof of Work to Proof of Stake, increasing block size, or implementing sharding to divide the network into parallel-processing segments.",
+definition: "Base blockchain protocols like Bitcoin and Ethereum that process and finalize transactions on their own blockchain. Layer-1 scaling solutions modify the base protocol rules directly to increase capacity, including consensus improvements (shifting from Proof of Work to Proof of Stake), increasing block size, or implementing sharding to divide the network into parallel-processing segments.",
 categories: ["infrastructure_applications", "blockchain_technology"],
 related: ["Blockchain Scalability", "Consensus Mechanisms", "Sharding", "Base Layer"],
 trending: 9
@@ -1687,7 +1669,7 @@ trending: 7
 // Gaming and Metaverse
 
 {
-term: "Play-to-Earn - P2E",
+term: "Play-to-Earn (P2E)",
 definition: "A gaming model that allows players to earn cryptocurrency or NFTs with real-world value by participating in gameplay activities. These blockchain-based games reward players with digital assets for completing tasks, winning battles, or achieving in-game objectives, which can then be traded on crypto exchanges or NFT marketplaces, potentially providing income opportunities beyond traditional gaming experiences.",
 categories: ["gaming_metaverse", "nfts_collectibles"],
 related: ["GameFi", "Tokenomics", "In-game Assets", "Blockchain Gaming"],
@@ -1696,7 +1678,7 @@ trending: 9
 
 {
 term: "Metaverse",
-definition: "A virtual, digital universe where users can engage with digital content, environments, and other users in real time. The Metaverse combines augmented reality - AR, virtual reality - VR, blockchain, and digital assets to create fully immersive and interactive shared experiences where users can create avatars, own digital assets, and participate in various activities from gaming to commerce and education.",
+definition: "A virtual, digital universe where users can engage with digital content, environments, and other users in real time. The Metaverse combines augmented reality (AR), virtual reality (VR), blockchain, and digital assets to create fully immersive and interactive shared experiences where users can create avatars, own digital assets, and participate in various activities from gaming to commerce and education.",
 categories: ["gaming_metaverse", "web3"],
 related: ["Virtual Worlds", "Digital Identity", "Virtual Real Estate", "Immersive Experiences"],
 trending: 10
@@ -1712,7 +1694,7 @@ trending: 9
 
 {
 term: "GameFi",
-definition: "The intersection of gaming and decentralized finance - DeFi - that introduces financial elements into gameplay through blockchain technology. GameFi platforms enable players to earn, trade, lend, and stake in-game assets with real economic value, creating player-owned economies where participation can generate returns beyond entertainment value through mechanisms like yield farming, NFT trading, and governance token appreciation.",
+definition: "The intersection of gaming and decentralized finance (DeFi) that introduces financial elements into gameplay through blockchain technology. GameFi platforms enable players to earn, trade, lend, and stake in-game assets with real economic value, creating player-owned economies where participation can generate returns beyond entertainment value through mechanisms like yield farming, NFT trading, and governance token appreciation.",
 categories: ["gaming_metaverse", "defi"],
 related: ["Play-to-Earn", "DeFi", "Tokenomics", "Yield Gaming"],
 trending: 9
@@ -1727,7 +1709,7 @@ trending: 8
 },
 
 {
-term: "Decentralized Autonomous Organizations - DAOs - in Gaming",
+term: "Decentralized Autonomous Organizations (DAOs) in Gaming",
 definition: "Community-governed entities that allow token holders to participate in decision-making for blockchain gaming projects. Gaming DAOs enable players to vote on game development priorities, economic parameters, and governance proposals, creating player-driven ecosystems where stakeholders have direct influence over the future direction of the game through transparent on-chain voting mechanisms.",
 categories: ["gaming_metaverse", "social_community"],
 related: ["Governance Tokens", "Community Ownership", "Voting Mechanisms", "Game Development"],
@@ -1760,7 +1742,7 @@ trending: 9
 
 {
 term: "Immersive Technologies",
-definition: "Hardware and software solutions like virtual reality - VR - and augmented reality - AR - that enhance the sensory experience of metaverse environments. These technologies bridge physical and digital worlds by allowing users to visually and physically interact with virtual spaces and objects, creating more engaging and realistic metaverse experiences through devices like VR headsets and AR applications.",
+definition: "Hardware and software solutions like virtual reality (VR) and augmented reality (AR) that enhance the sensory experience of metaverse environments. These technologies bridge physical and digital worlds by allowing users to visually and physically interact with virtual spaces and objects, creating more engaging and realistic metaverse experiences through devices like VR headsets and AR applications.",
 categories: ["gaming_metaverse", "ai_data"],
 related: ["Virtual Reality", "Augmented Reality", "Mixed Reality", "Haptic Feedback"],
 trending: 8
@@ -1817,7 +1799,7 @@ trending: 8
 // Social and Community
 
 {
-term: "Decentralized Autonomous Organization - DAO",
+term: "Decentralized Autonomous Organization (DAO)",
 definition: "A group governed by rules encoded as smart contracts on a blockchain, operating without centralized leadership. DAOs function through distributed nodes where members make collective decisions via voting mechanisms, with actions and transactions recorded transparently on the blockchain. These organizations enable community ownership and governance across various sectors including finance, creative industries, and protocol development.",
 categories: ["social_community", "web3"],
 related: ["Governance Tokens", "Smart Contracts", "Collective Decision-making", "Blockchain Governance"],
@@ -1826,7 +1808,7 @@ trending: 9
 
 {
 term: "Token-Based Governance",
-definition: "A DAO governance model where voting power is directly proportional to the number of governance tokens held by participants. While this approach is straightforward to implement and encourages investment, it can lead to power concentration among 'whales' with large token holdings. Projects like Ethereum Name Service - ENS - DAO implement this model, where each token equals one vote in the decision-making process.",
+definition: "A DAO governance model where voting power is directly proportional to the number of governance tokens held by participants. While this approach is straightforward to implement and encourages investment, it can lead to power concentration among 'whales' with large token holdings. Projects like Ethereum Name Service (ENS) DAO implement this model, where each token equals one vote in the decision-making process.",
 categories: ["social_community", "tokenomics"],
 related: ["Governance Tokens", "Voting Power", "Whale Dominance", "Token-weighted Voting"],
 trending: 8
@@ -1993,7 +1975,7 @@ related: ["Data Provenance", "Bias Mitigation", "Audit Trails", "Regulatory Comp
 trending: 7
 }
 {
-term: "Model Context Protocol - MCP",
+term: "Model Context Protocol (MCP)",
 definition: "An open protocol that standardizes how applications provide context to large language models, functioning like a universal connector for AI applications. MCP enables seamless integration between AI models and various data sources including blockchain networks, allowing AI agents to access real-time on-chain data, execute smart contracts, and perform complex analyses across multiple blockchains without requiring custom integrations for each platform.",
 categories: ["ai_data", "blockchain_technology"],
 related: ["AI Agents", "Blockchain Integration", "Standardized Protocols", "Cross-chain Data"],
@@ -2045,7 +2027,7 @@ trending: 7
 // DePIN
 
 {
-term: "DePIN - Decentralized Physical Infrastructure Networks",
+term: "DePIN (Decentralized Physical Infrastructure Networks)",
 definition: "Blockchain-based networks that leverage decentralized technology to collectively operate and maintain physical infrastructure. DePIN systems use token incentives to motivate participants to contribute resources like computing power, storage, energy, or connectivity, creating community-owned alternatives to traditionally centralized infrastructure while ensuring transparency through blockchain records.",
 categories: ["depin", "blockchain_technology"],
 related: ["Physical Resource Networks", "Digital Resource Networks", "Token Incentives", "Community Ownership"],
@@ -2094,7 +2076,7 @@ trending: 8
 
 {
 term: "DePIN Governance",
-definition: "The collective decision-making processes in Decentralized Physical Infrastructure Networks, typically implemented through Decentralized Autonomous Organizations - DAOs. Token holders can vote on network parameters, resource allocation, protocol upgrades, and other critical decisions, ensuring that infrastructure management remains distributed rather than controlled by a single entity.",
+definition: "The collective decision-making processes in Decentralized Physical Infrastructure Networks, typically implemented through Decentralized Autonomous Organizations (DAOs). Token holders can vote on network parameters, resource allocation, protocol upgrades, and other critical decisions, ensuring that infrastructure management remains distributed rather than controlled by a single entity.",
 categories: ["depin", "social_community"],
 related: ["DAOs", "Token Voting", "Protocol Governance", "Community Management"],
 trending: 7
@@ -2210,7 +2192,7 @@ trending: 8
 },
 
 {
-term: "Ethereum Virtual Machine - EVM",
+term: "Ethereum Virtual Machine (EVM)",
 definition: "The runtime environment for smart contracts on the Ethereum blockchain that executes contract bytecode in a sandboxed space. The EVM enables developers to write contracts in programming languages like Solidity, which are then compiled into bytecode for execution, creating a standardized environment that ensures consistent contract behavior across the entire network.",
 categories: ["smart_contracts", "blockchain_technology"],
 related: ["Solidity", "Bytecode", "Gas", "Ethereum"],
@@ -2287,12 +2269,12 @@ trending: 10
 term: "Moving Averages",
 definition: "A calculation that smooths out price data by creating a constantly updated average price over a specific time period. This indicator helps filter out market noise and highlight the overall trend direction, with variations including simple, exponential, and weighted moving averages. Traders use moving averages to identify trend direction and potential support or resistance levels.",
 categories: ["technical_analysis", "exchanges_trading"],
-related: ["Simple Moving Average - SMA", "Exponential Moving Average - EMA", "Trend Analysis", "Crossovers"],
+related: ["Simple Moving Average (SMA)", "Exponential Moving Average (EMA)", "Trend Analysis", "Crossovers"],
 trending: 9
 },
 
 {
-term: "Relative Strength Index - RSI",
+term: "Relative Strength Index (RSI)",
 definition: "A momentum oscillator that measures the speed and magnitude of price movements to determine overbought or oversold conditions in cryptocurrency markets. RSI values range from 0 to 100, with readings above 70 typically indicating overbought conditions and readings below 30 suggesting oversold conditions, helping traders identify potential reversal points.",
 categories: ["technical_analysis", "exchanges_trading"],
 related: ["Overbought", "Oversold", "Momentum Indicators", "Divergence"],
@@ -2301,14 +2283,14 @@ trending: 9
 
 {
 term: "Bollinger Bands",
-definition: "A volatility indicator consisting of three lines: a simple moving average - middle band - and two standard deviation lines above and below it. These bands expand during periods of high market volatility and contract when volatility decreases, helping traders identify potential price breakouts and measure market volatility in cryptocurrency trading.",
+definition: "A volatility indicator consisting of three lines: a simple moving average (middle band) and two standard deviation lines above and below it. These bands expand during periods of high market volatility and contract when volatility decreases, helping traders identify potential price breakouts and measure market volatility in cryptocurrency trading.",
 categories: ["technical_analysis", "exchanges_trading"],
 related: ["Volatility", "Standard Deviation", "Price Channels", "Mean Reversion"],
 trending: 8
 },
 
 {
-term: "On-Balance Volume - OBV",
+term: "On-Balance Volume (OBV)",
 definition: "A volume-based indicator that reflects the relationship between price movements and trading volume in cryptocurrency markets. OBV adds volume on up days and subtracts volume on down days to create a cumulative total, helping traders identify buying and selling pressure as well as potential trend changes when volume diverges from price action.",
 categories: ["technical_analysis", "exchanges_trading"],
 related: ["Volume Analysis", "Trend Confirmation", "Divergence", "Accumulation/Distribution"],
@@ -2333,7 +2315,7 @@ trending: 8
 
 {
 term: "Triangle Patterns",
-definition: "Chart formations where price movements converge into a triangle shape, signaling potential significant price movements in cryptocurrency markets. The three main types-symmetrical - neutral, ascending - bullish, and descending - bearish - help traders identify consolidation periods before breakouts and determine potential trade direction and price targets.",
+definition: "Chart formations where price movements converge into a triangle shape, signaling potential significant price movements in cryptocurrency markets. The three main types-symmetrical (neutral), ascending (bullish), and descending (bearish)-help traders identify consolidation periods before breakouts and determine potential trade direction and price targets.",
 categories: ["technical_analysis", "exchanges_trading"],
 related: ["Symmetrical Triangle", "Ascending Triangle", "Descending Triangle", "Breakout Trading"],
 trending: 8
@@ -2341,7 +2323,7 @@ trending: 8
 
 {
 term: "Support and Resistance Levels",
-definition: "Price points on cryptocurrency charts where buying interest - support - or selling pressure - resistance - has historically been strong enough to prevent further price movement. These levels help traders identify potential reversal points, set stop-loss orders, and determine optimal entry and exit positions for maximizing profit potential.",
+definition: "Price points on cryptocurrency charts where buying interest (support) or selling pressure (resistance) has historically been strong enough to prevent further price movement. These levels help traders identify potential reversal points, set stop-loss orders, and determine optimal entry and exit positions for maximizing profit potential.",
 categories: ["technical_analysis", "exchanges_trading"],
 related: ["Price Floors", "Price Ceilings", "Breakouts", "Retests"],
 trending: 9
@@ -2366,7 +2348,7 @@ trending: 9
 },
 
 {
-term: "Anonymity Enhanced Coins - AECs",
+term: "Anonymity Enhanced Coins (AECs)",
 definition: "An alternative term for privacy coins that emphasizes their primary function of enhancing transaction anonymity through specialized cryptographic methods. These coins are designed to make all units indistinguishable from one another, improving fungibility while making transactions difficult to trace, thereby protecting user privacy in an increasingly surveillance-oriented digital landscape.",
 categories: ["privacy_technology", "cryptocurrency_types"],
 related: ["Privacy Coins", "Transaction Anonymity", "Cryptographic Privacy", "Untraceable Transactions"],
@@ -2383,7 +2365,7 @@ trending: 8
 
 {
 term: "Zero-Knowledge Proofs",
-definition: "A cryptographic method that allows one party to prove to another that a statement is true without revealing any additional information beyond the validity of the statement itself. In privacy coins like Zcash, zero-knowledge proofs - specifically zk-SNARKs - enable users to verify transactions while keeping details like transaction amounts and addresses completely private.",
+definition: "A cryptographic method that allows one party to prove to another that a statement is true without revealing any additional information beyond the validity of the statement itself. In privacy coins like Zcash, zero-knowledge proofs (specifically zk-SNARKs) enable users to verify transactions while keeping details like transaction amounts and addresses completely private.",
 categories: ["privacy_technology", "blockchain_technology"],
 related: ["zk-SNARKs", "Zcash", "Cryptographic Verification", "Private Transactions"],
 trending: 9
@@ -2414,7 +2396,7 @@ trending: 7
 },
 
 {
-term: "Monero - XMR",
+term: "Monero (XMR)",
 definition: "Often considered the gold standard in privacy coins, Monero uses a combination of ring signatures, stealth addresses, and confidential transactions to ensure complete transaction anonymity. Its highly decentralized network and strong community support have established it as the leading privacy-focused cryptocurrency, with continuous development focused on enhancing privacy features.",
 categories: ["privacy_technology", "cryptocurrency_types"],
 related: ["Ring Signatures", "Stealth Addresses", "Confidential Transactions", "Privacy Coins"],
@@ -2422,15 +2404,15 @@ trending: 9
 },
 
 {
-term: "Zcash - ZEC",
-definition: "A privacy-focused cryptocurrency that uses zero-knowledge proofs - zk-SNARKs - to shield transaction information. Zcash offers both shielded and transparent transactions, allowing users to choose their level of privacy while maintaining regulatory compliance. Its selective disclosure features enable users to reveal transaction details to specific parties when necessary.",
+term: "Zcash (ZEC)",
+definition: "A privacy-focused cryptocurrency that uses zero-knowledge proofs (zk-SNARKs) to shield transaction information. Zcash offers both shielded and transparent transactions, allowing users to choose their level of privacy while maintaining regulatory compliance. Its selective disclosure features enable users to reveal transaction details to specific parties when necessary.",
 categories: ["privacy_technology", "cryptocurrency_types"],
 related: ["zk-SNARKs", "Shielded Transactions", "Selective Disclosure", "Privacy Options"],
 trending: 8
 },
 
 {
-term: "Dash - DASH",
+term: "Dash (DASH)",
 definition: "A cryptocurrency that offers optional privacy features through its PrivateSend functionality, which uses CoinJoin mixing to obscure transaction trails. While not as anonymous as Monero or Zcash, Dash balances privacy with usability, providing quick and moderately private transactions that satisfy users seeking basic financial confidentiality.",
 categories: ["privacy_technology", "cryptocurrency_types"],
 related: ["PrivateSend", "CoinJoin", "Optional Privacy", "Transaction Mixing"],
@@ -2449,7 +2431,7 @@ trending: 10
 
 {
 term: "Rollups",
-definition: "Layer 2 solutions that bundle multiple transactions off-chain and submit a single proof to the Layer 1 blockchain, significantly increasing throughput and reducing costs. Includes Optimistic Rollups and Zero-Knowledge - ZK - Rollups.",
+definition: "Layer 2 solutions that bundle multiple transactions off-chain and submit a single proof to the Layer 1 blockchain, significantly increasing throughput and reducing costs. Includes Optimistic Rollups and Zero-Knowledge (ZK) Rollups.",
 categories: ["layer2_solutions"],
 related: ["Optimistic Rollups", "ZK-Rollups", "Fraud Proofs", "Validity Proofs"],
 trending: 9
@@ -2464,7 +2446,7 @@ trending: 9
 },
 
 {
-term: "Zero-Knowledge Rollups - ZK-Rollups",
+term: "Zero-Knowledge Rollups (ZK-Rollups)",
 definition: "Layer 2 scaling solutions that generate cryptographic proofs to validate transactions off-chain before submitting them to the main chain, providing immediate finality and enhanced security.",
 categories: ["layer2_solutions", "privacy_technology"],
 related: ["Rollups", "Validity Proofs", "zk-SNARKs", "zk-STARKs"],
@@ -2564,7 +2546,7 @@ trending: 8
 },
 
 {
-term: "Non-Fungible Tokenization - NFTs",
+term: "Non-Fungible Tokenization (NFTs)",
 definition: "The process of creating unique digital tokens that represent ownership of distinct assets with individual characteristics. Each non-fungible token has unique information and attributes that cannot be replicated or subdivided, making them ideal for representing one-of-a-kind assets like artwork, collectibles, or specific real estate properties.",
 categories: ["tokenization", "nfts_collectibles"],
 related: ["Unique Digital Assets", "Digital Collectibles", "Proof of Ownership", "Digital Authenticity"],
@@ -2572,7 +2554,7 @@ trending: 8
 },
 
 {
-term: "Real World Asset - RWA - Tokenization",
+term: "Real World Asset (RWA) Tokenization",
 definition: "The specific process of representing physical assets like real estate, commodities, or artwork as digital tokens on a blockchain. RWA tokenization bridges traditional finance with blockchain technology, enabling fractional ownership and increased liquidity for typically illiquid assets while maintaining their connection to tangible value.",
 categories: ["tokenization", "defi"],
 related: ["Physical Assets", "Asset-Backed Tokens", "Fractional Ownership", "Liquidity Enhancement"],
@@ -2615,7 +2597,7 @@ trending: 9
 
 {
 term: "Consensus Algorithms",
-definition: "Protocols that enable decentralized networks to agree on a single version of the truth without central authority. These mechanisms, including Proof of Work, Proof of Stake, and their variations, form the economic foundation of blockchain security by requiring participants to commit resources - computing power or capital - that would be forfeited if they attempted to attack the network.",
+definition: "Protocols that enable decentralized networks to agree on a single version of the truth without central authority. These mechanisms, including Proof of Work, Proof of Stake, and their variations, form the economic foundation of blockchain security by requiring participants to commit resources (computing power or capital) that would be forfeited if they attempted to attack the network.",
 categories: ["crypto_economics", "blockchain_technology"],
 related: ["Proof of Work", "Proof of Stake", "Byzantine Fault Tolerance", "Network Security"],
 trending: 8
@@ -2623,7 +2605,7 @@ trending: 8
 
 {
 term: "Game Theory in Blockchain",
-definition: "The mathematical study of strategic interactions applied to cryptocurrency networks, analyzing how participants' decisions affect outcomes for all users. Game theory models in blockchain typically involve players - miners, validators, users, strategies - mining, validating, transacting, and payoffs - rewards, penalties, creating systems where rational self-interest aligns with network security.",
+definition: "The mathematical study of strategic interactions applied to cryptocurrency networks, analyzing how participants' decisions affect outcomes for all users. Game theory models in blockchain typically involve players (miners, validators, users), strategies (mining, validating, transacting), and payoffs (rewards, penalties), creating systems where rational self-interest aligns with network security.",
 categories: ["crypto_economics"],
 related: ["Nash Equilibrium", "Prisoner's Dilemma", "Incentive Design", "Strategic Behavior"],
 trending: 8
