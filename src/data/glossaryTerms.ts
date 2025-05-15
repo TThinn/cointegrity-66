@@ -1521,7 +1521,7 @@ definition: "The largest cryptocurrency exchange breach in history occurring in 
 categories: ["crypto_history", "wallets_security", "exchanges_trading"],
 related: ["Exchange Security", "Hot Wallet Vulnerabilities", "Cryptocurrency Insurance", "Security Audits"],
 trending: 10
-}
+},
 {
 term: "Pre-Bitcoin Digital Currencies",
 definition: "The conceptual and technological precursors to Bitcoin that emerged between 1983-2008. These early attempts at digital money included David Chaum's ecash (1983), DigiCash (1989), E-Gold (1996), Wei Dai's b-money (1998), and Nick Szabo's bit gold (1998). While these systems introduced important concepts like cryptographic signatures and decentralization, they ultimately failed to achieve widespread adoption due to technical limitations and centralization issues.",
