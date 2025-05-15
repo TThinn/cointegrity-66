@@ -13,7 +13,7 @@ export interface GlossaryTerm {
 // Making copy of the existing array with a new name to test if there's an import issue
 export const glossaryTermsNew: GlossaryTerm[] = [
   {
-    term: "Blockchain",
+    term: "hubaluba",
     definition: "A decentralized digital ledger that records transactions across many computers in a way that the registered transactions cannot be altered retroactively.",
     categories: ["blockchain"],
     related: ["Cryptocurrency", "Distributed Ledger Technology"]
