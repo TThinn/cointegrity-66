@@ -64,7 +64,7 @@ export const useGlossaryData = (
                         term.term.toLowerCase().includes(searchTerm.toLowerCase()) || 
                         term.definition.toLowerCase().includes(searchTerm.toLowerCase());
       
-      // We need to treat the categories specially due to potential type mismatches
+      // Handle category filtering with type safety
       const matchesCategory = activeCategory === "all" || 
                         term.categories.some(cat => cat === activeCategory);
       
@@ -81,8 +81,7 @@ export const useGlossaryData = (
       if (!grouped[firstLetter]) {
         grouped[firstLetter] = [];
       }
-      // Use type assertion to avoid TS errors while maintaining runtime functionality
-      grouped[firstLetter].push(term as unknown as GlossaryTerm);
+      grouped[firstLetter].push(term);
     });
     
     return grouped;
