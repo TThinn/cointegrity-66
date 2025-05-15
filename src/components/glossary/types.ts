@@ -1,4 +1,5 @@
 
+
 // Define category types for proper filtering
 export type CategoryType = 
   | "blockchain" 
@@ -23,9 +24,9 @@ export type CategoryType =
   | "exchanges_trading"
   | "wallets_security"
   | "mining_staking"
-  | "tax"  // Added this missing category
-  | "trading_strategy"  // Added this missing category
-  | "hardware_security"  // Added this missing category
+  | "tax"
+  | "trading_strategy"
+  | "hardware_security"
   | "crypto_economics"
   | "regulatory_frameworks"
   | "tokenization"
@@ -77,3 +78,4 @@ export interface GlossaryTerm {
   categories: CategoryType[];
   related?: string[];
 }
+
