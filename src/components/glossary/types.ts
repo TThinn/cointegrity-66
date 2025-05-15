@@ -15,7 +15,7 @@ export type CategoryType =
   | "infrastructure"
   | "security"
   | "metaverse"
-  // Add compatibility with original glossary terms
+  // Original glossary categories
   | "blockchain_technology"
   | "cryptocurrency_types"
   | "cefi"
@@ -44,7 +44,19 @@ export const categoryMeta = [
   { value: "identity", label: "Identity", description: "Digital identity solutions" },
   { value: "infrastructure", label: "Infrastructure", description: "Web3 infrastructure" },
   { value: "security", label: "Security", description: "Blockchain security" },
-  { value: "metaverse", label: "Metaverse", description: "Virtual worlds" }
+  { value: "metaverse", label: "Metaverse", description: "Virtual worlds" },
+  // Add display entries for original categories
+  { value: "blockchain_technology", label: "Blockchain Technology", description: "Foundational blockchain concepts" },
+  { value: "cryptocurrency_types", label: "Cryptocurrency Types", description: "Different types of cryptocurrencies" },
+  { value: "cefi", label: "CeFi", description: "Centralized finance" },
+  { value: "nfts_collectibles", label: "NFTs & Collectibles", description: "Non-fungible tokens and digital collectibles" },
+  { value: "exchanges_trading", label: "Exchanges & Trading", description: "Cryptocurrency exchanges and trading" },
+  { value: "wallets_security", label: "Wallets & Security", description: "Cryptocurrency wallets and security" },
+  { value: "mining_staking", label: "Mining & Staking", description: "Cryptocurrency mining and staking" },
+  { value: "tax", label: "Tax", description: "Cryptocurrency taxation" },
+  { value: "trading_strategy", label: "Trading Strategy", description: "Cryptocurrency trading strategies" },
+  { value: "hardware_security", label: "Hardware Security", description: "Hardware security for cryptocurrencies" },
+  { value: "crypto_economics", label: "Cryptoeconomics", description: "Economic principles of cryptocurrencies" }
 ];
 
 // Define a data source selection type

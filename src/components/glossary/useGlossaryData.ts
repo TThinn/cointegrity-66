@@ -65,7 +65,7 @@ export const useGlossaryData = (
                         term.definition.toLowerCase().includes(searchTerm.toLowerCase());
       
       const matchesCategory = activeCategory === "all" || 
-                        (term.categories as CategoryType[]).includes(activeCategory as CategoryType);
+                        (term.categories as unknown as CategoryType[]).includes(activeCategory as CategoryType);
       
       return matchesSearch && matchesCategory;
     });
@@ -80,7 +80,7 @@ export const useGlossaryData = (
       if (!grouped[firstLetter]) {
         grouped[firstLetter] = [];
       }
-      grouped[firstLetter].push(term as GlossaryTerm);
+      grouped[firstLetter].push(term as unknown as GlossaryTerm);
     });
     
     return grouped;

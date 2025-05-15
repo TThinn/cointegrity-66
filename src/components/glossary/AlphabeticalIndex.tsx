@@ -54,9 +54,9 @@ export const AlphabeticalIndex: React.FC<AlphabeticalIndexProps> = ({
                 <div key={`nav-${letter}`} className="mb-2">
                   <div className="font-bold mb-1">{letter}</div>
                   <div className="pl-2 space-y-1">
-                    {groupedTerms[letter].map((term) => (
+                    {groupedTerms[letter].map((term, index) => (
                       <a
-                        key={`link-${term.term}`}
+                        key={`link-${term.term}-${index}`}
                         href={`#${term.term.toLowerCase().replace(/\s+/g, '-')}`}
                         className="block text-sm hover:text-primary truncate"
                       >
