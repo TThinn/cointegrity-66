@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useGlossaryTermsDebug } from "./useGlossaryTermsDebug";
 import { glossaryTerms } from "@/data/glossaryTerms";
 import { glossaryTermsNew } from "@/data/glossaryTermsNew";
-import { glossaryTermsTemp } from "@/data/temp";
+import { glossaryTerms as glossaryTermsTemp } from "@/data/temp";
 import { toast } from "sonner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 

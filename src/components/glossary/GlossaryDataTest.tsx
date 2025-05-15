@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { glossaryTerms } from "@/data/glossaryTerms";
 import { glossaryTermsNew } from "@/data/glossaryTermsNew";
-import { glossaryTermsTemp } from "@/data/temp";
+import { glossaryTerms as glossaryTermsTemp } from "@/data/temp";
 
 /**
  * This is a diagnostic component to verify the glossary data source.

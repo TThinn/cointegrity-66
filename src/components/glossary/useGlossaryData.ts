@@ -3,6 +3,7 @@ import { useState, useMemo, useEffect } from "react";
 import { CategoryType, DataSourceType, GlossaryTerm } from "./types";
 import { glossaryTerms } from "@/data/glossaryTerms";
 import { glossaryTermsNew } from "@/data/glossaryTermsNew";
+import { glossaryTerms as glossaryTermsTemp } from "@/data/temp";
 import { toast } from "sonner";
 
 /**
@@ -24,6 +25,11 @@ export const useGlossaryData = (
     if (dataSource === "new") {
       console.log(`New data source length: ${glossaryTermsNew.length}`);
       return glossaryTermsNew;
+    }
+    
+    if (dataSource === "temp") {
+      console.log(`Temp data source length: ${glossaryTermsTemp.length}`);
+      return glossaryTermsTemp;
     }
     
     // Default to original
@@ -59,7 +65,7 @@ export const useGlossaryData = (
                         term.definition.toLowerCase().includes(searchTerm.toLowerCase());
       
       const matchesCategory = activeCategory === "all" || 
-                        term.categories.includes(activeCategory as CategoryType);
+                        term.categories.includes(activeCategory);
       
       return matchesSearch && matchesCategory;
     });
@@ -74,7 +80,7 @@ export const useGlossaryData = (
       if (!grouped[firstLetter]) {
         grouped[firstLetter] = [];
       }
-      grouped[firstLetter].push(term);
+      grouped[firstLetter].push(term as GlossaryTerm);
     });
     
     return grouped;

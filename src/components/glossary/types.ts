@@ -14,7 +14,19 @@ export type CategoryType =
   | "identity"
   | "infrastructure"
   | "security"
-  | "metaverse";
+  | "metaverse"
+  // Add compatibility with original glossary terms
+  | "blockchain_technology"
+  | "cryptocurrency_types"
+  | "cefi"
+  | "nfts_collectibles"
+  | "exchanges_trading"
+  | "wallets_security"
+  | "mining_staking"
+  | "tax"
+  | "trading_strategy"
+  | "hardware_security"
+  | "crypto_economics";
 
 // Category metadata for display
 export const categoryMeta = [
@@ -41,7 +53,8 @@ export type DataSourceType = "original" | "new" | "temp";
 // Data source options for display
 export const dataSources = [
   { value: "original", label: "Original Glossary Terms" },
-  { value: "new", label: "New Glossary Terms" }
+  { value: "new", label: "New Glossary Terms" },
+  { value: "temp", label: "Temp Glossary Terms" }
 ];
 
 // Interface for glossary term structure
