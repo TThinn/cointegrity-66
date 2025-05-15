@@ -64,8 +64,9 @@ export const useGlossaryData = (
                         term.term.toLowerCase().includes(searchTerm.toLowerCase()) || 
                         term.definition.toLowerCase().includes(searchTerm.toLowerCase());
       
+      // We need to treat the categories specially due to potential type mismatches
       const matchesCategory = activeCategory === "all" || 
-                        (term.categories as unknown as CategoryType[]).includes(activeCategory as CategoryType);
+                        term.categories.some(cat => cat === activeCategory);
       
       return matchesSearch && matchesCategory;
     });
@@ -80,6 +81,7 @@ export const useGlossaryData = (
       if (!grouped[firstLetter]) {
         grouped[firstLetter] = [];
       }
+      // Use type assertion to avoid TS errors while maintaining runtime functionality
       grouped[firstLetter].push(term as unknown as GlossaryTerm);
     });
     
