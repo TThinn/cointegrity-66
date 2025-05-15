@@ -10,10 +10,9 @@ export interface GlossaryTerm {
 }
 
 // Export the glossary terms array
-// Making copy of the existing array with a new name to test if there's an import issue
 export const glossaryTermsNew: GlossaryTerm[] = [
   {
-    term: "hubaluba",
+    term: "Blockchain",
     definition: "A decentralized digital ledger that records transactions across many computers in a way that the registered transactions cannot be altered retroactively.",
     categories: ["blockchain"],
     related: ["Cryptocurrency", "Distributed Ledger Technology"]
@@ -150,15 +149,8 @@ export const glossaryTermsNew: GlossaryTerm[] = [
     categories: ["blockchain", "defi"],
     related: ["Cross-chain", "Decentralized Exchange", "Interoperability"]
   },
-  // Adding a new test term to verify if new data is loaded
   {
     term: "DataTest123",
-    definition: "This is a test term to verify if new data is being loaded correctly.",
-    categories: ["blockchain"],
-    related: ["Test"]
-  },
-  {
-    term: "DataTest123 (entesttil)",
     definition: "This is a test term to verify if new data is being loaded correctly.",
     categories: ["blockchain"],
     related: ["Test"]
