@@ -1,8 +1,7 @@
 
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 import { glossaryTerms } from "@/data/glossaryTerms";
 import { CategoryType } from "./types";
-import { toast } from "sonner";
 
 /**
  * Custom hook to filter and organize glossary terms

@@ -1,37 +1,8 @@
 
+import { GlossaryTerm as SourceGlossaryTerm } from "@/data/glossaryTerms";
 
-// Define category types for proper filtering
-export type CategoryType = 
-  | "blockchain" 
-  | "web3" 
-  | "ai" 
-  | "regulatory" 
-  | "tokenomics" 
-  | "gaming" 
-  | "strategy"
-  | "defi"
-  | "nft"
-  | "dao"
-  | "identity"
-  | "infrastructure"
-  | "security"
-  | "metaverse"
-  // Original glossary categories
-  | "blockchain_technology"
-  | "cryptocurrency_types"
-  | "cefi"
-  | "nfts_collectibles"
-  | "exchanges_trading"
-  | "wallets_security"
-  | "mining_staking"
-  | "tax"
-  | "trading_strategy"
-  | "hardware_security"
-  | "crypto_economics"
-  | "regulatory_frameworks"
-  | "tokenization"
-  | "layer2_solutions"
-  | "compliance";
+// Extract category types from the source definition
+export type CategoryType = SourceGlossaryTerm['categories'][0];
 
 // Category metadata for display
 export const categoryMeta = [
@@ -65,17 +36,22 @@ export const categoryMeta = [
   { value: "regulatory_frameworks", label: "Regulatory Frameworks", description: "Legal frameworks for cryptocurrencies" },
   { value: "tokenization", label: "Tokenization", description: "Converting assets to tokens" },
   { value: "layer2_solutions", label: "Layer 2 Solutions", description: "Scaling solutions built on top of blockchains" },
-  { value: "compliance", label: "Compliance", description: "Regulatory compliance in crypto" }
+  { value: "compliance", label: "Compliance", description: "Regulatory compliance in crypto" },
+  { value: "crypto_history", label: "Crypto History", description: "History of cryptocurrency" },
+  { value: "infrastructure_applications", label: "Infrastructure Applications", description: "Applications built on blockchain infrastructure" },
+  { value: "gaming_metaverse", label: "Gaming & Metaverse", description: "Gaming and metaverse applications" },
+  { value: "social_community", label: "Social & Community", description: "Social and community aspects of crypto" },
+  { value: "ai_data", label: "AI & Data", description: "AI and data in blockchain" },
+  { value: "depin", label: "DePIN", description: "Decentralized Physical Infrastructure Networks" },
+  { value: "cross_chain", label: "Cross-Chain", description: "Cross-chain technologies and solutions" },
+  { value: "smart_contracts", label: "Smart Contracts", description: "Blockchain-based contracts" },
+  { value: "technical_analysis", label: "Technical Analysis", description: "Market analysis techniques" },
+  { value: "privacy_technology", label: "Privacy Technology", description: "Technology for preserving privacy" }
 ];
 
 // Define a data source selection type - simplified to only include available sources
 export type DataSourceType = "original";
 
-// Interface for glossary term structure
-export interface GlossaryTerm {
-  term: string;
-  definition: string;
-  categories: CategoryType[];
-  related?: string[];
-}
+// Interface for glossary term structure - now extends the source definition
+export interface GlossaryTerm extends SourceGlossaryTerm {}
 

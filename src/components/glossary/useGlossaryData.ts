@@ -75,7 +75,7 @@ export const useGlossaryData = (
         grouped[firstLetter] = [];
       }
       
-      grouped[firstLetter].push(term as GlossaryTerm);
+      grouped[firstLetter].push(term);
     });
     
     return grouped;
