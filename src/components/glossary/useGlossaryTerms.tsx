@@ -17,6 +17,22 @@ export const useGlossaryTerms = (
     mountCount.current += 1;
     console.log("🔄 useGlossaryTerms hook mounted. Mount count:", mountCount.current);
     
+    // Direct verification of data source
+    try {
+      console.log("🔄 Direct glossaryTerms check:", {
+        type: typeof glossaryTerms,
+        isArray: Array.isArray(glossaryTerms),
+        length: glossaryTerms.length
+      });
+      
+      if (glossaryTerms.length < 100) {
+        console.warn("🔄 WARNING: glossaryTerms contains fewer items than expected");
+        console.log("🔄 First few items:", glossaryTerms.slice(0, 3));
+      }
+    } catch (e) {
+      console.error("🔄 CRITICAL ERROR accessing glossaryTerms:", e);
+    }
+    
     return () => {
       console.log("🔄 useGlossaryTerms hook unmounted");
     };
@@ -27,16 +43,19 @@ export const useGlossaryTerms = (
     importCounter.current += 1;
     console.log(`🔄 useGlossaryTerms: Importing glossaryTerms (attempt ${importCounter.current})`);
     console.log("🔄 DIAGNOSTIC: Attempting to load glossary terms from data source");
-    console.log("🔄 DIAGNOSTIC: Import path being used:", "@/data/glossaryTerms");
-    console.log("🔄 DIAGNOSTIC: Type of imported glossaryTerms:", typeof glossaryTerms);
-    console.log("🔄 DIAGNOSTIC: Is glossaryTerms an array?", Array.isArray(glossaryTerms));
     
     let loadedTerms = [];
     
     try {
-      // Ensure we're getting the data correctly
-      loadedTerms = [...glossaryTerms]; // Create a new array reference to avoid potential issues
-      console.log("🔄 DIAGNOSTIC: Success - Created a new reference of glossaryTerms");
+      // Check if the import is actually an array
+      if (!Array.isArray(glossaryTerms)) {
+        console.error("🔄 CRITICAL ERROR: glossaryTerms is not an array:", typeof glossaryTerms);
+        return [];
+      }
+      
+      // Ensure we're getting the data correctly by creating a new reference
+      loadedTerms = [...glossaryTerms]; 
+      console.log("🔄 DIAGNOSTIC: Created a new reference of glossaryTerms");
       console.log("🔄 DIAGNOSTIC: Loading glossary terms from data source, count:", loadedTerms.length);
       
       // Detailed logging of the first few items to verify content
@@ -47,16 +66,19 @@ export const useGlossaryTerms = (
       
       // If we have a very low number of terms, try to trigger a hard refresh
       if (loadedTerms.length < 100 && mountCount.current === 1) {
-        console.warn("🔄 DIAGNOSTIC: Very few terms found. Suspect caching or import issues.");
-        toast.warning("Limited glossary terms detected. Try using the troubleshooting tools below.");
+        console.warn("🔄 DIAGNOSTIC: Very few terms found. Suspect import or syntax issues.");
       }
       
-      // Verify data can be serialized (check for circular references)
-      const serializedSample = JSON.stringify(loadedTerms.slice(0, 5));
-      console.log("🔄 DIAGNOSTIC: Successfully serialized sample terms");
+      // Verify data can be serialized (check for circular references or syntax issues)
+      try {
+        const serializedSample = JSON.stringify(loadedTerms.slice(0, 5));
+        console.log(`🔄 DIAGNOSTIC: Successfully serialized sample terms (${serializedSample.length} bytes)`);
+      } catch (serializeError) {
+        console.error("🔄 DIAGNOSTIC: Failed to serialize terms:", serializeError);
+      }
     } catch (error) {
       console.error("🔄 CRITICAL ERROR loading glossary terms:", error);
-      toast.error("Error loading glossary terms. Please try refreshing the page.");
+      toast.error("Error loading glossary terms. Please check console for details.");
       return []; // Return empty array as fallback
     }
     
@@ -81,7 +103,8 @@ export const useGlossaryTerms = (
                             term.term.toLowerCase().includes(searchTerm.toLowerCase()) || 
                             term.definition.toLowerCase().includes(searchTerm.toLowerCase());
         
-        const matchesCategory = activeCategory === "all" || term.categories.includes(activeCategory as CategoryType);
+        const matchesCategory = activeCategory === "all" || 
+                            (term.categories && term.categories.includes(activeCategory as CategoryType));
         
         return matchesSearch && matchesCategory;
       });

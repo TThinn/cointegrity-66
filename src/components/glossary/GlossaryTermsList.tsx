@@ -17,7 +17,27 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
   // Enhanced debugging for data verification
   useEffect(() => {
     console.log("🔎 GlossaryTermsList - Component mounted");
-    console.log(`🔎 Direct import glossaryTerms length: ${glossaryTerms.length}`);
+    
+    // Direct import check
+    try {
+      console.log(`🔎 Direct import glossaryTerms length: ${glossaryTerms.length}`);
+      
+      // Check for syntax issues or circular references
+      try {
+        const serialized = JSON.stringify(glossaryTerms.slice(0, 5));
+        console.log(`🔎 First 5 terms can be serialized (${serialized.length} bytes)`);
+      } catch (e) {
+        console.error("🔎 ERROR: Cannot serialize glossaryTerms:", e);
+      }
+      
+      // Check the import path
+      console.log("🔎 Import path: @/data/glossaryTerms");
+      
+    } catch (e) {
+      console.error("🔎 CRITICAL ERROR accessing glossaryTerms directly:", e);
+    }
+    
+    // Props verification
     console.log(`🔎 GlossaryTermsList received ${letters.length} letters with terms`);
     
     const totalTermsInGroups = Object.values(groupedTerms).reduce(
@@ -27,14 +47,29 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
     console.log(`🔎 Total terms in grouped data: ${totalTermsInGroups}`);
     
     // Check if the data source seems to match what's expected
-    if (glossaryTerms.length !== totalTermsInGroups) {
-      console.warn(`🔎 Data source mismatch! Direct import: ${glossaryTerms.length}, Grouped terms: ${totalTermsInGroups}`);
+    try {
+      if (glossaryTerms.length !== totalTermsInGroups) {
+        console.warn(`🔎 Data source mismatch! Direct import: ${glossaryTerms.length}, Grouped terms: ${totalTermsInGroups}`);
+        
+        // Try to identify why there's a mismatch
+        if (glossaryTerms.length > totalTermsInGroups) {
+          console.warn(`🔎 Filtering seems to be reducing the terms count. Check filter criteria.`);
+        } else {
+          console.warn(`🔎 Grouped terms count exceeds direct import. Possible data duplication or separate source.`);
+        }
+      }
+    } catch (e) {
+      console.error("🔎 Error comparing data sources:", e);
     }
     
     // Log sample of direct import to compare
-    if (glossaryTerms.length > 0) {
-      console.log("🔎 Direct import sample terms:", 
-        glossaryTerms.slice(0, 3).map(t => t.term));
+    try {
+      if (glossaryTerms.length > 0) {
+        console.log("🔎 Direct import sample terms:", 
+          glossaryTerms.slice(0, 3).map(t => t.term));
+      }
+    } catch (e) {
+      console.error("🔎 Error accessing glossaryTerms array:", e);
     }
     
     // Check for empty or incorrect data

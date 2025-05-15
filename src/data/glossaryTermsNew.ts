@@ -156,8 +156,8 @@ export const glossaryTermsNew: GlossaryTerm[] = [
     definition: "This is a test term to verify if new data is being loaded correctly.",
     categories: ["blockchain"],
     related: ["Test"]
-  }
-   {
+  },
+  {
     term: "DataTest123 (entesttil)",
     definition: "This is a test term to verify if new data is being loaded correctly.",
     categories: ["blockchain"],
