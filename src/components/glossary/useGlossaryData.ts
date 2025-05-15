@@ -65,7 +65,7 @@ export const useGlossaryData = (
                         term.definition.toLowerCase().includes(searchTerm.toLowerCase());
       
       const matchesCategory = activeCategory === "all" || 
-                        term.categories.includes(activeCategory);
+                        (term.categories as CategoryType[]).includes(activeCategory as CategoryType);
       
       return matchesSearch && matchesCategory;
     });
