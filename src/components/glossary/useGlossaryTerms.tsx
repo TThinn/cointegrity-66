@@ -37,7 +37,7 @@ export const useGlossaryTerms = (
                           term.definition.toLowerCase().includes(searchTerm.toLowerCase());
       
       const matchesCategory = activeCategory === "all" || 
-                          term.categories.includes(activeCategory as CategoryType);
+                          term.categories.some(cat => cat === activeCategory);
       
       return matchesSearch && matchesCategory;
     });
@@ -52,7 +52,7 @@ export const useGlossaryTerms = (
       }
       acc[firstLetter].push(term);
       return acc;
-    }, {} as Record<string, typeof glossaryTerms>);
+    }, {} as Record<string, typeof filteredTerms>);
   }, [filteredTerms]);
 
   // Extract all letters that have terms

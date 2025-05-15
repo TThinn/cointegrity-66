@@ -28,7 +28,9 @@ export type CategoryType =
   | "hardware_security"
   | "crypto_economics"
   | "regulatory_frameworks"
-  | "tokenization";
+  | "tokenization"
+  | "layer2_solutions"
+  | "compliance";
 
 // Category metadata for display
 export const categoryMeta = [
@@ -60,7 +62,9 @@ export const categoryMeta = [
   { value: "hardware_security", label: "Hardware Security", description: "Hardware security for cryptocurrencies" },
   { value: "crypto_economics", label: "Cryptoeconomics", description: "Economic principles of cryptocurrencies" },
   { value: "regulatory_frameworks", label: "Regulatory Frameworks", description: "Legal frameworks for cryptocurrencies" },
-  { value: "tokenization", label: "Tokenization", description: "Converting assets to tokens" }
+  { value: "tokenization", label: "Tokenization", description: "Converting assets to tokens" },
+  { value: "layer2_solutions", label: "Layer 2 Solutions", description: "Scaling solutions built on top of blockchains" },
+  { value: "compliance", label: "Compliance", description: "Regulatory compliance in crypto" }
 ];
 
 // Define a data source selection type - simplified to only include available sources
