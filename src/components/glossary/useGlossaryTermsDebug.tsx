@@ -1,8 +1,6 @@
 
 import { useMemo } from "react";
 import { glossaryTerms } from "@/data/glossaryTerms";
-import { glossaryTermsNew } from "@/data/glossaryTermsNew";
-import { glossaryTerms as glossaryTermsTemp } from "@/data/temp";
 import { CategoryType, GlossaryTerm } from "./types";
 
 /**
@@ -21,8 +19,6 @@ export const useGlossaryTermsDebug = (
   // Record import status for diagnosis
   console.log("🔧 DIAGNOSTIC: Data import check", {
     originalTermsLength: glossaryTerms.length,
-    newTermsLength: glossaryTermsNew.length,
-    tempTermsLength: glossaryTermsTemp.length,
   });
 
   // Sort terms alphabetically

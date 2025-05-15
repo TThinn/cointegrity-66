@@ -26,8 +26,8 @@ const GlossaryPage: React.FC = () => {
   const location = useLocation();
 
   // Get initial data source preference from local storage
-  const initialDataSource: DataSourceType = 
-    (localStorage.getItem("glossary_data_source") as DataSourceType) || "original";
+  // This will now always be "original" as it's the only available source
+  const initialDataSource: DataSourceType = "original";
   
   // Get glossary data
   const { 
@@ -40,11 +40,6 @@ const GlossaryPage: React.FC = () => {
     totalTermsCount 
   } = useGlossaryData(searchTerm, activeCategory, initialDataSource);
   
-  // Update local storage when data source changes
-  useEffect(() => {
-    localStorage.setItem("glossary_data_source", dataSource);
-  }, [dataSource]);
-
   // For smooth scrolling to sections
   const scrollToSection = (letter: string) => {
     const element = document.getElementById(`section-${letter}`);
@@ -75,7 +70,7 @@ const GlossaryPage: React.FC = () => {
           subtitle="A comprehensive guide to terminology in the Web3, Blockchain, and AI space"
           className="py-12"
         >
-          {/* Data source selector and info */}
+          {/* Data source selector */}
           <DataSourceSelector 
             dataSource={dataSource}
             onChangeDataSource={changeDataSource}

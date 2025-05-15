@@ -2,8 +2,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { CategoryType, DataSourceType, GlossaryTerm } from "./types";
 import { glossaryTerms } from "@/data/glossaryTerms";
-import { glossaryTermsNew } from "@/data/glossaryTermsNew";
-import { glossaryTerms as glossaryTermsTemp } from "@/data/temp";
 import { toast } from "sonner";
 
 /**
@@ -19,20 +17,12 @@ export const useGlossaryData = (
   const [isLoading, setIsLoading] = useState(true);
 
   // Get the appropriate data based on the selected source
+  // Currently we only have the original data source
   const rawData = useMemo(() => {
     console.log(`Using ${dataSource} data source`);
     
-    if (dataSource === "new") {
-      console.log(`New data source length: ${glossaryTermsNew.length}`);
-      return glossaryTermsNew;
-    }
-    
-    if (dataSource === "temp") {
-      console.log(`Temp data source length: ${glossaryTermsTemp.length}`);
-      return glossaryTermsTemp;
-    }
-    
-    // Default to original
+    // For now, all data sources use the same data
+    // This can be expanded when additional data sources are available
     console.log(`Original data source length: ${glossaryTerms.length}`);
     return glossaryTerms;
   }, [dataSource]);

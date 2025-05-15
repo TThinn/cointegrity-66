@@ -7,7 +7,7 @@ import {
   SelectTrigger, 
   SelectValue 
 } from "@/components/ui/select";
-import { DataSourceType, dataSources } from "./types";
+import { DataSourceType } from "./types";
 
 interface DataSourceSelectorProps {
   dataSource: DataSourceType;
@@ -20,6 +20,11 @@ export const DataSourceSelector: React.FC<DataSourceSelectorProps> = ({
   onChangeDataSource,
   disabled = false
 }) => {
+  // Simplified data sources since we only have one source available
+  const dataSources = [
+    { value: "original" as DataSourceType, label: "Original Glossary Terms" }
+  ];
+
   return (
     <div className="mb-6">
       <label className="text-sm font-medium mb-1 block">

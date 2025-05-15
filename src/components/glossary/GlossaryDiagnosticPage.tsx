@@ -4,8 +4,6 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useGlossaryTermsDebug } from "./useGlossaryTermsDebug";
 import { glossaryTerms } from "@/data/glossaryTerms";
-import { glossaryTermsNew } from "@/data/glossaryTermsNew";
-import { glossaryTerms as glossaryTermsTemp } from "@/data/temp";
 import { toast } from "sonner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -20,12 +18,8 @@ export const GlossaryDiagnosticPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("summary");
   const [fileContents, setFileContents] = useState<{
     original: string;
-    new: string;
-    temp: string;
   }>({
-    original: "",
-    new: "",
-    temp: ""
+    original: ""
   });
   
   // Get sample content from each file for comparison
@@ -42,9 +36,7 @@ export const GlossaryDiagnosticPage: React.FC = () => {
       };
       
       setFileContents({
-        original: safeStringify(glossaryTerms, "original"),
-        new: safeStringify(glossaryTermsNew, "new"),
-        temp: safeStringify(glossaryTermsTemp, "temp")
+        original: safeStringify(glossaryTerms, "original")
       });
     } catch (e) {
       console.error("🔧 Error accessing file contents:", e);
@@ -54,14 +46,6 @@ export const GlossaryDiagnosticPage: React.FC = () => {
   useEffect(() => {
     console.log("🔧 DIAGNOSTIC PAGE: Component mounted");
     console.log("🔧 DIAGNOSTIC PAGE: Direct glossaryTerms import count:", glossaryTerms.length);
-    console.log("🔧 DIAGNOSTIC PAGE: Direct glossaryTermsNew import count:", glossaryTermsNew.length);
-    console.log("🔧 DIAGNOSTIC PAGE: Direct glossaryTermsTemp import count:", glossaryTermsTemp.length);
-    
-    // Check for object reference equality
-    console.log("🔧 DIAGNOSTIC PAGE: Are glossaryTerms and glossaryTermsNew the same object?", 
-      glossaryTerms === glossaryTermsNew);
-    console.log("🔧 DIAGNOSTIC PAGE: Are glossaryTerms and glossaryTermsTemp the same object?", 
-      glossaryTerms === glossaryTermsTemp);
     
     // Check for module system issues
     console.log("🔧 DIAGNOSTIC PAGE: Module system check");
@@ -79,20 +63,6 @@ export const GlossaryDiagnosticPage: React.FC = () => {
     } catch (e) {
       console.error("🔧 DIAGNOSTIC PAGE: Failed to serialize original terms:", e);
     }
-    
-    try {
-      const serializedNewTerms = JSON.stringify(glossaryTermsNew);
-      console.log("🔧 DIAGNOSTIC PAGE: New terms can be serialized, length:", serializedNewTerms.length);
-    } catch (e) {
-      console.error("🔧 DIAGNOSTIC PAGE: Failed to serialize new terms:", e);
-    }
-    
-    try {
-      const serializedTempTerms = JSON.stringify(glossaryTermsTemp);
-      console.log("🔧 DIAGNOSTIC PAGE: Temp terms can be serialized, length:", serializedTempTerms.length);
-    } catch (e) {
-      console.error("🔧 DIAGNOSTIC PAGE: Failed to serialize temp terms:", e);
-    }
   }, []);
 
   // Force a reload to clear any potential module cache
@@ -108,9 +78,9 @@ export const GlossaryDiagnosticPage: React.FC = () => {
   };
   
   // Import a different data source as the main glossary terms
-  const importDataSource = (source: "new" | "temp") => {
-    localStorage.setItem("glossary_data_source", source);
-    toast.info(`Switching to ${source === "new" ? "new" : "temp"} data source...`);
+  const importDataSource = () => {
+    localStorage.setItem("glossary_data_source", "original");
+    toast.info(`Switching to original data source...`);
     window.location.reload();
   };
 
@@ -129,7 +99,7 @@ export const GlossaryDiagnosticPage: React.FC = () => {
           
           <TabsContent value="summary">
             <div className="space-y-4">
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 gap-4">
                 <Card className="p-4 bg-blue-50">
                   <h3 className="text-lg font-bold">Original Data Source</h3>
                   <p className="text-2xl font-bold">{glossaryTerms.length} Terms</p>
@@ -143,28 +113,6 @@ export const GlossaryDiagnosticPage: React.FC = () => {
                     <p className="text-xs text-red-600 mt-2">
                       Expected 335+ terms but found only 23. Possible data loading issue.
                     </p>
-                  )}
-                </Card>
-                
-                <Card className="p-4 bg-green-50">
-                  <h3 className="text-lg font-bold">New Test Data Source</h3>
-                  <p className="text-2xl font-bold">{glossaryTermsNew.length} Terms</p>
-                  {glossaryTermsNew.length > 0 && (
-                    <div className="mt-2">
-                      <p className="font-bold">First term: </p>
-                      <p>{glossaryTermsNew[0]?.term || "N/A"}</p>
-                    </div>
-                  )}
-                </Card>
-                
-                <Card className="p-4 bg-amber-50">
-                  <h3 className="text-lg font-bold">Temp Data Source</h3>
-                  <p className="text-2xl font-bold">{glossaryTermsTemp.length} Terms</p>
-                  {glossaryTermsTemp.length > 0 && (
-                    <div className="mt-2">
-                      <p className="font-bold">First term: </p>
-                      <p>{glossaryTermsTemp[0]?.term || "N/A"}</p>
-                    </div>
                   )}
                 </Card>
               </div>
@@ -192,20 +140,6 @@ export const GlossaryDiagnosticPage: React.FC = () => {
                   {fileContents.original}
                 </pre>
               </div>
-              
-              <div>
-                <h3 className="text-lg font-bold mb-2">New Data Sample</h3>
-                <pre className="bg-gray-50 p-3 rounded text-xs overflow-auto max-h-40">
-                  {fileContents.new}
-                </pre>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-bold mb-2">Temp Data Sample</h3>
-                <pre className="bg-gray-50 p-3 rounded text-xs overflow-auto max-h-40">
-                  {fileContents.temp}
-                </pre>
-              </div>
             </div>
           </TabsContent>
           
@@ -224,19 +158,13 @@ export const GlossaryDiagnosticPage: React.FC = () => {
                 <div className="flex gap-2 flex-wrap">
                   <Button 
                     variant="outline" 
-                    onClick={() => importDataSource("new")}
+                    onClick={importDataSource}
                   >
-                    Use New Data
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    onClick={() => importDataSource("temp")}
-                  >
-                    Use Temp Data
+                    Use Original Data
                   </Button>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
-                  This will reload the page and use the selected data source as the main glossary terms.
+                  This will reload the page and use the original data source as the main glossary terms.
                 </p>
               </div>
             </div>

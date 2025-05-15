@@ -63,15 +63,8 @@ export const categoryMeta = [
   { value: "tokenization", label: "Tokenization", description: "Converting assets to tokens" }
 ];
 
-// Define a data source selection type
-export type DataSourceType = "original" | "new" | "temp";
-
-// Data source options for display
-export const dataSources = [
-  { value: "original", label: "Original Glossary Terms" },
-  { value: "new", label: "New Glossary Terms" },
-  { value: "temp", label: "Temp Glossary Terms" }
-];
+// Define a data source selection type - simplified to only include available sources
+export type DataSourceType = "original";
 
 // Interface for glossary term structure
 export interface GlossaryTerm {

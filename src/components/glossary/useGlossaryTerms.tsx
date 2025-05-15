@@ -1,6 +1,6 @@
 
 import { useState, useMemo } from "react";
-import { glossaryTermsNew } from "@/data/glossaryTermsNew";
+import { glossaryTerms } from "@/data/glossaryTerms";
 import { CategoryType } from "./types";
 import { toast } from "sonner";
 
@@ -13,15 +13,15 @@ export const useGlossaryTerms = (
   activeCategory: CategoryType | "all"
 ) => {
   // Log the data source directly
-  console.log("🔍 Direct access check - glossaryTermsNew:", {
-    length: glossaryTermsNew.length,
-    isArray: Array.isArray(glossaryTermsNew),
-    firstItem: glossaryTermsNew.length > 0 ? glossaryTermsNew[0].term : 'none'
+  console.log("🔍 Direct access check - glossaryTerms:", {
+    length: glossaryTerms.length,
+    isArray: Array.isArray(glossaryTerms),
+    firstItem: glossaryTerms.length > 0 ? glossaryTerms[0].term : 'none'
   });
 
   // Use the imported data directly without any dynamic re-importing
   const allTerms = useMemo(() => {
-    return glossaryTermsNew;
+    return glossaryTerms;
   }, []);
 
   // Sort terms alphabetically
@@ -52,7 +52,7 @@ export const useGlossaryTerms = (
       }
       acc[firstLetter].push(term);
       return acc;
-    }, {} as Record<string, typeof glossaryTermsNew>);
+    }, {} as Record<string, typeof glossaryTerms>);
   }, [filteredTerms]);
 
   // Extract all letters that have terms
