@@ -23,9 +23,9 @@ export type CategoryType =
   | "exchanges_trading"
   | "wallets_security"
   | "mining_staking"
-  | "tax"
-  | "trading_strategy"
-  | "hardware_security"
+  | "tax"  // Added this missing category
+  | "trading_strategy"  // Added this missing category
+  | "hardware_security"  // Added this missing category
   | "crypto_economics"
   | "regulatory_frameworks"
   | "tokenization"
