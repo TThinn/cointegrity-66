@@ -42,12 +42,12 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
   
   return (
     <div className="flex flex-wrap gap-2 mb-6">
-      {categoryMeta.slice(1).map((category) => (
+      {categoryMeta.map((category) => (
         <Button
           key={category.value}
           variant={activeCategory === category.value ? "default" : "outline"}
           size="sm"
-          onClick={() => setActiveCategory(category.value as CategoryType)}
+          onClick={() => setActiveCategory(category.value as CategoryType | "all")}
           className="rounded-full"
         >
           {category.label}

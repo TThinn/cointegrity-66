@@ -5,12 +5,11 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { glossaryTerms } from "@/data/glossaryTerms";
-import { CategoryType } from "./types";
+import { GlossaryTerm } from "./types";
 
 interface AlphabeticalIndexProps {
   letters: string[];
-  groupedTerms: Record<string, typeof glossaryTerms>;
+  groupedTerms: Record<string, GlossaryTerm[]>;
   scrollToSection: (letter: string) => void;
 }
 
@@ -49,24 +48,30 @@ export const AlphabeticalIndex: React.FC<AlphabeticalIndexProps> = ({
           
           <Separator className="my-4" />
           
-          <div className="space-y-1 px-1">
-            {letters.map((letter) => (
-              <div key={`nav-${letter}`} className="mb-2">
-                <div className="font-bold mb-1">{letter}</div>
-                <div className="pl-2 space-y-1">
-                  {groupedTerms[letter].map((term) => (
-                    <a
-                      key={`link-${term.term}`}
-                      href={`#${term.term.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="block text-sm hover:text-primary truncate"
-                    >
-                      {term.term}
-                    </a>
-                  ))}
+          {letters.length > 0 ? (
+            <div className="space-y-1 px-1">
+              {letters.map((letter) => (
+                <div key={`nav-${letter}`} className="mb-2">
+                  <div className="font-bold mb-1">{letter}</div>
+                  <div className="pl-2 space-y-1">
+                    {groupedTerms[letter].map((term) => (
+                      <a
+                        key={`link-${term.term}`}
+                        href={`#${term.term.toLowerCase().replace(/\s+/g, '-')}`}
+                        className="block text-sm hover:text-primary truncate"
+                      >
+                        {term.term}
+                      </a>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center text-muted-foreground py-4">
+              No terms match your current filters
+            </div>
+          )}
         </ScrollArea>
       </CardContent>
     </Card>

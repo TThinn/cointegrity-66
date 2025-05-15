@@ -3,28 +3,50 @@ import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { glossaryTerms } from "@/data/glossaryTermsNew";
+import { Skeleton } from "@/components/ui/skeleton";
+import { GlossaryTerm } from "./types";
 
 interface GlossaryTermsListProps {
   letters: string[];
-  groupedTerms: Record<string, typeof glossaryTerms>;
+  groupedTerms: Record<string, GlossaryTerm[]>;
+  isLoading: boolean;
 }
 
 export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
   letters,
   groupedTerms,
+  isLoading
 }) => {
-  // Simple direct check of the imported data
-  console.log("GlossaryTermsList - Direct data check:", { 
-    length: glossaryTerms.length,
-    firstTerm: glossaryTerms.length > 0 ? glossaryTerms[0].term : 'none'
-  });
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="space-y-8">
+        {[1, 2, 3].map(i => (
+          <div key={i}>
+            <Skeleton className="h-10 w-24 mb-4" />
+            <div className="space-y-4">
+              {[1, 2, 3].map(j => (
+                <Card key={j}>
+                  <CardHeader>
+                    <Skeleton className="h-6 w-48" />
+                  </CardHeader>
+                  <CardContent>
+                    <Skeleton className="h-20 w-full" />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
-  // Handle the case where no letters/terms are provided
+  // Handle the case where no terms match filters
   if (letters.length === 0) {
     return (
-      <Card className="p-6">
-        <p>No glossary terms found.</p>
+      <Card className="p-6 text-center">
+        <p>No glossary terms found matching your criteria.</p>
       </Card>
     );
   }

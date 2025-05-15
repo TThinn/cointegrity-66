@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { Button } from "@/components/ui/button";
@@ -7,29 +7,43 @@ import { SeoHead } from "@/components/seo/SeoHead";
 import { useLocation } from "react-router-dom";
 import Footer from "@/components/Footer";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CategoryType } from "@/components/glossary/types";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import { AlertTriangle } from "lucide-react";
+import { CategoryType, DataSourceType } from "@/components/glossary/types";
 import { GlossarySearch } from "@/components/glossary/GlossarySearch";
 import { CategorySelector } from "@/components/glossary/CategorySelector";
 import { AlphabeticalIndex } from "@/components/glossary/AlphabeticalIndex";
 import { GlossaryTermsList } from "@/components/glossary/GlossaryTermsList";
 import { ContactCTA } from "@/components/glossary/ContactCTA";
-import { useGlossaryTerms } from "@/components/glossary/useGlossaryTerms";
-import { glossaryTerms } from "@/data/glossaryTermsNew";
+import { DataSourceSelector } from "@/components/glossary/DataSourceSelector";
+import { useGlossaryData } from "@/components/glossary/useGlossaryData";
 
 const GlossaryPage: React.FC = () => {
+  // State for UI
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState<CategoryType | "all">("all");
   const [activeTab, setActiveTab] = useState<string>("categories");
   const location = useLocation();
+
+  // Get initial data source preference from local storage
+  const initialDataSource: DataSourceType = 
+    (localStorage.getItem("glossary_data_source") as DataSourceType) || "original";
   
-  // Direct check of the imported data
-  console.log("GlossaryPage - Direct data access:", { 
-    length: glossaryTerms.length,
-    firstTerm: glossaryTerms.length > 0 ? glossaryTerms[0].term : 'none'
-  });
+  // Get glossary data
+  const { 
+    dataSource, 
+    changeDataSource,
+    filteredTerms, 
+    groupedTerms, 
+    letters,
+    isLoading,
+    totalTermsCount 
+  } = useGlossaryData(searchTerm, activeCategory, initialDataSource);
   
-  // Get filtered terms from the hook
-  const { filteredTerms, groupedTerms, letters, totalTermsCount } = useGlossaryTerms(searchTerm, activeCategory);
+  // Update local storage when data source changes
+  useEffect(() => {
+    localStorage.setItem("glossary_data_source", dataSource);
+  }, [dataSource]);
 
   // For smooth scrolling to sections
   const scrollToSection = (letter: string) => {
@@ -61,28 +75,36 @@ const GlossaryPage: React.FC = () => {
           subtitle="A comprehensive guide to terminology in the Web3, Blockchain, and AI space"
           className="py-12"
         >
-          <div className="mb-6 p-4 bg-gray-50 rounded-lg border">
-            <h3 className="font-bold mb-2">Data Status</h3>
-            <p>Using glossaryTerms data source with {totalTermsCount} terms</p>
-            {totalTermsCount < 100 && (
-              <p className="text-orange-500 font-bold mt-2">
-                Warning: Only {totalTermsCount} terms loaded. Expected 335+ terms.
-              </p>
-            )}
-          </div>
+          {/* Data source selector and info */}
+          <DataSourceSelector 
+            dataSource={dataSource}
+            onChangeDataSource={changeDataSource}
+            disabled={isLoading}
+          />
+          
+          {/* Warning if fewer terms than expected */}
+          {totalTermsCount < 100 && !isLoading && (
+            <Alert variant="warning" className="mb-6">
+              <AlertTriangle className="h-4 w-4" />
+              <AlertTitle>Data Source Warning</AlertTitle>
+              <AlertDescription>
+                Only {totalTermsCount} terms loaded. Expected 300+ terms.
+                This may indicate a data source issue.
+              </AlertDescription>
+            </Alert>
+          )}
 
           <div className="flex flex-col lg:flex-row gap-8 mb-8">
             <div className="lg:w-3/4">
-              <div className="mb-4">
-                <p className="text-muted-foreground">
-                  Glossary contains {totalTermsCount} terms. 
-                  {filteredTerms.length !== totalTermsCount && 
-                    ` Currently showing ${filteredTerms.length} terms based on your filters.`}
-                </p>
-              </div>
-            
-              <GlossarySearch searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+              {/* Search bar */}
+              <GlossarySearch 
+                searchTerm={searchTerm} 
+                setSearchTerm={setSearchTerm}
+                totalCount={totalTermsCount}
+                filteredCount={filteredTerms.length}
+              />
 
+              {/* Tabs for navigation */}
               <Tabs defaultValue="categories" value={activeTab} onValueChange={setActiveTab} className="mb-6">
                 <TabsList className="mb-4">
                   <TabsTrigger value="categories">Categories</TabsTrigger>
@@ -117,29 +139,16 @@ const GlossaryPage: React.FC = () => {
                 </TabsContent>
               </Tabs>
 
-              {filteredTerms.length === 0 ? (
-                <div className="p-8 text-center border rounded-md">
-                  <p>No terms match your search criteria.</p>
-                  {searchTerm && (
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      onClick={() => setSearchTerm("")}
-                      className="mt-4"
-                    >
-                      Clear search
-                    </Button>
-                  )}
-                </div>
-              ) : (
-                <GlossaryTermsList 
-                  letters={letters} 
-                  groupedTerms={groupedTerms} 
-                />
-              )}
+              {/* Glossary terms list */}
+              <GlossaryTermsList 
+                letters={letters} 
+                groupedTerms={groupedTerms} 
+                isLoading={isLoading}
+              />
             </div>
 
             <div className="lg:w-1/4">
+              {/* Alphabetical index sidebar */}
               <AlphabeticalIndex 
                 letters={letters}
                 groupedTerms={groupedTerms}
@@ -148,6 +157,7 @@ const GlossaryPage: React.FC = () => {
             </div>
           </div>
           
+          {/* Contact CTA */}
           <ContactCTA />
         </SectionContainer>
       </main>
