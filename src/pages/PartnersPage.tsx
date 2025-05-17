@@ -23,6 +23,10 @@ const PartnersPage = () => {
               <ArrowLeft size={16} />
               <span>Back to Homepage</span>
             </Link>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">Our Network</h1>
+            <p className="text-white/70 max-w-2xl">
+              Discover the powerful ecosystem of partners and organizations we work with to drive innovation and adoption in Web3 and blockchain technology.
+            </p>
           </div>
         </div>
         <Partners />
