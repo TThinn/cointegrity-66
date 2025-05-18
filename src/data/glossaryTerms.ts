@@ -1038,7 +1038,7 @@ trending: 7
 {
 term: "Secure Element Chips",
 definition: "Specialized hardware components in cryptocurrency wallets that store private keys and execute cryptographic operations in an isolated, tamper-resistant environment. These chips, with certifications like EAL6+ (Ledger) or EAL7 (NGRAVE), protect against physical attacks, side-channel analysis, and other sophisticated threats by preventing direct access to sensitive cryptographic material.",
-categories: ["wallets_security", "wallets_security"],
+categories: ["wallets_security", "mining_staking"],
 related: ["Tamper Resistance", "Hardware Security", "Side-channel Protection", "Certification Standards"],
 trending: 8
 },
