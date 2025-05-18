@@ -781,7 +781,7 @@ trending: 8
  {
 term: "Arbitrage Trading",
 definition: "A trading strategy that exploits price differences of the same cryptocurrency across different exchanges or markets. Arbitrage traders profit by simultaneously buying an asset where it's priced lower and selling it where it's priced higher. This strategy includes several variations such as spatial arbitrage (between exchanges), triangular arbitrage (among three crypto pairs), and cross-border arbitrage (leveraging regional price differences).",
-categories: ["exchanges_trading", "trading_strategy"],
+categories: ["exchanges_trading", "technical_analysis"],
 related: ["Price Discrepancies", "Market Inefficiency", "Exchange Rates", "Triangular Arbitrage"],
 trending: 7
 },
@@ -1038,7 +1038,7 @@ trending: 7
 {
 term: "Secure Element Chips",
 definition: "Specialized hardware components in cryptocurrency wallets that store private keys and execute cryptographic operations in an isolated, tamper-resistant environment. These chips, with certifications like EAL6+ (Ledger) or EAL7 (NGRAVE), protect against physical attacks, side-channel analysis, and other sophisticated threats by preventing direct access to sensitive cryptographic material.",
-categories: ["wallets_security", "hardware_security"],
+categories: ["wallets_security", "wallets_security"],
 related: ["Tamper Resistance", "Hardware Security", "Side-channel Protection", "Certification Standards"],
 trending: 8
 },
@@ -1079,7 +1079,7 @@ trending: 9
 {
 term: "ASIC Mining",
 definition: "The use of Application-Specific Integrated Circuits designed exclusively for mining particular cryptocurrencies, offering significantly higher efficiency than general-purpose hardware. ASIC miners have become the standard for Bitcoin and other SHA-256 based cryptocurrencies, creating an industrial mining landscape that favors large-scale operations with access to cheap electricity and advanced cooling systems.",
-categories: ["mining_staking", "hardware_security"],
+categories: ["mining_staking", "wallets_security"],
 related: ["Bitcoin Mining", "SHA-256", "Mining Hardware", "Hash Rate"],
 trending: 7
 },
@@ -1087,7 +1087,7 @@ trending: 7
 {
 term: "GPU Mining",
 definition: "The process of mining cryptocurrencies using graphics processing units, which offer more flexibility than ASICs by supporting multiple algorithms. GPU mining remains viable for ASIC-resistant cryptocurrencies like Ravencoin and Vertcoin, allowing smaller miners to participate in networks specifically designed to maintain decentralization through algorithm choices that neutralize ASIC advantages.",
-categories: ["mining_staking", "hardware_security"],
+categories: ["mining_staking", "wallets_security"],
 related: ["ASIC Resistance", "Ethereum Classic", "Mining Rigs", "Overclocking"],
 trending: 6
 },
@@ -1234,21 +1234,21 @@ trending: 7
 {
 term: "Crypto-Asset Reporting Framework (CARF)",
 definition: "A global regulatory standard developed by the OECD that requires Crypto-Asset Service Providers to collect and report information on cryptocurrency transactions for tax purposes. CARF mandates the automatic exchange of tax-relevant information between jurisdictions, covering cryptocurrencies, stablecoins, and certain NFTs, with implementation expected to begin in 2025 for 2024 transactions.",
-categories: ["regulatory_frameworks", "compliance", "tax"],
+categories: ["regulatory_frameworks", "compliance", "regulatory_frameworks"],
 related: ["Reporting Crypto-Asset Service Providers", "Tax Transparency", "Information Exchange", "DAC8"],
 trending: 10
 },
 {
 term: "DAC8 (Directive on Administrative Cooperation 8)",
 definition: "The European implementation of CARF that amends the EU's Directive on Administrative Cooperation to enhance tax transparency for crypto-assets. DAC8 closely follows OECD CARF provisions but includes additional requirements such as blocking users from transactions if they fail to provide required information after two reminders within 60 days.",
-categories: ["regulatory_frameworks", "compliance", "tax"],
+categories: ["regulatory_frameworks", "compliance", "regulatory_frameworks"],
 related: ["CARF", "EU Regulation", "Tax Reporting", "Information Exchange"],
 trending: 9
 },
 {
 term: "Common Reporting Standard (CRS)",
 definition: "An information standard for the automatic exchange of financial account information developed by the OECD. Recently amended to include certain crypto-assets, the CRS requires financial institutions to report non-resident account holder information to their tax authorities, who then exchange this information with the account holders' countries of residence.",
-categories: ["regulatory_frameworks", "compliance", "tax"],
+categories: ["regulatory_frameworks", "compliance", "regulatory_frameworks"],
 related: ["AEOI", "Tax Transparency", "Financial Account Reporting", "CARF"],
 trending: 8
 },
@@ -1262,14 +1262,14 @@ trending: 9
 {
 term: "Reporting Crypto-Asset Service Provider (RCASP)",
 definition: "Entities that fall under CARF reporting obligations, including cryptocurrency exchanges, brokers, dealers, and certain DeFi platforms that have sufficient control to comply with reporting requirements. RCASPs must conduct due diligence on users through self-certifications, verify the reasonableness of provided information, and report transaction data to tax authorities.",
-categories: ["regulatory_frameworks", "compliance", "tax"],
+categories: ["regulatory_frameworks", "compliance", "regulatory_frameworks"],
 related: ["CARF", "DAC8", "Due Diligence", "Self-Certification"],
 trending: 8
 },
 {
 term: "Automatic Exchange of Information (AEOI)",
 definition: "A standardized system where tax authorities automatically share taxpayer information with foreign tax authorities to combat offshore tax evasion. AEOI frameworks include the Common Reporting Standard (CRS) for traditional financial accounts and CARF for crypto-assets, creating a global network of information exchange agreements.",
-categories: ["regulatory_frameworks", "compliance", "tax"],
+categories: ["regulatory_frameworks", "compliance", "regulatory_frameworks"],
 related: ["CRS", "CARF", "Tax Transparency", "Information Security"],
 trending: 7
 },
