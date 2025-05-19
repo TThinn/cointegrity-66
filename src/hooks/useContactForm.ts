@@ -3,6 +3,7 @@ import { useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { PlaceholderData } from "@/utils/contactPlaceholders";
 import { showSuccessToast, showErrorToast } from "@/components/ui/custom-toast";
+import { useNavigate } from "react-router-dom";
 
 interface FormState {
   name: string;
@@ -23,6 +24,7 @@ export const useContactForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
+  const navigate = useNavigate();
 
   const resetForm = useCallback(() => {
     setFormState({
@@ -129,13 +131,10 @@ export const useContactForm = () => {
         // Don't block the success flow if confirmation email fails
       }
 
-      // Use the custom showSuccessToast function instead of toast.success
-      showSuccessToast({
-        title: "Thank you for reaching out! 🚀",
-        description: "We've received your message and our team of wizards is on it.\nA confirmation email is heading your way - keep an eye on your inbox!"
-      });
-      
+      // Instead of showing toast, navigate to thank-you page
       resetForm();
+      navigate('/thank-you');
+      
     } catch (error: any) {
       console.error('Contact form submission error:', error);
       
@@ -148,7 +147,6 @@ export const useContactForm = () => {
           message: formState.message
         }
       });
-    } finally {
       setIsSubmitting(false);
     }
   };

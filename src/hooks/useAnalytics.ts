@@ -43,9 +43,36 @@ export const useAnalytics = () => {
     console.log(`📊 Analytics: Event - ${action}`, options);
   };
 
+  /**
+   * Track a conversion
+   * @param action - The conversion action
+   * @param id - Optional conversion ID
+   * @param options - Additional conversion parameters
+   */
+  const trackConversion = (action: string, id?: string, options: EventOptions = {}) => {
+    if (!window.gtag) return;
+    
+    // Track both as an event and potentially as a conversion
+    trackEvent(action, {
+      category: 'conversion',
+      ...options
+    });
+    
+    // If there's a specific conversion ID, track it as such
+    if (id) {
+      window.gtag('event', 'conversion', {
+        send_to: `G-6BG7LRFYFG/${id}`,
+        ...options
+      });
+      
+      console.log(`📊 Analytics: Conversion tracked - ${action} (ID: ${id})`);
+    }
+  };
+
   return {
     pageView,
-    trackEvent
+    trackEvent,
+    trackConversion
   };
 };
 
