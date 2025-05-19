@@ -11,6 +11,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy"
 import AboutPage from "./pages/AboutPage"
 import ServicesPage from "./pages/ServicesPage"
 import PartnersPage from "./pages/PartnersPage"
+import ProcessPage from "./pages/ProcessPage"
 import TeamPage from "./pages/TeamPage"
 import TestimonialsPage from "./pages/TestimonialsPage"
 import ContactPage from "./pages/ContactPage"
@@ -48,6 +49,7 @@ const App = () => (
               <Route path="/about" element={<AboutPage />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/partners" element={<PartnersPage />} />
+              <Route path="/process" element={<ProcessPage />} />
               <Route path="/team" element={<TeamPage />} />
               <Route path="/testimonials" element={<TestimonialsPage />} />
               <Route path="/contact" element={<ContactPage />} />
