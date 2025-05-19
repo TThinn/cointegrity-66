@@ -10,7 +10,7 @@ import Container from "@/components/ui/Container";
 import { useAnalytics } from "@/hooks/useAnalytics";
 
 const ThankYouPage = () => {
-  const { currentPath } = useSectionTracking();
+  const { currentPath, currentHash } = useSectionTracking();
   const { trackEvent, pageView } = useAnalytics();
   
   useEffect(() => {
@@ -30,9 +30,7 @@ const ThankYouPage = () => {
     <div className="min-h-screen bg-[#080112]" itemScope itemType="https://schema.org/WebPage">
       <SeoHead 
         currentPath={currentPath} 
-        currentHash="" 
-        title="Thank You | Cointegrity" 
-        description="Thank you for contacting Cointegrity. We've received your message and will get back to you shortly."
+        currentHash={currentHash}
       />
       
       <Header />
