@@ -96,8 +96,8 @@ const Partners = () => {
               rel="noopener noreferrer" 
               key={index} 
               className={cn(
-                "flex items-center justify-center p-4 rounded-lg bg-transparent border border-white/10",
-                "transition-all duration-300 hover:border-white/30 group h-14 sm:h-18"
+              "flex items-center justify-center p-4 rounded-lg bg-transparent border border-white/30",
+              "transition-all duration-300 hover:border-white/50 group h-14 sm:h-18"
               )}
               title={partner.name}
               aria-label={`Visit ${partner.name} website`}
