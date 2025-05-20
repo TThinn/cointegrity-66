@@ -96,11 +96,10 @@ const Process = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {processSteps.map((step, index) => <div key={step.id} className={`p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 ${isDarkBackground ? 'bg-white/10' : 'bg-white/20'}`} style={{
+            {processSteps.map((step, index) => <div key={step.id} className={`p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 bg-transparent ${isDarkBackground ? 'border-white/30 hover:border-white/50' : 'border-black/30 hover:border-black/50'}`} style={{
             animationDelay: `${0.1 + index * 0.1}s`,
-            boxShadow: isDarkBackground ? "0 4px 15px rgba(0, 0, 0, 0.1)" : "0 4px 15px rgba(0, 0, 0, 0.05)",
-            border: isDarkBackground ? "1px solid rgba(255, 255, 255, 0.15)" : "1px solid rgba(255, 255, 255, 0.7)"
-          }}>
+            border: "1px solid", // The border color is handled by the className
+            }}>
                 <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" style={{
               background: `linear-gradient(135deg, rgba(203, 70, 179, 0.2), rgba(203, 70, 179, 0.3))`
             }}>
@@ -116,10 +115,9 @@ const Process = () => {
           </div>
 
           {/* Updated CTA Section */}
-          <div ref={ctaSectionRef} className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-lg backdrop-blur-sm bg-white/10 relative overflow-hidden" style={{
-          boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
-          border: "1px solid rgba(255, 255, 255, 0.15)"
-        }}>
+          <div ref={ctaSectionRef} className={`mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-lg backdrop-blur-sm bg-transparent relative overflow-hidden transition-all duration-300 ${isDarkBackground ? 'border-white/30 hover:border-white/50' : 'border-black/30 hover:border-black/50'}`} style={{
+          border: "1px solid", // The border color is handled by the className
+          }}>
             {/* Particles */}
             <div className="absolute inset-0 z-[1] pointer-events-none">
               {particles.map((p, i) => <div key={`cta-particle-${i}`} className="absolute rounded-full blur-[12px] animate-light-particle" style={{
