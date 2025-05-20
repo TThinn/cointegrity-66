@@ -94,8 +94,8 @@ const Partners = () => {
               rel="noopener noreferrer" 
               key={index} 
               className={cn(
-                "flex items-center justify-center p-2 rounded-lg bg-transparent border border-white/10",
-                "transition-all duration-300 hover:border-white/30 group h-16 sm:h-20"
+                "flex items-center justify-center p-4 rounded-lg bg-transparent border border-white/10",
+                "transition-all duration-300 hover:border-white/30 group h-14 sm:h-18"
               )}
               title={partner.name}
               aria-label={`Visit ${partner.name} website`}
@@ -104,7 +104,7 @@ const Partners = () => {
                 <img 
                   src={partner.logo} 
                   alt={partner.name} 
-                  className="max-w-full max-h-10 object-contain opacity-80 group-hover:opacity-100 transition-all duration-300" 
+                  className="max-w-full max-h-8 object-contain opacity-80 group-hover:opacity-100 transition-all duration-300" 
                 />
               </div>
             </a>
