@@ -28,9 +28,9 @@ export const testimonials: TestimonialType[] = [
   },
   {
     id: 5,
-    quote: "The strategic positioning advice we received from Cointegrity was instrumental in differentiating our product in the evolving future of finance landscape.",
-    name: "Alex Rivera",
-    title: "Head of Strategy at Web3 Solutions"
+    quote: "Torstein was instrumental in establishing NBX as Europe's first publicly listed cryptocurrency exchange in his role as 'Master of Coin'. His ability to build effective liquidity systems and lead market-making operations was invaluable to our growth from 90M to 1.1B NOK in trading volume. What truly sets Torstein apart is his unwavering determination - once he sets a goal, he doesn't stop until the task is accomplished.",
+    name: "Stig Aleksander Kjos-Mathisen",
+    title: "Co-founder and CEO, Norwegian Block Exchange"
   },
   {
     id: 6,
