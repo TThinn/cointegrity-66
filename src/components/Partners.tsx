@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useLayoutEffect, useMemo } from "react";
 import Container from "./ui/Container";
 import { cn } from "@/lib/utils";
@@ -69,11 +68,14 @@ const Partners = () => {
   if (particleCount === null) return null;
 
   return (
-    <section id="partners" className="py-20 bg-[#010822] relative overflow-hidden">
+    <section id="partners" className="py-20 relative overflow-hidden">
+      {/* Background elements to match the first section */}
+      <div className="absolute inset-0 bg-[#010822]"></div>
+      <div className="absolute inset-0 bg-[#0a1a3a]/10 blur-[100px] rounded-full"></div>
       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
       
       <Container>
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16 relative z-10">
           <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">
             Collaboration with Industry Leaders
           </h2>
@@ -86,7 +88,7 @@ const Partners = () => {
         </div>
 
         {/* Updated grid with more columns and compact sizing */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 relative z-10">
           {partnerLogos.map((partner, index) => (
             <a 
               href={partner.url || "#"} 
@@ -114,7 +116,7 @@ const Partners = () => {
         {/* CTA Section with Particles */}
         <div 
           ref={ctaSectionRef}
-          className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-lg backdrop-blur-sm bg-white/10 relative overflow-hidden" 
+          className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-lg backdrop-blur-sm bg-white/10 relative overflow-hidden z-10" 
           style={{
             boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
             border: "1px solid rgba(255, 255, 255, 0.15)"
