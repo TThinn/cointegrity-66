@@ -114,14 +114,10 @@ const Partners = () => {
         </div>
 
         {/* CTA Section with Particles */}
-        <div 
+        <div  
           ref={ctaSectionRef}
-          className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-lg backdrop-blur-sm bg-white/10 relative overflow-hidden z-10" 
-          style={{
-            boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
-            border: "1px solid rgba(255, 255, 255, 0.15)"
-          }}
-        >
+          className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-lg backdrop-blur-sm bg-transparent border border-white/30 relative overflow-hidden z-10" 
+          >
           {/* Particles */}
           <div className="absolute inset-0 z-[1] pointer-events-none">
             {particles.map((p, i) => (
