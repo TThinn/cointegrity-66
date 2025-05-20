@@ -34,7 +34,7 @@ export const testimonials: TestimonialType[] = [
   },
   {
     id: 6,
-    quote: "Their regulatory navigation expertise in MiCA compliance saved us countless hours and potential pitfalls as we expanded into European markets, cementing our position in the future of finance.",
+    quote: "Feliks is a unique operator who truly understands how to bridge the gap between Web3 innovation and the demands of AAA gaming. During our collaboration, Feliks played a pivotal role in driving strategic partnerships with top-tier AAA studios and aligning the go-to-market efforts with real-world needs in the Web3 space. He combines deep technical understanding with sharp commercial instincts is an increasingly rare mix in this industry. His ability to navigate both the traditional gaming world and the emerging decentralized ecosystem has helped unlock meaningful opportunities and long-term strategic value. I look forward to continuing working with Feliks and would recommend him to any organization looking to elevate their Web3 strategy.",
     name: "Elena Kovacs",
     title: "Legal Director at DeFi Protocol"
   },
