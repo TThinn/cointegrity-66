@@ -12,7 +12,7 @@ export const WEBSITE_STRUCTURED_DATA = {
     "name": "Cointegrity",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://cointegrity.io/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png",
+      "url": "https://cointegrity.io/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png",
       "width": 512,
       "height": 512
     }

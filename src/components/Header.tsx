@@ -115,7 +115,7 @@ const Header = () => {
           <NavLink to="/" className="relative z-10 micro-interaction">
             <div className="flex items-center">
               <img 
-                src="/lovable-uploads/23b8985f-164c-4c02-a983-2dfa808c0689.png" 
+                src="/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png" 
                 alt="Cointegrity Logo" 
                 className="h-10 w-auto" 
               />

@@ -120,7 +120,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       <meta property="og:title" content={getSectionTitle()} />
       <meta property="og:description" content={getSectionDescription()} />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content="https://cointegrity.io/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" />
+      <meta property="og:image" content="https://cointegrity.io/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png" />
       <meta property="og:image:alt" content="Cointegrity Logo" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
@@ -133,22 +133,22 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       <meta name="twitter:site" content="@Cointegrity" />
       <meta name="twitter:title" content={getSectionTitle()} />
       <meta name="twitter:description" content={getSectionDescription()} />
-      <meta name="twitter:image" content="https://cointegrity.io/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" />
+      <meta name="twitter:image" content="https://cointegrity.io/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png" />
       <meta name="twitter:image:alt" content="Cointegrity Logo" />
       
       {/* LinkedIn */}
       <meta property="linkedin:owner" content="Cointegrity" />
       
       {/* Favicon */}
-      <link rel="icon" href="/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" type="image/png" />
-      <link rel="apple-touch-icon" href="/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" />
-      <link rel="shortcut icon" href="/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" />
+      <link rel="icon" href="/lovable-uploads/00cd731b-b43e-4eac-8672-5d829c43ce0e.png" type="image/png" />
+      <link rel="apple-touch-icon" href="/lovable-uploads/00cd731b-b43e-4eac-8672-5d829c43ce0e.png" />
+      <link rel="shortcut icon" href="/lovable-uploads/00cd731b-b43e-4eac-8672-5d829c43ce0e.png" />
       
       {/* Canonical */}
       <link rel="canonical" href={getCanonicalUrl()} />
       
       {/* Preload critical resources */}
-      <link rel="preload" href="/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png" as="image" />
+      <link rel="preload" href="/lovable-uploads/00cd731b-b43e-4eac-8672-5d829c43ce0e.png" as="image" />
       
       {/* Include all structured data directly */}
       {structuredDataObjects.map((data, index) => (
