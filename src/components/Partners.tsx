@@ -85,7 +85,8 @@ const Partners = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        {/* Updated grid with more columns and compact sizing */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
           {partnerLogos.map((partner, index) => (
             <a 
               href={partner.url || "#"} 
@@ -93,8 +94,8 @@ const Partners = () => {
               rel="noopener noreferrer" 
               key={index} 
               className={cn(
-                "flex items-center justify-center p-3 rounded-lg bg-transparent hover:bg-white/5 border border-white/10",
-                "transition-all duration-300 hover:border-white/30 group h-24"
+                "flex items-center justify-center p-2 rounded-lg bg-transparent border border-white/10",
+                "transition-all duration-300 hover:border-white/30 group h-16 sm:h-20"
               )}
               title={partner.name}
               aria-label={`Visit ${partner.name} website`}
@@ -103,7 +104,7 @@ const Partners = () => {
                 <img 
                   src={partner.logo} 
                   alt={partner.name} 
-                  className="max-w-full max-h-16 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300" 
+                  className="max-w-full max-h-12 object-contain opacity-10 group-hover:opacity-100 transition-all duration-300" 
                 />
               </div>
             </a>
