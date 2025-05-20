@@ -104,7 +104,7 @@ const Partners = () => {
                 <img 
                   src={partner.logo} 
                   alt={partner.name} 
-                  className="max-w-full max-h-8 object-contain opacity-80 group-hover:opacity-100 transition-all duration-300" 
+                  className="max-h-7 object-contain opacity-80 group-hover:opacity-100 transition-all duration-300" 
                 />
               </div>
             </a>
