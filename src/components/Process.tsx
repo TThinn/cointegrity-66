@@ -2,8 +2,10 @@ import React, { useLayoutEffect, useRef, useState, useEffect, useMemo } from "re
 import Container from "./ui/Container";
 import { MapPin, Zap, Shield, Award } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
+
 const CTA_PARTICLE_COUNT_DESKTOP = 15;
 const CTA_PARTICLE_COUNT_MOBILE = 3;
+
 const processSteps = [{
   id: 1,
   icon: <MapPin className="text-[#cb46b3] w-8 h-8" />,
@@ -25,6 +27,7 @@ const processSteps = [{
   title: "SCALE",
   description: "Once your Web3 initiative is operational, we support sustainable growth through practical approaches to funding, community engagement, and ongoing optimization. Our continuous monitoring of regulatory developments helps you adapt to changes efficiently, while identifying new opportunities for blockchain application within your business context."
 }];
+
 const Process = () => {
   const isDarkBackground = true;
   const ctaRef = useRef<HTMLAnchorElement | null>(null);
@@ -34,6 +37,7 @@ const Process = () => {
     y: 50
   });
   const [particleCount, setParticleCount] = useState<number | null>(null);
+
   useLayoutEffect(() => {
     const updateCtaPosition = () => {
       if (ctaRef.current && ctaSectionRef.current) {
@@ -54,6 +58,7 @@ const Process = () => {
       clearTimeout(timeout);
     };
   }, []);
+
   const particles = useMemo(() => {
     if (!particleCount) return [];
     return Array.from({
@@ -70,6 +75,7 @@ const Process = () => {
       color: ['rgba(225,29,143,0.9)', 'rgba(147,51,234,0.6)', 'rgba(255,255,255,0.15)'][Math.floor(Math.random() * 3)]
     }));
   }, [ctaPosition, particleCount]);
+
   useLayoutEffect(() => {
     const isMobile = window.innerWidth < 768;
     setParticleCount(isMobile ? CTA_PARTICLE_COUNT_MOBILE : CTA_PARTICLE_COUNT_DESKTOP);
@@ -80,8 +86,11 @@ const Process = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   if (particleCount === null) return null;
-  return <section id="process" className="py-20 relative overflow-hidden">
+
+  return (
+    <section id="process" className="py-20 relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]"></div>
         <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
@@ -96,42 +105,54 @@ const Process = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {processSteps.map((step, index) => <div key={step.id} className={`p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 bg-transparent ${isDarkBackground ? 'border-white/30 hover:border-white/50' : 'border-black/30 hover:border-black/50'}`} style={{
-            animationDelay: `${0.1 + index * 0.1}s`,
-            border: "1px solid", // The border color is handled by the className
-            }}>
+            {processSteps.map((step, index) => (
+              <div 
+                key={step.id} 
+                className={`p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 ${isDarkBackground ? 'border border-white/30 hover:border-white/50' : 'border border-black/30 hover:border-black/50'}`}
+                style={{
+                  animationDelay: `${0.1 + index * 0.1}s`
+                }}
+              >
                 <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" style={{
-              background: `linear-gradient(135deg, rgba(203, 70, 179, 0.2), rgba(203, 70, 179, 0.3))`
-            }}>
-              {step.icon}
-            </div>
-            <h3 className={`text-[clamp(1.1rem,1rem+0.3vw,1.3rem)] font-semibold mb-3 ${isDarkBackground ? 'text-white' : 'text-gray-800'}`}>
-              {step.title}
-            </h3>
-            <p className={`text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] ${isDarkBackground ? 'text-gray-200' : 'text-gray-600'}`}>
-              {step.description}
-            </p>
-          </div>)}
+                  background: `linear-gradient(135deg, rgba(203, 70, 179, 0.2), rgba(203, 70, 179, 0.3))`
+                }}>
+                  {step.icon}
+                </div>
+                <h3 className={`text-[clamp(1.1rem,1rem+0.3vw,1.3rem)] font-semibold mb-3 ${isDarkBackground ? 'text-white' : 'text-gray-800'}`}>
+                  {step.title}
+                </h3>
+                <p className={`text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] ${isDarkBackground ? 'text-gray-200' : 'text-gray-600'}`}>
+                  {step.description}
+                </p>
+              </div>
+            ))}
           </div>
 
-          {/* Updated CTA Section */}
-          <div ref={ctaSectionRef} className={`mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-lg backdrop-blur-sm bg-transparent relative overflow-hidden transition-all duration-300 ${isDarkBackground ? 'border-white/30 hover:border-white/50' : 'border-black/30 hover:border-black/50'}`} style={{
-          border: "1px solid", // The border color is handled by the className
-          }}>
+          {/* CTA Section */}
+          <div 
+            ref={ctaSectionRef} 
+            className={`mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-lg backdrop-blur-sm bg-transparent relative overflow-hidden transition-all duration-300 ${isDarkBackground ? 'border border-white/30 hover:border-white/50' : 'border border-black/30 hover:border-black/50'}`}
+          >
             {/* Particles */}
             <div className="absolute inset-0 z-[1] pointer-events-none">
-              {particles.map((p, i) => <div key={`cta-particle-${i}`} className="absolute rounded-full blur-[12px] animate-light-particle" style={{
-              width: `${p.size}px`,
-              height: `${p.size}px`,
-              background: p.color,
-              left: `${p.x}%`,
-              top: `${p.y}%`,
-              animationDelay: `${p.delay}s`,
-              animationDuration: `${p.duration}s`,
-              ['--move-x' as string]: `${p.moveX}vw`,
-              ['--move-y' as string]: `${p.moveY}vh`,
-              ['--rotate' as string]: `${p.rotate}deg`
-            }} />)}
+              {particles.map((p, i) => (
+                <div 
+                  key={`cta-particle-${i}`} 
+                  className="absolute rounded-full blur-[12px] animate-light-particle" 
+                  style={{
+                    width: `${p.size}px`,
+                    height: `${p.size}px`,
+                    background: p.color,
+                    left: `${p.x}%`,
+                    top: `${p.y}%`,
+                    animationDelay: `${p.delay}s`,
+                    animationDuration: `${p.duration}s`,
+                    ['--move-x' as string]: `${p.moveX}vw`,
+                    ['--move-y' as string]: `${p.moveY}vh`,
+                    ['--rotate' as string]: `${p.rotate}deg`
+                  }} 
+                />
+              ))}
             </div>
 
             <div className="flex-1 text-center md:text-left relative z-10">
@@ -189,6 +210,8 @@ const Process = () => {
           }
         `}
       </style>
-    </section>;
+    </section>
+  );
 };
+
 export default Process;
