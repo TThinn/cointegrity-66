@@ -9,53 +9,183 @@ export interface PartnerLogo {
 // Export the partner logos data
 export const partnerLogos: PartnerLogo[] = [
   {
-    name: "Blockchain Alliance",
-    logo: "/lovable-uploads/a2b1c3d2-c3ca-4547-8cae-e6eca459eeaa.png",
-    url: "https://example.com/blockchain-alliance"
+    name: "Ethereum",
+    logo: "/lovable-uploads/ETH.png",
+    url: "https://ethereum.org"
   },
   {
-    name: "FinTech Innovators",
-    logo: "/lovable-uploads/4e30abfb-11f1-481b-bafe-4d8600b829c4.png",
-    url: "https://example.com/fintech-innovators"
+    name: "Solana",
+    logo: "/lovable-uploads/solanaWordMark.png",
+    url: "https://solana.com/"
   },
   {
-    name: "Web3 Foundation",
-    logo: "/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png",
-    url: "https://example.com/web3-foundation"
+    name: "Binance",
+    logo: "/lovable-uploads/Binance.png",
+    url: "https://www.binance.com"
   },
   {
-    name: "Global Regulatory Council",
-    logo: "/lovable-uploads/1ec5bfd8-e2e8-46c4-8b86-b6fa09a3b6e2.png",
-    url: "https://example.com/global-regulatory-council"
+    name: "Sui",
+    logo: "/lovable-uploads/SUI.png",
+    url: "https://sui.io/"
   },
   {
-    name: "Crypto Research Institute",
-    logo: "/lovable-uploads/fab0fa22-b5a9-4bc7-9d5b-092c5abe5827.png",
-    url: "https://example.com/crypto-research-institute"
+    name: "Avalanche",
+    logo: "/lovable-uploads/Avalanche.png",
+    url: "https://www.avax.network/"
   },
   {
-    name: "Decentralized Systems Lab",
-    logo: "/lovable-uploads/bddb4dfb-6109-4631-b67f-22640d75336f.png",
-    url: "https://example.com/decentralized-systems-lab"
+    name: "Meta",
+    logo: "/lovable-uploads/Meta.png",
+    url: "https://www.meta.com/"
   },
   {
-    name: "Digital Assets Group",
-    logo: "/lovable-uploads/0d4c386b-c572-4c92-8715-d6725b80040a.png",
-    url: "https://example.com/digital-assets-group"
+    name: "Blackrock",
+    logo: "/lovable-uploads/Blackrock.png",
+    url: "https://blackrock.com/"
   },
   {
-    name: "TokenTech Ventures",
-    logo: "/lovable-uploads/fb3e89a2-2d4e-4103-a6e9-131413d15c60.png",
-    url: "https://example.com/tokentech-ventures"
+    name: "Mubadala",
+    logo: "/lovable-uploads/Mubadala.png",
+    url: "https://www.mubadala.com/"
   },
   {
-    name: "Smart Contract Consortium",
-    logo: "/lovable-uploads/e6a83d86-6685-4904-9bb1-f6d5c0a536dc.png",
-    url: "https://example.com/smart-contract-consortium"
+    name: "Access Industries",
+    logo: "/lovable-uploads/Access Industries.png",
+    url: "https://www.accessindustries.com/"
   },
   {
-    name: "Blockchain Interoperability Alliance",
-    logo: "/lovable-uploads/f8ee235e-8951-4727-9a4d-4071d2c60ce3.png",
-    url: "https://example.com/blockchain-interoperability-alliance"
+    name: "Taxbit",
+    logo: "/lovable-uploads/Taxbit.png",
+    url: "https://www.taxbit.com/"
+  },
+  {
+    name: "K33",
+    logo: "/lovable-uploads/K33.png",
+    url: "https://k33.com/"
+  },
+  {
+    name: "AKJ",
+    logo: "/lovable-uploads/AKJ.png",
+    url: "https://www.akj.com/"
+  },
+  {
+    name: "Cepol",
+    logo: "/lovable-uploads/Cepol.png",
+    url: "https://www.cepol.europa.eu/"
+  },
+  {
+    name: "United Nations",
+    logo: "/lovable-uploads/UnitedNations.png",
+    url: "https://www.un.org"
+  },
+  {
+    name: "OSCE",
+    logo: "/lovable-uploads/OSCE.png",
+    url: "https://www.osce.org/"
+  },
+  {
+    name: "Interpol",
+    logo: "/lovable-uploads/Interpol.png",
+    url: "https://www.interpol.int/"
+  },
+  {
+    name: "GBBC",
+    logo: "/lovable-uploads/GBBC.png",
+    url: "https://www.gbbc.io/"
+  },
+  {
+    name: "Nordic Blockchain Association",
+    logo: "/lovable-uploads/Nordic blockchain.png",
+    url: "https://www.nordicblockchain.com/"
+  },
+  {
+    name: "Google Cloud",
+    logo: "/lovable-uploads/Google_Cloud.png",
+    url: "https://cloud.google.com/"
+  },
+  {
+    name: "Microsoft",
+    logo: "/lovable-uploads/Mircrosoft.png",
+    url: "https://www.microsoft.com/"
+  },
+  {
+    name: "AWS",
+    logo: "/lovable-uploads/AWS.png",
+    url: "https://aws.amazon.com/"
+  },
+  {
+    name: "AP Collective",
+    logo: "/lovable-uploads/APCollective.png",
+    url: "https://www.apcollective.io/"
+  },
+  {
+    name: "Wemix",
+    logo: "/lovable-uploads/Wemix.png",
+    url: "https://www.wemix.com"
+  },
+  {
+    name: "Deloitte",
+    logo: "/lovable-uploads/Deloitte.png",
+    url: "https://www2.deloitte.com/"
+  },
+  {
+    name: "R3ach",
+    logo: "/lovable-uploads/R3each.png",
+    url: "https://r3achntwrk.com"
+  },
+  {
+    name: "zkSync",
+    logo: "/lovable-uploads/zksync.png",
+    url: "https://www.zksync.io/"
+  },
+  {
+    name: "WebThree Consulting",
+    logo: "/lovable-uploads/webthree.png",
+    url: "https://www.webthreeconsulting.com/"
+  },
+  {
+    name: "Alt",
+    logo: "/lovable-uploads/alt.co.png",
+    url: "https://alt.co/"
+  },
+  {
+    name: "Nagele",
+    logo: "/lovable-uploads/Naegele.png",
+    url: "https://www.naegele.law/"
+  },
+  {
+    name: "EY",
+    logo: "/lovable-uploads/ernst-young-ey.png",
+    url: "https://www.ey.com"
+  },
+  {
+    name: "Visa",
+    logo: "/lovable-uploads/VISA.png",
+    url: "https://www.visa.com/"
+  },
+  {
+    name: "Mastercard",
+    logo: "/lovable-uploads/MasterCard.png",
+    url: "https://mastercard.com/"
+  },
+  {
+    name: "Adidas",
+    logo: "/lovable-uploads/Adidas_Logo 1.png",
+    url: "https://www.adidas.com"
+  },
+  {
+    name: "Animoca",
+    logo: "/lovable-uploads/AnimocaBrands.png",
+    url: "https://www.animocabrands.com/"
+  },
+  {
+    name: "Epic Games",
+    logo: "/lovable-uploads/EpicGames.png",
+    url: "https://www.epicgames.com"
+  },
+  {
+    name: "Nansen",
+    logo: "/lovable-uploads/NansenLogo.png",
+    url: "https://www.nansen.ai/"
   }
 ];

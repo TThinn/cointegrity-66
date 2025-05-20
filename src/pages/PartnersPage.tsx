@@ -7,6 +7,7 @@ import { SeoHead } from "@/components/seo/SeoHead";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { SectionContainer } from "@/components/ui/SectionContainer";
 
 const PartnersPage = () => {
   const { currentPath } = useSectionTracking();
@@ -17,8 +18,8 @@ const PartnersPage = () => {
       
       <Header />
       <main id="main">
-        <div className="pt-24 px-4 md:px-8">
-          <div className="max-w-7xl mx-auto mb-8">
+        <SectionContainer className="pt-24">
+          <div className="mb-8">
             <Link to="/" className="text-white/70 hover:text-white flex items-center gap-2 mb-4 transition-colors">
               <ArrowLeft size={16} />
               <span>Back to Homepage</span>
@@ -28,15 +29,13 @@ const PartnersPage = () => {
               Discover the powerful ecosystem of partners and organizations we work with to drive innovation and adoption in Web3 and blockchain technology.
             </p>
           </div>
-        </div>
+        </SectionContainer>
         <Partners />
-        <div className="py-8 px-4 md:px-8">
-          <div className="max-w-7xl mx-auto">
-            <Link to="/" className="text-primary hover:text-primary/80 transition-colors">
-              View all sections on our homepage
-            </Link>
-          </div>
-        </div>
+        <SectionContainer className="py-8">
+          <Link to="/" className="text-primary hover:text-primary/80 transition-colors">
+            View all sections on our homepage
+          </Link>
+        </SectionContainer>
       </main>
       <Footer />
     </div>

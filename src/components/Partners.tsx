@@ -2,8 +2,8 @@
 import React, { useRef, useState, useLayoutEffect, useMemo } from "react";
 import Container from "./ui/Container";
 import { cn } from "@/lib/utils";
-import { partners } from "../data/partners";
 import { partnerLogos } from "../data/partnerLogos";
+import OptimizedImage from "./ui/OptimizedImage";
 
 const CTA_PARTICLE_COUNT_DESKTOP = 15;
 const CTA_PARTICLE_COUNT_MOBILE = 3;
@@ -85,24 +85,27 @@ const Partners = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {partnerLogos.map((partner, index) => (
             <a 
               href={partner.url || "#"} 
-              target={partner.url ? "_blank" : undefined} 
-              rel={partner.url ? "noopener noreferrer" : undefined} 
+              target="_blank" 
+              rel="noopener noreferrer" 
               key={index} 
               className={cn(
-                "flex items-center justify-center p-4 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10",
-                "transition-all duration-300 hover:scale-105 group h-28"
+                "flex items-center justify-center p-3 rounded-lg bg-transparent hover:bg-white/5 border border-white/10",
+                "transition-all duration-300 hover:border-white/30 group h-24"
               )}
               title={partner.name}
+              aria-label={`Visit ${partner.name} website`}
             >
-              <img 
-                src={partner.logo} 
-                alt={partner.name} 
-                className="max-w-full max-h-16 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300" 
-              />
+              <div className="relative w-full h-full flex items-center justify-center">
+                <img 
+                  src={partner.logo} 
+                  alt={partner.name} 
+                  className="max-w-full max-h-16 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300" 
+                />
+              </div>
             </a>
           ))}
         </div>

@@ -35,7 +35,7 @@ export const SectionContainer: React.FC<SectionContainerProps> = ({
   return (
     <Component
       id={id}
-      className={cn("py-16 md:py-24", className)}
+      className={cn("py-8 md:py-12", className)}
       aria-label={ariaLabel}
       aria-labelledby={ariaLabelledBy || headingId}
     >
