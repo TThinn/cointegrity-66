@@ -4,7 +4,7 @@ import { TestimonialType } from "./types";
 export const testimonials: TestimonialType[] = [
   {
     id: 1,
-    quote: "Torstein Thinn was instrumental in identifying the challenges posed by cryptocurrencies and establishing what became the world's first dedicated crypto task force. I have come to know him as a positive, solution-oriented leader, and his collaborative approach both internally and externally positioned Norway as a global pioneer in the tax treatment of digital assets. Overall his personality matched well with my vision for the Tax administration, to be a Digital Innovator",
+    quote: "Torstein was instrumental in identifying the challenges posed by cryptocurrencies and establishing what became the world's first dedicated crypto task force. I have come to know him as a positive, solution-oriented leader, and his collaborative approach both internally and externally positioned Norway as a global pioneer in the tax treatment of digital assets. Overall his personality matched well with my vision for the Tax administration, to be a Digital Innovator",
     name: "Hans Christian Holte",
     title: "Former Director of the Norwegian Tax Administration, currently Labour and Welfare Director (NAV)"
   },
@@ -16,7 +16,7 @@ export const testimonials: TestimonialType[] = [
   },
   {
     id: 3,
-    quote: "Torstein Thinn played a pivotal role in automating and streamlining AKJ's trading and systems processes, significantly enhancing scalability and operational efficiency. His expertise contributed to AKJ's continued success as a global leader in turnkey solutions for fund setup across crypto and traditional markets.",
+    quote: "Torstein played a pivotal role in automating and streamlining AKJ's trading and systems processes, significantly enhancing scalability and operational efficiency. His expertise contributed to AKJ's continued success as a global leader in turnkey solutions for fund setup across crypto and traditional markets.",
     name: "Anders Kvamme Jensen",
     title: "Founder and Chairman, AKJ group"
   },
