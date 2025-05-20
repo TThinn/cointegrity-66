@@ -34,15 +34,15 @@ export const testimonials: TestimonialType[] = [
   },
   {
     id: 6,
-    quote: "Feliks is a unique operator who truly understands how to bridge the gap between Web3 innovation and the demands of AAA gaming. During our collaboration, Feliks played a pivotal role in driving strategic partnerships with top-tier AAA studios and aligning the go-to-market efforts with real-world needs in the Web3 space. He combines deep technical understanding with sharp commercial instincts is an increasingly rare mix in this industry. His ability to navigate both the traditional gaming world and the emerging decentralized ecosystem has helped unlock meaningful opportunities and long-term strategic value. I look forward to continuing working with Feliks and would recommend him to any organization looking to elevate their Web3 strategy.",
-    name: "Elena Kovacs",
-    title: "Legal Director at DeFi Protocol"
+    quote: "Feliks uniquely bridges Web3 innovation and AAA gaming demands. During our collaboration, he was instrumental to our success, securing crucial studio relationships that directly advanced our market position. His rare combination of technical depth and commercial acumen delivered tangible results where others couldn't. Working alongside him, I witnessed firsthand how his expertise in both traditional gaming and decentralized ecosystems unlocked strategic opportunities that transformed our Web3 approach. I enthusiastically recommend him to any organization seeking real impact in this space.",
+    name: "Philippe Michaud",
+    title: "Ex Ubisoft (Assassin Creed), Advisor & Venture Partner"
   },
   {
     id: 7,
-    quote: "The capital acceleration program connected us with perfect investors who understood our vision for the future of finance and provided more than just funding.",
-    name: "Thomas Wright",
-    title: "CEO of MetaVerse Platforms"
+    quote: "Feliks brought tremendous value during Enor's critical growth phase. He refined our pitch materials, sharpened our narrative, and created collateral that resonated with both traditional and Web3 investors. Beyond strategy, he accelerated our market positioning and connected us with relevant funds across Europe and the US. His unique blend of storytelling, investor insight, and tactical execution makes him invaluable for early-stage ventures. I'd gladly recommend Feliks and Cointegrity to any Web3 founder navigating a fundraise.",
+    name: "Filippo Raimondi",
+    title: "Co-Founder at Enor Securities"
   },
   {
     id: 8,
