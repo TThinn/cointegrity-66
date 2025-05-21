@@ -2,6 +2,8 @@ import React, { useLayoutEffect, useRef, useState, useEffect, useMemo } from "re
 import Container from "./ui/Container";
 import { MapPin, Zap, Shield, Award } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
+import OptimizedImage from "./ui/OptimizedImage";
+import { SectionContainer } from "./ui/SectionContainer";
 
 const CTA_PARTICLE_COUNT_DESKTOP = 15;
 const CTA_PARTICLE_COUNT_MOBILE = 3;
@@ -90,7 +92,16 @@ const Process = () => {
   if (particleCount === null) return null;
 
   return (
-    <section id="process" className="py-20 relative overflow-hidden">
+    <section 
+      id="process" 
+      className="py-20 relative overflow-hidden"
+      itemScope 
+      itemType="https://schema.org/HowTo"
+    >
+      {/* SEO enhanced metadata */}
+      <meta itemProp="name" content="From Web3 Complexity to Blockchain Success" />
+      <meta itemProp="description" content="Our Proven 4-Step Process for implementing blockchain solutions" />
+      
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]"></div>
         <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
@@ -112,16 +123,27 @@ const Process = () => {
                 style={{
                   animationDelay: `${0.1 + index * 0.1}s`
                 }}
+                itemProp="step"
+                itemScope
+                itemType="https://schema.org/HowToStep"
               >
+                <meta itemProp="position" content={`${index + 1}`} />
+                <meta itemProp="name" content={step.title} />
+                
                 <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" style={{
                   background: `linear-gradient(135deg, rgba(203, 70, 179, 0.2), rgba(203, 70, 179, 0.3))`
                 }}>
                   {step.icon}
                 </div>
-                <h3 className={`text-[clamp(1.1rem,1rem+0.3vw,1.3rem)] font-semibold mb-3 ${isDarkBackground ? 'text-white' : 'text-gray-800'}`}>
+                <h3 
+                  className={`text-[clamp(1.1rem,1rem+0.3vw,1.3rem)] font-semibold mb-3 ${isDarkBackground ? 'text-white' : 'text-gray-800'}`}
+                >
                   {step.title}
                 </h3>
-                <p className={`text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] ${isDarkBackground ? 'text-gray-200' : 'text-gray-600'}`}>
+                <p 
+                  className={`text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] ${isDarkBackground ? 'text-gray-200' : 'text-gray-600'}`}
+                  itemProp="text"
+                >
                   {step.description}
                 </p>
               </div>

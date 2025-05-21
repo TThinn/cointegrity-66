@@ -11,6 +11,13 @@ export const SECTIONS_STRUCTURED_DATA = [
       "@type": "WebSite",
       "@id": "https://cointegrity.io/#website"
     },
+    "mainEntity": {
+      "@type": "Organization",
+      "@id": "https://cointegrity.io/#organization"
+    },
+    "sameAs": [
+      "https://cointegrity.io/about"
+    ],
     "inLanguage": "en-US"
   },
   {
@@ -23,6 +30,13 @@ export const SECTIONS_STRUCTURED_DATA = [
       "@type": "WebSite",
       "@id": "https://cointegrity.io/#website"
     },
+    "mainEntity": {
+      "@type": "Service",
+      "@id": "https://cointegrity.io/#blockchain-services"
+    },
+    "sameAs": [
+      "https://cointegrity.io/services"
+    ],
     "inLanguage": "en-US"
   },
   {
@@ -35,6 +49,51 @@ export const SECTIONS_STRUCTURED_DATA = [
       "@type": "WebSite",
       "@id": "https://cointegrity.io/#website"
     },
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "https://cointegrity.io/#founding-team"
+    },
+    "sameAs": [
+      "https://cointegrity.io/team"
+    ],
+    "inLanguage": "en-US"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://cointegrity.io/#process",
+    "name": "Our Web3 Implementation Process",
+    "description": "Explore Cointegrity's proven 4-step process for successful blockchain implementation: Discover, Strategize, Implement, and Scale.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://cointegrity.io/#website"
+    },
+    "mainEntity": {
+      "@type": "HowTo",
+      "@id": "https://cointegrity.io/#implementation-process"
+    },
+    "sameAs": [
+      "https://cointegrity.io/process"
+    ],
+    "inLanguage": "en-US"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://cointegrity.io/#testimonials",
+    "name": "Client Success Stories",
+    "description": "Read what our clients say about Cointegrity's Web3 consultancy services. Real success stories from businesses we've helped transform.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://cointegrity.io/#website"
+    },
+    "mainEntity": {
+      "@type": "Review",
+      "@id": "https://cointegrity.io/#client-reviews"
+    },
+    "sameAs": [
+      "https://cointegrity.io/testimonials"
+    ],
     "inLanguage": "en-US"
   }
 ];
