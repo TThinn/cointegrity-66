@@ -1,27 +1,117 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Container from "./ui/Container";
 import TestimonialCard from "./testimonials/TestimonialCard";
 import ParticleEffect from "./testimonials/ParticleEffect";
-import { useTestimonials } from "./testimonials/useTestimonials";
-import { useParticles } from "./testimonials/useParticles";
 import { testimonials } from "./testimonials/testimonialsData";
+
 const Testimonials = () => {
-  const {
-    activeTestimonials,
-    changingIndex,
-    isVisible,
-    hoveredCard,
-    handleCardMouseEnter,
-    handleCardMouseLeave,
-    testimonialsGridRef,
-    maxSectionHeight
-  } = useTestimonials();
-  const {
-    particles,
-    sectionRef,
-    buttonRef
-  } = useParticles();
-  return <section id="testimonials" className="py-20 relative overflow-hidden" ref={sectionRef}>
+  const [isMobile, setIsMobile] = useState(false);
+  const [activeTestimonials, setActiveTestimonials] = useState([0, 1, 2, 3]);
+  const [changingIndex, setChangingIndex] = useState(null);
+  const [isVisible, setIsVisible] = useState(true);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const [maxSectionHeight, setMaxSectionHeight] = useState(0);
+  const testimonialsGridRef = React.useRef(null);
+  const sectionRef = React.useRef(null);
+  const buttonRef = React.useRef(null);
+  const [particles, setParticles] = useState([]);
+
+  // Handle responsive behavior
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 640;
+      setIsMobile(mobile);
+      
+      if (mobile && activeTestimonials.length > 2) {
+        // On mobile, only show first 2 testimonials
+        setActiveTestimonials(activeTestimonials.slice(0, 2));
+      } else if (!mobile && activeTestimonials.length < 4) {
+        // On desktop, ensure we show 4 testimonials
+        const currentIds = new Set(activeTestimonials);
+        const newIds = [...activeTestimonials];
+        
+        while (newIds.length < 4) {
+          const randomId = Math.floor(Math.random() * testimonials.length);
+          if (!currentIds.has(randomId)) {
+            newIds.push(randomId);
+            currentIds.add(randomId);
+          }
+        }
+        
+        setActiveTestimonials(newIds);
+      }
+    };
+
+    // Initial check
+    checkMobile();
+    
+    // Add event listener
+    window.addEventListener('resize', checkMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, [activeTestimonials]);
+
+  // Calculate section height
+  useEffect(() => {
+    if (testimonialsGridRef.current) {
+      setMaxSectionHeight(testimonialsGridRef.current.offsetHeight);
+    }
+  }, [activeTestimonials, isMobile]);
+
+  // Generate particles
+  useEffect(() => {
+    if (!buttonRef.current || !sectionRef.current) return;
+
+    const btnBox = buttonRef.current.getBoundingClientRect();
+    const sectionBox = sectionRef.current.getBoundingClientRect();
+    const x = ((btnBox.left + btnBox.right) / 2 - sectionBox.left) / sectionBox.width * 100;
+    const y = ((btnBox.top + btnBox.bottom) / 2 - sectionBox.top) / sectionBox.height * 100;
+
+    const count = window.innerWidth < 768 ? 5 : 12;
+    const newParticles = Array.from({ length: count }, () => ({
+      size: 20 + Math.random() * 80,
+      x: x - 4 + (Math.random() - 0.5) * 12,
+      y: y - 4 + (Math.random() - 0.5) * 12,
+      moveX: (Math.random() - 0.5) * 10,
+      moveY: (Math.random() - 0.5) * 14,
+      rotate: Math.random() * 360,
+      delay: Math.random() * 5,
+      duration: 8 + Math.random() * 12,
+      color: ['rgba(225,29,143,0.9)', 'rgba(147,51,234,0.6)', 'rgba(255,255,255,0.15)'][Math.floor(Math.random() * 3)]
+    }));
+
+    setParticles(newParticles);
+
+    const handleResize = () => {
+      if (!buttonRef.current || !sectionRef.current) return;
+      
+      const btnBox = buttonRef.current.getBoundingClientRect();
+      const sectionBox = sectionRef.current.getBoundingClientRect();
+      const x = ((btnBox.left + btnBox.right) / 2 - sectionBox.left) / sectionBox.width * 100;
+      const y = ((btnBox.top + btnBox.bottom) / 2 - sectionBox.top) / sectionBox.height * 100;
+
+      setParticles(prev => prev.map(p => ({
+        ...p,
+        x: x - 4 + (Math.random() - 0.5) * 12,
+        y: y - 4 + (Math.random() - 0.5) * 12,
+      })));
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleCardMouseEnter = (position) => {
+    setHoveredCard(position);
+  };
+
+  const handleCardMouseLeave = () => {
+    setHoveredCard(null);
+  };
+
+  return (
+    <section id="testimonials" className="py-20 relative overflow-hidden" ref={sectionRef}>
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]"></div>
         <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
@@ -36,16 +126,46 @@ const Testimonials = () => {
           </div>
 
           <div className="transition-all duration-300 relative z-30" style={{
-          minHeight: `${maxSectionHeight}px`
-        }}>
-            <div ref={testimonialsGridRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {[0, 1, 2, 3].map(position => <TestimonialCard key={position} testimonial={testimonials[activeTestimonials[position]]} position={position} isChanging={changingIndex === position} isVisible={isVisible} isHovered={hoveredCard === position} onMouseEnter={handleCardMouseEnter} onMouseLeave={handleCardMouseLeave} />)}
+            minHeight: `${maxSectionHeight}px`
+          }}>
+            <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
+              {activeTestimonials.map((testimonialIndex, position) => (
+                <TestimonialCard 
+                  key={position} 
+                  testimonial={testimonials[testimonialIndex]} 
+                  position={position} 
+                  isChanging={changingIndex === position} 
+                  isVisible={isVisible} 
+                  isHovered={hoveredCard === position} 
+                  onMouseEnter={() => handleCardMouseEnter(position)} 
+                  onMouseLeave={handleCardMouseLeave} 
+                />
+              ))}
             </div>
           </div>
           
           <div className="mt-5 -mb-8 text-center relative z-20">
             <div className="inline-block relative">
-              <ParticleEffect particles={particles} />
+              <div className="absolute inset-0 z-[1] pointer-events-none">
+                {particles.map((p, i) => (
+                  <div 
+                    key={`cta-particle-${i}`} 
+                    className="absolute rounded-full blur-[12px] animate-light-particle" 
+                    style={{
+                      width: `${p.size}px`,
+                      height: `${p.size}px`,
+                      background: p.color,
+                      left: `${p.x}%`,
+                      top: `${p.y}%`,
+                      animationDelay: `${p.delay}s`,
+                      animationDuration: `${p.duration}s`,
+                      ['--move-x']: `${p.moveX}vw`,
+                      ['--move-y']: `${p.moveY}vh`,
+                      ['--rotate']: `${p.rotate}deg`
+                    }} 
+                  />
+                ))}
+              </div>
               <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
                 <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
                               border border-white/30 hover:bg-white/40 transition-all
@@ -99,6 +219,8 @@ const Testimonials = () => {
           }
         `}
       </style>
-    </section>;
+    </section>
+  );
 };
+
 export default Testimonials;
