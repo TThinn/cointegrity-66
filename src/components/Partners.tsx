@@ -117,42 +117,55 @@ const Partners = () => {
           ))}
         </div>
 
-{/* CTA Section with Particles */}
-<div  
-  ref={ctaSectionRef}
-  className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-12 p-6 md:p-7 rounded-lg backdrop-blur-sm bg-transparent border border-white/30 relative overflow-hidden z-10" 
->
-  {/* Particles */}
-  <div className="absolute inset-0 z-[1] pointer-events-none">
-    {particles.map((p, i) => (
-      <div 
-        key={`cta-particle-${i}`} 
-        className="absolute rounded-full blur-[12px] animate-light-particle" 
-        style={{
-          width: `${p.size}px`,
-          height: `${p.size}px`,
-          background: p.color,
-          left: `${p.x}%`,
-          top: `${p.y}%`,
-          animationDelay: `${p.delay}s`,
-          animationDuration: `${p.duration}s`,
-          ['--move-x' as string]: `${p.moveX}vw`,
-          ['--move-y' as string]: `${p.moveY}vh`,
-          ['--rotate' as string]: `${p.rotate}deg`
-        }} 
-      />
-    ))}
-  </div>
+{/* CTA Section with Particles - with wrapper for overflow control */}
+<div className="mt-16 relative">
+  {/* CTA Section */}
+  <div  
+    ref={ctaSectionRef}
+    className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-12 p-6 md:p-7 rounded-lg backdrop-blur-sm bg-transparent border border-white/30 relative z-10" 
+  >
+    {/* Particles */}
+    <div className="absolute inset-0 z-[1] pointer-events-none">
+      {particles.map((p, i) => (
+        <div 
+          key={`cta-particle-${i}`} 
+          className="absolute rounded-full blur-[12px] animate-light-particle" 
+          style={{
+            width: `${p.size}px`,
+            height: `${p.size}px`,
+            background: p.color,
+            left: `${p.x}%`,
+            top: `${p.y}%`,
+            animationDelay: `${p.delay}s`,
+            animationDuration: `${p.duration}s`,
+            ['--move-x' as string]: `${p.moveX}vw`,
+            ['--move-y' as string]: `${p.moveY}vh`,
+            ['--rotate' as string]: `${p.rotate}deg`
+          }} 
+        />
+      ))}
+    </div>
 
-  <div className="flex-1 text-center md:text-left relative z-10">
-    <h3 className="text-[clamp(1.2rem,1rem+0.7vw,1.8rem)] font-bold mb-2 text-white">Want to partner with us?</h3>
+    <div className="flex-1 text-center md:text-left relative z-10">
+      <h3 className="text-[clamp(1.2rem,1rem+0.7vw,1.8rem)] font-bold mb-2 text-white">Want to partner with us?</h3>
+    </div>
+    
+    <a href="/contact" className="inline-flex items-center relative z-10" ref={ctaRef}>
+      <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-2.5 rounded-full
+                        border border-white/30 hover:bg-white/40 transition-all
+                        transform hover:scale-105 duration-300 text-base font-semibold">Get in touch</button>
+    </a>
   </div>
   
-  <a href="/contact" className="inline-flex items-center relative z-10" ref={ctaRef}>
-    <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-2.5 rounded-full
-                      border border-white/30 hover:bg-white/40 transition-all
-                      transform hover:scale-105 duration-300 text-base font-semibold">Get in touch</button>
-  </a>
+  {/* Shadow/glow effect that extends beyond CTA */}
+  <div 
+    className="absolute -inset-4 rounded-xl blur-xl pointer-events-none z-[5] opacity-70"
+    style={{
+      background: 'radial-gradient(circle at 50% 50%, rgba(225,29,143,0.3), rgba(147,51,234,0.2), transparent 70%)',
+      filter: 'blur(15px)',
+      transform: 'translateZ(0)'
+    }}
+  ></div>
 </div>
       </Container>
 
