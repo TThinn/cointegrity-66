@@ -1,3 +1,4 @@
+
 import React, { useRef, useState, useLayoutEffect, useMemo } from "react";
 import Container from "./ui/Container";
 import { cn } from "@/lib/utils";
@@ -103,10 +104,13 @@ const Partners = () => {
               aria-label={`Visit ${partner.name} website`}
             >
               <div className="relative w-full h-full flex items-center justify-center">
-                <img 
+                <OptimizedImage
                   src={partner.logo} 
                   alt={partner.name} 
                   className="max-h-7 object-contain opacity-80 group-hover:opacity-100 transition-all duration-300" 
+                  priority={index < 6} // Only prioritize loading for the first 6 logos
+                  width={100}
+                  height={40}
                 />
               </div>
             </a>

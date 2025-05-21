@@ -7,6 +7,7 @@ import { SeoHead } from "@/components/seo/SeoHead";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import BreadcrumbNav from "@/components/ui/BreadcrumbNav";
 
 const ServicesPage = () => {
   const { currentPath } = useSectionTracking();
@@ -19,10 +20,16 @@ const ServicesPage = () => {
       <main id="main">
         <div className="pt-24 px-4 md:px-8">
           <div className="max-w-7xl mx-auto mb-8">
-            <Link to="/" className="text-gray-700 hover:text-gray-900 flex items-center gap-2 mb-4 transition-colors">
+            <BreadcrumbNav className="mb-4" />
+            
+            <Link to="/" className="text-white/70 hover:text-white flex items-center gap-2 mb-4 transition-colors">
               <ArrowLeft size={16} />
               <span>Back to Homepage</span>
             </Link>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">Our Services</h1>
+            <p className="text-white/70 max-w-2xl">
+              Comprehensive Web3 services including strategic positioning, tokenomics design, regulatory compliance, and capital acceleration solutions.
+            </p>
           </div>
         </div>
         <Services />

@@ -8,6 +8,7 @@ import { useSectionTracking } from "@/hooks/useSectionTracking";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { SectionContainer } from "@/components/ui/SectionContainer";
+import BreadcrumbNav from "@/components/ui/BreadcrumbNav";
 
 const PartnersPage = () => {
   const { currentPath } = useSectionTracking();
@@ -19,6 +20,8 @@ const PartnersPage = () => {
       <Header />
       <main id="main">
         <SectionContainer className="pt-24">
+          <BreadcrumbNav className="mb-4" />
+          
           <div className="mb-8">
             <Link to="/" className="text-white/70 hover:text-white flex items-center gap-2 mb-4 transition-colors">
               <ArrowLeft size={16} />

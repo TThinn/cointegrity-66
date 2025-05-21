@@ -6,9 +6,10 @@ import { SECTIONS_STRUCTURED_DATA } from "./sectionsStructuredData";
 import { HOWTO_STRUCTURED_DATA } from "./howToStructuredData";
 import { EVENT_STRUCTURED_DATA } from "./eventStructuredData";
 import { ALL_GLOSSARY_STRUCTURED_DATA } from "./glossaryStructuredData";
+import { generateBreadcrumbStructuredData } from "./breadcrumbStructuredData";
 
 // Return structured data objects instead of React components
-export const getStructuredData = () => {
+export const getStructuredData = (currentPath = "", currentHash = "") => {
   return [
     BUSINESS_STRUCTURED_DATA,
     FAQ_STRUCTURED_DATA,
@@ -16,6 +17,7 @@ export const getStructuredData = () => {
     ...SECTIONS_STRUCTURED_DATA,
     HOWTO_STRUCTURED_DATA,
     ...EVENT_STRUCTURED_DATA,
-    ...ALL_GLOSSARY_STRUCTURED_DATA
+    ...ALL_GLOSSARY_STRUCTURED_DATA,
+    generateBreadcrumbStructuredData(currentPath, currentHash)
   ];
 };

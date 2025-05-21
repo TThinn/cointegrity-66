@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { getStructuredData } from "./SectionStructuredData";
@@ -106,8 +105,8 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
     return basePath;
   };
 
-  // Get all structured data objects
-  const structuredDataObjects = getStructuredData();
+  // Get all structured data objects with current path and hash
+  const structuredDataObjects = getStructuredData(currentPath, currentHash);
 
   return (
     <Helmet>

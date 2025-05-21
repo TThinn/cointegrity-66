@@ -11,7 +11,20 @@ export const SECTIONS_STRUCTURED_DATA = [
       "@type": "WebSite",
       "@id": "https://cointegrity.io/#website"
     },
-    "inLanguage": "en-US"
+    "inLanguage": "en-US",
+    "url": "https://cointegrity.io/about",
+    "mainContentOfPage": {
+      "@type": "WebPageElement",
+      "cssSelector": "#about"
+    },
+    "about": {
+      "@type": "Organization",
+      "@id": "https://cointegrity.io/#organization"
+    },
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "url": "https://cointegrity.io/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png"
+    }
   },
   {
     "@context": "https://schema.org",
@@ -23,7 +36,20 @@ export const SECTIONS_STRUCTURED_DATA = [
       "@type": "WebSite",
       "@id": "https://cointegrity.io/#website"
     },
-    "inLanguage": "en-US"
+    "inLanguage": "en-US",
+    "url": "https://cointegrity.io/services",
+    "mainContentOfPage": {
+      "@type": "WebPageElement",
+      "cssSelector": "#services"
+    },
+    "about": {
+      "@type": "Organization",
+      "@id": "https://cointegrity.io/#organization"
+    },
+    "provider": {
+      "@type": "Organization",
+      "@id": "https://cointegrity.io/#organization"
+    }
   },
   {
     "@context": "https://schema.org",
@@ -35,6 +61,25 @@ export const SECTIONS_STRUCTURED_DATA = [
       "@type": "WebSite",
       "@id": "https://cointegrity.io/#website"
     },
-    "inLanguage": "en-US"
+    "inLanguage": "en-US",
+    "url": "https://cointegrity.io/team",
+    "mainContentOfPage": {
+      "@type": "WebPageElement",
+      "cssSelector": "#founders"
+    },
+    "about": [
+      {
+        "@type": "Person",
+        "@id": "https://cointegrity.io/team#founder1"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://cointegrity.io/team#founder2"
+      }
+    ],
+    "mentions": {
+      "@type": "Organization",
+      "@id": "https://cointegrity.io/#organization"
+    }
   }
 ];
