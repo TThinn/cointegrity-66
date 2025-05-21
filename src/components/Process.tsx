@@ -129,10 +129,10 @@ const Process = () => {
           </div>
 
           {/* CTA Section */}
-          <div 
-            ref={ctaSectionRef} 
-            className={`mt-16 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 p-8 md:p-10 rounded-lg backdrop-blur-sm bg-transparent relative overflow-hidden transition-all duration-300 ${isDarkBackground ? 'border border-white/30 hover:border-white/50' : 'border border-black/30 hover:border-black/50'}`}
-          >
+<div 
+  ref={ctaSectionRef} 
+  className={`mt-16 flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-16 p-6 md:p-7 rounded-lg backdrop-blur-sm bg-transparent relative overflow-hidden transition-all duration-300 ${isDarkBackground ? 'border border-white/30 hover:border-white/50' : 'border border-black/30 hover:border-black/50'}`}
+>
             {/* Particles */}
             <div className="absolute inset-0 z-[1] pointer-events-none">
               {particles.map((p, i) => (
