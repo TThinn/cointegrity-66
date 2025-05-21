@@ -113,50 +113,47 @@ const Partners = () => {
           ))}
         </div>
 
-        {/* CTA Section wrapper with outer glow effect */}
-        <div className="mt-16 relative">
-          {/* Outer glow effect that extends beyond CTA boundaries */}
-          <div className="absolute -inset-8 z-[5] pointer-events-none">
-            <div className="absolute inset-0 rounded-[30px] bg-gradient-to-r from-[rgba(225,29,143,0.15)] via-[rgba(147,51,234,0.1)] to-transparent opacity-70 blur-[20px]"></div>
+        {/* CTA Section with Particles - UPDATED WITH BLEEDING LIGHT EFFECT */}
+        <div 
+          ref={ctaSectionRef}
+          className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-12 p-6 md:p-7 rounded-lg backdrop-blur-sm bg-transparent border border-white/30 relative z-10" 
+          style={{
+            boxShadow: "0 0 30px rgba(225, 29, 143, 0.15), 0 0 20px rgba(147, 51, 234, 0.1)",
+            overflow: "hidden"
+          }}
+        >
+          {/* Particles */}
+          <div className="absolute inset-0 z-[1] pointer-events-none">
+            {particles.map((p, i) => (
+              <div 
+                key={`cta-particle-${i}`} 
+                className="absolute rounded-full blur-[12px] animate-light-particle" 
+                style={{
+                  width: `${p.size}px`,
+                  height: `${p.size}px`,
+                  background: p.color,
+                  left: `${p.x}%`,
+                  top: `${p.y}%`,
+                  animationDelay: `${p.delay}s`,
+                  animationDuration: `${p.duration}s`,
+                  filter: 'drop-shadow(0 0 10px currentColor)',
+                  ['--move-x' as string]: `${p.moveX}vw`,
+                  ['--move-y' as string]: `${p.moveY}vh`,
+                  ['--rotate' as string]: `${p.rotate}deg`
+                }} 
+              />
+            ))}
+          </div>
+
+          <div className="flex-1 text-center md:text-left relative z-10">
+            <h3 className="text-[clamp(1.2rem,1rem+0.7vw,1.8rem)] font-bold mb-2 text-white">Want to partner with us?</h3>
           </div>
           
-          {/* Actual CTA Section with Particles */}
-          <div 
-            ref={ctaSectionRef}
-            className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-12 p-6 md:p-7 rounded-lg backdrop-blur-sm bg-transparent border border-white/30 relative z-10 overflow-hidden" 
-          >
-            {/* Particles - unchanged from original */}
-            <div className="absolute inset-0 z-[1] pointer-events-none">
-              {particles.map((p, i) => (
-                <div 
-                  key={`cta-particle-${i}`} 
-                  className="absolute rounded-full blur-[12px] animate-light-particle" 
-                  style={{
-                    width: `${p.size}px`,
-                    height: `${p.size}px`,
-                    background: p.color,
-                    left: `${p.x}%`,
-                    top: `${p.y}%`,
-                    animationDelay: `${p.delay}s`,
-                    animationDuration: `${p.duration}s`,
-                    ['--move-x' as string]: `${p.moveX}vw`,
-                    ['--move-y' as string]: `${p.moveY}vh`,
-                    ['--rotate' as string]: `${p.rotate}deg`
-                  }} 
-                />
-              ))}
-            </div>
-
-            <div className="flex-1 text-center md:text-left relative z-10">
-              <h3 className="text-[clamp(1.2rem,1rem+0.7vw,1.8rem)] font-bold mb-2 text-white">Want to partner with us?</h3>
-            </div>
-            
-            <a href="/contact" className="inline-flex items-center relative z-10" ref={ctaRef}>
-              <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-2.5 rounded-full
-                                border border-white/30 hover:bg-white/40 transition-all
-                                transform hover:scale-105 duration-300 text-base font-semibold">Get in touch</button>
-            </a>
-          </div>
+          <a href="/contact" className="inline-flex items-center relative z-10" ref={ctaRef}>
+            <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-2.5 rounded-full
+                              border border-white/30 hover:bg-white/40 transition-all
+                              transform hover:scale-105 duration-300 text-base font-semibold">Get in touch</button>
+          </a>
         </div>
       </Container>
 
