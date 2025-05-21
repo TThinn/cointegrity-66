@@ -117,27 +117,15 @@ const Partners = () => {
           ))}
         </div>
 
-{/* CTA Section with Particles - with proper shadow effect */}
+{/* CTA Section with Particles and proper shadow effect */}
 <div className="mt-16 relative">
-  {/* Shadow/glow effect that extends beyond CTA but doesn't overlap */}
-  <div 
-    className="absolute -inset-6 rounded-xl pointer-events-none"
-    style={{
-      background: 'radial-gradient(circle at 50% 50%, rgba(225,29,143,0.2), rgba(147,51,234,0.15), transparent 70%)',
-      filter: 'blur(15px)',
-      transform: 'translateZ(0)',
-      clipPath: 'path("M 0 0 L 100% 0 L 100% 100% L 0 100% L 0 0 Z M 16px 16px L calc(100% - 16px) 16px L calc(100% - 16px) calc(100% - 16px) L 16px calc(100% - 16px) L 16px 16px Z")',
-      zIndex: 5
-    }}
-  ></div>
-  
   {/* CTA Section */}
   <div  
     ref={ctaSectionRef}
-    className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-12 p-6 md:p-7 rounded-lg backdrop-blur-sm bg-transparent border border-white/30 relative z-10" 
+    className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-12 p-6 md:p-7 rounded-lg backdrop-blur-sm bg-transparent border border-white/30 relative z-10 overflow-hidden" 
   >
     {/* Particles */}
-    <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
+    <div className="absolute inset-0 z-[1] pointer-events-none">
       {particles.map((p, i) => (
         <div 
           key={`cta-particle-${i}`} 
@@ -168,8 +156,31 @@ const Partners = () => {
                         transform hover:scale-105 duration-300 text-base font-semibold">Get in touch</button>
     </a>
   </div>
-</div>
-      </Container>
+  
+  {/* External shadow effect that matches particle positions */}
+  <div className="absolute inset-0 z-[5] pointer-events-none" style={{ transform: 'scale(1.2)' }}>
+    {particles.map((p, i) => (
+      <div 
+        key={`shadow-particle-${i}`} 
+        className="absolute rounded-full blur-[25px] animate-light-particle" 
+        style={{
+          width: `${p.size * 1.5}px`,
+          height: `${p.size * 1.5}px`,
+          background: p.color.replace(/[^,]+(?=\))/, '0.15'),
+          left: `${p.x}%`,
+          top: `${p.y}%`,
+          animationDelay: `${p.delay}s`,
+          animationDuration: `${p.duration}s`,
+          ['--move-x' as string]: `${p.moveX}vw`,
+          ['--move-y' as string]: `${p.moveY}vh`,
+          ['--rotate' as string]: `${p.rotate}deg`,
+          opacity: 0.4,
+          mixBlendMode: 'screen'
+        }} 
+      />
+    ))}
+  </div>
+</div>      </Container>
 
       {/* Animation Styles */}
       <style>
