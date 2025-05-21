@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { getStructuredData } from "./SectionStructuredData";
@@ -139,15 +140,15 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       <meta property="linkedin:owner" content="Cointegrity" />
       
       {/* Favicon */}
-      <link rel="icon" href="/lovable-uploads/00cd731b-b43e-4eac-8672-5d829c43ce0e.png" type="image/png" />
-      <link rel="apple-touch-icon" href="/lovable-uploads/00cd731b-b43e-4eac-8672-5d829c43ce0e.png" />
-      <link rel="shortcut icon" href="/lovable-uploads/00cd731b-b43e-4eac-8672-5d829c43ce0e.png" />
+      <link rel="icon" href="/lovable-uploads/4154e717-451c-4f01-9cf6-8117a4fa0149.png" type="image/png" />
+      <link rel="apple-touch-icon" href="/lovable-uploads/4154e717-451c-4f01-9cf6-8117a4fa0149.png" />
+      <link rel="shortcut icon" href="/lovable-uploads/4154e717-451c-4f01-9cf6-8117a4fa0149.png" />
       
       {/* Canonical */}
       <link rel="canonical" href={getCanonicalUrl()} />
       
       {/* Preload critical resources */}
-      <link rel="preload" href="/lovable-uploads/00cd731b-b43e-4eac-8672-5d829c43ce0e.png" as="image" />
+      <link rel="preload" href="/lovable-uploads/4154e717-451c-4f01-9cf6-8117a4fa0149.png" as="image" />
       
       {/* Include all structured data directly */}
       {structuredDataObjects.map((data, index) => (
