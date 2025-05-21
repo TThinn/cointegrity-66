@@ -84,10 +84,13 @@ const AboutUs = () => {
             <h3 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800 leading-tight">Trusted Web3 Experts Solving Complex Blockchain Challenges Since 2015</h3>
 
             {/* CTA with particles - moved to left column */}
-            <div ref={ctaSectionRef} className="relative flex justify-center mt-8 mb-6" style={{
+            <div 
+            ref={ctaSectionRef} 
+            className="relative flex justify-center md:justify-start mt-8 mb-6" 
+            style={{
             height: "120px"
-          }} // Added fixed height to ensure visibility
-          >
+            }}
+            >
               {/* Particles */}
               <div className="absolute inset-0 pointer-events-none overflow-visible z-0">
                 {particles.map((p, i) => <div key={`cta-particle-${i}`} className="absolute rounded-full blur-[16px] animate-light-particle" // Increased blur
