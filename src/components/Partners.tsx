@@ -117,15 +117,27 @@ const Partners = () => {
           ))}
         </div>
 
-{/* CTA Section with Particles - with wrapper for overflow control */}
+{/* CTA Section with Particles - with proper shadow effect */}
 <div className="mt-16 relative">
+  {/* Shadow/glow effect that extends beyond CTA but doesn't overlap */}
+  <div 
+    className="absolute -inset-6 rounded-xl pointer-events-none"
+    style={{
+      background: 'radial-gradient(circle at 50% 50%, rgba(225,29,143,0.2), rgba(147,51,234,0.15), transparent 70%)',
+      filter: 'blur(15px)',
+      transform: 'translateZ(0)',
+      clipPath: 'path("M 0 0 L 100% 0 L 100% 100% L 0 100% L 0 0 Z M 16px 16px L calc(100% - 16px) 16px L calc(100% - 16px) calc(100% - 16px) L 16px calc(100% - 16px) L 16px 16px Z")',
+      zIndex: 5
+    }}
+  ></div>
+  
   {/* CTA Section */}
   <div  
     ref={ctaSectionRef}
     className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-12 p-6 md:p-7 rounded-lg backdrop-blur-sm bg-transparent border border-white/30 relative z-10" 
   >
     {/* Particles */}
-    <div className="absolute inset-0 z-[1] pointer-events-none">
+    <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
       {particles.map((p, i) => (
         <div 
           key={`cta-particle-${i}`} 
@@ -156,16 +168,6 @@ const Partners = () => {
                         transform hover:scale-105 duration-300 text-base font-semibold">Get in touch</button>
     </a>
   </div>
-  
-  {/* Shadow/glow effect that extends beyond CTA */}
-  <div 
-    className="absolute -inset-4 rounded-xl blur-xl pointer-events-none z-[5] opacity-70"
-    style={{
-      background: 'radial-gradient(circle at 50% 50%, rgba(225,29,143,0.3), rgba(147,51,234,0.2), transparent 70%)',
-      filter: 'blur(15px)',
-      transform: 'translateZ(0)'
-    }}
-  ></div>
 </div>
       </Container>
 
