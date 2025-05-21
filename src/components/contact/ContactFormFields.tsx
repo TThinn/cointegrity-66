@@ -15,40 +15,42 @@ interface ContactFormFieldsProps {
 
 const ContactFormFields = ({ formState, currentPlaceholder, handleChange }: ContactFormFieldsProps) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      <div className="col-span-1">
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-          Your Name
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formState.name}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800"
-          placeholder={currentPlaceholder.name}
-        />
+    <div className="flex flex-col gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+        <div className="col-span-1">
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            Your Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formState.name}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800"
+            placeholder={currentPlaceholder.name}
+          />
+        </div>
+
+        <div className="col-span-1">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            Email Address
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formState.email}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800"
+            placeholder={currentPlaceholder.email}
+          />
+        </div>
       </div>
 
-      <div className="col-span-1">
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-          Email Address
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formState.email}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 rounded-lg border border-[#133a63]/30 focus:ring-2 focus:ring-[#133a63] focus:border-transparent transition-all focus:outline-none bg-white/80 text-gray-800"
-          placeholder={currentPlaceholder.email}
-        />
-      </div>
-
-      <div className="col-span-2">
+      <div>
         <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
           Company (Optional)
         </label>
@@ -63,7 +65,7 @@ const ContactFormFields = ({ formState, currentPlaceholder, handleChange }: Cont
         />
       </div>
 
-      <div className="col-span-2">
+      <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
           Your Message
         </label>
