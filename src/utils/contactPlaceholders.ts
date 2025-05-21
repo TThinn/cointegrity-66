@@ -13,12 +13,12 @@ export const placeholders: PlaceholderData[] = [
     company: "DecentraCorp",
     message: "Need a compliance audit for my new Bitcoin fork before mainnet launch.",
   },
-  {
-    name: "Vitalik Buterin",
-    email: "vitalik@ethmail.ai",
-    company: "Proof of Tax",
-    message: "Looking for advice on cross-chain DeFi tax reporting for our Layer-2 rollup.",
-  },
+{
+  name: "Vitalik Buterin",
+  email: "vitalik@ethmail.ai",
+  company: "Proof of Tax",
+  message: "Need urgent help with MiCA compliance for our Layer-2 rollup. Is Ethereum still a commodity if we stake it? Asking for a friend.",
+},
 {
   name: "Sam Altman",
   email: "sam@worldcoin.id",
@@ -90,5 +90,17 @@ export const placeholders: PlaceholderData[] = [
   email: "hidden@assassins.creed",
   company: "Brotherhood NFTs",
   message: "Our guild needs guidance on DAO governance for our stealth protocol. Nothing is taxed; everything is permitted."
+},
+  {
+  name: "Christine Lagarde",
+  email: "christine@ecb.europe.eu",
+  company: "European Central Bank",
+  message: "Our MiCA implementation team is stuck in a regulatory loop. Can you help us understand why stablecoins are stable but crypto markets are not?",
+},
+{
+  name: "Mario",
+  email: "mario@mushroom.kingdom",
+  company: "Coin Collectors Guild",
+  message: "Mamma mia! MiCA regulations are more complex than Bowser's Castle. How do we classify our power-up tokens?",
 }
 ];
