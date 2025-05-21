@@ -144,38 +144,37 @@ const Testimonials = () => {
             </div>
           </div>
           
-          <div className="mt-4 -mb-6 text-center relative z-20">  {/* Reduced from mt-5 -mb-8 */}
-  <div className="inline-block relative">
-    <div className="absolute inset-0 z-[1] pointer-events-none">
-      {particles.map((p, i) => (
-        <div 
-          key={`cta-particle-${i}`} 
-          className="absolute rounded-full blur-[12px] animate-light-particle" 
-          style={{
-            width: `${p.size}px`,
-            height: `${p.size}px`,
-            background: p.color,
-            left: `${p.x}%`,
-            top: `${p.y}%`,
-            animationDelay: `${p.delay}s`,
-            animationDuration: `${p.duration}s`,
-            ['--move-x']: `${p.moveX}vw`,
-            ['--move-y']: `${p.moveY}vh`,
-            ['--rotate']: `${p.rotate}deg`
-          }} 
-        />
-      ))}
-    </div>
-    <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
-      <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-2.5 rounded-full
-                    border border-white/30 hover:bg-white/40 transition-all
-                    transform hover:scale-105 duration-300 text-base font-semibold">
-        Partner with us
-      </button>
-    </a>
-  </div>
-</div>
-
+          <div className="mt-5 -mb-8 text-center relative z-20">
+            <div className="inline-block relative">
+              <div className="absolute inset-0 z-[1] pointer-events-none">
+                {particles.map((p, i) => (
+                  <div 
+                    key={`cta-particle-${i}`} 
+                    className="absolute rounded-full blur-[12px] animate-light-particle" 
+                    style={{
+                      width: `${p.size}px`,
+                      height: `${p.size}px`,
+                      background: p.color,
+                      left: `${p.x}%`,
+                      top: `${p.y}%`,
+                      animationDelay: `${p.delay}s`,
+                      animationDuration: `${p.duration}s`,
+                      ['--move-x']: `${p.moveX}vw`,
+                      ['--move-y']: `${p.moveY}vh`,
+                      ['--rotate']: `${p.rotate}deg`
+                    }} 
+                  />
+                ))}
+              </div>
+              <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
+                <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
+                              border border-white/30 hover:bg-white/40 transition-all
+                              transform hover:scale-105 duration-300 text-base font-semibold">
+                  Partner with us
+                </button>
+              </a>
+            </div>
+          </div>
         </div>
       </Container>
 
