@@ -118,17 +118,12 @@ const Partners = () => {
         </div>
 
 {/* CTA Section with Particles */}
-<div 
+<div  
   ref={ctaSectionRef}
-  className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-12 p-6 md:p-7 rounded-lg backdrop-blur-sm bg-transparent border border-white/30 relative z-10" 
-  style={{
-    position: "relative",
-    clipPath: "inset(0 0 0 0)",
-    isolation: "isolate"
-  }}
+  className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-12 p-6 md:p-7 rounded-lg backdrop-blur-sm bg-transparent border border-white/30 relative overflow-hidden z-10" 
 >
   {/* Particles */}
-  <div className="absolute inset-0 z-[1] pointer-events-none overflow-visible">
+  <div className="absolute inset-0 z-[1] pointer-events-none">
     {particles.map((p, i) => (
       <div 
         key={`cta-particle-${i}`} 
@@ -141,7 +136,6 @@ const Partners = () => {
           top: `${p.y}%`,
           animationDelay: `${p.delay}s`,
           animationDuration: `${p.duration}s`,
-          boxShadow: `0 0 30px 15px ${p.color}`,
           ['--move-x' as string]: `${p.moveX}vw`,
           ['--move-y' as string]: `${p.moveY}vh`,
           ['--rotate' as string]: `${p.rotate}deg`
@@ -156,8 +150,8 @@ const Partners = () => {
   
   <a href="/contact" className="inline-flex items-center relative z-10" ref={ctaRef}>
     <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-2.5 rounded-full
-                    border border-white/30 hover:bg-white/40 transition-all
-                    transform hover:scale-105 duration-300 text-base font-semibold">Get in touch</button>
+                      border border-white/30 hover:bg-white/40 transition-all
+                      transform hover:scale-105 duration-300 text-base font-semibold">Get in touch</button>
   </a>
 </div>
       </Container>
