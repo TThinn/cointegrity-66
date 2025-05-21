@@ -185,12 +185,12 @@ const Partners = () => {
     </a>
   </div>
   
-  {/* Mask to hide shadow orbs inside CTA */}
-  <div className="absolute inset-0 bg-[#010822] z-[6] pointer-events-none" 
-       style={{
-         clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0.5% 0.5%, 0.5% 99.5%, 99.5% 99.5%, 99.5% 0.5%, 0.5% 0.5%, 0% 0%)',
-       }}>
-  </div>
+{/* Mask to hide shadow orbs inside CTA */}
+<div className="absolute inset-0 bg-[#010822] z-[6] pointer-events-none rounded-lg" 
+     style={{
+       clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0.5% 0.5%, 0.5% 99.5%, 99.5% 99.5%, 99.5% 0.5%, 0.5% 0.5%, 0% 0%)',
+     }}>
+</div>
 </div>      
       </Container>
 
