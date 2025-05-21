@@ -25,7 +25,7 @@ const Partners = () => {
                 className="flex items-center justify-center p-3 rounded-lg h-20 bg-white/5 hover:bg-white/10 transition-all duration-300"
               >
                 <OptimizedImage
-                  src={logo.logo}
+                  src={logo.src}
                   alt={logo.name}
                   width={120}
                   height={60}
