@@ -164,8 +164,8 @@ const Partners = () => {
         key={`shadow-particle-${i}`} 
         className="absolute rounded-full blur-[25px] animate-light-particle" 
         style={{
-          width: `${p.size * 1.5}px`,
-          height: `${p.size * 1.5}px`,
+          width: `${p.size}px`,
+          height: `${p.size}px`,
           background: p.color.replace(/[^,]+(?=\))/, '0.15'),
           left: `${p.x}%`,
           top: `${p.y}%`,
@@ -180,7 +180,8 @@ const Partners = () => {
       />
     ))}
   </div>
-</div>      </Container>
+</div>      
+      </Container>
 
       {/* Animation Styles */}
       <style>
