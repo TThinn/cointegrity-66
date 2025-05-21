@@ -19,12 +19,12 @@ export const placeholders: PlaceholderData[] = [
     company: "Proof of Tax",
     message: "Looking for advice on cross-chain DeFi tax reporting for our Layer-2 rollup.",
   },
-  {
-    name: "Sam Altman",
-    email: "sam@worldcoin.id",
-    company: "OrbID Solutions",
-    message: "Can you help us automate KYC for our global airdrop using AI and biometrics?",
-  },
+{
+  name: "Sam Altman",
+  email: "sam@worldcoin.id",
+  company: "Orb Foundation",
+  message: "Need regulatory guidance on scanning 8 billion eyeballs for our token distribution. P.S. This is definitely not Skynet, promise!",
+},
   {
     name: "Steve (Minecraft)",
     email: "steve@minedwallet.io",
@@ -35,7 +35,7 @@ export const placeholders: PlaceholderData[] = [
     name: "Clanker Bot",
     email: "clanker@agentbase.app",
     company: "Clanker Agents Ltd.",
-    message: "Our AI agent keeps trading meme coins-how do we report this to the tax authorities?",
+    message: "Our AI agent keeps trading meme coins - how do we report this to the tax authorities?",
   },
   {
     name: "Neo Anderson",
@@ -60,5 +60,35 @@ export const placeholders: PlaceholderData[] = [
     email: "msaylor@microstrategy.com",
     company: "MicroStrategy",
     message: "Looking for advice on optimizing our Bitcoin treasury for tax efficiency while scaling our AI analytics stack.",
-  }
+  },
+  {
+  name: "Vít Jedlička",
+  email: "president@liberland.org",
+  company: "Liberland Republic",
+  message: "Need guidance on implementing our Merit token as official currency and handling cross-border tax implications for our micronation."
+},
+{
+  name: "Paul Atreides",
+  email: "muaddib@arrakis.spice",
+  company: "House Atreides DAO",
+  message: "Need help structuring our Spice tokenomics model. The token must flow, but so must regulatory compliance."
+},
+{
+  name: "Jules Winnfield",
+  email: "badwallet@royale.wtf",
+  company: "Ezekiel 25:17 Ventures",
+  message: "I've had it with these monkey-fighting gas fees on this Monday-to-Friday blockchain! Need tax guidance ASAP."
+},
+{
+  name: "PUGB Survivor",
+  email: "winner@chickendinner.game",
+  company: "Battle Royale Tokens",
+  message: "Launching a play-to-earn battle royale with in-game NFT airdrops. Need help with cross-border prize regulations."
+},
+{
+  name: "Ezio Auditore",
+  email: "hidden@assassins.creed",
+  company: "Brotherhood NFTs",
+  message: "Our guild needs guidance on DAO governance for our stealth protocol. Nothing is taxed; everything is permitted."
+}
 ];
