@@ -44,7 +44,7 @@ export const placeholders: PlaceholderData[] = [
     message: "Seeking compliance support for our decentralized identity protocol-red pill or blue pill?",
   },
   {
-    name: "Lara Croftchain",
+    name: "Lara Croft",
     email: "lara@tombraiderchain.com",
     company: "NFTomb Ventures",
     message: "Need help navigating IP law for our NFT-powered treasure hunt game.",
