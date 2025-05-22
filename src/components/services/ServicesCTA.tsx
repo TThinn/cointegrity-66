@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import CTAParticleEffect from "./CTAParticleEffect";
 import CTAButton from "./CTAButton";
-import CTAAnimationStyles from "./CTAAnimationStyles";
 import { useCTAParticles } from "./useCTAParticles";
 
 const ServicesCTA = () => {
@@ -15,14 +14,49 @@ const ServicesCTA = () => {
 
   return (
     <div className="mt-16 relative">
-      {/* Original CTA Section with inner particles */}
+      {/* Shadow particles layer */}
+      <div className="absolute inset-0 z-[5]">
+        <div className="absolute inset-0 pointer-events-none">
+          {particles.map((p, i) => (
+            <div
+              key={`shadow-particle-${i}`}
+              className="absolute rounded-full blur-[25px]"
+              style={{
+                width: `${p.size * 1.5}px`,
+                height: `${p.size * 1.5}px`,
+                background: p.color.replace(/[^,]+(?=\))/, '0.15'),
+                left: `${p.x}%`,
+                top: `${p.y}%`,
+                animationDelay: `${p.delay}s`,
+                animationDuration: `${p.duration}s`,
+                animation: 'light-particle ease-in-out infinite',
+                ['--move-x' as string]: `${p.moveX}vw`,
+                ['--move-y' as string]: `${p.moveY}vh`,
+                ['--rotate' as string]: `${p.rotate}deg`,
+                opacity: 0.4,
+                mixBlendMode: 'multiply'
+              }}
+            />
+          ))}
+        </div>
+      </div>
+      
+      {/* Mask to hide shadows inside CTA */}
+      <div 
+        className="absolute inset-0 rounded-lg z-[6]" 
+        style={{
+          background: '#FDF9FC',
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0.5% 0.5%, 0.5% 99.5%, 99.5% 99.5%, 99.5% 0.5%, 0.5% 0.5%, 0% 0%)'
+        }}
+      />
+      
+      {/* CTA Section */}
       <div 
         ref={ctaSectionRef}
-        className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-16 p-6 md:p-7 rounded-lg backdrop-blur-sm transition-all duration-300 bg-white/20 border border-white/70 relative overflow-hidden"
+        className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-16 p-6 md:p-7 rounded-lg backdrop-blur-sm transition-all duration-300 bg-white/20 border border-white/70 relative z-10 overflow-hidden"
         style={{ 
           boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
-          minHeight: "100px",
-          zIndex: 10
+          minHeight: "100px"
         }}
       >
         {/* Content */}
@@ -32,7 +66,7 @@ const ServicesCTA = () => {
         
         {/* Button Container with particles */}
         <div className="flex items-center justify-center h-full relative"> 
-          {/* Original particles */}
+          {/* Particles */}
           <CTAParticleEffect particles={particles} />
           
           {/* Button */}
@@ -40,33 +74,44 @@ const ServicesCTA = () => {
         </div>
       </div>
       
-      {/* Create an absolutely positioned clone of the CTA section for shadows */}
-      <div 
-        className="absolute top-0 left-0 w-full h-full pointer-events-none"
-        style={{ zIndex: 5 }}
-      >
-        {/* Shadow particles - using the same component for exact positioning */}
-        <CTAParticleEffect 
-          particles={particles.map(p => ({
-            ...p,
-            size: p.size * 1.5,
-            color: p.color.replace(/[^,]+(?=\))/, '0.15')
-          }))} 
-        />
-      </div>
-      
-      {/* Mask to hide shadows inside CTA */}
-      <div 
-        className="absolute top-0 left-0 w-full h-full pointer-events-none rounded-lg" 
-        style={{
-          background: '#FDF9FC',
-          zIndex: 7,
-          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0.5% 0.5%, 0.5% 99.5%, 99.5% 99.5%, 99.5% 0.5%, 0.5% 0.5%, 0% 0%)'
-        }}
-      />
-
       {/* Animation Styles */}
-      <CTAAnimationStyles />
+      <style>
+        {`
+          @keyframes light-particle {
+            0%, 100% { 
+              opacity: 0.4;
+              transform: translate(0, 0) scale(1) rotate(0);
+            }
+            25% {
+              opacity: 0.6;
+              transform: 
+                translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * -0.7)) 
+                scale(1.2) 
+                rotate(calc(var(--rotate) * 0.3));
+            }
+            50% { 
+              opacity: 0.8;
+              transform: 
+                translate(var(--move-x), var(--move-y)) 
+                scale(1.5) 
+                rotate(calc(var(--rotate) * 0.6));
+            }
+            75% {
+              opacity: 0.6;
+              transform: 
+                translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * 0.7)) 
+                scale(1.3) 
+                rotate(var(--rotate));
+            }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .animate-light-particle {
+              animation: none !important;
+              opacity: 0.5 !important;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };
