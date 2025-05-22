@@ -1,4 +1,6 @@
 import React, { useRef } from "react";
+import CTAParticleEffect from "./CTAParticleEffect";
+import CTAParticleShadowEffect from "./CTAParticleShadowEffect";
 import CTAButton from "./CTAButton";
 import CTAAnimationStyles from "./CTAAnimationStyles";
 import { useCTAParticles } from "./useCTAParticles";
@@ -14,29 +16,8 @@ const ServicesCTA = () => {
 
   return (
     <div className="mt-16 relative">
-      {/* External shadow effect that matches particle positions */}
-      <div className="absolute inset-0 z-[5] pointer-events-none overflow-visible">
-        {particles.map((p, i) => (
-          <div 
-            key={`shadow-particle-${i}`} 
-            className="absolute rounded-full blur-[25px] animate-light-particle" 
-            style={{
-              width: `${p.size * 1.5}px`,
-              height: `${p.size * 1.5}px`,
-              background: p.color.replace(/[^,]+(?=\))/, '0.15'),
-              left: `calc(${p.x}% - ${p.size * 0.25}px)`,
-              top: `calc(${p.y}% - ${p.size * 0.25}px)`,
-              animationDelay: `${p.delay}s`,
-              animationDuration: `${p.duration}s`,
-              ['--move-x' as string]: `${p.moveX}vw`,
-              ['--move-y' as string]: `${p.moveY}vh`,
-              ['--rotate' as string]: `${p.rotate}deg`,
-              opacity: 0.4,
-              mixBlendMode: 'multiply'
-            }} 
-          />
-        ))}
-      </div>
+      {/* Shadow particles and mask in one component */}
+      <CTAParticleShadowEffect particles={particles} isDarkMode={false} />
       
       {/* CTA Section */}
       <div 
@@ -54,40 +35,14 @@ const ServicesCTA = () => {
         
         {/* Button Container with particles */}
         <div className="flex items-center justify-center h-full relative"> 
-          {/* Original CTAParticleEffect component - replaced with inline implementation */}
-          <div className="absolute inset-0 z-[1] pointer-events-none">
-            {particles.map((p, i) => (
-              <div 
-                key={`cta-particle-${i}`} 
-                className="absolute rounded-full blur-[12px] animate-light-particle" 
-                style={{
-                  width: `${p.size}px`,
-                  height: `${p.size}px`,
-                  background: p.color,
-                  left: `${p.x}%`,
-                  top: `${p.y}%`,
-                  animationDelay: `${p.delay}s`,
-                  animationDuration: `${p.duration}s`,
-                  ['--move-x' as string]: `${p.moveX}vw`,
-                  ['--move-y' as string]: `${p.moveY}vh`,
-                  ['--rotate' as string]: `${p.rotate}deg`
-                }} 
-              />
-            ))}
-          </div>
+          {/* Particles */}
+          <CTAParticleEffect particles={particles} />
           
           {/* Button */}
           <CTAButton buttonRef={ctaRef} />
         </div>
       </div>
-      
-      {/* Mask to hide shadow orbs inside CTA */}
-      <div className="absolute inset-0 bg-[#FDF9FC] z-[6] pointer-events-none rounded-lg" 
-           style={{
-             clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0.5% 0.5%, 0.5% 99.5%, 99.5% 99.5%, 99.5% 0.5%, 0.5% 0.5%, 0% 0%)',
-           }}>
-      </div>
-      
+
       {/* Animation Styles */}
       <CTAAnimationStyles />
     </div>
