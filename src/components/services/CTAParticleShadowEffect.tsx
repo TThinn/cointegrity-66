@@ -1,0 +1,53 @@
+import React from "react";
+import { ParticleType } from "../testimonials/types";
+
+interface CTAParticleShadowEffectProps {
+  particles: ParticleType[];
+  isDarkMode?: boolean;
+}
+
+const CTAParticleShadowEffect: React.FC<CTAParticleShadowEffectProps> = ({ 
+  particles, 
+  isDarkMode = false 
+}) => {
+  const bgColor = isDarkMode ? '#010822' : '#FDF9FC';
+  
+  return (
+    <>
+      {/* Shadow particles */}
+      <div className="absolute inset-0 z-[5] pointer-events-none overflow-visible">
+        {particles.map((p, i) => (
+          <div
+            key={`shadow-particle-${i}`}
+            className="absolute rounded-full blur-[25px] animate-light-particle"
+            style={{
+              width: `${p.size * 1.5}px`,
+              height: `${p.size * 1.5}px`,
+              background: p.color.replace(/[^,]+(?=\))/, '0.15'),
+              left: `calc(${p.x}% - ${p.size * 0.25}px)`,
+              top: `calc(${p.y}% - ${p.size * 0.25}px)`,
+              animationDelay: `${p.delay}s`,
+              animationDuration: `${p.duration}s`,
+              ['--move-x' as string]: `${p.moveX}vw`,
+              ['--move-y' as string]: `${p.moveY}vh`,
+              ['--rotate' as string]: `${p.rotate}deg`,
+              opacity: 0.4,
+              mixBlendMode: isDarkMode ? 'screen' : 'multiply'
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Mask to hide shadow orbs inside CTA */}
+      <div 
+        className="absolute inset-0 z-[6] pointer-events-none rounded-lg" 
+        style={{
+          background: bgColor,
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0.5% 0.5%, 0.5% 99.5%, 99.5% 99.5%, 99.5% 0.5%, 0.5% 0.5%, 0% 0%)',
+        }}
+      />
+    </>
+  );
+};
+
+export default CTAParticleShadowEffect;
