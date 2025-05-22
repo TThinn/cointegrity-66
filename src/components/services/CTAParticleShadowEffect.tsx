@@ -14,7 +14,7 @@ const CTAParticleShadowEffect: React.FC<CTAParticleShadowEffectProps> = ({
   
   return (
     <>
-      {/* Shadow particles */}
+      {/* Shadow particles - positioned absolutely to match inner particles */}
       <div className="absolute inset-0 z-[5] pointer-events-none overflow-visible">
         {particles.map((p, i) => (
           <div
@@ -24,8 +24,12 @@ const CTAParticleShadowEffect: React.FC<CTAParticleShadowEffectProps> = ({
               width: `${p.size * 1.5}px`,
               height: `${p.size * 1.5}px`,
               background: p.color.replace(/[^,]+(?=\))/, '0.15'),
-              left: `calc(${p.x}% - ${p.size * 0.25}px)`,
-              top: `calc(${p.y}% - ${p.size * 0.25}px)`,
+              // Use exact same percentage positioning as inner particles
+              left: `${p.x}%`,
+              top: `${p.y}%`,
+              // Use transform to adjust for the larger size while maintaining center alignment
+              transform: `translate(-50%, -50%) scale(1.5)`,
+              transformOrigin: 'center center',
               animationDelay: `${p.delay}s`,
               animationDuration: `${p.duration}s`,
               ['--move-x' as string]: `${p.moveX}vw`,
@@ -38,12 +42,13 @@ const CTAParticleShadowEffect: React.FC<CTAParticleShadowEffectProps> = ({
         ))}
       </div>
       
-      {/* Mask to hide shadow orbs inside CTA */}
+      {/* Mask to hide shadow orbs inside CTA - positioned with negative z-index */}
       <div 
-        className="absolute inset-0 z-[6] pointer-events-none rounded-lg" 
+        className="absolute inset-0 rounded-lg pointer-events-none"
         style={{
           background: bgColor,
           clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0.5% 0.5%, 0.5% 99.5%, 99.5% 99.5%, 99.5% 0.5%, 0.5% 0.5%, 0% 0%)',
+          zIndex: 6
         }}
       />
     </>
