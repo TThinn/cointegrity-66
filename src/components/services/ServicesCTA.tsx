@@ -6,40 +6,25 @@ import { useCTAParticles } from "./useCTAParticles";
 const ServicesCTA = () => {
   const ctaRef = useRef<HTMLAnchorElement | null>(null);
   const ctaSectionRef = useRef<HTMLDivElement | null>(null);
-  const [shadowParticles, setShadowParticles] = useState([]);
+  const [translatedParticles, setTranslatedParticles] = useState([]);
   
   // Use the custom hook for particle management
   const { particles, particleCount } = useCTAParticles(ctaRef, ctaSectionRef);
   
-  // Calculate corrected positions for shadow particles
+  // Calculate absolute positions for shadow particles
   useEffect(() => {
-    if (!particles.length || !ctaRef.current || !ctaSectionRef.current) return;
+    if (!particles.length) return;
     
-    // Get the button position relative to the CTA section
-    const btnBox = ctaRef.current.getBoundingClientRect();
-    const sectionBox = ctaSectionRef.current.getBoundingClientRect();
+    // Create a deep copy with translated positions
+    const newParticles = particles.map(p => ({
+      ...p,
+      size: p.size * 1.5,
+      color: p.color.replace(/[^,]+(?=\))/, '0.15'),
+      // Keep the exact same x,y values - these are already relative to the button
+      // which is what we want for both sets of particles
+    }));
     
-    // Calculate button center position as percentage within CTA section
-    const btnCenterX = ((btnBox.left + btnBox.right)/2 - sectionBox.left) / sectionBox.width * 100;
-    const btnCenterY = ((btnBox.top + btnBox.bottom)/2 - sectionBox.top) / sectionBox.height * 100;
-    
-    // Create shadow particles with corrected positions
-    const newParticles = particles.map(p => {
-      // Calculate the particle's offset from the button center
-      const offsetX = p.x - btnCenterX; // Just the direct offset, no adjustment needed
-      const offsetY = p.y - btnCenterY; // Just the direct offset, no adjustment needed
-      
-      return {
-        ...p,
-        size: p.size,
-        color: p.color.replace(/[^,]+(?=\))/, '0.15'),
-        // Position relative to button center in the shadow container
-        x: btnCenterX + offsetX,
-        y: btnCenterY + offsetY
-      };
-    });
-    
-    setShadowParticles(newParticles);
+    setTranslatedParticles(newParticles);
   }, [particles]);
 
   if (particleCount === null) return null;
@@ -48,7 +33,7 @@ const ServicesCTA = () => {
     <div className="mt-16 relative">
       {/* Shadow particles layer */}
       <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 5 }}>
-        {shadowParticles.map((p, i) => (
+        {translatedParticles.map((p, i) => (
           <div
             key={`shadow-particle-${i}`}
             className="absolute rounded-full blur-[25px]"
@@ -71,20 +56,10 @@ const ServicesCTA = () => {
         ))}
       </div>
       
-      {/* Mask to hide shadows inside CTA */}
-      <div 
-        className="absolute inset-0 rounded-lg pointer-events-none" 
-        style={{
-          background: '#FDF9FC',
-          zIndex: 7,
-          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0.5% 0.5%, 0.5% 99.5%, 99.5% 99.5%, 99.5% 0.5%, 0.5% 0.5%, 0% 0%)'
-        }}
-      />
-      
-      {/* CTA Section - with overflow-hidden preserved */}
+      {/* CTA Section */}
       <div 
         ref={ctaSectionRef}
-        className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-16 p-6 md:p-7 rounded-lg backdrop-blur-sm transition-all duration-300 bg-white/20 border border-white/70 relative z-10 overflow-hidden"
+        className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-16 p-6 md:p-7 rounded-lg backdrop-blur-sm transition-all duration-300 bg-white/20 border border-white/70 relative z-10"
         style={{ 
           boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
           minHeight: "100px"
