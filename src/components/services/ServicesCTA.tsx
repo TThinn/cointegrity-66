@@ -6,14 +6,52 @@ import { useCTAParticles } from "./useCTAParticles";
 const ServicesCTA = () => {
   const ctaRef = useRef<HTMLAnchorElement | null>(null);
   const ctaSectionRef = useRef<HTMLDivElement | null>(null);
+  const shadowContainerRef = useRef<HTMLDivElement | null>(null);
   
   // Use the custom hook for particle management
   const { particles, particleCount } = useCTAParticles(ctaRef, ctaSectionRef);
+  
+  // Ensure the shadow container is positioned exactly like the CTA section
+  useEffect(() => {
+    if (!ctaSectionRef.current || !shadowContainerRef.current) return;
+    
+    const updatePosition = () => {
+      const ctaRect = ctaSectionRef.current.getBoundingClientRect();
+      const shadowContainer = shadowContainerRef.current;
+      if (shadowContainer) {
+        // Set exact dimensions and position
+        shadowContainer.style.width = `${ctaRect.width}px`;
+        shadowContainer.style.height = `${ctaRect.height}px`;
+        shadowContainer.style.top = '0';
+        shadowContainer.style.left = '0';
+      }
+    };
+    
+    updatePosition();
+    window.addEventListener('resize', updatePosition);
+    return () => window.removeEventListener('resize', updatePosition);
+  }, []);
 
   if (particleCount === null) return null;
 
   return (
     <div className="mt-16 relative">
+      {/* Shadow particles layer - positioned exactly like the CTA section */}
+      <div 
+        ref={shadowContainerRef}
+        className="absolute pointer-events-none"
+        style={{ zIndex: 5 }}
+      >
+        {/* Use the exact same particle component for identical positioning */}
+        <CTAParticleEffect 
+          particles={particles.map(p => ({
+            ...p,
+            size: p.size * 1.5,
+            color: p.color.replace(/[^,]+(?=\))/, '0.15')
+          }))} 
+        />
+      </div>
+      
       {/* CTA Section */}
       <div 
         ref={ctaSectionRef}
@@ -38,91 +76,15 @@ const ServicesCTA = () => {
         </div>
       </div>
       
-      {/* Outer container for shadow effect */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none" style={{ zIndex: 5 }}>
-        {/* This is the key: we create the same structure as inside the CTA section */}
-        <div className="flex flex-col md:flex-row items-center justify-center h-full">
-          {/* Empty flex-1 div to match the heading's space */}
-          <div className="flex-1"></div>
-          
-          {/* Button container equivalent - this ensures the shadow particles are positioned relative to the same point */}
-          <div className="flex items-center justify-center h-full relative">
-            {/* Shadow particles */}
-            <div className="absolute inset-0 pointer-events-none">
-              {particles.map((p, i) => (
-                <div
-                  key={`shadow-particle-${i}`}
-                  className="absolute rounded-full blur-[25px]"
-                  style={{
-                    width: `${p.size * 1.5}px`,
-                    height: `${p.size * 1.5}px`,
-                    background: p.color.replace(/[^,]+(?=\))/, '0.15'),
-                    left: `${p.x}%`,
-                    top: `${p.y}%`,
-                    animationDelay: `${p.delay}s`,
-                    animationDuration: `${p.duration}s`,
-                    animation: 'light-particle ease-in-out infinite',
-                    ['--move-x' as string]: `${p.moveX}vw`,
-                    ['--move-y' as string]: `${p.moveY}vh`,
-                    ['--rotate' as string]: `${p.rotate}deg`,
-                    opacity: 0.4,
-                    mixBlendMode: 'multiply'
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Mask to hide shadows inside CTA */}
+      {/* Mask to hide shadows inside CTA - positioned exactly like the CTA section */}
       <div 
-        className="absolute top-0 left-0 w-full h-full pointer-events-none rounded-lg" 
+        className="absolute top-0 left-0 right-0 bottom-0 pointer-events-none rounded-lg" 
         style={{
           background: '#FDF9FC',
           zIndex: 7,
           clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0.5% 0.5%, 0.5% 99.5%, 99.5% 99.5%, 99.5% 0.5%, 0.5% 0.5%, 0% 0%)'
         }}
       />
-      
-      {/* Animation Styles */}
-      <style>
-        {`
-          @keyframes light-particle {
-            0%, 100% { 
-              opacity: 0.4;
-              transform: translate(0, 0) scale(1) rotate(0);
-            }
-            25% {
-              opacity: 0.6;
-              transform: 
-                translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * -0.7)) 
-                scale(1.2) 
-                rotate(calc(var(--rotate) * 0.3));
-            }
-            50% { 
-              opacity: 0.8;
-              transform: 
-                translate(var(--move-x), var(--move-y)) 
-                scale(1.5) 
-                rotate(calc(var(--rotate) * 0.6));
-            }
-            75% {
-              opacity: 0.6;
-              transform: 
-                translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * 0.7)) 
-                scale(1.3) 
-                rotate(var(--rotate));
-            }
-          }
-          @media (prefers-reduced-motion: reduce) {
-            .animate-light-particle {
-              animation: none !important;
-              opacity: 0.5 !important;
-            }
-          }
-        `}
-      </style>
     </div>
   );
 };
