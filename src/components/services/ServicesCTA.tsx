@@ -32,7 +32,7 @@ const ServicesCTA = () => {
               ['--move-y' as string]: `${p.moveY}vh`,
               ['--rotate' as string]: `${p.rotate}deg`,
               opacity: 0.4,
-              mixBlendMode: 'multiply'  // Changed to multiply for light background
+              mixBlendMode: 'multiply'
             }} 
           />
         ))}
@@ -41,10 +41,9 @@ const ServicesCTA = () => {
       {/* CTA Section */}
       <div 
         ref={ctaSectionRef}
-        className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-16 p-6 md:p-7 rounded-lg backdrop-blur-sm transition-all duration-300 bg-white/20 border border-white/70 relative z-10"
+        className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-16 p-6 md:p-7 rounded-lg backdrop-blur-sm transition-all duration-300 bg-white/20 border border-white/70 relative z-10 overflow-hidden"
         style={{ 
           boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
-          position: "relative",
           minHeight: "100px"
         }}
       >
@@ -55,7 +54,7 @@ const ServicesCTA = () => {
         
         {/* Button Container with particles */}
         <div className="flex items-center justify-center h-full relative"> 
-          {/* Particles */}
+          {/* Original CTAParticleEffect component - replaced with inline implementation */}
           <div className="absolute inset-0 z-[1] pointer-events-none">
             {particles.map((p, i) => (
               <div 
@@ -80,17 +79,17 @@ const ServicesCTA = () => {
           {/* Button */}
           <CTAButton buttonRef={ctaRef} />
         </div>
-
-        {/* Animation Styles */}
-        <CTAAnimationStyles />
       </div>
       
-      {/* Mask to hide shadow orbs inside CTA - using light background color */}
+      {/* Mask to hide shadow orbs inside CTA */}
       <div className="absolute inset-0 bg-[#FDF9FC] z-[6] pointer-events-none rounded-lg" 
            style={{
              clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0.5% 0.5%, 0.5% 99.5%, 99.5% 99.5%, 99.5% 0.5%, 0.5% 0.5%, 0% 0%)',
            }}>
       </div>
+      
+      {/* Animation Styles */}
+      <CTAAnimationStyles />
     </div>
   );
 };
