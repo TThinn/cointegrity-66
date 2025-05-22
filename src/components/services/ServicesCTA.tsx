@@ -15,7 +15,7 @@ const ServicesCTA = () => {
 
   return (
     <div className="mt-16 relative">
-      {/* Shadow particles - exact same positioning as inner particles */}
+      {/* Shadow particles - using EXACT same positioning logic as in useCTAParticles */}
       <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 5 }}>
         {particles.map((p, i) => (
           <div
@@ -28,6 +28,8 @@ const ServicesCTA = () => {
               // Use EXACTLY the same positioning as inner particles
               left: `${p.x}%`,
               top: `${p.y}%`,
+              // Center the larger shadow particle on the original particle
+              transform: `translate(-${p.size * 0.25}px, -${p.size * 0.25}px)`,
               animationDelay: `${p.delay}s`,
               animationDuration: `${p.duration}s`,
               ['--move-x' as string]: `${p.moveX}vw`,
@@ -67,7 +69,7 @@ const ServicesCTA = () => {
       
       {/* Mask to hide shadows inside CTA - same size and position as CTA */}
       <div 
-        className="absolute inset-0 pointer-events-none rounded-lg" 
+        className="absolute top-0 left-0 right-0 bottom-0 pointer-events-none rounded-lg" 
         style={{
           background: '#FDF9FC',
           zIndex: 7,
