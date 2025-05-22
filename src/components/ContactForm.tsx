@@ -25,7 +25,7 @@ const ContactForm = () => {
           const nextIndex = (currentIndex + 1) % placeholders.length;
           return placeholders[nextIndex];
         });
-      }, 7000); // Changed from 5000 to 7000 (7 seconds)
+      }, 8000); // Changed from 5000 to 7000 (7 seconds)
     }
     return () => {
       if (intervalId) {
