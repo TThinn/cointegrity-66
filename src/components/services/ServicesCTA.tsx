@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import CTAParticleEffect from "./CTAParticleEffect";
 import CTAButton from "./CTAButton";
 import CTAAnimationStyles from "./CTAAnimationStyles";
@@ -7,42 +7,35 @@ import { useCTAParticles } from "./useCTAParticles";
 const ServicesCTA = () => {
   const ctaRef = useRef<HTMLAnchorElement | null>(null);
   const ctaSectionRef = useRef<HTMLDivElement | null>(null);
+  const shadowContainerRef = useRef<HTMLDivElement | null>(null);
   
   // Use the custom hook for particle management
   const { particles, particleCount } = useCTAParticles(ctaRef, ctaSectionRef);
+  
+  // Sync the shadow container dimensions with the CTA section
+  useEffect(() => {
+    if (!ctaSectionRef.current || !shadowContainerRef.current) return;
+    
+    const syncDimensions = () => {
+      const ctaRect = ctaSectionRef.current.getBoundingClientRect();
+      if (shadowContainerRef.current) {
+        shadowContainerRef.current.style.width = `${ctaRect.width}px`;
+        shadowContainerRef.current.style.height = `${ctaRect.height}px`;
+        shadowContainerRef.current.style.top = '0';
+        shadowContainerRef.current.style.left = '0';
+      }
+    };
+    
+    syncDimensions();
+    window.addEventListener('resize', syncDimensions);
+    return () => window.removeEventListener('resize', syncDimensions);
+  }, []);
 
   if (particleCount === null) return null;
 
   return (
     <div className="mt-16 relative">
-      {/* Shadow particles - using EXACT same positioning logic as in useCTAParticles */}
-      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 5 }}>
-        {particles.map((p, i) => (
-          <div
-            key={`shadow-particle-${i}`}
-            className="absolute rounded-full blur-[25px] animate-light-particle"
-            style={{
-              width: `${p.size * 1.5}px`,
-              height: `${p.size * 1.5}px`,
-              background: p.color.replace(/[^,]+(?=\))/, '0.15'),
-              // Use EXACTLY the same positioning as inner particles
-              left: `${p.x}%`,
-              top: `${p.y}%`,
-              // Center the larger shadow particle on the original particle
-              transform: `translate(-${p.size * 0.25}px, -${p.size * 0.25}px)`,
-              animationDelay: `${p.delay}s`,
-              animationDuration: `${p.duration}s`,
-              ['--move-x' as string]: `${p.moveX}vw`,
-              ['--move-y' as string]: `${p.moveY}vh`,
-              ['--rotate' as string]: `${p.rotate}deg`,
-              opacity: 0.4,
-              mixBlendMode: 'multiply'
-            }}
-          />
-        ))}
-      </div>
-      
-      {/* CTA Section */}
+      {/* CTA Section with inner particles */}
       <div 
         ref={ctaSectionRef}
         className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-16 p-6 md:p-7 rounded-lg backdrop-blur-sm transition-all duration-300 bg-white/20 border border-white/70 relative overflow-hidden"
@@ -67,7 +60,36 @@ const ServicesCTA = () => {
         </div>
       </div>
       
-      {/* Mask to hide shadows inside CTA - same size and position as CTA */}
+      {/* Shadow container - positioned exactly like the CTA section */}
+      <div 
+        ref={shadowContainerRef}
+        className="absolute pointer-events-none"
+        style={{ zIndex: 5 }}
+      >
+        {particles.map((p, i) => (
+          <div
+            key={`shadow-particle-${i}`}
+            className="absolute rounded-full blur-[25px] animate-light-particle"
+            style={{
+              width: `${p.size * 1.5}px`,
+              height: `${p.size * 1.5}px`,
+              background: p.color.replace(/[^,]+(?=\))/, '0.15'),
+              left: `${p.x}%`,
+              top: `${p.y}%`,
+              transform: `translate(-${p.size * 0.25}px, -${p.size * 0.25}px)`,
+              animationDelay: `${p.delay}s`,
+              animationDuration: `${p.duration}s`,
+              ['--move-x' as string]: `${p.moveX}vw`,
+              ['--move-y' as string]: `${p.moveY}vh`,
+              ['--rotate' as string]: `${p.rotate}deg`,
+              opacity: 0.4,
+              mixBlendMode: 'multiply'
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Mask to hide shadows inside CTA */}
       <div 
         className="absolute top-0 left-0 right-0 bottom-0 pointer-events-none rounded-lg" 
         style={{
