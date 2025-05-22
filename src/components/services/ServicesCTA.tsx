@@ -19,13 +19,14 @@ const ServicesCTA = () => {
       {/* Shadow particles and mask in one component */}
       <CTAParticleShadowEffect particles={particles} isDarkMode={false} />
       
-      {/* CTA Section */}
+      {/* CTA Section - explicitly set higher z-index */}
       <div 
         ref={ctaSectionRef}
-        className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-16 p-6 md:p-7 rounded-lg backdrop-blur-sm transition-all duration-300 bg-white/20 border border-white/70 relative z-10 overflow-hidden"
+        className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-16 p-6 md:p-7 rounded-lg backdrop-blur-sm transition-all duration-300 bg-white/20 border border-white/70 relative overflow-hidden"
         style={{ 
           boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
-          minHeight: "100px"
+          minHeight: "100px",
+          zIndex: 10
         }}
       >
         {/* Content */}
