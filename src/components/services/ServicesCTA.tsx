@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import CTAParticleEffect from "./CTAParticleEffect";
 import CTAButton from "./CTAButton";
 import { useCTAParticles } from "./useCTAParticles";
@@ -14,42 +14,6 @@ const ServicesCTA = () => {
 
   return (
     <div className="mt-16 relative">
-      {/* Shadow particles layer */}
-      <div className="absolute inset-0 z-[5]">
-        <div className="absolute inset-0 pointer-events-none">
-          {particles.map((p, i) => (
-            <div
-              key={`shadow-particle-${i}`}
-              className="absolute rounded-full blur-[25px]"
-              style={{
-                width: `${p.size * 1.5}px`,
-                height: `${p.size * 1.5}px`,
-                background: p.color.replace(/[^,]+(?=\))/, '0.15'),
-                left: `${p.x}%`,
-                top: `${p.y}%`,
-                animationDelay: `${p.delay}s`,
-                animationDuration: `${p.duration}s`,
-                animation: 'light-particle ease-in-out infinite',
-                ['--move-x' as string]: `${p.moveX}vw`,
-                ['--move-y' as string]: `${p.moveY}vh`,
-                ['--rotate' as string]: `${p.rotate}deg`,
-                opacity: 0.4,
-                mixBlendMode: 'multiply'
-              }}
-            />
-          ))}
-        </div>
-      </div>
-      
-      {/* Mask to hide shadows inside CTA */}
-      <div 
-        className="absolute inset-0 rounded-lg z-[6]" 
-        style={{
-          background: '#FDF9FC',
-          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0.5% 0.5%, 0.5% 99.5%, 99.5% 99.5%, 99.5% 0.5%, 0.5% 0.5%, 0% 0%)'
-        }}
-      />
-      
       {/* CTA Section */}
       <div 
         ref={ctaSectionRef}
@@ -73,6 +37,53 @@ const ServicesCTA = () => {
           <CTAButton buttonRef={ctaRef} />
         </div>
       </div>
+      
+      {/* Outer container for shadow effect */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none" style={{ zIndex: 5 }}>
+        {/* This is the key: we create the same structure as inside the CTA section */}
+        <div className="flex flex-col md:flex-row items-center justify-center h-full">
+          {/* Empty flex-1 div to match the heading's space */}
+          <div className="flex-1"></div>
+          
+          {/* Button container equivalent - this ensures the shadow particles are positioned relative to the same point */}
+          <div className="flex items-center justify-center h-full relative">
+            {/* Shadow particles */}
+            <div className="absolute inset-0 pointer-events-none">
+              {particles.map((p, i) => (
+                <div
+                  key={`shadow-particle-${i}`}
+                  className="absolute rounded-full blur-[25px]"
+                  style={{
+                    width: `${p.size * 1.5}px`,
+                    height: `${p.size * 1.5}px`,
+                    background: p.color.replace(/[^,]+(?=\))/, '0.15'),
+                    left: `${p.x}%`,
+                    top: `${p.y}%`,
+                    animationDelay: `${p.delay}s`,
+                    animationDuration: `${p.duration}s`,
+                    animation: 'light-particle ease-in-out infinite',
+                    ['--move-x' as string]: `${p.moveX}vw`,
+                    ['--move-y' as string]: `${p.moveY}vh`,
+                    ['--rotate' as string]: `${p.rotate}deg`,
+                    opacity: 0.4,
+                    mixBlendMode: 'multiply'
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Mask to hide shadows inside CTA */}
+      <div 
+        className="absolute top-0 left-0 w-full h-full pointer-events-none rounded-lg" 
+        style={{
+          background: '#FDF9FC',
+          zIndex: 7,
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0.5% 0.5%, 0.5% 99.5%, 99.5% 99.5%, 99.5% 0.5%, 0.5% 0.5%, 0% 0%)'
+        }}
+      />
       
       {/* Animation Styles */}
       <style>
