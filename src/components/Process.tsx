@@ -128,43 +128,77 @@ const Process = () => {
             ))}
           </div>
 
-          {/* CTA Section */}
-<div 
-  ref={ctaSectionRef} 
-  className={`mt-16 flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-16 p-6 md:p-7 rounded-lg backdrop-blur-sm bg-transparent relative overflow-hidden transition-all duration-300 ${isDarkBackground ? 'border border-white/30 hover:border-white/50' : 'border border-black/30 hover:border-black/50'}`}
->
-            {/* Particles */}
-            <div className="absolute inset-0 z-[1] pointer-events-none">
-              {particles.map((p, i) => (
-                <div 
-                  key={`cta-particle-${i}`} 
-                  className="absolute rounded-full blur-[12px] animate-light-particle" 
-                  style={{
-                    width: `${p.size}px`,
-                    height: `${p.size}px`,
-                    background: p.color,
-                    left: `${p.x}%`,
-                    top: `${p.y}%`,
-                    animationDelay: `${p.delay}s`,
-                    animationDuration: `${p.duration}s`,
-                    ['--move-x' as string]: `${p.moveX}vw`,
-                    ['--move-y' as string]: `${p.moveY}vh`,
-                    ['--rotate' as string]: `${p.rotate}deg`
-                  }} 
-                />
-              ))}
-            </div>
+         {/* CTA Section with Particles and light bleeding effect */}
+<div className="mt-16 relative">
+  {/* External shadow effect that matches particle positions */}
+  <div className="absolute inset-0 z-[5] pointer-events-none overflow-visible">
+    {particles.map((p, i) => (
+      <div 
+        key={`shadow-particle-${i}`} 
+        className="absolute rounded-full blur-[25px] animate-light-particle" 
+        style={{
+          width: `${p.size * 1.5}px`,
+          height: `${p.size * 1.5}px`,
+          background: p.color.replace(/[^,]+(?=\))/, '0.15'),
+          left: `calc(${p.x}% - ${p.size * 0.25}px)`,
+          top: `calc(${p.y}% - ${p.size * 0.25}px)`,
+          animationDelay: `${p.delay}s`,
+          animationDuration: `${p.duration}s`,
+          ['--move-x' as string]: `${p.moveX}vw`,
+          ['--move-y' as string]: `${p.moveY}vh`,
+          ['--rotate' as string]: `${p.rotate}deg`,
+          opacity: 0.4,
+          mixBlendMode: 'screen'
+        }} 
+      />
+    ))}
+  </div>
+  
+  {/* CTA Section */}
+  <div 
+    ref={ctaSectionRef} 
+    className={`flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-16 p-6 md:p-7 rounded-lg backdrop-blur-sm bg-transparent relative z-10 overflow-hidden transition-all duration-300 ${isDarkBackground ? 'border border-white/30 hover:border-white/50' : 'border border-black/30 hover:border-black/50'}`}
+  >
+    {/* Particles */}
+    <div className="absolute inset-0 z-[1] pointer-events-none">
+      {particles.map((p, i) => (
+        <div 
+          key={`cta-particle-${i}`} 
+          className="absolute rounded-full blur-[12px] animate-light-particle" 
+          style={{
+            width: `${p.size}px`,
+            height: `${p.size}px`,
+            background: p.color,
+            left: `${p.x}%`,
+            top: `${p.y}%`,
+            animationDelay: `${p.delay}s`,
+            animationDuration: `${p.duration}s`,
+            ['--move-x' as string]: `${p.moveX}vw`,
+            ['--move-y' as string]: `${p.moveY}vh`,
+            ['--rotate' as string]: `${p.rotate}deg`
+          }} 
+        />
+      ))}
+    </div>
 
-            <div className="flex-1 text-center md:text-left relative z-10">
-              <h3 className="text-[clamp(1.25rem,1.1rem+0.8vw,2rem)] font-bold mb-3 text-white">Interested in discussing your Web3 possibilities?</h3>
-            </div>
-            
-            <a href="#contact" className="inline-flex items-center relative z-10" ref={ctaRef}>
-              <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
-                              border border-white/30 hover:bg-white/40 transition-all
-                              transform hover:scale-105 duration-300 text-base font-semibold">Book a Consultation</button>
-            </a>
-          </div>
+    <div className="flex-1 text-center md:text-left relative z-10">
+      <h3 className="text-[clamp(1.25rem,1.1rem+0.8vw,2rem)] font-bold mb-3 text-white">Interested in discussing your Web3 possibilities?</h3>
+    </div>
+    
+    <a href="#contact" className="inline-flex items-center relative z-10" ref={ctaRef}>
+      <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
+                      border border-white/30 hover:bg-white/40 transition-all
+                      transform hover:scale-105 duration-300 text-base font-semibold">Book a Consultation</button>
+    </a>
+  </div>
+  
+  {/* Mask to hide shadow orbs inside CTA */}
+  <div className="absolute inset-0 bg-[#010822] z-[6] pointer-events-none rounded-lg" 
+       style={{
+         clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0.5% 0.5%, 0.5% 99.5%, 99.5% 99.5%, 99.5% 0.5%, 0.5% 0.5%, 0% 0%)',
+       }}>
+  </div>
+</div>
         </div>
       </Container>
 
