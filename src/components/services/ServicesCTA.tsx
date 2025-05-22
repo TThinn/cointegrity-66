@@ -26,8 +26,8 @@ const ServicesCTA = () => {
     // Create shadow particles with corrected positions
     const newParticles = particles.map(p => {
       // Calculate the particle's offset from the button center
-      const offsetX = p.x - btnCenterX; // Add back the -45 offset from useCTAParticles
-      const offsetY = p.y - btnCenterY;  // Subtract the +5 offset from useCTAParticles
+      const offsetX = p.x - btnCenterX + 45; // Add back the -45 offset from useCTAParticles
+      const offsetY = p.y - btnCenterY - 5;  // Subtract the +5 offset from useCTAParticles
       
       return {
         ...p,
