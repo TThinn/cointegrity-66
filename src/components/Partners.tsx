@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useLayoutEffect, useMemo } from "react";
 import Container from "./ui/Container";
 import { cn } from "@/lib/utils";
@@ -119,8 +118,8 @@ const Partners = () => {
 
 {/* CTA Section with Particles and properly aligned shadow effect */}
 <div className="mt-16 relative">
-  {/* External shadow effect that matches particle positions */}
-  <div className="absolute inset-0 z-[5] pointer-events-none overflow-visible">
+  {/* External shadow effect that matches particle positions - Added overflow-hidden */}
+  <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden">
     {particles.map((p, i) => (
       <div 
         key={`shadow-particle-${i}`} 
@@ -134,17 +133,17 @@ const Partners = () => {
           top: `calc(${p.y}% - ${p.size * 0.25}px)`,
           animationDelay: `${p.delay}s`,
           animationDuration: `${p.duration}s`,
-          ['--move-x' as string]: `${p.moveX}vw`,
-          ['--move-y' as string]: `${p.moveY}vh`,
-          ['--rotate' as string]: `${p.rotate}deg`,
+          '--move-x': `${p.moveX}vw`,
+          '--move-y': `${p.moveY}vh`,
+          '--rotate': `${p.rotate}deg`,
           opacity: 0.4,
           mixBlendMode: 'screen'
-        }} 
+        } as React.CSSProperties} 
       />
     ))}
   </div>
   
-  {/* CTA Section - with clip-path to hide shadows inside */}
+  {/* CTA Section - with clip-path to hide shadows inside and overflow-hidden */}
   <div  
     ref={ctaSectionRef}
     className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-12 p-6 md:p-7 rounded-lg backdrop-blur-sm bg-transparent border border-white/30 relative z-10 overflow-hidden" 
@@ -152,8 +151,8 @@ const Partners = () => {
       clipPath: 'inset(0 0 0 0)',
     }}
   >
-    {/* Particles */}
-    <div className="absolute inset-0 z-[1] pointer-events-none">
+    {/* Particles - Added overflow-hidden to container */}
+    <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
       {particles.map((p, i) => (
         <div 
           key={`cta-particle-${i}`} 
@@ -166,10 +165,10 @@ const Partners = () => {
             top: `${p.y}%`,
             animationDelay: `${p.delay}s`,
             animationDuration: `${p.duration}s`,
-            ['--move-x' as string]: `${p.moveX}vw`,
-            ['--move-y' as string]: `${p.moveY}vh`,
-            ['--rotate' as string]: `${p.rotate}deg`
-          }} 
+            '--move-x': `${p.moveX}vw`,
+            '--move-y': `${p.moveY}vh`,
+            '--rotate': `${p.rotate}deg`
+          } as React.CSSProperties} 
         />
       ))}
     </div>

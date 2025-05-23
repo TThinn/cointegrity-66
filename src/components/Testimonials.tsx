@@ -146,7 +146,8 @@ const Testimonials = () => {
           
           <div className="mt-5 -mb-8 text-center relative z-20">
             <div className="inline-block relative">
-              <div className="absolute inset-0 z-[1] pointer-events-none">
+              {/* Added overflow-hidden to particle container */}
+              <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
                 {particles.map((p, i) => (
                   <div 
                     key={`cta-particle-${i}`} 
@@ -159,10 +160,10 @@ const Testimonials = () => {
                       top: `${p.y}%`,
                       animationDelay: `${p.delay}s`,
                       animationDuration: `${p.duration}s`,
-                      ['--move-x']: `${p.moveX}vw`,
-                      ['--move-y']: `${p.moveY}vh`,
-                      ['--rotate']: `${p.rotate}deg`
-                    }} 
+                      '--move-x': `${p.moveX}vw`,
+                      '--move-y': `${p.moveY}vh`,
+                      '--rotate': `${p.rotate}deg`
+                    } as React.CSSProperties} 
                   />
                 ))}
               </div>

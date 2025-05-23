@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useState } from "react";
 import CTAParticleEffect from "./CTAParticleEffect";
 import CTAButton from "./CTAButton";
@@ -46,8 +47,8 @@ const ServicesCTA = () => {
 
   return (
     <div className="mt-16 relative">
-      {/* Shadow particles layer */}
-      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 5 }}>
+      {/* Shadow particles layer - Added overflow-hidden */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 5 }}>
         {shadowParticles.map((p, i) => (
           <div
             key={`shadow-particle-${i}`}
@@ -61,12 +62,12 @@ const ServicesCTA = () => {
               animationDelay: `${p.delay}s`,
               animationDuration: `${p.duration}s`,
               animation: 'light-particle ease-in-out infinite',
-              ['--move-x' as string]: `${p.moveX}vw`,
-              ['--move-y' as string]: `${p.moveY}vh`,
-              ['--rotate' as string]: `${p.rotate}deg`,
+              '--move-x': `${p.moveX}vw`,
+              '--move-y': `${p.moveY}vh`,
+              '--rotate': `${p.rotate}deg`,
               opacity: 0.4,
               mixBlendMode: 'multiply'
-            }}
+            } as React.CSSProperties}
           />
         ))}
       </div>
