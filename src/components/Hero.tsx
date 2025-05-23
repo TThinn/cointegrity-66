@@ -1,4 +1,3 @@
-
 import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Container from "./ui/Container";
 const HERO_PARTICLE_COUNT_DESKTOP = 18;
@@ -87,7 +86,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
         {/* Particle Container */}
-        <div className="absolute inset-0 z-[1] pointer-events-none overflow-x-hidden">
+        <div className="absolute inset-0 z-[1] pointer-events-none">
           {particles.slice(0, particleCount).map((p, i) => <div key={`particle-${i}`} className="absolute rounded-full blur-[25px] animate-light-particle" style={{
           width: `${p.size}px`,
           height: `${p.size}px`,

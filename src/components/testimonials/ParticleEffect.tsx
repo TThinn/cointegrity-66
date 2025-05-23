@@ -8,7 +8,7 @@ interface ParticleEffectProps {
 
 const ParticleEffect: React.FC<ParticleEffectProps> = ({ particles }) => {
   return (
-    <div className="absolute -inset-8 z-10 pointer-events-none overflow-x-hidden">
+    <div className="absolute -inset-8 z-10 pointer-events-none">
       {particles.map((p, i) => (
         <div
           key={`testimonial-particle-${i}`}

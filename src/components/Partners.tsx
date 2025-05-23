@@ -118,9 +118,9 @@ const Partners = () => {
         </div>
 
 {/* CTA Section with Particles and properly aligned shadow effect */}
-<div className="mt-16 relative overflow-hidden">
+<div className="mt-16 relative">
   {/* External shadow effect that matches particle positions */}
-  <div className="absolute inset-0 z-[5] pointer-events-none overflow-x-hidden">
+  <div className="absolute inset-0 z-[5] pointer-events-none overflow-visible">
     {particles.map((p, i) => (
       <div 
         key={`shadow-particle-${i}`} 
@@ -153,7 +153,7 @@ const Partners = () => {
     }}
   >
     {/* Particles */}
-    <div className="absolute inset-0 z-[1] pointer-events-none overflow-x-hidden">
+    <div className="absolute inset-0 z-[1] pointer-events-none">
       {particles.map((p, i) => (
         <div 
           key={`cta-particle-${i}`} 

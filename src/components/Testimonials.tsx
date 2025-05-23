@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import Container from "./ui/Container";
 import TestimonialCard from "./testimonials/TestimonialCard";
@@ -145,9 +144,9 @@ const Testimonials = () => {
             </div>
           </div>
           
-          <div className="mt-5 -mb-8 text-center relative z-20 overflow-hidden">
+          <div className="mt-5 -mb-8 text-center relative z-20">
             <div className="inline-block relative">
-              <div className="absolute inset-0 z-[1] pointer-events-none overflow-x-hidden">
+              <div className="absolute inset-0 z-[1] pointer-events-none">
                 {particles.map((p, i) => (
                   <div 
                     key={`cta-particle-${i}`} 
