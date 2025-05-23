@@ -81,20 +81,15 @@ const AboutUs = () => {
         {/* Added text-center md:text-left to center on mobile */}
         <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3] mb-4">DIGITAL ASSET PIONEERS</h2>
         
-        <h3 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800 leading-tight">Trusted Web3 Experts Solving Complex Blockchain Challenges Since 2015</h3>
+        <h3 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800 leading-tight">Trusted Web3 Experts Bridging Traditional Business with Blockchain Innovation</h3>
 
         {/* CTA with particles - moved to left column */}
-        <div 
-          ref={ctaSectionRef} 
-          className="relative flex justify-center md:justify-start mt-8 mb-6" 
-          style={{
+        <div ref={ctaSectionRef} className="relative flex justify-center md:justify-start mt-8 mb-6" style={{
             height: "120px"
-          }}
-        >
+          }}>
           {/* Particles */}
           <div className="absolute inset-0 pointer-events-none overflow-visible z-0">
-            {particles.map((p, i) => <div key={`cta-particle-${i}`} className="absolute rounded-full blur-[16px] animate-light-particle"
-              style={{
+            {particles.map((p, i) => <div key={`cta-particle-${i}`} className="absolute rounded-full blur-[16px] animate-light-particle" style={{
                 width: `${p.size}px`,
                 height: `${p.size}px`,
                 background: p.color,
@@ -109,8 +104,7 @@ const AboutUs = () => {
           </div>
 
           {/* Button - using a fragment with href for simplicity with animations, but will navigate to the ID */}
-          <a href="#contact" className="inline-flex items-center z-10 relative"
-            ref={ctaRef}>
+          <a href="#contact" className="inline-flex items-center z-10 relative" ref={ctaRef}>
             <button className="bg-[#010822]/5 backdrop-blur-md text-white px-6 py-3 rounded-full
                border border-[#010822]/10 hover:bg-[#010822]/15 transition-all
                transform hover:scale-105 duration-300 text-base font-semibold shadow-lg">Solve Your Web3 Challenges</button>
@@ -170,7 +164,6 @@ const AboutUs = () => {
       }
     `}
   </style>
-</section>
-
+  </section>;
 };
 export default AboutUs;
