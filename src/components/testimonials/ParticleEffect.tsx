@@ -8,7 +8,7 @@ interface ParticleEffectProps {
 
 const ParticleEffect: React.FC<ParticleEffectProps> = ({ particles }) => {
   return (
-    <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+    <div className="absolute -inset-8 z-10 pointer-events-none">
       {particles.map((p, i) => (
         <div
           key={`testimonial-particle-${i}`}
@@ -17,13 +17,13 @@ const ParticleEffect: React.FC<ParticleEffectProps> = ({ particles }) => {
             width: `${p.size}px`,
             height: `${p.size}px`,
             background: p.color,
-            left: `${Math.max(0, Math.min(100, p.x))}%`,
-            top: `${Math.max(0, Math.min(100, p.y))}%`,
+            left: `${p.x}%`,
+            top: `${p.y}%`,
             animationDelay: `${p.delay}s`,
             animationDuration: `${p.duration}s`,
-            ['--move-x' as string]: `${p.moveX}vw`,
-            ['--move-y' as string]: `${p.moveY}vh`,
-            ['--rotate' as string]: `${p.rotate}deg`
+            '--move-x': `${p.moveX}vw`,
+            '--move-y': `${p.moveY}vh`,
+            '--rotate': `${p.rotate}deg`
           }}
         />
       ))}
