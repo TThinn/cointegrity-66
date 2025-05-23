@@ -55,10 +55,10 @@ const Partners = () => {
       length: particleCount
     }, () => ({
       size: 20 + Math.random() * 80,
-      x: ctaPosition.x - 4 + (Math.random() - 0.5) * 12,
-      y: ctaPosition.y - 4 + (Math.random() - 0.5) * 12,
-      moveX: (Math.random() - 0.5) * 10,
-      moveY: (Math.random() - 0.5) * 14,
+      x: Math.max(10, Math.min(90, ctaPosition.x - 4 + (Math.random() - 0.5) * 12)),
+      y: Math.max(10, Math.min(90, ctaPosition.y - 4 + (Math.random() - 0.5) * 12)),
+      moveX: (Math.random() - 0.5) * 8,
+      moveY: (Math.random() - 0.5) * 10,
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
       duration: 8 + Math.random() * 12,
@@ -108,7 +108,7 @@ const Partners = () => {
                   src={partner.logo} 
                   alt={partner.name} 
                   className="max-h-7 object-contain opacity-80 group-hover:opacity-100 transition-all duration-300" 
-                  priority={index < 6} // Only prioritize loading for the first 6 logos
+                  priority={index < 6}
                   width={100}
                   height={40}
                 />
@@ -117,81 +117,79 @@ const Partners = () => {
           ))}
         </div>
 
-{/* CTA Section with Particles and properly aligned shadow effect */}
-<div className="mt-16 relative">
-  {/* External shadow effect that matches particle positions */}
-  <div className="absolute inset-0 z-[5] pointer-events-none overflow-visible">
-    {particles.map((p, i) => (
-      <div 
-        key={`shadow-particle-${i}`} 
-        className="absolute rounded-full blur-[25px] animate-light-particle" 
-        style={{
-          width: `${p.size * 1.5}px`,
-          height: `${p.size * 1.5}px`,
-          background: p.color.replace(/[^,]+(?=\))/, '0.15'),
-          // Adjust position to account for larger size
-          left: `calc(${p.x}% - ${p.size * 0.25}px)`,
-          top: `calc(${p.y}% - ${p.size * 0.25}px)`,
-          animationDelay: `${p.delay}s`,
-          animationDuration: `${p.duration}s`,
-          ['--move-x' as string]: `${p.moveX}vw`,
-          ['--move-y' as string]: `${p.moveY}vh`,
-          ['--rotate' as string]: `${p.rotate}deg`,
-          opacity: 0.4,
-          mixBlendMode: 'screen'
-        }} 
-      />
-    ))}
-  </div>
-  
-  {/* CTA Section - with clip-path to hide shadows inside */}
-  <div  
-    ref={ctaSectionRef}
-    className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-12 p-6 md:p-7 rounded-lg backdrop-blur-sm bg-transparent border border-white/30 relative z-10 overflow-hidden" 
-    style={{
-      clipPath: 'inset(0 0 0 0)',
-    }}
-  >
-    {/* Particles */}
-    <div className="absolute inset-0 z-[1] pointer-events-none">
-      {particles.map((p, i) => (
-        <div 
-          key={`cta-particle-${i}`} 
-          className="absolute rounded-full blur-[12px] animate-light-particle" 
-          style={{
-            width: `${p.size}px`,
-            height: `${p.size}px`,
-            background: p.color,
-            left: `${p.x}%`,
-            top: `${p.y}%`,
-            animationDelay: `${p.delay}s`,
-            animationDuration: `${p.duration}s`,
-            ['--move-x' as string]: `${p.moveX}vw`,
-            ['--move-y' as string]: `${p.moveY}vh`,
-            ['--rotate' as string]: `${p.rotate}deg`
-          }} 
-        />
-      ))}
-    </div>
+        {/* CTA Section with Particles and constrained overflow */}
+        <div className="mt-16 relative overflow-hidden">
+          {/* External shadow effect constrained within bounds */}
+          <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden">
+            {particles.map((p, i) => (
+              <div 
+                key={`shadow-particle-${i}`} 
+                className="absolute rounded-full blur-[25px] animate-light-particle" 
+                style={{
+                  width: `${p.size * 1.5}px`,
+                  height: `${p.size * 1.5}px`,
+                  background: p.color.replace(/[^,]+(?=\))/, '0.15'),
+                  left: `${p.x}%`,
+                  top: `${p.y}%`,
+                  transform: 'translate(-50%, -50%)',
+                  animationDelay: `${p.delay}s`,
+                  animationDuration: `${p.duration}s`,
+                  ['--move-x' as string]: `${p.moveX}vw`,
+                  ['--move-y' as string]: `${p.moveY}vh`,
+                  ['--rotate' as string]: `${p.rotate}deg`,
+                  opacity: 0.4,
+                  mixBlendMode: 'screen'
+                }} 
+              />
+            ))}
+          </div>
+          
+          {/* CTA Section with overflow hidden to prevent width expansion */}
+          <div  
+            ref={ctaSectionRef}
+            className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-12 p-6 md:p-7 rounded-lg backdrop-blur-sm bg-transparent border border-white/30 relative z-10 overflow-hidden"
+          >
+            {/* Particles constrained within CTA section */}
+            <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
+              {particles.map((p, i) => (
+                <div 
+                  key={`cta-particle-${i}`} 
+                  className="absolute rounded-full blur-[12px] animate-light-particle" 
+                  style={{
+                    width: `${p.size}px`,
+                    height: `${p.size}px`,
+                    background: p.color,
+                    left: `${p.x}%`,
+                    top: `${p.y}%`,
+                    transform: 'translate(-50%, -50%)',
+                    animationDelay: `${p.delay}s`,
+                    animationDuration: `${p.duration}s`,
+                    ['--move-x' as string]: `${p.moveX}vw`,
+                    ['--move-y' as string]: `${p.moveY}vh`,
+                    ['--rotate' as string]: `${p.rotate}deg`
+                  }} 
+                />
+              ))}
+            </div>
 
-    <div className="flex-1 text-center md:text-left relative z-10">
-      <h3 className="text-[clamp(1.2rem,1rem+0.7vw,1.8rem)] font-bold mb-2 text-white">Want to partner with us?</h3>
-    </div>
-    
-    <a href="/contact" className="inline-flex items-center relative z-10" ref={ctaRef}>
-      <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-2.5 rounded-full
-                        border border-white/30 hover:bg-white/40 transition-all
-                        transform hover:scale-105 duration-300 text-base font-semibold">Get in touch</button>
-    </a>
-  </div>
-  
-{/* Mask to hide shadow orbs inside CTA */}
-<div className="absolute inset-0 bg-[#010822] z-[6] pointer-events-none rounded-lg" 
-     style={{
-       clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0.5% 0.5%, 0.5% 99.5%, 99.5% 99.5%, 99.5% 0.5%, 0.5% 0.5%, 0% 0%)',
-     }}>
-</div>
-</div>      
+            <div className="flex-1 text-center md:text-left relative z-10">
+              <h3 className="text-[clamp(1.2rem,1rem+0.7vw,1.8rem)] font-bold mb-2 text-white">Want to partner with us?</h3>
+            </div>
+            
+            <a href="/contact" className="inline-flex items-center relative z-10" ref={ctaRef}>
+              <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-2.5 rounded-full
+                                border border-white/30 hover:bg-white/40 transition-all
+                                transform hover:scale-105 duration-300 text-base font-semibold">Get in touch</button>
+            </a>
+          </div>
+          
+          {/* Mask to hide shadow orbs inside CTA */}
+          <div className="absolute inset-0 bg-[#010822] z-[6] pointer-events-none rounded-lg overflow-hidden" 
+               style={{
+                 clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0.5% 0.5%, 0.5% 99.5%, 99.5% 99.5%, 99.5% 0.5%, 0.5% 0.5%, 0% 0%)',
+               }}>
+          </div>
+        </div>      
       </Container>
 
       {/* Animation Styles */}
@@ -200,26 +198,26 @@ const Partners = () => {
           @keyframes light-particle {
             0%, 100% { 
               opacity: 0.4;
-              transform: translate(0, 0) scale(1) rotate(0);
+              transform: translate(-50%, -50%) scale(1) rotate(0);
             }
             25% {
               opacity: 0.6;
               transform: 
-                translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * -0.7)) 
+                translate(calc(-50% + var(--move-x) * 0.3), calc(-50% + var(--move-y) * -0.7)) 
                 scale(1.2) 
                 rotate(calc(var(--rotate) * 0.3));
             }
             50% { 
               opacity: 0.8;
               transform: 
-                translate(var(--move-x), var(--move-y)) 
+                translate(calc(-50% + var(--move-x)), calc(-50% + var(--move-y))) 
                 scale(1.5) 
                 rotate(calc(var(--rotate) * 0.6));
             }
             75% {
               opacity: 0.6;
               transform: 
-                translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * 0.7)) 
+                translate(calc(-50% + var(--move-x) * -0.3), calc(-50% + var(--move-y) * 0.7)) 
                 scale(1.3) 
                 rotate(var(--rotate));
             }

@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useState } from "react";
 import CTAParticleEffect from "./CTAParticleEffect";
 import CTAButton from "./CTAButton";
@@ -23,19 +24,19 @@ const ServicesCTA = () => {
     const btnCenterX = ((btnBox.left + btnBox.right)/2 - sectionBox.left) / sectionBox.width * 100;
     const btnCenterY = ((btnBox.top + btnBox.bottom)/2 - sectionBox.top) / sectionBox.height * 100;
     
-    // Create shadow particles with corrected positions
+    // Create shadow particles with corrected positions and bounds checking
     const newParticles = particles.map(p => {
       // Calculate the particle's offset from the button center
-      const offsetX = p.x - btnCenterX + 45; // Add back the -45 offset from useCTAParticles
-      const offsetY = p.y - btnCenterY - 5;  // Subtract the +5 offset from useCTAParticles
+      const offsetX = p.x - btnCenterX + 45;
+      const offsetY = p.y - btnCenterY - 5;
       
       return {
         ...p,
         size: p.size,
         color: p.color.replace(/[^,]+(?=\))/, '0.15'),
-        // Position relative to button center in the shadow container
-        x: btnCenterX + offsetX,
-        y: btnCenterY + offsetY
+        // Position relative to button center in the shadow container, constrained within bounds
+        x: Math.max(5, Math.min(95, btnCenterX + offsetX)),
+        y: Math.max(5, Math.min(95, btnCenterY + offsetY))
       };
     });
     
@@ -45,9 +46,9 @@ const ServicesCTA = () => {
   if (particleCount === null) return null;
 
   return (
-    <div className="mt-16 relative">
-      {/* Shadow particles layer */}
-      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 5 }}>
+    <div className="mt-16 relative overflow-hidden">
+      {/* Shadow particles layer with constrained overflow */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 5 }}>
         {shadowParticles.map((p, i) => (
           <div
             key={`shadow-particle-${i}`}
@@ -58,11 +59,12 @@ const ServicesCTA = () => {
               background: p.color,
               left: `${p.x}%`,
               top: `${p.y}%`,
+              transform: 'translate(-50%, -50%)',
               animationDelay: `${p.delay}s`,
               animationDuration: `${p.duration}s`,
               animation: 'light-particle ease-in-out infinite',
-              ['--move-x' as string]: `${p.moveX}vw`,
-              ['--move-y' as string]: `${p.moveY}vh`,
+              ['--move-x' as string]: `${Math.max(-5, Math.min(5, p.moveX))}vw`,
+              ['--move-y' as string]: `${Math.max(-5, Math.min(5, p.moveY))}vh`,
               ['--rotate' as string]: `${p.rotate}deg`,
               opacity: 0.4,
               mixBlendMode: 'multiply'
@@ -73,7 +75,7 @@ const ServicesCTA = () => {
       
       {/* Mask to hide shadows inside CTA */}
       <div 
-        className="absolute inset-0 rounded-lg pointer-events-none" 
+        className="absolute inset-0 rounded-lg pointer-events-none overflow-hidden" 
         style={{
           background: '#FDF9FC',
           zIndex: 7,
@@ -111,26 +113,26 @@ const ServicesCTA = () => {
           @keyframes light-particle {
             0%, 100% { 
               opacity: 0.4;
-              transform: translate(0, 0) scale(1) rotate(0);
+              transform: translate(-50%, -50%) scale(1) rotate(0);
             }
             25% {
               opacity: 0.6;
               transform: 
-                translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * -0.7)) 
+                translate(calc(-50% + var(--move-x) * 0.3), calc(-50% + var(--move-y) * -0.7)) 
                 scale(1.2) 
                 rotate(calc(var(--rotate) * 0.3));
             }
             50% { 
               opacity: 0.8;
               transform: 
-                translate(var(--move-x), var(--move-y)) 
+                translate(calc(-50% + var(--move-x)), calc(-50% + var(--move-y))) 
                 scale(1.5) 
                 rotate(calc(var(--rotate) * 0.6));
             }
             75% {
               opacity: 0.6;
               transform: 
-                translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * 0.7)) 
+                translate(calc(-50% + var(--move-x) * -0.3), calc(-50% + var(--move-y) * 0.7)) 
                 scale(1.3) 
                 rotate(var(--rotate));
             }
