@@ -8,7 +8,7 @@ interface CTAParticleEffectProps {
 
 const CTAParticleEffect: React.FC<CTAParticleEffectProps> = ({ particles }) => {
   return (
-    <div className="absolute inset-0 z-[1] pointer-events-none">
+    <div className="absolute inset-0 z-[1] pointer-events-none overflow-x-hidden">
       {particles.map((p, i) => (
         <div
           key={`cta-particle-${i}`}

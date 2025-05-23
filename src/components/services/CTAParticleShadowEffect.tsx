@@ -1,3 +1,4 @@
+
 import React from "react";
 import { ParticleType } from "../testimonials/types";
 
@@ -14,8 +15,8 @@ const CTAParticleShadowEffect: React.FC<CTAParticleShadowEffectProps> = ({
   
   return (
     <>
-      {/* Shadow particles - positioned absolutely to match inner particles */}
-      <div className="absolute inset-0 z-[5] pointer-events-none overflow-visible">
+      {/* Shadow particles - positioned absolutely with overflow control */}
+      <div className="absolute inset-0 z-[5] pointer-events-none overflow-x-hidden">
         {particles.map((p, i) => (
           <div
             key={`shadow-particle-${i}`}

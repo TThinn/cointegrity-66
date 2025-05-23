@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useState } from "react";
 import CTAParticleEffect from "./CTAParticleEffect";
 import CTAButton from "./CTAButton";
@@ -45,9 +46,9 @@ const ServicesCTA = () => {
   if (particleCount === null) return null;
 
   return (
-    <div className="mt-16 relative">
+    <div className="mt-16 relative overflow-hidden">
       {/* Shadow particles layer */}
-      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 5 }}>
+      <div className="absolute inset-0 pointer-events-none overflow-x-hidden" style={{ zIndex: 5 }}>
         {shadowParticles.map((p, i) => (
           <div
             key={`shadow-particle-${i}`}
