@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import Container from "./ui/Container";
 import TestimonialCard from "./testimonials/TestimonialCard";
@@ -159,10 +160,10 @@ const Testimonials = () => {
                       top: `${p.y}%`,
                       animationDelay: `${p.delay}s`,
                       animationDuration: `${p.duration}s`,
-                      ['--move-x']: `${p.moveX}vw`,
-                      ['--move-y']: `${p.moveY}vh`,
-                      ['--rotate']: `${p.rotate}deg`
-                    }} 
+                      '--move-x': `${p.moveX}vw`,
+                      '--move-y': `${p.moveY}vh`,
+                      '--rotate': `${p.rotate}deg`
+                    } as React.CSSProperties}
                   />
                 ))}
               </div>

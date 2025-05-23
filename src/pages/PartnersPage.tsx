@@ -14,11 +14,11 @@ const PartnersPage = () => {
   const { currentPath } = useSectionTracking();
   
   return (
-    <div className="min-h-screen bg-[#080112]" itemScope itemType="https://schema.org/WebPage">
+    <div className="min-h-screen bg-[#080112] overflow-x-hidden" itemScope itemType="https://schema.org/WebPage">
       <SeoHead currentPath={currentPath} currentHash="" />
       
       <Header />
-      <main id="main">
+      <main id="main" className="overflow-x-hidden">
         <SectionContainer className="pt-24">
           <BreadcrumbNav className="mb-4" />
           

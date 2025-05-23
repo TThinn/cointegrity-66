@@ -1,3 +1,4 @@
+
 import React from "react";
 import { ParticleType } from "../testimonials/types";
 
@@ -32,12 +33,12 @@ const CTAParticleShadowEffect: React.FC<CTAParticleShadowEffectProps> = ({
               transformOrigin: 'center center',
               animationDelay: `${p.delay}s`,
               animationDuration: `${p.duration}s`,
-              ['--move-x' as string]: `${p.moveX}vw`,
-              ['--move-y' as string]: `${p.moveY}vh`,
-              ['--rotate' as string]: `${p.rotate}deg`,
+              '--move-x': `${p.moveX}vw`,
+              '--move-y': `${p.moveY}vh`,
+              '--rotate': `${p.rotate}deg`,
               opacity: 0.4,
               mixBlendMode: isDarkMode ? 'screen' : 'multiply'
-            }}
+            } as React.CSSProperties}
           />
         ))}
       </div>

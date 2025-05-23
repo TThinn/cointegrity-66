@@ -21,10 +21,10 @@ const CTAParticleEffect: React.FC<CTAParticleEffectProps> = ({ particles }) => {
             top: `${p.y}%`,
             animationDelay: `${p.delay}s`,
             animationDuration: `${p.duration}s`,
-            ['--move-x' as string]: `${p.moveX}vw`,
-            ['--move-y' as string]: `${p.moveY}vh`,
-            ['--rotate' as string]: `${p.rotate}deg`
-          }}
+            '--move-x': `${p.moveX}vw`,
+            '--move-y': `${p.moveY}vh`,
+            '--rotate': `${p.rotate}deg`
+          } as React.CSSProperties}
         />
       ))}
     </div>

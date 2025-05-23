@@ -24,7 +24,7 @@ const ParticleEffect: React.FC<ParticleEffectProps> = ({ particles }) => {
             '--move-x': `${p.moveX}vw`,
             '--move-y': `${p.moveY}vh`,
             '--rotate': `${p.rotate}deg`
-          }}
+          } as React.CSSProperties}
         />
       ))}
     </div>

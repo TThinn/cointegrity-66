@@ -12,11 +12,11 @@ const TestimonialsPage = () => {
   const { currentPath } = useSectionTracking();
   
   return (
-    <div className="min-h-screen bg-[#080112]" itemScope itemType="https://schema.org/WebPage">
+    <div className="min-h-screen bg-[#080112] overflow-x-hidden" itemScope itemType="https://schema.org/WebPage">
       <SeoHead currentPath={currentPath} currentHash="" />
       
       <Header />
-      <main id="main">
+      <main id="main" className="overflow-x-hidden">
         <div className="pt-24 px-4 md:px-8">
           <div className="max-w-7xl mx-auto mb-8">
             <Link to="/" className="text-white/70 hover:text-white flex items-center gap-2 mb-4 transition-colors">
