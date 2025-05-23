@@ -8,7 +8,7 @@ interface CTAParticleEffectProps {
 
 const CTAParticleEffect: React.FC<CTAParticleEffectProps> = ({ particles }) => {
   return (
-    <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
+    <div className="absolute inset-0 z-[1] pointer-events-none">
       {particles.map((p, i) => (
         <div
           key={`cta-particle-${i}`}
@@ -21,10 +21,10 @@ const CTAParticleEffect: React.FC<CTAParticleEffectProps> = ({ particles }) => {
             top: `${p.y}%`,
             animationDelay: `${p.delay}s`,
             animationDuration: `${p.duration}s`,
-            '--move-x': `${p.moveX}vw`,
-            '--move-y': `${p.moveY}vh`,
-            '--rotate': `${p.rotate}deg`
-          } as React.CSSProperties}
+            ['--move-x' as string]: `${p.moveX}vw`,
+            ['--move-y' as string]: `${p.moveY}vh`,
+            ['--rotate' as string]: `${p.rotate}deg`
+          }}
         />
       ))}
     </div>

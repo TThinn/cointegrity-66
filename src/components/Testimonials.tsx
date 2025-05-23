@@ -1,184 +1,94 @@
-import React, { useEffect, useState } from "react";
+
+import React from "react";
 import Container from "./ui/Container";
+import { useTestimonials } from "./testimonials/useTestimonials";
+import { useParticles } from "./testimonials/useParticles";
 import TestimonialCard from "./testimonials/TestimonialCard";
 import ParticleEffect from "./testimonials/ParticleEffect";
-import { testimonials } from "./testimonials/testimonialsData";
 
 const Testimonials = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [activeTestimonials, setActiveTestimonials] = useState([0, 1, 2, 3]);
-  const [changingIndex, setChangingIndex] = useState(null);
-  const [isVisible, setIsVisible] = useState(true);
-  const [hoveredCard, setHoveredCard] = useState(null);
-  const [maxSectionHeight, setMaxSectionHeight] = useState(0);
-  const testimonialsGridRef = React.useRef(null);
-  const sectionRef = React.useRef(null);
-  const buttonRef = React.useRef(null);
-  const [particles, setParticles] = useState([]);
+  const {
+    testimonials,
+    activeTestimonials,
+    changingIndex,
+    isVisible,
+    hoveredCard,
+    handleCardMouseEnter,
+    handleCardMouseLeave,
+    testimonialsGridRef,
+    maxSectionHeight
+  } = useTestimonials();
 
-  // Handle responsive behavior
-  useEffect(() => {
-    const checkMobile = () => {
-      const mobile = window.innerWidth < 640;
-      setIsMobile(mobile);
-      
-      if (mobile && activeTestimonials.length > 2) {
-        // On mobile, only show first 2 testimonials
-        setActiveTestimonials(activeTestimonials.slice(0, 2));
-      } else if (!mobile && activeTestimonials.length < 4) {
-        // On desktop, ensure we show 4 testimonials
-        const currentIds = new Set(activeTestimonials);
-        const newIds = [...activeTestimonials];
-        
-        while (newIds.length < 4) {
-          const randomId = Math.floor(Math.random() * testimonials.length);
-          if (!currentIds.has(randomId)) {
-            newIds.push(randomId);
-            currentIds.add(randomId);
-          }
-        }
-        
-        setActiveTestimonials(newIds);
-      }
-    };
-
-    // Initial check
-    checkMobile();
-    
-    // Add event listener
-    window.addEventListener('resize', checkMobile);
-    
-    // Cleanup
-    return () => window.removeEventListener('resize', checkMobile);
-  }, [activeTestimonials]);
-
-  // Calculate section height
-  useEffect(() => {
-    if (testimonialsGridRef.current) {
-      setMaxSectionHeight(testimonialsGridRef.current.offsetHeight);
-    }
-  }, [activeTestimonials, isMobile]);
-
-  // Generate particles
-  useEffect(() => {
-    if (!buttonRef.current || !sectionRef.current) return;
-
-    const btnBox = buttonRef.current.getBoundingClientRect();
-    const sectionBox = sectionRef.current.getBoundingClientRect();
-    const x = ((btnBox.left + btnBox.right) / 2 - sectionBox.left) / sectionBox.width * 100;
-    const y = ((btnBox.top + btnBox.bottom) / 2 - sectionBox.top) / sectionBox.height * 100;
-
-    const count = window.innerWidth < 768 ? 5 : 12;
-    const newParticles = Array.from({ length: count }, () => ({
-      size: 20 + Math.random() * 80,
-      x: x - 4 + (Math.random() - 0.5) * 12,
-      y: y - 4 + (Math.random() - 0.5) * 12,
-      moveX: (Math.random() - 0.5) * 10,
-      moveY: (Math.random() - 0.5) * 14,
-      rotate: Math.random() * 360,
-      delay: Math.random() * 5,
-      duration: 8 + Math.random() * 12,
-      color: ['rgba(225,29,143,0.9)', 'rgba(147,51,234,0.6)', 'rgba(255,255,255,0.15)'][Math.floor(Math.random() * 3)]
-    }));
-
-    setParticles(newParticles);
-
-    const handleResize = () => {
-      if (!buttonRef.current || !sectionRef.current) return;
-      
-      const btnBox = buttonRef.current.getBoundingClientRect();
-      const sectionBox = sectionRef.current.getBoundingClientRect();
-      const x = ((btnBox.left + btnBox.right) / 2 - sectionBox.left) / sectionBox.width * 100;
-      const y = ((btnBox.top + btnBox.bottom) / 2 - sectionBox.top) / sectionBox.height * 100;
-
-      setParticles(prev => prev.map(p => ({
-        ...p,
-        x: x - 4 + (Math.random() - 0.5) * 12,
-        y: y - 4 + (Math.random() - 0.5) * 12,
-      })));
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const handleCardMouseEnter = (position) => {
-    setHoveredCard(position);
-  };
-
-  const handleCardMouseLeave = () => {
-    setHoveredCard(null);
-  };
+  const { particles, sectionRef, buttonRef } = useParticles();
 
   return (
-    <section id="testimonials" className="py-20 relative overflow-hidden" ref={sectionRef}>
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]"></div>
-        <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
+    <section id="testimonials" className="py-20 relative overflow-hidden bg-gradient-to-b from-[#FEFCFD] to-[#FDF9FC]">
+      {/* Background elements */}
+      <div className="absolute inset-0 z-0 opacity-10">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#133a63]/30 rounded-full blur-[90px]"></div>
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#010822]/20 rounded-full blur-[70px]"></div>
       </div>
-      
-      <Container>
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">Client Success Stories</h2>
-            <h3 className="mt-2 text-3xl md:text-4xl font-bold text-white">Why Leading Organizations Choose Our Web3 Expertise</h3>
-            <p className="mt-2 text-white/60 max-w-2xl mx-auto">Our knowledge-first approach to Web3 transformation helps organizations successfully navigate the complex decentralized landscape. With deep expertise in blockchain strategy, product development, tax compliance, and capital acceleration, our specialists bridge the gap between traditional business and Web3 innovation. As your dependable guide through complex blockchain challenges, we deliver solutions that create measurable value. Don't just take our word for it-read what our clients say about working with our team:</p>
-          </div>
 
-          <div className="transition-all duration-300 relative z-30" style={{
-            minHeight: `${maxSectionHeight}px`
-          }}>
-            <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {activeTestimonials.map((testimonialIndex, position) => (
-                <TestimonialCard 
-                  key={position} 
-                  testimonial={testimonials[testimonialIndex]} 
-                  position={position} 
-                  isChanging={changingIndex === position} 
-                  isVisible={isVisible} 
-                  isHovered={hoveredCard === position} 
-                  onMouseEnter={() => handleCardMouseEnter(position)} 
-                  onMouseLeave={handleCardMouseLeave} 
-                />
-              ))}
-            </div>
-          </div>
+      <Container className="relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3]">
+            CLIENT TESTIMONIALS
+          </h2>
+          <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">
+            What Our Clients Say
+          </h3>
+          <p className="mt-4 text-lg text-gray-600">
+            Discover how we've helped businesses navigate the complexities of Web3 and blockchain technology.
+          </p>
+        </div>
+
+        <div 
+          ref={testimonialsGridRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 transition-all duration-500"
+          style={{ minHeight: `${maxSectionHeight}px` }}
+        >
+          {activeTestimonials.map((testimonialIndex, position) => (
+            <TestimonialCard
+              key={`${testimonialIndex}-${position}`}
+              testimonial={testimonials[testimonialIndex]}
+              position={position}
+              isChanging={changingIndex === position}
+              isVisible={isVisible}
+              isHovered={hoveredCard === position}
+              onMouseEnter={() => handleCardMouseEnter(position)}
+              onMouseLeave={handleCardMouseLeave}
+            />
+          ))}
+        </div>
+
+        {/* CTA Section with Particles */}
+        <div ref={sectionRef} className="mt-16 relative overflow-hidden">
+          {/* Particles */}
+          <ParticleEffect particles={particles} />
           
-          <div className="mt-5 -mb-8 text-center relative z-20">
-            <div className="inline-block relative">
-              {/* Added overflow-hidden to particle container */}
-              <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
-                {particles.map((p, i) => (
-                  <div 
-                    key={`cta-particle-${i}`} 
-                    className="absolute rounded-full blur-[12px] animate-light-particle" 
-                    style={{
-                      width: `${p.size}px`,
-                      height: `${p.size}px`,
-                      background: p.color,
-                      left: `${p.x}%`,
-                      top: `${p.y}%`,
-                      animationDelay: `${p.delay}s`,
-                      animationDuration: `${p.duration}s`,
-                      '--move-x': `${p.moveX}vw`,
-                      '--move-y': `${p.moveY}vh`,
-                      '--rotate': `${p.rotate}deg`
-                    } as React.CSSProperties} 
-                  />
-                ))}
-              </div>
-              <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
-                <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
-                              border border-white/30 hover:bg-white/40 transition-all
-                              transform hover:scale-105 duration-300 text-base font-semibold">
-                  Partner with us
-                </button>
-              </a>
+          {/* CTA Content */}
+          <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-16 p-6 md:p-7 rounded-lg backdrop-blur-sm transition-all duration-300 bg-white/20 border border-white/70 relative z-10">
+            <div className="flex-1 text-center md:text-left relative z-10">
+              <h3 className="text-xl font-bold mb-2 text-gray-800">Ready to Transform Your Business?</h3>
+              <p className="text-gray-600">Let's discuss how we can help you navigate the Web3 landscape.</p>
             </div>
+            
+            <a 
+              ref={buttonRef}
+              href="/contact" 
+              className="inline-flex items-center relative z-10"
+            >
+              <button className="bg-gradient-to-r from-[#cb46b3] to-[#9333ea] text-white px-6 py-2.5 rounded-full
+                                hover:from-[#d946ef] hover:to-[#a855f7] transition-all
+                                transform hover:scale-105 duration-300 text-base font-semibold">
+                Get Started
+              </button>
+            </a>
           </div>
         </div>
       </Container>
 
+      {/* Animation Styles */}
       <style>
         {`
           @keyframes light-particle {

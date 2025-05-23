@@ -1,7 +1,9 @@
 import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Container from "./ui/Container";
+
 const HERO_PARTICLE_COUNT_DESKTOP = 18;
 const HERO_PARTICLE_COUNT_MOBILE = 5;
+
 const Hero = () => {
   const [particleCount, setParticleCount] = useState(null);
   const ctaRef = useRef(null);
@@ -18,15 +20,14 @@ const Hero = () => {
         const xCenter = (box.left + box.right) / 2;
         const yCenter = (box.top + box.bottom) / 2;
 
-        // Convert to percentage of viewport
+        // Convert to percentage of viewport, constrained within bounds
         setCtaPosition({
-          x: xCenter / window.innerWidth * 100,
-          y: yCenter / window.innerHeight * 100
+          x: Math.max(15, Math.min(85, xCenter / window.innerWidth * 100)),
+          y: Math.max(15, Math.min(85, yCenter / window.innerHeight * 100))
         });
       }
     };
 
-    // Update position after a short delay to ensure layout is complete
     setTimeout(updateCtaPosition, 100);
     window.addEventListener('resize', updateCtaPosition);
     return () => window.removeEventListener('resize', updateCtaPosition);
@@ -36,22 +37,13 @@ const Hero = () => {
   const particles = useRef(Array.from({
     length: HERO_PARTICLE_COUNT_DESKTOP
   }, () => {
-    const colors = ['rgba(225,29,143,0.8)',
-    // Pink
-    'rgba(147,51,234,0.5)',
-    // Purple
-    'rgba(255,255,255,0.1)' // White
-    ];
+    const colors = ['rgba(225,29,143,0.8)', 'rgba(147,51,234,0.5)', 'rgba(255,255,255,0.1)'];
     return {
       size: 30 + Math.random() * 160,
-      x: ctaPosition.x - 15 + Math.random() * 15,
-      // Centered around CTA
-      y: ctaPosition.y - 15 + Math.random() * 20,
-      // More vertical spread
-      moveX: (Math.random() - 0.5) * 25,
-      // Horizontal movement
-      moveY: (Math.random() - 0.5) * 30,
-      // Increased vertical movement
+      x: Math.max(10, Math.min(90, ctaPosition.x - 15 + Math.random() * 15)),
+      y: Math.max(10, Math.min(90, ctaPosition.y - 15 + Math.random() * 20)),
+      moveX: (Math.random() - 0.5) * 15, // Reduced movement range
+      moveY: (Math.random() - 0.5) * 20, // Reduced movement range
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
       duration: 7 + Math.random() * 15,
@@ -62,8 +54,8 @@ const Hero = () => {
   // Update particle positions when CTA position changes
   useEffect(() => {
     particles.forEach(p => {
-      p.x = ctaPosition.x - 15 + Math.random() * 15;
-      p.y = ctaPosition.y - 15 + Math.random() * 20; // Match initial spread
+      p.x = Math.max(10, Math.min(90, ctaPosition.x - 15 + Math.random() * 15));
+      p.y = Math.max(10, Math.min(90, ctaPosition.y - 15 + Math.random() * 20));
     });
   }, [ctaPosition]);
 
@@ -81,24 +73,33 @@ const Hero = () => {
 
   // Don't render particles until device type is known
   if (particleCount === null) return null;
-  return <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
+
+  return (
+    <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
-        {/* Particle Container - Added overflow-hidden to prevent bleeding */}
+        {/* Particle Container with constrained overflow */}
         <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
-          {particles.slice(0, particleCount).map((p, i) => <div key={`particle-${i}`} className="absolute rounded-full blur-[25px] animate-light-particle" style={{
-          width: `${p.size}px`,
-          height: `${p.size}px`,
-          background: p.color,
-          left: `${p.x}%`,
-          top: `${p.y}%`,
-          animationDelay: `${p.delay}s`,
-          animationDuration: `${p.duration}s`,
-          '--move-x': `${p.moveX}vw`,
-          '--move-y': `${p.moveY}vh`,
-          '--rotate': `${p.rotate}deg`
-        } as React.CSSProperties} />)}
+          {particles.slice(0, particleCount).map((p, i) => (
+            <div 
+              key={`particle-${i}`} 
+              className="absolute rounded-full blur-[25px] animate-light-particle" 
+              style={{
+                width: `${p.size}px`,
+                height: `${p.size}px`,
+                background: p.color,
+                left: `${p.x}%`,
+                top: `${p.y}%`,
+                transform: 'translate(-50%, -50%)',
+                animationDelay: `${p.delay}s`,
+                animationDuration: `${p.duration}s`,
+                ['--move-x' as string]: `${p.moveX}vw`,
+                ['--move-y' as string]: `${p.moveY}vh`,
+                ['--rotate' as string]: `${p.rotate}deg`
+              } as React.CSSProperties}
+            />
+          ))}
         </div>
       </div>
 
@@ -106,29 +107,31 @@ const Hero = () => {
       <Container className="hero-content relative z-8 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
         <div className="flex flex-col items-center text-center mx-auto mt-16 w-full max-w-[90vw] xl:max-w-[1200px]">
           <h1 className="font-bold leading-tight text-shadow mb-8 animate-fade-up text-balance" style={{
-          animationDelay: "0.2s",
-          fontSize: "clamp(1.9rem, 6vw, 4.5rem)",
-          lineHeight: 1.1,
-          letterSpacing: "-0.03em"
-        }}>
+            animationDelay: "0.2s",
+            fontSize: "clamp(1.9rem, 6vw, 4.5rem)",
+            lineHeight: 1.1,
+            letterSpacing: "-0.03em"
+          }}>
             <span className="text-white font-bold">Simplifying Web3 Complexity</span>
           </h1>
 
           <h2 className="text-white/80 animate-fade-up relative mb-8 text-balance" style={{
-          animationDelay: "0.4s",
-          fontSize: "clamp(0.9rem, 1.5vw, 1.5rem)",
-          lineHeight: 1.25,
-          fontWeight: 400,
-          maxWidth: "40rem"
-        }}>We provide Full-cycle Web3 Consulting Solutions at the Intersection of Blockchain, AI Automation, Gaming, Tax &amp; Compliance.</h2>
+            animationDelay: "0.4s",
+            fontSize: "clamp(0.9rem, 1.5vw, 1.5rem)",
+            lineHeight: 1.25,
+            fontWeight: 400,
+            maxWidth: "40rem"
+          }}>
+            We provide Full-cycle Web3 Consulting Solutions at the Intersection of Blockchain, AI Automation, Gaming, Tax & Compliance.
+          </h2>
         </div>
 
         {/* CTA Button with ref for positioning */}
         <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up mb-4" style={{
-        animationDelay: "0.5s"
-      }}>
+          animationDelay: "0.5s"
+        }}>
           <a href="#contact" className="inline-block">
-            <button className="bg-white/5 backdrop-blur-sm text-white px-8 py-3 rounded-full \n                        border border-white/20 hover:bg-white/30 transition-all\n                        transform hover:scale-105 duration-300 text-lg font-semibold">
+            <button className="bg-white/5 backdrop-blur-sm text-white px-8 py-3 rounded-full border border-white/20 hover:bg-white/30 transition-all transform hover:scale-105 duration-300 text-lg font-semibold">
               Connect With Us
             </button>
           </a>
@@ -136,24 +139,19 @@ const Hero = () => {
 
         {/* Stats grid */}
         <div className="mt-24 border-t border-white/10 pt-4 grid grid-cols-2 md:grid-cols-4 gap-10 animate-fade-up text-center" style={{
-        animationDelay: "0.6s"
-      }}>
-          {[{
-          number: "45+",
-          label: "Years Experience"
-        }, {
-          number: "15+",
-          label: "Project Jurisdictions"
-        }, {
-          number: "20+",
-          label: "Enterprise Clients"
-        }, {
-          number: "40+",
-          label: "Projects Delivered"
-        }].map((stat, i) => <div key={`stat-${i}`}>
+          animationDelay: "0.6s"
+        }}>
+          {[
+            { number: "45+", label: "Years Experience" },
+            { number: "15+", label: "Project Jurisdictions" },
+            { number: "20+", label: "Enterprise Clients" },
+            { number: "40+", label: "Projects Delivered" }
+          ].map((stat, i) => (
+            <div key={`stat-${i}`}>
               <h3 className="text-3xl md:text-4xl font-bold text-white">{stat.number}</h3>
               <p className="text-white/60 text-sm mt-1">{stat.label}</p>
-            </div>)}
+            </div>
+          ))}
         </div>
       </Container>
 
@@ -163,26 +161,26 @@ const Hero = () => {
           @keyframes light-particle {
             0%, 100% { 
               opacity: 0.4;
-              transform: translate(0, 0) scale(1) rotate(0);
+              transform: translate(-50%, -50%) scale(1) rotate(0);
             }
             25% {
               opacity: 0.6;
               transform: 
-                translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * -0.7)) 
+                translate(calc(-50% + var(--move-x) * 0.3), calc(-50% + var(--move-y) * -0.7)) 
                 scale(1.2) 
                 rotate(calc(var(--rotate) * 0.3));
             }
             50% { 
               opacity: 0.8;
               transform: 
-                translate(var(--move-x), var(--move-y)) 
+                translate(calc(-50% + var(--move-x)), calc(-50% + var(--move-y))) 
                 scale(1.5) 
                 rotate(calc(var(--rotate) * 0.6));
             }
             75% {
               opacity: 0.6;
               transform: 
-                translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * 0.7)) 
+                translate(calc(-50% + var(--move-x) * -0.3), calc(-50% + var(--move-y) * 0.7)) 
                 scale(1.3) 
                 rotate(var(--rotate));
             }
@@ -199,6 +197,8 @@ const Hero = () => {
           }
         `}
       </style>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;
