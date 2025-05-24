@@ -16,7 +16,7 @@ const HeroContent: React.FC = () => {
       lineHeight: 1.25,
       fontWeight: 400,
       maxWidth: "40rem"
-    }}>The only consultancy that bridges traditional business expertise with Web3 innovation. Whether you're entering, investing in, or optimizing for Web3</h2>
+    }}>We combine traditional business excellence with deep Web3 innovation helping clients enter, invest in, or optimize their Web3 journeys</h2>
     </div>;
 };
 export default HeroContent;
