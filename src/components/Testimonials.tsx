@@ -2,17 +2,22 @@
 import React, { useEffect, useState } from "react";
 import Container from "./ui/Container";
 import TestimonialCard from "./testimonials/TestimonialCard";
-import ParticleEffect from "./testimonials/ParticleEffect";
-import { testimonials } from "./testimonials/testimonialsData";
+import { useTestimonials } from "./testimonials/useTestimonials";
 
 const Testimonials = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [activeTestimonials, setActiveTestimonials] = useState([0, 1, 2, 3]);
-  const [changingIndex, setChangingIndex] = useState(null);
-  const [isVisible, setIsVisible] = useState(true);
-  const [hoveredCard, setHoveredCard] = useState(null);
-  const [maxSectionHeight, setMaxSectionHeight] = useState(0);
-  const testimonialsGridRef = React.useRef(null);
+  const {
+    testimonials,
+    activeTestimonials,
+    changingIndex,
+    isVisible,
+    hoveredCard,
+    handleCardMouseEnter,
+    handleCardMouseLeave,
+    testimonialsGridRef,
+    maxSectionHeight
+  } = useTestimonials();
+  
   const sectionRef = React.useRef(null);
   const buttonRef = React.useRef(null);
   const [particles, setParticles] = useState([]);
@@ -22,25 +27,6 @@ const Testimonials = () => {
     const checkMobile = () => {
       const mobile = window.innerWidth < 640;
       setIsMobile(mobile);
-      
-      if (mobile && activeTestimonials.length > 2) {
-        // On mobile, only show first 2 testimonials
-        setActiveTestimonials(activeTestimonials.slice(0, 2));
-      } else if (!mobile && activeTestimonials.length < 4) {
-        // On desktop, ensure we show 4 testimonials
-        const currentIds = new Set(activeTestimonials);
-        const newIds = [...activeTestimonials];
-        
-        while (newIds.length < 4) {
-          const randomId = Math.floor(Math.random() * testimonials.length);
-          if (!currentIds.has(randomId)) {
-            newIds.push(randomId);
-            currentIds.add(randomId);
-          }
-        }
-        
-        setActiveTestimonials(newIds);
-      }
     };
 
     // Initial check
@@ -51,14 +37,7 @@ const Testimonials = () => {
     
     // Cleanup
     return () => window.removeEventListener('resize', checkMobile);
-  }, [activeTestimonials]);
-
-  // Calculate section height
-  useEffect(() => {
-    if (testimonialsGridRef.current) {
-      setMaxSectionHeight(testimonialsGridRef.current.offsetHeight);
-    }
-  }, [activeTestimonials, isMobile]);
+  }, []);
 
   // Generate particles
   useEffect(() => {
@@ -103,13 +82,8 @@ const Testimonials = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleCardMouseEnter = (position) => {
-    setHoveredCard(position);
-  };
-
-  const handleCardMouseLeave = () => {
-    setHoveredCard(null);
-  };
+  // Get the active testimonials to display based on mobile/desktop and available testimonials
+  const testimonialsToShow = isMobile ? activeTestimonials.slice(0, 2) : activeTestimonials;
 
   return (
     <section id="testimonials" className="py-20 relative overflow-hidden" ref={sectionRef}>
@@ -130,7 +104,7 @@ const Testimonials = () => {
             minHeight: `${maxSectionHeight}px`
           }}>
             <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {activeTestimonials.map((testimonialIndex, position) => (
+              {testimonialsToShow.map((testimonialIndex, position) => (
                 <TestimonialCard 
                   key={position} 
                   testimonial={testimonials[testimonialIndex]} 
