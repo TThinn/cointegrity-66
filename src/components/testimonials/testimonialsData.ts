@@ -46,8 +46,8 @@ export const testimonials: TestimonialType[] = [
   },
   {
     id: 8,
-    quote: "Cointegrity's team demonstrated exceptional knowledge of both traditional finance and blockchain technology, bridging gaps in the future of finance that we couldn't on our own.",
-    name: "Jennifer Liu",
-    title: "VP of Operations at Crypto Exchange"
+    quote: "Ruben is a true gem to work with! His professionalism and punctuality are top-tier, and as a man of his word, he always delivers on his promises. I had the pleasure of working side by side with him on a project that turned out to be a resounding success, thanks to his dedication. Guden’s genuine, caring nature makes every collaboration enjoyable, and he’s simply amazing—a fantastic friend and colleague!",
+    name: "TheRocketBoy",
+    title: "CMO at Photon"
   }
 ];
