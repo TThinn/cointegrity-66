@@ -4,7 +4,15 @@ import Container from "./ui/Container";
 import ContactFormFields from "./contact/ContactFormFields";
 import SubmitButton from "./contact/SubmitButton";
 import { useContactForm } from "@/hooks/useContactForm";
+import { useCoreWebVitals } from "@/hooks/useCoreWebVitals";
+import { useServiceWorker } from "@/hooks/useServiceWorker";
+import { useInternalLinking } from "@/hooks/useInternalLinking";
+import { usePerformanceOptimization } from "@/hooks/usePerformanceOptimization";
+import { ResourceHints } from "./seo/ResourceHints";
+import { EnhancedStructuredData } from "./seo/EnhancedStructuredData";
+
 const RECAPTCHA_SITE_KEY = "6Lc_BCMrAAAAAAJ53CbmGbCdpq1plgfqyOJjInN1";
+
 const ContactForm = () => {
   const {
     formState,
@@ -14,8 +22,16 @@ const ContactForm = () => {
     handleChange,
     handleSubmit
   } = useContactForm();
+  
+  // Initialize SEO and performance hooks
+  useCoreWebVitals();
+  useServiceWorker();
+  useInternalLinking();
+  usePerformanceOptimization();
+  
   const [currentPlaceholder, setCurrentPlaceholder] = useState<PlaceholderData>(placeholders[0]);
   const [isTyping, setIsTyping] = useState(false);
+
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
     if (!isTyping) {
@@ -33,6 +49,7 @@ const ContactForm = () => {
       }
     };
   }, [isTyping]);
+  
   useEffect(() => {
     const loadRecaptcha = async () => {
       try {
@@ -55,43 +72,52 @@ const ContactForm = () => {
     };
     loadRecaptcha();
   }, [setRecaptchaLoaded]);
+  
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setIsTyping(true);
     handleChange(e);
   };
-  return <section id="contact" className="py-20 bg-gradient-to-b from-[#FEFCFD] to-[#FDF9FC] relative overflow-hidden">
-      <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#133a63]/30 rounded-full blur-[90px]"></div>
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#010822]/20 rounded-full blur-[70px]"></div>
-      </div>
-      
-      <Container className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="text-left lg:text-left md:text-center sm:text-center">
-            <h2 className="font-semibold uppercase tracking-wider text-[cb46b3] text-[#cb46b3]">DIGITAL ASSET SOLUTIONS</h2>
-            <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">
-              Partner With Us to Bring Your Project to Life
-            </h3>
-            <p className="mt-2 text-lg text-gray-600">
-              Have a project in mind or questions about our services? We're here to help you navigate the decentralized landscape.
-            </p>
-            <div className="mt-10 hidden md:block relative animate-float"></div>
-          </div>
-          
-          <div className="p-8 backdrop-blur-sm rounded-lg bg-white/20 relative" style={{
-          animationDelay: "0.3s",
-          boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
-          border: "1px solid rgba(255, 255, 255, 0.7)"
-        }}>
-            <form onSubmit={handleSubmit}>
-              <ContactFormFields formState={formState} currentPlaceholder={currentPlaceholder} handleChange={handleFormChange} />
-              <div className="mt-6">
-                <SubmitButton isSubmitting={isSubmitting} />
-              </div>
-            </form>
-          </div>
+  
+  return (
+    <>
+      <ResourceHints />
+      <EnhancedStructuredData />
+      <section id="contact" className="py-20 bg-gradient-to-b from-[#FEFCFD] to-[#FDF9FC] relative overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-10">
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#133a63]/30 rounded-full blur-[90px]"></div>
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#010822]/20 rounded-full blur-[70px]"></div>
         </div>
-      </Container>
-    </section>;
+        
+        <Container className="relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="text-left lg:text-left md:text-center sm:text-center">
+              <h2 className="font-semibold uppercase tracking-wider text-[cb46b3] text-[#cb46b3]">DIGITAL ASSET SOLUTIONS</h2>
+              <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">
+                Partner With Us to Bring Your Project to Life
+              </h3>
+              <p className="mt-2 text-lg text-gray-600">
+                Have a project in mind or questions about our services? We're here to help you navigate the decentralized landscape.
+              </p>
+              <div className="mt-10 hidden md:block relative animate-float"></div>
+            </div>
+            
+            <div className="p-8 backdrop-blur-sm rounded-lg bg-white/20 relative" style={{
+            animationDelay: "0.3s",
+            boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
+            border: "1px solid rgba(255, 255, 255, 0.7)"
+          }}>
+              <form onSubmit={handleSubmit}>
+                <ContactFormFields formState={formState} currentPlaceholder={currentPlaceholder} handleChange={handleFormChange} />
+                <div className="mt-6">
+                  <SubmitButton isSubmitting={isSubmitting} />
+                </div>
+              </form>
+            </div>
+          </div>
+        </Container>
+      </section>
+    </>
+  );
 };
+
 export default ContactForm;

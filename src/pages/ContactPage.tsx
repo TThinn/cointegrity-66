@@ -7,6 +7,7 @@ import { SeoHead } from "@/components/seo/SeoHead";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { TestimonialsSchema } from "@/components/seo/TestimonialsSchema";
 
 const ContactPage = () => {
   const { currentPath } = useSectionTracking();
@@ -14,6 +15,7 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen bg-[#080112]" itemScope itemType="https://schema.org/WebPage">
       <SeoHead currentPath={currentPath} currentHash="" />
+      <TestimonialsSchema />
       
       <Header />
       <main id="main">
