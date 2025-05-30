@@ -80,16 +80,6 @@ const ContactFormFields = ({ formState, currentPlaceholder, handleChange }: Cont
           placeholder={currentPlaceholder.message}
         />
       </div>
-
-      <div className="text-sm text-gray-600 mt-2">
-        By clicking Send Message, you accept our{" "}
-        <a 
-          href="/privacy-policy" 
-          className="text-[#133a63] hover:text-[#133a63]/80 underline transition-colors"
-        >
-          Terms and Conditions
-        </a>
-      </div>
     </div>
   );
 };
