@@ -22,8 +22,9 @@ export const useCoreWebVitals = () => {
       if ('PerformanceObserver' in window) {
         const observer = new PerformanceObserver((list) => {
           const entries = list.getEntries();
-          const lastEntry = entries[entries.length - 1];
-          trackWebVital('LCP', lastEntry.startTime, lastEntry.id || 'unknown');
+          const lastEntry = entries[entries.length - 1] as any; // LCP-specific entry
+          const entryId = lastEntry.element?.tagName || `lcp-${Date.now()}`;
+          trackWebVital('LCP', lastEntry.startTime, entryId);
         });
         observer.observe({ entryTypes: ['largest-contentful-paint'] });
       }
@@ -34,7 +35,8 @@ export const useCoreWebVitals = () => {
       if ('PerformanceObserver' in window) {
         const observer = new PerformanceObserver((list) => {
           list.getEntries().forEach((entry: any) => {
-            trackWebVital('FID', entry.processingStart - entry.startTime, entry.name);
+            const entryId = entry.name || `fid-${Date.now()}`;
+            trackWebVital('FID', entry.processingStart - entry.startTime, entryId);
           });
         });
         observer.observe({ entryTypes: ['first-input'] });
