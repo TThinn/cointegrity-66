@@ -17,89 +17,75 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
   const getSectionTitle = () => {
     // Handle path-based pages first
     if (pathWithoutSlash === 'about') {
-      return "About Cointegrity | Leading Web3 & Blockchain Consulting Experts";
+      return "About Cointegrity | Web3 & Blockchain Experts";
     } else if (pathWithoutSlash === 'services') {
-      return "Web3 Consulting Services | Blockchain Strategy & MiCA Compliance | Cointegrity";
+      return "Our Web3 & Blockchain Services | Cointegrity";
     } else if (pathWithoutSlash === 'partners') {
-      return "Our Strategic Partners | Web3 Ecosystem & Blockchain Networks | Cointegrity";
+      return "Our Industry Partners | Cointegrity";
     } else if (pathWithoutSlash === 'team') {
-      return "Expert Web3 Team | Blockchain Consultants & Tokenomics Specialists | Cointegrity";
+      return "Meet Our Expert Team | Cointegrity Web3 Consultancy";
     } else if (pathWithoutSlash === 'testimonials') {
-      return "Client Success Stories & Reviews | Web3 Consulting Results | Cointegrity";
+      return "Client Success Stories | Cointegrity";
     } else if (pathWithoutSlash === 'contact') {
-      return "Contact Web3 Experts | Blockchain Consulting & MiCA Compliance | Cointegrity";
+      return "Contact Cointegrity | Web3 & Blockchain Consultation";
     }
     
     // Handle hash-based navigation on homepage
     switch(currentHash) {
       case "#founders":
-        return "Expert Web3 Team | Blockchain Consultants & Tokenomics Specialists | Cointegrity";
+        return "Meet Our Expert Team | Cointegrity Web3 Consultancy";
       case "#services":
-        return "Web3 Consulting Services | Blockchain Strategy & MiCA Compliance | Cointegrity";
+        return "Our Web3 & Blockchain Services | Cointegrity";
       case "#partners":
-        return "Our Strategic Partners | Web3 Ecosystem & Blockchain Networks | Cointegrity";
+        return "Our Industry Partners | Cointegrity";
       case "#testimonials":
-        return "Client Success Stories & Reviews | Web3 Consulting Results | Cointegrity";
+        return "Client Success Stories | Cointegrity";
       case "#about":
-        return "About Cointegrity | Leading Web3 & Blockchain Consulting Experts";
+        return "About Cointegrity | Web3 & Blockchain Experts";
       case "#contact":
-        return "Contact Web3 Experts | Blockchain Consulting & MiCA Compliance | Cointegrity";
+        return "Contact Cointegrity | Web3 & Blockchain Consultation";
       case "#faq":
-        return "Web3 & Blockchain FAQ | MiCA Compliance Questions | Cointegrity";
+        return "Frequently Asked Questions | Web3 & Blockchain | Cointegrity";
       default:
-        return "Cointegrity | Leading Web3 Consultancy | Blockchain Strategy & MiCA Compliance Experts";
+        return "Cointegrity Web3 Consultancy - Blockchain Solutions & Tokenomics Experts";
     }
   };
   
   const getSectionDescription = () => {
     // Handle path-based pages first
     if (pathWithoutSlash === 'about') {
-      return "Discover Cointegrity's mission to bridge traditional business with Web3 innovation. Our expert team specializes in blockchain strategy, tokenomics, and regulatory compliance to help organizations navigate the decentralized future successfully.";
+      return "Learn about Cointegrity's mission to simplify Web3 complexity and our comprehensive approach to blockchain consulting and implementation.";
     } else if (pathWithoutSlash === 'services') {
-      return "Comprehensive Web3 consulting services including blockchain strategy, tokenomics design, MiCA regulatory compliance, smart contract development, and digital asset advisory. Transform your business with expert Web3 guidance.";
+      return "Discover our comprehensive Web3 services including strategic positioning, tokenomics design, regulatory compliance, and capital acceleration solutions.";
     } else if (pathWithoutSlash === 'partners') {
-      return "Explore Cointegrity's extensive network of blockchain partners including Ethereum, Solana, Avalanche, and leading Web3 organizations. Discover our collaborative ecosystem driving innovation in decentralized technology.";
+      return "Explore our network of trusted industry partners helping us deliver exceptional blockchain solutions and digital asset services.";
     } else if (pathWithoutSlash === 'team') {
-      return "Meet Cointegrity's world-class team of Web3 specialists, blockchain developers, and regulatory experts. Our founders bring decades of experience in digital asset transformation and decentralized technology implementation.";
+      return "Meet the talented team of Web3 specialists behind Cointegrity's success. Our founders bring decades of experience in blockchain technology and digital asset transformation.";
     } else if (pathWithoutSlash === 'testimonials') {
-      return "Read authentic client testimonials and success stories from businesses Cointegrity has helped transform with Web3 technology. Discover how our blockchain consulting delivers measurable results and competitive advantages.";
+      return "Read what our clients say about Cointegrity's Web3 consultancy services. Real success stories from businesses we've helped transform.";
     } else if (pathWithoutSlash === 'contact') {
-      return "Connect with Cointegrity's Web3 experts for professional blockchain consulting, tokenomics advisory, and MiCA compliance guidance. Schedule a consultation to discuss your digital asset transformation strategy.";
+      return "Connect with Cointegrity's Web3 experts for consultation on blockchain technology, tokenomics, and regulatory compliance solutions.";
     }
     
     // Handle hash-based navigation on homepage
     switch(currentHash) {
       case "#founders":
-        return "Meet Cointegrity's world-class team of Web3 specialists, blockchain developers, and regulatory experts. Our founders bring decades of experience in digital asset transformation and decentralized technology implementation.";
+        return "Meet the talented team of Web3 specialists behind Cointegrity's success. Our founders bring decades of experience in blockchain technology and digital asset transformation.";
       case "#services":
-        return "Comprehensive Web3 consulting services including blockchain strategy, tokenomics design, MiCA regulatory compliance, smart contract development, and digital asset advisory. Transform your business with expert Web3 guidance.";
+        return "Discover our comprehensive Web3 services including strategic positioning, tokenomics design, regulatory compliance, and capital acceleration solutions.";
       case "#partners":
-        return "Explore Cointegrity's extensive network of blockchain partners including Ethereum, Solana, Avalanche, and leading Web3 organizations. Discover our collaborative ecosystem driving innovation in decentralized technology.";
+        return "Explore our network of trusted industry partners helping us deliver exceptional blockchain solutions and digital asset services.";
       case "#testimonials":
-        return "Read authentic client testimonials and success stories from businesses Cointegrity has helped transform with Web3 technology. Discover how our blockchain consulting delivers measurable results and competitive advantages.";
+        return "Read what our clients say about Cointegrity's Web3 consultancy services. Real success stories from businesses we've helped transform.";
       case "#about":
-        return "Discover Cointegrity's mission to bridge traditional business with Web3 innovation. Our expert team specializes in blockchain strategy, tokenomics, and regulatory compliance to help organizations navigate the decentralized future successfully.";
+        return "Learn about Cointegrity's mission to simplify Web3 complexity and our comprehensive approach to blockchain consulting and implementation.";
       case "#contact":
-        return "Connect with Cointegrity's Web3 experts for professional blockchain consulting, tokenomics advisory, and MiCA compliance guidance. Schedule a consultation to discuss your digital asset transformation strategy.";
+        return "Connect with Cointegrity's Web3 experts for consultation on blockchain technology, tokenomics, and regulatory compliance solutions.";
       case "#faq":
-        return "Get expert answers to common Web3, blockchain, and MiCA compliance questions from Cointegrity's experienced consultants. Learn about tokenomics, regulatory requirements, and digital asset transformation strategies.";
+        return "Get answers to common questions about blockchain, Web3, tokenomics, and MiCA compliance from Cointegrity's expert consultants.";
       default:
-        return "Leading Web3 consultancy specializing in blockchain strategy, tokenomics design, MiCA regulatory compliance, and digital asset transformation. Expert guidance for enterprises, governments, and Web3 startups navigating decentralized technology.";
+        return "Leading Web3 consultancy specialized in blockchain strategy, tokenomics design, and MiCA regulatory compliance for enterprises building the future of finance.";
     }
-  };
-
-  const getKeywords = () => {
-    const baseKeywords = "web3 consulting, blockchain strategy, tokenomics design, MiCA compliance, digital asset advisory";
-    
-    if (pathWithoutSlash === 'services' || currentHash === '#services') {
-      return `${baseKeywords}, smart contract development, DeFi consulting, NFT strategy, crypto compliance`;
-    } else if (pathWithoutSlash === 'team' || currentHash === '#founders') {
-      return `${baseKeywords}, blockchain experts, web3 specialists, crypto consultants, digital asset advisors`;
-    } else if (pathWithoutSlash === 'testimonials' || currentHash === '#testimonials') {
-      return `${baseKeywords}, client reviews, web3 success stories, blockchain case studies`;
-    }
-    
-    return baseKeywords;
   };
 
   // Get canonical URL based on whether it's path or hash based
@@ -127,7 +113,6 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
     <Helmet>
       <title>{getSectionTitle()}</title>
       <meta name="description" content={getSectionDescription()} />
-      <meta name="keywords" content={getKeywords()} />
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       
@@ -136,7 +121,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       <meta property="og:description" content={getSectionDescription()} />
       <meta property="og:type" content="website" />
       <meta property="og:image" content="https://cointegrity.io/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png" />
-      <meta property="og:image:alt" content="Cointegrity - Leading Web3 & Blockchain Consultancy" />
+      <meta property="og:image:alt" content="Cointegrity Logo" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:url" content={getCanonicalUrl()} />
@@ -149,16 +134,10 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       <meta name="twitter:title" content={getSectionTitle()} />
       <meta name="twitter:description" content={getSectionDescription()} />
       <meta name="twitter:image" content="https://cointegrity.io/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png" />
-      <meta name="twitter:image:alt" content="Cointegrity - Leading Web3 & Blockchain Consultancy" />
+      <meta name="twitter:image:alt" content="Cointegrity Logo" />
       
       {/* LinkedIn */}
       <meta property="linkedin:owner" content="Cointegrity" />
-      
-      {/* Additional SEO Meta Tags */}
-      <meta name="author" content="Cointegrity" />
-      <meta name="language" content="en" />
-      <meta name="geo.region" content="EU" />
-      <meta name="geo.placename" content="Europe" />
       
       {/* Favicon */}
       <link rel="icon" href="/lovable-uploads/4154e717-451c-4f01-9cf6-8117a4fa0149.png" type="image/png" />
