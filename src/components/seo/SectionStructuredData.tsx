@@ -13,7 +13,7 @@ import { SERVICE_FAQ_STRUCTURED_DATA } from "./serviceFaqStructuredData";
 
 // Return structured data objects instead of React components
 export const getStructuredData = (currentPath = "", currentHash = "") => {
-  const baseData = [
+  const baseData: any[] = [
     ENHANCED_BUSINESS_STRUCTURED_DATA,
     FAQ_STRUCTURED_DATA,
     WEBSITE_STRUCTURED_DATA,

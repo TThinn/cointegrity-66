@@ -12,7 +12,7 @@ interface WebVitalsMetric {
 export const useWebVitals = () => {
   useEffect(() => {
     // Dynamically import web-vitals to avoid blocking
-    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+    import('web-vitals').then((webVitals) => {
       const sendToAnalytics = (metric: WebVitalsMetric) => {
         if (window.gtag) {
           window.gtag('event', metric.name, {
@@ -33,11 +33,12 @@ export const useWebVitals = () => {
         });
       };
 
-      getCLS(sendToAnalytics);
-      getFID(sendToAnalytics);
-      getFCP(sendToAnalytics);
-      getLCP(sendToAnalytics);
-      getTTFB(sendToAnalytics);
+      // Use the correct import structure for web-vitals v4+
+      webVitals.onCLS(sendToAnalytics);
+      webVitals.onFID(sendToAnalytics);
+      webVitals.onFCP(sendToAnalytics);
+      webVitals.onLCP(sendToAnalytics);
+      webVitals.onTTFB(sendToAnalytics);
     }).catch(error => {
       console.warn('Web Vitals could not be loaded:', error);
     });
