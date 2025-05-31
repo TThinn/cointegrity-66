@@ -89,9 +89,9 @@ const ContactForm = () => {
               <div className="mt-6">
                 <SubmitButton isSubmitting={isSubmitting} />
                 <p className="text-xs text-gray-500 mt-2 text-center">
-                  By clicking "Send Message", you accept our{" "}
+                  By submitting this form, you agree to our{" "}
                   <Link to="/privacy" className="text-[#133a63] hover:text-[#133a63]/80 transition-colors">
-                    terms and conditions
+                    Privacy Policy
                   </Link>
                   .
                 </p>
