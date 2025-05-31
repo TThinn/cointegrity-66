@@ -24,12 +24,12 @@ export const getStructuredData = (currentPath = "", currentHash = "") => {
     generateBreadcrumbStructuredData(currentPath, currentHash)
   ];
 
-  // Add testimonials schema on testimonials page
+  // Add enhanced testimonials schema on testimonials page or section
   if (currentPath.includes('testimonials') || currentHash === '#testimonials') {
     baseData.push(TESTIMONIALS_STRUCTURED_DATA);
   }
 
-  // Add service-specific FAQ schemas
+  // Add service-specific FAQ schemas with enhanced structure
   if (currentPath.includes('services') || currentHash === '#services') {
     baseData.push(
       SERVICE_FAQ_STRUCTURED_DATA.strategicPositioning,
