@@ -12,7 +12,7 @@ interface WebVitalsMetric {
 export const useWebVitals = () => {
   useEffect(() => {
     // Dynamically import web-vitals to avoid blocking
-    import('web-vitals').then((webVitals) => {
+    import('web-vitals').then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
       const sendToAnalytics = (metric: WebVitalsMetric) => {
         if (window.gtag) {
           window.gtag('event', metric.name, {
@@ -33,12 +33,12 @@ export const useWebVitals = () => {
         });
       };
 
-      // Use the correct import structure for web-vitals v4+
-      webVitals.onCLS(sendToAnalytics);
-      webVitals.onFID(sendToAnalytics);
-      webVitals.onFCP(sendToAnalytics);
-      webVitals.onLCP(sendToAnalytics);
-      webVitals.onTTFB(sendToAnalytics);
+      // Use the correct functions for web-vitals v3+
+      onCLS(sendToAnalytics);
+      onINP(sendToAnalytics); // INP replaced FID in web-vitals v3+
+      onFCP(sendToAnalytics);
+      onLCP(sendToAnalytics);
+      onTTFB(sendToAnalytics);
     }).catch(error => {
       console.warn('Web Vitals could not be loaded:', error);
     });
