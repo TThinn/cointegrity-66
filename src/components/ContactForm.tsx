@@ -4,7 +4,10 @@ import Container from "./ui/Container";
 import ContactFormFields from "./contact/ContactFormFields";
 import SubmitButton from "./contact/SubmitButton";
 import { useContactForm } from "@/hooks/useContactForm";
+import { Link } from "react-router-dom";
+
 const RECAPTCHA_SITE_KEY = "6Lc_BCMrAAAAAAJ53CbmGbCdpq1plgfqyOJjInN1";
+
 const ContactForm = () => {
   const {
     formState,
@@ -14,8 +17,10 @@ const ContactForm = () => {
     handleChange,
     handleSubmit
   } = useContactForm();
+  
   const [currentPlaceholder, setCurrentPlaceholder] = useState<PlaceholderData>(placeholders[0]);
   const [isTyping, setIsTyping] = useState(false);
+
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
     if (!isTyping) {
@@ -33,6 +38,7 @@ const ContactForm = () => {
       }
     };
   }, [isTyping]);
+  
   useEffect(() => {
     const loadRecaptcha = async () => {
       try {
@@ -55,11 +61,14 @@ const ContactForm = () => {
     };
     loadRecaptcha();
   }, [setRecaptchaLoaded]);
+  
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setIsTyping(true);
     handleChange(e);
   };
-  return <section id="contact" className="py-20 bg-gradient-to-b from-[#FEFCFD] to-[#FDF9FC] relative overflow-hidden">
+
+  return (
+    <section id="contact" className="py-20 bg-gradient-to-b from-[#FEFCFD] to-[#FDF9FC] relative overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-10">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#133a63]/30 rounded-full blur-[90px]"></div>
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#010822]/20 rounded-full blur-[70px]"></div>
@@ -79,19 +88,35 @@ const ContactForm = () => {
           </div>
           
           <div className="p-8 backdrop-blur-sm rounded-lg bg-white/20 relative" style={{
-          animationDelay: "0.3s",
-          boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
-          border: "1px solid rgba(255, 255, 255, 0.7)"
-        }}>
+            animationDelay: "0.3s",
+            boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
+            border: "1px solid rgba(255, 255, 255, 0.7)"
+          }}>
             <form onSubmit={handleSubmit}>
-              <ContactFormFields formState={formState} currentPlaceholder={currentPlaceholder} handleChange={handleFormChange} />
+              <ContactFormFields 
+                formState={formState} 
+                currentPlaceholder={currentPlaceholder} 
+                handleChange={handleFormChange} 
+              />
               <div className="mt-6">
                 <SubmitButton isSubmitting={isSubmitting} />
+                <p className="text-xs text-gray-500 mt-2 text-center">
+                  By clicking "Send Message", you accept our{" "}
+                  <Link 
+                    to="/privacy" 
+                    className="text-[#133a63] hover:text-[#133a63]/80 transition-colors"
+                  >
+                    terms and conditions
+                  </Link>
+                  .
+                </p>
               </div>
             </form>
           </div>
         </div>
       </Container>
-    </section>;
+    </section>
+  );
 };
+
 export default ContactForm;

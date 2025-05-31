@@ -18,6 +18,9 @@ import ContactPage from "./pages/ContactPage"
 import GlossaryPage from "./pages/GlossaryPage"
 import ThankYouPage from "./pages/ThankYouPage"
 import { useAnalytics } from "./hooks/useAnalytics"
+import { useWebVitals } from "./hooks/useWebVitals"
+import { useServiceWorker } from "./hooks/useServiceWorker"
+import { ResourceHints } from "./components/seo/ResourceHints"
 import './index.css'
 import './App.css'
 
@@ -37,44 +40,51 @@ const RouteTracker = () => {
   return null;
 };
 
-const App = () => (
-  <React.StrictMode>
-    <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <BrowserRouter>
-            <RouteTracker />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/partners" element={<PartnersPage />} />
-              <Route path="/process" element={<ProcessPage />} />
-              <Route path="/team" element={<TeamPage />} />
-              <Route path="/testimonials" element={<TestimonialsPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/privacy" element={<PrivacyPolicy />} />
-              <Route path="/glossary" element={<GlossaryPage />} />
-              <Route path="/thank-you" element={<ThankYouPage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-          <Toaster 
-            position="top-center" 
-            closeButton
-            toastOptions={{
-              className: "toast-blur-container",
-              style: {
-                background: "transparent",
-                border: "none",
-                boxShadow: "none",
-              }
-            }}
-          />
-        </TooltipProvider>
-      </QueryClientProvider>
-    </HelmetProvider>
-  </React.StrictMode>
-);
+const App = () => {
+  // Initialize performance monitoring
+  useWebVitals();
+  useServiceWorker();
+
+  return (
+    <React.StrictMode>
+      <HelmetProvider>
+        <ResourceHints />
+        <QueryClientProvider client={queryClient}>
+          <TooltipProvider>
+            <BrowserRouter>
+              <RouteTracker />
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/services" element={<ServicesPage />} />
+                <Route path="/partners" element={<PartnersPage />} />
+                <Route path="/process" element={<ProcessPage />} />
+                <Route path="/team" element={<TeamPage />} />
+                <Route path="/testimonials" element={<TestimonialsPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
+                <Route path="/glossary" element={<GlossaryPage />} />
+                <Route path="/thank-you" element={<ThankYouPage />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+            <Toaster 
+              position="top-center" 
+              closeButton
+              toastOptions={{
+                className: "toast-blur-container",
+                style: {
+                  background: "transparent",
+                  border: "none",
+                  boxShadow: "none",
+                }
+              }}
+            />
+          </TooltipProvider>
+        </QueryClientProvider>
+      </HelmetProvider>
+    </React.StrictMode>
+  );
+};
 
 export default App;
