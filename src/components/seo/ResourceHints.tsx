@@ -35,7 +35,7 @@ export const ResourceHints = () => {
           key={connection.href} 
           rel="preconnect" 
           href={connection.href} 
-          crossOrigin={connection.crossorigin || undefined} 
+          crossOrigin={connection.crossorigin === "" ? "anonymous" : connection.crossorigin || undefined} 
         />
       ))}
       
@@ -47,7 +47,7 @@ export const ResourceHints = () => {
           href={resource.href}
           as={resource.as}
           type={resource.type}
-          crossOrigin={resource.crossorigin || undefined}
+          crossOrigin={resource.crossorigin === "" ? "anonymous" : resource.crossorigin || undefined}
         />
       ))}
       
