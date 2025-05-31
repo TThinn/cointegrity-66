@@ -15,6 +15,13 @@ export const ResourceHints = () => {
     .map(([directive, sources]) => `${directive} ${sources.join(' ')}`)
     .join('; ');
 
+  // Helper function to ensure valid CrossOrigin values
+  const getCrossOriginValue = (crossorigin?: string): "anonymous" | "use-credentials" | undefined => {
+    if (crossorigin === "" || crossorigin === "anonymous") return "anonymous";
+    if (crossorigin === "use-credentials") return "use-credentials";
+    return undefined;
+  };
+
   return (
     <Helmet>
       {/* Security and Performance Headers */}
@@ -35,7 +42,7 @@ export const ResourceHints = () => {
           key={connection.href} 
           rel="preconnect" 
           href={connection.href} 
-          crossOrigin={connection.crossorigin === "" ? "anonymous" : connection.crossorigin || undefined} 
+          crossOrigin={getCrossOriginValue(connection.crossorigin)} 
         />
       ))}
       
@@ -47,7 +54,7 @@ export const ResourceHints = () => {
           href={resource.href}
           as={resource.as}
           type={resource.type}
-          crossOrigin={resource.crossorigin === "" ? "anonymous" : resource.crossorigin || undefined}
+          crossOrigin={getCrossOriginValue(resource.crossorigin)}
         />
       ))}
       
