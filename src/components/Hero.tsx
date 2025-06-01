@@ -4,7 +4,7 @@ import Container from "./ui/Container";
 import HeroParticles from "./hero/HeroParticles";
 import HeroContent from "./hero/HeroContent";
 import HeroCTA from "./hero/HeroCTA";
-import HeroStats from "./hero/HeroStats";
+// import HeroStats from "./hero/HeroStats"; // Retained for later use
 
 const Hero = () => {
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -47,7 +47,7 @@ const Hero = () => {
       <Container className="hero-content relative z-8 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
         <HeroContent />
         <HeroCTA ref={ctaRef} />
-        <HeroStats />
+         {/* <HeroStats /> */}
       </Container>
     </section>
   );
