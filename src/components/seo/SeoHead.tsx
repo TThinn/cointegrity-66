@@ -5,6 +5,10 @@ import { useLocation } from "react-router-dom";
 import { InternalLinkingStructuredData } from "./InternalLinkingStructuredData";
 import { HreflangSupport } from "./HreflangSupport";
 import { PerformanceOptimization } from "./PerformanceOptimization";
+import { DynamicLinkSuggestions } from "./DynamicLinkSuggestions";
+import { RelatedContentRecommendations } from "./RelatedContentRecommendations";
+import { ContentFreshnessIndicators } from "./ContentFreshnessIndicators";
+import { ExpertiseAuthoritySignals } from "./ExpertiseAuthoritySignals";
 
 interface SeoHeadProps {
   currentPath: string;
@@ -165,6 +169,12 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       <InternalLinkingStructuredData currentPath={currentPath} />
       <HreflangSupport currentPath={currentPath} />
       <PerformanceOptimization />
+      
+      {/* New advanced SEO components */}
+      <DynamicLinkSuggestions currentPath={currentPath} currentHash={currentHash} />
+      <RelatedContentRecommendations currentPath={currentPath} currentHash={currentHash} />
+      <ContentFreshnessIndicators currentPath={currentPath} />
+      <ExpertiseAuthoritySignals currentPath={currentPath} currentHash={currentHash} />
     </>
   );
 };
