@@ -9,6 +9,9 @@ import { DynamicLinkSuggestions } from "./DynamicLinkSuggestions";
 import { RelatedContentRecommendations } from "./RelatedContentRecommendations";
 import { ContentFreshnessIndicators } from "./ContentFreshnessIndicators";
 import { ExpertiseAuthoritySignals } from "./ExpertiseAuthoritySignals";
+import { AISearchOptimization } from "./AISearchOptimization";
+import { ConversationalSearchData } from "./ConversationalSearchData";
+import { EntityRelationshipData } from "./EntityRelationshipData";
 
 interface SeoHeadProps {
   currentPath: string;
@@ -165,16 +168,19 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
         ))}
       </Helmet>
       
-      {/* Add new SEO components */}
+      {/* Existing SEO components */}
       <InternalLinkingStructuredData currentPath={currentPath} />
       <HreflangSupport currentPath={currentPath} />
       <PerformanceOptimization />
-      
-      {/* New advanced SEO components */}
       <DynamicLinkSuggestions currentPath={currentPath} currentHash={currentHash} />
       <RelatedContentRecommendations currentPath={currentPath} currentHash={currentHash} />
       <ContentFreshnessIndicators currentPath={currentPath} />
       <ExpertiseAuthoritySignals currentPath={currentPath} currentHash={currentHash} />
+      
+      {/* New AI search optimization components */}
+      <AISearchOptimization currentPath={currentPath} currentHash={currentHash} />
+      <ConversationalSearchData currentPath={currentPath} currentHash={currentHash} />
+      <EntityRelationshipData currentPath={currentPath} currentHash={currentHash} />
     </>
   );
 };
