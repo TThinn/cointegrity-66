@@ -4289,6 +4289,71 @@ trending: 8
   categories: ["blockchain_technology", "exchanges_trading"],
   related: ["Front-running", "MEV", "Transaction Analysis", "Gas Price Optimization"],
   trending: 7
+},
+
+{
+  term: "Ordinals",
+  definition: "A protocol that enables the inscription of arbitrary data, including images, text, and other digital content, directly onto individual satoshis (the smallest unit of Bitcoin). Created by Casey Rodarmor in 2023, Ordinals assigns unique identifiers to each satoshi based on the order they were mined, allowing for the creation of Bitcoin-native NFTs and digital artifacts without requiring additional tokens or sidechains.",
+  categories: ["nfts_collectibles", "blockchain_technology"],
+  related: ["Bitcoin", "Satoshis", "Digital Artifacts", "Inscriptions"],
+  trending: 9
+},
+
+{
+  term: "Inscriptions",
+  definition: "Digital content permanently embedded into Bitcoin transactions using the Ordinals protocol. Inscriptions can contain images, text, audio, or other data types that become immutable parts of the Bitcoin blockchain. Unlike traditional NFTs that often store metadata off-chain, inscriptions are fully on-chain, making them truly permanent and censorship-resistant.",
+  categories: ["nfts_collectibles", "blockchain_technology"],
+  related: ["Ordinals", "Bitcoin NFTs", "On-chain Data", "Digital Artifacts"],
+  trending: 8
+},
+
+{
+  term: "BRC-20",
+  definition: "An experimental token standard built on Bitcoin using the Ordinals protocol to create fungible tokens through JSON inscriptions. BRC-20 tokens enable the creation of meme coins and other fungible assets directly on Bitcoin, though they require specialized indexers to track balances and transfers since Bitcoin doesn't natively support smart contracts.",
+  categories: ["cryptocurrency_types", "blockchain_technology"],
+  related: ["Ordinals", "Bitcoin Tokens", "Fungible Tokens", "Inscriptions"],
+  trending: 7
+},
+
+{
+  term: "Runes",
+  definition: "A fungible token protocol for Bitcoin designed by Casey Rodarmor as a more efficient alternative to BRC-20 tokens. Runes use Bitcoin's UTXO model and OP_RETURN outputs to create and transfer tokens with better on-chain efficiency and native Bitcoin wallet compatibility, representing an evolution in Bitcoin-based token standards.",
+  categories: ["cryptocurrency_types", "blockchain_technology"],
+  related: ["Bitcoin", "Fungible Tokens", "UTXO Model", "OP_RETURN"],
+  trending: 7
+},
+
+{
+  term: "Bitcoin NFTs",
+  definition: "Non-fungible digital assets created on the Bitcoin blockchain through protocols like Ordinals, Counterparty, or Stacks. Bitcoin NFTs leverage the security and permanence of the Bitcoin network, with Ordinals-based NFTs being fully on-chain and immutable, offering different characteristics compared to Ethereum-based NFTs.",
+  categories: ["nfts_collectibles", "blockchain_technology"],
+  related: ["Ordinals", "Inscriptions", "Digital Collectibles", "On-chain NFTs"],
+  trending: 8
+},
+
+{
+  term: "Rare Sats",
+  definition: "Satoshis with special significance based on their position in Bitcoin's mining history, such as the first satoshi of a block, the first satoshi after a halving event, or satoshis from historically significant blocks. The Ordinals protocol creates a framework for tracking and trading these 'rare' satoshis as collectibles.",
+  categories: ["nfts_collectibles", "crypto_history"],
+  related: ["Ordinals", "Bitcoin History", "Collectible Satoshis", "Halving Events"],
+  trending: 6
+},
+
+{
+  term: "Taproot",
+  definition: "A Bitcoin upgrade activated in November 2021 that improved privacy, efficiency, and smart contract capabilities through Schnorr signatures and MAST (Merkelized Abstract Syntax Trees). Taproot enabled more complex Bitcoin applications and made the Ordinals protocol technically feasible by allowing larger data inscriptions in Bitcoin transactions.",
+  categories: ["blockchain_technology", "privacy_technology"],
+  related: ["Bitcoin Upgrade", "Schnorr Signatures", "MAST", "Smart Contracts"],
+  trending: 7
+},
+
+{
+  term: "SegWit",
+  definition: "Segregated Witness, a Bitcoin protocol upgrade activated in 2017 that separated transaction signature data from transaction data, effectively increasing block capacity and enabling the Lightning Network. SegWit also fixed transaction malleability issues and laid groundwork for future Bitcoin innovations including Taproot.",
+  categories: ["blockchain_technology", "layer2_solutions"],
+  related: ["Bitcoin Scaling", "Lightning Network", "Transaction Malleability", "Block Capacity"],
+  trending: 6
 }
+
 
 ];
