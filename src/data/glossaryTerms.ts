@@ -3058,5 +3058,165 @@ trending: 8
   categories: ["cryptocurrency_types", "defi"],
   related: ["Algorithmic Pegging", "Supply Adjustment", "Decentralized Stability", "Experimental Stablecoins"],
   trending: 6
+},
+
+{
+  term: "Lightning Network",
+  definition: "A Layer-2 payment protocol built on top of Bitcoin that enables instant, low-cost transactions through off-chain payment channels. Users can open channels with each other, conduct unlimited transactions off-chain, and settle the final balance on the Bitcoin blockchain. This network of interconnected channels allows payments to be routed through multiple hops, enabling fast micropayments and significantly improving Bitcoin's scalability.",
+  categories: ["infrastructure_applications", "layer2_solutions"],
+  related: ["Payment Channels", "Off-chain Scaling", "Bitcoin", "Micropayments"],
+  trending: 9
+},
+
+{
+  term: "Payment Channels",
+  definition: "Direct connections between two parties that allow multiple transactions to occur off-chain before settling the final balance on the main blockchain. Payment channels form the foundation of Layer-2 scaling solutions like Lightning Network, enabling instant transactions with minimal fees by keeping most activity off the congested main chain while maintaining security through cryptographic commitments.",
+  categories: ["infrastructure_applications", "layer2_solutions"],
+  related: ["Lightning Network", "State Channels", "Off-chain Transactions", "Channel Liquidity"],
+  trending: 8
+},
+
+{
+  term: "State Channels",
+  definition: "Off-chain protocols that allow participants to conduct multiple transactions privately before broadcasting only the final state to the blockchain. These channels enable complex interactions like gaming or micropayments to occur instantly and cheaply, with the blockchain serving as a settlement layer for disputes or final outcomes, significantly reducing on-chain congestion.",
+  categories: ["infrastructure_applications", "layer2_solutions"],
+  related: ["Payment Channels", "Off-chain Scaling", "Dispute Resolution", "Channel States"],
+  trending: 7
+},
+
+{
+  term: "Rollups",
+  definition: "Layer-2 scaling solutions that execute transactions off-chain while posting transaction data to the main blockchain for security. Optimistic Rollups assume transactions are valid unless challenged, while ZK-Rollups use zero-knowledge proofs to guarantee validity. Both approaches dramatically increase throughput while inheriting the security properties of the underlying blockchain.",
+  categories: ["infrastructure_applications", "layer2_solutions"],
+  related: ["Optimistic Rollups", "ZK-Rollups", "Data Availability", "Fraud Proofs"],
+  trending: 9
+},
+
+{
+  term: "Optimistic Rollups",
+  definition: "Layer-2 scaling solutions that assume transactions are valid by default and only verify them if challenged during a dispute period. This optimistic approach allows for high throughput and EVM compatibility, making it easy to port existing Ethereum applications. Examples include Arbitrum and Optimism, which offer significantly lower fees than Ethereum mainnet.",
+  categories: ["infrastructure_applications", "layer2_solutions"],
+  related: ["Fraud Proofs", "Challenge Period", "Arbitrum", "Optimism"],
+  trending: 8
+},
+
+{
+  term: "ZK-Rollups",
+  definition: "Layer-2 scaling solutions that use zero-knowledge proofs to verify the correctness of off-chain transactions before submitting them to the main blockchain. ZK-Rollups provide instant finality and stronger security guarantees than Optimistic Rollups but require more computational resources to generate proofs. Examples include zkSync and StarkNet.",
+  categories: ["infrastructure_applications", "layer2_solutions"],
+  related: ["Zero-Knowledge Proofs", "zkSync", "StarkNet", "Validity Proofs"],
+  trending: 9
+},
+
+{
+  term: "Sidechains",
+  definition: "Independent blockchains that run parallel to a main blockchain and are connected through two-way pegs, allowing assets to be transferred between chains. Sidechains can have different consensus mechanisms, block times, and features while maintaining interoperability with the parent chain. Examples include Polygon PoS and Liquid Network for Bitcoin.",
+  categories: ["infrastructure_applications", "cross_chain"],
+  related: ["Two-way Pegs", "Polygon", "Liquid Network", "Parallel Chains"],
+  trending: 7
+},
+
+{
+  term: "Plasma",
+  definition: "A Layer-2 scaling framework that creates child chains anchored to the main Ethereum blockchain, processing transactions off-chain while periodically committing merkle roots to the main chain. Plasma chains can handle thousands of transactions per second but require users to monitor the network for fraudulent activity and exit to the main chain if necessary.",
+  categories: ["infrastructure_applications", "layer2_solutions"],
+  related: ["Child Chains", "Merkle Trees", "Exit Games", "Fraud Detection"],
+  trending: 6
+},
+
+{
+  term: "Validium",
+  definition: "A scaling solution that combines the computational efficiency of ZK-Rollups with off-chain data availability, achieving higher throughput by storing transaction data off the main blockchain. While this reduces costs and increases speed, it introduces additional trust assumptions regarding data availability, making it suitable for applications prioritizing performance over maximum security.",
+  categories: ["infrastructure_applications", "layer2_solutions"],
+  related: ["ZK-Rollups", "Data Availability", "Off-chain Storage", "Trust Assumptions"],
+  trending: 7
+},
+
+{
+  term: "Blockchain Bridges",
+  definition: "Protocols that enable the transfer of assets and data between different blockchain networks, facilitating interoperability in the multi-chain ecosystem. Bridges can be trusted (requiring validators) or trustless (using smart contracts and cryptographic proofs), with each approach offering different trade-offs between security, speed, and decentralization.",
+  categories: ["infrastructure_applications", "cross_chain"],
+  related: ["Cross-chain Transfers", "Wrapped Assets", "Bridge Security", "Interoperability"],
+  trending: 8
+},
+
+{
+  term: "Atomic Swaps",
+  definition: "Peer-to-peer exchanges of cryptocurrencies from different blockchains without requiring a trusted third party or centralized exchange. Using hash time-locked contracts (HTLCs), atomic swaps ensure that either both parties receive their intended assets or the transaction fails completely, eliminating counterparty risk in cross-chain trading.",
+  categories: ["infrastructure_applications", "cross_chain"],
+  related: ["Hash Time-Locked Contracts", "Cross-chain Trading", "Trustless Exchange", "Decentralized Trading"],
+  trending: 7
+},
+
+{
+  term: "Hash Time-Locked Contracts (HTLCs)",
+  definition: "Smart contracts that require the recipient to acknowledge payment within a specified timeframe by generating a cryptographic proof, or forfeit the ability to claim the payment. HTLCs enable atomic swaps and payment routing in networks like Lightning, ensuring transactions either complete successfully or automatically reverse without loss of funds.",
+  categories: ["infrastructure_applications", "smart_contracts"],
+  related: ["Atomic Swaps", "Lightning Network", "Payment Routing", "Time Locks"],
+  trending: 7
+},
+
+{
+  term: "Consensus Algorithms",
+  definition: "Protocols that enable distributed networks to agree on the state of the blockchain without central authority. Different algorithms like Proof of Work, Proof of Stake, Delegated Proof of Stake, and Practical Byzantine Fault Tolerance offer various trade-offs between security, energy efficiency, decentralization, and transaction throughput.",
+  categories: ["infrastructure_applications", "blockchain_technology"],
+  related: ["Proof of Work", "Proof of Stake", "Byzantine Fault Tolerance", "Network Security"],
+  trending: 8
+},
+
+{
+  term: "Byzantine Fault Tolerance",
+  definition: "The ability of a distributed system to continue operating correctly even when some nodes fail or act maliciously, derived from the Byzantine Generals Problem. Blockchain networks must achieve Byzantine fault tolerance to maintain security and consensus in environments where participants may be unreliable or adversarial.",
+  categories: ["infrastructure_applications", "blockchain_technology"],
+  related: ["Consensus Mechanisms", "Network Security", "Fault Tolerance", "Distributed Systems"],
+  trending: 7
+},
+
+{
+  term: "Finality",
+  definition: "The assurance that a transaction cannot be reversed or altered once confirmed on a blockchain. Different consensus mechanisms provide different types of finality: probabilistic finality (Bitcoin) where confidence increases over time, or absolute finality (some PoS chains) where transactions are immediately irreversible once confirmed.",
+  categories: ["infrastructure_applications", "blockchain_technology"],
+  related: ["Transaction Confirmation", "Block Confirmations", "Consensus Mechanisms", "Settlement"],
+  trending: 7
+},
+
+{
+  term: "Throughput",
+  definition: "The number of transactions a blockchain network can process per second (TPS), a critical performance metric for scalability. Bitcoin processes about 7 TPS, Ethereum around 15 TPS, while some newer blockchains and Layer-2 solutions claim thousands of TPS through various optimization techniques and architectural improvements.",
+  categories: ["infrastructure_applications", "blockchain_technology"],
+  related: ["Transactions Per Second", "Network Capacity", "Scalability", "Performance Metrics"],
+  trending: 8
+},
+
+{
+  term: "Data Availability",
+  definition: "The guarantee that all data needed to verify and reconstruct blockchain state is accessible to network participants. This is crucial for Layer-2 solutions and sharded blockchains, where nodes must be able to access transaction data to detect fraud or validate state transitions, even if they don't store the entire blockchain locally.",
+  categories: ["infrastructure_applications", "blockchain_technology"],
+  related: ["Data Availability Sampling", "Light Clients", "Fraud Proofs", "Network Verification"],
+  trending: 8
+},
+
+{
+  term: "Modular Blockchains",
+  definition: "Blockchain architectures that separate core functions like consensus, execution, and data availability into specialized layers, allowing each component to be optimized independently. This approach enables greater scalability and flexibility compared to monolithic blockchains that handle all functions in a single layer, exemplified by projects like Celestia and Polygon Avail.",
+  categories: ["infrastructure_applications", "blockchain_technology"],
+  related: ["Celestia", "Polygon Avail", "Execution Layers", "Consensus Layers"],
+  trending: 9
+},
+
+{
+  term: "Sequencers",
+  definition: "Specialized nodes in Layer-2 networks responsible for ordering and batching transactions before submitting them to the main blockchain. Sequencers play a crucial role in rollup architectures by determining transaction order and providing fast pre-confirmations, though centralized sequencers can create bottlenecks and censorship risks.",
+  categories: ["infrastructure_applications", "layer2_solutions"],
+  related: ["Transaction Ordering", "Rollups", "MEV", "Decentralized Sequencing"],
+  trending: 8
+},
+
+{
+  term: "Fraud Proofs",
+  definition: "Cryptographic evidence that demonstrates invalid state transitions in optimistic systems, allowing anyone to challenge incorrect computations and trigger penalties. Fraud proofs are essential for Optimistic Rollups, enabling the network to detect and punish malicious behavior while maintaining high throughput through optimistic assumptions about transaction validity.",
+  categories: ["infrastructure_applications", "layer2_solutions"],
+  related: ["Optimistic Rollups", "Challenge Period", "Dispute Resolution", "Interactive Proving"],
+  trending: 7
 }
 ];
