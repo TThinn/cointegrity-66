@@ -4129,6 +4129,166 @@ trending: 8
   categories: ["crypto_economics", "defi"],
   related: ["MEV", "Value Distribution", "Protocol Revenue", "User Rebates"],
   trending: 8
+},
+
+{
+  term: "Sniping",
+  definition: "A trading strategy where bots or sophisticated traders exploit the first moments of token launches, liquidity additions, or other market events to capture immediate profits. Snipers use automated systems to detect new trading opportunities and execute trades within the same block or immediately after, often front-running regular users and extracting value through superior speed and information access.",
+  categories: ["exchanges_trading", "defi"],
+  related: ["Front-running", "MEV", "Bot Trading", "Launch Exploitation"],
+  trending: 8
+},
+
+{
+  term: "Front-running",
+  definition: "The practice of placing transactions ahead of known pending transactions to profit from anticipated price movements. In crypto, this involves monitoring the mempool for large trades and submitting higher gas fee transactions to execute first, capturing arbitrage opportunities or manipulating prices before the original transaction processes.",
+  categories: ["exchanges_trading", "defi"],
+  related: ["MEV", "Sandwich Attacks", "Gas Wars", "Transaction Ordering"],
+  trending: 8
+},
+
+{
+  term: "Rug Pull",
+  definition: "A type of exit scam where cryptocurrency project developers abandon a project and steal investor funds, often by removing liquidity from decentralized exchanges or selling large token allocations. Rug pulls are particularly common in DeFi projects with unaudited smart contracts and anonymous development teams, representing one of the most prevalent forms of crypto fraud.",
+  categories: ["defi", "wallets_security"],
+  related: ["Exit Scam", "Liquidity Removal", "Smart Contract Risk", "Due Diligence"],
+  trending: 8
+},
+
+{
+  term: "Honeypot Tokens",
+  definition: "Malicious smart contracts designed to trap investors by allowing purchases but preventing sales through hidden code restrictions. These tokens appear legitimate and may even show price appreciation, but contain mechanisms that block sell transactions, effectively stealing funds from unsuspecting buyers who cannot exit their positions.",
+  categories: ["wallets_security", "smart_contracts"],
+  related: ["Smart Contract Exploits", "Token Scams", "Code Audits", "Sell Restrictions"],
+  trending: 7
+},
+
+{
+  term: "Bridge Exploits",
+  definition: "Attacks targeting cross-chain bridge protocols that facilitate asset transfers between different blockchains. These exploits often involve manipulating smart contract logic, compromising multi-signature wallets, or exploiting validation mechanisms to mint unauthorized tokens or drain bridge reserves, representing some of the largest DeFi hacks in history.",
+  categories: ["cross_chain", "wallets_security"],
+  related: ["Cross-chain Bridges", "Multi-sig Exploits", "Validation Attacks", "Bridge Security"],
+  trending: 8
+},
+
+{
+  term: "Oracle Manipulation",
+  definition: "Attacks that exploit price oracle vulnerabilities to manipulate the external data feeds that smart contracts rely on for accurate pricing. Attackers may use flash loans to temporarily distort prices on low-liquidity exchanges that oracles reference, causing protocols to make decisions based on false information and enabling profitable arbitrage or liquidation attacks.",
+  categories: ["defi", "infrastructure_applications"],
+  related: ["Price Oracles", "Flash Loan Attacks", "Market Manipulation", "Data Feed Security"],
+  trending: 7
+},
+
+{
+  term: "Governance Attacks",
+  definition: "Exploits targeting decentralized governance systems where attackers acquire enough voting tokens to pass malicious proposals that benefit them at the expense of other users. These attacks may involve flash loans to temporarily boost voting power, coordinated token purchases, or exploiting governance mechanism flaws to drain treasuries or modify protocol parameters.",
+  categories: ["social_community", "defi"],
+  related: ["Governance Tokens", "Flash Loan Governance", "Voting Power", "Protocol Governance"],
+  trending: 7
+},
+
+{
+  term: "Liquidity Sniping",
+  definition: "The practice of immediately extracting liquidity from newly created pools or automated market makers, often using bots to detect and exploit liquidity additions within the same transaction block. This strategy can destabilize new projects and prevent fair price discovery by removing available liquidity before regular users can trade.",
+  categories: ["defi", "exchanges_trading"],
+  related: ["Liquidity Pools", "AMM Exploitation", "Bot Trading", "Price Manipulation"],
+  trending: 7
+},
+
+{
+  term: "Mint Sniping",
+  definition: "Automated strategies that exploit NFT or token minting events by using bots to secure the most valuable or limited items immediately upon release. Mint snipers often use multiple wallets, high gas fees, and sophisticated timing to front-run regular users, capturing rare NFTs or tokens that can be immediately resold for profit.",
+  categories: ["nfts_collectibles", "exchanges_trading"],
+  related: ["NFT Launches", "Bot Trading", "Gas Wars", "Rarity Sniping"],
+  trending: 7
+},
+
+{
+  term: "Gas Wars",
+  definition: "Competitive bidding situations where multiple parties increase transaction fees (gas prices) to ensure their transactions are processed first, often occurring during token launches, NFT drops, or arbitrage opportunities. Gas wars can drive transaction costs to extreme levels and create network congestion while benefiting miners or validators who receive the inflated fees.",
+  categories: ["blockchain_technology", "exchanges_trading"],
+  related: ["Transaction Fees", "Network Congestion", "Priority Fees", "MEV"],
+  trending: 7
+},
+
+{
+  term: "Vampire Attacks",
+  definition: "Aggressive strategies where new DeFi protocols attempt to drain liquidity from established competitors by offering superior incentives to liquidity providers. These attacks involve launching competing protocols with higher yields or token rewards to attract users and their capital away from existing platforms, potentially destabilizing the targeted protocols.",
+  categories: ["defi", "crypto_economics"],
+  related: ["Liquidity Migration", "Yield Farming", "Protocol Competition", "Incentive Wars"],
+  trending: 6
+},
+
+{
+  term: "Sandwich Attacks",
+  definition: "A form of MEV exploitation where attackers place transactions before and after a victim's trade to profit from price movements. The attacker buys tokens before the victim's purchase (driving up price), then sells after the victim's transaction completes, extracting value through artificial price manipulation enabled by transaction ordering control.",
+  categories: ["defi", "wallets_security"],
+  related: ["MEV", "Front-running", "Transaction Ordering", "Price Manipulation"],
+  trending: 8
+},
+
+{
+  term: "Reentrancy Attacks",
+  definition: "Smart contract exploits where malicious contracts repeatedly call vulnerable functions before the original transaction completes, potentially draining funds or manipulating state. The famous DAO hack of 2016 used this technique, and reentrancy remains a common vulnerability in DeFi protocols that don't properly implement checks-effects-interactions patterns.",
+  categories: ["smart_contracts", "wallets_security"],
+  related: ["Smart Contract Vulnerabilities", "The DAO Hack", "Function Calls", "State Manipulation"],
+  trending: 7
+},
+
+{
+  term: "Time-based Attacks",
+  definition: "Exploits that manipulate blockchain timestamp dependencies or exploit time-sensitive protocol mechanisms. These attacks may involve miner timestamp manipulation, exploiting time-weighted average prices during specific windows, or taking advantage of time-locked contracts and vesting schedules to extract value through precise timing.",
+  categories: ["blockchain_technology", "wallets_security"],
+  related: ["Timestamp Manipulation", "TWAP Attacks", "Time Locks", "Miner Manipulation"],
+  trending: 6
+},
+
+{
+  term: "Slippage Attacks",
+  definition: "Exploits that manipulate the price impact of large trades on automated market makers to extract value from other users. Attackers may use large trades to create significant slippage, then profit from the price recovery, or exploit slippage tolerance settings to extract maximum value from victims' transactions.",
+  categories: ["defi", "exchanges_trading"],
+  related: ["Price Impact", "AMM Manipulation", "Slippage Tolerance", "Liquidity Attacks"],
+  trending: 7
+},
+
+{
+  term: "Yield Farming Exploits",
+  definition: "Attacks targeting yield farming protocols through various mechanisms including reward manipulation, pool draining, or exploiting calculation errors in yield distribution. These exploits often involve complex strategies combining multiple DeFi protocols to amplify returns unfairly or drain rewards intended for legitimate participants.",
+  categories: ["defi", "crypto_economics"],
+  related: ["Reward Manipulation", "Pool Exploits", "Liquidity Mining", "Protocol Abuse"],
+  trending: 7
+},
+
+{
+  term: "Multi-signature Exploits",
+  definition: "Attacks targeting multi-signature wallets through social engineering, key compromise, or exploiting implementation flaws in multi-sig smart contracts. These exploits may involve compromising multiple signers, exploiting signature verification logic, or manipulating the multi-sig contract itself to bypass security requirements.",
+  categories: ["wallets_security", "smart_contracts"],
+  related: ["Multi-sig Wallets", "Key Compromise", "Social Engineering", "Signature Verification"],
+  trending: 7
+},
+
+{
+  term: "Arbitrage Sniping",
+  definition: "High-speed trading strategies that exploit price differences between exchanges or protocols by using bots to detect and execute arbitrage opportunities faster than human traders. These strategies often involve complex routing through multiple venues and can extract significant value from market inefficiencies within seconds of their appearance.",
+  categories: ["exchanges_trading", "defi"],
+  related: ["Cross-exchange Arbitrage", "Bot Trading", "Price Discrepancies", "MEV"],
+  trending: 7
+},
+
+{
+  term: "Launch Sniping",
+  definition: "Coordinated attacks on newly launched tokens or protocols that exploit the initial moments of availability to capture disproportionate value. Launch snipers use automated systems to detect new contracts, immediately purchase large amounts at low prices, and often sell quickly for substantial profits before regular users can participate.",
+  categories: ["exchanges_trading", "defi"],
+  related: ["Token Launches", "Bot Trading", "Early Access", "Price Discovery"],
+  trending: 8
+},
+
+{
+  term: "Mempool Monitoring",
+  definition: "The practice of observing pending transactions in the mempool to identify profitable opportunities before they are confirmed on-chain. Sophisticated actors use mempool data to front-run trades, identify arbitrage opportunities, or prepare sandwich attacks by analyzing transaction details and gas prices of pending transactions.",
+  categories: ["blockchain_technology", "exchanges_trading"],
+  related: ["Front-running", "MEV", "Transaction Analysis", "Gas Price Optimization"],
+  trending: 7
 }
 
 ];
