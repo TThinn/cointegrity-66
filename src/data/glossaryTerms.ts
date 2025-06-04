@@ -3218,5 +3218,245 @@ trending: 8
   categories: ["infrastructure_applications", "layer2_solutions"],
   related: ["Optimistic Rollups", "Challenge Period", "Dispute Resolution", "Interactive Proving"],
   trending: 7
+},
+
+{
+  term: "Automated Market Maker (AMM) Curves",
+  definition: "Mathematical formulas that determine how prices change as traders swap tokens in liquidity pools. Different curve types optimize for specific use cases: constant product curves (x*y=k) for general trading, stable curves for assets with similar values, and concentrated liquidity curves that allow liquidity providers to specify price ranges for capital efficiency.",
+  categories: ["defi", "exchanges_trading"],
+  related: ["Constant Product Formula", "Stable Curves", "Concentrated Liquidity", "Price Impact"],
+  trending: 8
+},
+
+{
+  term: "Slippage",
+  definition: "The difference between expected and actual execution prices when trading on decentralized exchanges, caused by price movement during transaction processing. High slippage occurs in low-liquidity pools or during volatile market conditions, with traders setting slippage tolerance to control maximum acceptable price deviation before transaction failure.",
+  categories: ["defi", "exchanges_trading"],
+  related: ["Price Impact", "Liquidity Depth", "MEV", "Front-running"],
+  trending: 8
+},
+
+{
+  term: "Sandwich Attacks",
+  definition: "A form of MEV exploitation where attackers place transactions before and after a victim's trade to profit from price movements. The attacker buys tokens before the victim's purchase (driving up price), then sells after the victim's transaction completes, extracting value through artificial price manipulation enabled by transaction ordering control.",
+  categories: ["defi", "wallets_security"],
+  related: ["MEV", "Front-running", "Transaction Ordering", "Price Manipulation"],
+  trending: 8
+},
+
+{
+  term: "Maximal Extractable Value (MEV)",
+  definition: "The maximum profit that can be extracted from block production beyond standard block rewards by reordering, including, or excluding transactions within a block. MEV strategies include arbitrage, liquidations, and sandwich attacks, creating an entire ecosystem of searchers, builders, and proposers competing to capture value from transaction ordering.",
+  categories: ["defi", "blockchain_technology"],
+  related: ["Block Builders", "MEV Searchers", "Flashbots", "Transaction Ordering"],
+  trending: 9
+},
+
+{
+  term: "Liquidation",
+  definition: "The forced closure of leveraged positions when collateral value falls below required maintenance ratios in lending protocols. Liquidation mechanisms protect lenders by automatically selling borrowers' collateral to repay debt, often with penalties. Liquidators compete to execute these transactions, earning liquidation bonuses while maintaining protocol solvency.",
+  categories: ["defi"],
+  related: ["Collateral Ratio", "Liquidation Penalty", "Maintenance Margin", "Debt Positions"],
+  trending: 8
+},
+
+{
+  term: "Overcollateralization",
+  definition: "A risk management mechanism requiring borrowers to deposit collateral worth more than their loan value, providing a safety buffer against price volatility. Most DeFi lending protocols require 120-200% collateralization ratios, ensuring loans remain backed even during significant market downturns that reduce collateral values.",
+  categories: ["defi"],
+  related: ["Collateral Ratio", "Loan-to-Value", "Risk Management", "Margin Requirements"],
+  trending: 8
+},
+
+{
+  term: "Yield Aggregators",
+  definition: "DeFi protocols that automatically optimize yield farming strategies by moving user funds between different protocols to maximize returns. These platforms like Yearn Finance and Harvest continuously monitor yield opportunities, compound rewards, and rebalance positions to achieve higher returns than manual yield farming while reducing gas costs through pooled transactions.",
+  categories: ["defi", "crypto_economics"],
+  related: ["Yearn Finance", "Auto-compounding", "Strategy Optimization", "Gas Optimization"],
+  trending: 8
+},
+
+{
+  term: "Liquidity Mining",
+  definition: "Incentive programs where DeFi protocols distribute governance tokens to users who provide liquidity to their platforms. This mechanism bootstraps liquidity for new protocols while distributing ownership to active participants, creating network effects where early adopters earn both trading fees and token rewards for their capital provision.",
+  categories: ["defi", "tokenomics"],
+  related: ["Governance Tokens", "Liquidity Incentives", "Token Distribution", "Bootstrap Liquidity"],
+  trending: 8
+},
+
+{
+  term: "Composability",
+  definition: "The ability to combine different DeFi protocols like building blocks to create new financial products and strategies. This 'money legos' concept allows developers to integrate lending, trading, and yield generation in single transactions, enabling complex strategies like leveraged yield farming or automated portfolio rebalancing across multiple protocols.",
+  categories: ["defi", "smart_contracts"],
+  related: ["Money Legos", "Protocol Integration", "Smart Contract Interactions", "DeFi Primitives"],
+  trending: 9
+},
+
+{
+  term: "Perpetual Futures",
+  definition: "Derivative contracts that allow traders to speculate on cryptocurrency prices with leverage without expiration dates. DeFi perpetual platforms use funding rates to keep contract prices aligned with spot markets, enabling long or short positions with up to 100x leverage while maintaining decentralized, non-custodial trading.",
+  categories: ["defi", "exchanges_trading"],
+  related: ["Funding Rates", "Leverage Trading", "Derivatives", "Mark Price"],
+  trending: 9
+},
+
+{
+  term: "Funding Rates",
+  definition: "Periodic payments between long and short traders in perpetual futures markets designed to keep contract prices aligned with underlying asset spot prices. When perpetual prices trade above spot, longs pay shorts; when below, shorts pay longs. These rates adjust automatically based on price divergence and open interest imbalances.",
+  categories: ["defi", "exchanges_trading"],
+  related: ["Perpetual Futures", "Price Anchoring", "Arbitrage Mechanism", "Open Interest"],
+  trending: 8
+},
+
+{
+  term: "Options Protocols",
+  definition: "DeFi platforms enabling decentralized trading of cryptocurrency options contracts without traditional intermediaries. These protocols like Opyn and Hegic allow users to buy and sell calls and puts, create covered positions, and provide liquidity to options markets while maintaining self-custody of assets through smart contract automation.",
+  categories: ["defi", "exchanges_trading"],
+  related: ["Calls and Puts", "Options Premium", "Strike Price", "Implied Volatility"],
+  trending: 7
+},
+
+{
+  term: "Insurance Protocols",
+  definition: "Decentralized platforms providing coverage against smart contract risks, exchange hacks, and protocol failures in DeFi. Users can purchase coverage or provide capital to underwrite risks, earning premiums while protecting the ecosystem. Claims are typically processed through community governance or automated systems based on predefined conditions.",
+  categories: ["defi", "wallets_security"],
+  related: ["Smart Contract Risk", "Coverage Pools", "Risk Assessment", "Claims Processing"],
+  trending: 7
+},
+
+{
+  term: "Prediction Markets",
+  definition: "Decentralized platforms where users bet on future event outcomes, creating market-based probability assessments. These markets aggregate collective intelligence to forecast everything from election results to cryptocurrency prices, with participants earning profits for accurate predictions while providing valuable information about future probabilities.",
+  categories: ["defi", "social_community"],
+  related: ["Outcome Tokens", "Market Odds", "Information Aggregation", "Futarchy"],
+  trending: 7
+},
+
+{
+  term: "Decentralized Identity (DID)",
+  definition: "Blockchain-based identity systems enabling users to control their personal data and credentials without relying on centralized authorities. DIDs allow selective disclosure of information for DeFi compliance while maintaining privacy, enabling features like credit scoring and reputation systems without compromising user sovereignty.",
+  categories: ["defi", "privacy_technology"],
+  related: ["Self-Sovereign Identity", "Verifiable Credentials", "Privacy-Preserving KYC", "Reputation Systems"],
+  trending: 8
+},
+
+{
+  term: "Credit Delegation",
+  definition: "A DeFi mechanism allowing users to delegate their borrowing capacity to others without transferring collateral ownership. Delegators earn fees while maintaining collateral control, while delegates access credit without posting their own collateral, creating new forms of undercollateralized lending based on trust or reputation.",
+  categories: ["defi"],
+  related: ["Undercollateralized Lending", "Credit Lines", "Trust-based Lending", "Borrowing Capacity"],
+  trending: 7
+},
+
+{
+  term: "Rebase Tokens",
+  definition: "Cryptocurrencies with elastic supply mechanisms that automatically adjust token quantities in user wallets to maintain target prices or values. These algorithmic adjustments can be positive (increasing supply) or negative (decreasing supply), aiming to achieve price stability or specific economic objectives through supply manipulation rather than market forces.",
+  categories: ["defi", "tokenomics"],
+  related: ["Elastic Supply", "Algorithmic Adjustment", "Supply Rebasing", "Price Targeting"],
+  trending: 6
+},
+
+{
+  term: "Bonding Curves",
+  definition: "Mathematical functions that determine token prices based on supply, creating automated market makers for individual tokens. As more tokens are minted, prices increase along the curve; as tokens are burned, prices decrease. This mechanism enables continuous token issuance and redemption without traditional order books or external liquidity providers.",
+  categories: ["defi", "tokenomics"],
+  related: ["Automated Pricing", "Token Issuance", "Continuous Token Models", "Price Discovery"],
+  trending: 7
+},
+
+{
+  term: "Governance Mining",
+  definition: "The process of earning governance tokens by participating in protocol activities like voting, proposing changes, or providing feedback. This mechanism incentivizes active community participation in decentralized governance while distributing voting power to engaged users rather than just capital providers.",
+  categories: ["defi", "social_community"],
+  related: ["Governance Participation", "Voting Incentives", "Community Engagement", "Token Distribution"],
+  trending: 7
+},
+
+{
+  term: "Protocol-Owned Liquidity (POL)",
+  definition: "A treasury management strategy where DeFi protocols use their native tokens to acquire and own trading liquidity rather than relying solely on external liquidity providers. This approach reduces dependency on mercenary capital, ensures permanent liquidity, and allows protocols to earn trading fees on their own liquidity.",
+  categories: ["defi", "tokenomics"],
+  related: ["Treasury Management", "Liquidity Ownership", "Sustainable Liquidity", "Protocol Revenue"],
+  trending: 8
+},
+
+{
+  term: "Liquidity Bootstrapping Pools (LBPs)",
+  definition: "Specialized AMM pools designed for fair token distribution and price discovery, starting with high weightings toward the project token that gradually decrease over time. This mechanism prevents front-running and whale accumulation while allowing natural price discovery as the pool rebalances toward more equal weightings.",
+  categories: ["defi", "tokenomics"],
+  related: ["Fair Launch", "Price Discovery", "Token Distribution", "Anti-whale Mechanisms"],
+  trending: 7
+},
+
+{
+  term: "Concentrated Liquidity",
+  definition: "An advanced AMM feature allowing liquidity providers to specify price ranges where their capital is active, dramatically improving capital efficiency. Providers earn fees only when prices trade within their specified ranges but can achieve much higher returns per dollar of capital compared to full-range liquidity provision.",
+  categories: ["defi", "exchanges_trading"],
+  related: ["Capital Efficiency", "Price Ranges", "Active Liquidity", "Uniswap V3"],
+  trending: 8
+},
+
+{
+  term: "Just-in-Time (JIT) Liquidity",
+  definition: "A strategy where sophisticated actors provide liquidity to AMM pools only when profitable trades are detected, then immediately withdraw after earning fees. This practice can reduce returns for passive liquidity providers while improving capital efficiency for those with advanced MEV infrastructure and fast execution capabilities.",
+  categories: ["defi", "exchanges_trading"],
+  related: ["MEV", "Liquidity Sniping", "Capital Efficiency", "LP Competition"],
+  trending: 7
+},
+
+{
+  term: "Impermanent Loss Protection",
+  definition: "Mechanisms implemented by some DeFi protocols to compensate liquidity providers for impermanent loss through token rewards or insurance. These systems aim to make liquidity provision more attractive by reducing the primary risk associated with AMM participation, though they often require long-term commitments to qualify for protection.",
+  categories: ["defi", "exchanges_trading"],
+  related: ["Impermanent Loss", "LP Incentives", "Risk Mitigation", "Liquidity Retention"],
+  trending: 7
+},
+
+{
+  term: "Vault Strategies",
+  definition: "Automated investment strategies that pool user funds to execute complex DeFi operations like leveraged yield farming, delta-neutral positions, or multi-protocol arbitrage. These strategies are managed by smart contracts or professional managers, allowing users to access sophisticated DeFi strategies without manual execution.",
+  categories: ["defi", "crypto_economics"],
+  related: ["Automated Strategies", "Yield Optimization", "Risk Management", "Capital Pooling"],
+  trending: 8
+},
+
+{
+  term: "Delta-Neutral Strategies",
+  definition: "Investment approaches that aim to eliminate directional price risk by holding offsetting long and short positions, allowing investors to earn yield from DeFi activities without exposure to underlying asset price movements. These strategies often combine spot holdings with derivatives or use sophisticated hedging across multiple protocols.",
+  categories: ["defi", "exchanges_trading"],
+  related: ["Hedging Strategies", "Risk-Neutral Yield", "Derivatives Hedging", "Market Neutral"],
+  trending: 7
+},
+
+{
+  term: "Cross-Chain Yield Farming",
+  definition: "Strategies that optimize returns by moving capital across different blockchain networks to capture the highest yields available. This approach requires bridge infrastructure and careful consideration of bridge risks, gas costs, and timing to maximize returns while managing the complexities of multi-chain operations.",
+  categories: ["defi", "cross_chain"],
+  related: ["Bridge Risk", "Multi-chain Strategies", "Yield Optimization", "Cross-chain Bridges"],
+  trending: 8
+},
+
+{
+  term: "Decentralized Derivatives",
+  definition: "Financial contracts like futures, options, and swaps that operate through smart contracts without centralized intermediaries. These protocols enable sophisticated trading strategies and risk management tools while maintaining the permissionless, non-custodial principles of DeFi, though they often face challenges with oracle dependencies and capital efficiency.",
+  categories: ["defi", "exchanges_trading"],
+  related: ["Synthetic Assets", "Derivatives Trading", "Risk Management", "Oracle Dependencies"],
+  trending: 8
+},
+
+{
+  term: "Automated Portfolio Management",
+  definition: "DeFi protocols that automatically rebalance and optimize cryptocurrency portfolios based on predefined strategies or market conditions. These systems can implement dollar-cost averaging, momentum strategies, or risk parity approaches while maintaining user custody and providing transparency through on-chain execution.",
+  categories: ["defi", "crypto_economics"],
+  related: ["Portfolio Rebalancing", "Investment Automation", "Risk Management", "Strategy Execution"],
+  trending: 8
+},
+
+{
+  term: "Decentralized Credit Scoring",
+  definition: "On-chain reputation systems that assess borrower creditworthiness based on transaction history, DeFi participation, and other blockchain-verifiable metrics. These systems aim to enable undercollateralized lending by creating transparent, manipulation-resistant credit assessments without relying on traditional credit bureaus or centralized data sources.",
+  categories: ["defi", "ai_data"],
+  related: ["On-chain Reputation", "Credit Assessment", "Undercollateralized Lending", "Reputation Systems"],
+  trending: 8
 }
 ];
