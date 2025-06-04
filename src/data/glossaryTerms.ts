@@ -2779,7 +2779,6 @@ trending: 8
   trending: 7
 },
 
-// Additional AI Terms
 {
   term: "Artificial General Intelligence (AGI)",
   definition: "A theoretical form of artificial intelligence that matches or exceeds human cognitive abilities across all domains, including reasoning, learning, creativity, and problem-solving. Unlike current narrow AI systems designed for specific tasks, AGI would demonstrate human-level intelligence and adaptability across any intellectual challenge, representing the ultimate goal of AI research.",
@@ -2797,7 +2796,7 @@ trending: 8
 },
 
 {
-  term: "Machine Learning (ML)",
+  term: "Machine Learning",
   definition: "A subset of artificial intelligence that enables computers to learn and improve from experience without being explicitly programmed for every task. Machine learning algorithms identify patterns in data to make predictions or decisions, forming the foundation for most modern AI applications including recommendation systems, image recognition, and autonomous vehicles.",
   categories: ["ai_data"],
   related: ["Deep Learning", "Neural Networks", "Supervised Learning", "Unsupervised Learning"],
@@ -3669,14 +3668,6 @@ trending: 8
 },
 
 {
-  term: "Average True Range (ATR)",
-  definition: "A volatility indicator that measures market volatility by calculating the average of true ranges over a specified period. ATR doesn't indicate price direction but shows the degree of price volatility. Higher ATR values indicate higher volatility, while lower values suggest calmer market conditions. ATR is commonly used for setting stop-loss levels and position sizing.",
-  categories: ["technical_analysis"],
-  related: ["Volatility Measurement", "True Range", "Stop Loss Placement", "Position Sizing"],
-  trending: 7
-},
-
-{
   term: "Donchian Channels",
   definition: "A technical indicator consisting of three lines: the highest high and lowest low over a specified period, with an optional middle line representing the average. Breakouts above the upper channel suggest bullish momentum, while breaks below the lower channel indicate bearish momentum. This indicator is particularly useful for trend-following strategies.",
   categories: ["technical_analysis"],
@@ -3698,5 +3689,246 @@ trending: 8
   categories: ["technical_analysis"],
   related: ["Candlestick Patterns", "Market Structure", "Support and Resistance", "Chart Patterns"],
   trending: 8
+},
+
+{
+  term: "Play-to-Earn (P2E)",
+  definition: "A gaming model where players earn cryptocurrency or NFT rewards through gameplay activities like completing quests, winning battles, or achieving milestones. Unlike traditional games where time spent generates no monetary value, P2E games create sustainable economies where skilled gameplay translates to real-world earnings, revolutionizing the relationship between gaming and income generation.",
+  categories: ["gaming_metaverse", "tokenomics"],
+  related: ["GameFi", "Guild System", "Scholarship Programs", "In-game Economy"],
+  trending: 9
+},
+
+{
+  term: "GameFi",
+  definition: "The intersection of gaming and decentralized finance, combining entertainment with financial incentives through blockchain technology. GameFi encompasses play-to-earn mechanics, NFT integration, DeFi protocols within games, and token-based economies that allow players to earn, stake, lend, and trade gaming assets as financial instruments.",
+  categories: ["gaming_metaverse", "defi"],
+  related: ["Play-to-Earn", "Gaming Tokens", "NFT Gaming", "Yield Farming"],
+  trending: 9
+},
+
+{
+  term: "Guild System",
+  definition: "Organizations within blockchain games where players pool resources, share strategies, and collectively earn rewards. Gaming guilds often provide scholarships to new players by lending expensive NFT assets, taking a percentage of earnings in return while helping players access games they couldn't otherwise afford to enter.",
+  categories: ["gaming_metaverse", "social_community"],
+  related: ["Scholarship Programs", "Asset Lending", "Profit Sharing", "Community Management"],
+  trending: 8
+},
+
+{
+  term: "Scholarship Programs",
+  definition: "Systems where established players or guilds lend expensive gaming NFTs to new players who cannot afford entry costs, splitting the earnings generated through gameplay. These programs democratize access to play-to-earn games while creating passive income streams for asset owners and opportunities for skilled players without capital.",
+  categories: ["gaming_metaverse", "social_community"],
+  related: ["Guild System", "Asset Lending", "Revenue Sharing", "Gaming Accessibility"],
+  trending: 8
+},
+
+{
+  term: "Metaverse",
+  definition: "A persistent, shared virtual world where users interact through avatars, own digital assets, and participate in virtual economies. The metaverse combines gaming, social interaction, commerce, and entertainment in immersive 3D environments, often built on blockchain technology to enable true ownership of virtual assets and interoperability between platforms.",
+  categories: ["gaming_metaverse"],
+  related: ["Virtual Worlds", "Digital Assets", "Avatar Systems", "Virtual Real Estate"],
+  trending: 10
+},
+
+{
+  term: "Avatar",
+  definition: "A digital representation of a user in virtual worlds and games, often customizable with various appearance options, clothing, and accessories. In blockchain gaming, avatars can be NFTs with unique traits, stats, and abilities that affect gameplay performance and can be traded, upgraded, or used across multiple compatible platforms.",
+  categories: ["gaming_metaverse", "nfts_collectibles"],
+  related: ["Character NFTs", "Customization", "Virtual Identity", "Cross-platform Assets"],
+  trending: 8
+},
+
+{
+  term: "Virtual Real Estate",
+  definition: "Digital land parcels within virtual worlds that can be owned, developed, and monetized. Virtual real estate operates as NFTs, allowing owners to build structures, host events, create experiences, or rent space to others. Prime locations often appreciate in value based on traffic, utility, and proximity to popular areas.",
+  categories: ["gaming_metaverse", "nfts_collectibles"],
+  related: ["Land NFTs", "Virtual Development", "Metaverse Economics", "Digital Property"],
+  trending: 8
+},
+
+{
+  term: "Wearables",
+  definition: "Virtual clothing, accessories, and cosmetic items that avatars can equip in games and metaverse platforms. Wearables range from free basic items to rare NFT collectibles that provide status, utility, or gameplay advantages. Premium wearables often represent fashion brands or limited edition collaborations with real-world value.",
+  categories: ["gaming_metaverse", "nfts_collectibles"],
+  related: ["Avatar Customization", "Fashion NFTs", "Virtual Goods", "Digital Collectibles"],
+  trending: 7
+},
+
+{
+  term: "Breeding Mechanics",
+  definition: "Game systems allowing players to combine two or more NFT characters or creatures to create offspring with inherited traits, stats, or abilities. Breeding often requires resources, time, or tokens, creating economic sinks while generating new assets with potentially valuable trait combinations that can be traded or used in gameplay.",
+  categories: ["gaming_metaverse", "nfts_collectibles"],
+  related: ["Genetic Algorithms", "Trait Inheritance", "NFT Generation", "Game Economics"],
+  trending: 7
+},
+
+{
+  term: "Crafting Systems",
+  definition: "Game mechanics that allow players to combine resources, materials, or NFTs to create new items, equipment, or assets. Blockchain-based crafting often burns input materials permanently while minting new NFTs, creating deflationary pressure on common items while generating unique, potentially valuable outputs.",
+  categories: ["gaming_metaverse", "tokenomics"],
+  related: ["Resource Management", "Item Creation", "Token Burning", "Economic Sinks"],
+  trending: 7
+},
+
+{
+  term: "Land Development",
+  definition: "The process of building structures, experiences, or utilities on owned virtual real estate. Land development can include creating games, social spaces, commercial venues, or artistic installations that generate revenue through visits, events, or services while increasing the underlying land value through improved utility and attraction.",
+  categories: ["gaming_metaverse"],
+  related: ["Virtual Real Estate", "Metaverse Building", "Virtual Architecture", "Experience Creation"],
+  trending: 7
+},
+
+{
+  term: "Interoperability",
+  definition: "The ability for gaming assets, characters, or currencies to function across multiple games and platforms. True interoperability allows players to use their NFT sword from one game as a tool in another, or transfer characters between compatible virtual worlds, maximizing asset utility and player investment value.",
+  categories: ["gaming_metaverse", "cross_chain"],
+  related: ["Cross-game Assets", "Universal Standards", "Asset Portability", "Platform Integration"],
+  trending: 8
+},
+
+{
+  term: "Season Pass",
+  definition: "Time-limited progression systems offering exclusive rewards, challenges, and content for active players. In blockchain games, season passes often distribute limited NFTs, tokens, or special privileges to participants who complete objectives, creating engagement cycles and reward scarcity that drives both gameplay and economic value.",
+  categories: ["gaming_metaverse", "tokenomics"],
+  related: ["Limited Rewards", "Progression Systems", "Exclusive Content", "Time-limited Events"],
+  trending: 7
+},
+
+{
+  term: "Battle Royale",
+  definition: "A competitive game mode where players fight until only one remains, often incorporating blockchain elements like entry fees, winner rewards, or NFT equipment that affects performance. Blockchain battle royales can offer cryptocurrency prizes, rare item drops, or tournament-style competitions with significant monetary stakes.",
+  categories: ["gaming_metaverse"],
+  related: ["Competitive Gaming", "Tournament Rewards", "PvP Combat", "Winner-takes-all"],
+  trending: 7
+},
+
+{
+  term: "Idle Gaming",
+  definition: "Games that continue progressing and generating rewards even when players are not actively playing, often called 'passive income games.' Blockchain idle games typically reward players with tokens or resources over time, allowing asset holders to earn returns through minimal interaction while maintaining engagement through periodic optimization.",
+  categories: ["gaming_metaverse", "tokenomics"],
+  related: ["Passive Income", "Auto-farming", "Resource Generation", "Minimal Interaction"],
+  trending: 7
+},
+
+{
+  term: "Loot Boxes",
+  definition: "Randomized reward containers that players can purchase or earn, containing various items, characters, or currencies with different rarity levels. In blockchain gaming, loot boxes often contain NFTs with provably fair randomness, transparent odds, and tradeable contents that maintain value outside the originating game.",
+  categories: ["gaming_metaverse", "nfts_collectibles"],
+  related: ["Random Rewards", "Gacha Mechanics", "Provable Fairness", "Collectible Distribution"],
+  trending: 6
+},
+
+{
+  term: "Esports Integration",
+  definition: "The incorporation of competitive gaming tournaments and professional leagues within blockchain games, often featuring cryptocurrency prize pools, NFT trophies, and token-based betting systems. Esports integration creates additional utility for gaming tokens while providing entertainment and investment opportunities for spectators.",
+  categories: ["gaming_metaverse", "social_community"],
+  related: ["Competitive Gaming", "Tournament Systems", "Prize Pools", "Spectator Economy"],
+  trending: 7
+},
+
+{
+  term: "Virtual Events",
+  definition: "Organized gatherings within metaverse platforms including concerts, conferences, product launches, or social meetups. Virtual events can generate revenue through ticket sales, merchandise, or sponsorships while providing unique experiences that blend entertainment, networking, and commerce in immersive digital environments.",
+  categories: ["gaming_metaverse", "social_community"],
+  related: ["Digital Experiences", "Event Monetization", "Virtual Venues", "Social Interaction"],
+  trending: 8
+},
+
+{
+  term: "Cross-Platform Play",
+  definition: "The ability for players on different devices, platforms, or blockchain networks to interact within the same game environment. Cross-platform functionality in Web3 gaming often requires bridge protocols and standardized asset formats to enable seamless interaction regardless of the underlying blockchain or gaming platform.",
+  categories: ["gaming_metaverse", "cross_chain"],
+  related: ["Platform Integration", "Universal Compatibility", "Bridge Protocols", "Multi-chain Gaming"],
+  trending: 7
+},
+
+{
+  term: "Digital Collectibles",
+  definition: "Unique virtual items, characters, or artifacts that players can collect, trade, and display within games or across platforms. Digital collectibles often feature rarity systems, limited editions, or special attributes that create collecting communities and secondary markets driven by scarcity and aesthetic appeal.",
+  categories: ["gaming_metaverse", "nfts_collectibles"],
+  related: ["Collectible Cards", "Rare Items", "Trading Markets", "Collection Systems"],
+  trending: 7
+},
+
+{
+  term: "Quest Systems",
+  definition: "Structured gameplay objectives that guide player progression through tasks, challenges, or storylines, often rewarding completion with tokens, NFTs, or experience points. Blockchain quest systems can offer transparent reward distribution, community-generated content, and cross-game quest completion that spans multiple platforms.",
+  categories: ["gaming_metaverse"],
+  related: ["Mission Structure", "Reward Systems", "Player Progression", "Achievement Tracking"],
+  trending: 7
+},
+
+{
+  term: "Governance Gaming",
+  definition: "Game mechanics that allow players to vote on game development decisions, rule changes, or resource allocation using governance tokens. This democratic approach gives players direct influence over game evolution, creating deeper investment in outcomes while distributing development decisions across the community.",
+  categories: ["gaming_metaverse", "social_community"],
+  related: ["Player Voting", "Community Decisions", "Democratic Development", "Governance Tokens"],
+  trending: 7
+},
+
+{
+  term: "Asset Staking",
+  definition: "The process of locking gaming NFTs or tokens in smart contracts to earn rewards over time, similar to DeFi staking but integrated into gameplay mechanics. Players might stake characters to generate resources, lock weapons to earn upgrade materials, or commit land to produce passive income.",
+  categories: ["gaming_metaverse", "defi"],
+  related: ["NFT Staking", "Passive Rewards", "Asset Locking", "Yield Generation"],
+  trending: 8
+},
+
+{
+  term: "Permadeath",
+  definition: "A hardcore gaming mechanic where character or asset loss is permanent, adding high stakes to gameplay decisions. In blockchain games, permadeath can involve burning NFTs upon character death, creating true scarcity and emotional investment while adding significant risk-reward dynamics to player actions.",
+  categories: ["gaming_metaverse"],
+  related: ["High Stakes Gaming", "Asset Burning", "Risk Management", "Hardcore Mechanics"],
+  trending: 6
+},
+
+{
+  term: "Social Tokens",
+  definition: "Cryptocurrencies issued by gaming communities, streamers, or content creators to monetize their influence and provide exclusive access to content, events, or experiences. Social tokens in gaming create direct economic relationships between creators and fans while enabling new monetization models for gaming content.",
+  categories: ["gaming_metaverse", "social_community"],
+  related: ["Creator Economy", "Fan Engagement", "Community Tokens", "Influencer Monetization"],
+  trending: 8
+},
+
+{
+  term: "Virtual Commerce",
+  definition: "Economic activities within virtual worlds including buying, selling, and trading of digital goods, services, and experiences. Virtual commerce encompasses everything from NFT marketplaces to virtual real estate transactions, creating real economic value from digital interactions and virtual asset ownership.",
+  categories: ["gaming_metaverse", "tokenomics"],
+  related: ["Digital Marketplaces", "Virtual Economy", "Asset Trading", "Economic Systems"],
+  trending: 8
+},
+
+{
+  term: "Augmented Reality (AR) Gaming",
+  definition: "Games that overlay digital elements onto the real world through mobile devices or AR glasses, often incorporating location-based mechanics and real-world interaction. AR blockchain games can reward players for visiting physical locations, completing real-world tasks, or interacting with location-specific digital assets.",
+  categories: ["gaming_metaverse"],
+  related: ["Location-based Gaming", "Mixed Reality", "Real-world Integration", "Mobile Gaming"],
+  trending: 7
+},
+
+{
+  term: "Virtual Reality (VR) Integration",
+  definition: "Immersive gaming experiences that place players directly into 3D virtual environments through VR headsets. VR blockchain games offer unprecedented immersion in virtual worlds where players can physically interact with NFT assets, participate in virtual events, and experience true presence in metaverse environments.",
+  categories: ["gaming_metaverse"],
+  related: ["Immersive Gaming", "3D Environments", "Physical Interaction", "Presence Technology"],
+  trending: 8
+},
+
+{
+  term: "Dynamic NFTs",
+  definition: "Non-fungible tokens that can change their properties, appearance, or functionality based on external data, player actions, or game events. Dynamic NFTs in gaming might level up with use, change appearance based on achievements, or evolve based on market conditions, creating living assets that grow with player engagement.",
+  categories: ["gaming_metaverse", "nfts_collectibles"],
+  related: ["Evolving Assets", "Programmable NFTs", "Adaptive Properties", "Smart NFTs"],
+  trending: 8
+},
+
+{
+  term: "Gasless Gaming",
+  definition: "Blockchain games that eliminate or subsidize transaction fees for players through meta-transactions, layer-2 solutions, or sponsored transactions. Gasless gaming removes barriers to entry and improves user experience by allowing players to interact with blockchain features without holding cryptocurrency for fees.",
+  categories: ["gaming_metaverse", "infrastructure_applications"],
+  related: ["Meta-transactions", "Sponsored Transactions", "User Experience", "Barrier Reduction"],
+  trending: 8
 }
+
 ];
