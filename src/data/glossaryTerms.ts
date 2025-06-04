@@ -2657,5 +2657,246 @@ definition: "The economic classification of cryptocurrencies as digital assets w
 categories: ["crypto_economics", "cryptocurrency_types"],
 related: ["Digital Gold", "Store of Value", "Scarcity", "Commodity Theory"],
 trending: 8
+},
+
+{
+  term: "HODL",
+  definition: "A misspelling of 'hold' that became crypto slang for the long-term investment strategy of buying and holding cryptocurrency despite market volatility, rather than actively trading. Originating from a 2013 Bitcoin forum post, HODL represents the belief that cryptocurrency will appreciate significantly over time, making short-term price fluctuations irrelevant.",
+  categories: ["crypto_economics", "social_community"],
+  related: ["Diamond Hands", "Long-term Investment", "Market Volatility", "Bitcoin"],
+  trending: 9
+},
+
+{
+  term: "FOMO",
+  definition: "Fear of Missing Out - the anxiety-driven urge to buy cryptocurrency during price rallies due to fear of missing potential profits. FOMO often leads to poor investment decisions as buyers purchase at peak prices, contributing to market bubbles and subsequent corrections when emotional buying subsides.",
+  categories: ["crypto_economics", "technical_analysis"],
+  related: ["FUD", "Market Psychology", "Bull Market", "Emotional Trading"],
+  trending: 8
+},
+
+{
+  term: "FUD",
+  definition: "Fear, Uncertainty, and Doubt - negative information or sentiment spread to influence cryptocurrency prices downward. FUD can be legitimate concerns about technology or regulation, or deliberate misinformation campaigns designed to manipulate markets by creating panic selling among investors.",
+  categories: ["crypto_economics", "social_community"],
+  related: ["FOMO", "Market Manipulation", "Sentiment Analysis", "Bear Market"],
+  trending: 8
+},
+
+{
+  term: "Whale",
+  definition: "An individual or entity holding large amounts of cryptocurrency capable of significantly influencing market prices through their trading activities. Whale movements are closely monitored by traders and analysts, as large transactions can trigger substantial price volatility and market-wide reactions.",
+  categories: ["crypto_economics", "exchanges_trading"],
+  related: ["Market Manipulation", "Large Holders", "Price Impact", "Trading Volume"],
+  trending: 8
+},
+
+{
+  term: "Pump and Dump",
+  definition: "A form of market manipulation where coordinated groups artificially inflate a cryptocurrency's price through misleading promotion (pump), then sell their holdings at the peak, causing the price to crash (dump). This illegal practice particularly affects low-cap altcoins and is often orchestrated through social media and messaging platforms.",
+  categories: ["crypto_economics", "regulatory_frameworks"],
+  related: ["Market Manipulation", "Speculative Tokens", "Fraud", "Price Manipulation"],
+  trending: 7
+},
+
+{
+  term: "Rugpull",
+  definition: "A type of exit scam where cryptocurrency project developers abandon a project and steal investor funds, often by removing liquidity from decentralized exchanges or selling large token allocations. Rugpulls are particularly common in DeFi projects with unaudited smart contracts and anonymous development teams.",
+  categories: ["defi", "wallets_security"],
+  related: ["Exit Scam", "Liquidity Removal", "Smart Contract Risk", "Due Diligence"],
+  trending: 8
+},
+
+{
+  term: "Diamond Hands",
+  definition: "A term describing investors who hold their cryptocurrency positions through extreme market volatility without selling, demonstrating strong conviction in their investment thesis. Diamond hands investors typically ignore short-term price movements and focus on long-term value appreciation, often becoming community symbols of resilience.",
+  categories: ["crypto_economics", "social_community"],
+  related: ["HODL", "Long-term Investment", "Market Volatility", "Paper Hands"],
+  trending: 7
+},
+
+{
+  term: "Paper Hands",
+  definition: "A derogatory term for investors who sell their cryptocurrency holdings quickly during market downturns or at the first sign of profit, lacking the conviction to hold through volatility. Paper hands behavior is often driven by fear, inexperience, or short-term profit-taking rather than long-term investment strategy.",
+  categories: ["crypto_economics", "social_community"],
+  related: ["Diamond Hands", "Emotional Trading", "Market Volatility", "Weak Hands"],
+  trending: 6
+},
+
+{
+  term: "Moonshot",
+  definition: "A high-risk, high-reward cryptocurrency investment with potential for extraordinary returns, typically referring to small-cap tokens that could experience massive price appreciation. Moonshot investments often involve speculative projects with unproven technology or business models, requiring significant risk tolerance from investors.",
+  categories: ["crypto_economics", "cryptocurrency_types"],
+  related: ["High-Risk Investment", "Altcoins", "Speculation", "Price Discovery"],
+  trending: 7
+},
+
+{
+  term: "Bagholder",
+  definition: "An investor stuck holding a cryptocurrency that has significantly declined in value, often referring to those who bought at peak prices and are now facing substantial losses. Bagholders typically refuse to sell at a loss, hoping for price recovery that may never materialize, representing a cautionary tale about market timing and risk management.",
+  categories: ["crypto_economics", "exchanges_trading"],
+  related: ["Unrealized Losses", "Market Timing", "Sunk Cost Fallacy", "Risk Management"],
+  trending: 6
+},
+
+{
+  term: "Shill",
+  definition: "Someone who promotes a cryptocurrency project for personal gain without disclosing their financial interest, often through misleading or exaggerated claims about the project's potential. Shilling can involve paid promotions, coordinated social media campaigns, or influencer endorsements designed to drive up token prices for early investors to exit profitably.",
+  categories: ["social_community", "crypto_economics"],
+  related: ["Market Manipulation", "Influencer Marketing", "Disclosure", "Pump and Dump"],
+  trending: 7
+},
+
+{
+  term: "DYOR",
+  definition: "Do Your Own Research - a fundamental principle in cryptocurrency investing emphasizing the importance of independent analysis before making investment decisions. DYOR encourages investors to verify claims, understand technology, assess team credentials, and evaluate tokenomics rather than relying solely on social media hype or influencer recommendations.",
+  categories: ["crypto_economics", "social_community"],
+  related: ["Due Diligence", "Risk Assessment", "Investment Strategy", "Research Methodology"],
+  trending: 8
+},
+
+{
+  term: "Rekt",
+  definition: "Slang for 'wrecked,' describing significant financial losses in cryptocurrency trading or investing. Being rekt typically refers to losing most or all of one's investment due to poor trading decisions, market crashes, liquidations, or falling victim to scams, serving as a cautionary reminder of crypto market risks.",
+  categories: ["crypto_economics", "social_community"],
+  related: ["Trading Losses", "Liquidation", "Market Risk", "Risk Management"],
+  trending: 7
+},
+
+{
+  term: "Satoshi",
+  definition: "The smallest unit of Bitcoin, equal to 0.00000001 BTC (one hundred millionth of a Bitcoin). Named after Bitcoin's creator Satoshi Nakamoto, this denomination allows for precise transactions and pricing of goods and services in Bitcoin, particularly important as Bitcoin's value has increased significantly since its creation.",
+  categories: ["cryptocurrency_types", "blockchain_technology"],
+  related: ["Bitcoin", "Satoshi Nakamoto", "Decimal Places", "Micropayments"],
+  trending: 7
+},
+
+{
+  term: "Gwei",
+  definition: "A denomination of Ethereum's native currency (ETH) equal to 0.000000001 ETH (one billionth), commonly used to measure gas fees for Ethereum transactions. Named after Wei Dai, creator of b-money, Gwei provides a convenient unit for expressing the small amounts typically paid for transaction fees on the Ethereum network.",
+  categories: ["cryptocurrency_types", "blockchain_technology"],
+  related: ["Ethereum", "Gas Fees", "Transaction Costs", "Wei Dai"],
+  trending: 7
+},
+
+// Additional AI Terms
+{
+  term: "Artificial General Intelligence (AGI)",
+  definition: "A theoretical form of artificial intelligence that matches or exceeds human cognitive abilities across all domains, including reasoning, learning, creativity, and problem-solving. Unlike current narrow AI systems designed for specific tasks, AGI would demonstrate human-level intelligence and adaptability across any intellectual challenge, representing the ultimate goal of AI research.",
+  categories: ["ai_data"],
+  related: ["Machine Learning", "Neural Networks", "AI Alignment", "Superintelligence"],
+  trending: 10
+},
+
+{
+  term: "Large Language Model (LLM)",
+  definition: "Advanced AI systems trained on vast amounts of text data to understand and generate human-like language, capable of tasks including writing, translation, summarization, and reasoning. LLMs like GPT-4 and Claude use transformer architectures with billions of parameters to process and generate coherent, contextually appropriate responses across diverse topics.",
+  categories: ["ai_data"],
+  related: ["Transformer Architecture", "Natural Language Processing", "Deep Learning", "Prompt Engineering"],
+  trending: 10
+},
+
+{
+  term: "Machine Learning (ML)",
+  definition: "A subset of artificial intelligence that enables computers to learn and improve from experience without being explicitly programmed for every task. Machine learning algorithms identify patterns in data to make predictions or decisions, forming the foundation for most modern AI applications including recommendation systems, image recognition, and autonomous vehicles.",
+  categories: ["ai_data"],
+  related: ["Deep Learning", "Neural Networks", "Supervised Learning", "Unsupervised Learning"],
+  trending: 9
+},
+
+{
+  term: "Neural Network",
+  definition: "A computing system inspired by biological neural networks, consisting of interconnected nodes (neurons) that process information through weighted connections. Neural networks learn by adjusting these weights based on training data, enabling them to recognize patterns, make predictions, and perform complex tasks like image recognition and natural language processing.",
+  categories: ["ai_data"],
+  related: ["Deep Learning", "Machine Learning", "Artificial Neurons", "Backpropagation"],
+  trending: 9
+},
+
+{
+  term: "Deep Learning",
+  definition: "A machine learning technique using neural networks with multiple hidden layers to learn hierarchical representations of data. Deep learning has revolutionized AI by achieving breakthrough performance in computer vision, natural language processing, and speech recognition, powering applications from autonomous vehicles to language translation.",
+  categories: ["ai_data"],
+  related: ["Neural Networks", "Convolutional Neural Networks", "Recurrent Neural Networks", "Transformer Architecture"],
+  trending: 9
+},
+
+{
+  term: "Natural Language Processing (NLP)",
+  definition: "A branch of artificial intelligence focused on enabling computers to understand, interpret, and generate human language. NLP combines computational linguistics with machine learning to process text and speech, powering applications like chatbots, translation services, sentiment analysis, and voice assistants.",
+  categories: ["ai_data"],
+  related: ["Large Language Models", "Text Analysis", "Speech Recognition", "Language Understanding"],
+  trending: 9
+},
+
+{
+  term: "Computer Vision",
+  definition: "An AI field that trains computers to interpret and understand visual information from images and videos. Computer vision systems can identify objects, recognize faces, read text, and analyze scenes, enabling applications like autonomous driving, medical imaging, security surveillance, and augmented reality experiences.",
+  categories: ["ai_data"],
+  related: ["Image Recognition", "Object Detection", "Convolutional Neural Networks", "Pattern Recognition"],
+  trending: 8
+},
+
+{
+  term: "Reinforcement Learning",
+  definition: "A machine learning approach where agents learn optimal behaviors through trial and error interactions with an environment, receiving rewards or penalties for their actions. This technique has achieved remarkable success in game playing (like AlphaGo), robotics, and autonomous systems by learning strategies that maximize cumulative rewards over time.",
+  categories: ["ai_data"],
+  related: ["Reward Systems", "Agent-Based Learning", "Game Theory", "Decision Making"],
+  trending: 8
+},
+
+{
+  term: "Transformer Architecture",
+  definition: "A neural network design that revolutionized natural language processing by using attention mechanisms to process sequential data more efficiently than previous architectures. Transformers enable parallel processing of text sequences and form the foundation of modern language models like GPT, BERT, and Claude, dramatically improving AI's language understanding capabilities.",
+  categories: ["ai_data"],
+  related: ["Attention Mechanism", "Large Language Models", "Self-Attention", "Encoder-Decoder"],
+  trending: 9
+},
+
+{
+  term: "AI Alignment",
+  definition: "The research field focused on ensuring artificial intelligence systems pursue goals that are beneficial and aligned with human values and intentions. As AI becomes more powerful, alignment research addresses challenges like value specification, reward hacking, and ensuring AI systems remain controllable and beneficial even as they become more capable than their creators.",
+  categories: ["ai_data", "regulatory_frameworks"],
+  related: ["AI Safety", "Value Alignment", "Control Problem", "Beneficial AI"],
+  trending: 9
+},
+
+{
+  term: "Prompt Engineering",
+  definition: "The practice of designing and optimizing text inputs to effectively communicate with large language models and achieve desired outputs. Prompt engineering involves crafting instructions, providing examples, and structuring queries to maximize AI performance on specific tasks, becoming a crucial skill for leveraging modern AI systems effectively.",
+  categories: ["ai_data"],
+  related: ["Large Language Models", "Human-AI Interaction", "Instruction Following", "Few-Shot Learning"],
+  trending: 8
+},
+
+{
+  term: "Fine-tuning",
+  definition: "The process of adapting a pre-trained AI model to perform specific tasks by training it on specialized datasets. Fine-tuning allows organizations to customize general-purpose models for domain-specific applications while requiring significantly less computational resources than training from scratch, making advanced AI capabilities more accessible.",
+  categories: ["ai_data"],
+  related: ["Transfer Learning", "Model Adaptation", "Domain Specialization", "Training Efficiency"],
+  trending: 8
+},
+
+{
+  term: "Inference",
+  definition: "The process of using a trained AI model to make predictions or generate outputs on new, unseen data. Inference represents the deployment phase of machine learning where models apply learned patterns to real-world inputs, requiring optimized hardware and software to deliver fast, accurate results in production environments.",
+  categories: ["ai_data"],
+  related: ["Model Deployment", "Prediction", "Real-time Processing", "Edge Computing"],
+  trending: 7
+},
+
+{
+  term: "AI Governance",
+  definition: "The frameworks, policies, and practices for managing artificial intelligence development and deployment responsibly. AI governance encompasses regulatory compliance, ethical guidelines, risk management, and stakeholder engagement to ensure AI systems are developed and used in ways that benefit society while minimizing potential harms.",
+  categories: ["ai_data", "regulatory_frameworks"],
+  related: ["AI Ethics", "Regulatory Compliance", "Risk Management", "Responsible AI"],
+  trending: 9
+},
+
+{
+  term: "Federated Learning",
+  definition: "A machine learning approach that trains algorithms across decentralized data sources without centralizing the data itself. This privacy-preserving technique allows organizations to collaborate on AI development while keeping sensitive data local, enabling better models while addressing privacy concerns and regulatory requirements.",
+  categories: ["ai_data", "privacy_technology"],
+  related: ["Privacy-Preserving ML", "Distributed Learning", "Data Privacy", "Collaborative AI"],
+  trending: 8
 }
 ];
