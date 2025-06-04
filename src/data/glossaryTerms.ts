@@ -2898,5 +2898,165 @@ trending: 8
   categories: ["ai_data", "privacy_technology"],
   related: ["Privacy-Preserving ML", "Distributed Learning", "Data Privacy", "Collaborative AI"],
   trending: 8
+},
+
+{
+  term: "Shitcoins",
+  definition: "A derogatory term for cryptocurrencies with little to no value, utility, or development activity, often created as quick cash grabs or lacking serious technological innovation. These tokens typically feature anonymous teams, copied code, unrealistic promises, and are primarily driven by speculation rather than fundamental value. The term serves as a warning to investors about low-quality projects in the cryptocurrency space.",
+  categories: ["cryptocurrency_types"],
+  related: ["Speculative Tokens", "Pump and Dump", "Due Diligence", "Market Manipulation"],
+  trending: 7
+},
+
+{
+  term: "Altcoins",
+  definition: "Any cryptocurrency other than Bitcoin, derived from 'alternative coins.' This broad category encompasses thousands of digital assets including Ethereum, established projects with real utility, experimental tokens, and speculative assets. Altcoins often aim to improve upon Bitcoin's limitations or serve specific use cases like smart contracts, privacy, or faster transactions.",
+  categories: ["cryptocurrency_types"],
+  related: ["Bitcoin", "Ethereum", "Alternative Cryptocurrencies", "Blockchain Innovation"],
+  trending: 8
+},
+
+{
+  term: "Security Tokens",
+  definition: "Digital assets that represent ownership in real-world assets or companies, subject to securities regulations. These tokens provide holders with rights such as equity ownership, profit sharing, or voting rights, and must comply with regulatory frameworks like SEC rules in the US. Security tokens bridge traditional finance with blockchain technology through regulated tokenization.",
+  categories: ["cryptocurrency_types", "regulatory_frameworks"],
+  related: ["Tokenized Securities", "STO", "Regulatory Compliance", "Asset Tokenization"],
+  trending: 8
+},
+
+{
+  term: "Social Tokens",
+  definition: "Cryptocurrencies created by individuals, communities, or brands to monetize their social influence and create exclusive access to content, experiences, or services. These tokens enable creators to build direct economic relationships with their audiences, offering benefits like exclusive content, community access, or governance rights in creator-driven ecosystems.",
+  categories: ["cryptocurrency_types", "social_community"],
+  related: ["Creator Economy", "Fan Tokens", "Community Tokens", "Influencer Monetization"],
+  trending: 8
+},
+
+{
+  term: "Fan Tokens",
+  definition: "Cryptocurrencies issued by sports teams, entertainment brands, or celebrities that provide holders with voting rights on certain decisions, exclusive merchandise, experiences, and community access. These tokens create new revenue streams for organizations while giving fans a voice in non-critical decisions and access to unique experiences.",
+  categories: ["cryptocurrency_types", "social_community"],
+  related: ["Social Tokens", "Sports Teams", "Fan Engagement", "Voting Rights"],
+  trending: 7
+},
+
+{
+  term: "Wrapped Tokens",
+  definition: "Cryptocurrencies that represent assets from one blockchain on another blockchain, enabling cross-chain functionality and DeFi participation. For example, Wrapped Bitcoin (WBTC) represents Bitcoin on Ethereum, allowing BTC holders to participate in Ethereum-based DeFi protocols while maintaining exposure to Bitcoin's price movements.",
+  categories: ["cryptocurrency_types", "cross_chain"],
+  related: ["WBTC", "Cross-chain Assets", "DeFi Compatibility", "Blockchain Bridges"],
+  trending: 8
+},
+
+{
+  term: "Synthetic Assets",
+  definition: "Derivative tokens that track the price of external assets like stocks, commodities, or currencies without requiring direct ownership of the underlying asset. These blockchain-based financial instruments enable exposure to traditional markets through cryptocurrency protocols, often using oracles for price feeds and overcollateralization for stability.",
+  categories: ["cryptocurrency_types", "defi"],
+  related: ["Derivatives", "Price Oracles", "Synthetic Protocols", "Traditional Asset Exposure"],
+  trending: 7
+},
+
+{
+  term: "Rebasing Tokens",
+  definition: "Cryptocurrencies with elastic supply mechanisms that automatically adjust the total token supply to maintain a target price or value. These tokens increase or decrease the number of tokens in each holder's wallet proportionally, aiming to achieve price stability or specific economic objectives through algorithmic supply adjustments.",
+  categories: ["cryptocurrency_types", "tokenomics"],
+  related: ["Elastic Supply", "Algorithmic Adjustment", "Price Targeting", "Supply Mechanics"],
+  trending: 6
+},
+
+{
+  term: "Burn Tokens",
+  definition: "Cryptocurrencies designed with mechanisms to permanently remove tokens from circulation, typically by sending them to unrecoverable addresses. This deflationary approach aims to increase scarcity and potentially support token value over time, with burning often triggered by transaction fees, buyback programs, or governance decisions.",
+  categories: ["cryptocurrency_types", "tokenomics"],
+  related: ["Token Burning", "Deflationary Mechanics", "Supply Reduction", "Scarcity Creation"],
+  trending: 7
+},
+
+{
+  term: "Yield Tokens",
+  definition: "Cryptocurrencies specifically designed to generate returns for holders through various mechanisms like staking rewards, liquidity provision, or protocol revenue sharing. These tokens often represent shares in yield-generating strategies or protocols, providing passive income opportunities within the DeFi ecosystem.",
+  categories: ["cryptocurrency_types", "defi"],
+  related: ["Yield Farming", "Passive Income", "Revenue Sharing", "DeFi Protocols"],
+  trending: 8
+},
+
+{
+  term: "Index Tokens",
+  definition: "Cryptocurrencies that represent baskets of multiple underlying assets, providing diversified exposure to specific sectors or themes within the crypto market. These tokens automatically rebalance their holdings according to predetermined rules, offering investors a way to gain broad market exposure without managing individual positions.",
+  categories: ["cryptocurrency_types", "defi"],
+  related: ["Portfolio Diversification", "Automatic Rebalancing", "Sector Exposure", "DeFi Index Funds"],
+  trending: 7
+},
+
+{
+  term: "Reflection Tokens",
+  definition: "Cryptocurrencies that automatically distribute rewards to holders based on transaction volume, typically through a percentage of each transaction being redistributed proportionally to all token holders. This mechanism incentivizes holding while creating passive income streams, though it can create tax complications and sustainability challenges.",
+  categories: ["cryptocurrency_types", "tokenomics"],
+  related: ["Automatic Rewards", "Transaction Fees", "Passive Income", "Holder Incentives"],
+  trending: 6
+},
+
+{
+  term: "Charity Tokens",
+  definition: "Cryptocurrencies created specifically to support charitable causes, often donating a percentage of transactions or total supply to designated charities. These tokens combine cryptocurrency investment with philanthropic goals, though investors should verify the legitimacy of both the token project and the charitable activities.",
+  categories: ["cryptocurrency_types", "social_community"],
+  related: ["Philanthropic Crypto", "Donation Mechanisms", "Social Impact", "Charitable Giving"],
+  trending: 5
+},
+
+{
+  term: "Ecosystem Tokens",
+  definition: "Cryptocurrencies that serve as the native currency for specific blockchain ecosystems or platforms, used for transaction fees, governance, and accessing platform services. Examples include BNB for Binance Smart Chain, MATIC for Polygon, and SOL for Solana, which are essential for their respective network operations.",
+  categories: ["cryptocurrency_types", "blockchain_technology"],
+  related: ["Platform Tokens", "Gas Fees", "Network Utility", "Blockchain Ecosystems"],
+  trending: 9
+},
+
+{
+  term: "Commodity Tokens",
+  definition: "Cryptocurrencies backed by or representing physical commodities like gold, silver, oil, or agricultural products. These tokens provide blockchain-based exposure to traditional commodity markets, often offering easier trading, fractional ownership, and reduced storage costs compared to physical commodity ownership.",
+  categories: ["cryptocurrency_types", "tokenization"],
+  related: ["Gold-backed Tokens", "Commodity Trading", "Physical Assets", "Digital Commodities"],
+  trending: 7
+},
+
+{
+  term: "Layer-0 Tokens",
+  definition: "Cryptocurrencies that power foundational blockchain infrastructure enabling interoperability between different blockchain networks. These tokens facilitate cross-chain communication, shared security, and the creation of application-specific blockchains, representing the infrastructure layer beneath individual blockchain networks.",
+  categories: ["cryptocurrency_types", "cross_chain"],
+  related: ["Blockchain Interoperability", "Cross-chain Infrastructure", "Shared Security", "Multi-chain Protocols"],
+  trending: 8
+},
+
+{
+  term: "Carbon Credit Tokens",
+  definition: "Cryptocurrencies representing verified carbon offset credits on blockchain networks, enabling transparent trading of environmental credits. These tokens digitize traditional carbon markets, providing immutable records of carbon reduction activities and enabling more efficient, transparent environmental credit trading.",
+  categories: ["cryptocurrency_types", "tokenization"],
+  related: ["Environmental Credits", "Carbon Offsets", "Green Finance", "Climate Tokens"],
+  trending: 8
+},
+
+{
+  term: "Prediction Market Tokens",
+  definition: "Cryptocurrencies used within decentralized prediction markets where users bet on future events' outcomes. These tokens enable participation in forecasting markets covering everything from election results to sports outcomes, creating incentive mechanisms for accurate predictions while providing market-based probability assessments.",
+  categories: ["cryptocurrency_types", "defi"],
+  related: ["Prediction Markets", "Outcome Tokens", "Forecasting", "Market-based Predictions"],
+  trending: 6
+},
+
+{
+  term: "Fractionalized NFT Tokens",
+  definition: "Cryptocurrencies representing fractional ownership of high-value NFTs, enabling multiple investors to own shares of expensive digital assets. These tokens democratize access to premium NFT collections by allowing smaller investors to participate in ownership of assets that would otherwise be financially inaccessible.",
+  categories: ["cryptocurrency_types", "nfts_collectibles"],
+  related: ["Fractional Ownership", "NFT Shares", "Collective Ownership", "Asset Fractionalization"],
+  trending: 7
+},
+
+{
+  term: "Algorithmic Stablecoins",
+  definition: "Cryptocurrencies that maintain price stability through algorithmic mechanisms rather than collateral backing, using smart contracts to automatically adjust supply based on demand. These experimental tokens aim to achieve stability through economic incentives and algorithmic interventions, though they have faced significant challenges in maintaining their pegs during market stress.",
+  categories: ["cryptocurrency_types", "defi"],
+  related: ["Algorithmic Pegging", "Supply Adjustment", "Decentralized Stability", "Experimental Stablecoins"],
+  trending: 6
 }
 ];
