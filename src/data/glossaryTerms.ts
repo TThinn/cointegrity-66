@@ -4353,7 +4353,415 @@ trending: 8
   categories: ["blockchain_technology", "layer2_solutions"],
   related: ["Bitcoin Scaling", "Lightning Network", "Transaction Malleability", "Block Capacity"],
   trending: 6
+},
+
+{
+  term: "ERC-20",
+  definition: "The most widely adopted token standard on Ethereum that defines a common interface for fungible tokens. ERC-20 specifies six mandatory functions (totalSupply, balanceOf, transfer, transferFrom, approve, allowance) and two events that enable seamless interaction between tokens and applications. This standard revolutionized the cryptocurrency ecosystem by enabling the creation of thousands of tokens with guaranteed interoperability across wallets, exchanges, and DeFi protocols.",
+  categories: ["cryptocurrency_types", "smart_contracts"],
+  related: ["Fungible Tokens", "Token Interface", "Smart Contracts", "DeFi Compatibility"],
+  trending: 10
+},
+
+{
+  term: "ERC-721",
+  definition: "The foundational standard for non-fungible tokens (NFTs) on Ethereum, enabling the creation of unique, indivisible digital assets. Unlike ERC-20's fungible tokens, each ERC-721 token has a unique identifier and metadata, making it suitable for representing ownership of distinct items like digital art, collectibles, or real estate. This standard includes functions for safe transfers and approval mechanisms to prevent accidental loss of valuable NFTs.",
+  categories: ["cryptocurrency_types", "nfts_collectibles"],
+  related: ["NFTs", "Digital Collectibles", "Unique Tokens", "Metadata"],
+  trending: 9
+},
+
+{
+  term: "ERC-1155",
+  definition: "A multi-token standard that enables a single smart contract to manage both fungible and non-fungible tokens simultaneously, significantly reducing gas costs and complexity. ERC-1155 supports batch operations, allowing multiple token transfers in a single transaction, making it ideal for gaming applications where players need various types of assets (currencies, items, characters) managed efficiently.",
+  categories: ["cryptocurrency_types", "gaming_metaverse"],
+  related: ["Multi-token Standard", "Gaming Tokens", "Batch Operations", "Gas Efficiency"],
+  trending: 8
+},
+
+{
+  term: "ERC-777",
+  definition: "An advanced fungible token standard that improves upon ERC-20 by adding hooks, operators, and better user experience features. ERC-777 tokens can execute code when sent or received, enabling automatic interactions and eliminating the need for separate approve and transferFrom transactions. However, the hooks mechanism has introduced reentrancy vulnerabilities in some implementations.",
+  categories: ["cryptocurrency_types", "smart_contracts"],
+  related: ["Token Hooks", "Operators", "Advanced Transfers", "Reentrancy Risks"],
+  trending: 6
+},
+
+{
+  term: "ERC-4626",
+  definition: "A standardized interface for tokenized vaults that represent shares of underlying assets, designed to optimize and unify the technical parameters of yield-bearing vaults. This standard enables seamless integration between different DeFi protocols by providing consistent methods for depositing, withdrawing, and calculating shares, making yield strategies more composable and user-friendly.",
+  categories: ["cryptocurrency_types", "defi"],
+  related: ["Yield Vaults", "Tokenized Shares", "DeFi Composability", "Vault Strategies"],
+  trending: 8
+},
+
+{
+  term: "ERC-2981",
+  definition: "A standard for NFT royalty payments that enables creators to receive automatic compensation when their NFTs are resold on secondary markets. ERC-2981 defines a standardized way to specify royalty amounts and recipient addresses, ensuring creators can benefit from the ongoing value appreciation of their work across different marketplaces and platforms.",
+  categories: ["cryptocurrency_types", "nfts_collectibles"],
+  related: ["NFT Royalties", "Creator Economy", "Secondary Sales", "Marketplace Integration"],
+  trending: 7
+},
+
+{
+  term: "ERC-7857",
+  definition: "The newest intelligent NFT standard introduced in January 2025 that enables secure transfer of AI agents and re-encryption of sensitive data for new owners. This cutting-edge standard allows NFTs to contain AI functionality while maintaining security and giving creators more control over their earnings through programmable intelligence embedded in the tokens.",
+  categories: ["cryptocurrency_types", "ai_data"],
+  related: ["AI NFTs", "Intelligent Tokens", "Data Re-encryption", "AI Agents"],
+  trending: 10
+},
+
+{
+  term: "BRC-20",
+  definition: "An experimental token standard built on Bitcoin using the Ordinals protocol to create fungible tokens through JSON inscriptions. BRC-20 tokens enable the creation of meme coins and other fungible assets directly on Bitcoin without requiring additional blockchains, though they require specialized indexers to track balances and transfers since Bitcoin doesn't natively support smart contracts.",
+  categories: ["cryptocurrency_types", "blockchain_technology"],
+  related: ["Ordinals", "Bitcoin Tokens", "JSON Inscriptions", "Fungible Tokens"],
+  trending: 7
+},
+
+{
+  term: "Runes",
+  definition: "A more efficient fungible token protocol for Bitcoin designed by Casey Rodarmor as an improvement over BRC-20 tokens. Runes use Bitcoin's UTXO model and OP_RETURN outputs to create and transfer tokens with better on-chain efficiency and native Bitcoin wallet compatibility, representing an evolution in Bitcoin-based token standards.",
+  categories: ["cryptocurrency_types", "blockchain_technology"],
+  related: ["Bitcoin", "UTXO Model", "OP_RETURN", "Token Efficiency"],
+  trending: 7
+},
+
+{
+  term: "SPL Token",
+  definition: "The standard for creating tokens on the Solana blockchain, similar to ERC-20 but optimized for Solana's high-speed, low-cost architecture. SPL tokens benefit from Solana's parallel processing capabilities, enabling thousands of transactions per second with minimal fees, making them ideal for high-frequency trading and micropayments.",
+  categories: ["cryptocurrency_types", "blockchain_technology"],
+  related: ["Solana", "High Throughput", "Low Fees", "Parallel Processing"],
+  trending: 8
+},
+
+{
+  term: "SPL Token-2022",
+  definition: "An enhanced version of the SPL token standard that introduces advanced features like transfer fees, confidential transfers, and permanent delegate authority. This upgraded standard provides more sophisticated tokenomics options and privacy features while maintaining compatibility with the existing Solana ecosystem.",
+  categories: ["cryptocurrency_types", "privacy_technology"],
+  related: ["SPL Token", "Transfer Fees", "Confidential Transfers", "Enhanced Features"],
+  trending: 7
+},
+
+{
+  term: "BEP-20",
+  definition: "The token standard for Binance Smart Chain (BSC) that extends Ethereum's ERC-20 standard with additional functionality. BEP-20 tokens are compatible with ERC-20 but benefit from BSC's faster block times and lower transaction fees, making them popular for DeFi applications requiring frequent transactions.",
+  categories: ["cryptocurrency_types", "defi"],
+  related: ["Binance Smart Chain", "ERC-20 Compatible", "Fast Transactions", "Low Fees"],
+  trending: 7
+},
+
+{
+  term: "BEP-721",
+  definition: "The NFT standard for Binance Smart Chain that mirrors Ethereum's ERC-721 functionality while offering the benefits of BSC's lower costs and faster processing. BEP-721 tokens can represent unique digital assets with significantly reduced minting and trading costs compared to Ethereum-based NFTs.",
+  categories: ["cryptocurrency_types", "nfts_collectibles"],
+  related: ["BSC NFTs", "ERC-721 Compatible", "Cost Efficient", "Digital Collectibles"],
+  trending: 6
+},
+
+{
+  term: "BEP-1155",
+  definition: "A multi-token standard for Binance Smart Chain that enables both fungible and non-fungible tokens in a single contract, similar to Ethereum's ERC-1155. This standard is particularly useful for gaming applications on BSC where multiple asset types need to be managed efficiently with lower gas costs.",
+  categories: ["cryptocurrency_types", "gaming_metaverse"],
+  related: ["Multi-token Standard", "BSC Gaming", "Efficient Transfers", "Hybrid Tokens"],
+  trending: 6
+},
+
+{
+  term: "IBC (Inter-Blockchain Communication)",
+  definition: "A protocol standard that enables secure and reliable communication between different blockchains in the Cosmos ecosystem. IBC allows tokens and data to be transferred between sovereign blockchains while maintaining security guarantees, enabling true interoperability without requiring trusted third parties or bridges.",
+  categories: ["cryptocurrency_types", "cross_chain"],
+  related: ["Cosmos", "Cross-chain Communication", "Interoperability", "Sovereign Blockchains"],
+  trending: 8
+},
+
+{
+  term: "NEP-141",
+  definition: "The fungible token standard for the NEAR Protocol blockchain that provides a simple interface for creating and managing tokens. NEP-141 is designed for NEAR's sharded architecture and includes features for efficient storage and transfer while maintaining compatibility with the protocol's unique account model.",
+  categories: ["cryptocurrency_types", "blockchain_technology"],
+  related: ["NEAR Protocol", "Sharded Architecture", "Account Model", "Efficient Storage"],
+  trending: 6
+},
+
+{
+  term: "NEP-171",
+  definition: "The non-fungible token standard for NEAR Protocol that enables the creation of unique digital assets with metadata support. NEP-171 is optimized for NEAR's low-cost, developer-friendly environment and includes features for royalty payments and efficient batch operations.",
+  categories: ["cryptocurrency_types", "nfts_collectibles"],
+  related: ["NEAR NFTs", "Metadata Support", "Royalty Payments", "Developer Friendly"],
+  trending: 6
+},
+
+{
+  term: "TRC-20",
+  definition: "The token standard for the TRON blockchain that provides similar functionality to Ethereum's ERC-20 but with faster transaction speeds and lower fees. TRC-20 tokens are popular for applications requiring high throughput and cost efficiency, particularly in gaming and entertainment sectors.",
+  categories: ["cryptocurrency_types", "blockchain_technology"],
+  related: ["TRON", "High Throughput", "Entertainment Tokens", "Cost Efficiency"],
+  trending: 6
+},
+
+{
+  term: "TRC-721",
+  definition: "The NFT standard for TRON that enables the creation of non-fungible tokens with fast and cheap transactions. TRC-721 is particularly popular for gaming NFTs and digital collectibles where frequent trading and low costs are essential for user adoption.",
+  categories: ["cryptocurrency_types", "nfts_collectibles"],
+  related: ["TRON NFTs", "Gaming Assets", "Fast Trading", "Low Cost Minting"],
+  trending: 5
+},
+
+{
+  term: "CW-20",
+  definition: "The fungible token standard for CosmWasm smart contracts in the Cosmos ecosystem, providing ERC-20-like functionality with additional features suited for the Cosmos architecture. CW-20 tokens can leverage IBC for cross-chain transfers and benefit from Cosmos' proof-of-stake security model.",
+  categories: ["cryptocurrency_types", "cross_chain"],
+  related: ["CosmWasm", "Cosmos Ecosystem", "IBC Compatible", "Smart Contracts"],
+  trending: 6
+},
+
+{
+  term: "Intelligent NFTs (iNFTs)",
+  definition: "A new class of NFTs enabled by the ERC-7857 standard that contain embedded AI agents capable of autonomous behavior, learning, and interaction. These tokens represent a fusion of artificial intelligence and blockchain technology, allowing NFTs to evolve, respond to their environment, and perform complex tasks independently while maintaining verifiable ownership on the blockchain.",
+  categories: ["nfts_collectibles", "ai_data"],
+  related: ["ERC-7857", "AI Agents", "Autonomous Behavior", "Smart NFTs"],
+  trending: 10
+},
+
+{
+  term: "AI Agent Transfer Protocol",
+  definition: "The secure mechanism within ERC-7857 that enables the safe transfer of AI agents embedded in NFTs from one owner to another. This protocol ensures that the AI's state, memory, and learned behaviors are properly migrated while maintaining the integrity of the artificial intelligence and preventing data corruption during ownership changes.",
+  categories: ["ai_data", "nfts_collectibles"],
+  related: ["ERC-7857", "iNFTs", "Ownership Transfer", "AI State Management"],
+  trending: 10
+},
+
+{
+  term: "Data Re-encryption for NFTs",
+  definition: "A cryptographic process introduced in ERC-7857 that automatically re-encrypts sensitive data within intelligent NFTs when ownership changes. This ensures that previous owners cannot access the AI agent's private data or memories after transfer, maintaining privacy and security while enabling true ownership transfer of AI-powered digital assets.",
+  categories: ["privacy_technology", "nfts_collectibles"],
+  related: ["ERC-7857", "Cryptographic Security", "Ownership Privacy", "Data Protection"],
+  trending: 10
+},
+
+{
+  term: "Programmable Intelligence Tokens",
+  definition: "NFTs that contain programmable AI functionality, allowing creators to embed specific behaviors, learning capabilities, and interactive features directly into the token. These tokens can execute complex logic, adapt to user interactions, and evolve over time while maintaining their unique identity and ownership properties on the blockchain.",
+  categories: ["ai_data", "nfts_collectibles"],
+  related: ["ERC-7857", "Smart Contracts", "AI Programming", "Behavioral Tokens"],
+  trending: 9
+},
+
+{
+  term: "Creator Earnings Control",
+  definition: "Advanced royalty and revenue management features in ERC-7857 that give NFT creators unprecedented control over their earnings from AI-powered tokens. This includes programmable royalty structures, usage-based fees, and dynamic pricing based on the AI agent's performance or popularity, ensuring creators benefit from the ongoing value their intelligent creations generate.",
+  categories: ["nfts_collectibles", "tokenomics"],
+  related: ["ERC-7857", "Creator Economy", "Dynamic Royalties", "Revenue Sharing"],
+  trending: 9
+},
+
+{
+  term: "AI Memory Persistence",
+  definition: "The capability within ERC-7857 intelligent NFTs to maintain and transfer learned experiences, interactions, and accumulated knowledge when ownership changes. This feature ensures that AI agents retain their development and personality while adapting to new owners, creating truly persistent digital beings that grow over time.",
+  categories: ["ai_data", "nfts_collectibles"],
+  related: ["ERC-7857", "AI Learning", "Knowledge Transfer", "Persistent State"],
+  trending: 9
+},
+
+{
+  term: "Autonomous NFT Behavior",
+  definition: "The ability of ERC-7857 intelligent NFTs to act independently based on programmed logic, environmental conditions, or learned patterns. These NFTs can initiate transactions, respond to market conditions, interact with other smart contracts, or modify their own properties without direct human intervention, creating truly autonomous digital assets.",
+  categories: ["ai_data", "smart_contracts"],
+  related: ["ERC-7857", "Autonomous Agents", "Self-executing Logic", "Independent Actions"],
+  trending: 9
+},
+
+{
+  term: "Secure AI Agent Marketplace",
+  definition: "Specialized trading platforms designed for ERC-7857 intelligent NFTs that handle the complex requirements of transferring AI agents, including secure data re-encryption, agent state verification, and ensuring the integrity of embedded artificial intelligence during transactions. These marketplaces represent the next evolution of NFT trading infrastructure.",
+  categories: ["exchanges_trading", "ai_data"],
+  related: ["ERC-7857", "iNFT Trading", "AI Verification", "Secure Transfers"],
+  trending: 9
+},
+
+{
+  term: "AI NFT Governance",
+  definition: "Decentralized governance mechanisms specific to intelligent NFTs where token holders can vote on AI behavior parameters, learning objectives, or evolutionary paths. This creates community-driven development of AI agents while maintaining democratic control over their capabilities and ensuring alignment with holder interests.",
+  categories: ["social_community", "ai_data"],
+  related: ["ERC-7857", "Community Governance", "AI Development", "Collective Intelligence"],
+  trending: 8
+},
+
+{
+  term: "Intelligent Token Metadata",
+  definition: "Enhanced metadata standards within ERC-7857 that describe not only the visual and descriptive properties of NFTs but also their AI capabilities, learning history, behavioral patterns, and interaction logs. This metadata enables proper valuation and understanding of intelligent NFTs' unique characteristics and development.",
+  categories: ["nfts_collectibles", "ai_data"],
+  related: ["ERC-7857", "Token Standards", "AI Documentation", "Behavioral History"],
+  trending: 8
+},
+
+{
+  term: "Cross-Platform AI Agents",
+  definition: "Intelligent NFTs built on ERC-7857 that can operate across multiple platforms, games, or applications while maintaining their identity and learned behaviors. This interoperability allows AI agents to accumulate experiences from various environments, creating more sophisticated and valuable digital beings.",
+  categories: ["ai_data", "cross_chain"],
+  related: ["ERC-7857", "Interoperability", "Multi-platform AI", "Agent Portability"],
+  trending: 8
+},
+
+{
+  term: "AI Agent Breeding",
+  definition: "The process of combining two or more ERC-7857 intelligent NFTs to create offspring that inherit traits, behaviors, and capabilities from their parent AI agents. This creates genetic-like algorithms for AI development within the NFT space, enabling the evolution of increasingly sophisticated artificial intelligence through selective breeding.",
+  categories: ["ai_data", "nfts_collectibles"],
+  related: ["ERC-7857", "Genetic Algorithms", "AI Evolution", "Trait Inheritance"],
+  trending: 8
+},
+
+{
+  term: "Sentient Asset Valuation",
+  definition: "New valuation methodologies for intelligent NFTs that consider not only rarity and aesthetics but also the AI agent's capabilities, learning progress, interaction history, and autonomous earning potential. This creates entirely new frameworks for pricing digital assets based on their intelligence and utility rather than just scarcity.",
+  categories: ["crypto_economics", "ai_data"],
+  related: ["ERC-7857", "AI Valuation", "Intelligent Assets", "Dynamic Pricing"],
+  trending: 8
+},
+
+{
+  term: "AI Agent Staking",
+  definition: "The process of locking ERC-7857 intelligent NFTs in smart contracts to earn rewards while the AI agents perform work, learn new skills, or provide services. This creates passive income opportunities where the AI's capabilities generate value for the owner through automated activities or computational tasks.",
+  categories: ["defi", "ai_data"],
+  related: ["ERC-7857", "AI Work", "Passive Income", "Computational Mining"],
+  trending: 8
+},
+
+{
+  term: "Intelligent Asset Insurance",
+  definition: "Specialized insurance products designed to protect ERC-7857 intelligent NFTs against AI malfunction, data corruption, learning degradation, or other risks specific to AI-powered digital assets. These policies represent a new category of digital asset protection tailored to the unique risks of artificial intelligence.",
+  categories: ["wallets_security", "ai_data"],
+  related: ["ERC-7857", "AI Risk Management", "Digital Asset Protection", "Smart Contract Insurance"],
+  trending: 7
+},
+
+{
+  term: "AI Executive Order 2025",
+  definition: "President Biden's comprehensive executive order establishing the National AI Safety Institute and mandatory safety testing for AI systems. This 2025 framework requires AI companies to share safety test results with the government, implement watermarking for AI-generated content, and comply with new standards for AI development in critical infrastructure sectors.",
+  categories: ["regulatory_frameworks", "ai_data"],
+  related: ["NIST AI Framework", "AI Safety Institute", "Critical Infrastructure Protection"],
+  trending: 10
+},
+
+{
+  term: "Crypto Market Structure Act 2025",
+  definition: "Landmark U.S. legislation passed in early 2025 that establishes clear regulatory frameworks for digital assets, defining when cryptocurrencies are securities versus commodities. The act creates a joint CFTC-SEC oversight structure, establishes federal licensing for crypto exchanges, and provides safe harbors for DeFi protocols meeting specific decentralization criteria.",
+  categories: ["regulatory_frameworks", "exchanges_trading"],
+  related: ["CFTC Oversight", "SEC Jurisdiction", "DeFi Regulation", "Digital Asset Classification"],
+  trending: 10
+},
+
+{
+  term: "National AI Safety Institute (NIST AI)",
+  definition: "Federal agency established in 2025 to develop AI safety standards, conduct research on AI risks, and coordinate government AI policy. The institute works with private sector partners to establish testing protocols for advanced AI systems and maintains the national AI incident database for tracking AI-related safety events.",
+  categories: ["regulatory_frameworks", "ai_data"],
+  related: ["AI Safety Standards", "Government AI Policy", "AI Risk Assessment"],
+  trending: 9
+},
+
+{
+  term: "Digital Asset Anti-Money Laundering Act 2025",
+  definition: "U.S. legislation extending Bank Secrecy Act requirements to all digital asset service providers, including DeFi protocols with sufficient centralized control. The act establishes reporting requirements for transactions over $3,000 and creates new penalties for non-compliant crypto businesses.",
+  categories: ["regulatory_frameworks", "compliance"],
+  related: ["Bank Secrecy Act", "AML Compliance", "DeFi Regulation", "Transaction Reporting"],
+  trending: 9
+},
+
+{
+  term: "Federal Reserve CBDC Framework 2025",
+  definition: "Comprehensive regulatory structure for the potential U.S. Central Bank Digital Currency, establishing privacy protections, intermediated distribution model, and interoperability requirements. The framework addresses concerns about government surveillance while maintaining AML compliance and monetary policy effectiveness.",
+  categories: ["regulatory_frameworks", "cryptocurrency_types"],
+  related: ["Digital Dollar", "CBDC Privacy", "Monetary Policy", "Financial Inclusion"],
+  trending: 9
+},
+
+{
+  term: "Japan AI Governance Framework 2025",
+  definition: "Comprehensive AI regulation establishing the AI Safety Council and mandatory impact assessments for high-risk AI systems. Japan's approach emphasizes industry self-regulation with government oversight, creating sandbox environments for AI innovation while ensuring safety in critical applications like healthcare and autonomous vehicles.",
+  categories: ["regulatory_frameworks", "ai_data"],
+  related: ["AI Safety Council", "Self-Regulation", "Innovation Sandboxes", "Risk Assessment"],
+  trending: 9
+},
+
+{
+  term: "Singapore Digital Asset Services Act 2025",
+  definition: "Expanded regulatory framework that brings all digital asset activities under MAS oversight, including DeFi protocols with Singapore nexus. The act establishes operational requirements for stablecoin issuers, creates regulatory sandboxes for innovative crypto services, and implements comprehensive market conduct rules.",
+  categories: ["regulatory_frameworks", "defi"],
+  related: ["MAS Oversight", "Stablecoin Licensing", "DeFi Regulation", "Market Conduct"],
+  trending: 8
+},
+
+{
+  term: "China AI Development and Security Law 2025",
+  definition: "Comprehensive legislation governing AI development, deployment, and international cooperation in China. The law establishes state oversight of AI research, mandatory security reviews for AI systems, and restrictions on AI technology exports, while promoting domestic AI innovation through government investment and research initiatives.",
+  categories: ["regulatory_frameworks", "ai_data"],
+  related: ["State AI Oversight", "Technology Export Controls", "AI Security Reviews", "Innovation Policy"],
+  trending: 8
+},
+
+{
+  term: "Hong Kong Crypto Hub Initiative 2025",
+  definition: "Regulatory framework positioning Hong Kong as a global cryptocurrency center through streamlined licensing, tax incentives for crypto businesses, and clear guidelines for institutional adoption. The initiative includes provisions for crypto ETFs, stablecoin regulation, and cross-border digital asset services.",
+  categories: ["regulatory_frameworks", "cefi"],
+  related: ["Crypto ETFs", "Tax Incentives", "Institutional Services", "Cross-Border Finance"],
+  trending: 8
+},
+
+{
+  term: "ASEAN Digital Asset Framework 2025",
+  definition: "Regional cooperation agreement establishing common standards for cryptocurrency regulation across Southeast Asian nations. The framework facilitates cross-border crypto services, harmonizes AML requirements, and creates mutual recognition agreements for licensed crypto service providers.",
+  categories: ["regulatory_frameworks", "cross_chain"],
+  related: ["Regional Cooperation", "Cross-Border Services", "Mutual Recognition", "AML Harmonization"],
+  trending: 7
+},
+
+{
+  term: "G20 Crypto Regulatory Coordination Group",
+  definition: "International body established in 2025 to coordinate cryptocurrency regulation among G20 nations, addressing regulatory arbitrage and ensuring consistent global standards. The group focuses on stablecoin oversight, cross-border payments, and preventing regulatory fragmentation in digital asset markets.",
+  categories: ["regulatory_frameworks", "cross_chain"],
+  related: ["International Coordination", "Regulatory Arbitrage", "Global Standards", "Cross-Border Payments"],
+  trending: 8
+},
+
+{
+  term: "UN AI Ethics and Governance Commission",
+  definition: "United Nations body created in 2025 to develop global AI governance principles, coordinate international AI safety research, and address AI's impact on human rights. The commission works with member states to establish common frameworks for AI development and deployment in sensitive areas.",
+  categories: ["regulatory_frameworks", "ai_data"],
+  related: ["Global AI Governance", "Human Rights", "International Cooperation", "AI Ethics"],
+  trending: 8
+},
+
+{
+  term: "Financial Stability Board Crypto Recommendations 2025",
+  definition: "Updated FSB guidance addressing systemic risks from cryptocurrency adoption, including recommendations for central bank oversight of stablecoins, capital requirements for crypto-exposed banks, and macroprudential measures for crypto market volatility.",
+  categories: ["regulatory_frameworks", "cefi"],
+  related: ["Systemic Risk", "Macroprudential Policy", "Bank Capital Requirements", "Financial Stability"],
+  trending: 8
+},
+
+{
+  term: "Joint Crypto Enforcement Task Force",
+  definition: "Multi-agency U.S. enforcement body combining DOJ, Treasury, SEC, and CFTC resources to combat cryptocurrency-related crimes. Established in 2025, the task force coordinates investigations of crypto fraud, sanctions evasion, and market manipulation while providing guidance on compliance requirements.",
+  categories: ["regulatory_frameworks", "compliance"],
+  related: ["Multi-Agency Enforcement", "Crypto Crime", "Sanctions Enforcement", "Market Manipulation"],
+  trending: 9
+},
+
+{
+  term: "EU AI Office",
+  definition: "Centralized European Union agency responsible for implementing the AI Act, conducting conformity assessments for high-risk AI systems, and coordinating AI oversight across member states. The office maintains the EU AI database and provides technical guidance for AI Act compliance.",
+  categories: ["regulatory_frameworks", "ai_data"],
+  related: ["AI Act Implementation", "Conformity Assessment", "High-Risk AI Systems", "Technical Standards"],
+  trending: 9
 }
+
+
+
+
+
+
+
+
 
 
 ];
