@@ -3458,5 +3458,245 @@ trending: 8
   categories: ["defi", "ai_data"],
   related: ["On-chain Reputation", "Credit Assessment", "Undercollateralized Lending", "Reputation Systems"],
   trending: 8
+},
+
+{
+  term: "TWAP (Time-Weighted Average Price)",
+  definition: "A trading algorithm that executes orders by breaking them into smaller portions over a specified time period to achieve an average price close to the time-weighted average price during that period. TWAP strategies help minimize market impact by spreading large orders across time, reducing slippage and avoiding significant price movements that could result from executing large trades at once.",
+  categories: ["technical_analysis", "exchanges_trading"],
+  related: ["VWAP", "Algorithmic Trading", "Order Execution", "Market Impact"],
+  trending: 8
+},
+
+{
+  term: "VWAP (Volume-Weighted Average Price)",
+  definition: "A technical indicator that calculates the average price of a security weighted by trading volume over a specific period. VWAP serves as a benchmark for execution quality and trend direction, with prices above VWAP indicating bullish sentiment and prices below suggesting bearish conditions. Institutional traders often use VWAP as a reference point for order execution efficiency.",
+  categories: ["technical_analysis", "exchanges_trading"],
+  related: ["TWAP", "Volume Analysis", "Institutional Trading", "Price Benchmarks"],
+  trending: 8
+},
+
+{
+  term: "Moving Averages",
+  definition: "Technical indicators that smooth price data by creating a constantly updated average price over a specific number of periods. Simple Moving Averages (SMA) weight all periods equally, while Exponential Moving Averages (EMA) give more weight to recent prices. These indicators help identify trend direction, support/resistance levels, and generate trading signals through crossovers.",
+  categories: ["technical_analysis"],
+  related: ["SMA", "EMA", "Trend Analysis", "Support and Resistance"],
+  trending: 9
+},
+
+{
+  term: "RSI (Relative Strength Index)",
+  definition: "A momentum oscillator that measures the speed and change of price movements on a scale of 0 to 100. RSI values above 70 typically indicate overbought conditions (potential sell signal), while values below 30 suggest oversold conditions (potential buy signal). This indicator helps traders identify potential reversal points and gauge market momentum strength.",
+  categories: ["technical_analysis"],
+  related: ["Momentum Indicators", "Overbought", "Oversold", "Divergence"],
+  trending: 9
+},
+
+{
+  term: "MACD (Moving Average Convergence Divergence)",
+  definition: "A trend-following momentum indicator that shows the relationship between two moving averages of an asset's price. MACD consists of a MACD line (12-day EMA minus 26-day EMA), signal line (9-day EMA of MACD), and histogram showing the difference between them. Crossovers and divergences provide buy/sell signals and trend change indications.",
+  categories: ["technical_analysis"],
+  related: ["Moving Averages", "Signal Line", "Histogram", "Trend Indicators"],
+  trending: 8
+},
+
+{
+  term: "Bollinger Bands",
+  definition: "A volatility indicator consisting of a middle band (typically 20-period SMA) and two outer bands placed at standard deviations above and below the middle band. When price touches the upper band, it may indicate overbought conditions; touching the lower band may suggest oversold conditions. Band width expansion indicates increased volatility, while contraction suggests decreased volatility.",
+  categories: ["technical_analysis"],
+  related: ["Volatility Indicators", "Standard Deviation", "Price Channels", "Mean Reversion"],
+  trending: 8
+},
+
+{
+  term: "Fibonacci Retracement",
+  definition: "A technical analysis tool that uses horizontal lines to indicate areas of support or resistance at key Fibonacci levels (23.6%, 38.2%, 50%, 61.8%, 78.6%) before price continues in the original direction. These levels are derived from the Fibonacci sequence and are widely watched by traders for potential reversal points during market corrections.",
+  categories: ["technical_analysis"],
+  related: ["Support and Resistance", "Retracement Levels", "Golden Ratio", "Price Corrections"],
+  trending: 8
+},
+
+{
+  term: "Support and Resistance",
+  definition: "Key price levels where an asset's price tends to find support (stops falling) or resistance (stops rising). Support levels act as a floor where buying interest emerges, while resistance levels act as a ceiling where selling pressure increases. These levels are identified through historical price action and help traders make entry and exit decisions.",
+  categories: ["technical_analysis"],
+  related: ["Price Levels", "Breakouts", "Trend Lines", "Psychological Levels"],
+  trending: 9
+},
+
+{
+  term: "Chart Patterns",
+  definition: "Recognizable formations created by price movements on charts that suggest potential future price direction. Common patterns include head and shoulders, triangles, flags, pennants, and double tops/bottoms. These patterns are based on market psychology and help traders anticipate potential breakouts, reversals, or continuation of trends.",
+  categories: ["technical_analysis"],
+  related: ["Head and Shoulders", "Triangles", "Flags", "Pattern Recognition"],
+  trending: 8
+},
+
+{
+  term: "Candlestick Patterns",
+  definition: "Visual representations of price action using candlestick charts that show open, high, low, and close prices for specific time periods. Patterns like doji, hammer, shooting star, and engulfing patterns provide insights into market sentiment and potential reversal or continuation signals based on the relationship between opening and closing prices.",
+  categories: ["technical_analysis"],
+  related: ["Doji", "Hammer", "Engulfing Patterns", "Price Action"],
+  trending: 8
+},
+
+{
+  term: "Volume Analysis",
+  definition: "The study of trading volume to confirm price movements and identify potential reversals. High volume during price advances suggests strong buying interest, while high volume during declines indicates strong selling pressure. Volume divergences, where price moves in one direction while volume moves in another, can signal potential trend changes.",
+  categories: ["technical_analysis", "exchanges_trading"],
+  related: ["Volume Indicators", "Price-Volume Relationship", "Accumulation", "Distribution"],
+  trending: 8
+},
+
+{
+  term: "Trend Lines",
+  definition: "Straight lines connecting two or more price points that extend into the future to act as support or resistance. Upward trend lines connect successive higher lows in an uptrend, while downward trend lines connect successive lower highs in a downtrend. Breaks of significant trend lines often signal potential trend reversals.",
+  categories: ["technical_analysis"],
+  related: ["Support and Resistance", "Trend Analysis", "Breakouts", "Price Channels"],
+  trending: 8
+},
+
+{
+  term: "Stochastic Oscillator",
+  definition: "A momentum indicator that compares a security's closing price to its price range over a specific period, generating values between 0 and 100. The indicator consists of %K (fast stochastic) and %D (slow stochastic) lines. Values above 80 suggest overbought conditions, while values below 20 indicate oversold conditions.",
+  categories: ["technical_analysis"],
+  related: ["Momentum Indicators", "Overbought", "Oversold", "%K and %D Lines"],
+  trending: 7
+},
+
+{
+  term: "Williams %R",
+  definition: "A momentum indicator that measures overbought and oversold levels, similar to the stochastic oscillator but with an inverted scale from 0 to -100. Values above -20 indicate overbought conditions (potential sell signal), while values below -80 suggest oversold conditions (potential buy signal). This indicator is particularly useful for timing entry and exit points.",
+  categories: ["technical_analysis"],
+  related: ["Momentum Indicators", "Overbought", "Oversold", "Stochastic Oscillator"],
+  trending: 6
+},
+
+{
+  term: "ADX (Average Directional Index)",
+  definition: "A technical indicator that measures the strength of a trend regardless of its direction, with values ranging from 0 to 100. ADX values above 25 typically indicate a strong trend, while values below 20 suggest a weak or non-trending market. The indicator is often used alongside +DI and -DI lines to determine trend direction and strength.",
+  categories: ["technical_analysis"],
+  related: ["Trend Strength", "Directional Indicators", "+DI", "-DI"],
+  trending: 7
+},
+
+{
+  term: "Ichimoku Cloud",
+  definition: "A comprehensive technical analysis system that provides information about support/resistance, trend direction, and momentum using five lines: Tenkan-sen, Kijun-sen, Senkou Span A, Senkou Span B, and Chikou Span. The 'cloud' (Kumo) formed by Senkou Spans A and B acts as dynamic support/resistance, with price above the cloud indicating bullish conditions and below suggesting bearish conditions.",
+  categories: ["technical_analysis"],
+  related: ["Cloud Analysis", "Kumo", "Japanese Technical Analysis", "Multiple Timeframes"],
+  trending: 7
+},
+
+{
+  term: "Pivot Points",
+  definition: "Technical levels calculated using the previous period's high, low, and close prices to identify potential support and resistance levels for the current trading session. The main pivot point serves as the primary support/resistance level, with additional levels (R1, R2, R3 for resistance and S1, S2, S3 for support) providing secondary targets for traders.",
+  categories: ["technical_analysis"],
+  related: ["Support and Resistance", "Intraday Trading", "Price Levels", "Day Trading"],
+  trending: 7
+},
+
+{
+  term: "Elliott Wave Theory",
+  definition: "A technical analysis approach that identifies recurring price patterns based on investor psychology and market sentiment. The theory suggests that markets move in predictable five-wave patterns in the direction of the main trend, followed by three-wave corrective patterns. These waves reflect the natural rhythm of crowd psychology between optimism and pessimism.",
+  categories: ["technical_analysis"],
+  related: ["Wave Patterns", "Market Psychology", "Impulse Waves", "Corrective Waves"],
+  trending: 7
+},
+
+{
+  term: "On-Balance Volume (OBV)",
+  definition: "A momentum indicator that uses volume flow to predict changes in stock price by adding volume on up days and subtracting volume on down days. OBV theory suggests that volume changes precede price changes, making it useful for confirming trends and identifying potential reversals through divergences between OBV and price movements.",
+  categories: ["technical_analysis"],
+  related: ["Volume Indicators", "Volume Flow", "Trend Confirmation", "Divergence"],
+  trending: 7
+},
+
+{
+  term: "Parabolic SAR",
+  definition: "A trend-following indicator that provides potential reversal points by calculating stop and reverse points. The indicator appears as dots above or below price: dots below price suggest an uptrend, while dots above indicate a downtrend. When price crosses the SAR dots, it signals a potential trend reversal and new position direction.",
+  categories: ["technical_analysis"],
+  related: ["Trend Following", "Stop Loss", "Trend Reversal", "Position Management"],
+  trending: 6
+},
+
+{
+  term: "Commodity Channel Index (CCI)",
+  definition: "A momentum oscillator that measures the variation of a security's price from its statistical mean, helping identify cyclical trends and overbought/oversold conditions. CCI values above +100 indicate strong upward momentum, while values below -100 suggest strong downward momentum. The indicator is particularly useful for identifying trend reversals.",
+  categories: ["technical_analysis"],
+  related: ["Momentum Oscillators", "Cyclical Analysis", "Mean Reversion", "Trend Identification"],
+  trending: 6
+},
+
+{
+  term: "Money Flow Index (MFI)",
+  definition: "A momentum indicator that incorporates both price and volume to measure buying and selling pressure, often called the 'volume-weighted RSI.' MFI values above 80 indicate overbought conditions with potential selling pressure, while values below 20 suggest oversold conditions with potential buying opportunities. The indicator helps confirm price movements with volume analysis.",
+  categories: ["technical_analysis"],
+  related: ["Volume-Weighted Indicators", "Money Flow", "Buying Pressure", "Selling Pressure"],
+  trending: 7
+},
+
+{
+  term: "Rate of Change (ROC)",
+  definition: "A momentum oscillator that measures the percentage change in price between the current price and the price from a specified number of periods ago. ROC helps identify the speed of price changes and can signal overbought/oversold conditions when reaching extreme values. Positive ROC indicates upward momentum, while negative ROC suggests downward momentum.",
+  categories: ["technical_analysis"],
+  related: ["Momentum Indicators", "Price Velocity", "Percentage Change", "Momentum Divergence"],
+  trending: 6
+},
+
+{
+  term: "Aroon Indicator",
+  definition: "A technical indicator consisting of Aroon Up and Aroon Down lines that measure the time since the highest high and lowest low within a specified period. The indicator helps identify trend changes and the strength of current trends. When Aroon Up is above Aroon Down, it suggests an uptrend; when Aroon Down is above Aroon Up, it indicates a downtrend.",
+  categories: ["technical_analysis"],
+  related: ["Trend Identification", "Trend Strength", "Time-based Analysis", "Directional Movement"],
+  trending: 6
+},
+
+{
+  term: "Chaikin Money Flow (CMF)",
+  definition: "A volume-weighted average of accumulation and distribution over a specified period that measures the amount of money flow volume over a specific period. CMF values above zero indicate buying pressure (accumulation), while values below zero suggest selling pressure (distribution). The indicator helps confirm price trends through volume analysis.",
+  categories: ["technical_analysis"],
+  related: ["Volume Analysis", "Accumulation", "Distribution", "Money Flow"],
+  trending: 6
+},
+
+{
+  term: "Keltner Channels",
+  definition: "A volatility-based technical indicator consisting of three lines: a middle line (typically an EMA) and upper/lower bands set at a multiple of the Average True Range above and below the middle line. Similar to Bollinger Bands but using ATR instead of standard deviation, Keltner Channels help identify overbought/oversold conditions and potential breakouts.",
+  categories: ["technical_analysis"],
+  related: ["Volatility Indicators", "Average True Range", "Price Channels", "Bollinger Bands"],
+  trending: 6
+},
+
+{
+  term: "Average True Range (ATR)",
+  definition: "A volatility indicator that measures market volatility by calculating the average of true ranges over a specified period. ATR doesn't indicate price direction but shows the degree of price volatility. Higher ATR values indicate higher volatility, while lower values suggest calmer market conditions. ATR is commonly used for setting stop-loss levels and position sizing.",
+  categories: ["technical_analysis"],
+  related: ["Volatility Measurement", "True Range", "Stop Loss Placement", "Position Sizing"],
+  trending: 7
+},
+
+{
+  term: "Donchian Channels",
+  definition: "A technical indicator consisting of three lines: the highest high and lowest low over a specified period, with an optional middle line representing the average. Breakouts above the upper channel suggest bullish momentum, while breaks below the lower channel indicate bearish momentum. This indicator is particularly useful for trend-following strategies.",
+  categories: ["technical_analysis"],
+  related: ["Price Channels", "Breakout Trading", "Trend Following", "Momentum"],
+  trending: 6
+},
+
+{
+  term: "Accumulation/Distribution Line",
+  definition: "A volume-based indicator that measures the cumulative flow of money into and out of a security by considering the relationship between closing price and the trading range, multiplied by volume. Rising A/D line suggests accumulation (buying pressure), while a falling line indicates distribution (selling pressure). Divergences between price and A/D line can signal potential reversals.",
+  categories: ["technical_analysis"],
+  related: ["Volume Analysis", "Money Flow", "Accumulation", "Distribution"],
+  trending: 6
+},
+
+{
+  term: "Price Action Trading",
+  definition: "A trading methodology that relies on analyzing raw price movements and chart patterns without the use of technical indicators. Price action traders focus on support/resistance levels, candlestick patterns, chart formations, and market structure to make trading decisions. This approach emphasizes understanding market psychology through pure price movement analysis.",
+  categories: ["technical_analysis"],
+  related: ["Candlestick Patterns", "Market Structure", "Support and Resistance", "Chart Patterns"],
+  trending: 8
 }
 ];
