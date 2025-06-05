@@ -10,26 +10,40 @@ interface CategorySelectorProps {
 }
 
 const categoryDisplayNames: Record<CategoryType, string> = {
-  blockchain: "Blockchain",
+  blockchain_technology: "Blockchain Technology",
+  cryptocurrency_types: "Cryptocurrency Types", 
   web3: "Web3",
-  ai: "Artificial Intelligence",
-  regulatory: "Regulatory",
-  tokenomics: "Tokenomics",
-  gaming: "Gaming",
-  strategy: "Strategy",
   defi: "DeFi",
-  nft: "NFTs",
-  dao: "DAOs",
-  identity: "Digital Identity",
-  infrastructure: "Infrastructure",
-  security: "Security",
-  metaverse: "Metaverse"
+  cefi: "CeFi",
+  nfts_collectibles: "NFTs & Collectibles",
+  tokenomics: "Tokenomics",
+  exchanges_trading: "Exchanges & Trading",
+  wallets_security: "Wallets & Security",
+  mining_staking: "Mining & Staking",
+  regulatory_frameworks: "Regulatory Frameworks",
+  compliance: "Compliance",
+  crypto_history: "Crypto History",
+  infrastructure_applications: "Infrastructure Applications",
+  gaming_metaverse: "Gaming & Metaverse",
+  social_community: "Social & Community",
+  ai_data: "AI & Data",
+  depin: "DePIN",
+  cross_chain: "Cross-Chain",
+  smart_contracts: "Smart Contracts",
+  technical_analysis: "Technical Analysis",
+  privacy_technology: "Privacy Technology",
+  layer2_solutions: "Layer 2 Solutions",
+  tokenization: "Tokenization",
+  crypto_economics: "Cryptoeconomics"
 };
 
 const categories: CategoryType[] = [
-  "blockchain", "web3", "ai", "regulatory", "tokenomics", 
-  "gaming", "strategy", "defi", "nft", "dao", 
-  "identity", "infrastructure", "security", "metaverse"
+  "blockchain_technology", "cryptocurrency_types", "web3", "defi", "cefi", 
+  "nfts_collectibles", "tokenomics", "exchanges_trading", "wallets_security", "mining_staking",
+  "regulatory_frameworks", "compliance", "crypto_history", "infrastructure_applications", 
+  "gaming_metaverse", "social_community", "ai_data", "depin", "cross_chain", 
+  "smart_contracts", "technical_analysis", "privacy_technology", "layer2_solutions", 
+  "tokenization", "crypto_economics"
 ];
 
 export const CategorySelector: React.FC<CategorySelectorProps> = ({
