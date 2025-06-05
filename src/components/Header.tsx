@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -154,12 +153,12 @@ const Header = () => {
               </button>
               
               {resourcesOpen && (
-                <div className="absolute top-full left-0 bg-white/5 backdrop-blur-lg rounded-lg border border-white/20 min-w-48 py-2 shadow-xl z-50">
+                <div className="absolute top-full left-0 bg-white/5 backdrop-blur-lg rounded-lg border border-white/20 min-w-48 py-2 shadow-xl z-50 overflow-hidden">
                   {resourcesItems.map(({ href, label }) => (
                     <NavLink
                       key={href}
                       to={href}
-                      className="block px-4 py-2 text-white/80 hover:bg-white/10 hover:text-white transition-all duration-300 transform hover:scale-105"
+                      className="block px-4 py-2 text-white/80 hover:bg-white/10 hover:text-white transition-all duration-300 relative overflow-hidden"
                       onClick={() => setResourcesOpen(false)}
                     >
                       {label}
