@@ -30,7 +30,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#080112] overflow-x-hidden" itemScope itemType="https://schema.org/WebPage">
+    <div className="min-h-screen bg-[#010822] overflow-x-hidden" itemScope itemType="https://schema.org/WebPage">
       {/* SEO Head with all metadata and structured data */}
       <SeoHead currentPath={currentPath} currentHash={currentHash} />
       

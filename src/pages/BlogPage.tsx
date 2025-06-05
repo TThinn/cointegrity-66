@@ -10,15 +10,15 @@ const BlogPage = () => {
   const { currentPath, currentHash } = useSectionTracking();
 
   return (
-    <div className="min-h-screen bg-[#080112] overflow-x-hidden">
+    <div className="min-h-screen bg-[#010822] overflow-x-hidden">
       <SeoHead currentPath={currentPath} currentHash={currentHash} />
       <Header />
       
-      {/* Hero section with clean background like Glossary page */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115]">
+      {/* Hero section with clean background using consistent color */}
+      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#010822]">
         {/* Simple gradient background */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[#060115]" />
+          <div className="absolute inset-0 bg-[#010822]" />
         </div>
 
         {/* Content container */}

@@ -12,7 +12,7 @@ const TeamPage = () => {
   const { currentPath } = useSectionTracking();
   
   return (
-    <div className="min-h-screen bg-[#080112]" itemScope itemType="https://schema.org/WebPage">
+    <div className="min-h-screen bg-[#010822]" itemScope itemType="https://schema.org/WebPage">
       <SeoHead currentPath={currentPath} currentHash="" />
       
       <Header />

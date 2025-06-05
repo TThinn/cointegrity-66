@@ -10,13 +10,13 @@ const GuidesPage = () => {
   const { currentPath, currentHash } = useSectionTracking();
 
   return (
-    <div className="min-h-screen bg-[#080112] overflow-x-hidden">
+    <div className="min-h-screen bg-[#010822] overflow-x-hidden">
       <SeoHead currentPath={currentPath} currentHash={currentHash} />
       <Header />
       
       {/* Hero section with all background effects */}
-      <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
-        {/* Background elements - exact same as Hero */}
+      <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#010822] isolate">
+        {/* Background elements - using consistent color */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
           <LightParticles centerPosition={{ x: 50, y: 60 }} />

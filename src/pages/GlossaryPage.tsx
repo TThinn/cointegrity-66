@@ -49,7 +49,7 @@ const GlossaryPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#080112] overflow-x-hidden">
+    <div className="min-h-screen bg-[#010822] overflow-x-hidden">
       <SeoHead currentPath={location.pathname} currentHash={location.hash} />
       <Helmet>
         <title>Web3, Blockchain & AI Glossary | Cointegrity</title>
@@ -66,9 +66,9 @@ const GlossaryPage: React.FC = () => {
       
       <Header />
       
-      {/* Hero section with same background as Hero component */}
-      <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
-        {/* Background elements - same as Hero */}
+      {/* Hero section with consistent background color */}
+      <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#010822] isolate">
+        {/* Background elements - using consistent color */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
         </div>

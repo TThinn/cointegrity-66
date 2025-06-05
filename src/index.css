@@ -1,16 +1,17 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 261 89% 4%;
+    --background: 221 84% 5%;
     --foreground: 0 0% 98%;
 
-    --card: 261 89% 8%;
+    --card: 221 84% 8%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 261 89% 6%;
+    --popover: 221 84% 6%;
     --popover-foreground: 0 0% 98%;
 
     --primary: 331 85% 52%;
@@ -19,7 +20,7 @@
     --secondary: 331 85% 52%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 261 50% 12%;
+    --muted: 221 50% 12%;
     --muted-foreground: 0 0% 80%;
 
     --accent: 331 85% 52%;
@@ -28,8 +29,8 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 258 30% 15%;
-    --input: 258 30% 15%;
+    --border: 221 30% 15%;
+    --input: 221 30% 15%;
     --ring: 331 85% 52%;
 
     --radius: 0.75rem;
@@ -213,7 +214,7 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
+    background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, rgba(1, 8, 34, 0) 70%);
     animation: pulse 15s ease-in-out infinite alternate;
     z-index: 0;
   }
@@ -241,9 +242,9 @@
     width: 200%;
     height: 200%;
     background: 
-      radial-gradient(ellipse at center, rgba(99, 102, 241, 0.1) 0%, rgba(15, 23, 42, 0) 70%),
-      radial-gradient(ellipse at center, rgba(192, 38, 211, 0.05) 0%, rgba(15, 23, 42, 0) 60%),
-      radial-gradient(ellipse at center, rgba(234, 32, 136, 0.08) 0%, rgba(15, 23, 42, 0) 65%);
+      radial-gradient(ellipse at center, rgba(99, 102, 241, 0.1) 0%, rgba(1, 8, 34, 0) 70%),
+      radial-gradient(ellipse at center, rgba(192, 38, 211, 0.05) 0%, rgba(1, 8, 34, 0) 60%),
+      radial-gradient(ellipse at center, rgba(234, 32, 136, 0.08) 0%, rgba(1, 8, 34, 0) 65%);
     animation: backgroundShift 15s ease-in-out infinite alternate;
     z-index: 0;
   }
@@ -269,7 +270,7 @@
     background: radial-gradient(
       circle at 50% 50%,
       rgba(192, 38, 211, 0.15) 0%,
-      rgba(15, 23, 42, 0) 70%
+      rgba(1, 8, 34, 0) 70%
     );
     animation: light-pulse 12s infinite alternate;
     z-index: 1;
@@ -393,8 +394,8 @@
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(135deg, 
-      rgba(0, 6, 36, 0.6) 0%, 
-      rgba(0, 6, 36, 0.3) 15%, 
+      rgba(1, 8, 34, 0.6) 0%, 
+      rgba(1, 8, 34, 0.3) 15%, 
       rgba(255, 255, 255, 0) 50%, 
       rgba(255, 255, 255, 0) 80%, 
       rgba(40, 44, 47, 0.6) 100%);
@@ -411,7 +412,7 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 6, 36, 0.35) 0%, rgba(0, 6, 36, 0.15) 40%, transparent 70%);
+    background: radial-gradient(circle, rgba(1, 8, 34, 0.35) 0%, rgba(1, 8, 34, 0.15) 40%, transparent 70%);
     bottom: -40px;
     right: -40px;
     opacity: 0.6;
@@ -432,8 +433,8 @@
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(315deg, 
-      rgba(0, 6, 36, 0.6) 0%, 
-      rgba(0, 6, 36, 0.3) 15%, 
+      rgba(1, 8, 34, 0.6) 0%, 
+      rgba(1, 8, 34, 0.3) 15%, 
       rgba(255, 255, 255, 0) 50%, 
       rgba(255, 255, 255, 0) 80%, 
       rgba(40, 44, 47, 0.6) 100%);
@@ -450,7 +451,7 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 6, 36, 0.35) 0%, rgba(0, 6, 36, 0.15) 40%, transparent 70%);
+    background: radial-gradient(circle, rgba(1, 8, 34, 0.35) 0%, rgba(1, 8, 34, 0.15) 40%, transparent 70%);
     top: -40px;
     left: -40px;
     opacity: 0.6;
@@ -472,8 +473,8 @@
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(135deg, 
-      rgba(0, 6, 36, 0.7) 0%, 
-      rgba(0, 6, 36, 0.3) 15%, 
+      rgba(1, 8, 34, 0.7) 0%, 
+      rgba(1, 8, 34, 0.3) 15%, 
       rgba(255, 255, 255, 0) 40%, 
       rgba(255, 255, 255, 0) 70%, 
       rgba(40, 44, 47, 0.7) 100%);
