@@ -5,9 +5,11 @@ import Footer from "@/components/Footer";
 import Container from "@/components/ui/Container";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
+import { useNewsletterSignup } from "@/hooks/useNewsletterSignup";
 
 const BlogPage = () => {
   const { currentPath, currentHash } = useSectionTracking();
+  const { email, setEmail, isLoading, subscribe } = useNewsletterSignup();
 
   return (
     <div className="min-h-screen bg-[#010822] overflow-x-hidden">
@@ -51,16 +53,24 @@ const BlogPage = () => {
               
               {/* Newsletter Signup */}
               <div className="max-w-md mx-auto">
-                <div className="flex gap-3">
+                <form onSubmit={subscribe} className="flex gap-3">
                   <input 
                     type="email" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
                     className="flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                    disabled={isLoading}
+                    required
                   />
-                  <button className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
-                    Subscribe
+                  <button 
+                    type="submit"
+                    disabled={isLoading}
+                    className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isLoading ? 'Subscribing...' : 'Subscribe'}
                   </button>
-                </div>
+                </form>
               </div>
             </div>
           </div>
