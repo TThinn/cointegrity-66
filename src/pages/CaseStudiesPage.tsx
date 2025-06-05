@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
+import LightParticles from "@/components/ui/LightParticles";
 
 const CaseStudiesPage = () => {
   const { currentPath, currentHash } = useSectionTracking();
@@ -18,10 +19,8 @@ const CaseStudiesPage = () => {
         {/* Background elements - exact same as Hero */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
+          <LightParticles centerPosition={{ x: 50, y: 60 }} />
         </div>
-
-        {/* Light orbs background effects */}
-        <div className="light-orbs absolute inset-0 z-1"></div>
 
         {/* Content container with same styling as Hero */}
         <div className="hero-content relative z-8 text-lg font-normal flex flex-col justify-center gap-6 max-w-[90vw] xl:max-w-[1200px] mx-auto">
