@@ -14,15 +14,15 @@ const BlogPage = () => {
       <SeoHead currentPath={currentPath} currentHash={currentHash} />
       <Header />
       
-      {/* Hero section with same background as other pages */}
-      <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
-        {/* Background elements - same as Hero */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
+      {/* Hero section with clean background like Glossary page */}
+      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115]">
+        {/* Simple gradient background */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-[#060115]" />
         </div>
 
-        {/* Content container with same styling as Hero */}
-        <div className="hero-content relative z-8 text-lg font-normal flex flex-col justify-center gap-6 max-w-[90vw] xl:max-w-[1200px] mx-auto">
+        {/* Content container */}
+        <div className="relative z-10 text-lg font-normal flex flex-col justify-center gap-6 max-w-[90vw] xl:max-w-[1200px] mx-auto">
           <div className="text-center mb-8">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Web3 & Blockchain
