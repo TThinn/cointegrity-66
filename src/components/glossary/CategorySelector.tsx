@@ -1,9 +1,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { CategoryType, categoryMeta } from "./types";
+import { CategoryType } from "./types";
 
 interface CategorySelectorProps {
   activeCategory: CategoryType | "all";
@@ -11,43 +9,95 @@ interface CategorySelectorProps {
   viewType: "grid" | "list";
 }
 
+const categoryDisplayNames: Record<CategoryType, string> = {
+  blockchain: "Blockchain",
+  web3: "Web3",
+  ai: "Artificial Intelligence",
+  regulatory: "Regulatory",
+  tokenomics: "Tokenomics",
+  gaming: "Gaming",
+  strategy: "Strategy",
+  defi: "DeFi",
+  nft: "NFTs",
+  dao: "DAOs",
+  identity: "Digital Identity",
+  infrastructure: "Infrastructure",
+  security: "Security",
+  metaverse: "Metaverse"
+};
+
+const categories: CategoryType[] = [
+  "blockchain", "web3", "ai", "regulatory", "tokenomics", 
+  "gaming", "strategy", "defi", "nft", "dao", 
+  "identity", "infrastructure", "security", "metaverse"
+];
+
 export const CategorySelector: React.FC<CategorySelectorProps> = ({
   activeCategory,
   setActiveCategory,
-  viewType,
+  viewType
 }) => {
   if (viewType === "grid") {
     return (
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-        {categoryMeta.map((category) => (
-          <Card 
-            key={category.value} 
-            className={cn(
-              "cursor-pointer transition-all h-16",
-              activeCategory === category.value ? "border-primary" : "hover:border-primary/50"
-            )}
-            onClick={() => setActiveCategory(category.value as CategoryType | "all")}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        <Button
+          variant={activeCategory === "all" ? "default" : "outline"}
+          size="sm"
+          onClick={() => setActiveCategory("all")}
+          className={`text-xs ${
+            activeCategory === "all" 
+              ? "bg-white/20 text-white border-white/40 hover:bg-white/30" 
+              : "bg-white/5 backdrop-blur-sm border-white/20 text-white/80 hover:bg-white/20 hover:text-white"
+          }`}
+        >
+          All Categories
+        </Button>
+        {categories.map((category) => (
+          <Button
+            key={category}
+            variant={activeCategory === category ? "default" : "outline"}
+            size="sm"
+            onClick={() => setActiveCategory(category)}
+            className={`text-xs ${
+              activeCategory === category 
+                ? "bg-white/20 text-white border-white/40 hover:bg-white/30" 
+                : "bg-white/5 backdrop-blur-sm border-white/20 text-white/80 hover:bg-white/20 hover:text-white"
+            }`}
           >
-            <CardContent className="p-4 flex items-center justify-center h-full">
-              <h3 className="font-semibold text-center">{category.label}</h3>
-            </CardContent>
-          </Card>
+            {categoryDisplayNames[category]}
+          </Button>
         ))}
       </div>
     );
   }
-  
+
   return (
-    <div className="flex flex-wrap gap-2 mb-6">
-      {categoryMeta.map((category) => (
+    <div className="flex flex-wrap gap-2 mb-4">
+      <Button
+        variant={activeCategory === "all" ? "default" : "outline"}
+        size="sm"
+        onClick={() => setActiveCategory("all")}
+        className={`text-xs ${
+          activeCategory === "all" 
+            ? "bg-white/20 text-white border-white/40 hover:bg-white/30" 
+            : "bg-white/5 backdrop-blur-sm border-white/20 text-white/80 hover:bg-white/20 hover:text-white"
+        }`}
+      >
+        All
+      </Button>
+      {categories.map((category) => (
         <Button
-          key={category.value}
-          variant={activeCategory === category.value ? "default" : "outline"}
+          key={category}
+          variant={activeCategory === category ? "default" : "outline"}
           size="sm"
-          onClick={() => setActiveCategory(category.value as CategoryType | "all")}
-          className="rounded-full"
+          onClick={() => setActiveCategory(category)}
+          className={`text-xs ${
+            activeCategory === category 
+              ? "bg-white/20 text-white border-white/40 hover:bg-white/30" 
+              : "bg-white/5 backdrop-blur-sm border-white/20 text-white/80 hover:bg-white/20 hover:text-white"
+          }`}
         >
-          {category.label}
+          {categoryDisplayNames[category]}
         </Button>
       ))}
     </div>

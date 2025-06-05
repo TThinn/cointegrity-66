@@ -87,7 +87,7 @@ const GlossaryPage: React.FC = () => {
           
           {/* Warning if fewer terms than expected */}
           {totalTermsCount < 100 && !isLoading && (
-            <Alert variant="destructive" className="mb-6">
+            <Alert variant="destructive" className="mb-6 bg-red-900/20 border-red-500/30">
               <AlertTriangle className="h-4 w-4" />
               <AlertTitle>Data Source Warning</AlertTitle>
               <AlertDescription>
@@ -109,9 +109,9 @@ const GlossaryPage: React.FC = () => {
 
               {/* Tabs for navigation */}
               <Tabs defaultValue="categories" value={activeTab} onValueChange={setActiveTab} className="mb-6">
-                <TabsList className="mb-4">
-                  <TabsTrigger value="categories">Categories</TabsTrigger>
-                  <TabsTrigger value="all">All Terms</TabsTrigger>
+                <TabsList className="mb-4 bg-white/5 backdrop-blur-sm border border-white/20">
+                  <TabsTrigger value="categories" className="data-[state=active]:bg-white/20 data-[state=active]:text-white">Categories</TabsTrigger>
+                  <TabsTrigger value="all" className="data-[state=active]:bg-white/20 data-[state=active]:text-white">All Terms</TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="categories" className="space-y-6">
@@ -126,7 +126,7 @@ const GlossaryPage: React.FC = () => {
                       variant="outline" 
                       size="sm" 
                       onClick={() => setActiveCategory("all")}
-                      className="mt-2"
+                      className="mt-2 bg-white/5 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
                     >
                       Clear filter
                     </Button>
