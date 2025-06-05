@@ -15,7 +15,7 @@ import { GlossarySearch } from "@/components/glossary/GlossarySearch";
 import { CategorySelector } from "@/components/glossary/CategorySelector";
 import { AlphabeticalIndex } from "@/components/glossary/AlphabeticalIndex";
 import { GlossaryTermsList } from "@/components/glossary/GlossaryTermsList";
-import { ContactCTA } from "@/components/glossary/ContactCTA";
+import ContactForm from "@/components/ContactForm";
 import { useGlossaryData } from "@/components/glossary/useGlossaryData";
 
 const GlossaryPage: React.FC = () => {
@@ -159,11 +159,11 @@ const GlossaryPage: React.FC = () => {
               />
             </div>
           </div>
-          
-          {/* Contact CTA */}
-          <ContactCTA />
         </div>
       </section>
+      
+      {/* Contact form - using the same component as the main page */}
+      <ContactForm />
       
       <Footer />
     </div>
