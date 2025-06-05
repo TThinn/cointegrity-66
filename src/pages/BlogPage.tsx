@@ -21,9 +21,6 @@ const BlogPage = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
         </div>
 
-        {/* Light orbs background effects */}
-        <div className="light-orbs absolute inset-0 z-1"></div>
-
         {/* Content container with same styling as Hero */}
         <div className="hero-content relative z-8 text-lg font-normal flex flex-col justify-center gap-6 max-w-[90vw] xl:max-w-[1200px] mx-auto">
           <div className="text-center mb-8">
