@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { getStructuredData } from "./SectionStructuredData";
@@ -25,7 +26,9 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
   // Determine which section is being viewed to customize meta tags
   const getSectionTitle = () => {
     // Handle path-based pages first
-    if (pathWithoutSlash === 'about') {
+    if (pathWithoutSlash === 'web3-consulting') {
+      return "Web3 Consulting Services | Blockchain Strategy & Implementation | Cointegrity";
+    } else if (pathWithoutSlash === 'about') {
       return "About Cointegrity | Web3 & Blockchain Experts";
     } else if (pathWithoutSlash === 'services') {
       return "Our Web3 & Blockchain Services | Cointegrity";
@@ -37,6 +40,12 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       return "Client Success Stories | Cointegrity";
     } else if (pathWithoutSlash === 'contact') {
       return "Contact Cointegrity | Web3 & Blockchain Consultation";
+    } else if (pathWithoutSlash === 'blog') {
+      return "Web3 & Blockchain Insights | Cointegrity Blog";
+    } else if (pathWithoutSlash === 'guides') {
+      return "Web3 Implementation Guides | Cointegrity";
+    } else if (pathWithoutSlash === 'case-studies') {
+      return "Web3 Success Stories | Case Studies | Cointegrity";
     }
     
     // Handle hash-based navigation on homepage
@@ -56,44 +65,52 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       case "#faq":
         return "Frequently Asked Questions | Web3 & Blockchain | Cointegrity";
       default:
-        return "Cointegrity Web3 Consultancy - Blockchain Solutions & Tokenomics Experts";
+        return "Web3 Consulting Services | Blockchain Strategy & Implementation | Cointegrity";
     }
   };
   
   const getSectionDescription = () => {
     // Handle path-based pages first
-    if (pathWithoutSlash === 'about') {
-      return "Learn about Cointegrity's mission to simplify Web3 complexity and our comprehensive approach to blockchain consulting and implementation.";
+    if (pathWithoutSlash === 'web3-consulting') {
+      return "Expert Web3 consulting for blockchain strategy, tokenomics design, MiCA compliance. Transform your business with proven digital asset solutions.";
+    } else if (pathWithoutSlash === 'about') {
+      return "Cointegrity simplifies Web3 complexity with expert blockchain consulting, strategic positioning, and regulatory compliance for digital transformation.";
     } else if (pathWithoutSlash === 'services') {
-      return "Discover our comprehensive Web3 services including strategic positioning, tokenomics design, regulatory compliance, and capital acceleration solutions.";
+      return "Comprehensive Web3 services: strategic positioning, tokenomics design, regulatory compliance, capital acceleration. Expert blockchain implementation.";
     } else if (pathWithoutSlash === 'partners') {
-      return "Explore our network of trusted industry partners helping us deliver exceptional blockchain solutions and digital asset services.";
+      return "Trusted industry partners enabling exceptional blockchain solutions and digital asset services for comprehensive Web3 implementation.";
     } else if (pathWithoutSlash === 'team') {
-      return "Meet the talented team of Web3 specialists behind Cointegrity's success. Our founders bring decades of experience in blockchain technology and digital asset transformation.";
+      return "Expert Web3 team with decades of blockchain experience. Proven specialists in digital asset transformation and regulatory compliance.";
     } else if (pathWithoutSlash === 'testimonials') {
-      return "Read what our clients say about Cointegrity's Web3 consultancy services. Real success stories from businesses we've helped transform.";
+      return "Real client success stories from Cointegrity's Web3 consultancy. Verified results in blockchain transformation and digital asset projects.";
     } else if (pathWithoutSlash === 'contact') {
-      return "Connect with Cointegrity's Web3 experts for consultation on blockchain technology, tokenomics, and regulatory compliance solutions.";
+      return "Connect with Web3 experts for blockchain consultation, tokenomics design, and regulatory compliance. Start your digital transformation.";
+    } else if (pathWithoutSlash === 'blog') {
+      return "Latest Web3 insights, blockchain trends, and digital asset strategies from Cointegrity's expert consultants and industry thought leaders.";
+    } else if (pathWithoutSlash === 'guides') {
+      return "Comprehensive Web3 implementation guides covering blockchain strategy, tokenomics, regulatory compliance, and digital asset best practices.";
+    } else if (pathWithoutSlash === 'case-studies') {
+      return "Detailed Web3 success stories and blockchain implementation case studies showcasing real-world digital asset transformation results.";
     }
     
     // Handle hash-based navigation on homepage
     switch(currentHash) {
       case "#founders":
-        return "Meet the talented team of Web3 specialists behind Cointegrity's success. Our founders bring decades of experience in blockchain technology and digital asset transformation.";
+        return "Expert Web3 team with decades of blockchain experience. Proven specialists in digital asset transformation and regulatory compliance.";
       case "#services":
-        return "Discover our comprehensive Web3 services including strategic positioning, tokenomics design, regulatory compliance, and capital acceleration solutions.";
+        return "Comprehensive Web3 services: strategic positioning, tokenomics design, regulatory compliance, capital acceleration. Expert blockchain implementation.";
       case "#partners":
-        return "Explore our network of trusted industry partners helping us deliver exceptional blockchain solutions and digital asset services.";
+        return "Trusted industry partners enabling exceptional blockchain solutions and digital asset services for comprehensive Web3 implementation.";
       case "#testimonials":
-        return "Read what our clients say about Cointegrity's Web3 consultancy services. Real success stories from businesses we've helped transform.";
+        return "Real client success stories from Cointegrity's Web3 consultancy. Verified results in blockchain transformation and digital asset projects.";
       case "#about":
-        return "Learn about Cointegrity's mission to simplify Web3 complexity and our comprehensive approach to blockchain consulting and implementation.";
+        return "Cointegrity simplifies Web3 complexity with expert blockchain consulting, strategic positioning, and regulatory compliance for digital transformation.";
       case "#contact":
-        return "Connect with Cointegrity's Web3 experts for consultation on blockchain technology, tokenomics, and regulatory compliance solutions.";
+        return "Connect with Web3 experts for blockchain consultation, tokenomics design, and regulatory compliance. Start your digital transformation.";
       case "#faq":
-        return "Get answers to common questions about blockchain, Web3, tokenomics, and MiCA compliance from Cointegrity's expert consultants.";
+        return "Expert answers to Web3, blockchain, tokenomics, and MiCA compliance questions from Cointegrity's experienced consultants.";
       default:
-        return "Leading Web3 consultancy specialized in blockchain strategy, tokenomics design, and MiCA regulatory compliance for enterprises building the future of finance.";
+        return "Expert Web3 consulting for blockchain strategy, tokenomics design, MiCA compliance. Transform your business with proven digital asset solutions.";
     }
   };
 

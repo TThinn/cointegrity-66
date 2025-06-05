@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
 import { Link, useLocation } from "react-router-dom";
 
@@ -9,8 +9,9 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
+  const [resourcesOpen, setResourcesOpen] = useState(false);
   const location = useLocation();
-  const isHomepage = location.pathname === '/';
+  const isHomepage = location.pathname === '/' || location.pathname === '/web3-consulting';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -108,6 +109,13 @@ const Header = () => {
     }
   ];
 
+  const resourcesItems = [
+    { href: "/glossary", label: "Glossary" },
+    { href: "/blog", label: "Blog" },
+    { href: "/guides", label: "Guides" },
+    { href: "/case-studies", label: "Case Studies" }
+  ];
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3 bg-black/70 backdrop-blur-lg shadow-md' : 'py-6 bg-transparent'}`}>
       <Container>
@@ -133,6 +141,34 @@ const Header = () => {
                 {label}
               </NavLink>
             ))}
+            
+            {/* Resources Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setResourcesOpen(true)}
+              onMouseLeave={() => setResourcesOpen(false)}
+            >
+              <button className="micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors flex items-center gap-1">
+                Resources
+                <ChevronDown size={16} className={`transition-transform ${resourcesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {resourcesOpen && (
+                <div className="absolute top-full left-0 mt-2 bg-black/90 backdrop-blur-lg rounded-lg border border-white/20 min-w-48 py-2 shadow-xl">
+                  {resourcesItems.map(({ href, label }) => (
+                    <NavLink
+                      key={href}
+                      to={href}
+                      className="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+                      onClick={() => setResourcesOpen(false)}
+                    >
+                      {label}
+                    </NavLink>
+                  ))}
+                </div>
+              )}
+            </div>
+            
             <NavLink 
               to={isHomepage ? "#contact" : "/contact"} 
               className="pl-4 micro-interaction"
@@ -166,6 +202,22 @@ const Header = () => {
                   {label}
                 </NavLink>
               ))}
+              
+              {/* Mobile Resources Menu */}
+              <div className="w-full border-b border-white/10">
+                <div className="text-white/90 py-4 text-xl">Resources</div>
+                {resourcesItems.map(({ href, label }) => (
+                  <NavLink
+                    key={href}
+                    to={href}
+                    className="block w-full py-2 text-lg text-white/70 hover:text-white pl-4"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {label}
+                  </NavLink>
+                ))}
+              </div>
+              
               <NavLink 
                 to={isHomepage ? "#contact" : "/contact"} 
                 className="micro-interaction w-full py-4 text-xl text-white mt-4" 

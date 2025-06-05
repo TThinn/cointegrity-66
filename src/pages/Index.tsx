@@ -11,6 +11,7 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Process from "@/components/Process";
 import { SeoHead } from "@/components/seo/SeoHead";
+import { InvisibleInternalLinks } from "@/components/seo/InvisibleInternalLinks";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 
 /**
@@ -32,6 +33,9 @@ const Index = () => {
     <div className="min-h-screen bg-[#080112] overflow-x-hidden" itemScope itemType="https://schema.org/WebPage">
       {/* SEO Head with all metadata and structured data */}
       <SeoHead currentPath={currentPath} currentHash={currentHash} />
+      
+      {/* Invisible internal links for SEO */}
+      <InvisibleInternalLinks currentPath={currentPath} />
       
       <Header />
       <main id="main" className="overflow-x-hidden">

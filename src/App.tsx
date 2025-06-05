@@ -17,6 +17,9 @@ import TestimonialsPage from "./pages/TestimonialsPage"
 import ContactPage from "./pages/ContactPage"
 import GlossaryPage from "./pages/GlossaryPage"
 import ThankYouPage from "./pages/ThankYouPage"
+import BlogPage from "./pages/BlogPage"
+import GuidesPage from "./pages/GuidesPage"
+import CaseStudiesPage from "./pages/CaseStudiesPage"
 import { useAnalytics } from "./hooks/useAnalytics"
 import { useWebVitals } from "./hooks/useWebVitals"
 import { useServiceWorker } from "./hooks/useServiceWorker"
@@ -55,6 +58,7 @@ const App = () => {
               <RouteTracker />
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/web3-consulting" element={<Index />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/services" element={<ServicesPage />} />
                 <Route path="/partners" element={<PartnersPage />} />
@@ -64,6 +68,9 @@ const App = () => {
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/glossary" element={<GlossaryPage />} />
+                <Route path="/blog" element={<BlogPage />} />
+                <Route path="/guides" element={<GuidesPage />} />
+                <Route path="/case-studies" element={<CaseStudiesPage />} />
                 <Route path="/thank-you" element={<ThankYouPage />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
