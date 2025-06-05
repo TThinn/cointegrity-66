@@ -2,7 +2,6 @@
 import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Hero from "@/components/Hero";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 
@@ -14,9 +13,9 @@ const CaseStudiesPage = () => {
       <SeoHead currentPath={currentPath} currentHash={currentHash} />
       <Header />
       
-      {/* Use Hero component but with coming soon content */}
+      {/* Hero section with all background effects */}
       <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
-        {/* Background elements - reuse from Hero */}
+        {/* Background elements - exact same as Hero */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
         </div>
