@@ -154,7 +154,7 @@ const Header = () => {
               </button>
               
               {resourcesOpen && (
-                <div className="absolute top-full left-0 mt-2 bg-white/5 backdrop-blur-lg rounded-lg border border-white/20 min-w-48 py-2 shadow-xl z-50">
+                <div className="absolute top-full left-0 bg-white/5 backdrop-blur-lg rounded-lg border border-white/20 min-w-48 py-2 shadow-xl z-50">
                   {resourcesItems.map(({ href, label }) => (
                     <NavLink
                       key={href}
