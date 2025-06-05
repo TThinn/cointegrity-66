@@ -1,6 +1,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import Header from "@/components/Header";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { Button } from "@/components/ui/button";
 import { SeoHead } from "@/components/seo/SeoHead";
@@ -15,7 +16,6 @@ import { CategorySelector } from "@/components/glossary/CategorySelector";
 import { AlphabeticalIndex } from "@/components/glossary/AlphabeticalIndex";
 import { GlossaryTermsList } from "@/components/glossary/GlossaryTermsList";
 import { ContactCTA } from "@/components/glossary/ContactCTA";
-import { DataSourceSelector } from "@/components/glossary/DataSourceSelector";
 import { useGlossaryData } from "@/components/glossary/useGlossaryData";
 
 const GlossaryPage: React.FC = () => {
@@ -49,7 +49,7 @@ const GlossaryPage: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="min-h-screen bg-[#080112] overflow-x-hidden">
       <SeoHead currentPath={location.pathname} currentHash={location.hash} />
       <Helmet>
         <title>Web3, Blockchain & AI Glossary | Cointegrity</title>
@@ -64,18 +64,26 @@ const GlossaryPage: React.FC = () => {
         <link rel="canonical" href="https://cointegrity.io/glossary" />
       </Helmet>
       
-      <main className="min-h-screen pt-16 bg-background">
-        <SectionContainer 
-          title="Web3, Blockchain & AI Glossary" 
-          subtitle="A comprehensive guide to terminology in the Web3, Blockchain, and AI space"
-          className="py-12"
-        >
-          {/* Data source selector */}
-          <DataSourceSelector 
-            dataSource={dataSource}
-            onChangeDataSource={changeDataSource}
-            disabled={isLoading}
-          />
+      <Header />
+      
+      {/* Hero section with same background as Hero component */}
+      <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#060115] isolate">
+        {/* Background elements - same as Hero */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
+        </div>
+
+        {/* Content container with same styling as Hero */}
+        <div className="hero-content relative z-8 text-lg font-normal flex flex-col justify-center gap-6 max-w-[90vw] xl:max-w-[1200px] mx-auto">
+          <div className="text-center mb-8">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Web3, Blockchain & AI 
+              <span className="bg-gradient-to-r from-[#d946ef] to-[#9333ea] bg-clip-text text-transparent"> Glossary</span>
+            </h1>
+            <p className="text-xl text-white/80 max-w-2xl mx-auto">
+              A comprehensive guide to terminology in the Web3, Blockchain, and AI space
+            </p>
+          </div>
           
           {/* Warning if fewer terms than expected */}
           {totalTermsCount < 100 && !isLoading && (
@@ -154,10 +162,11 @@ const GlossaryPage: React.FC = () => {
           
           {/* Contact CTA */}
           <ContactCTA />
-        </SectionContainer>
-      </main>
+        </div>
+      </section>
+      
       <Footer />
-    </>
+    </div>
   );
 };
 

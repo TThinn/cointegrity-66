@@ -23,16 +23,13 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
           <Card 
             key={category.value} 
             className={cn(
-              "cursor-pointer transition-all",
+              "cursor-pointer transition-all h-16",
               activeCategory === category.value ? "border-primary" : "hover:border-primary/50"
             )}
             onClick={() => setActiveCategory(category.value as CategoryType | "all")}
           >
-            <CardContent className="p-4">
-              <h3 className="font-semibold">{category.label}</h3>
-              {category.value !== "all" && (
-                <p className="text-xs text-muted-foreground mt-1">{category.description}</p>
-              )}
+            <CardContent className="p-4 flex items-center justify-center h-full">
+              <h3 className="font-semibold text-center">{category.label}</h3>
             </CardContent>
           </Card>
         ))}
