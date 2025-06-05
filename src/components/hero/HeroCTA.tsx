@@ -5,7 +5,7 @@ const HeroCTA = forwardRef<HTMLDivElement>((props, ref) => {
   return (
     <div 
       ref={ref}
-      className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up mb-4"
+      className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-fade-up mb-2"
       style={{ animationDelay: "0.5s" }}
     >
       <a href="#contact" className="inline-block">
