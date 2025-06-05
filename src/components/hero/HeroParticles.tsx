@@ -23,7 +23,7 @@ const HeroParticles: React.FC<HeroParticlesProps> = ({ ctaPosition }) => {
     return {
       size: 30 + Math.random() * 160,
       x: ctaPosition.x - 15 + Math.random() * 15, // Centered around CTA
-      y: ctaPosition.y - 25 + Math.random() * 20, // More vertical spread
+      y: ctaPosition.y - 15 + Math.random() * 20, // More vertical spread
       moveX: (Math.random() - 0.5) * 25, // Horizontal movement
       moveY: (Math.random() - 0.5) * 30, // Increased vertical movement
       rotate: Math.random() * 360,
@@ -37,7 +37,7 @@ const HeroParticles: React.FC<HeroParticlesProps> = ({ ctaPosition }) => {
   useEffect(() => {
     particles.forEach(p => {
       p.x = ctaPosition.x - 15 + Math.random() * 15;
-      p.y = ctaPosition.y - 25 + Math.random() * 20; // Match initial spread
+      p.y = ctaPosition.y - 15 + Math.random() * 20; // Match initial spread
     });
   }, [ctaPosition]);
 
