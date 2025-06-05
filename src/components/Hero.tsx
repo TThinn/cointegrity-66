@@ -44,7 +44,7 @@ const Hero = () => {
       </div>
 
       {/* Content container */}
-      <Container className="hero-content relative z-8 text-lg font-normal flex flex-col min-h-[70vh] justify-between">
+      <Container className="hero-content relative z-8 text-lg font-normal flex flex-col min-h-[70vh] justify-center gap-6 sm:gap-8 lg:gap-12">
         <HeroContent />
         <HeroCTA ref={ctaRef} />
          {/* <HeroStats /> */}
