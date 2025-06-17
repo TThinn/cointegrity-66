@@ -82,7 +82,7 @@ const Founders = () => {
           <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">The Minds Behind Cointegrity</h3>
           <p className="mt-2 text-gray-600">Our blockchain-experienced team simplifies Web3 implementation and digital asset development, allowing you to focus on business value creation. With expertise spanning regulatory compliance, technical infrastructure, and strategic market positioning, we transform complex blockchain challenges into practical solutions for enterprise and government.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {founders.map((founder, index) => (
             <div key={index} className="hover:translate-y-[-4px] transition-all duration-300 h-full">
               <div 
