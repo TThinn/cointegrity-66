@@ -1,4 +1,3 @@
-
 import React from "react";
 import Container from "./ui/Container";
 import { Linkedin, Github, X } from "lucide-react";
@@ -54,7 +53,7 @@ const founders = [
     fullBio: "leads a team of 120+ experts in Virtual Asset Financial Crime Prevention, including specialists from the World Economic Forum, United Nations, OSCE, Interpol, leading banks, and Web3 companies. He supports national governments, law enforcement agencies, and financial institutions by resolving ad hoc de-risking challenges and highlighting the financial and economic benefits of blockchain-based finance.\n\nHe brings a unique portfolio—from serving as Compliance Officer for a Nasdaq-listed company and Program Director at the Stockholm School of Economics Executive Education, to acting as Compliance Director for the G7 Research Group on Cybersecurity and as a leading virtual asset expert for the world's largest regional security organization.\n\nMichal is your best ally when expanding into markets with emerging or no regulation. He ensures your services remain compliant—and out of reach of illicit actors.",
     image: "/lovable-uploads/2ecc698d-a259-4cd8-868e-8335f3d30fbb.png",
     social: {
-      linkedin: "#"
+      linkedin: "https://www.linkedin.com/in/mgromek/"
     }
   }
 ];
@@ -133,7 +132,7 @@ const Founders = () => {
                       alt={founder.name} 
                       className="object-cover w-full h-full"
                       style={{
-                        objectPosition: "center top",
+                        objectPosition: "center 10px",
                         transform: "scale(1.6)"
                       }}
                     />
