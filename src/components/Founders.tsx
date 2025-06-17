@@ -56,6 +56,17 @@ const founders = [
     social: {
       linkedin: "https://www.linkedin.com/in/mgromek/"
     }
+  },
+  {
+    name: "Felix Nordén",
+    role: "Co-Founder & Tech Lead",
+    bio: "A former applied scientist at Twitch/Amazon, specializing in NLP within AI/ML, now a prolific Web3 developer and entrepreneur...",
+    fullBio: "A former applied scientist at Twitch/Amazon, specializing in NLP within AI/ML, now a prolific Web3 developer and entrepreneur. He has deployed over 150 smart contracts and leads three ventures: Mure, which enables programmable on-chain payments; Yurei, a collective investing platform; and Ignio, supporting businesses in AI and Web3. Additionally, he heads the Dev Division at Neo Tokyo and advises multiple projects on strategy, technology, tokenomics, and mathematical modeling.",
+    image: "/lovable-uploads/edcbdde0-6678-47ad-87f8-74559a4361c4.png",
+    social: {
+      linkedin: "https://www.linkedin.com/in/felixnorden/",
+      twitter: "https://x.com/felixtrnorden"
+    }
   }
 ];
 
@@ -71,7 +82,7 @@ const Founders = () => {
           <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">The Minds Behind Cointegrity</h3>
           <p className="mt-2 text-gray-600">Our blockchain-experienced team simplifies Web3 implementation and digital asset development, allowing you to focus on business value creation. With expertise spanning regulatory compliance, technical infrastructure, and strategic market positioning, we transform complex blockchain challenges into practical solutions for enterprise and government.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {founders.map((founder, index) => (
             <div key={index} className="hover:translate-y-[-4px] transition-all duration-300 h-full">
               <div 
@@ -135,6 +146,16 @@ const Founders = () => {
                       style={{
                         objectPosition: "center 10px",
                         transform: "scale(1.6)"
+                      }}
+                    />
+                  ) : founder.name === "Felix Nordén" ? (
+                    <img 
+                      src={founder.image} 
+                      alt={founder.name} 
+                      className="object-cover w-full h-full"
+                      style={{
+                        objectPosition: "center 20%",
+                        transform: "scale(1.4)"
                       }}
                     />
                   ) : (
