@@ -85,6 +85,9 @@ const Testimonials = () => {
   // Get the active testimonials to display based on mobile/desktop and available testimonials
   const testimonialsToShow = isMobile ? activeTestimonials.slice(0, 2) : activeTestimonials;
 
+  // Calculate dynamic height for mobile vs desktop
+  const dynamicHeight = isMobile ? 'auto' : `${maxSectionHeight}px`;
+
   return (
     <section id="testimonials" className="py-20 relative overflow-hidden" ref={sectionRef}>
       <div className="absolute inset-0 z-0">
@@ -101,7 +104,7 @@ const Testimonials = () => {
           </div>
 
           <div className="transition-all duration-300 relative z-30" style={{
-            minHeight: `${maxSectionHeight}px`
+            minHeight: isMobile ? 'auto' : dynamicHeight
           }}>
             <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
               {testimonialsToShow.map((testimonialIndex, position) => (
@@ -119,7 +122,7 @@ const Testimonials = () => {
             </div>
           </div>
           
-          <div className="mt-5 -mb-8 text-center relative z-20">
+          <div className={`text-center relative z-20 ${isMobile ? 'mt-8 -mb-8' : 'mt-5 -mb-8'}`}>
             <div className="inline-block relative">
               <div className="absolute inset-0 z-[1] pointer-events-none">
                 {particles.map((p, i) => (

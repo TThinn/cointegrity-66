@@ -1,3 +1,4 @@
+
 import React, { useLayoutEffect, useRef, useState, useEffect, useMemo } from "react";
 import Container from "./ui/Container";
 import { Link } from "react-router-dom";
@@ -12,6 +13,17 @@ const AboutUs = () => {
     y: 50
   });
   const [particleCount, setParticleCount] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Particle positioning relative to CTA section
   useLayoutEffect(() => {
@@ -105,9 +117,14 @@ const AboutUs = () => {
 
           {/* Button - using a fragment with href for simplicity with animations, but will navigate to the ID */}
           <a href="#contact" className="inline-flex items-center z-10 relative" ref={ctaRef}>
-            <button className="bg-[#010822]/5 backdrop-blur-md text-white px-6 py-3 rounded-full
-               border border-[#010822]/10 hover:bg-[#010822]/15 transition-all
-               transform hover:scale-105 duration-300 text-base font-semibold shadow-lg">Solve Your Web3 Challenges</button>
+            <button className={`backdrop-blur-md px-6 py-3 rounded-full
+               border transition-all transform hover:scale-105 duration-300 text-base font-semibold shadow-lg
+               ${isMobile 
+                 ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white border-pink-500/30 hover:from-pink-600 hover:to-purple-700' 
+                 : 'bg-[#010822]/5 text-white border-[#010822]/10 hover:bg-[#010822]/15'
+               }`}>
+              Solve Your Web3 Challenges
+            </button>
           </a>
         </div>
       </div>
