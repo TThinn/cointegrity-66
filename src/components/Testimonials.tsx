@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import Container from "./ui/Container";
 import TestimonialCard from "./testimonials/TestimonialCard";
@@ -99,10 +100,10 @@ const Testimonials = () => {
             <p className="mt-2 text-white/60 max-w-2xl mx-auto">Our knowledge-first approach to Web3 transformation helps organizations successfully navigate the complex decentralized landscape. With deep expertise in blockchain strategy, product development, tax compliance, and capital acceleration, our specialists bridge the gap between traditional business and Web3 innovation. As your dependable guide through complex blockchain challenges, we deliver solutions that create measurable value. Don't just take our word for it-read what our clients say about working with our team:</p>
           </div>
 
-          <div className="relative z-30" style={{
-            minHeight: `${maxSectionHeight + 80}px` // Fixed height with space for button (48px) + spacing (32px)
+          <div className="transition-all duration-300 relative z-30" style={{
+            minHeight: `${maxSectionHeight + 60}px` // Reduced buffer for tighter spacing
           }}>
-            <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto pb-8">
+            <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto mb-6">
               {testimonialsToShow.map((testimonialIndex, position) => (
                 <TestimonialCard 
                   key={position} 
@@ -117,7 +118,7 @@ const Testimonials = () => {
               ))}
             </div>
             
-            <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center relative z-20">
+            <div className="text-center relative z-20">
               <div className="inline-block relative">
                 <div className="absolute inset-0 z-[1] pointer-events-none">
                   {particles.map((p, i) => (
