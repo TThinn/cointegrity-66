@@ -101,9 +101,9 @@ const Testimonials = () => {
           </div>
 
           <div className="transition-all duration-300 relative z-30" style={{
-            minHeight: `${maxSectionHeight + 60}px` // Reduced buffer for tighter spacing
+            minHeight: `${maxSectionHeight + 120}px` // Adding space for CTA button (48px) + 6px top spacing + 6px bottom spacing + some buffer
           }}>
-            <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto mb-6">
+            <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
               {testimonialsToShow.map((testimonialIndex, position) => (
                 <TestimonialCard 
                   key={position} 
@@ -118,7 +118,9 @@ const Testimonials = () => {
               ))}
             </div>
             
-            <div className="text-center relative z-20">
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center relative z-20" style={{
+              marginTop: '6px'
+            }}>
               <div className="inline-block relative">
                 <div className="absolute inset-0 z-[1] pointer-events-none">
                   {particles.map((p, i) => (
