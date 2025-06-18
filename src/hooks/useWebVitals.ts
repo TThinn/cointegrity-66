@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react';
+import * as React from 'react';
 
 interface WebVitalsMetric {
   name: string;
@@ -10,7 +10,7 @@ interface WebVitalsMetric {
 }
 
 export const useWebVitals = () => {
-  useEffect(() => {
+  React.useEffect(() => {
     // Dynamically import web-vitals to avoid blocking
     import('web-vitals').then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
       const sendToAnalytics = (metric: WebVitalsMetric) => {
