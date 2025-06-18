@@ -85,6 +85,9 @@ const Testimonials = () => {
   // Get the active testimonials to display based on mobile/desktop and available testimonials
   const testimonialsToShow = isMobile ? activeTestimonials.slice(0, 2) : activeTestimonials;
 
+  // Calculate dynamic height for mobile vs desktop
+  const dynamicHeight = isMobile ? 'auto' : `${maxSectionHeight}px`;
+
   return (
     <section id="testimonials" className="py-20 relative overflow-hidden" ref={sectionRef}>
       <div className="absolute inset-0 z-0">
@@ -101,7 +104,7 @@ const Testimonials = () => {
           </div>
 
           <div className="transition-all duration-300 relative z-30" style={{
-            minHeight: `${maxSectionHeight + 120}px` // Adding space for CTA button (48px) + 6px top spacing + 6px bottom spacing + some buffer
+            minHeight: isMobile ? 'auto' : dynamicHeight
           }}>
             <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
               {testimonialsToShow.map((testimonialIndex, position) => (
@@ -117,39 +120,37 @@ const Testimonials = () => {
                 />
               ))}
             </div>
-            
-            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center relative z-20" style={{
-              marginTop: '6px'
-            }}>
-              <div className="inline-block relative">
-                <div className="absolute inset-0 z-[1] pointer-events-none">
-                  {particles.map((p, i) => (
-                    <div 
-                      key={`cta-particle-${i}`} 
-                      className="absolute rounded-full blur-[12px] animate-light-particle" 
-                      style={{
-                        width: `${p.size}px`,
-                        height: `${p.size}px`,
-                        background: p.color,
-                        left: `${p.x}%`,
-                        top: `${p.y}%`,
-                        animationDelay: `${p.delay}s`,
-                        animationDuration: `${p.duration}s`,
-                        '--move-x': `${p.moveX}vw`,
-                        '--move-y': `${p.moveY}vh`,
-                        '--rotate': `${p.rotate}deg`
-                      } as React.CSSProperties}
-                    />
-                  ))}
-                </div>
-                <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
-                  <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
-                                border border-white/30 hover:bg-white/40 transition-all
-                                transform hover:scale-105 duration-300 text-base font-semibold">
-                    Partner with us
-                  </button>
-                </a>
+          </div>
+          
+          <div className={`text-center relative z-20 ${isMobile ? 'mt-8 -mb-8' : 'mt-5 -mb-8'}`}>
+            <div className="inline-block relative">
+              <div className="absolute inset-0 z-[1] pointer-events-none">
+                {particles.map((p, i) => (
+                  <div 
+                    key={`cta-particle-${i}`} 
+                    className="absolute rounded-full blur-[12px] animate-light-particle" 
+                    style={{
+                      width: `${p.size}px`,
+                      height: `${p.size}px`,
+                      background: p.color,
+                      left: `${p.x}%`,
+                      top: `${p.y}%`,
+                      animationDelay: `${p.delay}s`,
+                      animationDuration: `${p.duration}s`,
+                      '--move-x': `${p.moveX}vw`,
+                      '--move-y': `${p.moveY}vh`,
+                      '--rotate': `${p.rotate}deg`
+                    } as React.CSSProperties}
+                  />
+                ))}
               </div>
+              <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
+                <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
+                              border border-white/30 hover:bg-white/40 transition-all
+                              transform hover:scale-105 duration-300 text-base font-semibold">
+                  Partner with us
+                </button>
+              </a>
             </div>
           </div>
         </div>
