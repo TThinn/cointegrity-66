@@ -1,18 +1,18 @@
 
-import { useState, useRef, useEffect } from 'react';
+import * as React from 'react';
 import { testimonials } from './testimonialsData';
 
 export const useTestimonials = () => {
-  const [activeTestimonials, setActiveTestimonials] = useState<number[]>([0, 1, 2, 3]);
-  const [changingIndex, setChangingIndex] = useState<number | null>(null);
-  const [isVisible, setIsVisible] = useState(true);
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const rotationIntervalRef = useRef<NodeJS.Timeout | null>(null);
-  const testimonialsGridRef = useRef<HTMLDivElement>(null);
-  const [maxSectionHeight, setMaxSectionHeight] = useState<number>(0);
+  const [activeTestimonials, setActiveTestimonials] = React.useState<number[]>([0, 1, 2, 3]);
+  const [changingIndex, setChangingIndex] = React.useState<number | null>(null);
+  const [isVisible, setIsVisible] = React.useState(true);
+  const [hoveredCard, setHoveredCard] = React.useState<number | null>(null);
+  const [isPaused, setIsPaused] = React.useState(false);
+  const rotationIntervalRef = React.useRef<NodeJS.Timeout | null>(null);
+  const testimonialsGridRef = React.useRef<HTMLDivElement>(null);
+  const [maxSectionHeight, setMaxSectionHeight] = React.useState<number>(0);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const calculateMaxHeight = () => {
       if (testimonialsGridRef.current) {
         const currentHeight = testimonialsGridRef.current.offsetHeight;
@@ -24,7 +24,7 @@ export const useTestimonials = () => {
     return () => window.removeEventListener('resize', calculateMaxHeight);
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (testimonialsGridRef.current) {
       const currentHeight = testimonialsGridRef.current.offsetHeight;
       setMaxSectionHeight(prev => Math.max(prev, currentHeight));
@@ -32,7 +32,7 @@ export const useTestimonials = () => {
   }, [activeTestimonials]);
 
   // Rotation logic with pause functionality
-  useEffect(() => {
+  React.useEffect(() => {
     let currentBoxIndex = 0;
     const rotateTestimonial = () => {
       // Skip rotation if paused
