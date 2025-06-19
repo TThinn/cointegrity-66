@@ -41,14 +41,17 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      // Force single React instance resolution
+      "react": path.resolve(__dirname, "./node_modules/react"),
+      "react-dom": path.resolve(__dirname, "./node_modules/react-dom"),
     },
-    // Force single React instance to prevent hook call errors
-    dedupe: ['react', 'react-dom'],
+    // Ensure consistent module resolution
+    dedupe: ['react', 'react-dom', '@radix-ui/react-tooltip'],
   },
   // Optimize dependencies to prevent duplication
   optimizeDeps: {
-    include: ['react', 'react-dom'],
-    exclude: ['@radix-ui/react-tooltip'],
+    include: ['react', 'react-dom', '@radix-ui/react-tooltip'],
+    exclude: [],
     force: true
   },
   // Build configuration to ensure single React instance
@@ -56,14 +59,21 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       external: [],
       output: {
-        globals: {}
+        globals: {},
+        // Ensure React modules are properly chunked
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+        }
       }
-    }
+    },
+    // Add source maps for better debugging
+    sourcemap: mode === 'development'
   },
-  // Ensure consistent React module resolution
+  // Ensure consistent React environment
   define: {
-    // Ensure consistent React environment
-    'process.env.NODE_ENV': JSON.stringify(mode === 'development' ? 'development' : 'production')
+    'process.env.NODE_ENV': JSON.stringify(mode === 'development' ? 'development' : 'production'),
+    // Add React version check
+    '__REACT_DEVTOOLS_GLOBAL_HOOK__': 'undefined'
   },
   publicDir: path.resolve(__dirname, "./public"),
 }));

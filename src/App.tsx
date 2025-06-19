@@ -4,7 +4,7 @@ import { Toaster } from "sonner"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 import { HelmetProvider } from "react-helmet-async"
-import { TooltipProvider } from "@/components/ui/tooltip"
+import SafeTooltipProvider from "@/components/ui/SafeTooltipProvider"
 import Index from "./pages/Index"
 import NotFound from "./pages/NotFound"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
@@ -25,6 +25,7 @@ import { useWebVitals } from "./hooks/useWebVitals"
 import { useServiceWorker } from "./hooks/useServiceWorker"
 import { AppProviders } from "./components/app/AppProviders"
 import ErrorBoundary from "./components/app/ErrorBoundary"
+import { validateReactImport, debugReactModule } from "./utils/reactValidation"
 import './index.css'
 import './App.css'
 
@@ -95,16 +96,27 @@ const AppContent = () => {
 };
 
 const App = () => {
+  // Validate React on app initialization
+  useEffect(() => {
+    try {
+      console.log('🚀 Initializing App with React validation');
+      validateReactImport();
+      debugReactModule();
+    } catch (error) {
+      console.error('❌ React validation failed during App initialization:', error);
+    }
+  }, []);
+
   return (
     <ErrorBoundary>
       <StrictMode>
         <HelmetProvider>
           <QueryClientProvider client={queryClient}>
-            <TooltipProvider>
+            <SafeTooltipProvider>
               <AppProviders>
                 <AppContent />
               </AppProviders>
-            </TooltipProvider>
+            </SafeTooltipProvider>
           </QueryClientProvider>
         </HelmetProvider>
       </StrictMode>
