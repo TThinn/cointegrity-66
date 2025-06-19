@@ -18,16 +18,21 @@ interface SafeInitializationProviderProps {
 }
 
 export const SafeInitializationProvider: React.FC<SafeInitializationProviderProps> = ({ children }) => {
-  const [state, setState] = useState<InitializationState>({
+  // Add a guard to ensure React is ready before using useState
+  const [state, setState] = React.useState<InitializationState>(() => ({
     isReactReady: false,
     isRouterReady: false,
     hasInitialized: false
-  });
+  }));
 
   useEffect(() => {
-    // Mark React as ready after first render
-    setState(prev => ({ ...prev, isReactReady: true }));
-    console.log('✅ React initialization ready');
+    // Mark React as ready after first render with a small delay to ensure hooks are stable
+    const timer = setTimeout(() => {
+      setState(prev => ({ ...prev, isReactReady: true }));
+      console.log('✅ React initialization ready');
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -36,7 +41,7 @@ export const SafeInitializationProvider: React.FC<SafeInitializationProviderProp
       console.log('🚀 Starting safe initialization...');
       
       // Use setTimeout to ensure we're outside the render cycle
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         try {
           // Dynamic imports to avoid blocking
           Promise.all([
@@ -55,18 +60,20 @@ export const SafeInitializationProvider: React.FC<SafeInitializationProviderProp
       }, 100);
 
       setState(prev => ({ ...prev, hasInitialized: true }));
+      
+      return () => clearTimeout(timer);
     }
   }, [state.isReactReady, state.isRouterReady, state.hasInitialized]);
 
-  const markRouterReady = () => {
+  const markRouterReady = React.useCallback(() => {
     setState(prev => ({ ...prev, isRouterReady: true }));
     console.log('✅ Router initialization ready');
-  };
+  }, []);
 
-  const contextValue: InitializationContextType = {
+  const contextValue: InitializationContextType = React.useMemo(() => ({
     ...state,
     markRouterReady
-  };
+  }), [state, markRouterReady]);
 
   return (
     <InitializationContext.Provider value={contextValue}>

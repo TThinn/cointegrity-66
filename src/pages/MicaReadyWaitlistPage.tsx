@@ -7,7 +7,7 @@ import Container from "@/components/ui/Container";
 import MicaReadyWaitlistForm from "@/components/mica/MicaReadyWaitlistForm";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 import { SeoHead } from "@/components/seo/SeoHead";
-import LightParticles from "@/components/ui/LightParticles";
+import SafeLightParticles from "@/components/ui/SafeLightParticles";
 
 const MicaReadyWaitlistPage = () => {
   const { currentPath, currentHash } = useSectionTracking();
@@ -34,7 +34,7 @@ const MicaReadyWaitlistPage = () => {
         {/* Background elements with light particles */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
-          <LightParticles centerPosition={{ x: 50, y: 50 }} />
+          <SafeLightParticles centerPosition={{ x: 50, y: 50 }} />
         </div>
 
         {/* Content container with centered text */}
