@@ -29,19 +29,28 @@ import './App.css'
 // Create a client
 const queryClient = new QueryClient();
 
+// Define interfaces for the error boundary
+interface HelmetErrorBoundaryProps {
+  children: React.ReactNode;
+}
+
+interface HelmetErrorBoundaryState {
+  hasError: boolean;
+}
+
 // Error boundary component for Helmet-related errors
-class HelmetErrorBoundary extends React.Component {
-  constructor(props) {
+class HelmetErrorBoundary extends React.Component<HelmetErrorBoundaryProps, HelmetErrorBoundaryState> {
+  constructor(props: HelmetErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(error: Error): HelmetErrorBoundaryState {
     console.warn('Helmet error caught:', error);
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.warn('Helmet error details:', error, errorInfo);
   }
 
