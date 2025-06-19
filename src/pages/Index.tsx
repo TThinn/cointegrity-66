@@ -11,6 +11,7 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Process from "@/components/Process";
 import { SeoHead } from "@/components/seo/SeoHead";
+import { SafeResourceHints } from "@/components/seo/SafeResourceHints";
 import { InvisibleInternalLinks } from "@/components/seo/InvisibleInternalLinks";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 
@@ -31,6 +32,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-[#010822] overflow-x-hidden" itemScope itemType="https://schema.org/WebPage">
+      {/* Safe resource hints for proper initialization order */}
+      <SafeResourceHints />
+      
       {/* SEO Head with all metadata and structured data */}
       <SeoHead currentPath={currentPath} currentHash={currentHash} />
       
