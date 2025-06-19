@@ -41,7 +41,7 @@ const Testimonials = () => {
   return (
     <section 
       id="testimonials" 
-      className="py-20 relative overflow-hidden min-h-screen"
+      className="pt-20 pb-8 relative overflow-hidden min-h-screen"
       ref={sectionRef}
     >
       <div className="absolute inset-0 z-0">
