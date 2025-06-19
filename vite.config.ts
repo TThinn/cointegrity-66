@@ -46,11 +46,11 @@ export default defineConfig(({ mode }) => ({
       "react-dom": path.resolve(__dirname, "./node_modules/react-dom"),
     },
     // Ensure consistent module resolution
-    dedupe: ['react', 'react-dom', '@radix-ui/react-tooltip'],
+    dedupe: ['react', 'react-dom'],
   },
   // Optimize dependencies to prevent duplication
   optimizeDeps: {
-    include: ['react', 'react-dom', '@radix-ui/react-tooltip'],
+    include: ['react', 'react-dom'],
     exclude: [],
     force: true
   },
@@ -72,8 +72,6 @@ export default defineConfig(({ mode }) => ({
   // Ensure consistent React environment
   define: {
     'process.env.NODE_ENV': JSON.stringify(mode === 'development' ? 'development' : 'production'),
-    // Add React version check
-    '__REACT_DEVTOOLS_GLOBAL_HOOK__': 'undefined'
   },
   publicDir: path.resolve(__dirname, "./public"),
 }));

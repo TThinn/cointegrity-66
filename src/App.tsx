@@ -25,7 +25,6 @@ import { useWebVitals } from "./hooks/useWebVitals"
 import { useServiceWorker } from "./hooks/useServiceWorker"
 import { AppProviders } from "./components/app/AppProviders"
 import ErrorBoundary from "./components/app/ErrorBoundary"
-import { validateReactImport, debugReactModule } from "./utils/reactValidation"
 import './index.css'
 import './App.css'
 
@@ -96,17 +95,6 @@ const AppContent = () => {
 };
 
 const App = () => {
-  // Validate React on app initialization
-  useEffect(() => {
-    try {
-      console.log('🚀 Initializing App with React validation');
-      validateReactImport();
-      debugReactModule();
-    } catch (error) {
-      console.error('❌ React validation failed during App initialization:', error);
-    }
-  }, []);
-
   return (
     <ErrorBoundary>
       <StrictMode>
