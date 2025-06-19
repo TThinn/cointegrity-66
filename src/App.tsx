@@ -43,6 +43,7 @@ const RouteTracker = () => {
 const AppContent = () => {
   // Initialize performance monitoring after React is ready
   useEffect(() => {
+    console.log('🚀 Initializing web vitals and service worker...');
     initWebVitals();
     initServiceWorker();
   }, []);
