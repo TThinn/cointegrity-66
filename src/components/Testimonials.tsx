@@ -131,7 +131,7 @@ const Testimonials = () => {
           </div>
             
           {/* CTA Section - Absolutely positioned at bottom of section */}
-          <div className="absolute bottom-0 left-0 right-0 text-center z-20">
+          <div className="absolute bottom-1 left-0 right-0 text-center z-20">
             <div className="inline-block relative">
               <div className="absolute inset-0 z-[1] pointer-events-none">
                 {particles.map((p, i) => (
