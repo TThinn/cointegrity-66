@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import * as React from "react";
 import Container from "./ui/Container";
 import TestimonialCard from "./testimonials/TestimonialCard";
 import { useTestimonials } from "./testimonials/useTestimonials";
 import { useFixedSectionHeight } from "./testimonials/useFixedSectionHeight";
 
 const Testimonials = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
   const {
     testimonials,
     activeTestimonials,
@@ -19,7 +19,7 @@ const Testimonials = () => {
   
   const sectionRef = React.useRef(null);
   const buttonRef = React.useRef(null);
-  const [particles, setParticles] = useState([]);
+  const [particles, setParticles] = React.useState([]);
   const fixedSectionHeight = useFixedSectionHeight();
 
   // Handle responsive behavior
