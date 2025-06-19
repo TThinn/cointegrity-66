@@ -79,7 +79,7 @@ const Testimonials = () => {
           </div>
             
           {/* CTA Section - Fixed at bottom */}
-          <div className="text-center mt-4 flex-shrink-0">
+          <div className="text-center mt-6 flex-shrink-0">
             <div className="inline-block relative">
               <ParticleEffect particles={particles} />
               <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
