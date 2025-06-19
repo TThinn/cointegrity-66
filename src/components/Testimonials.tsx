@@ -41,7 +41,8 @@ const Testimonials = () => {
   return (
     <section 
       id="testimonials" 
-      className="pt-20 pb-8 relative overflow-hidden min-h-screen"
+      className="pt-20 pb-8 relative overflow-hidden"
+      style={{ height: '100vh' }}
       ref={sectionRef}
     >
       <div className="absolute inset-0 z-0">
@@ -50,7 +51,7 @@ const Testimonials = () => {
       </div>
       
       <Container>
-        <div className="max-w-7xl mx-auto relative z-10 h-full flex flex-col justify-between min-h-[calc(100vh-10rem)]">
+        <div className="max-w-7xl mx-auto relative z-10 h-full flex flex-col justify-between" style={{ height: 'calc(100vh - 7rem)' }}>
           
           {/* Header Section */}
           <div className="text-center mb-16 flex-shrink-0">
@@ -59,7 +60,7 @@ const Testimonials = () => {
             <p className="mt-2 text-white/60 max-w-2xl mx-auto">Our knowledge-first approach to Web3 transformation helps organizations successfully navigate the complex decentralized landscape. With deep expertise in blockchain strategy, product development, tax compliance, and capital acceleration, our specialists bridge the gap between traditional business and Web3 innovation. As your dependable guide through complex blockchain challenges, we deliver solutions that create measurable value. Don't just take our word for it-read what our clients say about working with our team:</p>
           </div>
 
-          {/* Cards Section - Dynamic height cards based on max content */}
+          {/* Cards Section - Fixed height cards based on max content */}
           <div className="flex-1 flex items-center justify-center">
             <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto w-full">
               {testimonialsToShow.map((testimonialIndex, position) => (

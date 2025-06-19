@@ -3,41 +3,27 @@ import { useState, useEffect } from 'react';
 import { testimonials } from './testimonialsData';
 
 export const useCardHeight = () => {
-  const [cardHeights, setCardHeights] = useState<{
-    mobile: number;
-    tablet: number;
-    desktop: number;
-  }>({
-    mobile: 0,
-    tablet: 0,
-    desktop: 0
-  });
   const [currentHeight, setCurrentHeight] = useState<number>(0);
 
   useEffect(() => {
-    // Define breakpoint widths to match Tailwind's responsive breakpoints
-    const breakpoints = {
-      mobile: 320,   // sm and below
-      tablet: 640,   // md
-      desktop: 1024  // lg and above
-    };
-
-    const calculateHeightForWidth = (width: number) => {
+    const calculateMaxHeightForCurrentScreen = () => {
+      const currentWidth = window.innerWidth;
+      
       // Create a temporary measurement container
       const measurementContainer = document.createElement('div');
       measurementContainer.style.position = 'absolute';
       measurementContainer.style.visibility = 'hidden';
       measurementContainer.style.top = '-9999px';
-      measurementContainer.style.width = `${width}px`;
+      measurementContainer.style.width = `${currentWidth}px`;
       document.body.appendChild(measurementContainer);
 
       let maxHeight = 0;
 
-      // Measure each testimonial at this width
+      // Measure each testimonial at current screen width
       testimonials.forEach((testimonial) => {
         const cardElement = document.createElement('div');
         cardElement.className = 'glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg transition-all duration-300 relative z-30';
-        cardElement.style.width = '100%';
+        cardElement.style.width = currentWidth < 640 ? '100%' : '50%'; // Adjust for grid layout
         
         const contentDiv = document.createElement('div');
         contentDiv.className = 'text-left h-full flex flex-col justify-between';
@@ -79,32 +65,17 @@ export const useCardHeight = () => {
       return maxHeight + 20;
     };
 
-    // Calculate heights for all breakpoints
-    const heights = {
-      mobile: calculateHeightForWidth(breakpoints.mobile),
-      tablet: calculateHeightForWidth(breakpoints.tablet),
-      desktop: calculateHeightForWidth(breakpoints.desktop)
+    const updateHeight = () => {
+      const newHeight = calculateMaxHeightForCurrentScreen();
+      setCurrentHeight(newHeight);
     };
 
-    setCardHeights(heights);
+    // Calculate initial height
+    updateHeight();
 
-    // Set initial height based on current screen size
-    const updateCurrentHeight = () => {
-      const width = window.innerWidth;
-      if (width < 640) {
-        setCurrentHeight(heights.mobile);
-      } else if (width < 1024) {
-        setCurrentHeight(heights.tablet);
-      } else {
-        setCurrentHeight(heights.desktop);
-      }
-    };
-
-    updateCurrentHeight();
-
-    // Listen for resize events to update height
+    // Listen for resize events to recalculate height
     const handleResize = () => {
-      updateCurrentHeight();
+      updateHeight();
     };
 
     window.addEventListener('resize', handleResize);
