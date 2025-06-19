@@ -1,18 +1,18 @@
 
-import * as React from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { testimonials } from './testimonialsData';
 
 export const useTestimonials = () => {
-  const [activeTestimonials, setActiveTestimonials] = React.useState<number[]>([0, 1, 2, 3]);
-  const [changingIndex, setChangingIndex] = React.useState<number | null>(null);
-  const [isVisible, setIsVisible] = React.useState(true);
-  const [hoveredCard, setHoveredCard] = React.useState<number | null>(null);
-  const [isPaused, setIsPaused] = React.useState(false);
-  const rotationIntervalRef = React.useRef<NodeJS.Timeout | null>(null);
-  const testimonialsGridRef = React.useRef<HTMLDivElement>(null);
+  const [activeTestimonials, setActiveTestimonials] = useState<number[]>([0, 1, 2, 3]);
+  const [changingIndex, setChangingIndex] = useState<number | null>(null);
+  const [isVisible, setIsVisible] = useState(true);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const rotationIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const testimonialsGridRef = useRef<HTMLDivElement>(null);
 
   // Rotation logic with pause functionality
-  React.useEffect(() => {
+  useEffect(() => {
     let currentBoxIndex = 0;
     const rotateTestimonial = () => {
       // Skip rotation if paused

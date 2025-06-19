@@ -1,11 +1,11 @@
 
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { testimonials } from './testimonialsData';
 
 export const useFixedSectionHeight = () => {
-  const [fixedSectionHeight, setFixedSectionHeight] = React.useState<number>(0);
+  const [fixedSectionHeight, setFixedSectionHeight] = useState<number>(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const calculateFixedHeight = () => {
       // Create temporary elements to measure testimonial card heights
       const tempContainer = document.createElement('div');

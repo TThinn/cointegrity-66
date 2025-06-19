@@ -1,11 +1,11 @@
-import * as React from "react";
+import { useState, useEffect, useRef } from "react";
 import Container from "./ui/Container";
 import TestimonialCard from "./testimonials/TestimonialCard";
 import { useTestimonials } from "./testimonials/useTestimonials";
 import { useFixedSectionHeight } from "./testimonials/useFixedSectionHeight";
 
 const Testimonials = () => {
-  const [isMobile, setIsMobile] = React.useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const {
     testimonials,
     activeTestimonials,
@@ -17,13 +17,13 @@ const Testimonials = () => {
     testimonialsGridRef,
   } = useTestimonials();
   
-  const sectionRef = React.useRef(null);
-  const buttonRef = React.useRef(null);
-  const [particles, setParticles] = React.useState([]);
+  const sectionRef = useRef(null);
+  const buttonRef = useRef(null);
+  const [particles, setParticles] = useState([]);
   const fixedSectionHeight = useFixedSectionHeight();
 
   // Handle responsive behavior
-  React.useEffect(() => {
+  useEffect(() => {
     const checkMobile = () => {
       const mobile = window.innerWidth < 640;
       setIsMobile(mobile);
@@ -35,7 +35,7 @@ const Testimonials = () => {
   }, []);
 
   // Generate particles
-  React.useEffect(() => {
+  useEffect(() => {
     if (!buttonRef.current || !sectionRef.current) return;
 
     const btnBox = buttonRef.current.getBoundingClientRect();

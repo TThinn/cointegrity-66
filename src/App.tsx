@@ -1,5 +1,5 @@
 
-import * as React from "react"
+import { StrictMode, useEffect } from "react"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { Toaster } from "sonner"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
@@ -35,7 +35,7 @@ const RouteTracker = () => {
   const location = useLocation();
   const { pageView } = useAnalytics();
   
-  React.useEffect(() => {
+  useEffect(() => {
     // Track page view on route change
     pageView(location.pathname);
   }, [location, pageView]);
@@ -49,7 +49,7 @@ const App = () => {
   useServiceWorker();
 
   return (
-    <React.StrictMode>
+    <StrictMode>
       <HelmetProvider>
         <ResourceHints />
         <QueryClientProvider client={queryClient}>
@@ -90,7 +90,7 @@ const App = () => {
           </TooltipProvider>
         </QueryClientProvider>
       </HelmetProvider>
-    </React.StrictMode>
+    </StrictMode>
   );
 };
 
