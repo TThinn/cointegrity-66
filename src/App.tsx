@@ -1,6 +1,5 @@
 
 import React, { StrictMode, useEffect } from "react"
-import { TooltipProvider } from "@/components/ui/tooltip"
 import { Toaster } from "sonner"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
@@ -23,46 +22,12 @@ import CaseStudiesPage from "./pages/CaseStudiesPage"
 import { useAnalytics } from "./hooks/useAnalytics"
 import { useWebVitals } from "./hooks/useWebVitals"
 import { useServiceWorker } from "./hooks/useServiceWorker"
+import { AppProviders } from "./components/app/AppProviders"
 import './index.css'
 import './App.css'
 
 // Create a client
 const queryClient = new QueryClient();
-
-// Define interfaces for the error boundary
-interface HelmetErrorBoundaryProps {
-  children: React.ReactNode;
-}
-
-interface HelmetErrorBoundaryState {
-  hasError: boolean;
-}
-
-// Error boundary component for Helmet-related errors
-class HelmetErrorBoundary extends React.Component<HelmetErrorBoundaryProps, HelmetErrorBoundaryState> {
-  constructor(props: HelmetErrorBoundaryProps) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error: Error): HelmetErrorBoundaryState {
-    console.warn('Helmet error caught:', error);
-    return { hasError: true };
-  }
-
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.warn('Helmet error details:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      // Fallback UI without Helmet functionality
-      return this.props.children;
-    }
-
-    return this.props.children;
-  }
-}
 
 // RouteTracker component to handle route changes
 const RouteTracker = () => {
@@ -77,54 +42,59 @@ const RouteTracker = () => {
   return null;
 };
 
-const App = () => {
+// Main app content component
+const AppContent = () => {
   // Initialize performance monitoring
   useWebVitals();
   useServiceWorker();
 
   return (
+    <BrowserRouter>
+      <RouteTracker />
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/web3-consulting" element={<Index />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/partners" element={<PartnersPage />} />
+        <Route path="/process" element={<ProcessPage />} />
+        <Route path="/team" element={<TeamPage />} />
+        <Route path="/testimonials" element={<TestimonialsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/glossary" element={<GlossaryPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/guides" element={<GuidesPage />} />
+        <Route path="/case-studies" element={<CaseStudiesPage />} />
+        <Route path="/thank-you" element={<ThankYouPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Toaster 
+        position="top-center" 
+        closeButton
+        toastOptions={{
+          className: "toast-blur-container",
+          style: {
+            background: "transparent",
+            border: "none",
+            boxShadow: "none",
+          }
+        }}
+      />
+    </BrowserRouter>
+  );
+};
+
+const App = () => {
+  return (
     <StrictMode>
-      <HelmetErrorBoundary>
-        <HelmetProvider>
-          <QueryClientProvider client={queryClient}>
-            <TooltipProvider>
-              <BrowserRouter>
-                <RouteTracker />
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/web3-consulting" element={<Index />} />
-                  <Route path="/about" element={<AboutPage />} />
-                  <Route path="/services" element={<ServicesPage />} />
-                  <Route path="/partners" element={<PartnersPage />} />
-                  <Route path="/process" element={<ProcessPage />} />
-                  <Route path="/team" element={<TeamPage />} />
-                  <Route path="/testimonials" element={<TestimonialsPage />} />
-                  <Route path="/contact" element={<ContactPage />} />
-                  <Route path="/privacy" element={<PrivacyPolicy />} />
-                  <Route path="/glossary" element={<GlossaryPage />} />
-                  <Route path="/blog" element={<BlogPage />} />
-                  <Route path="/guides" element={<GuidesPage />} />
-                  <Route path="/case-studies" element={<CaseStudiesPage />} />
-                  <Route path="/thank-you" element={<ThankYouPage />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </BrowserRouter>
-              <Toaster 
-                position="top-center" 
-                closeButton
-                toastOptions={{
-                  className: "toast-blur-container",
-                  style: {
-                    background: "transparent",
-                    border: "none",
-                    boxShadow: "none",
-                  }
-                }}
-              />
-            </TooltipProvider>
-          </QueryClientProvider>
-        </HelmetProvider>
-      </HelmetErrorBoundary>
+      <HelmetProvider>
+        <QueryClientProvider client={queryClient}>
+          <AppProviders>
+            <AppContent />
+          </AppProviders>
+        </QueryClientProvider>
+      </HelmetProvider>
     </StrictMode>
   );
 };

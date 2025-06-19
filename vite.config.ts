@@ -42,6 +42,18 @@ export default defineConfig(({ mode }) => ({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+    // Force single React instance to prevent hook call errors
+    dedupe: ['react', 'react-dom'],
+  },
+  // Optimize dependencies to prevent duplication
+  optimizeDeps: {
+    include: ['react', 'react-dom', '@radix-ui/react-tooltip'],
+    force: true
+  },
+  // Ensure consistent React module resolution
+  define: {
+    // Ensure consistent React environment
+    'process.env.NODE_ENV': JSON.stringify(mode === 'development' ? 'development' : 'production')
   },
   publicDir: path.resolve(__dirname, "./public"),
 }));

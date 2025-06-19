@@ -3,6 +3,13 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './styles/main.css';
 import { initCriticalCssOptimization } from './utils/criticalCss';
+import { validateReactEnvironment } from './utils/reactDebug';
+
+// Validate React environment before initialization
+if (typeof window !== 'undefined') {
+  console.log('🔍 Initializing React application...');
+  validateReactEnvironment();
+}
 
 // Initialize critical CSS optimization
 if (typeof window !== 'undefined') {
@@ -28,4 +35,25 @@ if (typeof window !== 'undefined') {
   preloadFonts();
 }
 
-createRoot(document.getElementById("root")!).render(<App />);
+// Ensure DOM is ready before creating root
+const initializeApp = () => {
+  const rootElement = document.getElementById("root");
+  
+  if (!rootElement) {
+    console.error('❌ Root element not found');
+    return;
+  }
+
+  console.log('🔍 Creating React root...');
+  const root = createRoot(rootElement);
+  
+  console.log('🔍 Rendering App component...');
+  root.render(<App />);
+};
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+  initializeApp();
+}
