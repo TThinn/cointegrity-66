@@ -19,8 +19,8 @@ import GuidesPage from "./pages/GuidesPage"
 import CaseStudiesPage from "./pages/CaseStudiesPage"
 import MicaReadyWaitlistPage from "./pages/MicaReadyWaitlistPage"
 import { useAnalytics } from "./hooks/useAnalytics"
-import { useWebVitals } from "./hooks/useWebVitals"
-import { useServiceWorker } from "./hooks/useServiceWorker"
+import { initWebVitals } from "./utils/webVitalsInit"
+import { initServiceWorker } from "./utils/serviceWorkerInit"
 import { AppProviders } from "./components/app/AppProviders"
 import ErrorBoundary from "./components/app/ErrorBoundary"
 import './index.css'
@@ -41,9 +41,11 @@ const RouteTracker = () => {
 
 // Main app content component
 const AppContent = () => {
-  // Initialize performance monitoring
-  useWebVitals();
-  useServiceWorker();
+  // Initialize performance monitoring after React is ready
+  useEffect(() => {
+    initWebVitals();
+    initServiceWorker();
+  }, []);
 
   return (
     <BrowserRouter>
