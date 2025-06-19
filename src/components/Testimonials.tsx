@@ -102,8 +102,7 @@ const Testimonials = () => {
                height: '100%', 
                minHeight: 'inherit',
                display: 'flex',
-               flexDirection: 'column',
-               justifyContent: 'space-between'
+               flexDirection: 'column'
              }}>
           
           {/* Header Section - Fixed at top */}
@@ -131,8 +130,8 @@ const Testimonials = () => {
             </div>
           </div>
             
-          {/* CTA Section - Anchored to bottom of section */}
-          <div className="text-center relative z-20 flex-shrink-0 py-8 mt-auto">
+          {/* CTA Section - Absolutely positioned at bottom of section */}
+          <div className="absolute bottom-8 left-0 right-0 text-center z-20">
             <div className="inline-block relative">
               <div className="absolute inset-0 z-[1] pointer-events-none">
                 {particles.map((p, i) => (
