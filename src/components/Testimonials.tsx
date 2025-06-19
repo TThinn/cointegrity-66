@@ -60,7 +60,7 @@ const Testimonials = () => {
           </div>
 
           {/* Cards Section - Flexible height based on content */}
-          <div className="flex-1 flex items-center justify-center my-8">
+          <div className="flex-1 flex items-center justify-center my-4">
             <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto w-full">
               {testimonialsToShow.map((testimonialIndex, position) => (
                 <TestimonialCard 
