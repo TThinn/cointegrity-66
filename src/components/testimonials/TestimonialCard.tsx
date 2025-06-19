@@ -34,7 +34,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       onMouseLeave={onMouseLeave}
     >
       <div className="text-left h-full flex flex-col justify-between">
-        <p className="text-white/80 text-lg mb-8 flex-1 overflow-hidden leading-relaxed">"{testimonial.quote}"</p>
+        <p className="text-white/80 text-base mb-8 flex-1 overflow-hidden leading-relaxed">"{testimonial.quote}"</p>
         <div className="flex-shrink-0">
           <p className="text-white font-semibold text-xl">{testimonial.name}</p>
           <p className="text-white/60 text-base">{testimonial.title}</p>
