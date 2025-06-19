@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { testimonials } from './testimonialsData';
 
 export const useFixedSectionHeight = () => {

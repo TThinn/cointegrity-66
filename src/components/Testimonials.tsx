@@ -1,5 +1,4 @@
-
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "./ui/Container";
 import TestimonialCard from "./testimonials/TestimonialCard";
 import { useTestimonials } from "./testimonials/useTestimonials";
