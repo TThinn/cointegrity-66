@@ -5,6 +5,7 @@ import TestimonialCard from "./testimonials/TestimonialCard";
 import ParticleEffect from "./testimonials/ParticleEffect";
 import { useTestimonials } from "./testimonials/useTestimonials";
 import { useParticles } from "./testimonials/useParticles";
+import { useCardHeight } from "./testimonials/useCardHeight";
 
 const Testimonials = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -20,6 +21,7 @@ const Testimonials = () => {
   } = useTestimonials();
   
   const { particles, sectionRef, buttonRef } = useParticles();
+  const { maxCardHeight } = useCardHeight();
 
   // Handle responsive behavior
   useEffect(() => {
@@ -57,7 +59,7 @@ const Testimonials = () => {
             <p className="mt-2 text-white/60 max-w-2xl mx-auto">Our knowledge-first approach to Web3 transformation helps organizations successfully navigate the complex decentralized landscape. With deep expertise in blockchain strategy, product development, tax compliance, and capital acceleration, our specialists bridge the gap between traditional business and Web3 innovation. As your dependable guide through complex blockchain challenges, we deliver solutions that create measurable value. Don't just take our word for it-read what our clients say about working with our team:</p>
           </div>
 
-          {/* Cards Section - Fixed height cards */}
+          {/* Cards Section - Dynamic height cards based on max content */}
           <div className="flex-1 flex items-center justify-center">
             <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto w-full">
               {testimonialsToShow.map((testimonialIndex, position) => (
@@ -69,7 +71,8 @@ const Testimonials = () => {
                   isVisible={isVisible} 
                   isHovered={hoveredCard === position} 
                   onMouseEnter={() => handleCardMouseEnter(position)} 
-                  onMouseLeave={handleCardMouseLeave} 
+                  onMouseLeave={handleCardMouseLeave}
+                  cardHeight={maxCardHeight}
                 />
               ))}
             </div>
