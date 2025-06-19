@@ -3,7 +3,6 @@ import React from "react"
 import { Toaster } from "sonner"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { AppProviders } from "./components/app/AppProviders"
-import { SafeRouteTracker } from "./components/app/SafeRouteTracker"
 import ErrorBoundary from "./components/app/ErrorBoundary"
 
 // Page imports
@@ -55,7 +54,6 @@ const App = () => {
     <ErrorBoundary>
       <AppProviders>
         <BrowserRouter>
-          <SafeRouteTracker />
           <AppRoutes />
           <Toaster 
             position="top-center" 
