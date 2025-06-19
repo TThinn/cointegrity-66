@@ -50,7 +50,7 @@ const Testimonials = () => {
       </div>
       
       <Container>
-        <div className="max-w-7xl mx-auto relative z-10 flex flex-col min-h-screen justify-between pt-18 pb-8">
+        <div className="max-w-7xl mx-auto relative z-10 flex flex-col min-h-screen justify-between pt-20 pb-4">
           
           {/* Header Section */}
           <div className="text-center mb-8 md:mb-16 flex-shrink-0">
