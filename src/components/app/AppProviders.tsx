@@ -6,8 +6,6 @@ interface AppProvidersProps {
 }
 
 export const AppProviders: React.FC<AppProvidersProps> = ({ children }) => {
-  console.log('🔍 AppProviders rendering');
-  
   return (
     <div className="app-providers-wrapper">
       {children}

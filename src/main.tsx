@@ -4,8 +4,6 @@ import App from './App.tsx';
 import './styles/main.css';
 import { initCriticalCssOptimization } from './utils/criticalCss';
 
-console.log('🔍 Main.tsx initializing...');
-
 // Initialize critical CSS optimization
 if (typeof window !== 'undefined') {
   initCriticalCssOptimization();
@@ -39,10 +37,7 @@ const initializeApp = () => {
     return;
   }
 
-  console.log('🔍 Creating React root...');
   const root = createRoot(rootElement);
-  
-  console.log('🔍 Rendering App component...');
   root.render(<App />);
 };
 
