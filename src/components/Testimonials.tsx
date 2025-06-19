@@ -50,7 +50,7 @@ const Testimonials = () => {
       </div>
       
       <Container>
-        <div className="max-w-7xl mx-auto relative z-10 flex flex-col min-h-screen justify-between py-16">
+        <div className="max-w-7xl mx-auto relative z-10 flex flex-col min-h-screen justify-between pt-18 pb-8">
           
           {/* Header Section */}
           <div className="text-center mb-8 md:mb-16 flex-shrink-0">
@@ -79,7 +79,7 @@ const Testimonials = () => {
           </div>
             
           {/* CTA Section - Fixed at bottom */}
-          <div className="text-center mt-8 flex-shrink-0">
+          <div className="text-center mt-4 flex-shrink-0">
             <div className="inline-block relative">
               <ParticleEffect particles={particles} />
               <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
