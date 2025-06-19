@@ -32,21 +32,21 @@ export const validateReactEnvironment = () => {
   };
 };
 
-// Component wrapper for debugging hooks
+// Component wrapper for debugging hooks with proper TypeScript types
 export const withHookDebugging = <P extends Record<string, any>>(
   Component: React.ComponentType<P>,
   componentName: string
 ): React.ComponentType<P> => {
-  const WrappedComponent = React.forwardRef<any, P>((props, ref) => {
+  const WrappedComponent = (props: P) => {
     console.log(`🔍 Rendering ${componentName} with hooks`);
     
     try {
-      return React.createElement(Component, { ...props, ref } as P & { ref?: any });
+      return React.createElement(Component, props);
     } catch (error) {
       console.error(`❌ Hook error in ${componentName}:`, error);
       throw error;
     }
-  });
+  };
 
   WrappedComponent.displayName = `withHookDebugging(${componentName})`;
   return WrappedComponent;

@@ -4,6 +4,7 @@ import { Toaster } from "sonner"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 import { HelmetProvider } from "react-helmet-async"
+import { TooltipProvider } from "@/components/ui/tooltip"
 import Index from "./pages/Index"
 import NotFound from "./pages/NotFound"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
@@ -101,9 +102,11 @@ const App = () => {
       <StrictMode>
         <HelmetProvider>
           <QueryClientProvider client={queryClient}>
-            <AppProviders>
-              <AppContent />
-            </AppProviders>
+            <TooltipProvider>
+              <AppProviders>
+                <AppContent />
+              </AppProviders>
+            </TooltipProvider>
           </QueryClientProvider>
         </HelmetProvider>
       </StrictMode>
