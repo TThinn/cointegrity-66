@@ -1,5 +1,4 @@
 
-import React from "react";
 import { TestimonialType } from "./types";
 
 interface TestimonialCardProps {

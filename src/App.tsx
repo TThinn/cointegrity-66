@@ -1,5 +1,5 @@
 
-import React, { StrictMode, useEffect } from "react"
+import { StrictMode, useEffect } from "react"
 import { Toaster } from "sonner"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
@@ -29,7 +29,14 @@ import './index.css'
 import './App.css'
 
 // Create a client
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutes
+      retry: 1,
+    },
+  },
+});
 
 // RouteTracker component to handle route changes
 const RouteTracker = () => {
@@ -93,11 +100,11 @@ const App = () => {
       <StrictMode>
         <HelmetProvider>
           <QueryClientProvider client={queryClient}>
-            <TooltipProvider>
-              <AppProviders>
+            <AppProviders>
+              <TooltipProvider>
                 <AppContent />
-              </AppProviders>
-            </TooltipProvider>
+              </TooltipProvider>
+            </AppProviders>
           </QueryClientProvider>
         </HelmetProvider>
       </StrictMode>

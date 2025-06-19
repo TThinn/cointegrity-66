@@ -28,7 +28,7 @@ if (typeof window !== 'undefined') {
   preloadFonts();
 }
 
-// Ensure DOM is ready before creating root
+// Ensure DOM and React are ready before creating root
 const initializeApp = () => {
   const rootElement = document.getElementById("root");
   
@@ -37,8 +37,19 @@ const initializeApp = () => {
     return;
   }
 
-  const root = createRoot(rootElement);
-  root.render(<App />);
+  // Additional check to ensure React is available
+  if (typeof React === 'undefined') {
+    console.error('❌ React is not available');
+    return;
+  }
+
+  try {
+    const root = createRoot(rootElement);
+    root.render(<App />);
+    console.log('✅ App initialized successfully');
+  } catch (error) {
+    console.error('❌ Failed to initialize app:', error);
+  }
 };
 
 // Initialize when DOM is ready
