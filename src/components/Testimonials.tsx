@@ -89,7 +89,7 @@ const Testimonials = () => {
       ref={sectionRef}
       style={{ 
         height: fixedSectionHeight > 0 ? `${fixedSectionHeight}px` : 'auto',
-        minHeight: '100vh'
+        minHeight: fixedSectionHeight > 0 ? `${fixedSectionHeight}px` : '100vh'
       }}
     >
       <div className="absolute inset-0 z-0">
@@ -98,15 +98,19 @@ const Testimonials = () => {
       </div>
       
       <Container>
-        <div className="max-w-7xl mx-auto relative z-10 h-full flex flex-col" style={{ height: '100%' }}>
-          <div className="text-center mb-16">
+        <div className="max-w-7xl mx-auto relative z-10 h-full flex flex-col justify-between" 
+             style={{ height: '100%', minHeight: 'inherit' }}>
+          
+          {/* Header Section */}
+          <div className="text-center mb-16 flex-shrink-0">
             <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">Client Success Stories</h2>
             <h3 className="mt-2 text-3xl md:text-4xl font-bold text-white">Why Leading Organizations Choose Our Web3 Expertise</h3>
             <p className="mt-2 text-white/60 max-w-2xl mx-auto">Our knowledge-first approach to Web3 transformation helps organizations successfully navigate the complex decentralized landscape. With deep expertise in blockchain strategy, product development, tax compliance, and capital acceleration, our specialists bridge the gap between traditional business and Web3 innovation. As your dependable guide through complex blockchain challenges, we deliver solutions that create measurable value. Don't just take our word for it-read what our clients say about working with our team:</p>
           </div>
 
-          <div className="flex-1 flex flex-col justify-between">
-            <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          {/* Cards Section - flexible middle */}
+          <div className="flex-1 flex items-center justify-center">
+            <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto w-full">
               {testimonialsToShow.map((testimonialIndex, position) => (
                 <TestimonialCard 
                   key={position} 
@@ -120,40 +124,41 @@ const Testimonials = () => {
                 />
               ))}
             </div>
+          </div>
             
-            {/* CTA Section - anchored to bottom of section */}
-            <div className="text-center relative z-20 mt-auto py-8">
-              <div className="inline-block relative">
-                <div className="absolute inset-0 z-[1] pointer-events-none">
-                  {particles.map((p, i) => (
-                    <div 
-                      key={`cta-particle-${i}`} 
-                      className="absolute rounded-full blur-[12px] animate-light-particle" 
-                      style={{
-                        width: `${p.size}px`,
-                        height: `${p.size}px`,
-                        background: p.color,
-                        left: `${p.x}%`,
-                        top: `${p.y}%`,
-                        animationDelay: `${p.delay}s`,
-                        animationDuration: `${p.duration}s`,
-                        '--move-x': `${p.moveX}vw`,
-                        '--move-y': `${p.moveY}vh`,
-                        '--rotate': `${p.rotate}deg`
-                      } as React.CSSProperties}
-                    />
-                  ))}
-                </div>
-                <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
-                  <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
-                                border border-white/30 hover:bg-white/40 transition-all
-                                transform hover:scale-105 duration-300 text-base font-semibold">
-                    Partner with us
-                  </button>
-                </a>
+          {/* CTA Section - anchored to bottom */}
+          <div className="text-center relative z-20 flex-shrink-0 py-8">
+            <div className="inline-block relative">
+              <div className="absolute inset-0 z-[1] pointer-events-none">
+                {particles.map((p, i) => (
+                  <div 
+                    key={`cta-particle-${i}`} 
+                    className="absolute rounded-full blur-[12px] animate-light-particle" 
+                    style={{
+                      width: `${p.size}px`,
+                      height: `${p.size}px`,
+                      background: p.color,
+                      left: `${p.x}%`,
+                      top: `${p.y}%`,
+                      animationDelay: `${p.delay}s`,
+                      animationDuration: `${p.duration}s`,
+                      '--move-x': `${p.moveX}vw`,
+                      '--move-y': `${p.moveY}vh`,
+                      '--rotate': `${p.rotate}deg`
+                    } as React.CSSProperties}
+                  />
+                ))}
               </div>
+              <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
+                <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
+                              border border-white/30 hover:bg-white/40 transition-all
+                              transform hover:scale-105 duration-300 text-base font-semibold">
+                  Partner with us
+                </button>
+              </a>
             </div>
           </div>
+          
         </div>
       </Container>
 

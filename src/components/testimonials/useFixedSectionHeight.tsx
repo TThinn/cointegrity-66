@@ -15,22 +15,24 @@ export const useFixedSectionHeight = () => {
       tempContainer.style.visibility = 'hidden';
       tempContainer.style.width = window.innerWidth < 640 ? '100%' : '50%';
       tempContainer.style.maxWidth = '500px';
+      tempContainer.style.padding = '0 1rem'; // Account for container padding
       document.body.appendChild(tempContainer);
 
       const cardHeights: number[] = [];
 
-      // Measure each testimonial card
+      // Measure each testimonial card with exact styling
       testimonials.forEach((testimonial) => {
         const tempCard = document.createElement('div');
         tempCard.className = 'glass bg-white/5 backdrop-blur-md border border-white/10 p-8 shadow-lg';
         tempCard.style.width = '100%';
+        tempCard.style.boxSizing = 'border-box';
         
         tempCard.innerHTML = `
           <div class="text-left">
-            <p class="text-white/80 text-sm mb-6">"${testimonial.quote}"</p>
+            <p class="text-white/80 text-sm mb-6" style="line-height: 1.6;">"${testimonial.quote}"</p>
             <div>
-              <p class="text-white font-semibold">${testimonial.name}</p>
-              <p class="text-white/60 text-xs">${testimonial.title}</p>
+              <p class="text-white font-semibold" style="line-height: 1.4;">${testimonial.name}</p>
+              <p class="text-white/60 text-xs" style="line-height: 1.4;">${testimonial.title}</p>
             </div>
           </div>
         `;
@@ -44,29 +46,63 @@ export const useFixedSectionHeight = () => {
 
       // Sort heights and get the two largest
       const sortedHeights = cardHeights.sort((a, b) => b - a);
-      const largestCardHeight = sortedHeights[0] || 0;
-      const secondLargestCardHeight = sortedHeights[1] || 0;
+      const largestCardHeight = sortedHeights[0] || 300; // Fallback minimum
+      const secondLargestCardHeight = sortedHeights[1] || 300; // Fallback minimum
 
-      // Calculate total section height
-      const headerHeight = 200; // Approximate header height
-      const ctaHeight = 100; // CTA button area height
-      const gridGap = 24; // Gap between cards (gap-6 = 24px)
-      
+      // Detailed calculation of all layout components
       const isMobile = window.innerWidth < 640;
-      const maxContentHeight = isMobile 
-        ? largestCardHeight + secondLargestCardHeight + gridGap // Mobile: cards stacked
-        : Math.max(largestCardHeight, secondLargestCardHeight); // Desktop: cards side by side
-
-      const totalHeight = headerHeight + maxContentHeight + ctaHeight + 160; // 160px for padding
       
-      setFixedSectionHeight(Math.max(totalHeight, window.innerHeight - 160)); // Minimum full viewport minus header
+      // Header section (title + description)
+      const headerHeight = isMobile ? 280 : 240; // More space for mobile text wrapping
       
-      console.log('Fixed section height calculated:', {
+      // Cards section height
+      const gridGap = 24; // gap-6 = 24px
+      const cardsHeight = isMobile 
+        ? largestCardHeight + secondLargestCardHeight + gridGap // Mobile: stacked vertically
+        : Math.max(largestCardHeight, secondLargestCardHeight); // Desktop: side by side
+      
+      // CTA section
+      const ctaHeight = 120; // Button + padding
+      
+      // Section padding (py-20 = 80px top + 80px bottom)
+      const sectionPadding = 160;
+      
+      // Additional spacing and margins
+      const headerMarginBottom = 64; // mb-16 = 64px
+      const cardsToCtaSpacing = 32; // mt-auto creates space
+      
+      // Calculate total height
+      const totalCalculatedHeight = 
+        sectionPadding + 
+        headerHeight + 
+        headerMarginBottom + 
+        cardsHeight + 
+        cardsToCtaSpacing + 
+        ctaHeight;
+      
+      // Ensure minimum viewport height minus header
+      const minViewportHeight = window.innerHeight - 80; // Account for fixed header
+      
+      // Use the larger of calculated height or minimum viewport
+      const finalHeight = Math.max(totalCalculatedHeight, minViewportHeight);
+      
+      setFixedSectionHeight(finalHeight);
+      
+      console.log('🔍 Height Calculation Details:', {
+        isMobile,
+        windowWidth: window.innerWidth,
+        windowHeight: window.innerHeight,
         largestCardHeight,
         secondLargestCardHeight,
-        maxContentHeight,
-        totalHeight,
-        finalHeight: Math.max(totalHeight, window.innerHeight - 160)
+        headerHeight,
+        cardsHeight,
+        ctaHeight,
+        sectionPadding,
+        headerMarginBottom,
+        cardsToCtaSpacing,
+        totalCalculatedHeight,
+        minViewportHeight,
+        finalHeight
       });
     };
 
@@ -74,7 +110,8 @@ export const useFixedSectionHeight = () => {
     calculateFixedHeight();
     
     const handleResize = () => {
-      setTimeout(calculateFixedHeight, 100); // Debounce resize
+      // Debounce resize to avoid excessive calculations
+      setTimeout(calculateFixedHeight, 150);
     };
     
     window.addEventListener('resize', handleResize);
