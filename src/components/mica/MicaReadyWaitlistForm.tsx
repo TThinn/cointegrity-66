@@ -4,19 +4,32 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import Button from "@/components/ui/CustomButtonComponent";
 import { Loader2, CheckCircle } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
-const MicaReadyWaitlistForm = () => {
+interface MicaReadyWaitlistFormProps {
+  serviceInterest: string;
+  buttonText: string;
+  buttonClass: string;
+}
+
+const MicaReadyWaitlistForm = ({ serviceInterest, buttonText, buttonClass }: MicaReadyWaitlistFormProps) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
-    role: '',
-    serviceInterest: ''
+    role: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -43,7 +56,7 @@ const MicaReadyWaitlistForm = () => {
             email: formData.email.trim().toLowerCase(),
             company: formData.company.trim(),
             role: formData.role.trim(),
-            service_interest: formData.serviceInterest
+            service_interest: serviceInterest
           }
         ]);
 
@@ -66,8 +79,7 @@ const MicaReadyWaitlistForm = () => {
         name: '',
         email: '',
         company: '',
-        role: '',
-        serviceInterest: ''
+        role: ''
       });
 
     } catch (error) {
@@ -78,33 +90,62 @@ const MicaReadyWaitlistForm = () => {
     }
   };
 
+  const handleClose = () => {
+    setIsOpen(false);
+    setIsSubmitted(false);
+    setFormData({
+      name: '',
+      email: '',
+      company: '',
+      role: ''
+    });
+  };
+
   if (isSubmitted) {
     return (
-      <div className="max-w-2xl mx-auto" data-section="waitlist">
-        <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 text-center">
-          <CheckCircle className="h-16 w-16 text-green-400 mx-auto mb-6" />
-          <h3 className="text-2xl font-bold text-white mb-4">
-            You're on the list!
-          </h3>
-          <p className="text-white/80 mb-6">
-            Thank you for joining our MiCA-Ready Suite waitlist. We'll notify you as soon as 
-            early access becomes available and keep you updated on our progress.
-          </p>
-          <Button 
-            variant="secondary" 
-            onClick={() => setIsSubmitted(false)}
-            className="mt-4"
-          >
-            Join Another Person
-          </Button>
-        </div>
-      </div>
+      <Dialog open={isOpen} onOpenChange={handleClose}>
+        <DialogTrigger asChild>
+          <button className={buttonClass}>
+            {buttonText}
+          </button>
+        </DialogTrigger>
+        <DialogContent className="max-w-2xl bg-white/5 backdrop-blur-sm border border-white/10 text-white">
+          <div className="text-center p-4">
+            <CheckCircle className="h-16 w-16 text-green-400 mx-auto mb-6" />
+            <h3 className="text-2xl font-bold text-white mb-4">
+              You're on the list!
+            </h3>
+            <p className="text-white/80 mb-6">
+              Thank you for joining our MiCA-Ready Suite waitlist. We'll notify you as soon as 
+              early access becomes available and keep you updated on our progress.
+            </p>
+            <Button 
+              variant="secondary" 
+              onClick={handleClose}
+              className="mt-4"
+            >
+              Close
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     );
   }
 
   return (
-    <div className="max-w-2xl mx-auto" data-section="waitlist">
-      <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger asChild>
+        <button className={buttonClass}>
+          {buttonText}
+        </button>
+      </DialogTrigger>
+      <DialogContent className="max-w-2xl bg-white/5 backdrop-blur-sm border border-white/10 text-white">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-bold text-white mb-4">
+            Join the Waitlist
+          </DialogTitle>
+        </DialogHeader>
+        
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
@@ -169,51 +210,39 @@ const MicaReadyWaitlistForm = () => {
             />
           </div>
 
-          <div>
-            <label htmlFor="serviceInterest" className="block text-sm font-medium text-white mb-2">
-              Service Interest
-            </label>
-            <select
-              id="serviceInterest"
-              name="serviceInterest"
-              value={formData.serviceInterest}
-              onChange={handleInputChange}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+          <div className="flex gap-4">
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={handleClose}
+              className="flex-1"
             >
-              <option value="" className="bg-gray-800">Select a service...</option>
-              <option value="intelligence-feed" className="bg-gray-800">MiCA Intelligence Feed</option>
-              <option value="license-screening" className="bg-gray-800">MiCA License Screening</option>
-              <option value="document-review" className="bg-gray-800">Document Review & Enhancement</option>
-              <option value="full-application" className="bg-gray-800">Full Application Support</option>
-              <option value="multiple" className="bg-gray-800">Multiple Services</option>
-              <option value="not-sure" className="bg-gray-800">Not Sure Yet</option>
-            </select>
+              Cancel
+            </Button>
+            <Button
+              type="submit"
+              variant="primary"
+              disabled={isSubmitting}
+              className="flex-1"
+            >
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  Joining...
+                </>
+              ) : (
+                'Join Waitlist'
+              )}
+            </Button>
           </div>
-
-          <Button
-            type="submit"
-            variant="primary"
-            size="lg"
-            disabled={isSubmitting}
-            className="w-full text-lg py-4"
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                Joining Waitlist...
-              </>
-            ) : (
-              'Join the Waitlist'
-            )}
-          </Button>
 
           <p className="text-xs text-white/60 text-center">
             By joining our waitlist, you agree to receive updates about the MiCA-Ready Suite. 
             We respect your privacy and won't share your information with third parties.
           </p>
         </form>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 };
 

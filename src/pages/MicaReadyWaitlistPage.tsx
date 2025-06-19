@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Container from "@/components/ui/Container";
 import MicaReadyWaitlistForm from "@/components/mica/MicaReadyWaitlistForm";
-import LightParticles from "@/components/ui/LightParticles";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 import { SeoHead } from "@/components/seo/SeoHead";
 
@@ -34,7 +33,6 @@ const MicaReadyWaitlistPage = () => {
         {/* Background elements */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
-          <LightParticles centerPosition={{ x: 50, y: 60 }} />
         </div>
 
         {/* Content container with centered text */}
@@ -56,16 +54,11 @@ const MicaReadyWaitlistPage = () => {
 
       {/* Solution Boxes Section with consistent card styling */}
       <section className="py-20 bg-[#010822] relative overflow-hidden">
-        {/* Background elements matching hero section */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <LightParticles centerPosition={{ x: 30, y: 40 }} />
-        </div>
-        
         <Container className="relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
               {/* Box 1: MiCA Intelligence Feed - Blue Theme */}
-              <div className="p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 border border-white/30 hover:border-white/50">
+              <div className="p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 border border-white/30 hover:border-white/50 flex flex-col">
                 <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" 
                     style={{ background: `linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.3))` }}>
                   <svg className="h-8 w-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,7 +72,7 @@ const MicaReadyWaitlistPage = () => {
                   Stay Informed
                 </p>
                 
-                <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6">
+                <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6 flex-grow">
                   Get AI-curated MiCA news and regulatory updates delivered to your inbox. Our automated scraper 
                   monitors ESMA and national regulators 24/7, providing timely summaries of developments that impact your business.
                 </p>
@@ -89,13 +82,15 @@ const MicaReadyWaitlistPage = () => {
                   <div className="text-white/60 text-sm">Perfect for law firms, consultants, VCs, compliance officers</div>
                 </div>
                 
-                <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                  I'm interested - Put me on the waiting list
-                </button>
+                <MicaReadyWaitlistForm 
+                  serviceInterest="intelligence-feed"
+                  buttonText="I'm interested - Put me on the waiting list"
+                  buttonClass="w-full bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto"
+                />
               </div>
 
               {/* Box 2: MiCA License Screening - Purple Theme */}
-              <div className="p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 border border-white/30 hover:border-white/50">
+              <div className="p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 border border-white/30 hover:border-white/50 flex flex-col">
                 <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" 
                     style={{ background: `linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(147, 51, 234, 0.3))` }}>
                   <svg className="h-8 w-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -109,7 +104,7 @@ const MicaReadyWaitlistPage = () => {
                   Do You Need a License?
                 </p>
                 
-                <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6">
+                <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6 flex-grow">
                   Uncertain if your crypto business needs a MiCA license? Our AI-powered screening tool guides you 
                   through a comprehensive decision tree to determine your regulatory obligations.
                 </p>
@@ -119,13 +114,15 @@ const MicaReadyWaitlistPage = () => {
                   <div className="text-white/60 text-sm">Ideal for early-stage projects, uncertain businesses</div>
                 </div>
                 
-                <button className="w-full bg-gradient-to-r from-purple-500 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                  I'm interested - Put me on the waiting list
-                </button>
+                <MicaReadyWaitlistForm 
+                  serviceInterest="license-screening"
+                  buttonText="I'm interested - Put me on the waiting list"
+                  buttonClass="w-full bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto"
+                />
               </div>
 
               {/* Box 3: Document Review & Enhancement - Green Theme */}
-              <div className="p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 border border-white/30 hover:border-white/50">
+              <div className="p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 border border-white/30 hover:border-white/50 flex flex-col">
                 <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" 
                     style={{ background: `linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.3))` }}>
                   <svg className="h-8 w-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -139,7 +136,7 @@ const MicaReadyWaitlistPage = () => {
                   Optimize Your Application
                 </p>
                 
-                <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6">
+                <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6 flex-grow">
                   Already have VASP documentation or business plans? Our AI engine performs gap analysis against 
                   MiCA requirements and suggests enhancements to bring your documents up to compliance standards.
                 </p>
@@ -149,13 +146,15 @@ const MicaReadyWaitlistPage = () => {
                   <div className="text-white/60 text-sm">For companies with existing documentation</div>
                 </div>
                 
-                <button className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                  I'm interested - Put me on the waiting list
-                </button>
+                <MicaReadyWaitlistForm 
+                  serviceInterest="document-review"
+                  buttonText="I'm interested - Put me on the waiting list"
+                  buttonClass="w-full bg-gradient-to-r from-green-400 via-green-500 to-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto"
+                />
               </div>
 
               {/* Box 4: Full Application Support - Orange Theme */}
-              <div className="p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 border border-white/30 hover:border-white/50">
+              <div className="p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 border border-white/30 hover:border-white/50 flex flex-col">
                 <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" 
                     style={{ background: `linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(249, 115, 22, 0.3))` }}>
                   <svg className="h-8 w-8 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -169,7 +168,7 @@ const MicaReadyWaitlistPage = () => {
                   Complete MiCA Solution
                 </p>
                 
-                <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6">
+                <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6 flex-grow">
                   End-to-end MiCA application preparation with full AI-powered document generation, interactive wizard, 
                   and expert review. Traditional consulting costs €100,000+ - we provide a comprehensive alternative.
                 </p>
@@ -179,38 +178,12 @@ const MicaReadyWaitlistPage = () => {
                   <div className="text-white/60 text-sm">For companies ready for full application</div>
                 </div>
                 
-                <button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                  I'm interested - Put me on the waiting list
-                </button>
+                <MicaReadyWaitlistForm 
+                  serviceInterest="full-application"
+                  buttonText="I'm interested - Put me on the waiting list"
+                  buttonClass="w-full bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto"
+                />
               </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-      
-      {/* Waitlist Form Section */}
-      <section className="py-20 bg-gradient-to-b from-[#010822] to-[#1a1a3a]">
-        <Container>
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Get Early Access
-              </h2>
-              <p className="text-xl text-white/80 max-w-2xl mx-auto">
-                Be among the first to experience our comprehensive MiCA compliance suite. 
-                Join our waitlist for priority access and exclusive updates.
-              </p>
-            </div>
-            
-            <MicaReadyWaitlistForm />
-            
-            {/* Privacy Notice */}
-            <div className="mt-8 text-center">
-              <p className="text-sm text-white/60 max-w-2xl mx-auto">
-                Your information is stored securely on AWS infrastructure with SOC 2 compliance roadmap. 
-                We respect your privacy and will only use your data to contact you about MiCA-Ready Suite updates. 
-                View our <a href="/privacy" className="text-purple-400 hover:text-purple-300 underline">privacy policy</a> for details.
-              </p>
             </div>
           </div>
         </Container>
