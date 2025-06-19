@@ -28,18 +28,12 @@ if (typeof window !== 'undefined') {
   preloadFonts();
 }
 
-// Ensure DOM and React are ready before creating root
+// Simple DOM ready initialization
 const initializeApp = () => {
   const rootElement = document.getElementById("root");
   
   if (!rootElement) {
     console.error('❌ Root element not found');
-    return;
-  }
-
-  // Additional check to ensure React is available
-  if (typeof React === 'undefined') {
-    console.error('❌ React is not available');
     return;
   }
 

@@ -39,7 +39,7 @@ const Testimonials = () => {
   return (
     <section 
       id="testimonials" 
-      className="min-h-screen py-8 relative overflow-hidden flex flex-col"
+      className="py-8 relative overflow-hidden flex flex-col"
       ref={sectionRef}
     >
       <div className="absolute inset-0 z-0">
@@ -48,7 +48,7 @@ const Testimonials = () => {
       </div>
       
       <Container>
-        <div className="max-w-7xl mx-auto relative z-10 flex flex-col min-h-screen justify-between pt-20 pb-4">
+        <div className="max-w-7xl mx-auto relative z-10 flex flex-col justify-between pt-20 pb-4">
           
           {/* Header Section */}
           <div className="text-center mb-8 md:mb-16 flex-shrink-0">
@@ -58,8 +58,8 @@ const Testimonials = () => {
           </div>
 
           {/* Cards Section - Flexible height based on content */}
-          <div className="flex-1 flex items-center justify-center my-4">
-            <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-6xl mx-auto w-full">
+          <div className="flex-1 flex items-center justify-center my-8">
+            <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-6xl mx-auto w-full">
               {testimonialsToShow.map((testimonialIndex, position) => (
                 <TestimonialCard 
                   key={position} 
@@ -76,7 +76,7 @@ const Testimonials = () => {
           </div>
             
           {/* CTA Section - Fixed at bottom */}
-          <div className="text-center mt-4 flex-shrink-0">
+          <div className="text-center mt-8 flex-shrink-0">
             <div className="inline-block relative">
               <ParticleEffect particles={particles} />
               <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">

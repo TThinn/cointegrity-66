@@ -1,5 +1,5 @@
 
-import { StrictMode, useEffect } from "react"
+import React, { StrictMode, useEffect } from "react"
 import { Toaster } from "sonner"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
@@ -100,11 +100,11 @@ const App = () => {
       <StrictMode>
         <HelmetProvider>
           <QueryClientProvider client={queryClient}>
-            <AppProviders>
-              <TooltipProvider>
+            <TooltipProvider>
+              <AppProviders>
                 <AppContent />
-              </TooltipProvider>
-            </AppProviders>
+              </AppProviders>
+            </TooltipProvider>
           </QueryClientProvider>
         </HelmetProvider>
       </StrictMode>
