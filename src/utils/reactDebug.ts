@@ -1,4 +1,6 @@
 
+import React from 'react';
+
 // React debugging utilities
 export const validateReactEnvironment = () => {
   if (typeof window === 'undefined') {
@@ -15,10 +17,10 @@ export const validateReactEnvironment = () => {
   if (window.React) reactInstances.push('window.React');
   
   try {
-    const importedReact = require('react');
-    if (importedReact) reactInstances.push('imported React');
+    // Check if React is available through module system
+    if (React) reactInstances.push('imported React');
   } catch (e) {
-    // Module systems might not support require
+    console.log('🔍 React import check failed:', e);
   }
 
   console.log('🔍 React instances found:', reactInstances);
@@ -31,18 +33,21 @@ export const validateReactEnvironment = () => {
 };
 
 // Component wrapper for debugging hooks
-export const withHookDebugging = <P extends object>(
+export const withHookDebugging = <P extends Record<string, any>>(
   Component: React.ComponentType<P>,
   componentName: string
-) => {
-  return React.forwardRef<any, P>((props, ref) => {
+): React.ComponentType<P> => {
+  const WrappedComponent = React.forwardRef<any, P>((props, ref) => {
     console.log(`🔍 Rendering ${componentName} with hooks`);
     
     try {
-      return <Component {...props} ref={ref} />;
+      return React.createElement(Component, { ...props, ref } as P & { ref?: any });
     } catch (error) {
       console.error(`❌ Hook error in ${componentName}:`, error);
       throw error;
     }
   });
+
+  WrappedComponent.displayName = `withHookDebugging(${componentName})`;
+  return WrappedComponent;
 };

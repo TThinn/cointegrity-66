@@ -23,6 +23,8 @@ import { useAnalytics } from "./hooks/useAnalytics"
 import { useWebVitals } from "./hooks/useWebVitals"
 import { useServiceWorker } from "./hooks/useServiceWorker"
 import { AppProviders } from "./components/app/AppProviders"
+import ErrorBoundary from "./components/app/ErrorBoundary"
+import { validateReactEnvironment } from "./utils/reactDebug"
 import './index.css'
 import './App.css'
 
@@ -47,6 +49,12 @@ const AppContent = () => {
   // Initialize performance monitoring
   useWebVitals();
   useServiceWorker();
+
+  // Validate React environment on mount
+  useEffect(() => {
+    console.log('🔍 App mounted, validating React environment...');
+    validateReactEnvironment();
+  }, []);
 
   return (
     <BrowserRouter>
@@ -86,16 +94,20 @@ const AppContent = () => {
 };
 
 const App = () => {
+  console.log('🔍 App component rendering...');
+  
   return (
-    <StrictMode>
-      <HelmetProvider>
-        <QueryClientProvider client={queryClient}>
-          <AppProviders>
-            <AppContent />
-          </AppProviders>
-        </QueryClientProvider>
-      </HelmetProvider>
-    </StrictMode>
+    <ErrorBoundary>
+      <StrictMode>
+        <HelmetProvider>
+          <QueryClientProvider client={queryClient}>
+            <AppProviders>
+              <AppContent />
+            </AppProviders>
+          </QueryClientProvider>
+        </HelmetProvider>
+      </StrictMode>
+    </ErrorBoundary>
   );
 };
 

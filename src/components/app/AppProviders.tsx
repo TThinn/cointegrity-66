@@ -1,15 +1,16 @@
 
 import React from "react";
-import { TooltipProvider } from "@/components/ui/tooltip";
 
 interface AppProvidersProps {
   children: React.ReactNode;
 }
 
 export const AppProviders: React.FC<AppProvidersProps> = ({ children }) => {
+  console.log('🔍 AppProviders rendering');
+  
   return (
-    <TooltipProvider delayDuration={300}>
+    <div className="app-providers-wrapper">
       {children}
-    </TooltipProvider>
+    </div>
   );
 };

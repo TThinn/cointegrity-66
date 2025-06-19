@@ -47,8 +47,18 @@ export default defineConfig(({ mode }) => ({
   },
   // Optimize dependencies to prevent duplication
   optimizeDeps: {
-    include: ['react', 'react-dom', '@radix-ui/react-tooltip'],
+    include: ['react', 'react-dom'],
+    exclude: ['@radix-ui/react-tooltip'],
     force: true
+  },
+  // Build configuration to ensure single React instance
+  build: {
+    rollupOptions: {
+      external: [],
+      output: {
+        globals: {}
+      }
+    }
   },
   // Ensure consistent React module resolution
   define: {

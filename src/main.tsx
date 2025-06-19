@@ -3,13 +3,8 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './styles/main.css';
 import { initCriticalCssOptimization } from './utils/criticalCss';
-import { validateReactEnvironment } from './utils/reactDebug';
 
-// Validate React environment before initialization
-if (typeof window !== 'undefined') {
-  console.log('🔍 Initializing React application...');
-  validateReactEnvironment();
-}
+console.log('🔍 Main.tsx initializing...');
 
 // Initialize critical CSS optimization
 if (typeof window !== 'undefined') {
