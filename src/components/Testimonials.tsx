@@ -15,12 +15,12 @@ const Testimonials = () => {
     handleCardMouseEnter,
     handleCardMouseLeave,
     testimonialsGridRef,
-    maxSectionHeight
   } = useTestimonials();
   
   const sectionRef = React.useRef(null);
   const buttonRef = React.useRef(null);
   const [particles, setParticles] = useState([]);
+  const [fixedSectionHeight, setFixedSectionHeight] = useState(0);
 
   // Handle responsive behavior
   useEffect(() => {
@@ -38,6 +38,63 @@ const Testimonials = () => {
     // Cleanup
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Calculate fixed section height based on largest testimonials
+  useEffect(() => {
+    const calculateFixedHeight = () => {
+      // Create temporary elements to measure text heights
+      const tempContainer = document.createElement('div');
+      tempContainer.style.position = 'absolute';
+      tempContainer.style.visibility = 'hidden';
+      tempContainer.style.width = isMobile ? '100%' : '50%';
+      tempContainer.style.maxWidth = isMobile ? '640px' : '500px';
+      document.body.appendChild(tempContainer);
+
+      const cardHeights = testimonials.map(testimonial => {
+        const tempCard = document.createElement('div');
+        tempCard.className = 'glass bg-white/5 backdrop-blur-md border border-white/10 p-8';
+        tempCard.innerHTML = `
+          <div class="text-left">
+            <p class="text-white/80 text-sm mb-6">"${testimonial.quote}"</p>
+            <div>
+              <p class="text-white font-semibold">${testimonial.name}</p>
+              <p class="text-white/60 text-xs">${testimonial.title}</p>
+            </div>
+          </div>
+        `;
+        tempContainer.appendChild(tempCard);
+        const height = tempCard.offsetHeight;
+        tempContainer.removeChild(tempCard);
+        return height;
+      });
+
+      document.body.removeChild(tempContainer);
+
+      // Find two largest card heights
+      const sortedHeights = [...cardHeights].sort((a, b) => b - a);
+      const largestCardHeight = sortedHeights[0] || 200;
+      const secondLargestCardHeight = sortedHeights[1] || 200;
+
+      // Calculate total height components
+      const headerHeight = 160; // Header section height
+      const cardSpacing = 24; // Gap between cards
+      const ctaButtonHeight = 48; // Button height
+      const ctaSpacing = 8; // Max spacing between cards and CTA
+      const bottomSpacing = isMobile ? 16 : 20; // Reduced by 50% from original
+      const cardsContainerHeight = isMobile 
+        ? largestCardHeight + cardSpacing + secondLargestCardHeight // Mobile: stacked
+        : Math.max(largestCardHeight, secondLargestCardHeight); // Desktop: side by side
+
+      const totalHeight = headerHeight + cardsContainerHeight + ctaSpacing + ctaButtonHeight + bottomSpacing;
+      
+      setFixedSectionHeight(totalHeight);
+    };
+
+    // Calculate on mount and when screen size changes
+    calculateFixedHeight();
+    window.addEventListener('resize', calculateFixedHeight);
+    return () => window.removeEventListener('resize', calculateFixedHeight);
+  }, [isMobile, testimonials]);
 
   // Generate particles
   useEffect(() => {
@@ -80,33 +137,33 @@ const Testimonials = () => {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [fixedSectionHeight]);
 
   // Get the active testimonials to display based on mobile/desktop and available testimonials
   const testimonialsToShow = isMobile ? activeTestimonials.slice(0, 2) : activeTestimonials;
 
-  // Calculate dynamic height for mobile vs desktop
-  const dynamicHeight = isMobile ? 'auto' : `${maxSectionHeight}px`;
-
   return (
-    <section id="testimonials" className="py-20 relative overflow-hidden" ref={sectionRef}>
+    <section 
+      id="testimonials" 
+      className="py-20 relative overflow-hidden" 
+      ref={sectionRef}
+      style={{ height: fixedSectionHeight > 0 ? `${fixedSectionHeight}px` : 'auto' }}
+    >
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]"></div>
         <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
       </div>
       
       <Container>
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10 h-full flex flex-col">
           <div className="text-center mb-16">
             <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">Client Success Stories</h2>
             <h3 className="mt-2 text-3xl md:text-4xl font-bold text-white">Why Leading Organizations Choose Our Web3 Expertise</h3>
             <p className="mt-2 text-white/60 max-w-2xl mx-auto">Our knowledge-first approach to Web3 transformation helps organizations successfully navigate the complex decentralized landscape. With deep expertise in blockchain strategy, product development, tax compliance, and capital acceleration, our specialists bridge the gap between traditional business and Web3 innovation. As your dependable guide through complex blockchain challenges, we deliver solutions that create measurable value. Don't just take our word for it-read what our clients say about working with our team:</p>
           </div>
 
-          <div className="transition-all duration-300 relative z-30" style={{
-            minHeight: isMobile ? 'auto' : dynamicHeight
-          }}>
-            <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="flex-1 relative z-30 flex flex-col">
+            <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto mb-2">
               {testimonialsToShow.map((testimonialIndex, position) => (
                 <TestimonialCard 
                   key={position} 
@@ -120,37 +177,40 @@ const Testimonials = () => {
                 />
               ))}
             </div>
-          </div>
-          
-          <div className={`text-center relative z-20 ${isMobile ? 'mt-8 -mb-8' : 'mt-5 -mb-8'}`}>
-            <div className="inline-block relative">
-              <div className="absolute inset-0 z-[1] pointer-events-none">
-                {particles.map((p, i) => (
-                  <div 
-                    key={`cta-particle-${i}`} 
-                    className="absolute rounded-full blur-[12px] animate-light-particle" 
-                    style={{
-                      width: `${p.size}px`,
-                      height: `${p.size}px`,
-                      background: p.color,
-                      left: `${p.x}%`,
-                      top: `${p.y}%`,
-                      animationDelay: `${p.delay}s`,
-                      animationDuration: `${p.duration}s`,
-                      '--move-x': `${p.moveX}vw`,
-                      '--move-y': `${p.moveY}vh`,
-                      '--rotate': `${p.rotate}deg`
-                    } as React.CSSProperties}
-                  />
-                ))}
+            
+            {/* CTA Section - positioned at bottom with reduced spacing */}
+            <div className="mt-auto">
+              <div className="text-center relative z-20" style={{ marginBottom: isMobile ? '16px' : '20px' }}>
+                <div className="inline-block relative">
+                  <div className="absolute inset-0 z-[1] pointer-events-none">
+                    {particles.map((p, i) => (
+                      <div 
+                        key={`cta-particle-${i}`} 
+                        className="absolute rounded-full blur-[12px] animate-light-particle" 
+                        style={{
+                          width: `${p.size}px`,
+                          height: `${p.size}px`,
+                          background: p.color,
+                          left: `${p.x}%`,
+                          top: `${p.y}%`,
+                          animationDelay: `${p.delay}s`,
+                          animationDuration: `${p.duration}s`,
+                          '--move-x': `${p.moveX}vw`,
+                          '--move-y': `${p.moveY}vh`,
+                          '--rotate': `${p.rotate}deg`
+                        } as React.CSSProperties}
+                      />
+                    ))}
+                  </div>
+                  <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
+                    <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
+                                  border border-white/30 hover:bg-white/40 transition-all
+                                  transform hover:scale-105 duration-300 text-base font-semibold">
+                      Partner with us
+                    </button>
+                  </a>
+                </div>
               </div>
-              <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
-                <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
-                              border border-white/30 hover:bg-white/40 transition-all
-                              transform hover:scale-105 duration-300 text-base font-semibold">
-                  Partner with us
-                </button>
-              </a>
             </div>
           </div>
         </div>
