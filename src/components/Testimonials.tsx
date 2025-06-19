@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import Container from "./ui/Container";
 import TestimonialCard from "./testimonials/TestimonialCard";
@@ -23,7 +24,7 @@ const Testimonials = () => {
   const fixedSectionHeight = useFixedSectionHeight();
 
   // Handle responsive behavior
-  useEffect(() => {
+  React.useEffect(() => {
     const checkMobile = () => {
       const mobile = window.innerWidth < 640;
       setIsMobile(mobile);
@@ -35,7 +36,7 @@ const Testimonials = () => {
   }, []);
 
   // Generate particles
-  useEffect(() => {
+  React.useEffect(() => {
     if (!buttonRef.current || !sectionRef.current) return;
 
     const btnBox = buttonRef.current.getBoundingClientRect();
