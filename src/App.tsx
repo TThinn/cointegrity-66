@@ -1,10 +1,7 @@
 
 import React, { StrictMode, useEffect } from "react"
 import { Toaster } from "sonner"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
-import { HelmetProvider } from "react-helmet-async"
-import SafeTooltipProvider from "@/components/ui/SafeTooltipProvider"
 import Index from "./pages/Index"
 import NotFound from "./pages/NotFound"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
@@ -28,16 +25,6 @@ import { AppProviders } from "./components/app/AppProviders"
 import ErrorBoundary from "./components/app/ErrorBoundary"
 import './index.css'
 import './App.css'
-
-// Create a client
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 60 * 5, // 5 minutes
-      retry: 1,
-    },
-  },
-});
 
 // RouteTracker component to handle route changes
 const RouteTracker = () => {
@@ -100,15 +87,9 @@ const App = () => {
   return (
     <ErrorBoundary>
       <StrictMode>
-        <HelmetProvider>
-          <QueryClientProvider client={queryClient}>
-            <SafeTooltipProvider>
-              <AppProviders>
-                <AppContent />
-              </AppProviders>
-            </SafeTooltipProvider>
-          </QueryClientProvider>
-        </HelmetProvider>
+        <AppProviders>
+          <AppContent />
+        </AppProviders>
       </StrictMode>
     </ErrorBoundary>
   );

@@ -41,35 +41,11 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
-      // Force single React instance resolution
-      "react": path.resolve(__dirname, "./node_modules/react"),
-      "react-dom": path.resolve(__dirname, "./node_modules/react-dom"),
     },
-    // Ensure consistent module resolution
-    dedupe: ['react', 'react-dom'],
   },
-  // Optimize dependencies to prevent duplication
-  optimizeDeps: {
-    include: ['react', 'react-dom'],
-    exclude: [],
-    force: true
-  },
-  // Build configuration to ensure single React instance
   build: {
-    rollupOptions: {
-      external: [],
-      output: {
-        globals: {},
-        // Ensure React modules are properly chunked
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-        }
-      }
-    },
-    // Add source maps for better debugging
     sourcemap: mode === 'development'
   },
-  // Ensure consistent React environment
   define: {
     'process.env.NODE_ENV': JSON.stringify(mode === 'development' ? 'development' : 'production'),
   },
