@@ -7,6 +7,7 @@ import Container from "@/components/ui/Container";
 import MicaReadyWaitlistForm from "@/components/mica/MicaReadyWaitlistForm";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 import { SeoHead } from "@/components/seo/SeoHead";
+import LightParticles from "@/components/ui/LightParticles";
 
 const MicaReadyWaitlistPage = () => {
   const { currentPath, currentHash } = useSectionTracking();
@@ -30,9 +31,10 @@ const MicaReadyWaitlistPage = () => {
       
       {/* Hero section with full screen height */}
       <section className="hero-section min-h-screen flex items-center justify-center pt-20 pb-16 relative overflow-hidden bg-[#010822] isolate">
-        {/* Background elements */}
+        {/* Background elements with light particles */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
+          <LightParticles centerPosition={{ x: 50, y: 50 }} />
         </div>
 
         {/* Content container with centered text */}
