@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Container from "./ui/Container";
 import TestimonialCard from "./testimonials/TestimonialCard";
 import { useTestimonials } from "./testimonials/useTestimonials";
+import { useFixedSectionHeight } from "./testimonials/useFixedSectionHeight";
 
 const Testimonials = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -21,6 +22,7 @@ const Testimonials = () => {
   const sectionRef = React.useRef(null);
   const buttonRef = React.useRef(null);
   const [particles, setParticles] = useState([]);
+  const fixedSectionHeight = useFixedSectionHeight();
 
   // Handle responsive behavior
   useEffect(() => {
@@ -83,8 +85,12 @@ const Testimonials = () => {
   return (
     <section 
       id="testimonials" 
-      className="py-20 relative overflow-hidden min-h-screen" 
+      className="py-20 relative overflow-hidden" 
       ref={sectionRef}
+      style={{ 
+        height: fixedSectionHeight > 0 ? `${fixedSectionHeight}px` : 'auto',
+        minHeight: '100vh'
+      }}
     >
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]"></div>
@@ -92,7 +98,7 @@ const Testimonials = () => {
       </div>
       
       <Container>
-        <div className="max-w-7xl mx-auto relative z-10 h-full flex flex-col min-h-[calc(100vh-10rem)]">
+        <div className="max-w-7xl mx-auto relative z-10 h-full flex flex-col" style={{ height: '100%' }}>
           <div className="text-center mb-16">
             <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">Client Success Stories</h2>
             <h3 className="mt-2 text-3xl md:text-4xl font-bold text-white">Why Leading Organizations Choose Our Web3 Expertise</h3>
@@ -115,8 +121,8 @@ const Testimonials = () => {
               ))}
             </div>
             
-            {/* CTA Section - positioned at bottom with minimal spacing */}
-            <div className="text-center relative z-20 mt-2 mb-2">
+            {/* CTA Section - anchored to bottom of section */}
+            <div className="text-center relative z-20 mt-auto py-8">
               <div className="inline-block relative">
                 <div className="absolute inset-0 z-[1] pointer-events-none">
                   {particles.map((p, i) => (

@@ -10,26 +10,6 @@ export const useTestimonials = () => {
   const [isPaused, setIsPaused] = React.useState(false);
   const rotationIntervalRef = React.useRef<NodeJS.Timeout | null>(null);
   const testimonialsGridRef = React.useRef<HTMLDivElement>(null);
-  const [maxSectionHeight, setMaxSectionHeight] = React.useState<number>(0);
-
-  React.useEffect(() => {
-    const calculateMaxHeight = () => {
-      if (testimonialsGridRef.current) {
-        const currentHeight = testimonialsGridRef.current.offsetHeight;
-        setMaxSectionHeight(prev => Math.max(prev, currentHeight));
-      }
-    };
-    calculateMaxHeight();
-    window.addEventListener('resize', calculateMaxHeight);
-    return () => window.removeEventListener('resize', calculateMaxHeight);
-  }, []);
-
-  React.useEffect(() => {
-    if (testimonialsGridRef.current) {
-      const currentHeight = testimonialsGridRef.current.offsetHeight;
-      setMaxSectionHeight(prev => Math.max(prev, currentHeight));
-    }
-  }, [activeTestimonials]);
 
   // Rotation logic with pause functionality
   React.useEffect(() => {
@@ -52,12 +32,6 @@ export const useTestimonials = () => {
         });
         setTimeout(() => {
           setIsVisible(true);
-          setTimeout(() => {
-            if (testimonialsGridRef.current) {
-              const currentHeight = testimonialsGridRef.current.offsetHeight;
-              setMaxSectionHeight(prev => Math.max(prev, currentHeight));
-            }
-          }, 300);
           currentBoxIndex = (currentBoxIndex + 1) % 4;
         }, 100);
       }, 300);
@@ -90,7 +64,6 @@ export const useTestimonials = () => {
     hoveredCard,
     handleCardMouseEnter,
     handleCardMouseLeave,
-    testimonialsGridRef,
-    maxSectionHeight
+    testimonialsGridRef
   };
 };
