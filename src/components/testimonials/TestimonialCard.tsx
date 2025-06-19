@@ -44,7 +44,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         
         {/* Author section - anchored to bottom */}
         <div className="flex-shrink-0 mt-8 pt-8 border-t border-white/10">
-          <p className="text-white font-semibold text-xl">{testimonial.name}</p>
+          <p className="text-white font-semibold text-l">{testimonial.name}</p>
           <p className="text-white/60 text-base mt-1">{testimonial.title}</p>
         </div>
       </div>
