@@ -1,7 +1,13 @@
 
-import React, { StrictMode, useEffect } from "react"
+import React, { StrictMode } from "react"
 import { Toaster } from "sonner"
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { AppProviders } from "./components/app/AppProviders"
+import { SafeInitializationProvider } from "./components/app/SafeInitializationProvider"
+import { SafeRouteTracker } from "./components/app/SafeRouteTracker"
+import ErrorBoundary from "./components/app/ErrorBoundary"
+
+// Page imports
 import Index from "./pages/Index"
 import NotFound from "./pages/NotFound"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
@@ -18,82 +24,65 @@ import BlogPage from "./pages/BlogPage"
 import GuidesPage from "./pages/GuidesPage"
 import CaseStudiesPage from "./pages/CaseStudiesPage"
 import MicaReadyWaitlistPage from "./pages/MicaReadyWaitlistPage"
-import { useAnalytics } from "./hooks/useAnalytics"
-import { initWebVitals } from "./utils/webVitalsInit"
-import { initServiceWorker } from "./utils/serviceWorkerInit"
-import { AppProviders } from "./components/app/AppProviders"
-import ErrorBoundary from "./components/app/ErrorBoundary"
+
 import './index.css'
 import './App.css'
 
-// RouteTracker component to handle route changes
-const RouteTracker = () => {
-  const location = useLocation();
-  const { pageView } = useAnalytics();
-  
-  useEffect(() => {
-    // Track page view on route change
-    pageView(location.pathname);
-  }, [location, pageView]);
-  
-  return null;
-};
+// Routes configuration for better maintainability
+const AppRoutes = () => (
+  <Routes>
+    <Route path="/" element={<Index />} />
+    <Route path="/web3-consulting" element={<Index />} />
+    <Route path="/about" element={<AboutPage />} />
+    <Route path="/services" element={<ServicesPage />} />
+    <Route path="/partners" element={<PartnersPage />} />
+    <Route path="/process" element={<ProcessPage />} />
+    <Route path="/team" element={<TeamPage />} />
+    <Route path="/testimonials" element={<TestimonialsPage />} />
+    <Route path="/contact" element={<ContactPage />} />
+    <Route path="/privacy" element={<PrivacyPolicy />} />
+    <Route path="/glossary" element={<GlossaryPage />} />
+    <Route path="/blog" element={<BlogPage />} />
+    <Route path="/guides" element={<GuidesPage />} />
+    <Route path="/case-studies" element={<CaseStudiesPage />} />
+    <Route path="/thank-you" element={<ThankYouPage />} />
+    <Route path="/mica-ready-waitlist" element={<MicaReadyWaitlistPage />} />
+    <Route path="*" element={<NotFound />} />
+  </Routes>
+);
 
-// Main app content component
+// Main app content with safe initialization
 const AppContent = () => {
-  // Initialize performance monitoring after React is ready
-  useEffect(() => {
-    console.log('🚀 Initializing web vitals and service worker...');
-    initWebVitals();
-    initServiceWorker();
-  }, []);
-
   return (
-    <BrowserRouter>
-      <RouteTracker />
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/web3-consulting" element={<Index />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/services" element={<ServicesPage />} />
-        <Route path="/partners" element={<PartnersPage />} />
-        <Route path="/process" element={<ProcessPage />} />
-        <Route path="/team" element={<TeamPage />} />
-        <Route path="/testimonials" element={<TestimonialsPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/privacy" element={<PrivacyPolicy />} />
-        <Route path="/glossary" element={<GlossaryPage />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/guides" element={<GuidesPage />} />
-        <Route path="/case-studies" element={<CaseStudiesPage />} />
-        <Route path="/thank-you" element={<ThankYouPage />} />
-        <Route path="/mica-ready-waitlist" element={<MicaReadyWaitlistPage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Toaster 
-        position="top-center" 
-        closeButton
-        toastOptions={{
-          className: "toast-blur-container",
-          style: {
-            background: "transparent",
-            border: "none",
-            boxShadow: "none",
-          }
-        }}
-      />
-    </BrowserRouter>
+    <SafeInitializationProvider>
+      <BrowserRouter>
+        <SafeRouteTracker />
+        <AppRoutes />
+        <Toaster 
+          position="top-center" 
+          closeButton
+          toastOptions={{
+            className: "toast-blur-container",
+            style: {
+              background: "transparent",
+              border: "none",
+              boxShadow: "none",
+            }
+          }}
+        />
+      </BrowserRouter>
+    </SafeInitializationProvider>
   );
 };
 
 const App = () => {
   return (
     <ErrorBoundary>
-      <StrictMode>
-        <AppProviders>
+      <AppProviders>
+        <StrictMode>
           <AppContent />
-        </AppProviders>
-      </StrictMode>
+        </StrictMode>
+      </AppProviders>
     </ErrorBoundary>
   );
 };

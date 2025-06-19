@@ -9,63 +9,87 @@ type EventOptions = {
 
 export const useAnalytics = () => {
   /**
-   * Track a page view with Google Analytics
+   * Track a page view with Google Analytics (with safety checks)
    * @param path - The page path
    * @param title - The page title
    */
   const pageView = (path: string, title?: string) => {
-    if (!window.gtag) return;
+    // Safety check for gtag availability
+    if (typeof window === 'undefined' || !window.gtag) {
+      console.warn('📊 Analytics: gtag not available, skipping page view');
+      return;
+    }
     
-    window.gtag('config', 'G-6BG7LRFYFG', {
-      page_path: path,
-      page_title: title
-    });
+    try {
+      window.gtag('config', 'G-6BG7LRFYFG', {
+        page_path: path,
+        page_title: title
+      });
 
-    console.log(`📊 Analytics: Page view - ${path}`);
+      console.log(`📊 Analytics: Page view tracked - ${path}`);
+    } catch (error) {
+      console.error('📊 Analytics: Page view tracking failed:', error);
+    }
   };
 
   /**
-   * Track an event with Google Analytics
+   * Track an event with Google Analytics (with safety checks)
    * @param action - The action name
    * @param options - Additional event parameters
    */
   const trackEvent = (action: string, options: EventOptions = {}) => {
-    if (!window.gtag) return;
+    // Safety check for gtag availability
+    if (typeof window === 'undefined' || !window.gtag) {
+      console.warn('📊 Analytics: gtag not available, skipping event');
+      return;
+    }
     
-    window.gtag('event', action, {
-      event_category: options.category || 'general',
-      event_label: options.label,
-      value: options.value,
-      non_interaction: options.nonInteraction || false,
-      ...options
-    });
+    try {
+      window.gtag('event', action, {
+        event_category: options.category || 'general',
+        event_label: options.label,
+        value: options.value,
+        non_interaction: options.nonInteraction || false,
+        ...options
+      });
 
-    console.log(`📊 Analytics: Event - ${action}`, options);
+      console.log(`📊 Analytics: Event tracked - ${action}`, options);
+    } catch (error) {
+      console.error('📊 Analytics: Event tracking failed:', error);
+    }
   };
 
   /**
-   * Track a conversion
+   * Track a conversion (with safety checks)
    * @param action - The conversion action
    * @param id - Optional conversion ID
    * @param options - Additional conversion parameters
    */
   const trackConversion = (action: string, id?: string, options: EventOptions = {}) => {
-    if (!window.gtag) return;
+    // Safety check for gtag availability
+    if (typeof window === 'undefined' || !window.gtag) {
+      console.warn('📊 Analytics: gtag not available, skipping conversion');
+      return;
+    }
     
-    // Track both as an event and potentially as a conversion
-    trackEvent(action, {
-      category: 'conversion',
-      ...options
-    });
-    
-    // If there's a specific conversion ID, track it as such
-    if (id) {
-      window.gtag('event', 'conversion', {
-        send_to: `G-6BG7LRFYFG/${id}`,
+    try {
+      // Track both as an event and potentially as a conversion
+      trackEvent(action, {
+        category: 'conversion',
         ...options
       });
       
-      console.log(`📊 Analytics: Conversion tracked - ${action} (ID: ${id})`);
+      // If there's a specific conversion ID, track it as such
+      if (id) {
+        window.gtag('event', 'conversion', {
+          send_to: `G-6BG7LRFYFG/${id}`,
+          ...options
+        });
+        
+        console.log(`📊 Analytics: Conversion tracked - ${action} (ID: ${id})`);
+      }
+    } catch (error) {
+      console.error('📊 Analytics: Conversion tracking failed:', error);
     }
   };
 
