@@ -1,9 +1,11 @@
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import TestimonialCard from "./testimonials/TestimonialCard";
+import ParticleEffect from "./testimonials/ParticleEffect";
 import { useTestimonials } from "./testimonials/useTestimonials";
 import { useFixedSectionHeight } from "./testimonials/useFixedSectionHeight";
+import { useParticles } from "./testimonials/useParticles";
 
 const Testimonials = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -18,10 +20,8 @@ const Testimonials = () => {
     testimonialsGridRef,
   } = useTestimonials();
   
-  const sectionRef = useRef(null);
-  const buttonRef = useRef(null);
-  const [particles, setParticles] = useState([]);
   const fixedSectionHeight = useFixedSectionHeight();
+  const { particles, sectionRef, buttonRef } = useParticles();
 
   // Handle responsive behavior
   useEffect(() => {
@@ -33,49 +33,6 @@ const Testimonials = () => {
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // Generate particles
-  useEffect(() => {
-    if (!buttonRef.current || !sectionRef.current) return;
-
-    const btnBox = buttonRef.current.getBoundingClientRect();
-    const sectionBox = sectionRef.current.getBoundingClientRect();
-    const x = ((btnBox.left + btnBox.right) / 2 - sectionBox.left) / sectionBox.width * 100;
-    const y = ((btnBox.top + btnBox.bottom) / 2 - sectionBox.top) / sectionBox.height * 100;
-
-    const count = window.innerWidth < 768 ? 5 : 12;
-    const newParticles = Array.from({ length: count }, () => ({
-      size: 20 + Math.random() * 80,
-      x: x - 4 + (Math.random() - 0.5) * 12,
-      y: y - 4 + (Math.random() - 0.5) * 12,
-      moveX: (Math.random() - 0.5) * 10,
-      moveY: (Math.random() - 0.5) * 14,
-      rotate: Math.random() * 360,
-      delay: Math.random() * 5,
-      duration: 8 + Math.random() * 12,
-      color: ['rgba(225,29,143,0.9)', 'rgba(147,51,234,0.6)', 'rgba(255,255,255,0.15)'][Math.floor(Math.random() * 3)]
-    }));
-
-    setParticles(newParticles);
-
-    const handleResize = () => {
-      if (!buttonRef.current || !sectionRef.current) return;
-      
-      const btnBox = buttonRef.current.getBoundingClientRect();
-      const sectionBox = sectionRef.current.getBoundingClientRect();
-      const x = ((btnBox.left + btnBox.right) / 2 - sectionBox.left) / sectionBox.width * 100;
-      const y = ((btnBox.top + btnBox.bottom) / 2 - sectionBox.top) / sectionBox.height * 100;
-
-      setParticles(prev => prev.map(p => ({
-        ...p,
-        x: x - 4 + (Math.random() - 0.5) * 12,
-        y: y - 4 + (Math.random() - 0.5) * 12,
-      })));
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Get the active testimonials to display based on mobile/desktop and available testimonials
@@ -133,26 +90,7 @@ const Testimonials = () => {
           {/* CTA Section - Absolutely positioned at bottom of section */}
           <div className="absolute bottom-2 left-0 right-0 text-center z-20">
             <div className="inline-block relative">
-              <div className="absolute inset-0 z-[1] pointer-events-none">
-                {particles.map((p, i) => (
-                  <div 
-                    key={`cta-particle-${i}`} 
-                    className="absolute rounded-full blur-[12px] animate-light-particle" 
-                    style={{
-                      width: `${p.size}px`,
-                      height: `${p.size}px`,
-                      background: p.color,
-                      left: `${p.x}%`,
-                      top: `${p.y}%`,
-                      animationDelay: `${p.delay}s`,
-                      animationDuration: `${p.duration}s`,
-                      '--move-x': `${p.moveX}vw`,
-                      '--move-y': `${p.moveY}vh`,
-                      '--rotate': `${p.rotate}deg`
-                    } as React.CSSProperties}
-                  />
-                ))}
-              </div>
+              <ParticleEffect particles={particles} />
               <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
                 <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
                               border border-white/30 hover:bg-white/40 transition-all
@@ -165,48 +103,6 @@ const Testimonials = () => {
           
         </div>
       </Container>
-
-      <style>
-        {`
-          @keyframes light-particle {
-            0%, 100% { 
-              opacity: 0.4;
-              transform: translate(0, 0) scale(1) rotate(0);
-            }
-            25% {
-              opacity: 0.6;
-              transform: 
-                translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * -0.7)) 
-                scale(1.2) 
-                rotate(calc(var(--rotate) * 0.3));
-            }
-            50% { 
-              opacity: 0.8;
-              transform: 
-                translate(var(--move-x), var(--move-y)) 
-                scale(1.5) 
-                rotate(calc(var(--rotate) * 0.6));
-            }
-            75% {
-              opacity: 0.6;
-              transform: 
-                translate(calc(var(--move-x) * -0.3), calc(var(--move-y) * 0.7)) 
-                scale(1.3) 
-                rotate(var(--rotate));
-            }
-          }
-          .animate-light-particle {
-            animation: light-particle ease-in-out infinite;
-            mix-blend-mode: screen;
-          }
-          @media (prefers-reduced-motion: reduce) {
-            .animate-light-particle {
-              animation: none;
-              opacity: 0.3 !important;
-            }
-          }
-        `}
-      </style>
     </section>
   );
 };
