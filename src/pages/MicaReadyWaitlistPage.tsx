@@ -29,16 +29,16 @@ const MicaReadyWaitlistPage = () => {
 
       <Header />
       
-      {/* Hero section with consistent styling as Guides page */}
+      {/* Hero section with consistent styling */}
       <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#010822] isolate">
-        {/* Background elements - using consistent color */}
+        {/* Background elements */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
           <LightParticles centerPosition={{ x: 50, y: 60 }} />
         </div>
 
-        {/* Content container with same styling as Hero */}
-        <div className="hero-content relative z-8 text-lg font-normal flex flex-col justify-center gap-6 max-w-[90vw] xl:max-w-[1200px] mx-auto">
+        {/* Content container with centered text */}
+        <div className="hero-content relative z-8 text-lg font-normal flex flex-col justify-center items-center gap-6 max-w-[90vw] xl:max-w-[1200px] mx-auto">
           <div className="text-center mb-8">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               MiCA-Ready
@@ -47,33 +47,34 @@ const MicaReadyWaitlistPage = () => {
             <h2 className="text-2xl md:text-3xl font-semibold text-white/90 mb-4">
               Simplify Your EU MiCA Compliance Journey
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto mb-6">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
               AI-powered solutions to navigate MiCA licensing requirements efficiently and cost-effectively
-            </p>
-            <p className="text-lg text-white/70 max-w-4xl mx-auto">
-              MiCA regulation requires all Crypto-Asset Service Providers to obtain licensing, with only 25 licenses 
-              granted EU-wide as of May 2025, indicating a clear market need for streamlined compliance solutions.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Solution Boxes Section */}
-      <section className="py-20 bg-[#010822]">
-        <Container>
+      {/* Solution Boxes Section with matching background */}
+      <section className="py-20 bg-[#010822] relative overflow-hidden">
+        {/* Background elements matching hero section */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <LightParticles centerPosition={{ x: 30, y: 40 }} />
+        </div>
+        
+        <Container className="relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-              {/* Box 1: MiCA Intelligence Feed */}
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:transform hover:-translate-y-1">
+              {/* Box 1: MiCA Intelligence Feed - Blue Theme */}
+              <div className="glass-card hover:transform hover:-translate-y-1 transition-all duration-300">
                 <div className="flex items-center mb-6">
-                  <div className="p-4 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-lg">
+                  <div className="p-4 bg-gradient-to-r from-blue-500/20 to-blue-600/20 rounded-lg">
                     <svg className="h-8 w-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM9 17H4l5 5v-5zM12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
                     </svg>
                   </div>
                   <div className="ml-4">
                     <h3 className="text-2xl font-bold text-white mb-1">MiCA Intelligence Feed</h3>
-                    <p className="text-lg font-semibold text-blue-400">Stay Informed</p>
+                    <p className="text-lg font-semibold bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Stay Informed</p>
                   </div>
                 </div>
                 
@@ -83,26 +84,26 @@ const MicaReadyWaitlistPage = () => {
                 </p>
                 
                 <div className="mb-6">
-                  <div className="text-green-400 font-semibold text-lg">Free Beta Access</div>
+                  <div className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent font-semibold text-lg">Free Beta Access</div>
                   <div className="text-white/60 text-sm">Perfect for law firms, consultants, VCs, compliance officers</div>
                 </div>
                 
-                <button className="w-full bg-gradient-to-r from-blue-500 to-cyan-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                   I'm interested - Put me on the waiting list
                 </button>
               </div>
 
-              {/* Box 2: MiCA License Screening */}
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:transform hover:-translate-y-1">
+              {/* Box 2: MiCA License Screening - Purple Theme */}
+              <div className="glass-card hover:transform hover:-translate-y-1 transition-all duration-300">
                 <div className="flex items-center mb-6">
-                  <div className="p-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg">
+                  <div className="p-4 bg-gradient-to-r from-purple-500/20 to-purple-600/20 rounded-lg">
                     <svg className="h-8 w-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <div className="ml-4">
                     <h3 className="text-2xl font-bold text-white mb-1">MiCA License Screening</h3>
-                    <p className="text-lg font-semibold text-purple-400">Do You Need a License?</p>
+                    <p className="text-lg font-semibold bg-gradient-to-r from-purple-400 to-purple-500 bg-clip-text text-transparent">Do You Need a License?</p>
                   </div>
                 </div>
                 
@@ -112,26 +113,26 @@ const MicaReadyWaitlistPage = () => {
                 </p>
                 
                 <div className="mb-6">
-                  <div className="text-yellow-400 font-semibold text-lg">Coming - Pay-per-screening</div>
+                  <div className="bg-gradient-to-r from-purple-400 to-purple-500 bg-clip-text text-transparent font-semibold text-lg">Coming - Pay-per-screening</div>
                   <div className="text-white/60 text-sm">Ideal for early-stage projects, uncertain businesses</div>
                 </div>
                 
-                <button className="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                <button className="w-full bg-gradient-to-r from-purple-500 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                   I'm interested - Put me on the waiting list
                 </button>
               </div>
 
-              {/* Box 3: Document Review & Enhancement */}
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:transform hover:-translate-y-1">
+              {/* Box 3: Document Review & Enhancement - Green Theme */}
+              <div className="glass-card hover:transform hover:-translate-y-1 transition-all duration-300">
                 <div className="flex items-center mb-6">
-                  <div className="p-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-lg">
+                  <div className="p-4 bg-gradient-to-r from-green-500/20 to-green-600/20 rounded-lg">
                     <svg className="h-8 w-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                   </div>
                   <div className="ml-4">
                     <h3 className="text-2xl font-bold text-white mb-1">Document Review & Enhancement</h3>
-                    <p className="text-lg font-semibold text-green-400">Optimize Your Application</p>
+                    <p className="text-lg font-semibold bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent">Optimize Your Application</p>
                   </div>
                 </div>
                 
@@ -141,26 +142,26 @@ const MicaReadyWaitlistPage = () => {
                 </p>
                 
                 <div className="mb-6">
-                  <div className="text-orange-400 font-semibold text-lg">Subscription + Manual Hours</div>
+                  <div className="bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent font-semibold text-lg">Subscription + Manual Hours</div>
                   <div className="text-white/60 text-sm">For companies with existing documentation</div>
                 </div>
                 
-                <button className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                <button className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                   I'm interested - Put me on the waiting list
                 </button>
               </div>
 
-              {/* Box 4: Full Application Support */}
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:transform hover:-translate-y-1">
+              {/* Box 4: Full Application Support - Orange Theme */}
+              <div className="glass-card hover:transform hover:-translate-y-1 transition-all duration-300">
                 <div className="flex items-center mb-6">
-                  <div className="p-4 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-lg">
+                  <div className="p-4 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-lg">
                     <svg className="h-8 w-8 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
                     </svg>
                   </div>
                   <div className="ml-4">
                     <h3 className="text-2xl font-bold text-white mb-1">Full Application Support</h3>
-                    <p className="text-lg font-semibold text-orange-400">Complete MiCA Solution</p>
+                    <p className="text-lg font-semibold bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">Complete MiCA Solution</p>
                   </div>
                 </div>
                 
@@ -170,11 +171,11 @@ const MicaReadyWaitlistPage = () => {
                 </p>
                 
                 <div className="mb-6">
-                  <div className="text-red-400 font-semibold text-lg">Contact for Pricing</div>
+                  <div className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent font-semibold text-lg">Contact for Pricing</div>
                   <div className="text-white/60 text-sm">For companies ready for full application</div>
                 </div>
                 
-                <button className="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                <button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                   I'm interested - Put me on the waiting list
                 </button>
               </div>
