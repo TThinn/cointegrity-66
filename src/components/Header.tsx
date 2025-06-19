@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -109,6 +110,7 @@ const Header = () => {
   ];
 
   const resourcesItems = [
+    { href: "/mica-ready-waitlist", label: "MiCA-Ready" },
     { href: "/glossary", label: "Glossary" },
     { href: "/blog", label: "Blog" },
     { href: "/guides", label: "Guides" },

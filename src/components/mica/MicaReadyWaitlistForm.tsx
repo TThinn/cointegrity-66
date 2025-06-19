@@ -9,12 +9,14 @@ const MicaReadyWaitlistForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: ''
+    company: '',
+    role: '',
+    serviceInterest: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -26,7 +28,7 @@ const MicaReadyWaitlistForm = () => {
     e.preventDefault();
     
     if (!formData.name || !formData.email || !formData.company) {
-      toast.error("Please fill in all fields");
+      toast.error("Please fill in all required fields");
       return;
     }
 
@@ -39,7 +41,9 @@ const MicaReadyWaitlistForm = () => {
           {
             name: formData.name.trim(),
             email: formData.email.trim().toLowerCase(),
-            company: formData.company.trim()
+            company: formData.company.trim(),
+            role: formData.role.trim(),
+            service_interest: formData.serviceInterest
           }
         ]);
 
@@ -61,7 +65,9 @@ const MicaReadyWaitlistForm = () => {
       setFormData({
         name: '',
         email: '',
-        company: ''
+        company: '',
+        role: '',
+        serviceInterest: ''
       });
 
     } catch (error) {
@@ -146,6 +152,42 @@ const MicaReadyWaitlistForm = () => {
               placeholder="Your company or organization"
               className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
             />
+          </div>
+
+          <div>
+            <label htmlFor="role" className="block text-sm font-medium text-white mb-2">
+              Role/Title
+            </label>
+            <input
+              type="text"
+              id="role"
+              name="role"
+              value={formData.role}
+              onChange={handleInputChange}
+              placeholder="e.g., CEO, Compliance Officer, Legal Counsel"
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="serviceInterest" className="block text-sm font-medium text-white mb-2">
+              Service Interest
+            </label>
+            <select
+              id="serviceInterest"
+              name="serviceInterest"
+              value={formData.serviceInterest}
+              onChange={handleInputChange}
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+            >
+              <option value="" className="bg-gray-800">Select a service...</option>
+              <option value="intelligence-feed" className="bg-gray-800">MiCA Intelligence Feed</option>
+              <option value="license-screening" className="bg-gray-800">MiCA License Screening</option>
+              <option value="document-review" className="bg-gray-800">Document Review & Enhancement</option>
+              <option value="full-application" className="bg-gray-800">Full Application Support</option>
+              <option value="multiple" className="bg-gray-800">Multiple Services</option>
+              <option value="not-sure" className="bg-gray-800">Not Sure Yet</option>
+            </select>
           </div>
 
           <Button
