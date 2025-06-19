@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { testimonials } from './testimonialsData';
 
 export const useFixedSectionHeight = () => {
@@ -49,46 +48,50 @@ export const useFixedSectionHeight = () => {
       const largestCardHeight = sortedHeights[0] || 300; // Fallback minimum
       const secondLargestCardHeight = sortedHeights[1] || 300; // Fallback minimum
 
-      // Detailed calculation of all layout components
+      // Enhanced calculation with more generous spacing
       const isMobile = window.innerWidth < 640;
       
-      // Header section (title + description)
-      const headerHeight = isMobile ? 280 : 240; // More space for mobile text wrapping
+      // Header section - increased for better text wrapping
+      const headerHeight = isMobile ? 320 : 280;
       
-      // Cards section height
+      // Cards section height - add extra buffer
       const gridGap = 24; // gap-6 = 24px
       const cardsHeight = isMobile 
-        ? largestCardHeight + secondLargestCardHeight + gridGap // Mobile: stacked vertically
-        : Math.max(largestCardHeight, secondLargestCardHeight); // Desktop: side by side
+        ? largestCardHeight + secondLargestCardHeight + gridGap + 40 // Extra buffer for mobile stacking
+        : Math.max(largestCardHeight, secondLargestCardHeight) + 20; // Extra buffer for desktop
       
-      // CTA section
-      const ctaHeight = 120; // Button + padding
+      // CTA section - increased for proper button visibility
+      const ctaHeight = 160; // More space for button and particles
       
       // Section padding (py-20 = 80px top + 80px bottom)
       const sectionPadding = 160;
       
-      // Additional spacing and margins
+      // Spacing between sections - increased
       const headerMarginBottom = 64; // mb-16 = 64px
-      const cardsToCtaSpacing = 32; // mt-auto creates space
+      const cardsToCtaSpacing = 80; // Increased spacing between cards and CTA
       
-      // Calculate total height
+      // Additional safety buffer
+      const safetyBuffer = 100;
+      
+      // Calculate total height with generous spacing
       const totalCalculatedHeight = 
         sectionPadding + 
         headerHeight + 
         headerMarginBottom + 
         cardsHeight + 
         cardsToCtaSpacing + 
-        ctaHeight;
+        ctaHeight +
+        safetyBuffer;
       
-      // Ensure minimum viewport height minus header
-      const minViewportHeight = window.innerHeight - 80; // Account for fixed header
+      // Ensure minimum viewport height
+      const minViewportHeight = Math.max(window.innerHeight - 60, 800); // Minimum 800px or viewport minus header
       
       // Use the larger of calculated height or minimum viewport
       const finalHeight = Math.max(totalCalculatedHeight, minViewportHeight);
       
       setFixedSectionHeight(finalHeight);
       
-      console.log('🔍 Height Calculation Details:', {
+      console.log('🔍 Enhanced Height Calculation Details:', {
         isMobile,
         windowWidth: window.innerWidth,
         windowHeight: window.innerHeight,
@@ -100,6 +103,7 @@ export const useFixedSectionHeight = () => {
         sectionPadding,
         headerMarginBottom,
         cardsToCtaSpacing,
+        safetyBuffer,
         totalCalculatedHeight,
         minViewportHeight,
         finalHeight

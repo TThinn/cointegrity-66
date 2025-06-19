@@ -1,5 +1,4 @@
 
-import * as React from "react";
 import { useEffect, useState } from "react";
 import Container from "./ui/Container";
 import TestimonialCard from "./testimonials/TestimonialCard";
@@ -98,18 +97,24 @@ const Testimonials = () => {
       </div>
       
       <Container>
-        <div className="max-w-7xl mx-auto relative z-10 h-full flex flex-col justify-between" 
-             style={{ height: '100%', minHeight: 'inherit' }}>
+        <div className="max-w-7xl mx-auto relative z-10 h-full" 
+             style={{ 
+               height: '100%', 
+               minHeight: 'inherit',
+               display: 'flex',
+               flexDirection: 'column',
+               justifyContent: 'space-between'
+             }}>
           
-          {/* Header Section */}
+          {/* Header Section - Fixed at top */}
           <div className="text-center mb-16 flex-shrink-0">
             <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">Client Success Stories</h2>
             <h3 className="mt-2 text-3xl md:text-4xl font-bold text-white">Why Leading Organizations Choose Our Web3 Expertise</h3>
             <p className="mt-2 text-white/60 max-w-2xl mx-auto">Our knowledge-first approach to Web3 transformation helps organizations successfully navigate the complex decentralized landscape. With deep expertise in blockchain strategy, product development, tax compliance, and capital acceleration, our specialists bridge the gap between traditional business and Web3 innovation. As your dependable guide through complex blockchain challenges, we deliver solutions that create measurable value. Don't just take our word for it-read what our clients say about working with our team:</p>
           </div>
 
-          {/* Cards Section - flexible middle */}
-          <div className="flex-1 flex items-center justify-center">
+          {/* Cards Section - Centered middle area */}
+          <div className="flex-1 flex items-center justify-center min-h-0">
             <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto w-full">
               {testimonialsToShow.map((testimonialIndex, position) => (
                 <TestimonialCard 
@@ -126,8 +131,8 @@ const Testimonials = () => {
             </div>
           </div>
             
-          {/* CTA Section - anchored to bottom */}
-          <div className="text-center relative z-20 flex-shrink-0 py-8">
+          {/* CTA Section - Anchored to bottom of section */}
+          <div className="text-center relative z-20 flex-shrink-0 py-8 mt-auto">
             <div className="inline-block relative">
               <div className="absolute inset-0 z-[1] pointer-events-none">
                 {particles.map((p, i) => (
