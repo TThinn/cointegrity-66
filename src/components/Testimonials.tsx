@@ -4,7 +4,6 @@ import Container from "./ui/Container";
 import TestimonialCard from "./testimonials/TestimonialCard";
 import ParticleEffect from "./testimonials/ParticleEffect";
 import { useTestimonials } from "./testimonials/useTestimonials";
-import { useFixedSectionHeight } from "./testimonials/useFixedSectionHeight";
 import { useParticles } from "./testimonials/useParticles";
 
 const Testimonials = () => {
@@ -20,7 +19,6 @@ const Testimonials = () => {
     testimonialsGridRef,
   } = useTestimonials();
   
-  const fixedSectionHeight = useFixedSectionHeight();
   const { particles, sectionRef, buttonRef } = useParticles();
 
   // Handle responsive behavior
@@ -41,12 +39,8 @@ const Testimonials = () => {
   return (
     <section 
       id="testimonials" 
-      className="py-20 relative overflow-hidden" 
+      className="py-20 relative overflow-hidden min-h-screen"
       ref={sectionRef}
-      style={{ 
-        height: fixedSectionHeight > 0 ? `${fixedSectionHeight}px` : 'auto',
-        minHeight: fixedSectionHeight > 0 ? `${fixedSectionHeight}px` : '100vh'
-      }}
     >
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]"></div>
@@ -54,23 +48,17 @@ const Testimonials = () => {
       </div>
       
       <Container>
-        <div className="max-w-7xl mx-auto relative z-10 h-full" 
-             style={{ 
-               height: '100%', 
-               minHeight: 'inherit',
-               display: 'flex',
-               flexDirection: 'column'
-             }}>
+        <div className="max-w-7xl mx-auto relative z-10 h-full flex flex-col justify-between min-h-[calc(100vh-10rem)]">
           
-          {/* Header Section - Fixed at top */}
+          {/* Header Section */}
           <div className="text-center mb-16 flex-shrink-0">
             <h2 className="text-sm uppercase tracking-wider font-medium text-pink-400">Client Success Stories</h2>
             <h3 className="mt-2 text-3xl md:text-4xl font-bold text-white">Why Leading Organizations Choose Our Web3 Expertise</h3>
             <p className="mt-2 text-white/60 max-w-2xl mx-auto">Our knowledge-first approach to Web3 transformation helps organizations successfully navigate the complex decentralized landscape. With deep expertise in blockchain strategy, product development, tax compliance, and capital acceleration, our specialists bridge the gap between traditional business and Web3 innovation. As your dependable guide through complex blockchain challenges, we deliver solutions that create measurable value. Don't just take our word for it-read what our clients say about working with our team:</p>
           </div>
 
-          {/* Cards Section - Centered middle area */}
-          <div className="flex-1 flex items-center justify-center min-h-0">
+          {/* Cards Section - Fixed height cards */}
+          <div className="flex-1 flex items-center justify-center">
             <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto w-full">
               {testimonialsToShow.map((testimonialIndex, position) => (
                 <TestimonialCard 
@@ -87,8 +75,8 @@ const Testimonials = () => {
             </div>
           </div>
             
-          {/* CTA Section - Absolutely positioned at bottom of section */}
-          <div className="absolute bottom-2 left-0 right-0 text-center z-20">
+          {/* CTA Section - Fixed at bottom */}
+          <div className="text-center mt-16 flex-shrink-0">
             <div className="inline-block relative">
               <ParticleEffect particles={particles} />
               <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
