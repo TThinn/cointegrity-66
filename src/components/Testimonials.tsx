@@ -5,7 +5,6 @@ import TestimonialCard from "./testimonials/TestimonialCard";
 import ParticleEffect from "./testimonials/ParticleEffect";
 import { useTestimonials } from "./testimonials/useTestimonials";
 import { useParticles } from "./testimonials/useParticles";
-import { useCardHeight } from "./testimonials/useCardHeight";
 
 const Testimonials = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -21,7 +20,6 @@ const Testimonials = () => {
   } = useTestimonials();
   
   const { particles, sectionRef, buttonRef } = useParticles();
-  const { maxCardHeight } = useCardHeight();
 
   // Handle responsive behavior
   useEffect(() => {
@@ -61,7 +59,7 @@ const Testimonials = () => {
 
           {/* Cards Section - Flexible height based on content */}
           <div className="flex-1 flex items-center justify-center my-4">
-            <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto w-full">
+            <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-6xl mx-auto w-full">
               {testimonialsToShow.map((testimonialIndex, position) => (
                 <TestimonialCard 
                   key={position} 
@@ -72,7 +70,6 @@ const Testimonials = () => {
                   isHovered={hoveredCard === position} 
                   onMouseEnter={() => handleCardMouseEnter(position)} 
                   onMouseLeave={handleCardMouseLeave}
-                  cardHeight={maxCardHeight}
                 />
               ))}
             </div>
