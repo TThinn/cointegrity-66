@@ -11,11 +11,19 @@ interface LightParticlesProps {
 const LightParticles: React.FC<LightParticlesProps> = ({ 
   centerPosition = { x: 50, y: 50 } 
 }) => {
+  const [isMounted, setIsMounted] = useState(false);
   const [particleCount, setParticleCount] = useState<number | null>(null);
   const [particles, setParticles] = useState<any[]>([]);
 
+  // Simple mount check
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   // Initialize particles after component mount
   useEffect(() => {
+    if (!isMounted) return;
+    
     const colors = [
       'rgba(225,29,143,0.8)', // Pink
       'rgba(147,51,234,0.5)', // Purple
@@ -37,10 +45,12 @@ const LightParticles: React.FC<LightParticlesProps> = ({
     }));
     
     setParticles(newParticles);
-  }, [centerPosition.x, centerPosition.y]);
+  }, [isMounted, centerPosition.x, centerPosition.y]);
 
   // Device detection
   useLayoutEffect(() => {
+    if (!isMounted) return;
+    
     const isMobile = window.innerWidth < 768;
     setParticleCount(isMobile ? PARTICLE_COUNT_MOBILE : PARTICLE_COUNT_DESKTOP);
     
@@ -51,10 +61,10 @@ const LightParticles: React.FC<LightParticlesProps> = ({
     
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [isMounted]);
 
-  // Don't render until particles are initialized and device type is known
-  if (particleCount === null || particles.length === 0) {
+  // Don't render until mounted and particles are initialized and device type is known
+  if (!isMounted || particleCount === null || particles.length === 0) {
     return null;
   }
 

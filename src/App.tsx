@@ -3,7 +3,6 @@ import React from "react"
 import { Toaster } from "sonner"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { AppProviders } from "./components/app/AppProviders"
-import { SafeInitializationProvider } from "./components/app/SafeInitializationProvider"
 import { SafeRouteTracker } from "./components/app/SafeRouteTracker"
 import ErrorBoundary from "./components/app/ErrorBoundary"
 
@@ -55,24 +54,22 @@ const App = () => {
   return (
     <ErrorBoundary>
       <AppProviders>
-        <SafeInitializationProvider>
-          <BrowserRouter>
-            <SafeRouteTracker />
-            <AppRoutes />
-            <Toaster 
-              position="top-center" 
-              closeButton
-              toastOptions={{
-                className: "toast-blur-container",
-                style: {
-                  background: "transparent",
-                  border: "none",
-                  boxShadow: "none",
-                }
-              }}
-            />
-          </BrowserRouter>
-        </SafeInitializationProvider>
+        <BrowserRouter>
+          <SafeRouteTracker />
+          <AppRoutes />
+          <Toaster 
+            position="top-center" 
+            closeButton
+            toastOptions={{
+              className: "toast-blur-container",
+              style: {
+                background: "transparent",
+                border: "none",
+                boxShadow: "none",
+              }
+            }}
+          />
+        </BrowserRouter>
       </AppProviders>
     </ErrorBoundary>
   );

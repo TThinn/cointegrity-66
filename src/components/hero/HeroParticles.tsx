@@ -9,7 +9,13 @@ interface HeroParticlesProps {
 }
 
 const HeroParticles: React.FC<HeroParticlesProps> = ({ ctaPosition }) => {
+  const [isMounted, setIsMounted] = useState(false);
   const [particleCount, setParticleCount] = useState<number | null>(null);
+
+  // Simple mount check
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Pre-calculate all particle positions and properties ONCE
   const particles = useRef(Array.from({
@@ -35,14 +41,18 @@ const HeroParticles: React.FC<HeroParticlesProps> = ({ ctaPosition }) => {
 
   // Update particle positions when CTA position changes
   useEffect(() => {
+    if (!isMounted) return;
+    
     particles.forEach(p => {
       p.x = ctaPosition.x - 15 + Math.random() * 15;
       p.y = ctaPosition.y - 15 + Math.random() * 20; // Match initial spread
     });
-  }, [ctaPosition]);
+  }, [isMounted, ctaPosition]);
 
   // Synchronous device detection BEFORE first paint
   useLayoutEffect(() => {
+    if (!isMounted) return;
+    
     const isMobile = window.innerWidth < 768;
     setParticleCount(isMobile ? HERO_PARTICLE_COUNT_MOBILE : HERO_PARTICLE_COUNT_DESKTOP);
     
@@ -53,10 +63,10 @@ const HeroParticles: React.FC<HeroParticlesProps> = ({ ctaPosition }) => {
     
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [isMounted]);
 
-  // Don't render particles until device type is known
-  if (particleCount === null) return null;
+  // Don't render particles until mounted and device type is known
+  if (!isMounted || particleCount === null) return null;
 
   return (
     <>
