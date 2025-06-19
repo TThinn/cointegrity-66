@@ -1,5 +1,5 @@
 
-import React, { StrictMode } from "react"
+import React from "react"
 import { Toaster } from "sonner"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { AppProviders } from "./components/app/AppProviders"
@@ -51,37 +51,28 @@ const AppRoutes = () => (
   </Routes>
 );
 
-// Main app content with safe initialization
-const AppContent = () => {
-  return (
-    <SafeInitializationProvider>
-      <BrowserRouter>
-        <SafeRouteTracker />
-        <AppRoutes />
-        <Toaster 
-          position="top-center" 
-          closeButton
-          toastOptions={{
-            className: "toast-blur-container",
-            style: {
-              background: "transparent",
-              border: "none",
-              boxShadow: "none",
-            }
-          }}
-        />
-      </BrowserRouter>
-    </SafeInitializationProvider>
-  );
-};
-
 const App = () => {
   return (
     <ErrorBoundary>
       <AppProviders>
-        <StrictMode>
-          <AppContent />
-        </StrictMode>
+        <SafeInitializationProvider>
+          <BrowserRouter>
+            <SafeRouteTracker />
+            <AppRoutes />
+            <Toaster 
+              position="top-center" 
+              closeButton
+              toastOptions={{
+                className: "toast-blur-container",
+                style: {
+                  background: "transparent",
+                  border: "none",
+                  boxShadow: "none",
+                }
+              }}
+            />
+          </BrowserRouter>
+        </SafeInitializationProvider>
       </AppProviders>
     </ErrorBoundary>
   );

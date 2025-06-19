@@ -2,13 +2,11 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
 interface InitializationState {
-  isReactReady: boolean;
-  isRouterReady: boolean;
-  hasInitialized: boolean;
+  isReady: boolean;
 }
 
 interface InitializationContextType extends InitializationState {
-  markRouterReady: () => void;
+  markReady: () => void;
 }
 
 const InitializationContext = createContext<InitializationContextType | null>(null);
@@ -18,62 +16,26 @@ interface SafeInitializationProviderProps {
 }
 
 export const SafeInitializationProvider: React.FC<SafeInitializationProviderProps> = ({ children }) => {
-  // Add a guard to ensure React is ready before using useState
-  const [state, setState] = React.useState<InitializationState>(() => ({
-    isReactReady: false,
-    isRouterReady: false,
-    hasInitialized: false
-  }));
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    // Mark React as ready after first render with a small delay to ensure hooks are stable
+    // Simple ready state management with minimal delay
     const timer = setTimeout(() => {
-      setState(prev => ({ ...prev, isReactReady: true }));
-      console.log('✅ React initialization ready');
-    }, 0);
+      setIsReady(true);
+      console.log('✅ Initialization ready');
+    }, 50);
 
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    // Initialize performance monitoring only when both React and router are ready
-    if (state.isReactReady && state.isRouterReady && !state.hasInitialized) {
-      console.log('🚀 Starting safe initialization...');
-      
-      // Use setTimeout to ensure we're outside the render cycle
-      const timer = setTimeout(() => {
-        try {
-          // Dynamic imports to avoid blocking
-          Promise.all([
-            import('../../utils/webVitalsInit'),
-            import('../../utils/serviceWorkerInit')
-          ]).then(([webVitals, serviceWorker]) => {
-            webVitals.initWebVitals();
-            serviceWorker.initServiceWorker();
-            console.log('✅ Performance monitoring initialized');
-          }).catch(error => {
-            console.warn('⚠️ Performance monitoring failed to initialize:', error);
-          });
-        } catch (error) {
-          console.error('❌ Initialization error:', error);
-        }
-      }, 100);
-
-      setState(prev => ({ ...prev, hasInitialized: true }));
-      
-      return () => clearTimeout(timer);
-    }
-  }, [state.isReactReady, state.isRouterReady, state.hasInitialized]);
-
-  const markRouterReady = React.useCallback(() => {
-    setState(prev => ({ ...prev, isRouterReady: true }));
-    console.log('✅ Router initialization ready');
+  const markReady = React.useCallback(() => {
+    setIsReady(true);
   }, []);
 
   const contextValue: InitializationContextType = React.useMemo(() => ({
-    ...state,
-    markRouterReady
-  }), [state, markRouterReady]);
+    isReady,
+    markReady
+  }), [isReady, markReady]);
 
   return (
     <InitializationContext.Provider value={contextValue}>

@@ -12,38 +12,34 @@ const LightParticles: React.FC<LightParticlesProps> = ({
   centerPosition = { x: 50, y: 50 } 
 }) => {
   const [particleCount, setParticleCount] = useState<number | null>(null);
+  const [particles, setParticles] = useState<any[]>([]);
 
-  // Pre-calculate all particle positions and properties ONCE
-  const particles = useRef(Array.from({
-    length: PARTICLE_COUNT_DESKTOP
-  }, () => {
+  // Initialize particles after component mount
+  useEffect(() => {
     const colors = [
       'rgba(225,29,143,0.8)', // Pink
       'rgba(147,51,234,0.5)', // Purple
       'rgba(255,255,255,0.1)' // White
     ];
-    return {
+    
+    const newParticles = Array.from({
+      length: PARTICLE_COUNT_DESKTOP
+    }, () => ({
       size: 30 + Math.random() * 160,
-      x: centerPosition.x - 15 + Math.random() * 15, // Centered around position
-      y: centerPosition.y - 15 + Math.random() * 20, // More vertical spread
-      moveX: (Math.random() - 0.5) * 25, // Horizontal movement
-      moveY: (Math.random() - 0.5) * 30, // Increased vertical movement
+      x: centerPosition.x - 15 + Math.random() * 15,
+      y: centerPosition.y - 15 + Math.random() * 20,
+      moveX: (Math.random() - 0.5) * 25,
+      moveY: (Math.random() - 0.5) * 30,
       rotate: Math.random() * 360,
       delay: Math.random() * 5,
       duration: 7 + Math.random() * 15,
       color: colors[Math.floor(Math.random() * colors.length)]
-    };
-  })).current;
+    }));
+    
+    setParticles(newParticles);
+  }, [centerPosition.x, centerPosition.y]);
 
-  // Update particle positions when center position changes
-  useEffect(() => {
-    particles.forEach(p => {
-      p.x = centerPosition.x - 15 + Math.random() * 15;
-      p.y = centerPosition.y - 15 + Math.random() * 20; // Match initial spread
-    });
-  }, [centerPosition]);
-
-  // Synchronous device detection BEFORE first paint
+  // Device detection
   useLayoutEffect(() => {
     const isMobile = window.innerWidth < 768;
     setParticleCount(isMobile ? PARTICLE_COUNT_MOBILE : PARTICLE_COUNT_DESKTOP);
@@ -57,8 +53,10 @@ const LightParticles: React.FC<LightParticlesProps> = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Don't render particles until device type is known
-  if (particleCount === null) return null;
+  // Don't render until particles are initialized and device type is known
+  if (particleCount === null || particles.length === 0) {
+    return null;
+  }
 
   return (
     <>
