@@ -20,6 +20,7 @@ import ThankYouPage from "./pages/ThankYouPage"
 import BlogPage from "./pages/BlogPage"
 import GuidesPage from "./pages/GuidesPage"
 import CaseStudiesPage from "./pages/CaseStudiesPage"
+import MicaReadyWaitlistPage from "./pages/MicaReadyWaitlistPage"
 import { useAnalytics } from "./hooks/useAnalytics"
 import { useWebVitals } from "./hooks/useWebVitals"
 import { useServiceWorker } from "./hooks/useServiceWorker"
@@ -76,6 +77,7 @@ const AppContent = () => {
         <Route path="/guides" element={<GuidesPage />} />
         <Route path="/case-studies" element={<CaseStudiesPage />} />
         <Route path="/thank-you" element={<ThankYouPage />} />
+        <Route path="/mica-ready-waitlist" element={<MicaReadyWaitlistPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster 
