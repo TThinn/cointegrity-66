@@ -75,17 +75,37 @@ const Testimonials = () => {
       const largestCardHeight = sortedHeights[0] || 200;
       const secondLargestCardHeight = sortedHeights[1] || 200;
 
-      // Calculate total height components
-      const headerHeight = 160; // Header section height
-      const cardSpacing = 24; // Gap between cards
-      const ctaButtonHeight = 48; // Button height
-      const ctaSpacing = 8; // Max spacing between cards and CTA
-      const bottomSpacing = isMobile ? 16 : 20; // Reduced by 50% from original
+      // Calculate total height components with proper spacing
+      const sectionPaddingTop = 80; // py-20 = 5rem = 80px top
+      const sectionPaddingBottom = 80; // py-20 = 5rem = 80px bottom
+      
+      // Header section (h2, h3, p with margins)
+      const headerHeight = 200; // More realistic header height with margins
+      
+      // Cards container height
+      const cardSpacing = 24; // Gap between cards (gap-6 = 1.5rem = 24px)
       const cardsContainerHeight = isMobile 
         ? largestCardHeight + cardSpacing + secondLargestCardHeight // Mobile: stacked
         : Math.max(largestCardHeight, secondLargestCardHeight); // Desktop: side by side
-
-      const totalHeight = headerHeight + cardsContainerHeight + ctaSpacing + ctaButtonHeight + bottomSpacing;
+      
+      // CTA section
+      const ctaSpacing = 8; // 8px spacing between cards and CTA as requested
+      const ctaButtonHeight = 48; // Button height
+      const ctaBottomMargin = 8; // 8px from bottom
+      
+      const totalHeight = sectionPaddingTop + headerHeight + cardsContainerHeight + ctaSpacing + ctaButtonHeight + ctaBottomMargin + sectionPaddingBottom;
+      
+      console.log('Height calculation:', {
+        sectionPaddingTop,
+        headerHeight,
+        cardsContainerHeight,
+        ctaSpacing,
+        ctaButtonHeight,
+        ctaBottomMargin,
+        sectionPaddingBottom,
+        totalHeight,
+        isMobile
+      });
       
       setFixedSectionHeight(totalHeight);
     };
@@ -162,8 +182,8 @@ const Testimonials = () => {
             <p className="mt-2 text-white/60 max-w-2xl mx-auto">Our knowledge-first approach to Web3 transformation helps organizations successfully navigate the complex decentralized landscape. With deep expertise in blockchain strategy, product development, tax compliance, and capital acceleration, our specialists bridge the gap between traditional business and Web3 innovation. As your dependable guide through complex blockchain challenges, we deliver solutions that create measurable value. Don't just take our word for it-read what our clients say about working with our team:</p>
           </div>
 
-          <div className="flex-1 relative z-30 flex flex-col">
-            <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto mb-2">
+          <div className="flex-1 relative z-30 flex flex-col justify-between">
+            <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
               {testimonialsToShow.map((testimonialIndex, position) => (
                 <TestimonialCard 
                   key={position} 
@@ -178,38 +198,36 @@ const Testimonials = () => {
               ))}
             </div>
             
-            {/* CTA Section - positioned at bottom with reduced spacing */}
-            <div className="mt-auto">
-              <div className="text-center relative z-20" style={{ marginBottom: isMobile ? '16px' : '20px' }}>
-                <div className="inline-block relative">
-                  <div className="absolute inset-0 z-[1] pointer-events-none">
-                    {particles.map((p, i) => (
-                      <div 
-                        key={`cta-particle-${i}`} 
-                        className="absolute rounded-full blur-[12px] animate-light-particle" 
-                        style={{
-                          width: `${p.size}px`,
-                          height: `${p.size}px`,
-                          background: p.color,
-                          left: `${p.x}%`,
-                          top: `${p.y}%`,
-                          animationDelay: `${p.delay}s`,
-                          animationDuration: `${p.duration}s`,
-                          '--move-x': `${p.moveX}vw`,
-                          '--move-y': `${p.moveY}vh`,
-                          '--rotate': `${p.rotate}deg`
-                        } as React.CSSProperties}
-                      />
-                    ))}
-                  </div>
-                  <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
-                    <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
-                                  border border-white/30 hover:bg-white/40 transition-all
-                                  transform hover:scale-105 duration-300 text-base font-semibold">
-                      Partner with us
-                    </button>
-                  </a>
+            {/* CTA Section - positioned at bottom with 8px spacing */}
+            <div className="text-center relative z-20" style={{ marginTop: '8px', marginBottom: '8px' }}>
+              <div className="inline-block relative">
+                <div className="absolute inset-0 z-[1] pointer-events-none">
+                  {particles.map((p, i) => (
+                    <div 
+                      key={`cta-particle-${i}`} 
+                      className="absolute rounded-full blur-[12px] animate-light-particle" 
+                      style={{
+                        width: `${p.size}px`,
+                        height: `${p.size}px`,
+                        background: p.color,
+                        left: `${p.x}%`,
+                        top: `${p.y}%`,
+                        animationDelay: `${p.delay}s`,
+                        animationDuration: `${p.duration}s`,
+                        '--move-x': `${p.moveX}vw`,
+                        '--move-y': `${p.moveY}vh`,
+                        '--rotate': `${p.rotate}deg`
+                      } as React.CSSProperties}
+                    />
+                  ))}
                 </div>
+                <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
+                  <button className="bg-white/15 backdrop-blur-sm text-white px-6 py-3 rounded-full
+                                border border-white/30 hover:bg-white/40 transition-all
+                                transform hover:scale-105 duration-300 text-base font-semibold">
+                    Partner with us
+                  </button>
+                </a>
               </div>
             </div>
           </div>
