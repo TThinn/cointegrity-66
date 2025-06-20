@@ -29,17 +29,17 @@ const MicaReadyWaitlistPage = () => {
 
       <Header />
       
-      {/* Hero section with proper text positioning */}
-      <section className="hero-section pt-20 pb-16 relative overflow-hidden bg-[#010822] isolate">
+      {/* Hero section with full screen height */}
+      <section className="hero-section min-h-screen flex items-center justify-center pt-20 pb-16 relative overflow-hidden bg-[#010822] isolate">
         {/* Background elements with light particles */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
           <LightParticles centerPosition={{ x: 50, y: 50 }} />
         </div>
 
-        {/* Content container with proper positioning */}
-        <Container className="relative z-10">
-          <div className="text-center py-20">
+        {/* Content container with centered text */}
+        <div className="hero-content relative z-8 text-lg font-normal flex flex-col justify-center items-center gap-6 max-w-[90vw] xl:max-w-[1200px] mx-auto">
+          <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               MiCA-Ready
               <span className="bg-gradient-to-r from-[#d946ef] to-[#9333ea] bg-clip-text text-transparent"> Suite</span>
@@ -50,6 +50,32 @@ const MicaReadyWaitlistPage = () => {
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
               AI-powered solutions to navigate MiCA licensing requirements efficiently and cost-effectively
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* MiCA Introduction Section */}
+      <section className="py-20 bg-[#010822] relative overflow-hidden">
+        <Container className="relative z-10">
+          <div className="w-full max-w-4xl mx-auto px-6 text-center">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 lg:p-12">
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+                Do You Need a MiCA License? Find Your EU Crypto Compliance Solution
+              </h2>
+              
+              <div className="text-lg text-white/80 leading-relaxed space-y-4">
+                <p>
+                  Over 11,000 VASPs across the EU need MiCA licenses to continue operating. 
+                  But Europe's largest regulatory expansion also caught thousands of companies that never knew they were crypto businesses—from 
+                  gaming studios to payment processors.
+                </p>
+                
+                <p>
+                  Whether you're applying for a CASP authorization or just discovered you need 
+                  MiCA compliance, we have the right solution for your business.
+                </p>
+              </div>
+            </div>
           </div>
         </Container>
       </section>
