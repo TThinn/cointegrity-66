@@ -64,13 +64,13 @@
   animation-delay: 300ms;
 }
 
-/* Button Styling - adding consistent button styles */
+/* Button Styling */
 .button {
   background: linear-gradient(135deg, #d946ef 0%, #9333ea 100%);
   color: white;
   font-weight: bold;
   padding: 12px 28px;
-  border-radius: 999em; /* Pill shape */
+  border-radius: 999em;
   font-size: 16px;
   transition: all 0.4s ease-in-out;
   box-shadow: 0px 4px 12px rgba(217, 70, 239, 0.25);
@@ -86,14 +86,14 @@
   background: transparent;
   border: 2px solid #d946ef;
   color: #d946ef;
-  border-radius: 999em; /* Pill shape */
+  border-radius: 999em;
 }
 
 .button-secondary:hover {
   background: rgba(217, 70, 239, 0.1);
 }
 
-/* New microinteractions */
+/* Microinteractions */
 @keyframes pulse-slow {
   0%, 100% {
     opacity: 1;
@@ -127,12 +127,6 @@
   animation: shimmer 3s infinite;
 }
 
-/* Accessibility improvements for better contrast */
-.high-contrast-text {
-  color: #ffffff;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-}
-
 .micro-interaction {
   position: relative;
   overflow: hidden;
@@ -155,7 +149,7 @@
   transform: scaleX(1);
 }
 
-/* Animation for carousel */
+/* Carousel animations */
 @keyframes carousel-rtl {
   from {
     transform: translateX(0);
@@ -206,22 +200,21 @@
   opacity: 1;
 }
 
-/* Semantic focus styles for accessibility */
+/* Accessibility */
 :focus-visible {
   outline: 2px solid #d946ef;
   outline-offset: 2px;
 }
 
-/* Ensure contrast meets WCAG AA standards */
 .text-enhanced-contrast {
-  color: #f3f4f6; /* Lighter gray that meets contrast requirements */
+  color: #f3f4f6;
 }
 
 .bg-enhanced-contrast {
-  background-color: rgba(31, 41, 55, 0.9); /* Darker background with sufficient opacity */
+  background-color: rgba(31, 41, 55, 0.9);
 }
 
-/* Section alternating backgrounds */
+/* Section styling */
 section:nth-of-type(odd) {
   background-color: #080112;
 }
@@ -230,13 +223,12 @@ section:nth-of-type(even) {
   background-color: #0a0218;
 }
 
-/* Improved section separation */
 section {
   position: relative;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Consistent CTA styling */
+/* CTA button */
 .cta-button {
   background: linear-gradient(to right, #d946ef, #9333ea);
   color: white;
