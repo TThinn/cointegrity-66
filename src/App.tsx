@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react"
 import { Toaster } from "sonner"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
@@ -6,6 +5,7 @@ import { HelmetProvider } from "react-helmet-async"
 import ErrorBoundary from "./components/app/ErrorBoundary"
 import { initializeCacheManagement } from "./utils/cacheManager"
 import { initServiceWorker } from "./utils/serviceWorkerInit"
+import { initializeErrorHandling } from "./utils/errorLogger"
 
 // Page imports
 import Index from "./pages/Index"
@@ -29,27 +29,19 @@ import './index.css'
 import './App.css'
 
 const App = () => {
-  // PHASE 3: Initialize enhanced caching system after React is fully ready
+  // Simplified initialization
   useEffect(() => {
-    // Initialize cache management first
+    // Initialize error handling first
+    initializeErrorHandling();
+    
+    // Initialize cache management
     initializeCacheManagement();
     
-    // Initialize service worker after cache management
+    // Initialize service worker with delay
     setTimeout(() => {
       initServiceWorker();
-    }, 300);
+    }, 500);
     
-    // Listen for app updates
-    const handleAppUpdate = (event: CustomEvent) => {
-      console.log('App update notification received:', event.detail);
-      // Could show a toast notification here if needed
-    };
-    
-    window.addEventListener('app-update-available', handleAppUpdate as EventListener);
-    
-    return () => {
-      window.removeEventListener('app-update-available', handleAppUpdate as EventListener);
-    };
   }, []);
 
   return (
