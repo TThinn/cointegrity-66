@@ -2,7 +2,6 @@
 import React from "react"
 import { Toaster } from "sonner"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { AppProviders } from "./components/app/AppProviders"
 import ErrorBoundary from "./components/app/ErrorBoundary"
 
 // Page imports
@@ -52,23 +51,21 @@ const AppRoutes = () => (
 const App = () => {
   return (
     <ErrorBoundary>
-      <AppProviders>
-        <BrowserRouter>
-          <AppRoutes />
-          <Toaster 
-            position="top-center" 
-            closeButton
-            toastOptions={{
-              className: "toast-blur-container",
-              style: {
-                background: "transparent",
-                border: "none",
-                boxShadow: "none",
-              }
-            }}
-          />
-        </BrowserRouter>
-      </AppProviders>
+      <BrowserRouter>
+        <AppRoutes />
+        <Toaster 
+          position="top-center" 
+          closeButton
+          toastOptions={{
+            className: "toast-blur-container",
+            style: {
+              background: "transparent",
+              border: "none",
+              boxShadow: "none",
+            }
+          }}
+        />
+      </BrowserRouter>
     </ErrorBoundary>
   );
 };
