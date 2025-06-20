@@ -3,14 +3,14 @@ import React, { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SeoHead } from "@/components/seo/SeoHead";
-import { useSectionTracking } from "@/hooks/useSectionTracking";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ArrowLeft, CheckCircle } from "lucide-react";
 import Container from "@/components/ui/Container";
 import { useAnalytics } from "@/hooks/useAnalytics";
 
 const ThankYouPage = () => {
-  const { currentPath, currentHash } = useSectionTracking();
+  const location = useLocation();
   const { trackEvent, pageView } = useAnalytics();
   
   useEffect(() => {
@@ -29,8 +29,8 @@ const ThankYouPage = () => {
   return (
     <div className="min-h-screen bg-[#080112]" itemScope itemType="https://schema.org/WebPage">
       <SeoHead 
-        currentPath={currentPath} 
-        currentHash={currentHash}
+        currentPath={location.pathname} 
+        currentHash={location.hash}
       />
       
       <Header />

@@ -3,15 +3,15 @@ import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SeoHead } from "@/components/seo/SeoHead";
-import { useSectionTracking } from "@/hooks/useSectionTracking";
+import { useLocation } from "react-router-dom";
 import LightParticles from "@/components/ui/LightParticles";
 
 const CaseStudiesPage = () => {
-  const { currentPath, currentHash } = useSectionTracking();
+  const location = useLocation();
 
   return (
     <div className="min-h-screen bg-[#010822] overflow-x-hidden">
-      <SeoHead currentPath={currentPath} currentHash={currentHash} />
+      <SeoHead currentPath={location.pathname} currentHash={location.hash} />
       <Header />
       
       {/* Hero section with all background effects */}

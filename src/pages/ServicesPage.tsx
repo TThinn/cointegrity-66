@@ -4,16 +4,16 @@ import Header from "@/components/Header";
 import Services from "@/components/Services";
 import Footer from "@/components/Footer";
 import { SeoHead } from "@/components/seo/SeoHead";
-import { useSectionTracking } from "@/hooks/useSectionTracking";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
 const ServicesPage = () => {
-  const { currentPath } = useSectionTracking();
+  const location = useLocation();
   
   return (
     <div className="min-h-screen bg-[#010822] overflow-x-hidden" itemScope itemType="https://schema.org/WebPage">
-      <SeoHead currentPath={currentPath} currentHash="" />
+      <SeoHead currentPath={location.pathname} currentHash="" />
       
       <Header />
       <main id="main" className="overflow-x-hidden">
