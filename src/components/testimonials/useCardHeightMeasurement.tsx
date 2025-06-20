@@ -32,7 +32,7 @@ export const useCardHeightMeasurement = (
       
       tempCard.innerHTML = `
         <div class="h-full flex flex-col justify-between">
-          <div class="flex-1 flex items-start mb-6 sm:mb-8">
+          <div class="flex-1 flex items-start mb-2 sm:mb-4">
             <p class="text-white/80 text-sm sm:text-base leading-relaxed break-words hyphens-auto">
               "${testimonial.quote}"
             </p>
