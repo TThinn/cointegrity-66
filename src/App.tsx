@@ -1,3 +1,4 @@
+
 import React from "react"
 import { Toaster } from "sonner"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
@@ -25,7 +26,7 @@ import MicaReadyWaitlistPage from "./pages/MicaReadyWaitlistPage"
 import './index.css'
 import './App.css'
 
-// Simplified routes configuration
+// Routes component that will be rendered inside Router context
 const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<Index />} />
@@ -53,19 +54,21 @@ const App = () => {
     <ErrorBoundary>
       <HelmetProvider>
         <BrowserRouter>
-          <AppRoutes />
-          <Toaster 
-            position="top-center" 
-            closeButton
-            toastOptions={{
-              className: "toast-blur-container",
-              style: {
-                background: "transparent",
-                border: "none",
-                boxShadow: "none",
-              }
-            }}
-          />
+          <div className="app-container">
+            <AppRoutes />
+            <Toaster 
+              position="top-center" 
+              closeButton
+              toastOptions={{
+                className: "toast-blur-container",
+                style: {
+                  background: "transparent",
+                  border: "none",
+                  boxShadow: "none",
+                }
+              }}
+            />
+          </div>
         </BrowserRouter>
       </HelmetProvider>
     </ErrorBoundary>

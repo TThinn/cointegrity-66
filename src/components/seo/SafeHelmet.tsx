@@ -7,10 +7,6 @@ interface SafeHelmetProps {
 }
 
 export const SafeHelmet: React.FC<SafeHelmetProps> = ({ children }) => {
-  try {
-    return <Helmet>{children}</Helmet>;
-  } catch (error) {
-    console.error('SafeHelmet error:', error);
-    return null;
-  }
+  // Simple wrapper without try-catch to let errors bubble up for debugging
+  return <Helmet>{children}</Helmet>;
 };
