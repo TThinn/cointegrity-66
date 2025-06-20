@@ -92,6 +92,15 @@ export const RelatedContentRecommendations = ({ currentPath, currentHash }: Rela
           { url: '/services', title: 'Applied Services', relevance: 'high', contentType: 'service' },
           { url: '/about', title: 'Our Expertise', relevance: 'medium', contentType: 'about' }
         ]
+      },
+      'mica-ready-waitlist': {
+        topics: ['MiCA Compliance', 'EU Regulation', 'AI Solutions', 'Regulatory Technology', 'CASP Licensing'],
+        relatedPages: [
+          { url: '/services', title: 'Regulatory Services', relevance: 'high', contentType: 'service' },
+          { url: '/contact', title: 'Expert Consultation', relevance: 'high', contentType: 'service' },
+          { url: '/about', title: 'Regulatory Expertise', relevance: 'medium', contentType: 'about' },
+          { url: '/glossary', title: 'MiCA Terminology', relevance: 'medium', contentType: 'resource' }
+        ]
       }
     };
 

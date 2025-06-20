@@ -57,6 +57,11 @@ export const DynamicLinkSuggestions = ({ currentPath, currentHash }: DynamicLink
         primary: ['/services', '/about'],
         secondary: ['/contact', '/team'],
         related: ['/process', '/partners']
+      },
+      'mica-ready-waitlist': {
+        primary: ['/services', '/contact', '/about'],
+        secondary: ['/glossary', '/process'],
+        related: ['/team', '/testimonials']
       }
     };
 
@@ -126,7 +131,8 @@ const getPageTitle = (path: string): string => {
     '/partners': 'Industry Partners',
     '/testimonials': 'Client Success Stories',
     '/contact': 'Contact Us',
-    '/glossary': 'Web3 Glossary'
+    '/glossary': 'Web3 Glossary',
+    '/mica-ready-waitlist': 'MiCA-Ready Suite Waitlist'
   };
   return titles[path] || 'Cointegrity';
 };
@@ -140,7 +146,8 @@ const getPageDescription = (path: string): string => {
     '/partners': 'Trusted industry partners and collaborations',
     '/testimonials': 'Real success stories from our clients',
     '/contact': 'Get in touch for Web3 consultation',
-    '/glossary': 'Complete Web3 and blockchain terminology guide'
+    '/glossary': 'Complete Web3 and blockchain terminology guide',
+    '/mica-ready-waitlist': 'AI-powered MiCA compliance solutions waitlist'
   };
   return descriptions[path] || 'Leading Web3 consultancy services';
 };
