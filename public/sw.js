@@ -1,3 +1,4 @@
+
 // Simple Service Worker with basic caching
 const CACHE_NAME = `cointegrity-cache-v${Date.now()}`;
 
