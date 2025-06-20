@@ -12,13 +12,23 @@ import { ExpertiseAuthoritySignals } from "./ExpertiseAuthoritySignals";
 import { AISearchOptimization } from "./AISearchOptimization";
 import { ConversationalSearchData } from "./ConversationalSearchData";
 import { EntityRelationshipData } from "./EntityRelationshipData";
+import { GlossaryEnhancedSEO } from "./GlossaryEnhancedSEO";
 
 interface SeoHeadProps {
   currentPath: string;
   currentHash: string;
+  totalTermsCount?: number;
+  searchTerm?: string;
+  activeCategory?: string;
 }
 
-export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) => {
+export const SeoHead: React.FC<SeoHeadProps> = ({ 
+  currentPath, 
+  currentHash, 
+  totalTermsCount = 0,
+  searchTerm,
+  activeCategory 
+}) => {
   const pathWithoutSlash = currentPath.replace(/^\/+/, '');
   
   const getSectionTitle = () => {
@@ -44,7 +54,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
     } else if (pathWithoutSlash === 'case-studies') {
       return "Web3 Success Stories | Case Studies | Cointegrity";
     } else if (pathWithoutSlash === 'glossary') {
-      return "Web3 & Blockchain Glossary | Cointegrity";
+      return `World's Largest Web3 Glossary (${totalTermsCount || '1049+'}+ Terms) | Cointegrity`;
     } else if (pathWithoutSlash === 'process') {
       return "Our Web3 Implementation Process | Cointegrity";
     } else if (pathWithoutSlash === 'mica-ready-waitlist') {
@@ -95,7 +105,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
     } else if (pathWithoutSlash === 'case-studies') {
       return "Detailed Web3 success stories and blockchain implementation case studies showcasing real-world digital asset transformation results.";
     } else if (pathWithoutSlash === 'glossary') {
-      return "Complete Web3 and blockchain glossary with expert definitions of digital asset terms, tokenomics concepts, and regulatory terminology.";
+      return `World's largest Web3 glossary with ${totalTermsCount || '1049+'}+ expert-curated terms covering blockchain, cryptocurrency, DeFi, NFTs, DAOs, tokenomics, and MiCA regulatory compliance.`;
     } else if (pathWithoutSlash === 'process') {
       return "Our proven Web3 implementation methodology: strategic assessment, architecture design, implementation guidance, and launch support.";
     } else if (pathWithoutSlash === 'mica-ready-waitlist') {
@@ -202,6 +212,14 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       <AISearchOptimization currentPath={currentPath} currentHash={currentHash} />
       <ConversationalSearchData currentPath={currentPath} currentHash={currentHash} />
       <EntityRelationshipData currentPath={currentPath} currentHash={currentHash} />
+      
+      {/* Enhanced glossary SEO */}
+      <GlossaryEnhancedSEO 
+        currentPath={currentPath} 
+        totalTermsCount={totalTermsCount}
+        searchTerm={searchTerm}
+        activeCategory={activeCategory}
+      />
     </>
   );
 };

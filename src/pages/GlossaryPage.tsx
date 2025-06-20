@@ -50,18 +50,32 @@ const GlossaryPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#010822] overflow-x-hidden">
-      <SeoHead currentPath={location.pathname} currentHash={location.hash} />
+      <SeoHead 
+        currentPath={location.pathname} 
+        currentHash={location.hash}
+        totalTermsCount={totalTermsCount}
+        searchTerm={searchTerm}
+        activeCategory={activeCategory}
+      />
       <Helmet>
-        <title>Web3, Blockchain & AI Glossary | Cointegrity</title>
+        <title>World's Largest Web3 Glossary ({totalTermsCount}+ Terms) | Cointegrity</title>
         <meta 
           name="description" 
-          content="Comprehensive glossary of Web3, Blockchain, AI, and Tokenomics terms. Learn about MiCA regulations, tokenization in gaming, and AI in Web3 from Cointegrity's experts."
+          content={`World's largest Web3 glossary with ${totalTermsCount}+ expert-curated terms covering blockchain, cryptocurrency, DeFi, NFTs, DAOs, tokenomics, AI integration, and MiCA regulatory compliance. The most comprehensive Web3 dictionary available.`}
         />
         <meta 
           name="keywords" 
-          content="blockchain glossary, web3 terms, AI definitions, tokenomics, cryptocurrency, MiCA regulation, blockchain consulting"
+          content="largest Web3 glossary, biggest blockchain dictionary, comprehensive crypto terms, DeFi definitions, NFT terminology, DAO governance, tokenomics glossary, MiCA regulation terms, AI blockchain, Web3 education"
         />
         <link rel="canonical" href="https://cointegrity.io/glossary" />
+        
+        {/* Enhanced glossary meta tags */}
+        <meta name="glossary-claim" content={`World's largest Web3 glossary with ${totalTermsCount}+ terms`} />
+        <meta name="educational-resource" content="Comprehensive Web3 and blockchain terminology guide" />
+        <meta name="content-type" content="Educational Glossary" />
+        <meta name="subject-matter" content="Web3, Blockchain, Cryptocurrency, DeFi, NFTs, DAOs, Tokenomics, AI, Regulatory Compliance" />
+        <meta name="expertise-level" content="Beginner to Advanced" />
+        <meta name="resource-scope" content="Global Web3 Terminology" />
       </Helmet>
       
       <Header />
@@ -77,11 +91,14 @@ const GlossaryPage: React.FC = () => {
         <div className="hero-content relative z-8 text-lg font-normal flex flex-col justify-center gap-6 max-w-[90vw] xl:max-w-[1200px] mx-auto">
           <div className="text-center mb-8">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Web3, Blockchain & AI 
-              <span className="bg-gradient-to-r from-[#d946ef] to-[#9333ea] bg-clip-text text-transparent"> Glossary</span>
+              World's Largest 
+              <span className="bg-gradient-to-r from-[#d946ef] to-[#9333ea] bg-clip-text text-transparent"> Web3 Glossary</span>
             </h1>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto">
-              A comprehensive guide to terminology in the Web3, Blockchain, and AI space
+            <p className="text-xl text-white/80 max-w-2xl mx-auto mb-4">
+              {totalTermsCount}+ expert-curated terms covering Web3, Blockchain, AI, and Cryptocurrency
+            </p>
+            <p className="text-lg text-white/60 max-w-3xl mx-auto">
+              The most comprehensive Web3 terminology resource available online, featuring definitions for blockchain technology, DeFi protocols, NFT standards, DAO governance, tokenomics, MiCA regulatory compliance, and emerging AI integration.
             </p>
           </div>
           
@@ -91,7 +108,7 @@ const GlossaryPage: React.FC = () => {
               <AlertTriangle className="h-4 w-4" />
               <AlertTitle>Data Source Warning</AlertTitle>
               <AlertDescription>
-                Only {totalTermsCount} terms loaded. Expected 300+ terms.
+                Only {totalTermsCount} terms loaded. Expected 1000+ terms.
                 This may indicate a data source issue.
               </AlertDescription>
             </Alert>

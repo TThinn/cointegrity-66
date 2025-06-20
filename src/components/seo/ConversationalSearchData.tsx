@@ -124,6 +124,57 @@ export const ConversationalSearchData = ({ currentPath, currentHash }: Conversat
         relatedConcepts: ["success stories", "implementation results", "industry examples", "proven outcomes"],
         userIntents: ["evaluate_results", "find_similar_cases", "understand_outcomes", "assess_success"]
       },
+      'glossary': {
+        intentQueries: [
+          "Largest Web3 glossary",
+          "Most comprehensive blockchain dictionary",
+          "Complete crypto terminology guide", 
+          "Web3 terms explained",
+          "Blockchain definitions database",
+          "What is the biggest crypto glossary?",
+          "Most complete DeFi terms guide",
+          "NFT terminology dictionary",
+          "DAO governance glossary",
+          "Smart contract terms explained",
+          "Tokenomics definitions guide",
+          "MiCA regulation terminology",
+          "AI blockchain glossary",
+          "Metaverse terms dictionary",
+          "Web3 infrastructure glossary",
+          "Cryptocurrency trading terms",
+          "Blockchain security definitions",
+          "Digital identity terms guide",
+          "Regulatory compliance crypto terms",
+          "Blockchain gaming terminology"
+        ],
+        directAnswers: {
+          "largest_glossary": "Cointegrity's Web3 glossary contains 1049+ professionally curated terms, making it the world's largest and most comprehensive Web3, blockchain, and cryptocurrency terminology resource available online.",
+          "glossary_scope": "Our glossary comprehensively covers Web3 technology, blockchain architecture, cryptocurrency economics, DeFi protocols, NFT standards, DAO governance, smart contracts, tokenomics, regulatory compliance including MiCA, AI integration, and emerging technologies.",
+          "educational_value": "Each term is expertly defined with practical context, making complex Web3 concepts accessible to beginners while providing depth for advanced practitioners and developers.",
+          "term_categories": "Terms are organized across 14+ categories including Blockchain Technology, Web3, AI, Regulatory & Compliance, Tokenomics, Gaming, Strategy, DeFi, NFTs, DAOs, Digital Identity, Infrastructure, Security, and Metaverse.",
+          "expert_curation": "All definitions are professionally curated by Web3 experts with real-world blockchain implementation experience, ensuring accuracy and practical relevance.",
+          "search_functionality": "Advanced search and filtering capabilities allow users to quickly find specific terms across categories or browse alphabetically through our comprehensive collection."
+        },
+        followUpQuestions: [
+          "How often is the glossary updated with new terms?",
+          "Can I suggest new terms to be added?",
+          "Are there examples provided with definitions?",
+          "Can I search for terms by specific blockchain categories?",
+          "Is there a mobile-friendly version available?",
+          "Do you provide pronunciation guides for technical terms?"
+        ],
+        relatedConcepts: [
+          "Web3 education", "blockchain learning", "cryptocurrency knowledge", "DeFi understanding", 
+          "NFT literacy", "DAO governance", "smart contract comprehension", "tokenomics mastery",
+          "regulatory awareness", "technical terminology", "industry standards", "digital transformation"
+        ],
+        userIntents: [
+          "learn_web3_terminology", "understand_blockchain_concepts", "research_crypto_terms",
+          "study_defi_definitions", "explore_nft_terminology", "comprehend_dao_governance",
+          "master_tokenomics", "regulatory_compliance_learning", "technical_reference",
+          "educational_resource", "professional_development", "industry_knowledge"
+        ]
+      },
       'mica-ready-waitlist': {
         intentQueries: [
           "MiCA Ready Suite",
