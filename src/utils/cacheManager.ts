@@ -1,4 +1,3 @@
-
 // PHASE 3: Advanced cache management with smart invalidation and monitoring
 export class CacheManager {
   private static readonly CACHE_VERSION_KEY = 'app_cache_version';
@@ -231,8 +230,8 @@ export class CacheManager {
     window.fetch = async (...args) => {
       const response = await originalFetch(...args);
       
-      // Check if response came from cache
-      if (response.headers.get('x-cache') === 'HIT' || response.type === 'cached') {
+      // Check if response came from cache (using proper cache detection)
+      if (response.headers.get('x-cache') === 'HIT') {
         cacheHits++;
       } else {
         cacheMisses++;
