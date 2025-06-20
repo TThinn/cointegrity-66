@@ -29,17 +29,17 @@ const MicaReadyWaitlistPage = () => {
 
       <Header />
       
-      {/* Hero section with full screen height */}
-      <section className="hero-section min-h-screen flex items-center justify-center pt-20 pb-16 relative overflow-hidden bg-[#010822] isolate">
+      {/* Hero section with proper text positioning */}
+      <section className="hero-section pt-20 pb-16 relative overflow-hidden bg-[#010822] isolate">
         {/* Background elements with light particles */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
           <LightParticles centerPosition={{ x: 50, y: 50 }} />
         </div>
 
-        {/* Content container with centered text */}
-        <div className="hero-content relative z-8 text-lg font-normal flex flex-col justify-center items-center gap-6 max-w-[90vw] xl:max-w-[1200px] mx-auto">
-          <div className="text-center">
+        {/* Content container with proper positioning */}
+        <Container className="relative z-10">
+          <div className="text-center py-20">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               MiCA-Ready
               <span className="bg-gradient-to-r from-[#d946ef] to-[#9333ea] bg-clip-text text-transparent"> Suite</span>
@@ -51,7 +51,7 @@ const MicaReadyWaitlistPage = () => {
               AI-powered solutions to navigate MiCA licensing requirements efficiently and cost-effectively
             </p>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Solution Boxes Section with consistent card styling */}
