@@ -60,18 +60,12 @@ const MicaReadyWaitlistPage = () => {
             
             {/* Header Section */}
             <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-                Do You Need a MiCA License? Find Your EU Crypto Compliance Solution
-              </h2>
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">Get Early Access to AI-Powered MiCA Compliance</h2>
               
               <div className="text-lg text-white/80 leading-relaxed space-y-4 max-w-4xl mx-auto">
-                <p className="text-base">
-                  Over 11,000 VASPs across the EU need MiCA licenses to continue operating. 
-                  But Europe's largest regulatory expansion also caught thousands of companies that never knew they were crypto businesses—from 
-                  gaming studios to payment processors.
-                </p>
+                <p className="text-base">Be first in line for our complete suite launching Q3 2025. From regulatory intelligence to full CASP authorization—secure your spot now.</p>
                 
-                <p className="text-base">Whether you're applying for a CASP authorization, you just discovered you need a MiCA licence or you just want to follow the space, we have the right solution for your business.</p>
+                
               </div>
             </div>
 
