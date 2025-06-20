@@ -49,10 +49,13 @@ const AppRoutes = () => (
   </Routes>
 );
 
+// Create helmet context outside of component to ensure it's stable
+const helmetContext = {};
+
 const App = () => {
   return (
-    <HelmetProvider>
-      <ErrorBoundary>
+    <ErrorBoundary>
+      <HelmetProvider context={helmetContext}>
         <BrowserRouter>
           <AppRoutes />
           <Toaster 
@@ -68,8 +71,8 @@ const App = () => {
             }}
           />
         </BrowserRouter>
-      </ErrorBoundary>
-    </HelmetProvider>
+      </HelmetProvider>
+    </ErrorBoundary>
   );
 };
 

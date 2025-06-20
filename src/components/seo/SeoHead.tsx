@@ -1,6 +1,5 @@
-
 import React from "react";
-import { Helmet } from "react-helmet-async";
+import { SafeHelmet } from "./SafeHelmet";
 import { getStructuredData } from "./SectionStructuredData";
 import { useLocation } from "react-router-dom";
 import { InternalLinkingStructuredData } from "./InternalLinkingStructuredData";
@@ -137,7 +136,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
 
   return (
     <>
-      <Helmet>
+      <SafeHelmet>
         <title>{getSectionTitle()}</title>
         <meta name="description" content={getSectionDescription()} />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -183,7 +182,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
             {JSON.stringify(data)}
           </script>
         ))}
-      </Helmet>
+      </SafeHelmet>
       
       {/* Existing SEO components */}
       <InternalLinkingStructuredData currentPath={currentPath} />
