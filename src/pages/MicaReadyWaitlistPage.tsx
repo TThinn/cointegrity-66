@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
@@ -8,7 +7,6 @@ import MicaReadyWaitlistForm from "@/components/mica/MicaReadyWaitlistForm";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 import { SeoHead } from "@/components/seo/SeoHead";
 import LightParticles from "@/components/ui/LightParticles";
-
 const MicaReadyWaitlistPage = () => {
   const {
     currentPath,
@@ -67,16 +65,13 @@ const MicaReadyWaitlistPage = () => {
               </h2>
               
               <div className="text-lg text-white/80 leading-relaxed space-y-4 max-w-4xl mx-auto">
-                <p>
+                <p className="text-base">
                   Over 11,000 VASPs across the EU need MiCA licenses to continue operating. 
                   But Europe's largest regulatory expansion also caught thousands of companies that never knew they were crypto businesses—from 
                   gaming studios to payment processors.
                 </p>
                 
-                <p>
-                  Whether you're applying for a CASP authorization or just discovered you need 
-                  MiCA compliance, we have the right solution for your business.
-                </p>
+                <p className="text-base">Whether you're applying for a CASP authorization, you just discovered you need a MiCA licence or you just want to follow the space, we have the right solution for your business.</p>
               </div>
             </div>
 
@@ -205,5 +200,4 @@ const MicaReadyWaitlistPage = () => {
       <Footer />
     </div>;
 };
-
 export default MicaReadyWaitlistPage;
