@@ -19,8 +19,8 @@ interface SeoHeadProps {
 }
 
 export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) => {
-  const location = useLocation();
-  const pathWithoutSlash = location.pathname.replace(/^\/+/, '');
+  // Use props instead of useLocation to avoid context issues
+  const pathWithoutSlash = currentPath.replace(/^\/+/, '');
   
   // Determine which section is being viewed to customize meta tags
   const getSectionTitle = () => {

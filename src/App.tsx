@@ -26,36 +26,31 @@ import MicaReadyWaitlistPage from "./pages/MicaReadyWaitlistPage"
 import './index.css'
 import './App.css'
 
-// Routes component that will be rendered inside Router context
-const AppRoutes = () => (
-  <Routes>
-    <Route path="/" element={<Index />} />
-    <Route path="/web3-consulting" element={<Index />} />
-    <Route path="/about" element={<AboutPage />} />
-    <Route path="/services" element={<ServicesPage />} />
-    <Route path="/partners" element={<PartnersPage />} />
-    <Route path="/process" element={<ProcessPage />} />
-    <Route path="/team" element={<TeamPage />} />
-    <Route path="/testimonials" element={<TestimonialsPage />} />
-    <Route path="/contact" element={<ContactPage />} />
-    <Route path="/privacy" element={<PrivacyPolicy />} />
-    <Route path="/glossary" element={<GlossaryPage />} />
-    <Route path="/blog" element={<BlogPage />} />
-    <Route path="/guides" element={<GuidesPage />} />
-    <Route path="/case-studies" element={<CaseStudiesPage />} />
-    <Route path="/thank-you" element={<ThankYouPage />} />
-    <Route path="/mica-ready-waitlist" element={<MicaReadyWaitlistPage />} />
-    <Route path="*" element={<NotFound />} />
-  </Routes>
-);
-
 const App = () => {
   return (
     <ErrorBoundary>
       <HelmetProvider>
         <BrowserRouter>
           <div className="app-container">
-            <AppRoutes />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/web3-consulting" element={<Index />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/partners" element={<PartnersPage />} />
+              <Route path="/process" element={<ProcessPage />} />
+              <Route path="/team" element={<TeamPage />} />
+              <Route path="/testimonials" element={<TestimonialsPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/glossary" element={<GlossaryPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/guides" element={<GuidesPage />} />
+              <Route path="/case-studies" element={<CaseStudiesPage />} />
+              <Route path="/thank-you" element={<ThankYouPage />} />
+              <Route path="/mica-ready-waitlist" element={<MicaReadyWaitlistPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
             <Toaster 
               position="top-center" 
               closeButton
