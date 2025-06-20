@@ -5,7 +5,6 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 import fs from 'fs';
 import type { ViteDevServer } from 'vite';
-import type { Connect } from 'vite';
 
 // Custom plugin to update sitemap dates
 const updateSitemapDates = () => {
@@ -35,7 +34,7 @@ const cacheBustingPlugin = () => {
     name: 'cache-busting',
     configureServer(server: ViteDevServer) {
       // Add cache-busting headers for development
-      server.middlewares.use((req: Connect.IncomingMessage, res: Connect.ServerResponse, next: Connect.NextFunction) => {
+      server.middlewares.use((req: any, res: any, next: any) => {
         // Prevent caching of HTML files and API responses
         if (req.url?.endsWith('.html') || req.url?.includes('/api/')) {
           res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
