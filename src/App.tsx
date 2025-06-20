@@ -1,8 +1,8 @@
-
 import React from "react"
 import { Toaster } from "sonner"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import ErrorBoundary from "./components/app/ErrorBoundary"
+import { SafeRouter } from "./components/app/SafeRouter"
 
 // Page imports
 import Index from "./pages/Index"
@@ -51,7 +51,7 @@ const AppRoutes = () => (
 const App = () => {
   return (
     <ErrorBoundary>
-      <BrowserRouter>
+      <SafeRouter>
         <AppRoutes />
         <Toaster 
           position="top-center" 
@@ -65,7 +65,7 @@ const App = () => {
             }
           }}
         />
-      </BrowserRouter>
+      </SafeRouter>
     </ErrorBoundary>
   );
 };

@@ -3,17 +3,17 @@ import React from "react";
 import Header from "@/components/Header";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
-import { SeoHead } from "@/components/seo/SeoHead";
+import { SafeSeoHead } from "@/components/seo/SafeSeoHead";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
 const TestimonialsPage = () => {
-  const { currentPath } = useSectionTracking();
+  const { currentPath, currentHash } = useSectionTracking();
   
   return (
     <div className="min-h-screen bg-[#010822] overflow-x-hidden" itemScope itemType="https://schema.org/WebPage">
-      <SeoHead currentPath={currentPath} currentHash="" />
+      <SafeSeoHead currentPath={currentPath} currentHash={currentHash} />
       
       <Header />
       <main id="main" className="overflow-x-hidden">
