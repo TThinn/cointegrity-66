@@ -1,4 +1,3 @@
-
 import React from "react"
 import { Toaster } from "sonner"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
@@ -49,13 +48,10 @@ const AppRoutes = () => (
   </Routes>
 );
 
-// Create helmet context outside of component to ensure it's stable
-const helmetContext = {};
-
 const App = () => {
   return (
     <ErrorBoundary>
-      <HelmetProvider context={helmetContext}>
+      <HelmetProvider>
         <BrowserRouter>
           <AppRoutes />
           <Toaster 
