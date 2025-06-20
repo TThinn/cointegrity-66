@@ -11,38 +11,28 @@ export const useSectionTracking = () => {
   const isHomepage = location.pathname === '/';
 
   useEffect(() => {
-    // Update the hash when location changes
     setCurrentHash(location.hash);
   }, [location]);
 
+  // Simplified section tracking - only update hash when location changes
   useEffect(() => {
-    // Only track sections on the homepage
     if (!isHomepage) return;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const sectionId = entry.target.id;
-          // Update URL without triggering page reload (for better analytics tracking)
-          if (sectionId) {
-            window.history.replaceState({}, '', `#${sectionId}`);
-            setCurrentHash(`#${sectionId}`);
-            trackEvent('section_view', {
-              category: 'Navigation',
-              label: sectionId,
-              nonInteraction: true
-            });
-          }
-        }
-      });
-    }, { threshold: 0.3 });
+    // Simple hash tracking without intersection observer
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        setCurrentHash(hash);
+        trackEvent('section_view', {
+          category: 'Navigation',
+          label: hash.replace('#', ''),
+          nonInteraction: true
+        });
+      }
+    };
 
-    // Observe all sections for visibility
-    document.querySelectorAll('section[id]').forEach(section => {
-      observer.observe(section);
-    });
-
-    return () => observer.disconnect();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, [isHomepage, trackEvent]);
 
   return { currentPath: location.pathname, currentHash };

@@ -6,13 +6,9 @@ interface SafeLightParticlesProps {
   centerPosition?: { x: number; y: number };
 }
 
+// Simplified - just pass through to LightParticles
 const SafeLightParticles: React.FC<SafeLightParticlesProps> = (props) => {
-  try {
-    return <LightParticles {...props} />;
-  } catch (error) {
-    console.warn('SafeLightParticles rendering error:', error);
-    return null;
-  }
+  return <LightParticles {...props} />;
 };
 
 export default SafeLightParticles;

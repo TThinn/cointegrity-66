@@ -3,80 +3,32 @@ import { useState, useEffect } from 'react';
 import { TestimonialType } from './types';
 
 export const useCardHeight = (testimonials: TestimonialType[], activeTestimonials: number[]) => {
-  const [cardHeight, setCardHeight] = useState<number>(320); // Default minimum height
+  const [cardHeight, setCardHeight] = useState<number>(320);
 
   useEffect(() => {
-    const calculateCardHeight = () => {
-      try {
-        // Get screen width for responsive calculations
-        const screenWidth = window.innerWidth;
-        
-        // Responsive breakpoints and settings
-        const isMobile = screenWidth < 640;
-        const isTablet = screenWidth >= 640 && screenWidth < 1024;
-        
-        // Get the active testimonials to calculate height for
-        const activeTestimonialTexts = activeTestimonials.map(index => testimonials[index]?.quote || '');
-        
-        if (activeTestimonialTexts.length === 0) {
-          setCardHeight(320);
-          return;
-        }
-
-        // Use a conservative approach without DOM manipulation
-        let maxTextLength = 0;
-        activeTestimonialTexts.forEach(quote => {
-          maxTextLength = Math.max(maxTextLength, quote.length);
-        });
-
-        // Estimate height based on text length and screen size
-        let estimatedTextHeight;
-        
-        if (isMobile) {
-          // Mobile: narrower width, more line breaks
-          estimatedTextHeight = Math.ceil(maxTextLength / 45) * 26; // ~45 chars per line, 26px line height
-        } else if (isTablet) {
-          // Tablet: medium width
-          estimatedTextHeight = Math.ceil(maxTextLength / 65) * 26; // ~65 chars per line
-        } else {
-          // Desktop: wider width
-          estimatedTextHeight = Math.ceil(maxTextLength / 75) * 26; // ~75 chars per line
-        }
-
-        // Calculate total card height
-        const paddingTop = 48;
-        const textToAuthorSpacing = 32;
-        const authorSectionHeight = 60;
-        const paddingBottom = 48;
-        
-        const calculatedHeight = paddingTop + estimatedTextHeight + textToAuthorSpacing + authorSectionHeight + paddingBottom;
-        
-        // Ensure minimum height
-        const finalHeight = Math.max(320, calculatedHeight);
-        
-        setCardHeight(finalHeight);
-      } catch (error) {
-        console.warn('Error calculating card height, using default:', error);
+    // Simple height calculation based on content length
+    const calculateHeight = () => {
+      if (activeTestimonials.length === 0) {
         setCardHeight(320);
+        return;
       }
+
+      // Get the longest quote from active testimonials
+      let maxLength = 0;
+      activeTestimonials.forEach(index => {
+        const quote = testimonials[index]?.quote || '';
+        maxLength = Math.max(maxLength, quote.length);
+      });
+
+      // Simple height estimation based on character count
+      const baseHeight = 200;
+      const estimatedTextHeight = Math.ceil(maxLength / 60) * 24; // ~60 chars per line, 24px line height
+      const totalHeight = baseHeight + estimatedTextHeight;
+      
+      setCardHeight(Math.max(320, totalHeight));
     };
 
-    // Calculate height immediately
-    calculateCardHeight();
-    
-    // Recalculate on window resize with debounce
-    let resizeTimeoutId: NodeJS.Timeout;
-    const handleResize = () => {
-      clearTimeout(resizeTimeoutId);
-      resizeTimeoutId = setTimeout(calculateCardHeight, 150);
-    };
-    
-    window.addEventListener('resize', handleResize);
-    
-    return () => {
-      clearTimeout(resizeTimeoutId);
-      window.removeEventListener('resize', handleResize);
-    };
+    calculateHeight();
   }, [testimonials, activeTestimonials]);
 
   return cardHeight;

@@ -26,7 +26,7 @@ import MicaReadyWaitlistPage from "./pages/MicaReadyWaitlistPage"
 import './index.css'
 import './App.css'
 
-// Routes configuration for better maintainability
+// Simplified routes configuration
 const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<Index />} />
