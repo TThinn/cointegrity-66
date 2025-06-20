@@ -1,78 +1,75 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { TestimonialType } from './types';
 
 export const useCardHeight = (testimonials: TestimonialType[], activeTestimonials: number[]) => {
   const [cardHeight, setCardHeight] = useState<number>(320); // Default minimum height
+  const measureRef = useRef<HTMLDivElement | null>(null);
+  const isInitialized = useRef(false);
 
   useEffect(() => {
+    // Prevent execution during initial render
+    if (!isInitialized.current) {
+      isInitialized.current = true;
+      return;
+    }
+
     const calculateCardHeight = () => {
-      // Get screen width for responsive calculations
-      const screenWidth = window.innerWidth;
-      
-      // Responsive breakpoints and settings
-      const isMobile = screenWidth < 640;
-      const isTablet = screenWidth >= 640 && screenWidth < 1024;
-      
-      // Get the active testimonials to calculate height for
-      const activeTestimonialTexts = activeTestimonials.map(index => testimonials[index]?.quote || '');
-      
-      if (activeTestimonialTexts.length === 0) {
+      try {
+        // Get screen width for responsive calculations
+        const screenWidth = window.innerWidth;
+        
+        // Responsive breakpoints and settings
+        const isMobile = screenWidth < 640;
+        const isTablet = screenWidth >= 640 && screenWidth < 1024;
+        
+        // Get the active testimonials to calculate height for
+        const activeTestimonialTexts = activeTestimonials.map(index => testimonials[index]?.quote || '');
+        
+        if (activeTestimonialTexts.length === 0) {
+          setCardHeight(320);
+          return;
+        }
+
+        // Use a more conservative approach without DOM manipulation
+        let maxTextLength = 0;
+        activeTestimonialTexts.forEach(quote => {
+          maxTextLength = Math.max(maxTextLength, quote.length);
+        });
+
+        // Estimate height based on text length and screen size
+        let estimatedTextHeight;
+        
+        if (isMobile) {
+          // Mobile: narrower width, more line breaks
+          estimatedTextHeight = Math.ceil(maxTextLength / 45) * 26; // ~45 chars per line, 26px line height
+        } else if (isTablet) {
+          // Tablet: medium width
+          estimatedTextHeight = Math.ceil(maxTextLength / 65) * 26; // ~65 chars per line
+        } else {
+          // Desktop: wider width
+          estimatedTextHeight = Math.ceil(maxTextLength / 75) * 26; // ~75 chars per line
+        }
+
+        // Calculate total card height
+        const paddingTop = 48;
+        const textToAuthorSpacing = 32;
+        const authorSectionHeight = 60;
+        const paddingBottom = 48;
+        
+        const calculatedHeight = paddingTop + estimatedTextHeight + textToAuthorSpacing + authorSectionHeight + paddingBottom;
+        
+        // Ensure minimum height
+        const finalHeight = Math.max(320, calculatedHeight);
+        
+        setCardHeight(finalHeight);
+      } catch (error) {
+        console.warn('Error calculating card height, using default:', error);
         setCardHeight(320);
-        return;
       }
-
-      // Create a temporary element to measure text dimensions
-      const measureElement = document.createElement('div');
-      measureElement.style.position = 'absolute';
-      measureElement.style.visibility = 'hidden';
-      measureElement.style.whiteSpace = 'normal';
-      measureElement.style.wordWrap = 'break-word';
-      measureElement.style.fontFamily = 'inherit';
-      measureElement.style.lineHeight = '1.625'; // leading-relaxed = 1.625
-      
-      // Set responsive font size and container width
-      if (isMobile) {
-        measureElement.style.fontSize = '16px'; // text-base
-        measureElement.style.width = `${screenWidth - 96}px`; // Account for padding and margins
-      } else if (isTablet) {
-        measureElement.style.fontSize = '16px'; // text-base
-        measureElement.style.width = `${(screenWidth - 200) / 2}px`; // Two columns with gaps and padding
-      } else {
-        measureElement.style.fontSize = '16px'; // text-base
-        measureElement.style.width = `${(screenWidth - 288) / 2}px`; // Desktop two columns with proper spacing
-      }
-
-      document.body.appendChild(measureElement);
-
-      let maxTextHeight = 0;
-
-      // Measure each active testimonial text
-      activeTestimonialTexts.forEach(quote => {
-        measureElement.textContent = `"${quote}"`;
-        const textHeight = measureElement.offsetHeight;
-        maxTextHeight = Math.max(maxTextHeight, textHeight);
-      });
-
-      document.body.removeChild(measureElement);
-
-      // Calculate total card height
-      // Components: padding-top (48px) + text height + margin between text and author (32px) + 
-      // author section height (~60px) + padding-bottom (48px)
-      const paddingTop = 48;
-      const textToAuthorSpacing = 32;
-      const authorSectionHeight = 60; // Name + title + spacing
-      const paddingBottom = 48;
-      
-      const calculatedHeight = paddingTop + maxTextHeight + textToAuthorSpacing + authorSectionHeight + paddingBottom;
-      
-      // Ensure minimum height
-      const finalHeight = Math.max(320, calculatedHeight);
-      
-      setCardHeight(finalHeight);
     };
 
-    // Small delay to ensure DOM is ready
+    // Use setTimeout to ensure we're not blocking the render cycle
     const timeoutId = setTimeout(calculateCardHeight, 100);
     
     // Recalculate on window resize with debounce
