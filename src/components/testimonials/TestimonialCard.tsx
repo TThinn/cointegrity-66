@@ -36,16 +36,18 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       onMouseEnter={() => onMouseEnter(position)}
       onMouseLeave={onMouseLeave}
     >
-      <div className="text-left h-full flex flex-col justify-between">
-        {/* Quote section - takes available space */}
+      <div className="h-full flex flex-col justify-between">
+        {/* Quote section - flexible height */}
         <div className="flex-1 flex items-start">
-          <p className="text-white/80 text-base leading-relaxed">"{testimonial.quote}"</p>
+          <p className="text-white/80 text-base leading-relaxed break-words hyphens-auto">
+            "{testimonial.quote}"
+          </p>
         </div>
         
-        {/* Author section - anchored to bottom */}
-        <div className="flex-shrink-0 mt-8 pt-8 border-t border-white/10">
-          <p className="text-white font-semibold text-l">{testimonial.name}</p>
-          <p className="text-white/60 text-base mt-1">{testimonial.title}</p>
+        {/* Author section - fixed height, no border */}
+        <div className="flex-shrink-0 mt-8">
+          <p className="text-white font-semibold text-lg leading-tight">{testimonial.name}</p>
+          <p className="text-white/60 text-base mt-1 leading-tight">{testimonial.title}</p>
         </div>
       </div>
     </div>
