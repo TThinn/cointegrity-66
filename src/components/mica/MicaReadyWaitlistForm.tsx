@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -246,4 +245,31 @@ const MicaReadyWaitlistForm = ({ serviceInterest, buttonText, buttonClass }: Mic
   );
 };
 
+// Add this section component to the same file
+const MicaIntroSection = () => {
+  return (
+    <section className="w-full max-w-4xl mx-auto px-6 py-12 text-center">
+      <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 lg:p-12">
+        <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+          Do You Need a MiCA License? Find Your EU Crypto Compliance Solution
+        </h2>
+        
+        <div className="text-lg text-white/80 leading-relaxed space-y-4">
+          <p>
+            Over 11,000 VASPs across the EU need MiCA licenses to continue operating. 
+            But Europe's largest regulatory expansion also caught thousands of companies that never knew they were crypto businesses—from 
+            gaming studios to payment processors.
+          </p>
+          
+          <p>
+            Whether you're applying for a CASP authorization or just discovered you need 
+            MiCA compliance, we have the right solution for your business.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 export default MicaReadyWaitlistForm;
+export { MicaIntroSection };
