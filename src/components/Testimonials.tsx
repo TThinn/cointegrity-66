@@ -5,7 +5,7 @@ import TestimonialCard from "./testimonials/TestimonialCard";
 import ParticleEffect from "./testimonials/ParticleEffect";
 import { useTestimonials } from "./testimonials/useTestimonials";
 import { useParticles } from "./testimonials/useParticles";
-import { useCardHeight } from "./testimonials/useCardHeight";
+import { useDynamicCardHeight } from "./testimonials/useDynamicCardHeight";
 
 const Testimonials = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -22,8 +22,8 @@ const Testimonials = () => {
   
   const { particles, sectionRef, buttonRef } = useParticles();
   
-  // Calculate consistent card height based on content
-  const cardHeight = useCardHeight(testimonials, activeTestimonials);
+  // Use dynamic height calculation
+  const { cardHeight, measurementRef } = useDynamicCardHeight(testimonials, activeTestimonials);
 
   // Handle responsive behavior
   useEffect(() => {
@@ -51,6 +51,9 @@ const Testimonials = () => {
         <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
       </div>
       
+      {/* Hidden measurement container */}
+      <div ref={measurementRef} className="absolute -top-full opacity-0 pointer-events-none" />
+      
       <Container>
         <div className="max-w-7xl mx-auto relative z-10">
           
@@ -61,8 +64,8 @@ const Testimonials = () => {
             <p className="mt-4 text-white/60 max-w-2xl mx-auto leading-relaxed">Our knowledge-first approach to Web3 transformation helps organizations successfully navigate the complex decentralized landscape. With deep expertise in blockchain strategy, product development, tax compliance, and capital acceleration, our specialists bridge the gap between traditional business and Web3 innovation. As your dependable guide through complex blockchain challenges, we deliver solutions that create measurable value. Don't just take our word for it-read what our clients say about working with our team:</p>
           </div>
 
-          {/* Cards Section */}
-          <div className="mb-12 md:mb-16">
+          {/* Cards Section with improved spacing */}
+          <div className="mb-8">
             <div ref={testimonialsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto w-full">
               {testimonialsToShow.map((testimonialIndex, position) => (
                 <TestimonialCard 
@@ -80,8 +83,8 @@ const Testimonials = () => {
             </div>
           </div>
             
-          {/* CTA Section - Anchored at bottom */}
-          <div className="text-center pt-8">
+          {/* CTA Section with proper 8px spacing */}
+          <div className="text-center pt-2">
             <div className="inline-block relative">
               <ParticleEffect particles={particles} />
               <a href="#contact" ref={buttonRef} className="inline-flex items-center relative z-20">
