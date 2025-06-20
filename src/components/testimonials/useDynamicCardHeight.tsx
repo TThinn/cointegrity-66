@@ -10,7 +10,6 @@ export const useDynamicCardHeight = (testimonials: TestimonialType[], activeTest
     const calculateOptimalHeight = () => {
       if (!measurementRef.current) return;
 
-      const container = measurementRef.current;
       let maxHeight = 0;
 
       // Get current screen size for responsive calculations
@@ -18,15 +17,16 @@ export const useDynamicCardHeight = (testimonials: TestimonialType[], activeTest
       const isMobile = screenWidth < 640;
       const isTablet = screenWidth >= 640 && screenWidth < 1024;
 
-      // Calculate base font sizes and spacing based on screen size
-      const baseFontSize = isMobile ? 14 : 16;
+      // Calculate responsive measurements
+      const cardPadding = isMobile ? 64 : 96; // p-8 = 32px * 2, p-12 = 48px * 2
+      const quoteFontSize = isMobile ? 14 : 16;
+      const nameFontSize = isMobile ? 16 : 18;
+      const titleFontSize = isMobile ? 14 : 16;
       const lineHeight = 1.5;
-      const baseSpacing = isMobile ? 32 : 48; // p-8 on mobile, p-12 on desktop
-      const authorSectionHeight = isMobile ? 60 : 70; // Approximate height for name + title
-      const gapBetweenSections = 32; // mt-8
+      const gapBetweenSections = isMobile ? 24 : 32; // mb-6 vs mb-8
+      const titleMarginTop = 4; // mt-1
 
-      // Calculate available width for text (accounting for padding)
-      const cardPadding = baseSpacing;
+      // Calculate available width for text
       const availableWidth = isMobile 
         ? Math.min(screenWidth - 64, 400) - cardPadding // Account for container padding
         : isTablet 
@@ -38,29 +38,38 @@ export const useDynamicCardHeight = (testimonials: TestimonialType[], activeTest
         const testimonial = testimonials[index];
         if (!testimonial) return;
 
-        // Estimate text height based on character count and available width
-        const textLength = testimonial.quote.length;
-        const avgCharsPerLine = Math.floor(availableWidth / (baseFontSize * 0.6)); // Rough estimate
-        const estimatedLines = Math.ceil(textLength / avgCharsPerLine);
-        const textHeight = estimatedLines * (baseFontSize * lineHeight);
+        // Calculate quote text height
+        const quoteLength = testimonial.quote.length + 2; // Add 2 for quotes
+        const avgCharsPerLine = Math.floor(availableWidth / (quoteFontSize * 0.55)); // More conservative estimate
+        const quoteLines = Math.max(1, Math.ceil(quoteLength / avgCharsPerLine));
+        const quoteHeight = quoteLines * (quoteFontSize * lineHeight);
 
-        // Total height = top/bottom padding + text height + gap + author section
-        const totalHeight = baseSpacing + textHeight + gapBetweenSections + authorSectionHeight;
+        // Calculate name height (single line, but account for font size)
+        const nameHeight = nameFontSize * lineHeight;
+
+        // Calculate title height (might wrap on mobile)
+        const titleLength = testimonial.title.length;
+        const titleCharsPerLine = Math.floor(availableWidth / (titleFontSize * 0.55));
+        const titleLines = Math.max(1, Math.ceil(titleLength / titleCharsPerLine));
+        const titleHeight = titleLines * (titleFontSize * lineHeight);
+
+        // Total height = padding + quote + gap + name + title margin + title
+        const totalHeight = cardPadding + quoteHeight + gapBetweenSections + nameHeight + titleMarginTop + titleHeight;
         
         maxHeight = Math.max(maxHeight, totalHeight);
       });
 
-      // Add some buffer and ensure minimum height
-      const finalHeight = Math.max(maxHeight + 20, 280);
+      // Add buffer and ensure minimum height
+      const finalHeight = Math.max(maxHeight + 40, 280); // Increased buffer
       setCardHeight(Math.round(finalHeight));
     };
 
     // Calculate initial height
     calculateOptimalHeight();
 
-    // Recalculate on window resize
+    // Recalculate on window resize with debounce
     const handleResize = () => {
-      setTimeout(calculateOptimalHeight, 100);
+      setTimeout(calculateOptimalHeight, 150);
     };
 
     window.addEventListener('resize', handleResize);
