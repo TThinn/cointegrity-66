@@ -1,7 +1,7 @@
+
 import React from "react";
 import { SafeHelmet } from "./SafeHelmet";
 import { getStructuredData } from "./SectionStructuredData";
-import { useLocation } from "react-router-dom";
 import { InternalLinkingStructuredData } from "./InternalLinkingStructuredData";
 import { HreflangSupport } from "./HreflangSupport";
 import { PerformanceOptimization } from "./PerformanceOptimization";
@@ -19,10 +19,8 @@ interface SeoHeadProps {
 }
 
 export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) => {
-  // Use props instead of useLocation to avoid context issues
   const pathWithoutSlash = currentPath.replace(/^\/+/, '');
   
-  // Determine which section is being viewed to customize meta tags
   const getSectionTitle = () => {
     // Handle path-based pages first
     if (pathWithoutSlash === 'web3-consulting') {
@@ -45,6 +43,12 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       return "Web3 Implementation Guides | Cointegrity";
     } else if (pathWithoutSlash === 'case-studies') {
       return "Web3 Success Stories | Case Studies | Cointegrity";
+    } else if (pathWithoutSlash === 'glossary') {
+      return "Web3 & Blockchain Glossary | Cointegrity";
+    } else if (pathWithoutSlash === 'process') {
+      return "Our Web3 Implementation Process | Cointegrity";
+    } else if (pathWithoutSlash === 'mica-ready-waitlist') {
+      return "MiCA Ready Waitlist | Regulatory Compliance | Cointegrity";
     }
     
     // Handle hash-based navigation on homepage
@@ -61,8 +65,8 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
         return "About Cointegrity | Web3 & Blockchain Experts";
       case "#contact":
         return "Contact Cointegrity | Web3 & Blockchain Consultation";
-      case "#faq":
-        return "Frequently Asked Questions | Web3 & Blockchain | Cointegrity";
+      case "#process":
+        return "Our Web3 Implementation Process | Cointegrity";
       default:
         return "Web3 Consulting Services | Blockchain Strategy & Implementation | Cointegrity";
     }
@@ -90,6 +94,12 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       return "Comprehensive Web3 implementation guides covering blockchain strategy, tokenomics, regulatory compliance, and digital asset best practices.";
     } else if (pathWithoutSlash === 'case-studies') {
       return "Detailed Web3 success stories and blockchain implementation case studies showcasing real-world digital asset transformation results.";
+    } else if (pathWithoutSlash === 'glossary') {
+      return "Complete Web3 and blockchain glossary with expert definitions of digital asset terms, tokenomics concepts, and regulatory terminology.";
+    } else if (pathWithoutSlash === 'process') {
+      return "Our proven Web3 implementation methodology: strategic assessment, architecture design, implementation guidance, and launch support.";
+    } else if (pathWithoutSlash === 'mica-ready-waitlist') {
+      return "Join our MiCA Ready waitlist for early access to European regulatory compliance solutions and digital asset framework guidance.";
     }
     
     // Handle hash-based navigation on homepage
@@ -106,32 +116,27 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
         return "Cointegrity simplifies Web3 complexity with expert blockchain consulting, strategic positioning, and regulatory compliance for digital transformation.";
       case "#contact":
         return "Connect with Web3 experts for blockchain consultation, tokenomics design, and regulatory compliance. Start your digital transformation.";
-      case "#faq":
-        return "Expert answers to Web3, blockchain, tokenomics, and MiCA compliance questions from Cointegrity's experienced consultants.";
+      case "#process":
+        return "Our proven Web3 implementation methodology: strategic assessment, architecture design, implementation guidance, and launch support.";
       default:
         return "Expert Web3 consulting for blockchain strategy, tokenomics design, MiCA compliance. Transform your business with proven digital asset solutions.";
     }
   };
 
-  // Get canonical URL based on whether it's path or hash based
   const getCanonicalUrl = () => {
     const basePath = "https://cointegrity.io";
     
-    // For dedicated section pages, use the path
     if (pathWithoutSlash) {
       return `${basePath}/${pathWithoutSlash}`;
     }
     
-    // For homepage with hash, use the hash
     if (currentHash) {
       return `${basePath}/${currentHash}`;
     }
     
-    // Default to homepage
     return basePath;
   };
 
-  // Get all structured data objects with current path and hash
   const structuredDataObjects = getStructuredData(currentPath, currentHash);
 
   return (
@@ -193,7 +198,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({ currentPath, currentHash }) =>
       <ContentFreshnessIndicators currentPath={currentPath} />
       <ExpertiseAuthoritySignals currentPath={currentPath} currentHash={currentHash} />
       
-      {/* New AI search optimization components */}
+      {/* AI search optimization components */}
       <AISearchOptimization currentPath={currentPath} currentHash={currentHash} />
       <ConversationalSearchData currentPath={currentPath} currentHash={currentHash} />
       <EntityRelationshipData currentPath={currentPath} currentHash={currentHash} />

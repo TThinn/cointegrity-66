@@ -5,14 +5,12 @@ interface ContentFreshnessIndicatorsProps {
   currentPath: string;
 }
 
-// Content freshness indicators for SEO - no visual component
 export const ContentFreshnessIndicators = ({ currentPath }: ContentFreshnessIndicatorsProps) => {
   const getCurrentDate = () => new Date().toISOString();
   
   const getContentMetadata = () => {
     const pathWithoutSlash = currentPath.replace(/^\/+/, '');
     
-    // Content freshness metadata by page
     const contentData: Record<string, {
       lastModified: string;
       publishDate: string;
@@ -22,15 +20,23 @@ export const ContentFreshnessIndicators = ({ currentPath }: ContentFreshnessIndi
       reviewCycle: string;
     }> = {
       '': {
-        lastModified: '2024-12-01T00:00:00Z',
+        lastModified: '2024-12-20T00:00:00Z',
         publishDate: '2024-01-01T00:00:00Z',
         contentType: 'homepage',
         updateFrequency: 'weekly',
         contentStatus: 'updated',
+        reviewCycle: 'weekly'
+      },
+      'web3-consulting': {
+        lastModified: '2024-12-20T00:00:00Z',
+        publishDate: '2024-01-01T00:00:00Z',
+        contentType: 'service-page',
+        updateFrequency: 'monthly',
+        contentStatus: 'updated',
         reviewCycle: 'monthly'
       },
       'about': {
-        lastModified: '2024-11-15T00:00:00Z',
+        lastModified: '2024-12-15T00:00:00Z',
         publishDate: '2024-01-01T00:00:00Z',
         contentType: 'company-information',
         updateFrequency: 'quarterly',
@@ -38,7 +44,7 @@ export const ContentFreshnessIndicators = ({ currentPath }: ContentFreshnessIndi
         reviewCycle: 'quarterly'
       },
       'services': {
-        lastModified: '2024-12-01T00:00:00Z',
+        lastModified: '2024-12-20T00:00:00Z',
         publishDate: '2024-01-01T00:00:00Z',
         contentType: 'service-catalog',
         updateFrequency: 'monthly',
@@ -46,7 +52,7 @@ export const ContentFreshnessIndicators = ({ currentPath }: ContentFreshnessIndi
         reviewCycle: 'monthly'
       },
       'team': {
-        lastModified: '2024-10-01T00:00:00Z',
+        lastModified: '2024-12-01T00:00:00Z',
         publishDate: '2024-01-01T00:00:00Z',
         contentType: 'team-profiles',
         updateFrequency: 'quarterly',
@@ -54,7 +60,7 @@ export const ContentFreshnessIndicators = ({ currentPath }: ContentFreshnessIndi
         reviewCycle: 'quarterly'
       },
       'process': {
-        lastModified: '2024-11-01T00:00:00Z',
+        lastModified: '2024-12-01T00:00:00Z',
         publishDate: '2024-01-01T00:00:00Z',
         contentType: 'methodology',
         updateFrequency: 'yearly',
@@ -62,7 +68,7 @@ export const ContentFreshnessIndicators = ({ currentPath }: ContentFreshnessIndi
         reviewCycle: 'yearly'
       },
       'partners': {
-        lastModified: '2024-11-30T00:00:00Z',
+        lastModified: '2024-12-01T00:00:00Z',
         publishDate: '2024-01-01T00:00:00Z',
         contentType: 'partnership-catalog',
         updateFrequency: 'monthly',
@@ -70,7 +76,7 @@ export const ContentFreshnessIndicators = ({ currentPath }: ContentFreshnessIndi
         reviewCycle: 'monthly'
       },
       'testimonials': {
-        lastModified: '2024-11-15T00:00:00Z',
+        lastModified: '2024-12-15T00:00:00Z',
         publishDate: '2024-01-01T00:00:00Z',
         contentType: 'testimonials',
         updateFrequency: 'monthly',
@@ -78,7 +84,7 @@ export const ContentFreshnessIndicators = ({ currentPath }: ContentFreshnessIndi
         reviewCycle: 'monthly'
       },
       'contact': {
-        lastModified: '2024-12-01T00:00:00Z',
+        lastModified: '2024-12-20T00:00:00Z',
         publishDate: '2024-01-01T00:00:00Z',
         contentType: 'contact-information',
         updateFrequency: 'weekly',
@@ -86,12 +92,44 @@ export const ContentFreshnessIndicators = ({ currentPath }: ContentFreshnessIndi
         reviewCycle: 'weekly'
       },
       'glossary': {
-        lastModified: '2024-11-20T00:00:00Z',
+        lastModified: '2024-12-20T00:00:00Z',
         publishDate: '2024-03-01T00:00:00Z',
         contentType: 'educational-resource',
         updateFrequency: 'weekly',
         contentStatus: 'updated',
         reviewCycle: 'weekly'
+      },
+      'blog': {
+        lastModified: '2024-12-20T00:00:00Z',
+        publishDate: '2024-06-01T00:00:00Z',
+        contentType: 'blog-content',
+        updateFrequency: 'weekly',
+        contentStatus: 'updated',
+        reviewCycle: 'weekly'
+      },
+      'guides': {
+        lastModified: '2024-12-20T00:00:00Z',
+        publishDate: '2024-06-01T00:00:00Z',
+        contentType: 'guide-content',
+        updateFrequency: 'weekly',
+        contentStatus: 'updated',
+        reviewCycle: 'weekly'
+      },
+      'case-studies': {
+        lastModified: '2024-12-20T00:00:00Z',
+        publishDate: '2024-06-01T00:00:00Z',
+        contentType: 'case-study-content',
+        updateFrequency: 'monthly',
+        contentStatus: 'updated',
+        reviewCycle: 'monthly'
+      },
+      'mica-ready-waitlist': {
+        lastModified: '2024-12-20T00:00:00Z',
+        publishDate: '2024-11-01T00:00:00Z',
+        contentType: 'landing-page',
+        updateFrequency: 'monthly',
+        contentStatus: 'updated',
+        reviewCycle: 'monthly'
       }
     };
 
@@ -153,7 +191,6 @@ export const ContentFreshnessIndicators = ({ currentPath }: ContentFreshnessIndi
   );
 };
 
-// Helper function to calculate next update date
 const getNextUpdateDate = (frequency: string): string => {
   const now = new Date();
   const nextUpdate = new Date(now);

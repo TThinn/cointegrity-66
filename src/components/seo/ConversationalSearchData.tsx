@@ -6,7 +6,6 @@ interface ConversationalSearchDataProps {
   currentHash: string;
 }
 
-// Conversation-optimized search data for AI assistants
 export const ConversationalSearchData = ({ currentPath, currentHash }: ConversationalSearchDataProps) => {
   const pathWithoutSlash = currentPath.replace(/^\/+/, '');
   
@@ -27,115 +26,103 @@ export const ConversationalSearchData = ({ currentPath, currentHash }: Conversat
           "Blockchain strategy consultant",
           "MiCA compliance help",
           "Tokenomics design services",
-          "Digital asset transformation",
-          "Web3 business strategy",
-          "Blockchain implementation guidance"
+          "Digital asset transformation"
         ],
         directAnswers: {
           "what_is_cointegrity": "Cointegrity is a leading Web3 consultancy that helps traditional businesses transition to blockchain technology through strategic consulting, tokenomics design, and regulatory compliance.",
           "main_services": "We offer strategic positioning, tokenomics design, regulatory navigation (MiCA compliance), and capital acceleration for Web3 projects.",
-          "target_clients": "Traditional businesses looking to implement blockchain technology, startups developing Web3 projects, and enterprises needing digital asset transformation.",
-          "unique_value": "We combine cutting-edge blockchain innovation with bulletproof regulatory compliance, ensuring successful Web3 implementations."
+          "target_clients": "Traditional businesses looking to implement blockchain technology, startups developing Web3 projects, and enterprises needing digital asset transformation."
         },
         followUpQuestions: [
           "How does Cointegrity help with MiCA compliance?",
           "What makes Cointegrity's tokenomics design unique?",
-          "How long does a typical Web3 implementation take?",
-          "What industries does Cointegrity serve?"
+          "How long does a typical Web3 implementation take?"
         ],
-        relatedConcepts: ["blockchain consulting", "digital transformation", "regulatory compliance", "token economics", "Web3 strategy"],
-        userIntents: ["learn_about_services", "evaluate_consultancy", "understand_web3", "compliance_guidance", "strategic_planning"]
+        relatedConcepts: ["blockchain consulting", "digital transformation", "regulatory compliance", "token economics"],
+        userIntents: ["learn_about_services", "evaluate_consultancy", "understand_web3", "compliance_guidance"]
       },
       'services': {
         intentQueries: [
           "Web3 consulting services list",
           "Blockchain strategy services",
           "Tokenomics design consultation",
-          "MiCA compliance services",
-          "Capital acceleration Web3",
-          "Digital asset strategy",
-          "Blockchain implementation services"
+          "MiCA compliance services"
         ],
         directAnswers: {
           "strategic_positioning": "We transform your Web3 vision into executable market strategy with proven frameworks aligned to business objectives.",
           "tokenomics_design": "Custom token economic models designed for sustainable growth, user engagement, and long-term value creation.",
-          "regulatory_navigation": "Expert MiCA compliance guidance ensuring your digital asset project meets all regulatory requirements.",
-          "capital_acceleration": "Strategic fundraising support and investment planning specifically for Web3 ventures."
+          "regulatory_navigation": "Expert MiCA compliance guidance ensuring your digital asset project meets all regulatory requirements."
         },
         followUpQuestions: [
           "How much do these services cost?",
           "How long does tokenomics design take?",
-          "What's included in MiCA compliance guidance?",
-          "Can you help with both strategy and implementation?"
+          "What's included in MiCA compliance guidance?"
         ],
-        relatedConcepts: ["service portfolio", "consulting methodology", "implementation support", "regulatory guidance"],
-        userIntents: ["evaluate_services", "compare_options", "understand_process", "get_pricing", "start_project"]
+        relatedConcepts: ["service portfolio", "consulting methodology", "implementation support"],
+        userIntents: ["evaluate_services", "compare_options", "understand_process", "get_pricing"]
       },
-      'about': {
+      'blog': {
         intentQueries: [
-          "About Cointegrity company",
-          "Cointegrity mission",
-          "Web3 consultancy background",
-          "Blockchain expertise",
-          "Company philosophy",
-          "Digital transformation approach"
+          "Web3 blog articles",
+          "Blockchain insights",
+          "Digital asset trends",
+          "Web3 industry analysis",
+          "Blockchain thought leadership"
         ],
         directAnswers: {
-          "company_mission": "Our mission is to simplify Web3 complexity and help traditional businesses navigate blockchain technology successfully.",
-          "approach": "We bridge traditional finance with blockchain innovation through proven methodologies and regulatory expertise.",
-          "philosophy": "We believe in balancing cutting-edge innovation with bulletproof compliance for sustainable Web3 success."
+          "blog_content": "Expert Web3 insights, blockchain trends, and digital asset strategies from industry thought leaders and experienced consultants.",
+          "article_topics": "Coverage includes tokenomics, regulatory compliance, blockchain implementation, market analysis, and Web3 adoption strategies.",
+          "expertise_level": "In-depth technical and strategic content written by practitioners with real-world blockchain implementation experience."
         },
         followUpQuestions: [
-          "What's Cointegrity's track record?",
-          "How does Cointegrity simplify Web3 complexity?",
-          "What industries has Cointegrity worked with?"
+          "How often do you publish new articles?",
+          "Can I subscribe to updates?",
+          "Do you cover specific blockchain technologies?"
         ],
-        relatedConcepts: ["company values", "business philosophy", "expertise areas", "implementation methodology"],
-        userIntents: ["learn_company_background", "understand_approach", "evaluate_expertise", "assess_credibility"]
+        relatedConcepts: ["thought leadership", "market insights", "technical analysis", "industry trends"],
+        userIntents: ["learn_industry_trends", "research_topics", "stay_updated", "expert_insights"]
       },
-      'team': {
+      'guides': {
         intentQueries: [
-          "Cointegrity team",
-          "Web3 experts",
-          "Blockchain consultants",
-          "Founding team",
-          "Expert credentials",
-          "Team experience"
+          "Web3 implementation guides",
+          "Blockchain implementation guide",
+          "How to implement Web3",
+          "Step by step blockchain guide",
+          "Web3 best practices"
         ],
         directAnswers: {
-          "team_expertise": "Our team combines decades of experience in blockchain technology, digital asset transformation, and regulatory compliance.",
-          "founder_background": "Industry veterans with proven track records in Web3 implementation and business transformation.",
-          "specializations": "Technical blockchain implementation, strategic business guidance, and regulatory compliance expertise."
+          "guide_content": "Comprehensive step-by-step guides covering Web3 implementation, blockchain strategy, tokenomics design, and regulatory compliance best practices.",
+          "implementation_focus": "Practical guidance for businesses transitioning to Web3, with real-world examples and proven methodologies.",
+          "technical_depth": "Detailed technical and strategic guidance suitable for both technical teams and business decision-makers."
         },
         followUpQuestions: [
-          "What's the team's educational background?",
-          "How many projects has the team completed?",
-          "Does the team have industry certifications?"
+          "Are guides updated regularly?",
+          "Can I get personalized implementation guidance?",
+          "Do guides include code examples?"
         ],
-        relatedConcepts: ["expert credentials", "professional experience", "industry expertise", "track record"],
-        userIntents: ["evaluate_expertise", "assess_credibility", "understand_background", "team_qualifications"]
+        relatedConcepts: ["implementation methodology", "best practices", "technical guidance", "step-by-step process"],
+        userIntents: ["learn_implementation", "follow_methodology", "get_guidance", "understand_process"]
       },
-      'process': {
+      'case-studies': {
         intentQueries: [
-          "Cointegrity process",
-          "Web3 implementation methodology",
-          "Blockchain project process",
-          "How does Cointegrity work",
-          "Implementation steps",
-          "Project methodology"
+          "Web3 success stories",
+          "Blockchain implementation case studies",
+          "Digital asset transformation examples",
+          "Web3 project results",
+          "Blockchain case studies"
         ],
         directAnswers: {
-          "methodology": "Our proven 4-step process: Strategic Assessment, Architecture Design, Implementation Guidance, and Launch Support.",
-          "timeline": "Systematic approach that minimizes risks while maximizing time-to-market efficiency.",
-          "approach": "Structured methodology ensuring comprehensive Web3 adoption from concept to launch."
+          "case_study_content": "Detailed real-world Web3 implementation success stories showcasing blockchain transformation results and digital asset project outcomes.",
+          "project_variety": "Case studies span multiple industries and use cases, from tokenomics design to regulatory compliance implementations.",
+          "results_focus": "Quantifiable results and measurable impact from Web3 implementations and blockchain strategy deployments."
         },
         followUpQuestions: [
-          "How long does each step take?",
-          "What's included in strategic assessment?",
-          "Do you provide ongoing support after launch?"
+          "Can you share similar case studies for my industry?",
+          "What were the key success factors?",
+          "How long did these implementations take?"
         ],
-        relatedConcepts: ["project methodology", "implementation framework", "systematic approach", "risk management"],
-        userIntents: ["understand_process", "evaluate_methodology", "project_planning", "timeline_estimation"]
+        relatedConcepts: ["success stories", "implementation results", "industry examples", "proven outcomes"],
+        userIntents: ["evaluate_results", "find_similar_cases", "understand_outcomes", "assess_success"]
       },
       'contact': {
         intentQueries: [
@@ -143,8 +130,7 @@ export const ConversationalSearchData = ({ currentPath, currentHash }: Conversat
           "Web3 consultation",
           "Schedule consultation",
           "Get in touch",
-          "Expert consultation",
-          "Project assessment"
+          "Expert consultation"
         ],
         directAnswers: {
           "consultation": "Schedule direct consultation with Web3 experts for personalized blockchain strategy guidance.",
@@ -156,7 +142,7 @@ export const ConversationalSearchData = ({ currentPath, currentHash }: Conversat
           "How quickly can you start a project?",
           "What information do you need for assessment?"
         ],
-        relatedConcepts: ["expert consultation", "project assessment", "strategic guidance", "professional services"],
+        relatedConcepts: ["expert consultation", "project assessment", "strategic guidance"],
         userIntents: ["schedule_consultation", "get_assessment", "start_project", "expert_guidance"]
       }
     };
@@ -183,11 +169,6 @@ export const ConversationalSearchData = ({ currentPath, currentHash }: Conversat
       "@type": "SearchAction",
       "target": "https://cointegrity.io/contact",
       "query-input": "required name=search_term_string"
-    },
-    "about": {
-      "@type": "Thing",
-      "name": "Web3 Consulting",
-      "description": "Conversational queries and answers about Web3 consulting services"
     }
   };
 
