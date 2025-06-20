@@ -1,9 +1,10 @@
 
-import React from "react"
+import React, { useEffect } from "react"
 import { Toaster } from "sonner"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { HelmetProvider } from "react-helmet-async"
 import ErrorBoundary from "./components/app/ErrorBoundary"
+import { initializeCacheManagement } from "./utils/cacheManager"
 
 // Page imports
 import Index from "./pages/Index"
@@ -27,6 +28,11 @@ import './index.css'
 import './App.css'
 
 const App = () => {
+  // Initialize cache management safely after React is ready
+  useEffect(() => {
+    initializeCacheManagement();
+  }, []);
+
   return (
     <ErrorBoundary>
       <HelmetProvider>
@@ -71,3 +77,4 @@ const App = () => {
 };
 
 export default App;
+

@@ -29,3 +29,6 @@ if (document.readyState === 'loading') {
 } else {
   initializeApp();
 }
+
+// Service worker initialization removed to prevent caching issues
+// Will be re-implemented in Phase 2 with proper cache invalidation

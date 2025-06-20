@@ -18,8 +18,8 @@ export const PerformanceOptimization = () => {
       {/* Optimize loading behavior */}
       <meta name="referrer" content="strict-origin-when-cross-origin" />
       
-      {/* Cache control hints for better performance */}
-      <meta httpEquiv="Cache-Control" content="public, max-age=31536000, immutable" />
+      {/* FIXED: More reasonable cache control - prevent aggressive caching */}
+      <meta httpEquiv="Cache-Control" content="public, max-age=3600, must-revalidate" />
       
       {/* Optimize viewport and rendering */}
       <meta name="theme-color" content="#133a63" />
@@ -34,3 +34,4 @@ export const PerformanceOptimization = () => {
     </Helmet>
   );
 };
+
