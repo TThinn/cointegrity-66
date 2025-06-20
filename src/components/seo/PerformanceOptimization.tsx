@@ -1,7 +1,7 @@
 
 import { Helmet } from "react-helmet-async";
 
-// Performance optimization meta tags and hints - no visual component
+// Performance optimization meta tags and hints - Phase 2 implementation
 export const PerformanceOptimization = () => {
   return (
     <Helmet>
@@ -18,8 +18,12 @@ export const PerformanceOptimization = () => {
       {/* Optimize loading behavior */}
       <meta name="referrer" content="strict-origin-when-cross-origin" />
       
-      {/* FIXED: More reasonable cache control - prevent aggressive caching */}
-      <meta httpEquiv="Cache-Control" content="public, max-age=3600, must-revalidate" />
+      {/* PHASE 2: Smart cache control - balance performance and freshness */}
+      <meta httpEquiv="Cache-Control" content="public, max-age=1800, stale-while-revalidate=3600" />
+      <meta httpEquiv="Pragma" content="no-cache" />
+      
+      {/* Add cache invalidation hint with build timestamp */}
+      <meta name="build-timestamp" content={process.env.BUILD_TIMESTAMP || ''} />
       
       {/* Optimize viewport and rendering */}
       <meta name="theme-color" content="#133a63" />
@@ -31,7 +35,9 @@ export const PerformanceOptimization = () => {
       
       {/* Resource timing API enablement */}
       <meta name="resource-timing" content="enabled" />
+      
+      {/* Critical CSS inline hint */}
+      <meta name="critical-css" content="inline" />
     </Helmet>
   );
 };
-

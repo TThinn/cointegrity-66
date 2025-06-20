@@ -4,6 +4,8 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import fs from 'fs';
+import type { ViteDevServer } from 'vite';
+import type { Connect } from 'vite';
 
 // Custom plugin to update sitemap dates
 const updateSitemapDates = () => {
@@ -27,13 +29,13 @@ const updateSitemapDates = () => {
   };
 };
 
-// Cache busting plugin for development and production
+// Enhanced cache busting plugin with proper TypeScript types
 const cacheBustingPlugin = () => {
   return {
     name: 'cache-busting',
-    configureServer(server) {
+    configureServer(server: ViteDevServer) {
       // Add cache-busting headers for development
-      server.middlewares.use((req, res, next) => {
+      server.middlewares.use((req: Connect.IncomingMessage, res: Connect.ServerResponse, next: Connect.NextFunction) => {
         // Prevent caching of HTML files and API responses
         if (req.url?.endsWith('.html') || req.url?.includes('/api/')) {
           res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
@@ -47,48 +49,42 @@ const cacheBustingPlugin = () => {
 };
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: 8080,
-  },
-  plugins: [
-    react(),
-    mode === 'development' && componentTagger(),
-    updateSitemapDates(),
-    cacheBustingPlugin(),
-  ].filter(Boolean),
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
+export default defineConfig(({ mode }) => {
+  const buildTimestamp = Date.now().toString();
+  
+  return {
+    server: {
+      host: "::",
+      port: 8080,
     },
-  },
-  build: {
-    sourcemap: mode === 'development',
-    // Add cache busting with build timestamps
-    rollupOptions: {
-      output: {
-        // Add timestamp to chunk names for cache busting
-        chunkFileNames: (chunkInfo) => {
-          const timestamp = Date.now();
-          return `assets/[name]-[hash]-${timestamp}.js`;
-        },
-        entryFileNames: (chunkInfo) => {
-          const timestamp = Date.now();
-          return `assets/[name]-[hash]-${timestamp}.js`;
-        },
-        assetFileNames: (assetInfo) => {
-          const timestamp = Date.now();
-          return `assets/[name]-[hash]-${timestamp}.[ext]`;
+    plugins: [
+      react(),
+      mode === 'development' && componentTagger(),
+      updateSitemapDates(),
+      cacheBustingPlugin(),
+    ].filter(Boolean),
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
+    build: {
+      sourcemap: mode === 'development',
+      // Enhanced cache busting with build timestamps
+      rollupOptions: {
+        output: {
+          // Add timestamp to chunk names for cache busting
+          chunkFileNames: `assets/[name]-[hash]-${buildTimestamp}.js`,
+          entryFileNames: `assets/[name]-[hash]-${buildTimestamp}.js`,
+          assetFileNames: `assets/[name]-[hash]-${buildTimestamp}.[ext]`
         }
       }
-    }
-  },
-  define: {
-    'process.env.NODE_ENV': JSON.stringify(mode === 'development' ? 'development' : 'production'),
-    // Add build timestamp for cache invalidation
-    'process.env.BUILD_TIMESTAMP': JSON.stringify(Date.now().toString()),
-  },
-  publicDir: path.resolve(__dirname, "./public"),
-}));
-
+    },
+    define: {
+      'process.env.NODE_ENV': JSON.stringify(mode === 'development' ? 'development' : 'production'),
+      // Add build timestamp for cache invalidation
+      'process.env.BUILD_TIMESTAMP': JSON.stringify(buildTimestamp),
+    },
+    publicDir: path.resolve(__dirname, "./public"),
+  };
+});
