@@ -141,7 +141,7 @@ export class CacheManager {
   }
 
   // Enhanced force refresh with user feedback
-  static async forceRefresh(showNotification: boolean = true): Promise<void> => {
+  static async forceRefresh(showNotification: boolean = true): Promise<void> {
     try {
       if (showNotification) {
         console.log('Forcing app refresh...');
@@ -173,7 +173,7 @@ export class CacheManager {
     serviceWorkerStatus: boolean;
     storageUsage: number;
     metadata: any;
-  }> => {
+  }> {
     const status = {
       version: null as string | null,
       lastCheck: null as string | null,
