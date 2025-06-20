@@ -10,7 +10,8 @@ interface TestimonialCardProps {
   isHovered: boolean;
   onMouseEnter: (position: number) => void;
   onMouseLeave: () => void;
-  cardHeight?: number;
+  cardHeight: number;
+  isHeightStable: boolean;
 }
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
@@ -22,6 +23,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   onMouseEnter,
   onMouseLeave,
   cardHeight,
+  isHeightStable,
 }) => {
   return (
     <div
@@ -30,7 +32,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         ${isChanging && !isVisible ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'} 
         ${isHovered ? 'transform -translate-y-2 shadow-xl border-white/20' : ''}`}
       style={{ 
-        height: cardHeight ? `${cardHeight}px` : 'auto',
+        height: isHeightStable ? `${cardHeight}px` : 'auto',
         minHeight: '280px'
       }}
       onMouseEnter={() => onMouseEnter(position)}

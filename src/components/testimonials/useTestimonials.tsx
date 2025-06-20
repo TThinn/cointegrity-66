@@ -17,8 +17,10 @@ export const useTestimonials = () => {
     const rotateTestimonial = () => {
       // Skip rotation if paused
       if (isPaused) return;
+      
       setChangingIndex(currentBoxIndex);
       setIsVisible(false);
+      
       setTimeout(() => {
         setActiveTestimonials(prev => {
           const newTestimonials = [...prev];
@@ -30,8 +32,10 @@ export const useTestimonials = () => {
           newTestimonials[currentBoxIndex] = nextTestimonialIndex;
           return newTestimonials;
         });
+        
         setTimeout(() => {
           setIsVisible(true);
+          setChangingIndex(null);
           currentBoxIndex = (currentBoxIndex + 1) % 4;
         }, 100);
       }, 300);

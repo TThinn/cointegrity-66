@@ -5,7 +5,7 @@ import TestimonialCard from "./testimonials/TestimonialCard";
 import ParticleEffect from "./testimonials/ParticleEffect";
 import { useTestimonials } from "./testimonials/useTestimonials";
 import { useParticles } from "./testimonials/useParticles";
-import { useDynamicCardHeight } from "./testimonials/useDynamicCardHeight";
+import { useCardHeightMeasurement } from "./testimonials/useCardHeightMeasurement";
 
 const Testimonials = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -22,8 +22,8 @@ const Testimonials = () => {
   
   const { particles, sectionRef, buttonRef } = useParticles();
   
-  // Use dynamic height calculation
-  const { cardHeight, measurementRef } = useDynamicCardHeight(testimonials, activeTestimonials);
+  // Use the new measurement-based height calculation
+  const { cardHeight, measurementRef, isInitialized } = useCardHeightMeasurement(testimonials);
 
   // Handle responsive behavior
   useEffect(() => {
@@ -52,7 +52,7 @@ const Testimonials = () => {
       </div>
       
       {/* Hidden measurement container */}
-      <div ref={measurementRef} className="absolute -top-full opacity-0 pointer-events-none" />
+      <div ref={measurementRef} className="absolute -top-full opacity-0 pointer-events-none w-full" />
       
       <Container>
         <div className="max-w-7xl mx-auto relative z-10">
@@ -78,6 +78,7 @@ const Testimonials = () => {
                   onMouseEnter={() => handleCardMouseEnter(position)} 
                   onMouseLeave={handleCardMouseLeave}
                   cardHeight={cardHeight}
+                  isHeightStable={isInitialized}
                 />
               ))}
             </div>
