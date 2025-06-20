@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
@@ -7,6 +8,7 @@ import MicaReadyWaitlistForm from "@/components/mica/MicaReadyWaitlistForm";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 import { SeoHead } from "@/components/seo/SeoHead";
 import LightParticles from "@/components/ui/LightParticles";
+
 const MicaReadyWaitlistPage = () => {
   const {
     currentPath,
@@ -48,16 +50,23 @@ const MicaReadyWaitlistPage = () => {
         </div>
       </section>
 
-      {/* MiCA Introduction Section */}
-      <section className="py-20 bg-[#010822] relative overflow-hidden">
+      {/* Solution Boxes Section with header and intro text */}
+      <section className="py-8 relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]"></div>
+          <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
+        </div>
+        
         <Container className="relative z-10">
-          <div className="w-full max-w-4xl mx-auto px-6 text-center">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 lg:p-12">
+          <div className="max-w-7xl mx-auto">
+            
+            {/* Header Section */}
+            <div className="text-center mb-12 md:mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
                 Do You Need a MiCA License? Find Your EU Crypto Compliance Solution
               </h2>
               
-              <div className="text-lg text-white/80 leading-relaxed space-y-4">
+              <div className="text-lg text-white/80 leading-relaxed space-y-4 max-w-4xl mx-auto">
                 <p>
                   Over 11,000 VASPs across the EU need MiCA licenses to continue operating. 
                   But Europe's largest regulatory expansion also caught thousands of companies that never knew they were crypto businesses—from 
@@ -70,15 +79,9 @@ const MicaReadyWaitlistPage = () => {
                 </p>
               </div>
             </div>
-          </div>
-        </Container>
-      </section>
 
-      {/* Solution Boxes Section with consistent card styling */}
-      <section className="py-20 bg-[#010822] relative overflow-hidden">
-        <Container className="relative z-10">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            {/* Service Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto">
               {/* Box 1: MiCA Intelligence Feed - Blue Theme */}
               <div className="p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 border border-white/30 hover:border-white/50 flex flex-col">
                 <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" style={{
@@ -202,4 +205,5 @@ const MicaReadyWaitlistPage = () => {
       <Footer />
     </div>;
 };
+
 export default MicaReadyWaitlistPage;
