@@ -2,6 +2,7 @@
 import React from "react"
 import { Toaster } from "sonner"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { HelmetProvider } from "react-helmet-async"
 import ErrorBoundary from "./components/app/ErrorBoundary"
 
 // Page imports
@@ -50,23 +51,25 @@ const AppRoutes = () => (
 
 const App = () => {
   return (
-    <ErrorBoundary>
-      <BrowserRouter>
-        <AppRoutes />
-        <Toaster 
-          position="top-center" 
-          closeButton
-          toastOptions={{
-            className: "toast-blur-container",
-            style: {
-              background: "transparent",
-              border: "none",
-              boxShadow: "none",
-            }
-          }}
-        />
-      </BrowserRouter>
-    </ErrorBoundary>
+    <HelmetProvider>
+      <ErrorBoundary>
+        <BrowserRouter>
+          <AppRoutes />
+          <Toaster 
+            position="top-center" 
+            closeButton
+            toastOptions={{
+              className: "toast-blur-container",
+              style: {
+                background: "transparent",
+                border: "none",
+                boxShadow: "none",
+              }
+            }}
+          />
+        </BrowserRouter>
+      </ErrorBoundary>
+    </HelmetProvider>
   );
 };
 
