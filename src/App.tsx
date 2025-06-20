@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { HelmetProvider } from "react-helmet-async"
 import ErrorBoundary from "./components/app/ErrorBoundary"
 import { initializeCacheManagement } from "./utils/cacheManager"
+import { initServiceWorker } from "./utils/serviceWorkerInit"
 
 // Page imports
 import Index from "./pages/Index"
@@ -28,9 +29,27 @@ import './index.css'
 import './App.css'
 
 const App = () => {
-  // Initialize cache management safely after React is ready
+  // PHASE 3: Initialize enhanced caching system after React is fully ready
   useEffect(() => {
+    // Initialize cache management first
     initializeCacheManagement();
+    
+    // Initialize service worker after cache management
+    setTimeout(() => {
+      initServiceWorker();
+    }, 300);
+    
+    // Listen for app updates
+    const handleAppUpdate = (event: CustomEvent) => {
+      console.log('App update notification received:', event.detail);
+      // Could show a toast notification here if needed
+    };
+    
+    window.addEventListener('app-update-available', handleAppUpdate as EventListener);
+    
+    return () => {
+      window.removeEventListener('app-update-available', handleAppUpdate as EventListener);
+    };
   }, []);
 
   return (
@@ -77,4 +96,3 @@ const App = () => {
 };
 
 export default App;
-
