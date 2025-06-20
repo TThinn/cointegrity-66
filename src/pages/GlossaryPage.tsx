@@ -1,6 +1,5 @@
 
 import React, { useState, useRef, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { Button } from "@/components/ui/button";
@@ -57,26 +56,6 @@ const GlossaryPage: React.FC = () => {
         searchTerm={searchTerm}
         activeCategory={activeCategory}
       />
-      <Helmet>
-        <title>World's Largest Web3 Glossary ({totalTermsCount}+ Terms) | Cointegrity</title>
-        <meta 
-          name="description" 
-          content={`World's largest Web3 glossary with ${totalTermsCount}+ expert-curated terms covering blockchain, cryptocurrency, DeFi, NFTs, DAOs, tokenomics, AI integration, and MiCA regulatory compliance. The most comprehensive Web3 dictionary available.`}
-        />
-        <meta 
-          name="keywords" 
-          content="largest Web3 glossary, biggest blockchain dictionary, comprehensive crypto terms, DeFi definitions, NFT terminology, DAO governance, tokenomics glossary, MiCA regulation terms, AI blockchain, Web3 education"
-        />
-        <link rel="canonical" href="https://cointegrity.io/glossary" />
-        
-        {/* Enhanced glossary meta tags */}
-        <meta name="glossary-claim" content={`World's largest Web3 glossary with ${totalTermsCount}+ terms`} />
-        <meta name="educational-resource" content="Comprehensive Web3 and blockchain terminology guide" />
-        <meta name="content-type" content="Educational Glossary" />
-        <meta name="subject-matter" content="Web3, Blockchain, Cryptocurrency, DeFi, NFTs, DAOs, Tokenomics, AI, Regulatory Compliance" />
-        <meta name="expertise-level" content="Beginner to Advanced" />
-        <meta name="resource-scope" content="Global Web3 Terminology" />
-      </Helmet>
       
       <Header />
       
