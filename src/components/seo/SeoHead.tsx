@@ -1,4 +1,3 @@
-
 import React from "react";
 import { SafeHelmet } from "./SafeHelmet";
 import { getStructuredData } from "./SectionStructuredData";
@@ -39,7 +38,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
       return "European Web3 Market Leaders | Global Blockchain Consultancy | Cointegrity";
     } else if (pathWithoutSlash === 'services') {
       return "Premier Web3 Services Globally | European Market Leaders | Cointegrity";
-    } else if (pathWithou tSlash === 'partners') {
+    } else if (pathWithoutSlash === 'partners') {
       return "Global Web3 Partnership Network | European Leaders | Cointegrity";
     } else if (pathWithoutSlash === 'team') {
       return "Most Experienced Web3 Team Europe | 20+ Years Leadership | Cointegrity";
@@ -117,7 +116,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
       case "#founders":
         return "Europe's most experienced Web3 leadership team with 20+ years combined expertise from traditional finance and enterprise backgrounds, unlike typical young crypto startups.";
       case "#services":
-        return "Leading Web3 services from European market leaders with global delivery across Asia, US, and Africa. Comprehensive blockchain strategy, token omics, and regulatory compliance.";
+        return "Leading Web3 services from European market leaders with global delivery across Asia, US, and Africa. Comprehensive blockchain strategy, tokenomics, and regulatory compliance.";
       case "#partners":
         return "Premier global Web3 partnership network led by European excellence. Trusted industry partnerships enabling world-class blockchain solutions across international markets.";
       case "#testimonials":

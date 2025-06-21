@@ -82,10 +82,6 @@ export const ContentFreshnessIndicators = ({ currentPath }: ContentFreshnessIndi
         geographicCoverage: 'Global methodology with regional adaptations'
       },
       'partners': {
-        lastMo
-
-
-'project': {
         lastModified: '2024-12-01T00:00:00Z',
         publishDate: '2024-01-01T00:00:00Z',
         contentType: 'partnership-catalog',
