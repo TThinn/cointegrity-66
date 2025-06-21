@@ -245,32 +245,6 @@ export const ConversationalSearchData = ({ currentPath, currentHash }: Conversat
           "educational_resource", "professional_development", "industry_knowledge"
         ]
       },
-      'mica-ready-waitlist': {
-        intentQueries: [
-          "MiCA Ready Suite",
-          "MiCA compliance AI solution",
-          "EU crypto regulation help",
-          "MiCA licensing requirements",
-          "AI-powered MiCA compliance",
-          "CASP authorization help",
-          "Markets in Crypto-Assets regulation"
-        ],
-        directAnswers: {
-          "mica_suite": "MiCA-Ready Suite is Cointegrity's AI-powered solution suite designed to simplify MiCA compliance, from regulatory intelligence to full CASP authorization support.",
-          "intelligence_feed": "Get AI-curated MiCA news and regulatory updates delivered to your inbox with 24/7 monitoring of ESMA and national regulators.",
-          "license_screening": "AI-powered screening tool guides you through comprehensive decision trees to determine your MiCA regulatory obligations.",
-          "document_review": "AI gap analysis against MiCA requirements with enhancement suggestions to bring your documentation up to compliance standards.",
-          "full_application": "End-to-end MiCA application preparation with AI-powered document generation, interactive wizard, and expert review at a fraction of traditional consulting costs."
-        },
-        followUpQuestions: [
-          "When will the MiCA-Ready Suite launch?",
-          "How much does each service cost?",
-          "Can I get early access to specific tools?",
-          "What makes this better than traditional consulting?"
-        ],
-        relatedConcepts: ["MiCA regulation", "EU compliance", "CASP licensing", "regulatory technology", "AI compliance tools"],
-        userIntents: ["get_mica_compliance", "early_access_signup", "regulatory_guidance", "cost_effective_solution"]
-      },
       'contact': {
         intentQueries: [
           "Contact Cointegrity",
