@@ -1,4 +1,3 @@
-
 import { GlossaryTerm as SourceGlossaryTerm } from "@/data/glossaryTerms";
 
 // Extract category types from the source definition
@@ -38,8 +37,7 @@ export const categoryMeta: CategoryMetaType[] = [
   { value: "privacy_technology", label: "Privacy Technology", description: "Technology for preserving privacy" },
   { value: "layer2_solutions", label: "Layer 2 Solutions", description: "Scaling solutions built on top of blockchains" },
   { value: "tokenization", label: "Tokenization", description: "Converting assets to tokens" },
-  { value: "crypto_economics", label: "Cryptoeconomics", description: "Economic principles of cryptocurrencies" },
-  { value: "governance", label: "Governance", description: "Decentralized governance mechanisms and DAOs" }
+  { value: "crypto_economics", label: "Cryptoeconomics", description: "Economic principles of cryptocurrencies" }
 ];
 
 // Define a data source selection type - simplified to only include available sources
