@@ -1,7 +1,9 @@
-import { GlossaryTerm as SourceGlossaryTerm } from "@/data/glossaryTerms";
+
+// Updated to use the new glossary structure
+import { GlossaryTerm as SourceGlossaryTerm, CategoryType as SourceCategoryType } from "@/data/glossary";
 
 // Extract category types from the source definition
-export type CategoryType = SourceGlossaryTerm['categories'][0];
+export type CategoryType = SourceCategoryType;
 
 // Define the structure for category metadata entries
 export type CategoryMetaType = { 
@@ -37,7 +39,8 @@ export const categoryMeta: CategoryMetaType[] = [
   { value: "privacy_technology", label: "Privacy Technology", description: "Technology for preserving privacy" },
   { value: "layer2_solutions", label: "Layer 2 Solutions", description: "Scaling solutions built on top of blockchains" },
   { value: "tokenization", label: "Tokenization", description: "Converting assets to tokens" },
-  { value: "crypto_economics", label: "Cryptoeconomics", description: "Economic principles of cryptocurrencies" }
+  { value: "crypto_economics", label: "Cryptoeconomics", description: "Economic principles of cryptocurrencies" },
+  { value: "identity", label: "Digital Identity", description: "Digital identity and authentication" }
 ];
 
 // Define a data source selection type - simplified to only include available sources

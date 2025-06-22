@@ -1,7 +1,6 @@
-
 // Glossary structured data using Schema.org DefinedTermSet and DefinedTerm markup
 
-import { glossaryTerms } from "@/data/glossaryTerms";
+import { glossaryTerms } from "@/data/glossary";
 
 // Create the base DefinedTermSet schema for the entire glossary
 export const GLOSSARY_STRUCTURED_DATA = {

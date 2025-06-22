@@ -1,6 +1,6 @@
 
 import { useMemo } from "react";
-import { glossaryTerms } from "@/data/glossaryTerms";
+import { glossaryTerms } from "@/data/glossary";
 import { CategoryType } from "./types";
 
 /**
