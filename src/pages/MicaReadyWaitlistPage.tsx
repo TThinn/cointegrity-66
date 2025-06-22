@@ -170,7 +170,7 @@ const MicaReadyWaitlistPage = () => {
                   <div className="text-white/60 text-sm">Perfect for law firms, consultants, VCs, compliance officers</div>
                 </div>
                 
-                <MicaReadyWaitlistForm serviceInterest="intelligence-feed" buttonText="I'm interested - Put me on the waiting list" buttonClass="w-full bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto" />
+                <MicaReadyWaitlistForm serviceInterest="intelligence-feed" buttonText="Put me on the waiting list" buttonClass="w-full bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto" />
               </div>
 
               {/* Box 2: MiCA License Screening - Purple Theme */}
@@ -199,7 +199,7 @@ const MicaReadyWaitlistPage = () => {
                   <div className="text-white/60 text-sm">Ideal for early-stage projects, uncertain businesses</div>
                 </div>
                 
-                <MicaReadyWaitlistForm serviceInterest="license-screening" buttonText="I'm interested - Put me on the waiting list" buttonClass="w-full bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto" />
+                <MicaReadyWaitlistForm serviceInterest="license-screening" buttonText="Put me on the waiting list" buttonClass="w-full bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto" />
               </div>
 
               {/* Box 3: Document Review & Enhancement - Green Theme */}
@@ -228,7 +228,7 @@ const MicaReadyWaitlistPage = () => {
                   <div className="text-white/60 text-sm">For companies with existing documentation</div>
                 </div>
                 
-                <MicaReadyWaitlistForm serviceInterest="document-review" buttonText="I'm interested - Put me on the waiting list" buttonClass="w-full bg-gradient-to-r from-green-400 via-green-500 to-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto" />
+                <MicaReadyWaitlistForm serviceInterest="document-review" buttonText="Put me on the waiting list" buttonClass="w-full bg-gradient-to-r from-green-400 via-green-500 to-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto" />
               </div>
 
               {/* Box 4: Full Application Support - Orange Theme */}
@@ -257,7 +257,7 @@ const MicaReadyWaitlistPage = () => {
                   <div className="text-white/60 text-sm">For companies ready for full application</div>
                 </div>
                 
-                <MicaReadyWaitlistForm serviceInterest="full-application" buttonText="I'm interested - Put me on the waiting list" buttonClass="w-full bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto" />
+                <MicaReadyWaitlistForm serviceInterest="full-application" buttonText="Put me on the waiting list" buttonClass="w-full bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto" />
               </div>
             </div>
           </div>
