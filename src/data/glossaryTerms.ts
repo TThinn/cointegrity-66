@@ -11544,6 +11544,4 @@ trending: 8
   trending: 6
 }
 
-
-
 ];
