@@ -114,12 +114,12 @@ const MicaReadyWaitlistPage = () => {
         <div className="hero-content relative z-8 text-lg font-normal flex flex-col justify-center items-center gap-6 max-w-[90vw] xl:max-w-[1200px] mx-auto">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              World's Fastest MiCA-Ready
-              <span className="bg-gradient-to-r from-[#d946ef] to-[#9333ea] bg-clip-text text-transparent"> SaaS Suite</span>
+              Get Early Access to 
+              <span className="bg-gradient-to-r from-[#d946ef] to-[#9333ea] bg-clip-text text-transparent">AI-Powered MiCA Compliance</span>
             </h1>
             <h2 className="text-2xl md:text-3xl font-semibold text-white/90 mb-4">Lightning-Fast MiCA Compliance in Minutes, Not Months</h2>
             <p className="text-white/80 max-w-3xl mx-auto text-base">
-              The fastest AI-powered MiCA compliance platform delivering instant regulatory analysis, automated workflows, and rapid CASP authorization - 10x faster than traditional consulting
+              Be first in line for our complete suite launching Q3 2025. From regulatory intelligence to full CASP authorization—secure your spot now
             </p>
           </div>
         </div>
