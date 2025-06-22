@@ -29,7 +29,7 @@ export const web3Terms: GlossaryTerm[] = [
   {
     term: "Interoperability",
     definition: "The ability of different blockchain networks and systems to communicate and work together seamlessly.",
-    categories: ["web3", "infrastructure"],
+    categories: ["web3", "infrastructure_applications"],
     related: ["Cross-Chain", "Bridge", "Protocol"]
   }
 ];

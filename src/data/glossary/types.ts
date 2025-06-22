@@ -33,4 +33,5 @@ export type CategoryType =
   | "layer2_solutions"
   | "tokenization"
   | "crypto_economics"
-  | "identity";
+  | "identity"
+  | "dao";
