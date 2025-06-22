@@ -31,5 +31,35 @@ export const blockchainTechnologyTerms: GlossaryTerm[] = [
     definition: "A computer that participates in a blockchain network by maintaining a copy of the ledger and validating transactions.",
     categories: ["blockchain_technology"],
     related: ["Full Node", "Light Node", "Validator"]
+  },
+  {
+    term: "Distributed Ledger",
+    definition: "A database that is consensually shared and synchronized across multiple sites, institutions, or geographies.",
+    categories: ["blockchain_technology"],
+    related: ["Blockchain", "Decentralization", "Consensus"]
+  },
+  {
+    term: "Merkle Tree",
+    definition: "A binary tree structure used in blockchain to efficiently summarize all transactions in a block.",
+    categories: ["blockchain_technology"],
+    related: ["Hash", "Block", "Data Structure"]
+  },
+  {
+    term: "Fork",
+    definition: "A change to the blockchain protocol that creates a divergence from the original chain.",
+    categories: ["blockchain_technology"],
+    related: ["Hard Fork", "Soft Fork", "Protocol Upgrade"]
+  },
+  {
+    term: "Immutability",
+    definition: "The characteristic of blockchain that makes it extremely difficult to alter or delete recorded transactions.",
+    categories: ["blockchain_technology"],
+    related: ["Security", "Cryptography", "Trust"]
+  },
+  {
+    term: "Transparency",
+    definition: "The ability for all network participants to view and verify transactions on a public blockchain.",
+    categories: ["blockchain_technology"],
+    related: ["Public Ledger", "Verification", "Trust"]
   }
 ];

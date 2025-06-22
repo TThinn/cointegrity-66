@@ -58,6 +58,8 @@ export const glossaryTerms: GlossaryTerm[] = [
   ...cryptoEconomicsTerms
 ];
 
+console.log(`📚 Glossary loaded with ${glossaryTerms.length} total terms`);
+
 // Export types for use in components
 export type { GlossaryTerm, CategoryType } from "./types";
 

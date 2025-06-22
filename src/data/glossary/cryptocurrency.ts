@@ -31,5 +31,35 @@ export const cryptocurrencyTerms: GlossaryTerm[] = [
     definition: "Cryptocurrencies inspired by internet memes or jokes, often characterized by high volatility and community-driven value.",
     categories: ["cryptocurrency_types"],
     related: ["Dogecoin", "Shiba Inu", "Community Token"]
+  },
+  {
+    term: "Cryptocurrency",
+    definition: "A digital or virtual currency that uses cryptography for security and operates independently of a central bank.",
+    categories: ["cryptocurrency_types"],
+    related: ["Digital Currency", "Cryptography", "Decentralization"]
+  },
+  {
+    term: "Token",
+    definition: "A digital asset created and managed on an existing blockchain platform, representing various utilities or assets.",
+    categories: ["cryptocurrency_types"],
+    related: ["Cryptocurrency", "Smart Contract", "Utility"]
+  },
+  {
+    term: "Privacy Coin",
+    definition: "Cryptocurrencies designed to provide enhanced privacy and anonymity for transactions.",
+    categories: ["cryptocurrency_types", "privacy_technology"],
+    related: ["Monero", "Zcash", "Privacy"]
+  },
+  {
+    term: "Central Bank Digital Currency",
+    definition: "Digital versions of a country's fiat currency issued and controlled by the central bank.",
+    categories: ["cryptocurrency_types", "regulatory_frameworks"],
+    related: ["CBDC", "Digital Currency", "Government"]
+  },
+  {
+    term: "Utility Token",
+    definition: "A cryptocurrency designed to provide access to a specific product or service within a blockchain ecosystem.",
+    categories: ["cryptocurrency_types", "tokenomics"],
+    related: ["Token Utility", "Ecosystem", "Use Case"]
   }
 ];
