@@ -1,7 +1,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { CategoryType, DataSourceType, GlossaryTerm } from "./types";
-import { glossaryTerms } from "@/data/glossary";
+import { glossaryTerms } from "@/data/glossaryTerms";
 import { toast } from "sonner";
 
 /**
