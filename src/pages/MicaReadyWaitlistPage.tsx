@@ -137,11 +137,9 @@ const MicaReadyWaitlistPage = () => {
             
             {/* Header Section */}
             <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">Get Instant Access to AI-Powered MiCA Compliance</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">Four different solutions to tailor to your specific Mica Compliance needs</h2>
               
-              <div className="text-lg text-white/80 leading-relaxed space-y-4 max-w-4xl mx-auto">
-                <p className="text-base">Be first in line for the world's fastest MiCA compliance suite launching Q3 2025. From instant regulatory intelligence to rapid CASP authorization—secure your competitive advantage now.</p>
-              </div>
+              
             </div>
 
             {/* Service Cards */}
