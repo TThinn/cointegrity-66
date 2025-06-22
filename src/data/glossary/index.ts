@@ -59,6 +59,19 @@ export const glossaryTerms: GlossaryTerm[] = [
 ];
 
 console.log(`📚 Glossary loaded with ${glossaryTerms.length} total terms`);
+console.log(`📊 Terms by category:`, {
+  blockchain: blockchainTechnologyTerms.length,
+  crypto: cryptocurrencyTerms.length,
+  web3: web3Terms.length,
+  defi: defiTerms.length,
+  nfts: nftTerms.length,
+  smartContracts: smartContractTerms.length,
+  wallets: walletsTerms.length,
+  exchanges: exchangesTerms.length,
+  mining: miningTerms.length,
+  regulatory: regulatoryTerms.length,
+  tokenomics: tokenomicsTerms.length
+});
 
 // Export types for use in components
 export type { GlossaryTerm, CategoryType } from "./types";

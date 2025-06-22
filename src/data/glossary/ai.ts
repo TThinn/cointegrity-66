@@ -31,5 +31,65 @@ export const aiTerms: GlossaryTerm[] = [
     definition: "AI-enhanced blockchain oracles that provide more intelligent and context-aware data feeds to smart contracts.",
     categories: ["ai_data", "smart_contracts"],
     related: ["Oracle", "AI", "Smart Contract"]
+  },
+  {
+    term: "AI Agent",
+    definition: "Autonomous software programs that can make decisions and take actions on behalf of users in blockchain environments.",
+    categories: ["ai_data"],
+    related: ["Autonomous Agent", "Decision Making", "Automation"]
+  },
+  {
+    term: "Federated Learning",
+    definition: "A machine learning approach where models are trained across decentralized data sources without sharing raw data.",
+    categories: ["ai_data"],
+    related: ["Decentralized Learning", "Privacy Preservation", "Distributed AI"]
+  },
+  {
+    term: "Decentralized AI",
+    definition: "AI systems that operate across distributed networks rather than centralized servers, often using blockchain technology.",
+    categories: ["ai_data"],
+    related: ["Distributed Computing", "Blockchain AI", "Decentralized Network"]
+  },
+  {
+    term: "AI Training Data",
+    definition: "Large datasets used to train artificial intelligence models, potentially stored and managed on blockchain networks.",
+    categories: ["ai_data"],
+    related: ["Dataset", "Model Training", "Data Management"]
+  },
+  {
+    term: "Predictive Analytics",
+    definition: "AI techniques used to analyze market data and predict cryptocurrency price movements or trends.",
+    categories: ["ai_data"],
+    related: ["Market Prediction", "Data Analysis", "Forecasting"]
+  },
+  {
+    term: "Algorithmic Trading",
+    definition: "Automated trading systems that use AI and algorithms to execute cryptocurrency trades based on predefined strategies.",
+    categories: ["ai_data", "exchanges_trading"],
+    related: ["Automated Trading", "Trading Bot", "Strategy Execution"]
+  },
+  {
+    term: "Natural Language Processing",
+    definition: "AI technology that enables computers to understand, interpret, and generate human language.",
+    categories: ["ai_data"],
+    related: ["NLP", "Language Understanding", "Text Processing"]
+  },
+  {
+    term: "Computer Vision",
+    definition: "AI technology that enables computers to interpret and analyze visual information from digital images or videos.",
+    categories: ["ai_data"],
+    related: ["Image Recognition", "Visual Analysis", "Pattern Recognition"]
+  },
+  {
+    term: "Reinforcement Learning",
+    definition: "A type of machine learning where agents learn to make decisions by receiving rewards or penalties for their actions.",
+    categories: ["ai_data"],
+    related: ["Learning Algorithm", "Decision Making", "Reward System"]
+  },
+  {
+    term: "GPT",
+    definition: "Generative Pre-trained Transformer - a type of large language model capable of generating human-like text.",
+    categories: ["ai_data"],
+    related: ["Large Language Model", "Text Generation", "AI Assistant"]
   }
 ];

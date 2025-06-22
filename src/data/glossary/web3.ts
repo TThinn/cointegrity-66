@@ -61,5 +61,35 @@ export const web3Terms: GlossaryTerm[] = [
     definition: "The ability to combine different decentralized protocols and applications like building blocks to create new functionality.",
     categories: ["web3"],
     related: ["DeFi", "Modularity", "Innovation"]
+  },
+  {
+    term: "Permissionless",
+    definition: "A system where anyone can participate without requiring approval from a central authority.",
+    categories: ["web3"],
+    related: ["Open Access", "Decentralization", "Censorship Resistance"]
+  },
+  {
+    term: "Trustless",
+    definition: "A system that operates without requiring trust between parties, relying on cryptographic proof and consensus mechanisms.",
+    categories: ["web3"],
+    related: ["Cryptographic Proof", "Consensus", "No Third Party"]
+  },
+  {
+    term: "P2P",
+    definition: "Peer-to-Peer - direct interaction between parties without intermediaries, fundamental to Web3 architecture.",
+    categories: ["web3"],
+    related: ["Direct Transaction", "No Intermediary", "Decentralized Network"]
+  },
+  {
+    term: "Digital Identity",
+    definition: "A verifiable digital representation of a person or entity that can be used across Web3 applications.",
+    categories: ["web3", "identity"],
+    related: ["Self-Sovereign Identity", "Verification", "Authentication"]
+  },
+  {
+    term: "Web3 Browser",
+    definition: "Browsers designed to interact with decentralized applications and blockchain networks directly.",
+    categories: ["web3"],
+    related: ["Brave Browser", "dApp Browser", "Blockchain Integration"]
   }
 ];

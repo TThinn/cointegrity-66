@@ -57,9 +57,69 @@ export const cryptocurrencyTerms: GlossaryTerm[] = [
     related: ["CBDC", "Digital Currency", "Government"]
   },
   {
-    term: "Utility Token",
-    definition: "A cryptocurrency designed to provide access to a specific product or service within a blockchain ecosystem.",
-    categories: ["cryptocurrency_types", "tokenomics"],
-    related: ["Token Utility", "Ecosystem", "Use Case"]
+    term: "CBDC",
+    definition: "Central Bank Digital Currency - a digital form of a country's fiat currency issued by the central bank.",
+    categories: ["cryptocurrency_types", "regulatory_frameworks"],
+    related: ["Central Bank Digital Currency", "Digital Currency", "Fiat"]
+  },
+  {
+    term: "Dogecoin",
+    definition: "A cryptocurrency created as a joke based on the popular 'Doge' meme, which has gained significant community support.",
+    categories: ["cryptocurrency_types"],
+    related: ["Memecoin", "Community Token", "Altcoin"]
+  },
+  {
+    term: "Litecoin",
+    definition: "A peer-to-peer cryptocurrency created as a 'lighter' version of Bitcoin with faster transaction times.",
+    categories: ["cryptocurrency_types"],
+    related: ["Bitcoin", "Altcoin", "Scrypt"]
+  },
+  {
+    term: "Ripple",
+    definition: "Both a digital payment protocol and cryptocurrency (XRP) designed for fast, low-cost international money transfers.",
+    categories: ["cryptocurrency_types"],
+    related: ["XRP", "Payment Protocol", "Cross-border"]
+  },
+  {
+    term: "Monero",
+    definition: "A privacy-focused cryptocurrency that uses advanced cryptographic techniques to obscure transaction details.",
+    categories: ["cryptocurrency_types", "privacy_technology"],
+    related: ["Privacy Coin", "Ring Signatures", "Anonymity"]
+  },
+  {
+    term: "Zcash",
+    definition: "A cryptocurrency that offers enhanced privacy through zero-knowledge proofs while maintaining a public blockchain.",
+    categories: ["cryptocurrency_types", "privacy_technology"],
+    related: ["Privacy Coin", "zk-SNARKs", "Zero-Knowledge"]
+  },
+  {
+    term: "Cardano",
+    definition: "A blockchain platform focused on sustainability, scalability, and academic research-based development.",
+    categories: ["cryptocurrency_types"],
+    related: ["ADA", "Proof of Stake", "Academic Research"]
+  },
+  {
+    term: "Polkadot",
+    definition: "A multi-chain blockchain platform that enables different blockchains to transfer messages and value.",
+    categories: ["cryptocurrency_types"],
+    related: ["Interoperability", "Parachain", "Cross-Chain"]
+  },
+  {
+    term: "Chainlink",
+    definition: "A decentralized oracle network that connects smart contracts with real-world data.",
+    categories: ["cryptocurrency_types", "smart_contracts"],
+    related: ["Oracle", "Smart Contract", "External Data"]
+  },
+  {
+    term: "Binance Coin",
+    definition: "The native cryptocurrency of the Binance exchange, used for trading fee discounts and other utilities.",
+    categories: ["cryptocurrency_types"],
+    related: ["BNB", "Exchange Token", "Utility Token"]
+  },
+  {
+    term: "Solana",
+    definition: "A high-performance blockchain platform designed for decentralized applications and crypto-currencies.",
+    categories: ["cryptocurrency_types"],
+    related: ["SOL", "High Throughput", "Proof of History"]
   }
 ];
