@@ -10881,11 +10881,6 @@ trending: 8
   trending: 7
 },
 {
-  term: "ICO Boom",
-  definition: "The period during 2 CEX, 'Security', 'Bitcoin'],
-  trending: 7
-},
-{
   term: 'ICO Boom',
   definition: 'The period during 2017 and early 2018 characterized by a massive speculative bubble in Initial Coin Offerings (ICOs). Thousands of projects raised billions of dollars by issuing new tokens, often with little more than a whitepaper. The boom was marked by extreme hype, widespread scams, and ultimately led to a market crash and increased regulatory scrutiny.',
   categories: ['crypto_history', 'tokenomics'],
