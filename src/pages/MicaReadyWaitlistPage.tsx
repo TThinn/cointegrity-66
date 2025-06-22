@@ -137,7 +137,7 @@ const MicaReadyWaitlistPage = () => {
             
             {/* Header Section */}
             <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">Four different solutions to tailor to your specific Mica Compliance needs</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">Four solutions dedicated to your specific Mica Compliance needs</h2>
               
               
             </div>
