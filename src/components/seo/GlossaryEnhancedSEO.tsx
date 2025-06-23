@@ -1,6 +1,11 @@
 
 import { Helmet } from "react-helmet-async";
 import { ALL_GLOSSARY_STRUCTURED_DATA } from "./glossaryStructuredData";
+import { GLOSSARY_FAQ_STRUCTURED_DATA } from "./glossaryFaqStructuredData";
+import { GLOSSARY_HOWTO_STRUCTURED_DATA, WEB3_LEARNING_HOWTO_STRUCTURED_DATA } from "./glossaryHowToStructuredData";
+import { GLOSSARY_ITEMLIST_STRUCTURED_DATA, POPULAR_TERMS_ITEMLIST } from "./glossaryItemListStructuredData";
+import { GLOSSARY_QA_STRUCTURED_DATA, GLOSSARY_QAPAGE_STRUCTURED_DATA } from "./glossaryQAStructuredData";
+import { ENHANCED_GLOSSARY_SCHEMAS } from "./enhancedGlossaryStructuredData";
 
 interface GlossaryEnhancedSEOProps {
   currentPath: string;
@@ -84,7 +89,6 @@ export const GlossaryEnhancedSEO = ({
     "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
   };
 
-  // Comprehensive knowledge base structured data
   const knowledgeBaseData = {
     "@context": "https://schema.org",
     "@type": "Dataset",
@@ -116,7 +120,6 @@ export const GlossaryEnhancedSEO = ({
     "temporalCoverage": "2024/.."
   };
 
-  // Search and discovery optimization
   const searchOptimizationData = {
     "@context": "https://schema.org",
     "@type": "SearchAction",
@@ -133,7 +136,6 @@ export const GlossaryEnhancedSEO = ({
     }
   };
 
-  // Authority and expertise signals
   const expertiseSignals = {
     "@context": "https://schema.org",
     "@type": "Claim",
@@ -179,19 +181,63 @@ export const GlossaryEnhancedSEO = ({
         {JSON.stringify(expertiseSignals)}
       </script>
       
-      {/* All glossary term structured data */}
+      {/* All original glossary term structured data */}
       {ALL_GLOSSARY_STRUCTURED_DATA.map((data, index) => (
         <script key={`glossary-term-${index}`} type="application/ld+json">
           {JSON.stringify(data)}
         </script>
       ))}
 
-      {/* Enhanced meta tags for largest glossary claim */}
+      {/* Enhanced FAQ structured data */}
+      <script type="application/ld+json">
+        {JSON.stringify(GLOSSARY_FAQ_STRUCTURED_DATA)}
+      </script>
+
+      {/* How-To structured data */}
+      <script type="application/ld+json">
+        {JSON.stringify(GLOSSARY_HOWTO_STRUCTURED_DATA)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(WEB3_LEARNING_HOWTO_STRUCTURED_DATA)}
+      </script>
+
+      {/* ItemList structured data */}
+      {GLOSSARY_ITEMLIST_STRUCTURED_DATA.map((itemList, index) => (
+        <script key={`itemlist-${index}`} type="application/ld+json">
+          {JSON.stringify(itemList)}
+        </script>
+      ))}
+      <script type="application/ld+json">
+        {JSON.stringify(POPULAR_TERMS_ITEMLIST)}
+      </script>
+
+      {/* QAPage structured data */}
+      <script type="application/ld+json">
+        {JSON.stringify(GLOSSARY_QAPAGE_STRUCTURED_DATA)}
+      </script>
+      {GLOSSARY_QA_STRUCTURED_DATA.slice(0, 10).map((qa, index) => (
+        <script key={`qa-${index}`} type="application/ld+json">
+          {JSON.stringify(qa)}
+        </script>
+      ))}
+
+      {/* Enhanced schemas */}
+      {ENHANCED_GLOSSARY_SCHEMAS.map((schema, index) => (
+        <script key={`enhanced-${index}`} type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      ))}
+
+      {/* Enhanced meta tags for rich snippets */}
       <meta name="glossary-size" content={totalTermsCount.toString()} />
       <meta name="glossary-claim" content="World's largest Web3 and cryptocurrency glossary" />
       <meta name="educational-level" content="Beginner, Intermediate, Advanced" />
       <meta name="learning-resource-type" content="Comprehensive Glossary" />
       <meta name="subject-area" content="Web3, Blockchain, Cryptocurrency, AI, Regulatory Compliance" />
+      <meta name="qa-format" content="Question and Answer pairs for enhanced search visibility" />
+      <meta name="howto-guide" content="Step-by-step guides for glossary usage and Web3 learning" />
+      <meta name="itemlist-organization" content="Categorized and alphabetical term organization" />
+      <meta name="faq-coverage" content="Comprehensive FAQ covering glossary usage and Web3 concepts" />
       
       {/* Conversational search optimization */}
       <meta name="conversational-queries" content={glossaryConversationalQueries.join(' | ')} />
@@ -202,6 +248,10 @@ export const GlossaryEnhancedSEO = ({
       
       {/* Search result enhancement */}
       <meta name="search-result-snippet" content={`Explore ${totalTermsCount}+ Web3, blockchain, and AI terms in the world's most comprehensive cryptocurrency glossary. Expert-curated definitions covering DeFi, NFTs, DAOs, and regulatory compliance.`} />
+      
+      {/* Rich snippet optimization indicators */}
+      <meta name="rich-snippet-types" content="FAQ, HowTo, ItemList, QAPage, DefinedTermSet, EducationalResource" />
+      <meta name="structured-data-coverage" content="Complete schema.org implementation for enhanced search visibility" />
       
       {/* Category-specific meta if filtered */}
       {activeCategory && activeCategory !== 'all' && (
