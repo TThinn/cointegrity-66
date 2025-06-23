@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Container from "@/components/ui/Container";
+import ScrollIndicator from "@/components/ui/ScrollIndicator";
 import MicaReadyWaitlistForm from "@/components/mica/MicaReadyWaitlistForm";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 import { SeoHead } from "@/components/seo/SeoHead";
@@ -13,7 +14,9 @@ const MicaReadyWaitlistPage = () => {
     currentPath,
     currentHash
   } = useSectionTracking();
-  return <div className="min-h-screen bg-[#010822] overflow-x-hidden">
+  
+  return (
+    <div className="min-h-screen bg-[#010822] overflow-x-hidden">
       <SeoHead currentPath={currentPath} currentHash={currentHash} />
       <Helmet>
         <title>World's Fastest MiCA-Ready SaaS Suite - AI-Powered EU Compliance | Cointegrity</title>
@@ -99,16 +102,19 @@ const MicaReadyWaitlistPage = () => {
 
       <Header />
       
-      {/* Hero section with full screen height */}
-      <section className="hero-section min-h-screen flex items-center justify-center pt-20 pb-16 relative overflow-hidden bg-[#010822] isolate">
+      {/* Hero section with adjusted height and scroll indicator */}
+      <section className="hero-section min-h-[88vh] flex items-center justify-center pt-20 pb-16 relative overflow-hidden bg-[#010822] isolate">
         {/* Background elements with light particles */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
           <LightParticles centerPosition={{
-          x: 50,
-          y: 50
-        }} />
+            x: 50,
+            y: 50
+          }} />
         </div>
+
+        {/* Bottom edge gradient hint */}
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/20 to-transparent z-10 pointer-events-none" />
 
         {/* Content container with centered text */}
         <div className="hero-content relative z-8 text-lg font-normal flex flex-col justify-center items-center gap-6 max-w-[90vw] xl:max-w-[1200px] mx-auto">
@@ -123,10 +129,13 @@ const MicaReadyWaitlistPage = () => {
             </p>
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <ScrollIndicator targetSection="mica-solutions" />
       </section>
 
       {/* Solution Boxes Section with header and intro text */}
-      <section className="py-8 relative overflow-hidden">
+      <section id="mica-solutions" className="py-8 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]"></div>
           <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
@@ -265,7 +274,8 @@ const MicaReadyWaitlistPage = () => {
       </section>
       
       <Footer />
-    </div>;
+    </div>
+  );
 };
 
 export default MicaReadyWaitlistPage;

@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import Header from "@/components/Header";
 import { SectionContainer } from "@/components/ui/SectionContainer";
@@ -16,6 +15,7 @@ import { AlphabeticalIndex } from "@/components/glossary/AlphabeticalIndex";
 import { GlossaryTermsList } from "@/components/glossary/GlossaryTermsList";
 import ContactForm from "@/components/ContactForm";
 import { useGlossaryData } from "@/components/glossary/useGlossaryData";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 const GlossaryPage: React.FC = () => {
   // State for UI
@@ -60,12 +60,15 @@ const GlossaryPage: React.FC = () => {
       
       <Header />
       
-      {/* Hero section with consistent background color */}
-      <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#010822] isolate">
+      {/* Hero section with adjusted height and scroll indicator */}
+      <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#010822] isolate min-h-[88vh]">
         {/* Background elements - using consistent color */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
         </div>
+
+        {/* Bottom edge gradient hint */}
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/20 to-transparent z-10 pointer-events-none" />
 
         {/* Content container with same styling as Hero */}
         <div className="hero-content relative z-8 text-lg font-normal flex flex-col justify-center gap-6 max-w-[90vw] xl:max-w-[1200px] mx-auto">
@@ -168,6 +171,9 @@ const GlossaryPage: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <ScrollIndicator targetSection="contact-form" />
       </section>
       
       {/* Contact form - using the same component as the main page */}

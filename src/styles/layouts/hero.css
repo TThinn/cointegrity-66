@@ -38,6 +38,13 @@
   pointer-events: none;
 }
 
+/* Content peek styling for better visual transition */
+.content-peek {
+  margin-top: -2rem;
+  padding-top: 2rem;
+  background: linear-gradient(to bottom, transparent 0%, rgba(1, 8, 34, 0.8) 50%, rgba(1, 8, 34, 1) 100%);
+}
+
 /* Particles.js container */
 #particles-js {
   position: absolute;
@@ -117,4 +124,39 @@
   );
   animation: move-lights 15s ease-in-out infinite alternate;
   opacity: 0.6;
+}
+
+/* Keyframes for animations */
+@keyframes pulse {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+  50% { transform: scale(1.05) rotate(1deg); opacity: 0.9; }
+}
+
+@keyframes float-orbs {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  33% { transform: translateY(-10px) translateX(5px); }
+  66% { transform: translateY(5px) translateX(-3px); }
+}
+
+@keyframes floating-orbs {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.02) rotate(2deg); }
+}
+
+@keyframes backgroundShift {
+  0%, 100% { transform: translateX(0%) translateY(0%); }
+  50% { transform: translateX(-2%) translateY(1%); }
+}
+
+@keyframes light-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes move-lights {
+  0% { --x: 20; --y: 20; }
+  25% { --x: 80; --y: 30; }
+  50% { --x: 60; --y: 70; }
+  75% { --x: 30; --y: 80; }
+  100% { --x: 20; --y: 20; }
 }
