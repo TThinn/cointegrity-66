@@ -3,7 +3,7 @@ import React from "react";
 
 const HeroContent: React.FC = () => {
   return (
-    <div className="flex flex-col items-center text-center mx-auto w-full max-w-[90vw] xl:max-w-[1200px] mt-8">
+    <div className="flex flex-col items-center text-center mx-auto w-full max-w-[90vw] xl:max-w-[1200px] mt-10">
       <h1 
         className="font-bold leading-tight text-shadow mb-8 animate-fade-up text-balance" 
         style={{
