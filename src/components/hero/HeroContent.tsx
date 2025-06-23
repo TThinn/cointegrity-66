@@ -3,9 +3,9 @@ import React from "react";
 
 const HeroContent: React.FC = () => {
   return (
-    <div className="flex flex-col items-center text-center mx-auto w-full max-w-[90vw] xl:max-w-[1200px]">
+    <div className="flex flex-col items-center text-center mx-auto w-full max-w-[90vw] xl:max-w-[1200px] mt-8">
       <h1 
-        className="font-bold leading-tight text-shadow mb-10 animate-fade-up text-balance" 
+        className="font-bold leading-tight text-shadow mb-8 animate-fade-up text-balance" 
         style={{
           animationDelay: "0.2s",
           fontSize: "clamp(1.9rem, 6vw, 4.5rem)",
@@ -17,7 +17,7 @@ const HeroContent: React.FC = () => {
       </h1>
 
       <h2 
-        className="text-white/80 animate-fade-up relative mb-8 text-balance" 
+        className="text-white/80 animate-fade-up relative mb-6 text-balance" 
         style={{
           animationDelay: "0.4s",
           fontSize: "clamp(0.9rem, 1.5vw, 1.5rem)",
