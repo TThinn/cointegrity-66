@@ -14,7 +14,6 @@ import { GlossarySearch } from "@/components/glossary/GlossarySearch";
 import { CategorySelector } from "@/components/glossary/CategorySelector";
 import { AlphabeticalIndex } from "@/components/glossary/AlphabeticalIndex";
 import { GlossaryTermsList } from "@/components/glossary/GlossaryTermsList";
-import { GlossaryValidation } from "@/components/glossary/GlossaryValidation";
 import ContactForm from "@/components/ContactForm";
 import { useGlossaryData } from "@/components/glossary/useGlossaryData";
 
@@ -23,7 +22,6 @@ const GlossaryPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState<CategoryType | "all">("all");
   const [activeTab, setActiveTab] = useState<string>("categories");
-  const [showValidation, setShowValidation] = useState(false);
   const location = useLocation();
 
   // Get initial data source preference from local storage
@@ -77,10 +75,10 @@ const GlossaryPage: React.FC = () => {
               <span className="bg-gradient-to-r from-[#d946ef] to-[#9333ea] bg-clip-text text-transparent"> Web3 Glossary</span>
             </h1>
             <p className="text-xl text-white/80 max-w-2xl mx-auto mb-4">
-              {totalTermsCount}+ expert-curated terms with AI-optimized questions and answers
+              {totalTermsCount}+ expert-curated terms covering blockchain, cryptocurrency, DeFi, NFTs and Web3
             </p>
             <p className="text-lg text-white/60 max-w-3xl mx-auto">
-              Enhanced with contextual questions for better AI understanding, covering Web3, Blockchain, DeFi, NFTs, and emerging technologies.
+              The most comprehensive Web3 terminology resource for developers, investors, and crypto enthusiasts. From basic blockchain concepts to advanced DeFi protocols.
             </p>
           </div>
           
@@ -105,26 +103,6 @@ const GlossaryPage: React.FC = () => {
                 This may indicate a data source issue.
               </AlertDescription>
             </Alert>
-          )}
-
-          {/* Validation Toggle */}
-          <div className="flex justify-center mb-4">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setShowValidation(!showValidation)}
-              className="bg-white/5 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
-            >
-              {showValidation ? 'Hide' : 'Show'} Data Validation
-            </Button>
-          </div>
-
-          {/* Validation Component */}
-          {showValidation && (
-            <GlossaryValidation 
-              terms={filteredTerms} 
-              originalTermsCount={1414}
-            />
           )}
 
           <div className="flex flex-col lg:flex-row gap-8 mb-8">
