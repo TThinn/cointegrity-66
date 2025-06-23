@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +11,7 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState<string>("");
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const isHomepage = location.pathname === '/' || location.pathname === '/web3-consulting';
 
   useEffect(() => {
@@ -39,7 +40,27 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHomepage]);
 
-  // Helper function to determine if we should use Link or anchor
+  // Function to handle navigation - scroll on homepage, navigate to homepage then scroll if not on homepage
+  const handleSectionClick = (sectionId: string, fallbackPath: string) => {
+    if (isHomepage) {
+      // If on homepage, just scroll to section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If not on homepage, navigate to homepage then scroll to section
+      navigate('/', { replace: true });
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  };
+
+  // Helper function to determine if we should use Link or handle click
   const NavLink = ({ 
     to, 
     children, 
@@ -47,7 +68,8 @@ const Header = () => {
     onClick,
     target,
     rel,
-    "aria-label": ariaLabel 
+    "aria-label": ariaLabel,
+    sectionId
   }: { 
     to: string; 
     children: React.ReactNode; 
@@ -56,15 +78,8 @@ const Header = () => {
     target?: string;
     rel?: string;
     "aria-label"?: string;
+    sectionId?: string;
   }) => {
-    // For hash links on homepage
-    if (isHomepage && to.startsWith('#')) {
-      return (
-        <a href={to} className={className} onClick={onClick} target={target} rel={rel} aria-label={ariaLabel}>
-          {children}
-        </a>
-      );
-    }
     // For external links
     if (to.startsWith('http') || to.startsWith('mailto:')) {
       return (
@@ -73,6 +88,24 @@ const Header = () => {
         </a>
       );
     }
+    
+    // For section navigation
+    if (sectionId) {
+      return (
+        <button 
+          className={className} 
+          onClick={(e) => {
+            e.preventDefault();
+            handleSectionClick(sectionId, to);
+            onClick?.();
+          }}
+          aria-label={ariaLabel}
+        >
+          {children}
+        </button>
+      );
+    }
+    
     // For internal navigation
     return (
       <Link to={to} className={className} onClick={onClick}>
@@ -83,29 +116,34 @@ const Header = () => {
 
   const navigation = [
     { 
-      href: isHomepage ? "#about" : "/about", 
+      href: "/about", 
       label: "About Us",
-      section: "about"
+      section: "about",
+      sectionId: "about"
     },
     { 
-      href: isHomepage ? "#services" : "/services", 
+      href: "/services", 
       label: "Services",
-      section: "services"
+      section: "services",
+      sectionId: "services"
     },
     { 
-      href: isHomepage ? "#partners" : "/partners", 
+      href: "/partners", 
       label: "Partners",
-      section: "partners"
+      section: "partners",
+      sectionId: "partners"
     },
     { 
-      href: isHomepage ? "#founders" : "/team", 
+      href: "/team", 
       label: "Team",
-      section: "founders"
+      section: "founders",
+      sectionId: "founders"
     },
     { 
-      href: isHomepage ? "#testimonials" : "/testimonials", 
+      href: "/testimonials", 
       label: "Testimonials",
-      section: "testimonials"
+      section: "testimonials",
+      sectionId: "testimonials"
     }
   ];
 
@@ -121,7 +159,7 @@ const Header = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3 bg-black/70 backdrop-blur-lg shadow-md' : 'py-6 bg-transparent'}`}>
       <Container>
         <div className="flex items-center justify-between">
-          <NavLink to="/" className="relative z-10 micro-interaction">
+          <Link to="/" className="relative z-10 micro-interaction">
             <div className="flex items-center">
               <img 
                 src="/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png" 
@@ -129,13 +167,14 @@ const Header = () => {
                 className="h-10 w-auto" 
               />
             </div>
-          </NavLink>
+          </Link>
 
           <nav className="hidden md:flex items-center gap-1">
-            {navigation.map(({ href, label, section }) => (
+            {navigation.map(({ href, label, section, sectionId }) => (
               <NavLink 
                 key={href}
                 to={href} 
+                sectionId={sectionId}
                 className={`micro-interaction px-4 py-2 text-white/80 hover:text-white transition-colors relative
                   ${(activeSection === section || location.pathname === `/${section === 'founders' ? 'team' : section}`) ? 'text-white font-semibold' : 'hover:text-white'}`}
               >
@@ -157,21 +196,22 @@ const Header = () => {
               {resourcesOpen && (
                 <div className="absolute top-full left-0 bg-white/5 backdrop-blur-lg rounded-lg border border-white/20 min-w-48 py-2 shadow-xl z-50 overflow-hidden">
                   {resourcesItems.map(({ href, label }) => (
-                    <NavLink
+                    <Link
                       key={href}
                       to={href}
                       className="block px-4 py-2 text-white/80 hover:bg-white/10 hover:text-white transition-all duration-300 relative overflow-hidden"
                       onClick={() => setResourcesOpen(false)}
                     >
                       {label}
-                    </NavLink>
+                    </Link>
                   ))}
                 </div>
               )}
             </div>
             
             <NavLink 
-              to={isHomepage ? "#contact" : "/contact"} 
+              to="/contact"
+              sectionId="contact"
               className="pl-4 micro-interaction"
             >
               <Button variant="primary" size="sm">Connect</Button>
@@ -192,10 +232,11 @@ const Header = () => {
         <div className="fixed inset-0 bg-black/90 backdrop-blur-lg z-40 md:hidden pt-20">
           <Container>
             <nav className="flex flex-col gap-4 items-center text-center">
-              {navigation.map(({ href, label, section }) => (
+              {navigation.map(({ href, label, section, sectionId }) => (
                 <NavLink
                   key={href}
                   to={href}
+                  sectionId={sectionId}
                   className={`micro-interaction w-full py-4 text-xl border-b border-white/10
                     ${(activeSection === section || location.pathname === `/${section === 'founders' ? 'team' : section}`) ? 'text-white' : 'text-white/90 hover:text-white'}`}
                   onClick={() => setIsOpen(false)}
@@ -208,19 +249,20 @@ const Header = () => {
               <div className="w-full border-b border-white/10">
                 <div className="text-white/90 py-4 text-xl">Resources</div>
                 {resourcesItems.map(({ href, label }) => (
-                  <NavLink
+                  <Link
                     key={href}
                     to={href}
                     className="block w-full py-2 text-lg text-white/70 hover:text-white pl-4"
                     onClick={() => setIsOpen(false)}
                   >
                     {label}
-                  </NavLink>
+                  </Link>
                 ))}
               </div>
               
               <NavLink 
-                to={isHomepage ? "#contact" : "/contact"} 
+                to="/contact"
+                sectionId="contact"
                 className="micro-interaction w-full py-4 text-xl text-white mt-4" 
                 onClick={() => setIsOpen(false)}
               >
