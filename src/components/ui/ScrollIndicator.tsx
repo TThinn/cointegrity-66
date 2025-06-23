@@ -51,22 +51,24 @@ export const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({
       className={cn(
         "fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20",
         "flex flex-col items-center gap-2",
-        "text-white/80 hover:text-white transition-all duration-300",
-        "animate-bounce hover:animate-none",
+        "text-white/90 hover:text-white transition-colors duration-300",
         "group cursor-pointer",
         className
       )}
+      style={{
+        animation: "gentle-bounce 3s ease-in-out infinite"
+      }}
       aria-label="Scroll to see more content"
     >
-      <span className="text-sm font-medium opacity-80 group-hover:opacity-100 transition-opacity">
+      <span className="text-sm font-medium opacity-90 group-hover:opacity-100 transition-opacity">
         Scroll for more
       </span>
       <div className="relative">
         <ChevronDown 
           size={24} 
-          className="drop-shadow-lg" 
+          className="drop-shadow-lg text-white" 
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#d946ef] to-[#9333ea] rounded-full opacity-20 blur-sm group-hover:opacity-40 transition-opacity" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#d946ef] to-[#9333ea] rounded-full opacity-30 blur-sm group-hover:opacity-50 transition-opacity" />
       </div>
     </button>
   );
