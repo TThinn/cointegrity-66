@@ -14,6 +14,7 @@ import { GlossarySearch } from "@/components/glossary/GlossarySearch";
 import { CategorySelector } from "@/components/glossary/CategorySelector";
 import { AlphabeticalIndex } from "@/components/glossary/AlphabeticalIndex";
 import { GlossaryTermsList } from "@/components/glossary/GlossaryTermsList";
+import { GlossaryValidation } from "@/components/glossary/GlossaryValidation";
 import ContactForm from "@/components/ContactForm";
 import { useGlossaryData } from "@/components/glossary/useGlossaryData";
 
@@ -22,6 +23,7 @@ const GlossaryPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState<CategoryType | "all">("all");
   const [activeTab, setActiveTab] = useState<string>("categories");
+  const [showValidation, setShowValidation] = useState(false);
   const location = useLocation();
 
   // Get initial data source preference from local storage
@@ -36,7 +38,8 @@ const GlossaryPage: React.FC = () => {
     groupedTerms, 
     letters,
     isLoading,
-    totalTermsCount 
+    totalTermsCount,
+    transformationProgress
   } = useGlossaryData(searchTerm, activeCategory, initialDataSource);
   
   // For smooth scrolling to sections
@@ -74,23 +77,54 @@ const GlossaryPage: React.FC = () => {
               <span className="bg-gradient-to-r from-[#d946ef] to-[#9333ea] bg-clip-text text-transparent"> Web3 Glossary</span>
             </h1>
             <p className="text-xl text-white/80 max-w-2xl mx-auto mb-4">
-              {totalTermsCount}+ expert-curated terms covering Web3, Blockchain, AI, and Cryptocurrency
+              {totalTermsCount}+ expert-curated terms with AI-optimized questions and answers
             </p>
             <p className="text-lg text-white/60 max-w-3xl mx-auto">
-              The most comprehensive Web3 terminology resource available online, featuring definitions for blockchain technology, DeFi protocols, NFT standards, DAO governance, tokenomics, MiCA regulatory compliance, and emerging AI integration.
+              Enhanced with contextual questions for better AI understanding, covering Web3, Blockchain, DeFi, NFTs, and emerging technologies.
             </p>
           </div>
           
+          {/* Show transformation progress */}
+          {transformationProgress > 0 && transformationProgress < 100 && (
+            <Alert className="mb-6 bg-blue-900/20 border-blue-500/30">
+              <AlertTriangle className="h-4 w-4" />
+              <AlertTitle>Processing Terms</AlertTitle>
+              <AlertDescription>
+                Transforming glossary terms with questions: {transformationProgress}%
+              </AlertDescription>
+            </Alert>
+          )}
+          
           {/* Warning if fewer terms than expected */}
-          {totalTermsCount < 100 && !isLoading && (
+          {totalTermsCount !== 1414 && !isLoading && (
             <Alert variant="destructive" className="mb-6 bg-red-900/20 border-red-500/30">
               <AlertTriangle className="h-4 w-4" />
-              <AlertTitle>Data Source Warning</AlertTitle>
+              <AlertTitle>Data Count Warning</AlertTitle>
               <AlertDescription>
-                Only {totalTermsCount} terms loaded. Expected 1000+ terms.
+                Expected 1414 terms but loaded {totalTermsCount} terms.
                 This may indicate a data source issue.
               </AlertDescription>
             </Alert>
+          )}
+
+          {/* Validation Toggle */}
+          <div className="flex justify-center mb-4">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowValidation(!showValidation)}
+              className="bg-white/5 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
+            >
+              {showValidation ? 'Hide' : 'Show'} Data Validation
+            </Button>
+          </div>
+
+          {/* Validation Component */}
+          {showValidation && (
+            <GlossaryValidation 
+              terms={filteredTerms} 
+              originalTermsCount={1414}
+            />
           )}
 
           <div className="flex flex-col lg:flex-row gap-8 mb-8">

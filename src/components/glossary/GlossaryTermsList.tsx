@@ -79,6 +79,15 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
                       ))}
                     </div>
                   </div>
+                  
+                  {/* Display question if available */}
+                  {term.question && (
+                    <div className="mb-3">
+                      <h4 className="text-sm font-medium text-purple-300 mb-1">Question:</h4>
+                      <p className="text-sm text-white/90 italic">{term.question}</p>
+                    </div>
+                  )}
+                  
                   <div className="text-sm text-white/80">
                     <p dangerouslySetInnerHTML={{ __html: term.definition }} />
                     {term.related && term.related.length > 0 && (

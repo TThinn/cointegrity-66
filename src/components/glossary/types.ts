@@ -44,5 +44,7 @@ export const categoryMeta: CategoryMetaType[] = [
 // Define a data source selection type - simplified to only include available sources
 export type DataSourceType = "original";
 
-// Interface for glossary term structure - now extends the source definition
-export interface GlossaryTerm extends SourceGlossaryTerm {}
+// Interface for glossary term structure - now extends the source definition with optional question field
+export interface GlossaryTerm extends SourceGlossaryTerm {
+  question?: string;
+}

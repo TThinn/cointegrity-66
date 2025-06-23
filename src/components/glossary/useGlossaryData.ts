@@ -3,6 +3,7 @@ import { useState, useMemo, useEffect } from "react";
 import { CategoryType, DataSourceType, GlossaryTerm } from "./types";
 import { glossaryTerms } from "@/data/glossaryTerms";
 import { toast } from "sonner";
+import { batchTransformTerms } from "./utils/termTransformation";
 
 /**
  * Custom hook for managing glossary data sources and filtering
@@ -15,16 +16,23 @@ export const useGlossaryData = (
   // Track the current data source
   const [dataSource, setDataSource] = useState<DataSourceType>(initialDataSource);
   const [isLoading, setIsLoading] = useState(true);
+  const [transformationProgress, setTransformationProgress] = useState(0);
 
-  // Get the appropriate data based on the selected source
-  // Currently we only have the original data source
+  // Get the appropriate data based on the selected source and apply transformations
   const rawData = useMemo(() => {
     console.log(`Using ${dataSource} data source`);
-    
-    // For now, all data sources use the same data
-    // This can be expanded when additional data sources are available
     console.log(`Original data source length: ${glossaryTerms.length}`);
-    return glossaryTerms;
+    
+    // Transform terms to include questions and updated definitions
+    const transformedTerms = batchTransformTerms(
+      glossaryTerms,
+      (processed, total) => {
+        setTransformationProgress(Math.round((processed / total) * 100));
+      }
+    );
+    
+    console.log(`Transformed ${transformedTerms.length} terms with questions`);
+    return transformedTerms;
   }, [dataSource]);
 
   // Log data loading on component mount
@@ -32,13 +40,15 @@ export const useGlossaryData = (
     console.log("Glossary data initial load:", {
       source: dataSource,
       termCount: rawData.length,
-      sampleTerms: rawData.slice(0, 3).map(t => t.term)
+      sampleTerms: rawData.slice(0, 3).map(t => ({ term: t.term, hasQuestion: !!t.question }))
     });
     
     setIsLoading(false);
     
     if (rawData.length < 20) {
       toast.warning(`Only ${rawData.length} terms loaded. This may indicate a data loading issue.`);
+    } else {
+      toast.success(`Successfully loaded and transformed ${rawData.length} glossary terms with questions`);
     }
   }, [dataSource, rawData]);
 
@@ -47,12 +57,13 @@ export const useGlossaryData = (
     return [...rawData].sort((a, b) => a.term.localeCompare(b.term));
   }, [rawData]);
 
-  // Filter terms based on search and category
+  // Filter terms based on search and category (including question field in search)
   const filteredTerms = useMemo(() => {
     return sortedTerms.filter(term => {
       const matchesSearch = searchTerm === '' || 
                         term.term.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                        term.definition.toLowerCase().includes(searchTerm.toLowerCase());
+                        term.definition.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        (term.question && term.question.toLowerCase().includes(searchTerm.toLowerCase()));
       
       // Handle category filtering with type safety
       const matchesCategory = activeCategory === "all" || 
@@ -99,6 +110,7 @@ export const useGlossaryData = (
     groupedTerms,
     letters,
     isLoading,
-    totalTermsCount: rawData.length
+    totalTermsCount: rawData.length,
+    transformationProgress
   };
 };
