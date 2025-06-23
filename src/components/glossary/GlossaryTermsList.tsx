@@ -59,7 +59,7 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
           <div className="space-y-4">
             {groupedTerms[letter] && groupedTerms[letter].map((term, index) => (
               <div 
-                key={`${term.term}-${index}`}
+                key={`${letter}-${term.term}-${index}`}
                 className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg hover:bg-white/10 transition-all duration-300"
               >
                 <div className="p-6">
@@ -68,9 +68,9 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
                       {term.term}
                     </h3>
                     <div className="flex flex-wrap gap-2 mt-1">
-                      {term.categories && term.categories.map((category) => (
+                      {term.categories && term.categories.map((category, categoryIndex) => (
                         <Badge 
-                          key={category} 
+                          key={`${term.term}-${category}-${categoryIndex}`}
                           variant="outline" 
                           className="text-xs bg-white/10 border-white/30 text-white/90 hover:bg-white/20"
                         >
@@ -94,9 +94,9 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
                       <div className="mt-3">
                         <span className="text-xs font-semibold text-white/90">Related terms: </span>
                         <div className="flex flex-wrap gap-1 mt-1">
-                          {term.related.map((relatedTerm) => (
+                          {term.related.map((relatedTerm, relatedIndex) => (
                             <a 
-                              key={relatedTerm} 
+                              key={`${term.term}-related-${relatedTerm}-${relatedIndex}`}
                               href={`#${relatedTerm.toLowerCase().replace(/\s+/g, '-')}`}
                               className="text-xs text-purple-300 hover:text-purple-200 hover:underline transition-colors"
                             >
