@@ -47,11 +47,13 @@ const Hero = () => {
       {/* Bottom edge gradient hint */}
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/20 to-transparent z-10 pointer-events-none" />
 
-      {/* Content container */}
-      <Container className="hero-content relative z-8 text-lg font-normal flex flex-col min-h-screen justify-center gap-6">
-        <HeroContent />
-        <HeroCTA ref={ctaRef} />
-        {/* <HeroStats /> */}
+      {/* Content container - centered vertically */}
+      <Container className="hero-content relative z-8 text-lg font-normal h-full flex flex-col justify-center items-center gap-6">
+        <div className="flex flex-col items-center justify-center gap-6 w-full">
+          <HeroContent />
+          <HeroCTA ref={ctaRef} />
+          {/* <HeroStats /> */}
+        </div>
       </Container>
 
       {/* Scroll indicator */}
