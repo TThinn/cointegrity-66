@@ -50,7 +50,7 @@ export const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({
       onClick={handleClick}
       className={cn(
         "fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20",
-        "flex flex-col items-center gap-2",
+        "flex items-center justify-center",
         "text-white/90 hover:text-white transition-colors duration-300",
         "group cursor-pointer",
         className
@@ -60,9 +60,6 @@ export const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({
       }}
       aria-label="Scroll to see more content"
     >
-      <span className="text-sm font-medium opacity-90 group-hover:opacity-100 transition-opacity">
-        Scroll for more
-      </span>
       <div className="relative">
         <ChevronDown 
           size={24} 

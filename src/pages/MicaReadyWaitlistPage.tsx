@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
@@ -102,8 +103,8 @@ const MicaReadyWaitlistPage = () => {
 
       <Header />
       
-      {/* Hero section with adjusted height and scroll indicator */}
-      <section className="hero-section min-h-[88vh] flex items-center justify-center pt-20 pb-16 relative overflow-hidden bg-[#010822] isolate">
+      {/* Hero section with full height and scroll indicator */}
+      <section className="hero-section min-h-screen flex items-center justify-center pt-20 pb-16 relative overflow-hidden bg-[#010822] isolate">
         {/* Background elements with light particles */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />

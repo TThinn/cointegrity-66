@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import Header from "@/components/Header";
 import { SectionContainer } from "@/components/ui/SectionContainer";
@@ -60,8 +61,8 @@ const GlossaryPage: React.FC = () => {
       
       <Header />
       
-      {/* Hero section with adjusted height and scroll indicator */}
-      <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#010822] isolate min-h-[88vh]">
+      {/* Hero section with full height and scroll indicator */}
+      <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#010822] isolate min-h-screen">
         {/* Background elements - using consistent color */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
@@ -71,7 +72,7 @@ const GlossaryPage: React.FC = () => {
         <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/20 to-transparent z-10 pointer-events-none" />
 
         {/* Content container with same styling as Hero */}
-        <div className="hero-content relative z-8 text-lg font-normal flex flex-col justify-center gap-6 max-w-[90vw] xl:max-w-[1200px] mx-auto">
+        <div className="hero-content relative z-8 text-lg font-normal flex flex-col justify-center gap-6 max-w-[90vw] xl:max-w-[1200px] mx-auto min-h-screen">
           <div className="text-center mb-8">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               World's Largest 

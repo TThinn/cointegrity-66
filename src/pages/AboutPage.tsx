@@ -19,7 +19,7 @@ const AboutPage = () => {
       <Header />
       
       {/* Hero section with scroll indicator */}
-      <section className="relative min-h-[88vh] flex items-center justify-center bg-[#010822] overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center bg-[#010822] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
         <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/20 to-transparent z-10 pointer-events-none" />
         
