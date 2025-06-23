@@ -79,7 +79,6 @@ export const GLOSSARY_HOWTO_STRUCTURED_DATA = {
       "image": "https://cointegrity.io/lovable-uploads/cca33c9c-dbea-42f9-86c0-8cdec21a9e7a.png"
     }
   ],
-  "totalTime": "PT10M",
   "yield": "Comprehensive understanding of Web3 terminology"
 };
 
