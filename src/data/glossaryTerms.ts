@@ -10743,7 +10743,7 @@ trending: 8
 {
   term: "Off-Chain Governance",
   definition: "A governance model where decisions about a blockchain protocol are made through informal, off-chain discussions and processes, such as social media polls, community calls, and developer forums. The final decision is then typically implemented in a code update by the core development team.",
-  categories: ["social_community", "governance"],
+  categories: ["social_community"],
   related: ["On-Chain Governance", "DAO", "Governance", "Community"],
   trending: 6
 },
