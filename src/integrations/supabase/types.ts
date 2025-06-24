@@ -7,6 +7,31 @@ export type Json =
   | Json[]
 
 export type Database = {
+  graphql_public: {
+    Tables: {
+      [_ in never]: never
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      graphql: {
+        Args: {
+          operationName?: string
+          query?: string
+          variables?: Json
+          extensions?: Json
+        }
+        Returns: Json
+      }
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
   public: {
     Tables: {
       newsletter_subscriptions: {
@@ -30,6 +55,72 @@ export type Database = {
           is_active?: boolean
           source?: string | null
           subscribed_at?: string
+        }
+        Relationships: []
+      }
+      rate_limit_log: {
+        Row: {
+          attempts: number | null
+          blocked_until: string | null
+          endpoint: string
+          first_attempt: string
+          id: string
+          ip_address: unknown | null
+          last_attempt: string
+        }
+        Insert: {
+          attempts?: number | null
+          blocked_until?: string | null
+          endpoint: string
+          first_attempt?: string
+          id?: string
+          ip_address?: unknown | null
+          last_attempt?: string
+        }
+        Update: {
+          attempts?: number | null
+          blocked_until?: string | null
+          endpoint?: string
+          first_attempt?: string
+          id?: string
+          ip_address?: unknown | null
+          last_attempt?: string
+        }
+        Relationships: []
+      }
+      security_audit_log: {
+        Row: {
+          created_at: string
+          endpoint: string | null
+          error_message: string | null
+          event_type: string
+          id: string
+          ip_address: unknown | null
+          payload: Json | null
+          success: boolean | null
+          user_agent: string | null
+        }
+        Insert: {
+          created_at?: string
+          endpoint?: string | null
+          error_message?: string | null
+          event_type: string
+          id?: string
+          ip_address?: unknown | null
+          payload?: Json | null
+          success?: boolean | null
+          user_agent?: string | null
+        }
+        Update: {
+          created_at?: string
+          endpoint?: string | null
+          error_message?: string | null
+          event_type?: string
+          id?: string
+          ip_address?: unknown | null
+          payload?: Json | null
+          success?: boolean | null
+          user_agent?: string | null
         }
         Relationships: []
       }
@@ -185,6 +276,9 @@ export type CompositeTypes<
     : never
 
 export const Constants = {
+  graphql_public: {
+    Enums: {},
+  },
   public: {
     Enums: {},
   },
