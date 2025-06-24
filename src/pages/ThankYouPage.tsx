@@ -33,7 +33,7 @@ const ThankYouPage = () => {
       />
       
       {/* Simple header with just logo */}
-      <header className="fixed top-0 left-0 right-0 z-50 py-6">
+      <header className="fixed top-0 left-0 right-0 z-50 py-6 bg-black/80 backdrop-blur-lg">
         <Container>
           <div className="flex items-center">
             <Link to="/" className="relative z-10">
