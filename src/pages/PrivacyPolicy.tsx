@@ -107,27 +107,103 @@ const PrivacyPolicy = () => {
               
               <p>For more detailed information on data protection, the storage duration of cookies, and the cookies used, please visit: <a href="https://www.pipedrive.com/en/privacy" className="text-blue-600 hover:text-blue-800">https://www.pipedrive.com/en/privacy</a>.</p>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">5. How long will your data be stored?</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">5. Security Measures</h2>
+              
+              <p>We implement comprehensive technical and organizational measures to ensure the security of your personal data and to protect it against unauthorized access, alteration, disclosure, or destruction. Our security measures include:</p>
+              
+              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">5.1 Technical Safeguards:</h3>
+              
+              <ul className="list-disc pl-6 mb-4 space-y-2">
+                <li><strong>Data Validation and Sanitization:</strong> All data inputs are validated using enhanced client-side and server-side validation to prevent malicious data injection. We sanitize all user inputs to remove potentially harmful content including script tags and HTML elements.</li>
+                
+                <li><strong>Rate Limiting:</strong> We implement rate limiting mechanisms to protect against automated attacks and abuse, including protection against brute force attacks and excessive form submissions.</li>
+                
+                <li><strong>Input Length Restrictions:</strong> All form fields have appropriate maximum length restrictions to prevent buffer overflow attacks and ensure data integrity.</li>
+                
+                <li><strong>Email Format Validation:</strong> We use enhanced email validation patterns that check for proper email format, prevent common email-based attacks, and ensure email addresses meet RFC standards.</li>
+                
+                <li><strong>Security Monitoring:</strong> We maintain comprehensive audit logs that track all data processing activities, including successful transactions and security events, for monitoring and incident response purposes.</li>
+              </ul>
+              
+              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">5.2 Data Processing Security:</h3>
+              
+              <ul className="list-disc pl-6 mb-4 space-y-2">
+                <li><strong>Real-time Input Sanitization:</strong> All user inputs are sanitized in real-time to prevent cross-site scripting (XSS) attacks and other injection-based vulnerabilities.</li>
+                
+                <li><strong>Enhanced Error Handling:</strong> Our systems implement comprehensive error handling with specific responses for different types of security violations, including validation failures and access control violations.</li>
+                
+                <li><strong>Duplicate Prevention:</strong> We implement mechanisms to prevent duplicate submissions and detect potential abuse patterns.</li>
+                
+                <li><strong>Session Security:</strong> All user sessions are managed securely with appropriate timeout mechanisms and session validation.</li>
+              </ul>
+              
+              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">5.3 Access Controls:</h3>
+              
+              <ul className="list-disc pl-6 mb-4 space-y-2">
+                <li><strong>Row Level Security (RLS):</strong> Our database implements Row Level Security policies that ensure users can only access data they are authorized to view or modify.</li>
+                
+                <li><strong>Restrictive Default Policies:</strong> All database access is denied by default, with permissions granted only where specifically required and justified.</li>
+                
+                <li><strong>Service Account Management:</strong> Access to sensitive data is restricted to authorized service accounts with specific, limited permissions.</li>
+              </ul>
+              
+              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">5.4 Infrastructure Security:</h3>
+              
+              <ul className="list-disc pl-6 mb-4 space-y-2">
+                <li><strong>Supabase Integration:</strong> We utilize Supabase's enterprise-grade security infrastructure, which includes encryption at rest and in transit, regular security audits, and compliance with international security standards.</li>
+                
+                <li><strong>Data Encryption:</strong> All personal data is encrypted both in transit using TLS/SSL protocols and at rest using industry-standard encryption methods.</li>
+                
+                <li><strong>Regular Security Updates:</strong> Our systems are regularly updated with the latest security patches and improvements.</li>
+              </ul>
+              
+              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">5.5 Incident Response:</h3>
+              
+              <p>In the event of a security incident or data breach, we have established procedures to:</p>
+              
+              <ul className="list-disc pl-6 mb-4 space-y-2">
+                <li>Immediately assess and contain the incident</li>
+                <li>Notify relevant authorities within 72 hours as required by GDPR</li>
+                <li>Inform affected individuals without undue delay when required</li>
+                <li>Implement corrective measures to prevent similar incidents</li>
+                <li>Maintain detailed incident documentation for regulatory compliance</li>
+              </ul>
+
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">6. How long will your data be stored?</h2>
               
               <p>We process your data until the end of the business relationship or until the expiry of the applicable warranty, guarantee, limitation, and statutory retention periods; furthermore, until the end of any legal disputes in which the data is needed as evidence.</p>
+              
+              <p>Specific retention periods apply to different types of data:</p>
+              
+              <ul className="list-disc pl-6 mb-4 space-y-2">
+                <li><strong>Contact Form Data:</strong> Contact inquiries are retained for up to 2 years after the last communication to ensure proper follow-up and service delivery.</li>
+                
+                <li><strong>Newsletter Subscriptions:</strong> Email addresses for newsletter subscriptions are retained until you unsubscribe or request deletion.</li>
+                
+                <li><strong>Waitlist Data:</strong> Waitlist information is retained until the service becomes available or until you request removal from the waitlist.</li>
+                
+                <li><strong>Security Audit Logs:</strong> Security and audit logs are retained for up to 7 years for compliance and security monitoring purposes.</li>
+                
+                <li><strong>Rate Limiting Data:</strong> Rate limiting logs are automatically purged after 30 days unless a security incident requires longer retention.</li>
+              </ul>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">6. What data protection rights do you have?</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">7. What data protection rights do you have?</h2>
               
               <p>You have the right to information, correction, deletion, or restriction of the processing of your stored data at any time, a right of objection to the processing, as well as a right to data portability and to lodge a complaint in accordance with the requirements of data protection law.</p>
               
-              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">6.1 Right to information:</h3>
+              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">7.1 Right to information:</h3>
               
-              <p>You can request information from us as to whether and to what extent we process your data.</p>
+              <p>You can request information from us as to whether and to what extent we process your data. You can also request details about the security measures we have implemented to protect your data.</p>
               
-              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">6.2 Right to rectification:</h3>
+              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">7.2 Right to rectification:</h3>
               
               <p>If we process your data that is incomplete or incorrect, you can request the correction or completion of it at any time.</p>
               
-              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">6.3 Right to erasure:</h3>
+              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">7.3 Right to erasure:</h3>
               
-              <p>You can request the deletion of your data from us if we process it unlawfully or if the processing disproportionately interferes with your legitimate interests. Please note that there may be reasons that prevent immediate deletion, e.g., in the case of legally regulated retention obligations.</p>
+              <p>You can request the deletion of your data from us if we process it unlawfully or if the processing disproportionately interferes with your legitimate interests. Please note that there may be reasons that prevent immediate deletion, e.g., in the case of legally regulated retention obligations or ongoing security investigations.</p>
               
-              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">6.4 Right to restrict processing:</h3>
+              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">7.4 Right to restrict processing:</h3>
               
               <p>You can request us to restrict the processing of your data if:</p>
               
@@ -141,7 +217,7 @@ const PrivacyPolicy = () => {
                 <li>you have objected to the processing of the data.</li>
               </ul>
               
-              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">6.5 Right to data portability:</h3>
+              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">7.5 Right to data portability:</h3>
               
               <p>You can request us to provide you with the data you have provided us in a structured, common, and machine-readable format and to allow you to transfer this data to another controller without hindrance on our part, provided that:</p>
               
@@ -153,39 +229,41 @@ const PrivacyPolicy = () => {
               
               <p>If technically feasible, you can request that we transfer your data directly to another controller.</p>
               
-              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">6.6 Right to object to processing:</h3>
+              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">7.6 Right to object to processing:</h3>
               
               <p>If we process your data for legitimate interest, you can object to this data processing at any time; this would also apply to profiling based on these provisions. We will then no longer process your data unless we can demonstrate compelling legitimate grounds for processing that outweigh your interests, rights, and freedoms, or the processing serves to assert, exercise, or defend legal claims. You can object to the processing of your data for the purpose of direct advertising without giving reasons.</p>
               
-              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">6.7 Right to lodge a complaint:</h3>
+              <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">7.7 Right to lodge a complaint:</h3>
               
               <p>If you believe that the processing of your data violates data protection law, please contact us to clarify any questions. Of course, you also have the right to contact the relevant data protection authority.</p>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">7. Are you required to provide data?</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">8. Are you required to provide data?</h2>
               
               <p>The processing of your data is generally necessary to enter into or fulfill a contract with us. If you do not provide us with this data, we will generally have to refuse to conclude the contract or be unable to execute it and terminate the existing relationship. However, you are not obliged to give your consent to the processing of data that is not relevant to the performance of the contract or is not required by law.</p>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">8. To what extent is there automated decision-making (including profiling)?</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">9. To what extent is there automated decision-making (including profiling)?</h2>
               
               <p>In principle, we do not use fully automated decision-making pursuant to Article 22 GDPR to establish and implement the business relationship. If we use these procedures in individual cases, we will inform you of this separately, provided this is required by law.</p>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">9. To what extent does your data help to make decisions in individual cases?</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">10. To what extent does your data help to make decisions in individual cases?</h2>
               
               <p>As part of our business relationship, we generally do not use any automated decision-making pursuant to Article 22 GDPR. Should we use these procedures in individual cases, we will inform you of this separately, provided this is required by law.</p>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">10. Will the personal data be transferred to a third country?</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">11. Will the personal data be transferred to a third country?</h2>
               
               <p>In principle, we do not transfer any data to a third country. In individual cases, data is only transferred on the basis of an adequacy decision by the European Commission, standard contractual clauses, suitable guarantees or your explicit consent.</p>
+              
+              <p>When using Supabase services, data may be processed on servers located in the European Union or other jurisdictions with adequate data protection standards as recognized by the European Commission. Supabase maintains compliance with GDPR requirements and implements appropriate safeguards for international data transfers.</p>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">11. Application Data</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">12. Application Data</h2>
               
               <p>If you send us your application, your application data will only be made accessible to authorized persons involved in the application process. Your application data will be stored for a maximum of two years, also in order to be able to offer you alternative positions if necessary.</p>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">12. Changes to this privacy policy</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">13. Changes to this privacy policy</h2>
               
               <p>We will revise this privacy policy as necessary, e.g., when changes in our data processing occur. You can find the latest version of the privacy policy on our website.</p>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">13. Cookies and Tracking Tools</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">14. Cookies and Tracking Tools</h2>
               
               <p>Our website uses so-called cookies. These are small text files that are stored on your end device with the help of the browser. They do not cause any damage. We use cookies to make our website more user-friendly. Some cookies remain stored on your device until you delete them. They enable us to recognize your browser on your next visit.</p>
               
@@ -225,7 +303,7 @@ const PrivacyPolicy = () => {
               
               <p>The browser add-on to deactivate Google Analytics is compatible with Chrome, Internet Explorer 8-11, Safari, Firefox and Opera.</p>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">14. Use of social sharing</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">15. Use of social sharing</h2>
               
               <p>We do not use any plugins from the respective social media services for the social sharing functionalities. Instead, we only use a text or image link. This means that no data, such as your IP address, browser used, screen resolution, the website accessed, date and time, is transmitted to the respective social media services.</p>
               
@@ -233,27 +311,31 @@ const PrivacyPolicy = () => {
               
               <p>If you click on a social sharing link while you are logged into your respective social media account, you can share the content of our pages on your profile. This allows the social media service to associate your visit to our pages with your user account. We would like to point out that, as the provider of the pages, we have no knowledge of the content of the transmitted data or its use by social media platforms.</p>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">15. Contact via website</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">16. Contact via website</h2>
               
               <p>Due to legal regulations, our website contains information that enables quick electronic contact to our company and direct communication with us, which also includes a general address for so-called electronic mail (e-mail address). If a data subject contacts the controller by email or via a contact form, the personal data transmitted by the data subject will be stored automatically. Such personal data transmitted on a voluntary basis by a data subject to the controller are stored for the purposes of processing or contacting the data subject. This personal data is not passed on to third parties.</p>
               
               <p>We use Supabase for our contact form and for sending emails. Supabase helps us manage and store the data you submit through our contact form securely. When you submit information through our contact form, this data is processed and stored on Supabase's servers. Supabase implements strong security measures to protect your data, and we have a data processing agreement in place with them to ensure compliance with GDPR requirements.</p>
+              
+              <p>All contact form submissions are subject to enhanced security measures including input validation, sanitization, and rate limiting to protect against abuse and ensure data integrity.</p>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">16. Embedding of YouTube videos</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">17. Embedding of YouTube videos</h2>
               
               <p>We use the so-called "extended data protection mode" of the provider YouTube to embed videos. This means that a cookie is only stored on your computer when the video is played. According to YouTube, however, no personal cookie information is stored for playbacks of embedded videos with extended data protection. Further information on YouTube's official data protection policy can be found here: <a href="https://www.google.com/intl/en/policies/privacy/" className="text-blue-600 hover:text-blue-800">https://www.google.com/intl/en/policies/privacy/</a>.</p>
               
               <p>If you want to ensure that no data about you is stored by YouTube, do not click on the embedded videos.</p>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">17. Use of Google reCaptcha</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">18. Use of Google reCaptcha</h2>
               
               <p>We use the reCAPTCHA service from Google Inc (Google) to protect your orders via the Internet form. The query serves to differentiate whether the input is made by a human or abusively by automated, machine processing. The query includes sending the IP address and any other data required by Google for the reCAPTCHA service to Google. For this purpose, your input is transmitted to Google and used there. By using reCaptcha, you agree that the recognition you provide will be used to digitize old works. However, if IP anonymization is activated on this website, your IP address will be shortened by Google beforehand within member states of the European Union or in other contracting states of the Agreement on the European Economic Area. Only in exceptional cases will the full IP address be transmitted to a Google server in the USA and shortened there. Google will use this information on behalf of the operator of this website to evaluate your use of this service. The IP address transmitted by your browser as part of reCaptcha will not be merged with other Google data. The deviating data protection provisions of Google apply to this data. You can find more information about Google's privacy policy at: <a href="https://www.google.com/intl/en/policies/privacy/" className="text-blue-600 hover:text-blue-800">https://www.google.com/intl/en/policies/privacy/</a>.</p>
+              
+              <p>Our implementation includes enhanced reCAPTCHA validation with fallback mechanisms to ensure form functionality even if reCAPTCHA services are temporarily unavailable, while maintaining security standards.</p>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">18. Use of Google Maps</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">19. Use of Google Maps</h2>
               
               <p>This website uses the "Google Maps API" of Google Inc (Google) for the visual display of maps. When Google Maps is used, Google also collects, processes and uses data about the use of the Maps functions by visitors to the website. The terms of use for Google Maps can be found at Terms of Use for Google Maps. Further information on Google's privacy policy can be found at: <a href="https://www.google.com/intl/en/policies/privacy/" className="text-blue-600 hover:text-blue-800">https://www.google.com/intl/en/policies/privacy/</a>.</p>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">19. Google Tag Manager</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">20. Google Tag Manager</h2>
               
               <p>This website uses Google Tag Manager. This service allows website tags to be managed via an interface. The Google Tool Manager only implements tags. This means that no cookies are used and no personal data is collected. The Google Tool Manager triggers other tags, which in turn may collect data. However, the Google Tag Manager does not access this data. If deactivation has been carried out at domain or cookie level, it remains in place for all tracking tags, provided that these are implemented with the Google Tag Manager.</p>
               
