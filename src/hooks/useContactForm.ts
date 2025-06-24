@@ -1,4 +1,3 @@
-
 import { useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { PlaceholderData } from "@/utils/contactPlaceholders";
@@ -56,9 +55,15 @@ const validateFormData = (formState: FormState) => {
   return errors;
 };
 
-// Input sanitization
+// Lightweight input sanitization for real-time input (only removes obvious malicious content)
+const lightSanitizeInput = (input: string): string => {
+  // Only remove script tags and keep everything else intact for real-time input
+  return input.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+};
+
+// Comprehensive input sanitization for final submission
 const sanitizeInput = (input: string): string => {
-  // Remove potential script tags and dangerous characters
+  // Remove potential script tags and dangerous characters for final submission
   return input
     .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
     .replace(/<[^>]*>/g, '') // Remove HTML tags
@@ -88,12 +93,12 @@ export const useContactForm = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     
-    // Apply real-time input sanitization
-    const sanitizedValue = sanitizeInput(value);
+    // Apply only lightweight sanitization during real-time input to preserve normal typing
+    const lightlySanitizedValue = lightSanitizeInput(value);
     
     setFormState(prev => ({
       ...prev,
-      [name]: sanitizedValue
+      [name]: lightlySanitizedValue
     }));
   };
 
@@ -114,7 +119,7 @@ export const useContactForm = () => {
         throw new Error(validationErrors[0]); // Show first error
       }
 
-      // Additional sanitization before submission
+      // Apply comprehensive sanitization only at submission time
       const sanitizedFormState = {
         name: sanitizeInput(formState.name),
         email: sanitizeInput(formState.email.toLowerCase()),
