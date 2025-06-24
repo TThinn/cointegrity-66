@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import Footer from "@/components/Footer";
 import { SeoHead } from "@/components/seo/SeoHead";
@@ -33,7 +32,7 @@ const ThankYouPage = () => {
       />
       
       {/* Simple header with just logo */}
-      <header className="fixed top-0 left-0 right-0 z-50 py-6 bg-blue-900/80 backdrop-blur-lg">
+      <header className="fixed top-0 left-0 right-0 z-50 py-6 bg-[#080112]/80 backdrop-blur-lg">
         <Container>
           <div className="flex items-center">
             <Link to="/" className="relative z-10">
