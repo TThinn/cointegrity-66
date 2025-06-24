@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -17,6 +18,57 @@ interface MicaReadyWaitlistFormProps {
   buttonClass: string;
 }
 
+// Enhanced validation for waitlist form
+const validateWaitlistData = (formData: any) => {
+  const errors = [];
+  
+  // Name validation
+  if (!formData.name || !formData.name.trim()) {
+    errors.push("Name is required");
+  } else if (formData.name.trim().length < 2) {
+    errors.push("Name must be at least 2 characters long");
+  } else if (formData.name.trim().length > 100) {
+    errors.push("Name must be less than 100 characters");
+  } else if (!/^[a-zA-Z\s\-'\.]+$/.test(formData.name.trim())) {
+    errors.push("Name can only contain letters, spaces, hyphens, apostrophes, and periods");
+  }
+  
+  // Email validation
+  if (!formData.email || !formData.email.trim()) {
+    errors.push("Email is required");
+  } else if (!/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(formData.email.trim())) {
+    errors.push("Please enter a valid email address");
+  } else if (formData.email.trim().length > 254) {
+    errors.push("Email address is too long");
+  }
+  
+  // Company validation
+  if (!formData.company || !formData.company.trim()) {
+    errors.push("Company is required");
+  } else if (formData.company.trim().length < 2) {
+    errors.push("Company name must be at least 2 characters long");
+  } else if (formData.company.trim().length > 200) {
+    errors.push("Company name must be less than 200 characters");
+  }
+  
+  // Role validation (optional but if provided)
+  if (formData.role && formData.role.trim()) {
+    if (formData.role.trim().length > 100) {
+      errors.push("Role must be less than 100 characters");
+    }
+  }
+  
+  return errors;
+};
+
+// Input sanitization
+const sanitizeInput = (input: string): string => {
+  return input
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/<[^>]*>/g, '')
+    .trim();
+};
+
 const MicaReadyWaitlistForm = ({ serviceInterest, buttonText, buttonClass }: MicaReadyWaitlistFormProps) => {
   const [formData, setFormData] = useState({
     name: '',
@@ -30,40 +82,62 @@ const MicaReadyWaitlistForm = ({ serviceInterest, buttonText, buttonClass }: Mic
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    
+    // Apply real-time input sanitization
+    const sanitizedValue = sanitizeInput(value);
+    
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: sanitizedValue
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.email || !formData.company) {
-      toast.error("Please fill in all required fields");
+    // Prevent multiple submissions
+    if (isSubmitting) {
       return;
     }
-
+    
     setIsSubmitting(true);
 
     try {
+      // Enhanced client-side validation
+      const validationErrors = validateWaitlistData(formData);
+      if (validationErrors.length > 0) {
+        toast.error(validationErrors[0]);
+        return;
+      }
+
+      // Additional sanitization before submission
+      const sanitizedData = {
+        name: sanitizeInput(formData.name),
+        email: sanitizeInput(formData.email.toLowerCase()),
+        company: sanitizeInput(formData.company),
+        role: formData.role ? sanitizeInput(formData.role) : null,
+        service_interest: serviceInterest
+      };
+
+      console.log('Submitting waitlist form with validation:', {
+        name: sanitizedData.name,
+        email: sanitizedData.email,
+        company: sanitizedData.company,
+        role: sanitizedData.role,
+        service_interest: sanitizedData.service_interest
+      });
+
       const { error } = await supabase
         .from('waitlist')
-        .insert([
-          {
-            name: formData.name.trim(),
-            email: formData.email.trim().toLowerCase(),
-            company: formData.company.trim(),
-            role: formData.role.trim() || null,
-            service_interest: serviceInterest
-          }
-        ]);
+        .insert([sanitizedData]);
 
       if (error) {
         console.error('Error inserting waitlist entry:', error);
         
         if (error.code === '23505') {
           toast.error("This email is already on our waitlist!");
+        } else if (error.message.includes('check constraint')) {
+          toast.error("Please check your input and try again.");
         } else {
           toast.error("Something went wrong. Please try again.");
         }
@@ -82,7 +156,7 @@ const MicaReadyWaitlistForm = ({ serviceInterest, buttonText, buttonClass }: Mic
       });
 
     } catch (error) {
-      console.error('Unexpected error:', error);
+      console.error('Unexpected waitlist error:', error);
       toast.error("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -157,6 +231,7 @@ const MicaReadyWaitlistForm = ({ serviceInterest, buttonText, buttonClass }: Mic
               value={formData.name}
               onChange={handleInputChange}
               required
+              maxLength={100}
               placeholder="Enter your full name"
               className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
             />
@@ -173,6 +248,7 @@ const MicaReadyWaitlistForm = ({ serviceInterest, buttonText, buttonClass }: Mic
               value={formData.email}
               onChange={handleInputChange}
               required
+              maxLength={254}
               placeholder="your.email@company.com"
               className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
             />
@@ -189,6 +265,7 @@ const MicaReadyWaitlistForm = ({ serviceInterest, buttonText, buttonClass }: Mic
               value={formData.company}
               onChange={handleInputChange}
               required
+              maxLength={200}
               placeholder="Your company or organization"
               className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
             />
@@ -204,6 +281,7 @@ const MicaReadyWaitlistForm = ({ serviceInterest, buttonText, buttonClass }: Mic
               name="role"
               value={formData.role}
               onChange={handleInputChange}
+              maxLength={100}
               placeholder="e.g., CEO, Compliance Officer, Legal Counsel"
               className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
             />
