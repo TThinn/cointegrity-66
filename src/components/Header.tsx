@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -164,8 +165,8 @@ const Header = ({ backgroundType = 'dark' }: HeaderProps) => {
     
     if (backgroundType === 'light') {
       return {
-        container: "bg-black/90 backdrop-blur-lg border border-gray-300 shadow-lg",
-        item: "text-white hover:bg-black/80 hover:text-white"
+        container: "bg-black backdrop-blur-lg border border-gray-300 shadow-lg",
+        item: "text-white hover:bg-gray-800 hover:text-white"
       };
     } else {
       return {
