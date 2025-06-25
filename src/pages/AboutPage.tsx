@@ -13,7 +13,7 @@ const AboutPage = () => {
     <div className="min-h-screen bg-[#010822]" itemScope itemType="https://schema.org/WebPage">
       <SeoHead currentPath={location.pathname} currentHash="" />
       
-      <Header />
+      <Header backgroundType="dark" />
       
       {/* Just show the About Us content directly without hero section */}
       <main id="main" className="pt-20">

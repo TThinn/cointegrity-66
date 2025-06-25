@@ -1,4 +1,6 @@
+
 import React, { useEffect } from "react";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { useLocation } from "react-router-dom";
@@ -31,22 +33,7 @@ const ThankYouPage = () => {
         currentHash={location.hash}
       />
       
-      {/* Simple header with just logo */}
-      <header className="fixed top-0 left-0 right-0 z-50 py-6 bg-[#080112] backdrop-blur-lg">
-        <Container>
-          <div className="flex items-center">
-            <Link to="/" className="relative z-10">
-              <div className="flex items-center">
-                <img 
-                  src="/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png" 
-                  alt="Cointegrity Logo" 
-                  className="h-10 w-auto" 
-                />
-              </div>
-            </Link>
-          </div>
-        </Container>
-      </header>
+      <Header backgroundType="light" />
       
       <main id="main">
         <section className="py-20 bg-gradient-to-b from-[#FEFCFD] to-[#FDF9FC] relative overflow-hidden">
