@@ -161,20 +161,20 @@ const Header = ({ backgroundType = 'dark' }: HeaderProps) => {
 
   // Dynamic dropdown styles based on background type
   const getDropdownStyles = () => {
-    console.log('Background type:', backgroundType); // Debug log
-    
-    if (backgroundType === 'light') {
-      return {
-        container: "bg-black backdrop-blur-lg border border-gray-300 shadow-lg",
-        item: "text-white hover:bg-gray-800 hover:text-white"
-      };
-    } else {
-      return {
-        container: "bg-white/5 backdrop-blur-lg border border-white/20 shadow-xl",
-        item: "text-white/80 hover:bg-white/10 hover:text-white"
-      };
-    }
-  };
+  console.log('Background type:', backgroundType); // Debug log
+  
+  if (backgroundType === 'light') {
+    return {
+      container: "bg-black/90 backdrop-blur-lg border border-gray-300 shadow-lg",
+      item: "text-white bg-black/90 hover:bg-gray-800 hover:text-white"
+    };
+  } else {
+    return {
+      container: "bg-white/5 backdrop-blur-lg border border-white/20 shadow-xl",
+      item: "text-white/80 hover:bg-white/10 hover:text-white"
+    };
+  }
+};
 
   const dropdownStyles = getDropdownStyles();
 
