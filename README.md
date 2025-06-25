@@ -1,8 +1,8 @@
-# Welcome to your Lovable project
+# Welcome to Cointegrity - The leading web3 consultancy company
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/ac3c7929-00cf-4e5e-a763-846ec8e96338
+**URL**: https://lovable.dev/projects/ac3c7929-00cf-4e5e-a763-846ec8e96338 (this is a temp page for development)
 
 ## How can I edit this code?
 
