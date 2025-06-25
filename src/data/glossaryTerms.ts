@@ -10942,6 +10942,27 @@ trending: 8
   categories: ['social_community', 'defi'],
   related: ['DAO', 'Investment DAO', 'Venture DAO', 'Community Governance'],
   trending: 6
+},
+{
+  term: "Mule",
+  definition: "An individual who knowingly or unknowingly facilitates money laundering by transferring illicit funds through their personal accounts or payment methods. Mules may be recruited through job scams, romance fraud, or other deceptive schemes, and often face legal consequences even when unaware of the criminal nature of their activities.",
+  categories: ["compliance"],
+  related: ["Mule Account", "Money Laundering", "Recruitment Fraud", "Financial Crime"],
+  trending: 8
+},
+{
+  term: "Mule Account",
+  definition: "A bank account or cryptocurrency wallet controlled by a mule that is specifically used to receive, hold, and transfer illicit funds as part of money laundering operations. These accounts serve as intermediary points in the laundering process, helping criminals distance themselves from the original source of illegal funds while appearing to legitimize transactions.",
+  categories: ["compliance", "wallets_security"],
+  related: ["Mule", "Money Laundering", "Account Takeover", "Transaction Monitoring"],
+  trending: 8
+},
+{
+  term: "Drop Account",
+  definition: "A compromised, stolen, or fraudulently opened account used temporarily to receive and hold stolen funds before they are quickly moved to other accounts or withdrawn. Unlike mule accounts, drop accounts are typically controlled without the legitimate account holder's knowledge and serve as brief collection points in the early stages of money laundering schemes.",
+  categories: ["compliance", "wallets_security"],
+  related: ["Account Takeover", "Identity Theft", "Fraud", "Rapid Fund Movement"],
+  trending: 7
 }
 
 
