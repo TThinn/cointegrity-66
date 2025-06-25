@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import Container from "./ui/Container";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -161,10 +160,12 @@ const Header = ({ backgroundType = 'dark' }: HeaderProps) => {
 
   // Dynamic dropdown styles based on background type
   const getDropdownStyles = () => {
+    console.log('Background type:', backgroundType); // Debug log
+    
     if (backgroundType === 'light') {
       return {
-        container: "bg-white/95 backdrop-blur-lg border border-gray-200 shadow-lg",
-        item: "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+        container: "bg-black/90 backdrop-blur-lg border border-gray-300 shadow-lg",
+        item: "text-white hover:bg-black/80 hover:text-white"
       };
     } else {
       return {
