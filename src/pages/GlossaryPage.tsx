@@ -96,18 +96,6 @@ const GlossaryPage: React.FC = () => {
               </AlertDescription>
             </Alert>
           )}
-          
-          {/* Warning if fewer terms than expected */}
-          {totalTermsCount !== 1414 && !isLoading && (
-            <Alert variant="destructive" className="mb-6 bg-red-900/20 border-red-500/30">
-              <AlertTriangle className="h-4 w-4" />
-              <AlertTitle>Data Count Warning</AlertTitle>
-              <AlertDescription>
-                Expected 1414 terms but loaded {totalTermsCount} terms.
-                This may indicate a data source issue.
-              </AlertDescription>
-            </Alert>
-          )}
 
           <div className="flex flex-col lg:flex-row gap-8 mb-8">
             <div className="lg:w-3/4">
