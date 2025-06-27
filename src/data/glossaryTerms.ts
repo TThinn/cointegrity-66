@@ -10963,7 +10963,14 @@ trending: 8
   categories: ["compliance", "wallets_security"],
   related: ["Account Takeover", "Identity Theft", "Fraud", "Rapid Fund Movement"],
   trending: 7
-}
+},
+{
+  term: "Minting",
+  definition: "The process of creating new tokens or digital assets on a blockchain network through various mechanisms. Minting encompasses multiple distinct processes: (1) Cryptocurrency mining where computational power is used to solve cryptographic puzzles in Proof of Work networks like Bitcoin, with miners earning newly created coins as block rewards for validating transactions and securing the network, (2) Proof of Stake validation where validators mint new blocks and earn token rewards for securing the network through staked assets, (3) Cross-chain bridging where wrapped tokens are minted on destination blockchains to represent assets locked on source chains, (4) NFT creation where unique digital collectibles are generated and recorded on-chain with distinct metadata, (5) Initial token deployment through smart contract creation that establishes total supply and distribution parameters, (6) Continuous token emission via programmed inflation schedules or DeFi protocol rewards, and (7) ERC token creation which occurs both at contract deployment (setting initial parameters like name, symbol, and total supply) and ongoing through functions like automated market maker rewards, staking yields, or governance-controlled emissions. Each minting type serves different purposes within blockchain ecosystems, from network security incentives to cross-chain interoperability and digital asset creation.",
+  categories: ["blockchain_technology", "mining_staking", "tokenomics", "smart_contracts"],
+  related: ["Cryptocurrency Mining", "Proof of Work", "Block Rewards", "Token Creation", "Smart Contract Deployment", "Proof of Stake", "Cross-chain Bridges", "NFT Standards", "ERC-20", "Token Emission"],
+  trending: 9
+},
 
 
 ];
