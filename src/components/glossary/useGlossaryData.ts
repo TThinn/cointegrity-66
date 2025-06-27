@@ -1,3 +1,4 @@
+
 import { useState, useMemo, useEffect } from "react";
 import { CategoryType, DataSourceType, GlossaryTerm } from "./types";
 import { glossaryTerms } from "@/data/glossaryTerms";
@@ -6,7 +7,7 @@ import { batchTransformTerms } from "./utils/termTransformation";
 
 /**
  * Score a term based on how well it matches the search query
- * Fixed tier-based scoring system with proper exact match detection
+ * Clear tier-based scoring system for optimal search results
  */
 const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
   if (!searchTerm) return 0;
@@ -16,52 +17,53 @@ const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
   const definition = term.definition.toLowerCase();
   const question = term.question?.toLowerCase() || '';
   
-  let score = 0;
-  let matchType = '';
-  
   // TIER 1: EXACT MATCH - Highest priority (10000)
   if (termName === query) {
-    score = 10000;
-    matchType = 'exact match';
+    console.log(`🎯 EXACT MATCH: "${term.term}" = 10000`);
+    return 10000;
   }
-  // TIER 2: TERM STARTS WITH QUERY - Very high priority (5000)
-  else if (termName.startsWith(query)) {
-    score = 5000;
-    matchType = 'term starts with';
+  
+  // TIER 2: TERM STARTS WITH QUERY - Very high priority (5000-5999)
+  if (termName.startsWith(query)) {
+    const score = 5000 + (100 - termName.length); // Shorter terms rank higher
+    console.log(`🚀 STARTS WITH: "${term.term}" = ${score}`);
+    return score;
   }
-  // TIER 3: TERM CONTAINS QUERY - High priority (3000)
-  else if (termName.includes(query)) {
-    score = 3000;
-    matchType = 'term contains';
+  
+  // TIER 3: TERM CONTAINS QUERY - High priority (3000-3999)
+  if (termName.includes(query)) {
+    const position = termName.indexOf(query);
+    const score = 3000 + (100 - position); // Earlier position ranks higher
+    console.log(`💫 CONTAINS: "${term.term}" = ${score}`);
+    return score;
   }
-  // TIER 4: DEFINITION STARTS WITH QUERY - Medium priority (400)
-  else if (definition.startsWith(query)) {
-    score = 400;
-    matchType = 'definition starts with';
+  
+  // TIER 4: DEFINITION STARTS WITH QUERY - Medium priority (400-499)
+  if (definition.startsWith(query)) {
+    console.log(`📖 DEF STARTS: "${term.term}" = 400`);
+    return 400;
   }
+  
   // TIER 5: DEFINITION CONTAINS QUERY - Low-medium priority (200-300)
-  else if (definition.includes(query)) {
+  if (definition.includes(query)) {
     const occurrences = (definition.match(new RegExp(query, 'g')) || []).length;
-    score = 200 + Math.min(occurrences * 20, 100); // Base 200, max bonus 100
-    matchType = `definition contains (${occurrences}x)`;
+    const score = 200 + Math.min(occurrences * 10, 100);
+    console.log(`📝 DEF CONTAINS: "${term.term}" = ${score} (${occurrences}x)`);
+    return score;
   }
+  
   // TIER 6: QUESTION MATCHES - Lowest priority (50-100)
-  else if (question) {
+  if (question) {
     if (question.startsWith(query)) {
-      score = 100;
-      matchType = 'question starts with';
+      console.log(`❓ Q STARTS: "${term.term}" = 100`);
+      return 100;
     } else if (question.includes(query)) {
-      score = 50;
-      matchType = 'question contains';
+      console.log(`❓ Q CONTAINS: "${term.term}" = 50`);
+      return 50;
     }
   }
   
-  // Enhanced debugging for search results
-  if (query && score > 0) {
-    console.log(`🔍 Scoring "${term.term}": ${matchType} = ${score}`);
-  }
-  
-  return score;
+  return 0;
 };
 
 /**
@@ -111,65 +113,65 @@ export const useGlossaryData = (
     }
   }, [dataSource, rawData]);
 
-  // Main filtering and sorting logic - RESTRUCTURED
+  // Main filtering and sorting logic - OPTIMIZED FOR SEARCH
   const filteredAndSortedTerms = useMemo(() => {
     const query = searchTerm.trim().toLowerCase();
     console.log(`🔍 Processing search: "${searchTerm}" (normalized: "${query}"), category: "${activeCategory}"`);
     
-    // STEP 1: Start with all terms
     let processedTerms = [...rawData];
     
-    // STEP 2: Apply search filtering and scoring FIRST (before category filtering)
+    // SEARCH-FIRST APPROACH: Score and filter by search relevance FIRST
     if (query) {
-      console.log(`🎯 Starting search for "${query}" in ${processedTerms.length} terms`);
+      console.log(`🎯 SEARCH MODE: Scoring ${processedTerms.length} terms for "${query}"`);
       
       // Score all terms and filter by relevance
-      const searchScoredTerms = processedTerms
-        .map(term => {
-          const relevanceScore = scoreTermMatch(term, query);
-          return {
-            ...term,
-            relevanceScore
-          };
-        })
-        .filter(term => term.relevanceScore > 0);
+      const searchResults = processedTerms
+        .map(term => ({
+          ...term,
+          relevanceScore: scoreTermMatch(term, query)
+        }))
+        .filter(term => term.relevanceScore > 0)
+        .sort((a, b) => {
+          // Primary sort: by relevance score (highest first)
+          if (a.relevanceScore !== b.relevanceScore) {
+            return b.relevanceScore - a.relevanceScore;
+          }
+          // Secondary sort: alphabetically for same scores
+          return a.term.localeCompare(b.term);
+        });
 
-      // Sort by relevance score (highest first), then alphabetically for same scores
-      searchScoredTerms.sort((a, b) => {
-        if (a.relevanceScore !== b.relevanceScore) {
-          return b.relevanceScore - a.relevanceScore;
-        }
-        return a.term.localeCompare(b.term);
-      });
-
-      console.log(`📊 Search results for "${query}": ${searchScoredTerms.length} terms found`);
+      console.log(`📊 Search scored ${searchResults.length} relevant terms`);
       
-      // Log top results for debugging
-      if (searchScoredTerms.length > 0) {
-        console.log('🏆 Top 5 search results:', searchScoredTerms.slice(0, 5).map((t, index) => ({
-          rank: index + 1,
-          term: t.term,
-          score: t.relevanceScore,
-          scoreType: t.relevanceScore >= 10000 ? 'EXACT' : 
-                    t.relevanceScore >= 5000 ? 'STARTS' : 
-                    t.relevanceScore >= 3000 ? 'CONTAINS' : 'OTHER'
-        })));
+      // Log top 10 results for debugging
+      if (searchResults.length > 0) {
+        console.log('🏆 Top search results:');
+        searchResults.slice(0, 10).forEach((term, index) => {
+          console.log(`  ${index + 1}. "${term.term}" (score: ${term.relevanceScore})`);
+        });
       }
 
-      // Remove relevanceScore before continuing
-      processedTerms = searchScoredTerms.map(({ relevanceScore, ...term }) => term);
-    }
-    
-    // STEP 3: Apply category filtering AFTER search scoring
-    if (activeCategory !== "all") {
-      processedTerms = processedTerms.filter(term => 
-        term.categories.some(cat => cat === activeCategory)
-      );
-      console.log(`📂 Category filtered to ${processedTerms.length} terms for category: ${activeCategory}`);
-    }
-    
-    // STEP 4: Final sorting - only alphabetical if no search query
-    if (!query) {
+      // Remove relevanceScore before continuing and apply category filter
+      processedTerms = searchResults.map(({ relevanceScore, ...term }) => term);
+      
+      // Apply category filter AFTER search scoring
+      if (activeCategory !== "all") {
+        processedTerms = processedTerms.filter(term => 
+          term.categories.some(cat => cat === activeCategory)
+        );
+        console.log(`📂 Category filtered to ${processedTerms.length} terms for category: ${activeCategory}`);
+      }
+    } else {
+      // NO SEARCH: Apply category filter first, then sort alphabetically  
+      console.log(`📂 BROWSE MODE: Filtering by category: ${activeCategory}`);
+      
+      if (activeCategory !== "all") {
+        processedTerms = processedTerms.filter(term => 
+          term.categories.some(cat => cat === activeCategory)
+        );
+        console.log(`📂 Category filtered to ${processedTerms.length} terms`);
+      }
+      
+      // Alphabetical sort for browsing
       processedTerms.sort((a, b) => a.term.localeCompare(b.term));
     }
     
