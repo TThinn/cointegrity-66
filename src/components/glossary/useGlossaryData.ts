@@ -6,6 +6,43 @@ import { toast } from "sonner";
 import { batchTransformTerms } from "./utils/termTransformation";
 
 /**
+ * Score a term based on how well it matches the search query
+ * Higher scores = better matches
+ */
+const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
+  if (!searchTerm) return 0;
+  
+  const query = searchTerm.toLowerCase();
+  const termName = term.term.toLowerCase();
+  const definition = term.definition.toLowerCase();
+  const question = term.question?.toLowerCase() || '';
+  
+  // Exact match in term name gets highest score
+  if (termName === query) return 1000;
+  
+  // Term starts with search query gets very high score
+  if (termName.startsWith(query)) return 800;
+  
+  // Term contains search query gets high score
+  if (termName.includes(query)) return 600;
+  
+  // Definition starts with search query gets medium-high score
+  if (definition.startsWith(query)) return 400;
+  
+  // Definition contains search query gets medium score
+  if (definition.includes(query)) return 300;
+  
+  // Question starts with search query gets medium score
+  if (question && question.startsWith(query)) return 200;
+  
+  // Question contains search query gets low score
+  if (question && question.includes(query)) return 100;
+  
+  // No match
+  return 0;
+};
+
+/**
  * Custom hook for managing glossary data sources and filtering
  */
 export const useGlossaryData = (
@@ -52,35 +89,55 @@ export const useGlossaryData = (
     }
   }, [dataSource, rawData]);
 
-  // Sort terms alphabetically
-  const sortedTerms = useMemo(() => {
-    return [...rawData].sort((a, b) => a.term.localeCompare(b.term));
-  }, [rawData]);
-
-  // Filter terms based on search and category (including question field in search)
-  const filteredTerms = useMemo(() => {
-    return sortedTerms.filter(term => {
-      const matchesSearch = searchTerm === '' || 
-                        term.term.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                        term.definition.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                        (term.question && term.question.toLowerCase().includes(searchTerm.toLowerCase()));
-      
-      // Handle category filtering with type safety
+  // Filter and sort terms based on search and category with relevance scoring
+  const filteredAndSortedTerms = useMemo(() => {
+    console.log(`Filtering terms with search: "${searchTerm}", category: "${activeCategory}"`);
+    
+    // First filter by category
+    const categoryFiltered = rawData.filter(term => {
       const matchesCategory = activeCategory === "all" || 
                         term.categories.some(cat => 
-                          // Ensure the category is treated as a valid CategoryType
                           cat === activeCategory
                         );
-      
-      return matchesSearch && matchesCategory;
+      return matchesCategory;
     });
-  }, [sortedTerms, searchTerm, activeCategory]);
+
+    // If no search term, return alphabetically sorted results
+    if (!searchTerm.trim()) {
+      return [...categoryFiltered].sort((a, b) => a.term.localeCompare(b.term));
+    }
+
+    // Filter by search term and calculate relevance scores
+    const searchFiltered = categoryFiltered
+      .map(term => ({
+        ...term,
+        relevanceScore: scoreTermMatch(term, searchTerm.trim())
+      }))
+      .filter(term => term.relevanceScore > 0);
+
+    // Sort by relevance score (highest first), then alphabetically for same scores
+    const sortedByRelevance = searchFiltered.sort((a, b) => {
+      if (a.relevanceScore !== b.relevanceScore) {
+        return b.relevanceScore - a.relevanceScore;
+      }
+      return a.term.localeCompare(b.term);
+    });
+
+    console.log(`Search results: ${sortedByRelevance.length} terms found`);
+    console.log('Top 5 results:', sortedByRelevance.slice(0, 5).map(t => ({
+      term: t.term,
+      score: t.relevanceScore
+    })));
+
+    // Remove the relevanceScore property before returning
+    return sortedByRelevance.map(({ relevanceScore, ...term }) => term);
+  }, [rawData, searchTerm, activeCategory]);
 
   // Group terms by first letter for alphabetical index
   const groupedTerms = useMemo(() => {
     const grouped: Record<string, GlossaryTerm[]> = {};
     
-    filteredTerms.forEach(term => {
+    filteredAndSortedTerms.forEach(term => {
       const firstLetter = term.term.charAt(0).toUpperCase();
       if (!grouped[firstLetter]) {
         grouped[firstLetter] = [];
@@ -90,7 +147,7 @@ export const useGlossaryData = (
     });
     
     return grouped;
-  }, [filteredTerms]);
+  }, [filteredAndSortedTerms]);
 
   // Extract all letters that have terms
   const letters = useMemo(() => {
@@ -106,7 +163,7 @@ export const useGlossaryData = (
   return {
     dataSource,
     changeDataSource,
-    filteredTerms,
+    filteredTerms: filteredAndSortedTerms,
     groupedTerms,
     letters,
     isLoading,
