@@ -6,7 +6,7 @@ import { batchTransformTerms } from "./utils/termTransformation";
 
 /**
  * Score a term based on how well it matches the search query
- * Clear tier-based scoring system to prevent conflicts
+ * Fixed tier-based scoring system with proper exact match detection
  */
 const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
   if (!searchTerm) return 0;
