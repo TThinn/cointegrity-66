@@ -1,4 +1,3 @@
-
 import { useState, useMemo, useEffect } from "react";
 import { CategoryType, DataSourceType, GlossaryTerm } from "./types";
 import { glossaryTerms } from "@/data/glossaryTerms";
@@ -6,7 +5,7 @@ import { toast } from "sonner";
 import { batchTransformTerms } from "./utils/termTransformation";
 
 /**
- * Score a term based on how well it matches the search query
+ * Enhanced scoring system for term matching with smart word-based matching
  * Clear tier-based scoring system for optimal search results
  */
 const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
@@ -17,49 +16,95 @@ const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
   const definition = term.definition.toLowerCase();
   const question = term.question?.toLowerCase() || '';
   
+  // Normalize search query and term name for better matching
+  const normalizeText = (text: string) => text.replace(/[^\w\s]/g, '').replace(/\s+/g, ' ').trim();
+  const normalizedQuery = normalizeText(query);
+  const normalizedTermName = normalizeText(termName);
+  
+  // Split into words for word-based matching
+  const queryWords = normalizedQuery.split(' ');
+  const termWords = normalizedTermName.split(' ');
+  
   // TIER 1: EXACT MATCH - Highest priority (10000)
-  if (termName === query) {
+  if (termName === query || normalizedTermName === normalizedQuery) {
     console.log(`🎯 EXACT MATCH: "${term.term}" = 10000`);
     return 10000;
   }
   
-  // TIER 2: TERM STARTS WITH QUERY - Very high priority (5000-5999)
-  if (termName.startsWith(query)) {
-    const score = 5000 + (100 - termName.length); // Shorter terms rank higher
+  // TIER 2: PERFECT WORD MATCH - Very high priority (9000-9999)
+  const exactWordMatches = queryWords.filter(qWord => 
+    termWords.some(tWord => tWord === qWord)
+  ).length;
+  
+  if (exactWordMatches === queryWords.length && queryWords.length > 1) {
+    const score = 9000 + (100 - termName.length) + (exactWordMatches * 10);
+    console.log(`🔥 PERFECT WORDS: "${term.term}" = ${score} (${exactWordMatches}/${queryWords.length} words)`);
+    return score;
+  }
+  
+  // TIER 3: TERM STARTS WITH QUERY - High priority (7000-7999)
+  if (termName.startsWith(query) || normalizedTermName.startsWith(normalizedQuery)) {
+    const score = 7000 + (100 - termName.length); // Shorter terms rank higher
     console.log(`🚀 STARTS WITH: "${term.term}" = ${score}`);
     return score;
   }
   
-  // TIER 3: TERM CONTAINS QUERY - High priority (3000-3999)
-  if (termName.includes(query)) {
-    const position = termName.indexOf(query);
-    const score = 3000 + (100 - position); // Earlier position ranks higher
-    console.log(`💫 CONTAINS: "${term.term}" = ${score}`);
+  // TIER 4: WORD STARTS WITH QUERY - High-medium priority (6000-6999)
+  const wordStartMatches = termWords.filter(word => 
+    queryWords.some(qWord => word.startsWith(qWord))
+  ).length;
+  
+  if (wordStartMatches > 0) {
+    const score = 6000 + (wordStartMatches * 100) + (100 - termName.length);
+    console.log(`🌟 WORD STARTS: "${term.term}" = ${score} (${wordStartMatches} words)`);
     return score;
   }
   
-  // TIER 4: DEFINITION STARTS WITH QUERY - Medium priority (400-499)
-  if (definition.startsWith(query)) {
+  // TIER 5: TERM CONTAINS QUERY - Medium priority (4000-4999)
+  if (termName.includes(query) || normalizedTermName.includes(normalizedQuery)) {
+    const position = Math.min(termName.indexOf(query), normalizedTermName.indexOf(normalizedQuery));
+    const actualPosition = position === -1 ? Math.max(termName.indexOf(query), normalizedTermName.indexOf(normalizedQuery)) : position;
+    const score = 4000 + (100 - actualPosition) + (exactWordMatches * 50);
+    console.log(`💫 CONTAINS: "${term.term}" = ${score} (pos: ${actualPosition})`);
+    return score;
+  }
+  
+  // TIER 6: PARTIAL WORD MATCHES - Medium-low priority (3000-3999)
+  const partialWordMatches = queryWords.filter(qWord => 
+    termWords.some(tWord => tWord.includes(qWord) && qWord.length > 2)
+  ).length;
+  
+  if (partialWordMatches > 0) {
+    const score = 3000 + (partialWordMatches * 100) + exactWordMatches * 50;
+    console.log(`🔍 PARTIAL WORDS: "${term.term}" = ${score} (${partialWordMatches}/${queryWords.length})`);
+    return score;
+  }
+  
+  // TIER 7: DEFINITION STARTS WITH QUERY - Low-medium priority (400-499)
+  if (definition.startsWith(query) || definition.startsWith(normalizedQuery)) {
     console.log(`📖 DEF STARTS: "${term.term}" = 400`);
     return 400;
   }
   
-  // TIER 5: DEFINITION CONTAINS QUERY - Low-medium priority (200-300)
-  if (definition.includes(query)) {
-    const occurrences = (definition.match(new RegExp(query, 'g')) || []).length;
-    const score = 200 + Math.min(occurrences * 10, 100);
-    console.log(`📝 DEF CONTAINS: "${term.term}" = ${score} (${occurrences}x)`);
+  // TIER 8: DEFINITION CONTAINS QUERY - Lower priority (200-399)
+  if (definition.includes(query) || definition.includes(normalizedQuery)) {
+    const queryOccurrences = (definition.match(new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length;
+    const wordMatches = queryWords.filter(qWord => definition.includes(qWord)).length;
+    const score = 200 + Math.min(queryOccurrences * 10, 50) + (wordMatches * 20);
+    console.log(`📝 DEF CONTAINS: "${term.term}" = ${score} (${queryOccurrences}x, ${wordMatches} words)`);
     return score;
   }
   
-  // TIER 6: QUESTION MATCHES - Lowest priority (50-100)
+  // TIER 9: QUESTION MATCHES - Lowest priority (50-150)
   if (question) {
-    if (question.startsWith(query)) {
-      console.log(`❓ Q STARTS: "${term.term}" = 100`);
-      return 100;
-    } else if (question.includes(query)) {
-      console.log(`❓ Q CONTAINS: "${term.term}" = 50`);
-      return 50;
+    if (question.startsWith(query) || question.startsWith(normalizedQuery)) {
+      console.log(`❓ Q STARTS: "${term.term}" = 150`);
+      return 150;
+    } else if (question.includes(query) || question.includes(normalizedQuery)) {
+      const wordMatches = queryWords.filter(qWord => question.includes(qWord)).length;
+      const score = 50 + (wordMatches * 10);
+      console.log(`❓ Q CONTAINS: "${term.term}" = ${score}`);
+      return score;
     }
   }
   
@@ -113,16 +158,16 @@ export const useGlossaryData = (
     }
   }, [dataSource, rawData]);
 
-  // Main filtering and sorting logic - OPTIMIZED FOR SEARCH
+  // Main filtering and sorting logic - ENHANCED SEARCH-FIRST APPROACH
   const filteredAndSortedTerms = useMemo(() => {
     const query = searchTerm.trim().toLowerCase();
     console.log(`🔍 Processing search: "${searchTerm}" (normalized: "${query}"), category: "${activeCategory}"`);
     
     let processedTerms = [...rawData];
     
-    // SEARCH-FIRST APPROACH: Score and filter by search relevance FIRST
+    // ENHANCED SEARCH-FIRST APPROACH: Score and filter by search relevance FIRST
     if (query) {
-      console.log(`🎯 SEARCH MODE: Scoring ${processedTerms.length} terms for "${query}"`);
+      console.log(`🎯 ENHANCED SEARCH MODE: Scoring ${processedTerms.length} terms for "${query}"`);
       
       // Score all terms and filter by relevance
       const searchResults = processedTerms
@@ -140,12 +185,12 @@ export const useGlossaryData = (
           return a.term.localeCompare(b.term);
         });
 
-      console.log(`📊 Search scored ${searchResults.length} relevant terms`);
+      console.log(`📊 Enhanced search scored ${searchResults.length} relevant terms`);
       
-      // Log top 10 results for debugging
+      // Log top 15 results for debugging with scores
       if (searchResults.length > 0) {
-        console.log('🏆 Top search results:');
-        searchResults.slice(0, 10).forEach((term, index) => {
+        console.log('🏆 Top enhanced search results:');
+        searchResults.slice(0, 15).forEach((term, index) => {
           console.log(`  ${index + 1}. "${term.term}" (score: ${term.relevanceScore})`);
         });
       }
