@@ -7,8 +7,7 @@ import { batchTransformTerms } from "./utils/termTransformation";
 
 /**
  * Score a term based on how well it matches the search query
- * Higher scores = better matches
- * Enhanced scoring system with exact match prioritization
+ * Simplified scoring system with clear tiers to prevent conflicts
  */
 const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
   if (!searchTerm) return 0;
@@ -19,61 +18,54 @@ const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
   const question = term.question?.toLowerCase() || '';
   
   let score = 0;
-  let matchDetails: string[] = [];
+  let matchType = '';
   
-  // EXACT MATCH - Significantly higher score (10000)
+  // TIER 1: EXACT MATCH - Highest priority (10000)
   if (termName === query) {
     score = 10000;
-    matchDetails.push(`exact match (${score})`);
-    
-    // Log exact matches for debugging
-    if (query === 'minting') {
-      console.log(`🎯 EXACT MATCH FOUND: "${term.term}" with score ${score}`);
-    }
-    
-    return score;
+    matchType = 'exact match';
   }
-  
-  // TERM STARTS WITH QUERY - Very high score (8000)
-  if (termName.startsWith(query)) {
-    score = 8000;
-    matchDetails.push(`term starts with query (${score})`);
+  // TIER 2: TERM STARTS WITH QUERY - Very high priority (5000)
+  else if (termName.startsWith(query)) {
+    score = 5000;
+    matchType = 'term starts with';
   }
-  // TERM CONTAINS QUERY - High score (6000)
+  // TIER 3: TERM CONTAINS QUERY - High priority (3000)
   else if (termName.includes(query)) {
-    score = 6000;
-    matchDetails.push(`term contains query (${score})`);
+    score = 3000;
+    matchType = 'term contains';
   }
-  
-  // DEFINITION MATCHES - Medium scores (only if no term match)
-  if (score === 0) {
-    if (definition.startsWith(query)) {
-      score = 400;
-      matchDetails.push(`definition starts with query (${score})`);
-    } else if (definition.includes(query)) {
-      // Count occurrences but cap the bonus to prevent spam
-      const occurrences = (definition.match(new RegExp(query, 'g')) || []).length;
-      const baseScore = 300;
-      const bonusScore = Math.min(occurrences * 50, 200); // Cap bonus at 200
-      score = baseScore + bonusScore;
-      matchDetails.push(`definition contains query ${occurrences}x (${score})`);
-    }
+  // TIER 4: DEFINITION STARTS WITH QUERY - Medium priority (400)
+  else if (definition.startsWith(query)) {
+    score = 400;
+    matchType = 'definition starts with';
   }
-  
-  // QUESTION MATCHES - Lower scores (only if no previous matches)
-  if (score === 0 && question) {
+  // TIER 5: DEFINITION CONTAINS QUERY - Low-medium priority (200-300)
+  else if (definition.includes(query)) {
+    const occurrences = (definition.match(new RegExp(query, 'g')) || []).length;
+    score = 200 + Math.min(occurrences * 20, 100); // Base 200, max bonus 100
+    matchType = `definition contains (${occurrences}x)`;
+  }
+  // TIER 6: QUESTION MATCHES - Lowest priority (50-100)
+  else if (question) {
     if (question.startsWith(query)) {
-      score = 200;
-      matchDetails.push(`question starts with query (${score})`);
-    } else if (question.includes(query)) {
       score = 100;
-      matchDetails.push(`question contains query (${score})`);
+      matchType = 'question starts with';
+    } else if (question.includes(query)) {
+      score = 50;
+      matchType = 'question contains';
     }
   }
   
-  // Debug logging for specific terms
+  // Enhanced debugging for specific search terms
   if (query === 'minting' && score > 0) {
-    console.log(`🔍 Scoring "${term.term}": ${matchDetails.join(', ')} = ${score}`);
+    console.log(`🔍 Scoring "${term.term}": ${matchType} = ${score}`, {
+      termName,
+      query,
+      isExactMatch: termName === query,
+      score,
+      matchType
+    });
   }
   
   return score;
@@ -188,28 +180,31 @@ export const useGlossaryData = (
 
     console.log(`📊 Search results for "${query}": ${sortedByRelevance.length} terms found`);
     
-    // Enhanced logging for top results
+    // Enhanced logging for search results
     if (sortedByRelevance.length > 0) {
       console.log('🏆 Top 10 search results:', sortedByRelevance.slice(0, 10).map((t, index) => ({
         rank: index + 1,
         term: t.term,
         score: t.relevanceScore,
-        isExactMatch: t.term.toLowerCase().trim() === query
+        scoreType: t.relevanceScore >= 10000 ? 'EXACT' : 
+                  t.relevanceScore >= 5000 ? 'STARTS' : 
+                  t.relevanceScore >= 3000 ? 'CONTAINS' : 'OTHER'
       })));
       
-      // Special logging for "minting" searches
+      // Special validation for exact matches
       if (query === 'minting') {
         const exactMatch = sortedByRelevance.find(t => t.term.toLowerCase().trim() === 'minting');
         if (exactMatch) {
           const rank = sortedByRelevance.indexOf(exactMatch) + 1;
-          console.log(`🎯 "Minting" exact match found at rank ${rank} with score ${exactMatch.relevanceScore}`);
+          console.log(`🎯 SUCCESS: "Minting" exact match found at rank ${rank} with score ${exactMatch.relevanceScore}`);
+          
+          // Verify it's actually first
+          if (rank !== 1) {
+            console.error(`🚨 ISSUE: Exact match should be rank 1, but is rank ${rank}`);
+            console.log('First result:', sortedByRelevance[0]);
+          }
         } else {
-          console.log(`❌ No exact match for "Minting" found in results`);
-          console.log(`Available minting-related terms:`, 
-            sortedByRelevance
-              .filter(t => t.term.toLowerCase().includes('mint'))
-              .map(t => ({ term: t.term, score: t.relevanceScore }))
-          );
+          console.error(`❌ PROBLEM: No exact match for "Minting" found in results`);
         }
       }
     }
