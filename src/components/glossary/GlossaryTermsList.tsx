@@ -10,12 +10,14 @@ interface GlossaryTermsListProps {
   letters: string[];
   groupedTerms: Record<string, GlossaryTerm[]>;
   isLoading: boolean;
+  isSearching?: boolean;
 }
 
 export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
   letters,
   groupedTerms,
-  isLoading
+  isLoading,
+  isSearching = false
 }) => {
   // Show loading state
   if (isLoading) {
@@ -51,10 +53,13 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
     <>
       {letters.map((letter) => (
         <div key={letter} id={`section-${letter}`} className="mb-8">
-          <div className="sticky top-0 bg-[#080112]/90 backdrop-blur-sm z-10 py-2">
-            <h2 className="text-2xl font-bold text-white">{letter}</h2>
-            <Separator className="my-2 bg-white/20" />
-          </div>
+          {/* Only show section headers for non-search results */}
+          {!isSearching && (
+            <div className="sticky top-0 bg-[#080112]/90 backdrop-blur-sm z-10 py-2">
+              <h2 className="text-2xl font-bold text-white">{letter}</h2>
+              <Separator className="my-2 bg-white/20" />
+            </div>
+          )}
           
           <div className="space-y-4">
             {groupedTerms[letter] && groupedTerms[letter].map((term, index) => (
@@ -66,6 +71,12 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
                   <div className="flex justify-between items-start flex-wrap mb-4">
                     <h3 className="text-xl font-semibold text-white" id={term.term.toLowerCase().replace(/\s+/g, '-')}>
                       {term.term}
+                      {/* Show relevance indicator for search results */}
+                      {isSearching && index < 3 && (
+                        <span className="ml-2 text-xs bg-purple-500/30 text-purple-200 px-2 py-1 rounded">
+                          {index === 0 ? '🎯 Top Match' : `#${index + 1}`}
+                        </span>
+                      )}
                     </h3>
                     <div className="flex flex-wrap gap-2 mt-1">
                       {term.categories && term.categories.map((category, categoryIndex) => (
@@ -104,9 +115,9 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
                             </a>
                           ))}
                         </div>
-                      </div>
-                    )}
-                  </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

@@ -1,4 +1,3 @@
-
 import { useState, useMemo, useEffect } from "react";
 import { CategoryType, DataSourceType, GlossaryTerm } from "./types";
 import { glossaryTerms } from "@/data/glossaryTerms";
@@ -7,7 +6,7 @@ import { batchTransformTerms } from "./utils/termTransformation";
 
 /**
  * Score a term based on how well it matches the search query
- * Simplified scoring system with clear tiers to prevent conflicts
+ * Clear tier-based scoring system to prevent conflicts
  */
 const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
   if (!searchTerm) return 0;
@@ -57,15 +56,9 @@ const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
     }
   }
   
-  // Enhanced debugging for specific search terms
-  if (query === 'minting' && score > 0) {
-    console.log(`🔍 Scoring "${term.term}": ${matchType} = ${score}`, {
-      termName,
-      query,
-      isExactMatch: termName === query,
-      score,
-      matchType
-    });
+  // Enhanced debugging for search results
+  if (query && score > 0) {
+    console.log(`🔍 Scoring "${term.term}": ${matchType} = ${score}`);
   }
   
   return score;
@@ -98,25 +91,6 @@ export const useGlossaryData = (
     );
     
     console.log(`Transformed ${transformedTerms.length} terms with questions`);
-    
-    // Debug: Check if "Minting" term exists in the data
-    const mintingTerm = transformedTerms.find(t => t.term.toLowerCase().trim() === 'minting');
-    if (mintingTerm) {
-      console.log(`✅ "Minting" term found in data:`, {
-        term: mintingTerm.term,
-        originalTerm: mintingTerm.term,
-        trimmed: mintingTerm.term.toLowerCase().trim(),
-        hasQuestion: !!mintingTerm.question
-      });
-    } else {
-      console.log(`❌ "Minting" term NOT found in transformed data`);
-      // Check original data
-      const originalMinting = glossaryTerms.find(t => t.term.toLowerCase().includes('mint'));
-      if (originalMinting) {
-        console.log(`Found in original data:`, originalMinting.term);
-      }
-    }
-    
     return transformedTerms;
   }, [dataSource]);
 
@@ -137,84 +111,82 @@ export const useGlossaryData = (
     }
   }, [dataSource, rawData]);
 
-  // Filter and sort terms based on search and category with enhanced relevance scoring
+  // Main filtering and sorting logic - RESTRUCTURED
   const filteredAndSortedTerms = useMemo(() => {
     const query = searchTerm.trim().toLowerCase();
-    console.log(`🔍 Filtering terms with search: "${searchTerm}" (normalized: "${query}"), category: "${activeCategory}"`);
+    console.log(`🔍 Processing search: "${searchTerm}" (normalized: "${query}"), category: "${activeCategory}"`);
     
-    // First filter by category
-    const categoryFiltered = rawData.filter(term => {
-      const matchesCategory = activeCategory === "all" || 
-                        term.categories.some(cat => 
-                          cat === activeCategory
-                        );
-      return matchesCategory;
-    });
-
-    // If no search term, return alphabetically sorted results
-    if (!query) {
-      return [...categoryFiltered].sort((a, b) => a.term.localeCompare(b.term));
-    }
-
-    // Enhanced search with detailed logging
-    console.log(`🎯 Starting search for "${query}" in ${categoryFiltered.length} category-filtered terms`);
+    // STEP 1: Start with all terms
+    let processedTerms = [...rawData];
     
-    // Filter by search term and calculate relevance scores
-    const searchFiltered = categoryFiltered
-      .map(term => {
-        const relevanceScore = scoreTermMatch(term, query);
-        return {
-          ...term,
-          relevanceScore
-        };
-      })
-      .filter(term => term.relevanceScore > 0);
-
-    // Sort by relevance score (highest first), then alphabetically for same scores
-    const sortedByRelevance = searchFiltered.sort((a, b) => {
-      if (a.relevanceScore !== b.relevanceScore) {
-        return b.relevanceScore - a.relevanceScore;
-      }
-      return a.term.localeCompare(b.term);
-    });
-
-    console.log(`📊 Search results for "${query}": ${sortedByRelevance.length} terms found`);
-    
-    // Enhanced logging for search results
-    if (sortedByRelevance.length > 0) {
-      console.log('🏆 Top 10 search results:', sortedByRelevance.slice(0, 10).map((t, index) => ({
-        rank: index + 1,
-        term: t.term,
-        score: t.relevanceScore,
-        scoreType: t.relevanceScore >= 10000 ? 'EXACT' : 
-                  t.relevanceScore >= 5000 ? 'STARTS' : 
-                  t.relevanceScore >= 3000 ? 'CONTAINS' : 'OTHER'
-      })));
+    // STEP 2: Apply search filtering and scoring FIRST (before category filtering)
+    if (query) {
+      console.log(`🎯 Starting search for "${query}" in ${processedTerms.length} terms`);
       
-      // Special validation for exact matches
-      if (query === 'minting') {
-        const exactMatch = sortedByRelevance.find(t => t.term.toLowerCase().trim() === 'minting');
-        if (exactMatch) {
-          const rank = sortedByRelevance.indexOf(exactMatch) + 1;
-          console.log(`🎯 SUCCESS: "Minting" exact match found at rank ${rank} with score ${exactMatch.relevanceScore}`);
-          
-          // Verify it's actually first
-          if (rank !== 1) {
-            console.error(`🚨 ISSUE: Exact match should be rank 1, but is rank ${rank}`);
-            console.log('First result:', sortedByRelevance[0]);
-          }
-        } else {
-          console.error(`❌ PROBLEM: No exact match for "Minting" found in results`);
-        }
-      }
-    }
+      // Score all terms and filter by relevance
+      const searchScoredTerms = processedTerms
+        .map(term => {
+          const relevanceScore = scoreTermMatch(term, query);
+          return {
+            ...term,
+            relevanceScore
+          };
+        })
+        .filter(term => term.relevanceScore > 0);
 
-    // Remove the relevanceScore property before returning
-    return sortedByRelevance.map(({ relevanceScore, ...term }) => term);
+      // Sort by relevance score (highest first), then alphabetically for same scores
+      searchScoredTerms.sort((a, b) => {
+        if (a.relevanceScore !== b.relevanceScore) {
+          return b.relevanceScore - a.relevanceScore;
+        }
+        return a.term.localeCompare(b.term);
+      });
+
+      console.log(`📊 Search results for "${query}": ${searchScoredTerms.length} terms found`);
+      
+      // Log top results for debugging
+      if (searchScoredTerms.length > 0) {
+        console.log('🏆 Top 5 search results:', searchScoredTerms.slice(0, 5).map((t, index) => ({
+          rank: index + 1,
+          term: t.term,
+          score: t.relevanceScore,
+          scoreType: t.relevanceScore >= 10000 ? 'EXACT' : 
+                    t.relevanceScore >= 5000 ? 'STARTS' : 
+                    t.relevanceScore >= 3000 ? 'CONTAINS' : 'OTHER'
+        })));
+      }
+
+      // Remove relevanceScore before continuing
+      processedTerms = searchScoredTerms.map(({ relevanceScore, ...term }) => term);
+    }
+    
+    // STEP 3: Apply category filtering AFTER search scoring
+    if (activeCategory !== "all") {
+      processedTerms = processedTerms.filter(term => 
+        term.categories.some(cat => cat === activeCategory)
+      );
+      console.log(`📂 Category filtered to ${processedTerms.length} terms for category: ${activeCategory}`);
+    }
+    
+    // STEP 4: Final sorting - only alphabetical if no search query
+    if (!query) {
+      processedTerms.sort((a, b) => a.term.localeCompare(b.term));
+    }
+    
+    console.log(`✅ Final result: ${processedTerms.length} terms`);
+    return processedTerms;
   }, [rawData, searchTerm, activeCategory]);
 
-  // Group terms by first letter for alphabetical index
+  // Group terms by first letter ONLY for non-search results
   const groupedTerms = useMemo(() => {
+    const query = searchTerm.trim().toLowerCase();
+    
+    // If searching, don't group - return flat list
+    if (query) {
+      return { 'Search Results': filteredAndSortedTerms };
+    }
+    
+    // Otherwise, group alphabetically
     const grouped: Record<string, GlossaryTerm[]> = {};
     
     filteredAndSortedTerms.forEach(term => {
@@ -222,17 +194,24 @@ export const useGlossaryData = (
       if (!grouped[firstLetter]) {
         grouped[firstLetter] = [];
       }
-      
       grouped[firstLetter].push(term);
     });
     
     return grouped;
-  }, [filteredAndSortedTerms]);
+  }, [filteredAndSortedTerms, searchTerm]);
 
   // Extract all letters that have terms
   const letters = useMemo(() => {
+    const query = searchTerm.trim().toLowerCase();
+    
+    // If searching, return special search key
+    if (query) {
+      return ['Search Results'];
+    }
+    
+    // Otherwise, return sorted letters
     return Object.keys(groupedTerms).sort();
-  }, [groupedTerms]);
+  }, [groupedTerms, searchTerm]);
 
   // Change data source and preserve filters
   const changeDataSource = (newSource: DataSourceType) => {
@@ -248,6 +227,7 @@ export const useGlossaryData = (
     letters,
     isLoading,
     totalTermsCount: rawData.length,
-    transformationProgress
+    transformationProgress,
+    isSearching: !!searchTerm.trim()
   };
 };

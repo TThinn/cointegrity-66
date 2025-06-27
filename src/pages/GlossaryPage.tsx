@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { useLocation } from "react-router-dom";
 import Footer from "@/components/Footer";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { AlertTriangle } from "lucide-react";
 import { CategoryType, DataSourceType } from "@/components/glossary/types";
@@ -22,11 +21,9 @@ const GlossaryPage: React.FC = () => {
   // State for UI
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState<CategoryType | "all">("all");
-  const [activeTab, setActiveTab] = useState<string>("categories");
   const location = useLocation();
 
   // Get initial data source preference from local storage
-  // This will now always be "original" as it's the only available source
   const initialDataSource: DataSourceType = "original";
   
   // Get glossary data
@@ -38,7 +35,8 @@ const GlossaryPage: React.FC = () => {
     letters,
     isLoading,
     totalTermsCount,
-    transformationProgress
+    transformationProgress,
+    isSearching
   } = useGlossaryData(searchTerm, activeCategory, initialDataSource);
   
   // For smooth scrolling to sections
@@ -107,57 +105,55 @@ const GlossaryPage: React.FC = () => {
                 filteredCount={filteredTerms.length}
               />
 
-              {/* Tabs for navigation */}
-              <Tabs defaultValue="categories" value={activeTab} onValueChange={setActiveTab} className="mb-6">
-                <TabsList className="mb-4 bg-white/5 backdrop-blur-sm border border-white/20">
-                  <TabsTrigger value="categories" className="data-[state=active]:bg-white/20 data-[state=active]:text-white">Categories</TabsTrigger>
-                  <TabsTrigger value="all" className="data-[state=active]:bg-white/20 data-[state=active]:text-white">All Terms</TabsTrigger>
-                </TabsList>
+              {/* Category selector - simplified, always visible */}
+              <div className="mb-6">
+                <CategorySelector 
+                  activeCategory={activeCategory}
+                  setActiveCategory={setActiveCategory}
+                  viewType={isSearching ? "list" : "grid"}
+                />
                 
-                <TabsContent value="categories" className="space-y-6">
-                  <CategorySelector 
-                    activeCategory={activeCategory}
-                    setActiveCategory={setActiveCategory}
-                    viewType="grid"
-                  />
-                  
-                  {activeCategory !== "all" && (
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      onClick={() => setActiveCategory("all")}
-                      className="mt-2 bg-white/5 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
-                    >
-                      Clear filter
-                    </Button>
-                  )}
-                </TabsContent>
-                
-                <TabsContent value="all">
-                  <CategorySelector 
-                    activeCategory={activeCategory}
-                    setActiveCategory={setActiveCategory}
-                    viewType="list"
-                  />
-                </TabsContent>
-              </Tabs>
+                {activeCategory !== "all" && (
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={() => setActiveCategory("all")}
+                    className="mt-2 bg-white/5 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
+                  >
+                    Clear filter
+                  </Button>
+                )}
+              </div>
+
+              {/* Search results info */}
+              {isSearching && (
+                <div className="mb-4 p-3 bg-purple-900/20 border border-purple-500/30 rounded-lg">
+                  <p className="text-sm text-purple-200">
+                    📊 Search Results: {filteredTerms.length} terms found for "{searchTerm}"
+                    {activeCategory !== "all" && ` in ${activeCategory} category`}
+                  </p>
+                </div>
+              )}
 
               {/* Glossary terms list */}
               <GlossaryTermsList 
                 letters={letters} 
                 groupedTerms={groupedTerms} 
                 isLoading={isLoading}
+                isSearching={isSearching}
               />
             </div>
 
-            <div className="lg:w-1/4">
-              {/* Alphabetical index sidebar */}
-              <AlphabeticalIndex 
-                letters={letters}
-                groupedTerms={groupedTerms}
-                scrollToSection={scrollToSection}
-              />
-            </div>
+            {/* Alphabetical index sidebar - hidden during search */}
+            {!isSearching && (
+              <div className="lg:w-1/4">
+                <AlphabeticalIndex 
+                  letters={letters}
+                  groupedTerms={groupedTerms}
+                  scrollToSection={scrollToSection}
+                />
+              </div>
+            )}
           </div>
         </div>
 
