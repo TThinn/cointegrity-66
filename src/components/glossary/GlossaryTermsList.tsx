@@ -50,7 +50,7 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
   }
 
   return (
-    <>
+    <div>
       {letters.map((letter) => (
         <div key={letter} id={`section-${letter}`} className="mb-8">
           {/* Only show section headers for non-search results */}
@@ -115,15 +115,15 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
                             </a>
                           ))}
                         </div>
-                      )}
-                    </div>
-                  )}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
