@@ -6,8 +6,6 @@ import { Button } from "@/components/ui/button";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { useLocation } from "react-router-dom";
 import Footer from "@/components/Footer";
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import { AlertTriangle } from "lucide-react";
 import { CategoryType, DataSourceType } from "@/components/glossary/types";
 import { GlossarySearch } from "@/components/glossary/GlossarySearch";
 import { CategorySelector } from "@/components/glossary/CategorySelector";
@@ -83,17 +81,6 @@ const GlossaryPage: React.FC = () => {
               The most comprehensive Web3 terminology resource for developers, investors, and crypto enthusiasts. From basic blockchain concepts to advanced DeFi protocols.
             </p>
           </div>
-          
-          {/* Show transformation progress */}
-          {transformationProgress > 0 && transformationProgress < 100 && (
-            <Alert className="mb-6 bg-blue-900/20 border-blue-500/30">
-              <AlertTriangle className="h-4 w-4" />
-              <AlertTitle>Processing Terms</AlertTitle>
-              <AlertDescription>
-                Transforming glossary terms with questions: {transformationProgress}%
-              </AlertDescription>
-            </Alert>
-          )}
 
           <div className="flex flex-col lg:flex-row gap-8 mb-8">
             <div className="lg:w-3/4">
