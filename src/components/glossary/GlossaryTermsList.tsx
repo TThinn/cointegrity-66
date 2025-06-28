@@ -14,6 +14,58 @@ interface GlossaryTermsListProps {
   searchTerm?: string;
 }
 
+/**
+ * Advanced term normalization for better matching (matching useGlossaryData)
+ */
+const normalizeTermAdvanced = (text: string): string => {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+};
+
+/**
+ * Create semantic equivalents for terms to handle variations (matching useGlossaryData)
+ */
+const createSemanticEquivalents = (term: string): string[] => {
+  const normalized = normalizeTermAdvanced(term);
+  const equivalents = new Set([normalized]);
+  
+  // Handle "Layer X" variations
+  const layerMatch = normalized.match(/layer\s*(\d+)/);
+  if (layerMatch) {
+    const layerNum = layerMatch[1];
+    equivalents.add(`layer ${layerNum}`);
+    equivalents.add(`layer${layerNum}`);
+    equivalents.add(`l${layerNum}`);
+    equivalents.add(`l ${layerNum}`);
+  }
+  
+  // Handle "L2" style abbreviations back to full form
+  const lAbbrevMatch = normalized.match(/^l\s*(\d+)$/);
+  if (lAbbrevMatch) {
+    const num = lAbbrevMatch[1];
+    equivalents.add(`layer ${num}`);
+    equivalents.add(`layer${num}`);
+  }
+  
+  return Array.from(equivalents);
+};
+
+/**
+ * Check if two terms are semantically equivalent (matching useGlossaryData)
+ */
+const areTermsEquivalent = (term1: string, term2: string): boolean => {
+  const equivalents1 = createSemanticEquivalents(term1);
+  const equivalents2 = createSemanticEquivalents(term2);
+  
+  return equivalents1.some(eq1 => 
+    equivalents2.some(eq2 => eq1 === eq2)
+  );
+};
+
 export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
   letters,
   groupedTerms,
@@ -21,22 +73,18 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
   isSearching = false,
   searchTerm = ""
 }) => {
-  // Function to check if a term is a direct match (singular/plural)
+  // Enhanced function to check if a term is a direct match using semantic equivalence
   const isDirectMatch = (term: GlossaryTerm, query: string): boolean => {
     if (!query) return false;
     
-    const normalizedQuery = query.toLowerCase().trim();
-    const normalizedTerm = term.term.toLowerCase().trim();
+    const normalizedQuery = normalizeTermAdvanced(query);
+    const normalizedTerm = normalizeTermAdvanced(term.term);
     
     // Check for exact match
     if (normalizedTerm === normalizedQuery) return true;
     
-    // Check for plural/singular variations
-    const queryRoot = normalizedQuery.replace(/s$/, '');
-    const termRoot = normalizedTerm.replace(/s$/, '');
-    
-    // Direct match if roots are the same (handles basic plural/singular)
-    if (queryRoot === termRoot && queryRoot.length > 2) return true;
+    // Check for semantic equivalence (handles Layer 2, Layer-2, L2 variations)
+    if (areTermsEquivalent(term.term, query)) return true;
     
     // Check if term starts with the query (for cases like "mint" matching "minting")
     if (normalizedTerm.startsWith(normalizedQuery) || normalizedQuery.startsWith(normalizedTerm)) {
@@ -65,7 +113,7 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
             {/* Show indicators for search results */}
             {isSearching && (
               <span className="ml-2 text-xs bg-purple-500/30 text-purple-200 px-2 py-1 rounded">
-                {isDirect ? '🎯 Direct Match' : `#${index + 1}`}
+                {isDirect ? '🎯 Perfect Match' : `#${index + 1}`}
               </span>
             )}
           </h3>
@@ -148,11 +196,14 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
       {letters.map((letter) => {
         const termsForLetter = groupedTerms[letter] || [];
         
-        // If this is a search, implement two-stage results
+        // If this is a search, implement two-stage results with enhanced matching
         if (isSearching && letter === 'Search Results') {
-          // Separate direct matches from other results
+          // Separate direct matches from other results using enhanced matching
           const directMatches = termsForLetter.filter(term => isDirectMatch(term, searchTerm));
           const relatedTerms = termsForLetter.filter(term => !isDirectMatch(term, searchTerm));
+          
+          console.log(`🎯 Enhanced Direct matches for "${searchTerm}":`, directMatches.map(t => t.term));
+          console.log(`🔗 Related terms for "${searchTerm}":`, relatedTerms.map(t => t.term));
           
           return (
             <div key={letter} className="mb-8">
@@ -167,7 +218,7 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
                 <div className="mb-6">
                   <div className="bg-orange-900/20 border border-orange-500/30 rounded-lg p-4">
                     <p className="text-orange-200 text-sm">
-                      <strong>No direct definition found</strong> for "{searchTerm}"
+                      <strong>No perfect match found</strong> for "{searchTerm}"
                     </p>
                   </div>
                 </div>
