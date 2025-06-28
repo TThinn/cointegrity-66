@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { useLocation } from "react-router-dom";
+import LightParticles from "@/components/ui/LightParticles";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 const CaseStudiesPage = () => {
@@ -19,6 +20,7 @@ const CaseStudiesPage = () => {
         {/* Background elements - using consistent color */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
+          <LightParticles centerPosition={{ x: 50, y: 60 }} />
         </div>
 
         {/* Bottom edge gradient hint */}

@@ -1,6 +1,7 @@
 
 import React, { useLayoutEffect, useRef, useState } from "react";
 import Container from "./ui/Container";
+import HeroParticles from "./hero/HeroParticles";
 import HeroContent from "./hero/HeroContent";
 import HeroCTA from "./hero/HeroCTA";
 import ScrollIndicator from "./ui/ScrollIndicator";
@@ -40,6 +41,7 @@ const Hero = () => {
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
+        <HeroParticles ctaPosition={ctaPosition} />
       </div>
 
       {/* Bottom edge gradient hint */}

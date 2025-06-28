@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
@@ -7,6 +8,7 @@ import ScrollIndicator from "@/components/ui/ScrollIndicator";
 import MicaReadyWaitlistForm from "@/components/mica/MicaReadyWaitlistForm";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 import { SeoHead } from "@/components/seo/SeoHead";
+import LightParticles from "@/components/ui/LightParticles";
 
 const MicaReadyWaitlistPage = () => {
   const {
@@ -103,9 +105,13 @@ const MicaReadyWaitlistPage = () => {
       
       {/* Hero section with full height and scroll indicator */}
       <section className="hero-section min-h-screen flex items-center justify-center pt-20 pb-16 relative overflow-hidden bg-[#010822] isolate">
-        {/* Background elements */}
+        {/* Background elements with light particles */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
+          <LightParticles centerPosition={{
+            x: 50,
+            y: 50
+          }} />
         </div>
 
         {/* Bottom edge gradient hint */}
