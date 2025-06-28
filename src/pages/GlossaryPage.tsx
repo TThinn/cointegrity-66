@@ -15,6 +15,7 @@ import { AlphabeticalIndex } from "@/components/glossary/AlphabeticalIndex";
 import { GlossaryTermsList } from "@/components/glossary/GlossaryTermsList";
 import ContactForm from "@/components/ContactForm";
 import { useGlossaryData } from "@/components/glossary/useGlossaryData";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 const GlossaryPage: React.FC = () => {
   // State for UI
@@ -58,7 +59,7 @@ const GlossaryPage: React.FC = () => {
       
       <Header />
       
-      {/* Hero section with full height */}
+      {/* Hero section with full height and scroll indicator */}
       <section className="hero-section pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-[#010822] isolate min-h-screen">
         {/* Background elements - using consistent color */}
         <div className="absolute inset-0 z-0 overflow-hidden">
@@ -156,6 +157,9 @@ const GlossaryPage: React.FC = () => {
             )}
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <ScrollIndicator targetSection="contact-form" />
       </section>
       
       {/* Contact form - using the same component as the main page */}
