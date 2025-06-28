@@ -1,9 +1,9 @@
+
 import React, { useEffect, useState } from "react";
 import { placeholders, PlaceholderData } from "@/utils/contactPlaceholders";
 import Container from "./ui/Container";
 import ContactFormFields from "./contact/ContactFormFields";
 import SubmitButton from "./contact/SubmitButton";
-import ContactFormTester from "./contact/ContactFormTester";
 import { useContactForm } from "@/hooks/useContactForm";
 import { Link } from "react-router-dom";
 
@@ -21,7 +21,6 @@ const ContactForm = () => {
   
   const [currentPlaceholder, setCurrentPlaceholder] = useState<PlaceholderData>(placeholders[0]);
   const [isTyping, setIsTyping] = useState(false);
-  const [showTester, setShowTester] = useState(false);
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
@@ -77,19 +76,6 @@ const ContactForm = () => {
       </div>
       
       <Container className="relative z-10">
-        {/* Debug/Testing Panel - only show in development */}
-        {process.env.NODE_ENV === 'development' && (
-          <div className="mb-8">
-            <button 
-              onClick={() => setShowTester(!showTester)}
-              className="px-4 py-2 bg-gray-800 text-white rounded text-sm"
-            >
-              {showTester ? 'Hide' : 'Show'} Testing Dashboard
-            </button>
-            {showTester && <ContactFormTester />}
-          </div>
-        )}
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="text-left lg:text-left md:text-center sm:text-center">
             <h2 className="font-semibold uppercase tracking-wider text-[cb46b3] text-[#cb46b3]">DIGITAL ASSET SOLUTIONS</h2>
