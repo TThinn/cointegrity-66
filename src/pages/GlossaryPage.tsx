@@ -129,7 +129,7 @@ const GlossaryPage: React.FC = () => {
               {isSearching && (
                 <div className="mb-4 p-3 bg-purple-900/20 border border-purple-500/30 rounded-lg">
                   <p className="text-sm text-purple-200">
-                    📊 Search Results: {filteredTerms.length} terms found for "{searchTerm}"
+                    📊 Two-Stage Search Results: {filteredTerms.length} terms found for "{searchTerm}"
                     {activeCategory !== "all" && ` in ${activeCategory} category`}
                   </p>
                 </div>
@@ -141,6 +141,7 @@ const GlossaryPage: React.FC = () => {
                 groupedTerms={groupedTerms} 
                 isLoading={isLoading}
                 isSearching={isSearching}
+                searchTerm={searchTerm}
               />
             </div>
 

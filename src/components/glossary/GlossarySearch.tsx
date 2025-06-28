@@ -49,10 +49,10 @@ export const GlossarySearch: React.FC<GlossarySearchProps> = ({
         <span>
           {isSearching ? (
             <>
-              <span className="text-purple-300 font-medium">🔍 Search Results:</span> {filteredCount} of {totalCount} terms
+              <span className="text-purple-300 font-medium">🔍 Two-Stage Search:</span> {filteredCount} of {totalCount} terms
               {filteredCount > 0 && (
                 <span className="ml-2 text-white/80">
-                  (sorted by relevance)
+                  (direct matches first, then related)
                 </span>
               )}
             </>
