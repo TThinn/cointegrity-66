@@ -302,14 +302,6 @@ trending: 6
 },
 
 {
-  term: "Layer 2 Solutions",
-  definition: "Protocols built on top of existing blockchains to increase scalability and reduce transaction costs. Popular in Web3, Layer 2s like Optimism, Arbitrum, and zkRollups enable faster, cheaper transactions while leveraging the security of the underlying Layer 1 chain.",
-  categories: ["web3", "layer2_solutions"],
-  related: ["AppChains", "zkEVM", "Rollups"],
-  trending: 9
-},
-
-{
   term: "Oracles",
   definition: "Decentralized services that provide blockchains and smart contracts with external, real-world data. Oracles bridge the gap between on-chain and off-chain environments, enabling use cases like DeFi, insurance, and prediction markets.",
   categories: ["web3", "infrastructure_applications"],
@@ -1615,13 +1607,6 @@ definition: "Specialized services that act as bridges between blockchains and ex
 categories: ["infrastructure_applications", "blockchain_technology"],
 related: ["Smart Contracts", "External Data", "Decentralized Oracles", "Data Verification"],
 trending: 8
-},
-{
-term: "Layer-1 Networks",
-definition: "Base blockchain protocols like Bitcoin and Ethereum that process and finalize transactions on their own blockchain. Layer-1 scaling solutions modify the base protocol rules directly to increase capacity, including consensus improvements (shifting from Proof of Work to Proof of Stake), increasing block size, or implementing sharding to divide the network into parallel-processing segments.",
-categories: ["infrastructure_applications", "blockchain_technology"],
-related: ["Blockchain Scalability", "Consensus Mechanisms", "Sharding", "Base Layer"],
-trending: 9
 },
 {
 term: "Layer-2 Solutions",
@@ -10971,6 +10956,21 @@ trending: 8
   related: ["Cryptocurrency Mining", "Proof of Work", "Block Rewards", "Token Creation", "Smart Contract Deployment", "Proof of Stake", "Cross-chain Bridges", "NFT Standards", "ERC-20", "Token Emission"],
   trending: 9
 },
+{
+  term: "L1 (Layer 1)",
+  definition: "The foundational blockchain protocol layer that processes and validates transactions directly on its own network. L1 blockchains like Bitcoin, Ethereum, and Solana operate independently with their own consensus mechanisms, native tokens, and security models. These base layers handle all transaction finalization, smart contract execution, and data storage on-chain, though they often face scalability limitations that L2 solutions help address.",
+  categories: ["blockchain_technology", "infrastructure_applications"],
+  related: ["Base Layer", "Consensus Mechanisms", "Network Security", "On-chain Processing"],
+  trending: 9
+},
+
+{
+  term: "L2 (Layer 2)",
+  definition: "Scaling solutions built on top of L1 blockchains that process transactions off the main chain before settling final states to the base layer. L2s like Arbitrum, Optimism, and Polygon significantly increase transaction throughput and reduce costs while inheriting security from their underlying L1. These solutions include rollups, state channels, and sidechains, enabling faster and cheaper transactions without compromising the decentralization and security guarantees of the base blockchain.",
+  categories: ["layer2_solutions", "infrastructure_applications"],
+  related: ["Rollups", "Scaling Solutions", "Off-chain Processing", "State Channels"],
+  trending: 10
+}
 
 
 ];
