@@ -1,8 +1,6 @@
-
 import { useState, useMemo, useEffect } from "react";
 import { CategoryType, DataSourceType, GlossaryTerm } from "./types";
 import { glossaryTerms } from "@/data/glossaryTerms";
-import { toast } from "sonner";
 import { batchTransformTerms } from "./utils/termTransformation";
 
 /**
@@ -333,12 +331,6 @@ export const useGlossaryData = (
     });
     
     setIsLoading(false);
-    
-    if (rawData.length < 20) {
-      toast.warning(`Only ${rawData.length} terms loaded. This may indicate a data loading issue.`);
-    } else {
-      toast.success(`Successfully loaded and transformed ${rawData.length} glossary terms with enhanced search`);
-    }
   }, [dataSource, rawData]);
 
   // Main filtering and sorting logic - ENHANCED SEARCH-FIRST APPROACH
