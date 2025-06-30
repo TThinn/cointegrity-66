@@ -24,6 +24,7 @@ import BlogPage from "./pages/BlogPage"
 import GuidesPage from "./pages/GuidesPage"
 import CaseStudiesPage from "./pages/CaseStudiesPage"
 import MicaReadyWaitlistPage from "./pages/MicaReadyWaitlistPage"
+import DeploymentTestPage from "./pages/DeploymentTestPage"
 
 import './index.css'
 import './App.css'
@@ -66,6 +67,7 @@ const App = () => {
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/thank-you" element={<ThankYouPage />} />
               <Route path="/mica-ready-waitlist" element={<MicaReadyWaitlistPage />} />
+              <Route path="/deployment-test" element={<DeploymentTestPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <Toaster 
