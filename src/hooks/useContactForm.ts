@@ -12,7 +12,7 @@ interface FormState {
 }
 
 // Use the same RECAPTCHA site key that's defined in ContactForm
-const RECAPTCHA_SITE_KEY = "6LeOKXMrAAAAAAtlP7V2k8GLcEBK5AIXiUYoV3QM";
+const RECAPTCHA_SITE_KEY = "6Lc_BCMrAAAAAAJ53CbmGbCdpq1plgfqyOJjInN1";
 
 // Enhanced client-side validation
 const validateFormData = (formState: FormState) => {
