@@ -1,8 +1,8 @@
 
 import { GlossaryTerm as SourceGlossaryTerm } from "@/data/glossaryTerms";
 
-// Extract category types from the source definition
-export type CategoryType = SourceGlossaryTerm['categories'][0];
+// Extract category types from the source definition and add crypto_crime
+export type CategoryType = SourceGlossaryTerm['categories'][0] | 'crypto_crime';
 
 // Define the structure for category metadata entries
 export type CategoryMetaType = { 
