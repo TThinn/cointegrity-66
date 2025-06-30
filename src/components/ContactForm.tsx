@@ -7,7 +7,7 @@ import SubmitButton from "./contact/SubmitButton";
 import { useContactForm } from "@/hooks/useContactForm";
 import { Link } from "react-router-dom";
 
-const RECAPTCHA_SITE_KEY = "6Lc_BCMrAAAAAAJ53CbmGbCdpq1plgfqyOJjInN1";
+const RECAPTCHA_SITE_KEY = "6LeOKXMrAAAAAAtlP7V2k8GLcEBK5AIXiUYoV3QM";
 
 const ContactForm = () => {
   const {
