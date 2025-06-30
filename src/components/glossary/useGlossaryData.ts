@@ -1,7 +1,19 @@
+
 import { useState, useMemo, useEffect } from "react";
 import { CategoryType, DataSourceType, GlossaryTerm } from "./types";
 import { glossaryTerms } from "@/data/glossaryTerms";
 import { batchTransformTerms } from "./utils/termTransformation";
+
+/**
+ * Stopwords to filter out from partial matching - ENHANCED IMPLEMENTATION
+ */
+const STOPWORDS = new Set([
+  'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he',
+  'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'was', 'will', 'with',
+  'group', 'system', 'protocol', 'network', 'method', 'process', 'service', 'platform',
+  'technology', 'solution', 'application', 'interface', 'framework', 'standard',
+  'layer', 'level', 'type', 'kind', 'form', 'way', 'part', 'piece', 'item', 'element'
+]);
 
 /**
  * Advanced term normalization for better matching - ENHANCED FOR PARENTHESES
@@ -43,6 +55,55 @@ const getParentheticalContent = (term: string): string[] => {
 };
 
 /**
+ * Filter out stopwords from word arrays - NEW IMPLEMENTATION
+ */
+const filterStopwords = (words: string[]): string[] => {
+  return words.filter(word => word.length > 2 && !STOPWORDS.has(word.toLowerCase()));
+};
+
+/**
+ * Check if words have semantic relationship - ENHANCED IMPLEMENTATION
+ */
+const hasSemanticRelationship = (termWords: string[], queryWords: string[]): boolean => {
+  const filteredTermWords = filterStopwords(termWords);
+  const filteredQueryWords = filterStopwords(queryWords);
+  
+  // Require at least one meaningful word overlap for semantic relationship
+  const meaningfulOverlap = filteredQueryWords.some(qWord => 
+    filteredTermWords.some(tWord => {
+      // Exact match
+      if (tWord === qWord) return true;
+      
+      // Prefix match for longer words (minimum 4 chars)
+      if (qWord.length >= 4 && tWord.startsWith(qWord)) return true;
+      if (tWord.length >= 4 && qWord.startsWith(tWord)) return true;
+      
+      return false;
+    })
+  );
+  
+  return meaningfulOverlap;
+};
+
+/**
+ * Calculate word specificity score - NEW IMPLEMENTATION
+ */
+const calculateWordSpecificity = (word: string): number => {
+  // Very common words get low specificity
+  if (STOPWORDS.has(word)) return 0;
+  
+  // Short words are less specific
+  if (word.length <= 2) return 1;
+  if (word.length <= 3) return 2;
+  
+  // Medium words are moderately specific
+  if (word.length <= 5) return 3;
+  
+  // Longer words are more specific
+  return 4;
+};
+
+/**
  * Create semantic equivalents for terms to handle variations - ENHANCED FOR PARENTHESES
  */
 const createSemanticEquivalents = (term: string): string[] => {
@@ -53,14 +114,12 @@ const createSemanticEquivalents = (term: string): string[] => {
   const baseTerm = getBaseTermWithoutParentheses(term);
   if (baseTerm && baseTerm !== normalized) {
     equivalents.add(baseTerm);
-    console.log(`🔤 Added base term: "${baseTerm}" for "${term}"`);
   }
   
   // Add parenthetical content as separate searchable terms
   const parentheticals = getParentheticalContent(term);
   parentheticals.forEach(content => {
     equivalents.add(content);
-    console.log(`📝 Added parenthetical: "${content}" for "${term}"`);
   });
   
   // Handle "Layer X" variations
@@ -178,30 +237,41 @@ const areTermsEquivalent = (term1: string, term2: string): boolean => {
 };
 
 /**
- * Enhanced word boundary detection
+ * Enhanced word boundary detection with semantic context - ENHANCED IMPLEMENTATION
  */
 const getWordBoundaryMatches = (term: string, query: string): number => {
   const termWords = normalizeTermAdvanced(term).split(/\s+/);
   const queryWords = normalizeTermAdvanced(query).split(/\s+/);
   
+  // Filter out stopwords for more meaningful matching
+  const filteredTermWords = filterStopwords(termWords);
+  const filteredQueryWords = filterStopwords(queryWords);
+  
   let exactMatches = 0;
   let partialMatches = 0;
+  let specificityBonus = 0;
   
-  queryWords.forEach(qWord => {
-    termWords.forEach(tWord => {
+  filteredQueryWords.forEach(qWord => {
+    const qSpecificity = calculateWordSpecificity(qWord);
+    
+    filteredTermWords.forEach(tWord => {
+      const tSpecificity = calculateWordSpecificity(tWord);
+      
       if (tWord === qWord) {
         exactMatches++;
-      } else if (tWord.startsWith(qWord) || qWord.startsWith(tWord)) {
+        specificityBonus += Math.max(qSpecificity, tSpecificity);
+      } else if (qWord.length >= 4 && (tWord.startsWith(qWord) || qWord.startsWith(tWord))) {
         partialMatches++;
+        specificityBonus += Math.max(qSpecificity, tSpecificity) * 0.5;
       }
     });
   });
   
-  return exactMatches * 100 + partialMatches * 50;
+  return exactMatches * 100 + partialMatches * 50 + specificityBonus * 10;
 };
 
 /**
- * Enhanced scoring system for term matching with parentheses support - ENHANCED
+ * Enhanced scoring system for term matching with improved semantic context - ENHANCED IMPLEMENTATION
  */
 const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
   if (!searchTerm) return 0;
@@ -246,13 +316,16 @@ const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
   const queryWords = normalizeTermAdvanced(query).split(/\s+/);
   const termWords = normalizeTermAdvanced(termName).split(/\s+/);
   
-  const exactWordMatches = queryWords.filter(qWord => 
-    termWords.some(tWord => tWord === qWord)
+  const filteredQueryWords = filterStopwords(queryWords);
+  const filteredTermWords = filterStopwords(termWords);
+  
+  const exactWordMatches = filteredQueryWords.filter(qWord => 
+    filteredTermWords.some(tWord => tWord === qWord)
   ).length;
   
-  if (exactWordMatches === queryWords.length && queryWords.length > 1) {
+  if (exactWordMatches === filteredQueryWords.length && filteredQueryWords.length > 0) {
     const score = 9000 + (100 - termName.length) + (exactWordMatches * 10);
-    console.log(`🌟 PERFECT WORDS: "${term.term}" = ${score} (${exactWordMatches}/${queryWords.length} words)`);
+    console.log(`🌟 PERFECT WORDS: "${term.term}" = ${score} (${exactWordMatches}/${filteredQueryWords.length} meaningful words)`);
     return score;
   }
   
@@ -277,15 +350,20 @@ const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
     return score;
   }
   
-  // TIER 6: WORD STARTS WITH QUERY - Medium-high priority (6000-6499)
-  const wordStartMatches = termWords.filter(word => 
-    queryWords.some(qWord => word.startsWith(qWord))
+  // TIER 6: WORD STARTS WITH QUERY - Medium-high priority (6000-6499) - ENHANCED
+  const wordStartMatches = filteredTermWords.filter(word => 
+    filteredQueryWords.some(qWord => word.startsWith(qWord) && qWord.length >= 3)
   ).length;
   
   if (wordStartMatches > 0) {
-    const score = 6000 + (wordStartMatches * 100) + (100 - termName.length);
-    console.log(`⭐ WORD STARTS: "${term.term}" = ${score} (${wordStartMatches} words)`);
-    return score;
+    // Check semantic relationship to avoid false positives
+    if (hasSemanticRelationship(termWords, queryWords)) {
+      const score = 6000 + (wordStartMatches * 100) + (100 - termName.length);
+      console.log(`⭐ WORD STARTS: "${term.term}" = ${score} (${wordStartMatches} words, semantic: ✓)`);
+      return score;
+    } else {
+      console.log(`⚠️ WORD STARTS REJECTED: "${term.term}" - no semantic relationship`);
+    }
   }
   
   // TIER 7: TERM CONTAINS QUERY - Medium priority (4000-4999)
@@ -307,15 +385,26 @@ const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
     return score;
   }
   
-  // TIER 9: PARTIAL WORD MATCHES - Low-medium priority (3000-3499)
-  const partialWordMatches = queryWords.filter(qWord => 
-    termWords.some(tWord => tWord.includes(qWord) && qWord.length > 2)
-  ).length;
+  // TIER 9: PARTIAL WORD MATCHES - Low-medium priority (3000-3499) - ENHANCED WITH CONTEXT
+  const partialWordMatches = filteredQueryWords.filter(qWord => {
+    if (qWord.length < 4) return false; // Skip very short words
+    
+    return filteredTermWords.some(tWord => {
+      // Must have meaningful overlap and semantic relationship
+      const hasOverlap = tWord.includes(qWord) || qWord.includes(tWord);
+      return hasOverlap && calculateWordSpecificity(qWord) >= 3;
+    });
+  }).length;
   
   if (partialWordMatches > 0) {
-    const score = 3000 + (partialWordMatches * 100) + exactWordMatches * 50;
-    console.log(`🔍 PARTIAL WORDS: "${term.term}" = ${score} (${partialWordMatches}/${queryWords.length})`);
-    return score;
+    // Additional semantic relationship check for partial matches
+    if (hasSemanticRelationship(termWords, queryWords)) {
+      const score = 3000 + (partialWordMatches * 100) + exactWordMatches * 50;
+      console.log(`🔍 PARTIAL WORDS: "${term.term}" = ${score} (${partialWordMatches}/${filteredQueryWords.length}, semantic: ✓)`);
+      return score;
+    } else {
+      console.log(`⚠️ PARTIAL WORDS REJECTED: "${term.term}" - no semantic relationship`);
+    }
   }
   
   // TIER 10: DEFINITION STARTS WITH QUERY - Low-medium priority (400-499)
@@ -327,9 +416,9 @@ const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
   // TIER 11: DEFINITION CONTAINS QUERY - Lower priority (200-399)
   if (definition.includes(normalizedQuery)) {
     const queryOccurrences = (definition.match(new RegExp(normalizedQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length;
-    const wordMatches = queryWords.filter(qWord => definition.includes(qWord)).length;
+    const wordMatches = filteredQueryWords.filter(qWord => definition.includes(qWord)).length;
     const score = 200 + Math.min(queryOccurrences * 10, 50) + (wordMatches * 20);
-    console.log(`📝 DEF CONTAINS: "${term.term}" = ${score} (${queryOccurrences}x, ${wordMatches} words)`);
+    console.log(`📝 DEF CONTAINS: "${term.term}" = ${score} (${queryOccurrences}x, ${wordMatches} meaningful words)`);
     return score;
   }
   
@@ -339,7 +428,7 @@ const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
       console.log(`❓ Q STARTS: "${term.term}" = 150`);
       return 150;
     } else if (question.includes(normalizedQuery)) {
-      const wordMatches = queryWords.filter(qWord => question.includes(qWord)).length;
+      const wordMatches = filteredQueryWords.filter(qWord => question.includes(qWord)).length;
       const score = 50 + (wordMatches * 10);
       console.log(`❓ Q CONTAINS: "${term.term}" = ${score}`);
       return score;
@@ -393,13 +482,13 @@ export const useGlossaryData = (
   // Main filtering and sorting logic - ENHANCED SEARCH-FIRST APPROACH
   const filteredAndSortedTerms = useMemo(() => {
     const query = searchTerm.trim().toLowerCase();
-    console.log(`🔍 Processing ENHANCED parentheses search: "${searchTerm}" (normalized: "${query}"), category: "${activeCategory}"`);
+    console.log(`🔍 Processing ENHANCED search with stopwords: "${searchTerm}" (normalized: "${query}"), category: "${activeCategory}"`);
     
     let processedTerms = [...rawData];
     
     // ENHANCED SEARCH-FIRST APPROACH: Score and filter by search relevance FIRST
     if (query) {
-      console.log(`🎯 ENHANCED PARENTHESES SEARCH MODE: Scoring ${processedTerms.length} terms for "${query}"`);
+      console.log(`🎯 ENHANCED STOPWORD SEARCH MODE: Scoring ${processedTerms.length} terms for "${query}"`);
       
       // Score all terms and filter by relevance
       const searchResults = processedTerms
@@ -417,11 +506,11 @@ export const useGlossaryData = (
           return a.term.localeCompare(b.term);
         });
 
-      console.log(`📊 Enhanced parentheses search scored ${searchResults.length} relevant terms`);
+      console.log(`📊 Enhanced search with stopwords scored ${searchResults.length} relevant terms`);
       
       // Log top 15 results for debugging with scores
       if (searchResults.length > 0) {
-        console.log('🏆 Top enhanced parentheses search results:');
+        console.log('🏆 Top enhanced search results with stopword filtering:');
         searchResults.slice(0, 15).forEach((term, index) => {
           console.log(`  ${index + 1}. "${term.term}" (score: ${term.relevanceScore})`);
         });
