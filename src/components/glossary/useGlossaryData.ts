@@ -4,25 +4,64 @@ import { glossaryTerms } from "@/data/glossaryTerms";
 import { batchTransformTerms } from "./utils/termTransformation";
 
 /**
- * Advanced term normalization for better matching
+ * Advanced term normalization for better matching - ENHANCED FOR PARENTHESES
  */
 const normalizeTermAdvanced = (text: string): string => {
   return text
     .toLowerCase()
     .trim()
-    // Remove common punctuation and symbols
-    .replace(/[^\w\s]/g, ' ')
+    // Normalize spaces around parentheses but keep them
+    .replace(/\s*\(\s*/g, ' (')
+    .replace(/\s*\)\s*/g, ') ')
+    // Remove other punctuation but preserve parentheses
+    .replace(/[^\w\s()]/g, ' ')
     // Normalize whitespace
     .replace(/\s+/g, ' ')
     .trim();
 };
 
 /**
- * Create semantic equivalents for terms to handle variations
+ * Create base term without parenthetical content
+ */
+const getBaseTermWithoutParentheses = (term: string): string => {
+  return normalizeTermAdvanced(term)
+    .replace(/\s*\([^)]*\)\s*/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+};
+
+/**
+ * Extract parenthetical content from a term
+ */
+const getParentheticalContent = (term: string): string[] => {
+  const matches = term.match(/\(([^)]+)\)/g);
+  if (!matches) return [];
+  
+  return matches.map(match => 
+    match.replace(/[()]/g, '').trim().toLowerCase()
+  );
+};
+
+/**
+ * Create semantic equivalents for terms to handle variations - ENHANCED FOR PARENTHESES
  */
 const createSemanticEquivalents = (term: string): string[] => {
   const normalized = normalizeTermAdvanced(term);
   const equivalents = new Set([normalized]);
+  
+  // Add base term without parentheses
+  const baseTerm = getBaseTermWithoutParentheses(term);
+  if (baseTerm && baseTerm !== normalized) {
+    equivalents.add(baseTerm);
+    console.log(`🔤 Added base term: "${baseTerm}" for "${term}"`);
+  }
+  
+  // Add parenthetical content as separate searchable terms
+  const parentheticals = getParentheticalContent(term);
+  parentheticals.forEach(content => {
+    equivalents.add(content);
+    console.log(`📝 Added parenthetical: "${content}" for "${term}"`);
+  });
   
   // Handle "Layer X" variations
   const layerMatch = normalized.match(/layer\s*(\d+)/);
@@ -118,16 +157,24 @@ const createSemanticEquivalents = (term: string): string[] => {
 };
 
 /**
- * Check if two terms are semantically equivalent
+ * Check if two terms are semantically equivalent - ENHANCED FOR PARENTHESES
  */
 const areTermsEquivalent = (term1: string, term2: string): boolean => {
   const equivalents1 = createSemanticEquivalents(term1);
   const equivalents2 = createSemanticEquivalents(term2);
   
   // Check if any equivalent of term1 matches any equivalent of term2
-  return equivalents1.some(eq1 => 
+  const isEquivalent = equivalents1.some(eq1 => 
     equivalents2.some(eq2 => eq1 === eq2)
   );
+  
+  if (isEquivalent) {
+    console.log(`🎯 SEMANTIC EQUIVALENCE: "${term1}" ≡ "${term2}"`);
+    console.log(`  Term1 equivalents: ${equivalents1.join(', ')}`);
+    console.log(`  Term2 equivalents: ${equivalents2.join(', ')}`);
+  }
+  
+  return isEquivalent;
 };
 
 /**
@@ -154,7 +201,7 @@ const getWordBoundaryMatches = (term: string, query: string): number => {
 };
 
 /**
- * Enhanced scoring system for term matching with semantic equivalence
+ * Enhanced scoring system for term matching with parentheses support - ENHANCED
  */
 const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
   if (!searchTerm) return 0;
@@ -168,7 +215,7 @@ const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
   const queryEquivalents = createSemanticEquivalents(query);
   const termEquivalents = createSemanticEquivalents(termName);
   
-  console.log(`🔍 Scoring "${term.term}" against "${searchTerm}"`);
+  console.log(`🔍 ENHANCED Scoring "${term.term}" against "${searchTerm}"`);
   console.log(`  Query equivalents: ${queryEquivalents.join(', ')}`);
   console.log(`  Term equivalents: ${termEquivalents.join(', ')}`);
   
@@ -178,14 +225,24 @@ const scoreTermMatch = (term: GlossaryTerm, searchTerm: string): number => {
     return 10000;
   }
   
-  // TIER 2: SEMANTIC EQUIVALENCE - Very high priority (9500-9999)
+  // TIER 2: SEMANTIC EQUIVALENCE - Very high priority (9500-9999) - ENHANCED FOR PARENTHESES
   if (areTermsEquivalent(termName, query)) {
     const score = 9500 + (100 - Math.min(termName.length, 100));
     console.log(`🔥 SEMANTIC MATCH: "${term.term}" = ${score}`);
     return score;
   }
   
-  // TIER 3: PERFECT WORD MATCH - High priority (9000-9499)
+  // TIER 2.5: BASE TERM MATCH (for parenthetical terms) - Very high priority (9400-9499)
+  const baseTermName = getBaseTermWithoutParentheses(termName);
+  const baseQuery = getBaseTermWithoutParentheses(query);
+  
+  if (baseTermName && baseQuery && baseTermName === baseQuery) {
+    const score = 9400 + (100 - Math.min(termName.length, 100));
+    console.log(`🎯 BASE TERM MATCH: "${term.term}" base="${baseTermName}" = ${score}`);
+    return score;
+  }
+  
+  // TIER 3: PERFECT WORD MATCH - High priority (9000-9399)
   const queryWords = normalizeTermAdvanced(query).split(/\s+/);
   const termWords = normalizeTermAdvanced(termName).split(/\s+/);
   
@@ -336,13 +393,13 @@ export const useGlossaryData = (
   // Main filtering and sorting logic - ENHANCED SEARCH-FIRST APPROACH
   const filteredAndSortedTerms = useMemo(() => {
     const query = searchTerm.trim().toLowerCase();
-    console.log(`🔍 Processing enhanced search: "${searchTerm}" (normalized: "${query}"), category: "${activeCategory}"`);
+    console.log(`🔍 Processing ENHANCED parentheses search: "${searchTerm}" (normalized: "${query}"), category: "${activeCategory}"`);
     
     let processedTerms = [...rawData];
     
     // ENHANCED SEARCH-FIRST APPROACH: Score and filter by search relevance FIRST
     if (query) {
-      console.log(`🎯 ENHANCED SEMANTIC SEARCH MODE: Scoring ${processedTerms.length} terms for "${query}"`);
+      console.log(`🎯 ENHANCED PARENTHESES SEARCH MODE: Scoring ${processedTerms.length} terms for "${query}"`);
       
       // Score all terms and filter by relevance
       const searchResults = processedTerms
@@ -360,11 +417,11 @@ export const useGlossaryData = (
           return a.term.localeCompare(b.term);
         });
 
-      console.log(`📊 Enhanced semantic search scored ${searchResults.length} relevant terms`);
+      console.log(`📊 Enhanced parentheses search scored ${searchResults.length} relevant terms`);
       
       // Log top 15 results for debugging with scores
       if (searchResults.length > 0) {
-        console.log('🏆 Top enhanced semantic search results:');
+        console.log('🏆 Top enhanced parentheses search results:');
         searchResults.slice(0, 15).forEach((term, index) => {
           console.log(`  ${index + 1}. "${term.term}" (score: ${term.relevanceScore})`);
         });

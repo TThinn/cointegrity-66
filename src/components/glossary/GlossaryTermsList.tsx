@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -15,23 +14,62 @@ interface GlossaryTermsListProps {
 }
 
 /**
- * Advanced term normalization for better matching (matching useGlossaryData)
+ * Advanced term normalization for better matching - ENHANCED FOR PARENTHESES
  */
 const normalizeTermAdvanced = (text: string): string => {
   return text
     .toLowerCase()
     .trim()
-    .replace(/[^\w\s]/g, ' ')
+    // Normalize spaces around parentheses but keep them
+    .replace(/\s*\(\s*/g, ' (')
+    .replace(/\s*\)\s*/g, ') ')
+    // Remove other punctuation but preserve parentheses
+    .replace(/[^\w\s()]/g, ' ')
+    // Normalize whitespace
     .replace(/\s+/g, ' ')
     .trim();
 };
 
 /**
- * Create semantic equivalents for terms to handle variations (matching useGlossaryData)
+ * Create base term without parenthetical content
+ */
+const getBaseTermWithoutParentheses = (term: string): string => {
+  return normalizeTermAdvanced(term)
+    .replace(/\s*\([^)]*\)\s*/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+};
+
+/**
+ * Extract parenthetical content from a term
+ */
+const getParentheticalContent = (term: string): string[] => {
+  const matches = term.match(/\(([^)]+)\)/g);
+  if (!matches) return [];
+  
+  return matches.map(match => 
+    match.replace(/[()]/g, '').trim().toLowerCase()
+  );
+};
+
+/**
+ * Create semantic equivalents for terms to handle variations - ENHANCED FOR PARENTHESES
  */
 const createSemanticEquivalents = (term: string): string[] => {
   const normalized = normalizeTermAdvanced(term);
   const equivalents = new Set([normalized]);
+  
+  // Add base term without parentheses
+  const baseTerm = getBaseTermWithoutParentheses(term);
+  if (baseTerm && baseTerm !== normalized) {
+    equivalents.add(baseTerm);
+  }
+  
+  // Add parenthetical content as separate searchable terms
+  const parentheticals = getParentheticalContent(term);
+  parentheticals.forEach(content => {
+    equivalents.add(content);
+  });
   
   // Handle "Layer X" variations
   const layerMatch = normalized.match(/layer\s*(\d+)/);
@@ -55,7 +93,7 @@ const createSemanticEquivalents = (term: string): string[] => {
 };
 
 /**
- * Check if two terms are semantically equivalent (matching useGlossaryData)
+ * Check if two terms are semantically equivalent - ENHANCED FOR PARENTHESES
  */
 const areTermsEquivalent = (term1: string, term2: string): boolean => {
   const equivalents1 = createSemanticEquivalents(term1);
@@ -73,7 +111,7 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
   isSearching = false,
   searchTerm = ""
 }) => {
-  // Enhanced function to check if a term is a direct match using semantic equivalence
+  // Enhanced function to check if a term is a direct match using semantic equivalence - ENHANCED FOR PARENTHESES
   const isDirectMatch = (term: GlossaryTerm, query: string): boolean => {
     if (!query) return false;
     
@@ -83,8 +121,17 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
     // Check for exact match
     if (normalizedTerm === normalizedQuery) return true;
     
-    // Check for semantic equivalence (handles Layer 2, Layer-2, L2 variations)
+    // Check for semantic equivalence (handles parentheses, Layer 2, Layer-2, L2 variations)
     if (areTermsEquivalent(term.term, query)) return true;
+    
+    // Check base term match (for parenthetical terms)
+    const baseTermName = getBaseTermWithoutParentheses(term.term);
+    const baseQuery = getBaseTermWithoutParentheses(query);
+    
+    if (baseTermName && baseQuery && baseTermName === baseQuery) {
+      console.log(`🎯 BASE TERM DIRECT MATCH: "${term.term}" base="${baseTermName}" matches query base="${baseQuery}"`);
+      return true;
+    }
     
     // Check if term starts with the query (for cases like "mint" matching "minting")
     if (normalizedTerm.startsWith(normalizedQuery) || normalizedQuery.startsWith(normalizedTerm)) {
@@ -202,7 +249,7 @@ export const GlossaryTermsList: React.FC<GlossaryTermsListProps> = ({
           const directMatches = termsForLetter.filter(term => isDirectMatch(term, searchTerm));
           const relatedTerms = termsForLetter.filter(term => !isDirectMatch(term, searchTerm));
           
-          console.log(`🎯 Enhanced Direct matches for "${searchTerm}":`, directMatches.map(t => t.term));
+          console.log(`🎯 Enhanced PARENTHESES Direct matches for "${searchTerm}":`, directMatches.map(t => t.term));
           console.log(`🔗 Related terms for "${searchTerm}":`, relatedTerms.map(t => t.term));
           
           return (
