@@ -10970,6 +10970,30 @@ trending: 8
   categories: ["layer2_solutions", "infrastructure_applications"],
   related: ["Rollups", "Scaling Solutions", "Off-chain Processing", "State Channels"],
   trending: 10
+},
+
+{
+  term: "Tor Network (The Onion Router)",
+  definition: "A decentralized network that enables anonymous communication by routing internet traffic through multiple encrypted layers across volunteer-operated servers called nodes. Each data packet is encrypted multiple times and passed through at least three nodes (entry, middle, and exit), with each node only knowing the previous and next hop in the chain. This 'onion routing' technique makes it extremely difficult to trace communications back to their origin. While originally designed for privacy protection in censorship-heavy regions, Tor is predominantly used for illicit activities including drug trafficking, weapons sales, and cybercriminal communications. The network has become synonymous with criminal operations, with most major cryptocurrency hacks and ransomware attacks utilizing Tor for coordination and communication to avoid law enforcement detection.",
+  categories: ["privacy_technology", "infrastructure_applications"],
+  related: ["Anonymous Browsing", "Onion Routing", "Dark Web", "Criminal Communications", "Cybercrime Infrastructure"],
+  trending: 7
+},
+
+{
+  term: "THORChain",
+  definition: "A decentralized cross-chain liquidity protocol that enables native asset swaps between different blockchains without wrapped tokens or pegged assets. Built on the Cosmos SDK, THORChain uses its native RUNE token as the settlement asset for all swaps and employs a network of validators who bond RUNE to secure cross-chain transactions. The protocol supports major cryptocurrencies like Bitcoin, Ethereum, and Binance Coin, allowing users to trade directly between these assets while maintaining self-custody throughout the process.",
+  categories: ["cross_chain", "defi", "infrastructure_applications"],
+  related: ["RUNE Token", "Cross-chain Swaps", "Liquidity Pools", "Native Asset Trading"],
+  trending: 8
+},
+
+{
+  term: "RUNE Token",
+  definition: "The native cryptocurrency of the THORChain network that serves as the base settlement asset for all cross-chain swaps and liquidity provision. RUNE is paired with every asset in THORChain's liquidity pools, creating a hub-and-spoke model where all trades route through RUNE. Validators must bond RUNE as collateral to participate in network consensus, and liquidity providers must contribute RUNE alongside external assets to earn yield from trading fees and block rewards.",
+  categories: ["cryptocurrency_types", "cross_chain", "defi"],
+  related: ["THORChain", "Cross-chain Liquidity", "Validator Bonding", "Liquidity Provision"],
+  trending: 7
 }
 
 
