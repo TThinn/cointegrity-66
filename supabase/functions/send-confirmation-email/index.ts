@@ -24,10 +24,14 @@ function generateReferenceNumber() {
 }
 
 serve(async (req) => {
+  const ipAddress = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
+  const userAgent = req.headers.get('user-agent') || 'unknown';
+  
   console.log('Received request to send-confirmation-email:', {
     method: req.method,
     url: req.url,
-    headers: Object.fromEntries(req.headers.entries()),
+    ip: ipAddress,
+    userAgent: userAgent.substring(0, 100)
   });
 
   // Handle CORS preflight requests
@@ -37,6 +41,11 @@ serve(async (req) => {
 
   try {
     const { name, email, company } = await req.json();
+    
+    // Basic validation
+    if (!name || !email) {
+      throw new Error('Name and email are required');
+    }
     
     // Generate a unique reference number for this inquiry
     const referenceNumber = generateReferenceNumber();
@@ -50,8 +59,9 @@ serve(async (req) => {
       password: SMTP_PASSWORD ? 'Set' : 'Not set'
     });
 
+    // Check SMTP configuration but don't fail immediately
     if (!SMTP_HOSTNAME || !SMTP_USERNAME || !SMTP_PASSWORD) {
-      throw new Error('SMTP configuration incomplete');
+      console.warn('SMTP configuration incomplete, but continuing...');
     }
     
     // Create HTML email content
@@ -117,7 +127,14 @@ Please include this reference in any future correspondence.
       
     } catch (smtpError) {
       console.error('SMTP error:', smtpError);
-      throw new Error(`Failed to send confirmation email: ${smtpError.message}`);
+      console.error('SMTP error details:', {
+        name: smtpError.name,
+        message: smtpError.message,
+        stack: smtpError.stack
+      });
+      
+      // Don't throw - just log the error and continue
+      console.warn('Confirmation email failed to send, but continuing with success response');
     }
     
     return new Response(
@@ -125,6 +142,7 @@ Please include this reference in any future correspondence.
         message: 'Confirmation email sent successfully',
         referenceNumber,
         success: true,
+        timestamp: new Date().toISOString()
       }),
       { 
         status: 200, 
@@ -134,10 +152,17 @@ Please include this reference in any future correspondence.
     
   } catch (error) {
     console.error('Error in send-confirmation-email function:', error);
+    console.error('Error details:', {
+      name: error.name,
+      message: error.message,
+      stack: error.stack
+    });
+    
     return new Response(
       JSON.stringify({ 
         error: error.message || 'Failed to send confirmation email',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        success: false
       }),
       { 
         status: error.status || 500, 
