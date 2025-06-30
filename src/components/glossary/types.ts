@@ -11,7 +11,7 @@ export type CategoryMetaType = {
   description: string 
 };
 
-// Category metadata for display
+// Category metadata for display - UPDATED WITH CRYPTO CRIME
 export const categoryMeta: CategoryMetaType[] = [
   { value: "all", label: "All Terms", description: "Browse all glossary terms" },
   { value: "blockchain_technology", label: "Blockchain Technology", description: "Foundational blockchain concepts" },
@@ -38,7 +38,8 @@ export const categoryMeta: CategoryMetaType[] = [
   { value: "privacy_technology", label: "Privacy Technology", description: "Technology for preserving privacy" },
   { value: "layer2_solutions", label: "Layer 2 Solutions", description: "Scaling solutions built on top of blockchains" },
   { value: "tokenization", label: "Tokenization", description: "Converting assets to tokens" },
-  { value: "crypto_economics", label: "Cryptoeconomics", description: "Economic principles of cryptocurrencies" }
+  { value: "crypto_economics", label: "Cryptoeconomics", description: "Economic principles of cryptocurrencies" },
+  { value: "crypto_crime", label: "Crypto Crime", description: "Cryptocurrency-related criminal activities and illicit use cases" }
 ];
 
 // Define a data source selection type - simplified to only include available sources

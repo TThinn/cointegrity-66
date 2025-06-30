@@ -9,7 +9,7 @@ export const GLOSSARY_STRUCTURED_DATA = {
   "@type": "DefinedTermSet",
   "@id": "https://cointegrity.io/glossary#termset",
   "name": "Web3, Blockchain & AI Glossary",
-  "description": "Comprehensive glossary of terms related to Web3, blockchain technology, artificial intelligence, regulatory compliance, and tokenomics by Cointegrity consultancy.",
+  "description": "Comprehensive glossary of terms related to Web3, blockchain technology, artificial intelligence, regulatory compliance, crypto crime prevention, and tokenomics by Cointegrity consultancy.",
   "inLanguage": "en-US"
 };
 
@@ -47,7 +47,7 @@ const createCategoryTermSet = (category: string, displayName: string, descriptio
   };
 };
 
-// Get unique categories from glossary terms
+// Get unique categories from glossary terms - UPDATED WITH CRYPTO CRIME
 const getUniqueCategories = (): Array<{
   key: string;
   displayName: string;
@@ -124,6 +124,11 @@ const getUniqueCategories = (): Array<{
       key: "metaverse",
       displayName: "Metaverse",
       description: "Terminology for virtual worlds, digital real estate, interoperability standards, and metaverse economics."
+    },
+    {
+      key: "crypto_crime",
+      displayName: "Crypto Crime",
+      description: "Terms related to cryptocurrency-based criminal activities, money laundering, sanctions evasion, and blockchain forensics for law enforcement."
     }
     // Add all your new categories here with appropriate descriptions
   ];

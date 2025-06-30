@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { CategoryType } from "./types";
@@ -33,7 +34,8 @@ const categoryDisplayNames: Record<CategoryType, string> = {
   privacy_technology: "Privacy Technology",
   layer2_solutions: "Layer 2 Solutions",
   tokenization: "Tokenization",
-  crypto_economics: "Cryptoeconomics"
+  crypto_economics: "Cryptoeconomics",
+  crypto_crime: "Crypto Crime"
 };
 
 const categories: CategoryType[] = [
@@ -42,7 +44,7 @@ const categories: CategoryType[] = [
   "regulatory_frameworks", "compliance", "crypto_history", "infrastructure_applications", 
   "gaming_metaverse", "social_community", "ai_data", "depin", "cross_chain", 
   "smart_contracts", "technical_analysis", "privacy_technology", "layer2_solutions", 
-  "tokenization", "crypto_economics"
+  "tokenization", "crypto_economics", "crypto_crime"
 ];
 
 export const CategorySelector: React.FC<CategorySelectorProps> = ({

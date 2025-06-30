@@ -10,7 +10,7 @@ export const generateGlossaryItemListStructuredData = () => {
     "@type": "ItemList",
     "@id": "https://cointegrity.io/glossary#all-terms",
     "name": "Complete Web3 Glossary Terms",
-    "description": `Complete list of ${glossaryTerms.length}+ Web3, blockchain, and cryptocurrency terms`,
+    "description": `Complete list of ${glossaryTerms.length}+ Web3, blockchain, cryptocurrency, and crypto crime prevention terms`,
     "numberOfItems": glossaryTerms.length,
     "itemListOrder": "Alphabetical",
     "itemListElement": glossaryTerms.slice(0, 100).map((term, index) => ({
@@ -64,20 +64,21 @@ export const generateGlossaryItemListStructuredData = () => {
   return [allTermsItemList, ...categoryItemLists];
 };
 
-// Popular terms ItemList
+// Popular terms ItemList - UPDATED WITH CRYPTO CRIME TERMS
 export const POPULAR_TERMS_ITEMLIST = {
   "@context": "https://schema.org",
   "@type": "ItemList", 
   "@id": "https://cointegrity.io/glossary#popular-terms",
   "name": "Most Popular Web3 Terms",
-  "description": "The most commonly searched and referenced Web3 and blockchain terms",
-  "numberOfItems": 20,
+  "description": "The most commonly searched and referenced Web3, blockchain, and crypto crime prevention terms",
+  "numberOfItems": 25,
   "itemListOrder": "Descending",
   "itemListElement": [
     "Blockchain", "Cryptocurrency", "Bitcoin", "Ethereum", "Smart Contract",
     "DeFi", "NFT", "DAO", "Web3", "Tokenomics", "Staking", "Mining",
     "Wallet", "Exchange", "Yield Farming", "Layer 2", "Consensus",
-    "Decentralization", "Private Key", "Public Key"
+    "Decentralization", "Private Key", "Public Key", "Money Laundering",
+    "Mixer", "Ransomware", "Blockchain Forensics", "AML"
   ].map((term, index) => ({
     "@type": "ListItem",
     "position": index + 1,

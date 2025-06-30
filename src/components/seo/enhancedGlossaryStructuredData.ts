@@ -8,7 +8,7 @@ export const ENHANCED_WEBSITE_SCHEMA = {
   "@id": "https://cointegrity.io/#website-enhanced",
   "url": "https://cointegrity.io/",
   "name": "Cointegrity - World's Largest Web3 Glossary",
-  "description": "Leading Web3 consultancy with the world's most comprehensive blockchain and cryptocurrency glossary",
+  "description": "Leading Web3 consultancy with the world's most comprehensive blockchain, cryptocurrency, and crypto crime prevention glossary",
   "publisher": {
     "@type": "Organization",
     "name": "Cointegrity",
@@ -36,7 +36,7 @@ export const ENHANCED_WEBSITE_SCHEMA = {
     "@type": "DefinedTermSet",
     "@id": "https://cointegrity.io/glossary#termset-enhanced",
     "name": "World's Largest Web3 Glossary",
-    "description": `Comprehensive glossary containing ${glossaryTerms.length}+ expert-curated Web3, blockchain, and cryptocurrency terms`,
+    "description": `Comprehensive glossary containing ${glossaryTerms.length}+ expert-curated Web3, blockchain, cryptocurrency, and crypto crime prevention terms`,
     "numberOfItems": glossaryTerms.length
   }
 };
@@ -47,7 +47,7 @@ export const GLOSSARY_REVIEW_SCHEMA = {
   "@type": "Review",
   "@id": "https://cointegrity.io/glossary#expert-review",
   "name": "Expert Review: World's Most Comprehensive Web3 Glossary",
-  "reviewBody": `This glossary represents the most comprehensive collection of Web3, blockchain, and cryptocurrency terminology available online, with over ${glossaryTerms.length} expert-curated definitions covering everything from basic blockchain concepts to advanced DeFi protocols and regulatory frameworks.`,
+  "reviewBody": `This glossary represents the most comprehensive collection of Web3, blockchain, cryptocurrency, and crypto crime prevention terminology available online, with over ${glossaryTerms.length} expert-curated definitions covering everything from basic blockchain concepts to advanced DeFi protocols, regulatory frameworks, and criminal activity prevention.`,
   "reviewRating": {
     "@type": "Rating",
     "ratingValue": 5,
@@ -75,7 +75,7 @@ export const GLOSSARY_LEARNING_RESOURCE_SCHEMA = {
   "@type": "LearningResource",
   "@id": "https://cointegrity.io/glossary#learning-resource",
   "name": "Web3 & Blockchain Learning Glossary",
-  "description": `Comprehensive educational resource with ${glossaryTerms.length}+ terms for learning Web3 and blockchain technology`,
+  "description": `Comprehensive educational resource with ${glossaryTerms.length}+ terms for learning Web3, blockchain technology, and crypto crime prevention`,
   "learningResourceType": "Reference Material",
   "educationalLevel": ["Beginner", "Intermediate", "Advanced"],
   "teaches": [
@@ -87,13 +87,16 @@ export const GLOSSARY_LEARNING_RESOURCE_SCHEMA = {
     "DAO Governance",
     "Tokenomics Design",
     "Regulatory Compliance",
-    "Web3 Infrastructure"
+    "Web3 Infrastructure",
+    "Crypto Crime Prevention",
+    "Blockchain Forensics",
+    "Anti-Money Laundering"
   ],
   "educationalUse": "Reference",
   "interactivityType": "Expositive",
   "audience": {
     "@type": "EducationalAudience",
-    "educationalRole": ["Developer", "Entrepreneur", "Investor", "Student"]
+    "educationalRole": ["Developer", "Entrepreneur", "Investor", "Student", "Law Enforcement", "Compliance Officer"]
   },
   "provider": {
     "@type": "Organization",
