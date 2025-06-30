@@ -1,7 +1,11 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
 
-const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY') || '';
+const SMTP_HOSTNAME = Deno.env.get('SMTP_HOSTNAME') || '';
+const SMTP_PORT = Number(Deno.env.get('SMTP_PORT')) || 587;
+const SMTP_USERNAME = Deno.env.get('SMTP_USERNAME') || '';
+const SMTP_PASSWORD = Deno.env.get('SMTP_PASSWORD') || '';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -39,13 +43,18 @@ serve(async (req) => {
     console.log('Generated reference number:', referenceNumber);
     
     console.log('Attempting to send confirmation email to:', email);
-    console.log('Using Resend API key:', RESEND_API_KEY ? 'Found' : 'Not found');
+    console.log('Using SMTP configuration:', { 
+      hostname: SMTP_HOSTNAME, 
+      port: SMTP_PORT, 
+      username: SMTP_USERNAME ? 'Set' : 'Not set',
+      password: SMTP_PASSWORD ? 'Set' : 'Not set'
+    });
 
-    if (!RESEND_API_KEY) {
-      throw new Error('RESEND_API_KEY not found in environment variables');
+    if (!SMTP_HOSTNAME || !SMTP_USERNAME || !SMTP_PASSWORD) {
+      throw new Error('SMTP configuration incomplete');
     }
     
-    // Using fetch directly 
+    // Create HTML email content
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
         <h2 style="color: #133a63;">Thank You for Contacting Cointegrity</h2>
@@ -61,38 +70,54 @@ serve(async (req) => {
         </p>
       </div>
     `;
+
+    // Create plain text version as fallback
+    const emailText = `
+Hi ${name},
+
+Thank you for reaching out to Cointegrity. We've received your inquiry (Reference: ${referenceNumber}) and our team is reviewing the details.
+
+One of our consultants will get back to you shortly to discuss your needs and next steps. If you have any urgent updates or additional information, please feel free to reply to this email.
+
+We appreciate your interest and look forward to assisting you.
+
+Best regards,
+The Cointegrity Team
+
+---
+Your inquiry reference number: ${referenceNumber}
+Please include this reference in any future correspondence.
+    `;
     
-    console.log('Sending email via Resend API');
-    const response = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        from: 'Cointegrity <hello@cointegrity.io>',
-        to: [email],
-        subject: `Confirmation: We've Received Your Request (${referenceNumber})`,
-        html: emailHtml,
-        reply_to: "hello@cointegrity.io"
-      })
-    });
+    console.log('Sending confirmation email via SMTP');
     
-    const responseText = await response.text();
-    console.log(`Resend API response status: ${response.status}`);
-    console.log(`Resend API response body: ${responseText}`);
-    
-    if (!response.ok) {
-      throw new Error(`Resend API error: ${response.status} ${response.statusText} - ${responseText}`);
-    }
-    
-    let data;
     try {
-      data = JSON.parse(responseText);
-      console.log('Confirmation email sent successfully:', data);
-    } catch (parseError) {
-      console.warn('Could not parse response as JSON:', responseText);
-      data = { id: 'unknown', message: 'Email sent but response could not be parsed' };
+      // Initialize SMTP client
+      const client = new SmtpClient();
+      
+      // Connect to SMTP server
+      await client.connectTLS({
+        hostname: SMTP_HOSTNAME,
+        port: SMTP_PORT,
+        username: SMTP_USERNAME,
+        password: SMTP_PASSWORD,
+      });
+
+      // Send the email
+      await client.send({
+        from: SMTP_USERNAME,
+        to: email,
+        subject: `Confirmation: We've Received Your Request (${referenceNumber})`,
+        content: emailText,
+        html: emailHtml,
+      });
+
+      console.log('Confirmation email sent successfully via SMTP');
+      await client.close();
+      
+    } catch (smtpError) {
+      console.error('SMTP error:', smtpError);
+      throw new Error(`Failed to send confirmation email: ${smtpError.message}`);
     }
     
     return new Response(
