@@ -10994,6 +10994,150 @@ trending: 8
   categories: ["cryptocurrency_types", "cross_chain", "defi"],
   related: ["THORChain", "Cross-chain Liquidity", "Validator Bonding", "Liquidity Provision"],
   trending: 7
+},
+
+{
+  term: "Threat Actor",
+  definition: "An individual, group, or entity with the intent and capability to carry out malicious cyber activities. Threat actors range from individual hackers and organized cybercriminal gangs to sophisticated, state-sponsored Advanced Persistent Threat (APT) groups. Their motivations vary and can include financial gain, political espionage, or ideological reasons.",
+  categories: ["compliance", "regulatory_frameworks"],
+  related: ["Advanced Persistent Threat (APT)", "Ransomware Gang", "Lazarus Group", "Cybercrime"],
+  trending: 9
+},
+
+{
+  term: "Lazarus Group (APT38)",
+  definition: "A highly sophisticated North Korean state-sponsored hacking organization (APT) responsible for some of the largest financial cyber-heists in history [2, 7]. Active since at least 2009, the group engages in cyber espionage and large-scale theft from financial institutions and cryptocurrency exchanges to fund North Korea's state programs [13, 17]. Notable attacks include the $625 million Ronin Bridge hack and the $1.5 billion Bybit hack, executed using custom malware, zero-day exploits, and advanced social engineering tactics [11, 13].",
+  categories: ["compliance", "regulatory_frameworks"],
+  related: ["Advanced Persistent Threat (APT)", "State-Sponsored Hacking", "North Korea", "Ronin Bridge Hack", "Bybit Hack"],
+  trending: 10
+},
+
+{
+  term: "Akira Group",
+  definition: "A Ransomware-as-a-Service (RaaS) group that emerged in March 2023 and quickly became a major threat, extorting over $42 million from more than 250 organizations within its first year [10, 14]. The group, believed to have Russian ties, uses double-extortion tactics and is known for gaining initial network access by exploiting Cisco VPN vulnerabilities, particularly those without multi-factor authentication [8, 14]. Analysis of its transactions reveals financial links to former affiliates of the Conti ransomware group [8].",
+  categories: ["compliance"],
+  related: ["Ransomware-as-a-Service (RaaS)", "Double Extortion", "Conti", "VPN Exploit"],
+  trending: 9
+},
+
+{
+  term: "Conti",
+  definition: "A prolific and highly aggressive ransomware gang that operated from 2020 to 2022, becoming one of the most profitable in history by extorting over $180 million in a single year [5]. The group's public support for Russia's invasion of Ukraine led to a massive internal leak of its chat logs and source code, exposing its operations and precipitating its downfall [5]. Though officially defunct, its experienced members are believed to have splintered into successor groups, most notably Royal / BlackSuit [5, 8].",
+  categories: ["compliance", "crypto_history"],
+  related: ["Ransomware Gang", "REvil", "Double Extortion", "Royal / BlackSuit", "Cybercrime History"],
+  trending: 7
+},
+
+{
+  term: "REvil (Sodinokibi)",
+  definition: "An infamous Russian-linked ransomware gang known for high-profile attacks on major corporations and critical infrastructure, including an attack on an Apple supplier where they stole proprietary device blueprints [5]. Operating as a RaaS provider, REvil was one of the most active and damaging groups until Russian authorities claimed to have dismantled its core infrastructure in early 2022. However, cybersecurity experts believe its remnants continue to operate under new aliases [5, 16].",
+  categories: ["compliance", "crypto_history"],
+  related: ["Ransomware Gang", "Conti", "Sodinokibi", "Russian Cybercrime"],
+  trending: 7
+},
+
+{
+  term: "Cl0p",
+  definition: "A highly sophisticated and financially motivated ransomware group active since 2019, primarily targeting large organizations with revenues over $5 million, including critical sectors like healthcare [5]. Cl0p employs double-extortion tactics, stealing sensitive data before encryption and threatening to publish it on its dark web leak site. Despite the arrest of several suspected members in 2021, the group remains one of the most active and dangerous threats to enterprises worldwide [5].",
+  categories: ["compliance"],
+  related: ["Ransomware Gang", "Double Extortion", "Data Leak Site", "Critical Infrastructure"],
+  trending: 8
+},
+
+{
+  term: "Royal / BlackSuit",
+  definition: "A ransomware operation believed to be run by experienced hackers from the defunct Conti gang. The group emerged as 'Royal' in 2022, carrying out high-profile attacks like the one against the city of Dallas, before evolving its malware and rebranding as 'BlackSuit' in 2023 [5]. The group uses double-extortion tactics and had extorted over $275 million from more than 350 victims globally by late 2023, showcasing the continued threat posed by the skilled operators behind Conti's original success [5].",
+  categories: ["compliance"],
+  related: ["Ransomware Gang", "Conti", "Rebranding", "Double Extortion", "Cybercrime History"],
+  trending: 8
+},
+
+{
+  term: "Darknet Market (DNM)",
+  definition: "An online marketplace operating on an anonymity network like Tor that facilitates the trade of illegal goods and services, including narcotics, stolen data, and malware. These markets, such as the former titan Hydra and its successors Mega and BlackSprut, almost exclusively use cryptocurrencies for payment and often integrate financial services like mixers to launder proceeds. Their significant transaction volumes make them cornerstones of the illicit crypto economy.",
+  categories: ["compliance", "regulatory_frameworks"],
+  related: ["Tor Network", "Money Laundering", "Hydra Market", "Mega Darknet Market", "BlackSprut"],
+  trending: 8
+},
+
+{
+  term: "Crypto Mixer",
+  definition: "A service designed to obscure the transactional history of cryptocurrencies by blending funds from numerous users, breaking the on-chain link to the original source. These services are a critical tool for cybercriminals and are often promoted exclusively in private Telegram channels and closed dark market forums, not on the open web. Due to their obfuscation techniques, analytics software like Chainalysis and TRM often provide 'lower bound estimates' of illicit activity, meaning the true scale of money laundering is likely far greater than reported. The concentrated volume of funds laundered through these mixers is believed to be several multiples higher than the illicit transaction volume of privacy coins like Monero.",
+  categories: ["compliance", "privacy_technology"],
+  related: ["Money Laundering", "Tor Network", "AudiA6", "Blender.io / Sinbad.io", "Transaction Obfuscation", "Lower Bound Estimates"],
+  trending: 9
+},
+
+{
+  term: "Garantex",
+  definition: "A major Russia-based cryptocurrency exchange described as a cornerstone of the country's illicit crypto economy, operating from physical offices in Moscow's Federation Tower. It processed at least $96 billion in total transactions, with recent analysis suggesting its role in up to $20 billion of global illicit crypto use. Its illicit activity rate of 1.35% was nearly ten times higher than compliant exchanges. It specialized in Ruble-to-crypto conversions and was known for providing false information to authorities before being dismantled by an international law enforcement operation in March 2025.",
+  categories: ["exchanges_trading", "compliance", "regulatory_frameworks"],
+  related: ["Money Laundering", "Sanctions", "no-KYC", "Darknet Market", "Ruble Conversion"],
+  trending: 10
+},
+
+{
+  term: "Hydra Market",
+  definition: "Formerly the world's largest darknet market, which at its peak accounted for 75% of all dark web marketplace activity with over 17 million users. With lifetime revenue exceeding $5 billion, it was a one-stop-shop for illegal drugs and integrated financial services, including its own mixers. Its dismantling by German and U.S. authorities in April 2022 created a significant vacuum in the illicit market, which competitors like Mega and BlackSprut rushed to fill.",
+  categories: ["compliance", "crypto_history"],
+  related: ["Darknet Market", "Mega Darknet Market", "BlackSprut", "Money Laundering", "Tor Network"],
+  trending: 9
+},
+
+{
+  term: "Mega Darknet Market",
+  definition: "A leading Russian darknet market and primary successor to Hydra, capturing over half a billion dollars in cryptocurrency inflows in 2023. Specializing in illegal drugs, it dominates the post-Hydra supply chain with a 63.4% market share. The platform is known for its aggressive and open marketing tactics, including advertisements in the Moscow metro, highlighting the permissive operational environment within Russia.",
+  categories: ["compliance"],
+  related: ["Darknet Market", "Hydra Market", "BlackSprut", "Illicit Finance", "Permissive Environment"],
+  trending: 8
+},
+
+{
+  term: "BlackSprut",
+  definition: "A major Russia-linked darknet market and successor to Hydra, holding 28% of the global darknet market share. It operates with a public web entry point for easier access and uses the sanctioned Bitzlato exchange for its transactions. The platform is notable for its explicit political support for the Kremlin and has been advertised on billboards in Moscow, underscoring its ability to operate with impunity.",
+  categories: ["compliance"],
+  related: ["Darknet Market", "Hydra Market", "Mega Darknet Market", "Bitzlato", "Sanctions"],
+  trending: 8
+},
+
+{
+  term: "AudiA6",
+  definition: "A popular cryptocurrency mixing service operating on the Tor network that is found exclusively through illicit marketplaces and private chatrooms. It is used by cybercriminals to obfuscate illicit funds, charging a flat fee between 3% and 5.5%. While its specific volume is unquantified due to its hidden nature, its purpose-built design means virtually 100% of its activity is criminal, representing a significant flow of illicit funds that often goes miscategorized or underestimated by blockchain analysis firms.",
+  categories: ["compliance", "privacy_technology"],
+  related: ["Crypto Mixer", "Tor Network", "Money Laundering", "comcash.io/ru", "catbit.io/"],
+  trending: 7
+},
+
+{
+  term: "comcash.io/ru",
+  definition: "An under-the-radar cryptocurrency mixer promoted exclusively in closed dark market forums and private Telegram groups. Due to its operational secrecy and specialized criminal clientele, it is assumed that nearly 100% of its transaction volume is for illicit purposes. Its concentrated laundering activity is believed to significantly exceed the illicit use of privacy coins like Monero, yet remains largely invisible to standard crypto crime reporting.",
+  categories: ["compliance", "privacy_technology"],
+  related: ["Crypto Mixer", "AudiA6", "catbit.io/", "Illicit Finance", "Telegram"],
+  trending: 6
+},
+
+{
+  term: "catbit.io/",
+  definition: "A dedicated cryptocurrency mixing service operating within the illicit Russian crypto ecosystem, accessible only through criminal forums. As a purpose-built tool for money laundering, virtually all of its transaction volume is illicit. These hidden mixers represent a major blind spot for analytics firms, whose public reports on crypto crime levels would likely be much higher if the volumes from these services were accurately classified.",
+  categories: ["compliance", "privacy_technology"],
+  related: ["Crypto Mixer", "AudiA6", "comcash.io/ru", "Money Laundering", "Analytics Blind Spot"],
+  trending: 6
+},
+
+{
+  term: "Blender.io / Sinbad.io",
+  definition: "A prominent crypto mixer (Blender.io) that was sanctioned for laundering hundreds of millions for North Korean (Lazarus Group) and Russian ransomware gangs. To evade sanctions, it rebranded as Sinbad.io and continued operations, demonstrating the resilience of such criminal infrastructure. Law enforcement eventually seized Sinbad's infrastructure, highlighting the continuous cat-and-mouse game between authorities and illicit service providers.",
+  categories: ["compliance", "privacy_technology", "crypto_history"],
+  related: ["Crypto Mixer", "Sanctions", "Ransomware", "Lazarus Group", "Rebranding"],
+  trending: 8
+},
+
+{
+  term: "Bitzlato",
+  definition: "A U.S.-sanctioned cryptocurrency exchange that functioned as a key piece of financial infrastructure for the illicit ecosystem, laundering hundreds of millions in criminal proceeds. It was deeply integrated with other criminal entities, serving as the primary payment processor for the BlackSprut darknet market, demonstrating the interconnected nature of these illicit services.",
+  categories: ["exchanges_trading", "compliance"],
+  related: ["BlackSprut", "Sanctions", "Money Laundering", "Darknet Market", "Illicit Infrastructure"],
+  trending: 7
 }
 
 
