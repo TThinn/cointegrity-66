@@ -3,7 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { AlertTriangle, CheckCircle, XCircle, Info, Zap } from 'lucide-react';
+import { AlertTriangle, CheckCircle, XCircle, Info, Zap, Globe, Shield } from 'lucide-react';
 
 interface AnalysisResult {
   category: string;
@@ -11,6 +11,7 @@ interface AnalysisResult {
   issue: string;
   solution: string;
   status: 'detected' | 'fixed' | 'pending';
+  troubleshooting?: string[];
 }
 
 interface SystemInfo {
@@ -24,15 +25,27 @@ interface SystemInfo {
   };
 }
 
+interface DomainDiagnostics {
+  currentDomain: string;
+  targetDomain: string;
+  isCustomDomain: boolean;
+  isSecure: boolean;
+  domainStatus: 'connected' | 'pending' | 'failed' | 'staging';
+}
+
 export const DeploymentAnalyzer: React.FC = () => {
   const [analysis, setAnalysis] = useState<AnalysisResult[]>([]);
   const [systemInfo, setSystemInfo] = useState<SystemInfo | null>(null);
+  const [domainDiagnostics, setDomainDiagnostics] = useState<DomainDiagnostics | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   useEffect(() => {
     // Collect system information
+    const currentDomain = window.location.hostname;
+    const targetDomain = 'cointegrity.io';
+    
     setSystemInfo({
-      domain: window.location.hostname,
+      domain: currentDomain,
       protocol: window.location.protocol,
       userAgent: navigator.userAgent,
       timestamp: new Date().toISOString(),
@@ -41,21 +54,41 @@ export const DeploymentAnalyzer: React.FC = () => {
         timestamp: process.env.BUILD_TIMESTAMP
       }
     });
+
+    // Analyze domain status
+    setDomainDiagnostics({
+      currentDomain,
+      targetDomain,
+      isCustomDomain: currentDomain === targetDomain,
+      isSecure: window.location.protocol === 'https:',
+      domainStatus: currentDomain === targetDomain ? 'connected' : 
+                   currentDomain.includes('lovable') ? 'staging' : 'pending'
+    });
   }, []);
 
   const runAnalysis = async () => {
     setIsAnalyzing(true);
     const results: AnalysisResult[] = [];
 
-    // Domain Analysis
+    // Domain Analysis with Enhanced Diagnostics
     const currentDomain = window.location.hostname;
     if (currentDomain !== 'cointegrity.io') {
+      const troubleshootingSteps = [
+        'Verify DNS A record points to Lovable\'s IP address',
+        'Check domain registrar settings for correct nameservers',
+        'Ensure domain is verified in Lovable project settings',
+        'Wait 24-48 hours for DNS propagation to complete',
+        'Clear browser cache and try accessing the domain directly',
+        'Check if domain is properly configured in Lovable dashboard'
+      ];
+
       results.push({
-        category: 'Domain',
+        category: 'Domain Configuration',
         severity: currentDomain.includes('lovable') ? 'medium' : 'high',
         issue: `Site is running on ${currentDomain} instead of cointegrity.io`,
-        solution: 'Configure custom domain in Lovable project settings and update DNS records',
-        status: 'detected'
+        solution: 'Complete domain connection process in Lovable project settings',
+        status: 'detected',
+        troubleshooting: troubleshootingSteps
       });
     }
 
@@ -65,8 +98,31 @@ export const DeploymentAnalyzer: React.FC = () => {
         category: 'Security',
         severity: 'critical',
         issue: 'Site is not using HTTPS',
-        solution: 'Enable SSL certificate in hosting configuration',
-        status: 'detected'
+        solution: 'SSL certificate will be automatically provisioned once domain is connected',
+        status: 'detected',
+        troubleshooting: [
+          'SSL certificates are automatically provided by Lovable',
+          'Domain must be successfully connected first',
+          'Certificate provisioning can take up to 24 hours'
+        ]
+      });
+    }
+
+    // Enhanced reCAPTCHA Analysis
+    const recaptchaLoaded = typeof window.grecaptcha !== 'undefined';
+    if (!recaptchaLoaded) {
+      results.push({
+        category: 'External Services',
+        severity: 'high',
+        issue: 'reCAPTCHA is not loaded - contact form will not work',
+        solution: 'Update reCAPTCHA site key for the new domain in project environment variables',
+        status: 'detected',
+        troubleshooting: [
+          'Go to Google reCAPTCHA Admin Console (https://www.google.com/recaptcha/admin)',
+          'Add cointegrity.io to the list of authorized domains',
+          'Update the site key in Lovable project environment variables',
+          'Ensure reCAPTCHA script is properly loaded'
+        ]
       });
     }
 
@@ -79,7 +135,7 @@ export const DeploymentAnalyzer: React.FC = () => {
             category: 'Performance',
             severity: 'low',
             issue: 'Service Worker not registered',
-            solution: 'Ensure service worker is properly initialized',
+            solution: 'Service worker will be automatically registered on production domain',
             status: 'detected'
           });
         }
@@ -96,19 +152,37 @@ export const DeploymentAnalyzer: React.FC = () => {
 
     // External Services Analysis
     const externalServices = [
-      { name: 'Google Analytics', check: () => typeof window.gtag !== 'undefined' },
-      { name: 'reCAPTCHA', check: () => typeof window.grecaptcha !== 'undefined' },
-      { name: 'Cookiebot', check: () => document.querySelector('script[src*="cookiebot"]') !== null }
+      { 
+        name: 'Google Analytics', 
+        check: () => typeof window.gtag !== 'undefined',
+        severity: 'medium' as const,
+        troubleshooting: [
+          'Verify Google Analytics tracking ID is correct',
+          'Check if domain is authorized in GA property settings',
+          'Ensure GA script loads before page tracking'
+        ]
+      },
+      { 
+        name: 'Cookiebot', 
+        check: () => document.querySelector('script[src*="cookiebot"]') !== null,
+        severity: 'medium' as const,
+        troubleshooting: [
+          'Update Cookiebot domain settings to include cointegrity.io',
+          'Verify Cookiebot script URL is correct',
+          'Check if domain is whitelisted in Cookiebot dashboard'
+        ]
+      }
     ];
 
     for (const service of externalServices) {
       if (!service.check()) {
         results.push({
           category: 'External Services',
-          severity: service.name === 'reCAPTCHA' ? 'high' : 'medium',
+          severity: service.severity,
           issue: `${service.name} is not loaded`,
-          solution: `Check ${service.name} configuration and script loading`,
-          status: 'detected'
+          solution: `Check ${service.name} configuration for domain authorization`,
+          status: 'detected',
+          troubleshooting: service.troubleshooting
         });
       }
     }
@@ -122,8 +196,13 @@ export const DeploymentAnalyzer: React.FC = () => {
           category: 'Backend',
           severity: 'high',
           issue: 'Supabase connection failed',
-          solution: 'Check Supabase configuration and API keys',
-          status: 'detected'
+          solution: 'Verify Supabase configuration and API keys',
+          status: 'detected',
+          troubleshooting: [
+            'Check Supabase project URL and anon key',
+            'Verify RLS policies allow public access where needed',
+            'Ensure Supabase project is not paused'
+          ]
         });
       }
     } catch (error) {
@@ -136,9 +215,8 @@ export const DeploymentAnalyzer: React.FC = () => {
       });
     }
 
-    // Performance Analysis - Fixed to use correct Performance API properties
+    // Performance Analysis
     try {
-      // Use the modern Performance API
       const navigationEntries = performance.getEntriesByType('navigation');
       if (navigationEntries.length > 0) {
         const navEntry = navigationEntries[0] as PerformanceNavigationTiming;
@@ -153,7 +231,6 @@ export const DeploymentAnalyzer: React.FC = () => {
           });
         }
       } else if (performance.timing) {
-        // Fallback to deprecated timing API if available
         const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
         if (loadTime > 3000) {
           results.push({
@@ -166,7 +243,6 @@ export const DeploymentAnalyzer: React.FC = () => {
         }
       }
     } catch (error) {
-      // If performance measurement fails, add a diagnostic note
       results.push({
         category: 'Performance',
         severity: 'low',
@@ -187,13 +263,14 @@ export const DeploymentAnalyzer: React.FC = () => {
       });
     }
 
-    // Add success message if no issues found
-    if (results.length === 0) {
+    // Add success message if no critical issues found
+    const criticalIssues = results.filter(r => r.severity === 'critical' || r.severity === 'high');
+    if (criticalIssues.length === 0) {
       results.push({
-        category: 'System',
+        category: 'System Status',
         severity: 'low',
         issue: 'No critical issues detected',
-        solution: 'System appears to be functioning normally',
+        solution: 'System is functioning within acceptable parameters',
         status: 'fixed'
       });
     }
@@ -265,11 +342,47 @@ export const DeploymentAnalyzer: React.FC = () => {
             {isAnalyzing ? 'Analyzing...' : 'Run Analysis'}
           </Button>
 
+          {/* Domain Status Card */}
+          {domainDiagnostics && (
+            <Card className="mb-4 border-l-4 border-l-blue-500">
+              <CardHeader className="pb-2">
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <Globe className="h-5 w-5" />
+                  Domain Status
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span className="font-medium">Current Domain:</span> 
+                  <span className="ml-2 font-mono text-blue-600">{domainDiagnostics.currentDomain}</span>
+                </div>
+                <div>
+                  <span className="font-medium">Target Domain:</span> 
+                  <span className="ml-2 font-mono text-green-600">{domainDiagnostics.targetDomain}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">Status:</span>
+                  <Badge className={
+                    domainDiagnostics.domainStatus === 'connected' ? 'bg-green-100 text-green-800' :
+                    domainDiagnostics.domainStatus === 'staging' ? 'bg-blue-100 text-blue-800' :
+                    'bg-orange-100 text-orange-800'
+                  }>
+                    {domainDiagnostics.domainStatus}
+                  </Badge>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Shield className="h-4 w-4" />
+                  <span className="font-medium">HTTPS:</span>
+                  <Badge className={domainDiagnostics.isSecure ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}>
+                    {domainDiagnostics.isSecure ? 'Enabled' : 'Disabled'}
+                  </Badge>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
           {systemInfo && (
             <div className="grid grid-cols-2 gap-4 text-sm">
-              <div>
-                <span className="font-medium">Domain:</span> {systemInfo.domain}
-              </div>
               <div>
                 <span className="font-medium">Protocol:</span> {systemInfo.protocol}
               </div>
@@ -278,6 +391,9 @@ export const DeploymentAnalyzer: React.FC = () => {
               </div>
               <div>
                 <span className="font-medium">Build Time:</span> {systemInfo.buildInfo.timestamp || 'Unknown'}
+              </div>
+              <div>
+                <span className="font-medium">Analysis Time:</span> {new Date(systemInfo.timestamp).toLocaleTimeString()}
               </div>
             </div>
           )}
@@ -291,10 +407,11 @@ export const DeploymentAnalyzer: React.FC = () => {
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="overview" className="w-full">
-              <TabsList className="grid w-full grid-cols-3">
+              <TabsList className="grid w-full grid-cols-4">
                 <TabsTrigger value="overview">Overview</TabsTrigger>
                 <TabsTrigger value="details">Details</TabsTrigger>
                 <TabsTrigger value="solutions">Solutions</TabsTrigger>
+                <TabsTrigger value="troubleshooting">Troubleshooting</TabsTrigger>
               </TabsList>
               
               <TabsContent value="overview" className="space-y-4">
@@ -351,6 +468,27 @@ export const DeploymentAnalyzer: React.FC = () => {
                     </div>
                     <p className="text-sm text-gray-700 mb-2">{item.issue}</p>
                     <p className="text-sm font-medium text-blue-700">{item.solution}</p>
+                  </div>
+                ))}
+              </TabsContent>
+
+              <TabsContent value="troubleshooting" className="space-y-4">
+                {analysis.filter(item => item.troubleshooting).map((item, index) => (
+                  <div key={index} className="p-4 border rounded-lg">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Badge className={getSeverityColor(item.severity)}>
+                        {item.severity}
+                      </Badge>
+                      <span className="font-medium">{item.category}: {item.issue}</span>
+                    </div>
+                    <div className="pl-4">
+                      <h5 className="font-medium text-sm mb-2">Step-by-step troubleshooting:</h5>
+                      <ol className="list-decimal list-inside space-y-1 text-sm text-gray-700">
+                        {item.troubleshooting?.map((step, stepIndex) => (
+                          <li key={stepIndex}>{step}</li>
+                        ))}
+                      </ol>
+                    </div>
                   </div>
                 ))}
               </TabsContent>

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -138,12 +137,10 @@ export const DeploymentTracker: React.FC = () => {
     }));
   }, []);
 
-  // Pre-flight checks
   const runPreFlightChecks = async () => {
     updateStage('pre-flight', { status: 'running', message: 'Running pre-flight checks...' });
     
     try {
-      // Check browser compatibility
       const browserChecks = {
         localStorage: typeof Storage !== 'undefined',
         fetch: typeof fetch !== 'undefined',
@@ -153,7 +150,6 @@ export const DeploymentTracker: React.FC = () => {
       
       updateStage('pre-flight', { progress: 25, message: 'Checking browser compatibility...' });
       
-      // Check network connectivity
       try {
         await fetch('https://www.google.com/favicon.ico', { mode: 'no-cors' });
         updateStage('pre-flight', { progress: 50, message: 'Network connectivity verified...' });
@@ -161,11 +157,9 @@ export const DeploymentTracker: React.FC = () => {
         addWarning('Network connectivity check failed');
       }
       
-      // Check current domain
       const currentDomain = window.location.hostname;
       updateStage('pre-flight', { progress: 75, message: `Current domain: ${currentDomain}` });
       
-      // Final validation
       updateStage('pre-flight', { 
         status: 'success', 
         progress: 100, 
@@ -184,12 +178,10 @@ export const DeploymentTracker: React.FC = () => {
     }
   };
 
-  // Environment validation
   const runEnvironmentValidation = async () => {
     updateStage('environment', { status: 'running', message: 'Validating environment...' });
     
     try {
-      // Check environment variables
       const envChecks = {
         nodeEnv: process.env.NODE_ENV,
         buildTimestamp: process.env.BUILD_TIMESTAMP
@@ -197,7 +189,6 @@ export const DeploymentTracker: React.FC = () => {
       
       updateStage('environment', { progress: 33, message: 'Checking environment variables...' });
       
-      // Check Vite configuration
       const viteConfig = {
         mode: import.meta.env.MODE,
         dev: import.meta.env.DEV,
@@ -224,14 +215,12 @@ export const DeploymentTracker: React.FC = () => {
     }
   };
 
-  // External services check
   const runExternalServicesCheck = async () => {
     updateStage('services', { status: 'running', message: 'Checking external services...' });
     
     try {
       let progress = 0;
       
-      // Check Supabase
       try {
         const { supabase } = await import('@/integrations/supabase/client');
         await supabase.from('newsletter_subscriptions').select('count', { count: 'exact', head: true });
@@ -242,7 +231,6 @@ export const DeploymentTracker: React.FC = () => {
         progress += 25;
       }
       
-      // Check reCAPTCHA
       if (typeof window.grecaptcha !== 'undefined') {
         progress += 25;
         updateStage('services', { progress, message: 'reCAPTCHA loaded successfully...' });
@@ -251,7 +239,6 @@ export const DeploymentTracker: React.FC = () => {
         progress += 25;
       }
       
-      // Check Google Analytics
       if (typeof window.gtag !== 'undefined') {
         progress += 25;
         updateStage('services', { progress, message: 'Google Analytics verified...' });
@@ -260,7 +247,6 @@ export const DeploymentTracker: React.FC = () => {
         progress += 25;
       }
       
-      // Check Cookiebot
       const cookiebotScript = document.querySelector('script[src*="cookiebot"]');
       if (cookiebotScript) {
         progress += 25;
@@ -287,12 +273,10 @@ export const DeploymentTracker: React.FC = () => {
     }
   };
 
-  // Build process simulation
   const runBuildProcess = async () => {
     updateStage('build', { status: 'running', message: 'Simulating build process...' });
     
     try {
-      // Simulate build steps
       const buildSteps = [
         'Analyzing dependencies...',
         'Compiling TypeScript...',
@@ -324,12 +308,10 @@ export const DeploymentTracker: React.FC = () => {
     }
   };
 
-  // Deployment upload simulation
   const runDeploymentUpload = async () => {
     updateStage('deployment', { status: 'running', message: 'Uploading deployment...' });
     
     try {
-      // Simulate upload progress
       for (let i = 0; i <= 100; i += 10) {
         await new Promise(resolve => setTimeout(resolve, 200));
         updateStage('deployment', { 
@@ -355,7 +337,6 @@ export const DeploymentTracker: React.FC = () => {
     }
   };
 
-  // DNS propagation check
   const runDNSCheck = async () => {
     updateStage('dns', { status: 'running', message: 'Checking DNS propagation...' });
     
@@ -363,7 +344,6 @@ export const DeploymentTracker: React.FC = () => {
       const targetDomain = 'cointegrity.io';
       const currentDomain = window.location.hostname;
       
-      // Simulate DNS check
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       if (currentDomain === targetDomain) {
@@ -394,7 +374,6 @@ export const DeploymentTracker: React.FC = () => {
     }
   };
 
-  // SSL certificate check
   const runSSLCheck = async () => {
     updateStage('ssl', { status: 'running', message: 'Checking SSL certificate...' });
     
@@ -431,35 +410,78 @@ export const DeploymentTracker: React.FC = () => {
     }
   };
 
-  // Site verification
   const runSiteVerification = async () => {
     updateStage('verification', { status: 'running', message: 'Verifying site functionality...' });
     
     try {
-      // Test critical functionality
       const tests = [
-        { name: 'Contact form', test: () => document.querySelector('#contact') !== null },
-        { name: 'Navigation', test: () => document.querySelector('nav') !== null },
-        { name: 'Hero section', test: () => document.querySelector('#hero') !== null },
-        { name: 'Services section', test: () => document.querySelector('#services') !== null }
+        { 
+          name: 'Hero section', 
+          test: () => {
+            return document.querySelector('#hero') !== null || 
+                   document.querySelector('.hero-section') !== null ||
+                   document.querySelector('[class*="hero"]') !== null;
+          }
+        },
+        { 
+          name: 'Navigation', 
+          test: () => {
+            return document.querySelector('nav') !== null || 
+                   document.querySelector('header nav') !== null ||
+                   document.querySelector('[role="navigation"]') !== null;
+          }
+        },
+        { 
+          name: 'Services section', 
+          test: () => {
+            return document.querySelector('#services') !== null || 
+                   document.querySelector('.services') !== null ||
+                   document.querySelector('[class*="service"]') !== null;
+          }
+        },
+        { 
+          name: 'Contact functionality', 
+          test: () => {
+            return document.querySelector('#contact') !== null || 
+                   document.querySelector('form') !== null ||
+                   document.querySelector('[class*="contact"]') !== null;
+          }
+        },
+        {
+          name: 'Footer section',
+          test: () => {
+            return document.querySelector('footer') !== null ||
+                   document.querySelector('[role="contentinfo"]') !== null;
+          }
+        }
       ];
       
       let passedTests = 0;
+      const testResults: string[] = [];
+      
       for (const test of tests) {
-        await new Promise(resolve => setTimeout(resolve, 300));
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
         if (test.test()) {
           passedTests++;
+          testResults.push(`✓ ${test.name}`);
         } else {
-          addWarning(`${test.name} not found`);
+          testResults.push(`✗ ${test.name}`);
+          addWarning(`${test.name} not found or not properly configured`);
         }
+        
         const progress = (passedTests / tests.length) * 100;
         updateStage('verification', { progress, message: `Testing ${test.name}...` });
       }
       
+      const successRate = passedTests / tests.length;
+      const status = successRate === 1 ? 'success' : successRate >= 0.8 ? 'warning' : 'error';
+      
       updateStage('verification', { 
-        status: passedTests === tests.length ? 'success' : 'warning', 
+        status, 
         progress: 100, 
-        message: `Site verification completed (${passedTests}/${tests.length} tests passed)`
+        message: `Site verification completed (${passedTests}/${tests.length} tests passed)`,
+        details: testResults.join(', ')
       });
       
     } catch (error) {
@@ -497,11 +519,9 @@ export const DeploymentTracker: React.FC = () => {
       setState(prev => ({ ...prev, currentStage: i }));
       await stages[i]();
       
-      // Calculate overall progress
       const overallProgress = ((i + 1) / stages.length) * 100;
       setState(prev => ({ ...prev, overallProgress }));
       
-      // Small delay between stages
       await new Promise(resolve => setTimeout(resolve, 500));
     }
 

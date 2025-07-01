@@ -37,7 +37,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="hero-section relative overflow-hidden bg-[#060115] isolate min-h-screen flex items-center justify-center">
+    <section id="hero" className="hero-section relative overflow-hidden bg-[#060115] isolate min-h-screen flex items-center justify-center">
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
