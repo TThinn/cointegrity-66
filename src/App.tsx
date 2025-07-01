@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react"
 import { Toaster } from "sonner"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
@@ -25,6 +26,7 @@ import GuidesPage from "./pages/GuidesPage"
 import CaseStudiesPage from "./pages/CaseStudiesPage"
 import MicaReadyWaitlistPage from "./pages/MicaReadyWaitlistPage"
 import DeploymentTestPage from "./pages/DeploymentTestPage"
+import DeploymentDashboard from "./pages/DeploymentDashboard"
 
 import './index.css'
 import './App.css'
@@ -68,6 +70,7 @@ const App = () => {
               <Route path="/thank-you" element={<ThankYouPage />} />
               <Route path="/mica-ready-waitlist" element={<MicaReadyWaitlistPage />} />
               <Route path="/deployment-test" element={<DeploymentTestPage />} />
+              <Route path="/deployment-dashboard" element={<DeploymentDashboard />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <Toaster 
