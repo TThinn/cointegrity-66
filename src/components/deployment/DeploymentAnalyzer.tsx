@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -137,18 +136,44 @@ export const DeploymentAnalyzer: React.FC = () => {
       });
     }
 
-    // Performance Analysis
-    if (performance.navigation) {
-      const loadTime = performance.navigation.loadEventEnd - performance.navigation.navigationStart;
-      if (loadTime > 3000) {
-        results.push({
-          category: 'Performance',
-          severity: 'medium',
-          issue: `Slow page load time: ${Math.round(loadTime)}ms`,
-          solution: 'Optimize assets, enable compression, and implement lazy loading',
-          status: 'detected'
-        });
+    // Performance Analysis - Fixed to use correct Performance API
+    try {
+      // Use the modern Performance API
+      const navigationEntries = performance.getEntriesByType('navigation');
+      if (navigationEntries.length > 0) {
+        const navEntry = navigationEntries[0] as PerformanceNavigationTiming;
+        const loadTime = navEntry.loadEventEnd - navEntry.navigationStart;
+        if (loadTime > 3000) {
+          results.push({
+            category: 'Performance',
+            severity: 'medium',
+            issue: `Slow page load time: ${Math.round(loadTime)}ms`,
+            solution: 'Optimize assets, enable compression, and implement lazy loading',
+            status: 'detected'
+          });
+        }
+      } else if (performance.timing) {
+        // Fallback to deprecated timing API if available
+        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+        if (loadTime > 3000) {
+          results.push({
+            category: 'Performance',
+            severity: 'medium',
+            issue: `Slow page load time: ${Math.round(loadTime)}ms`,
+            solution: 'Optimize assets, enable compression, and implement lazy loading',
+            status: 'detected'
+          });
+        }
       }
+    } catch (error) {
+      // If performance measurement fails, add a diagnostic note
+      results.push({
+        category: 'Performance',
+        severity: 'low',
+        issue: 'Performance measurement unavailable',
+        solution: 'Performance timing API may not be supported in this browser',
+        status: 'detected'
+      });
     }
 
     // Build Analysis
