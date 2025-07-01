@@ -136,13 +136,13 @@ export const DeploymentAnalyzer: React.FC = () => {
       });
     }
 
-    // Performance Analysis - Fixed to use correct Performance API
+    // Performance Analysis - Fixed to use correct Performance API properties
     try {
       // Use the modern Performance API
       const navigationEntries = performance.getEntriesByType('navigation');
       if (navigationEntries.length > 0) {
         const navEntry = navigationEntries[0] as PerformanceNavigationTiming;
-        const loadTime = navEntry.loadEventEnd - navEntry.navigationStart;
+        const loadTime = navEntry.loadEventEnd - navEntry.startTime;
         if (loadTime > 3000) {
           results.push({
             category: 'Performance',
