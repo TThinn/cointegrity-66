@@ -14,6 +14,9 @@ import { GlossaryTermsList } from "@/components/glossary/GlossaryTermsList";
 import ContactForm from "@/components/ContactForm";
 import { useGlossaryData } from "@/components/glossary/useGlossaryData";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
+import { RateLimitGuard } from "@/components/legal/RateLimitGuard";
+import { AntiScrapingNotice } from "@/components/legal/AntiScrapingNotice";
+import { CopyrightNotice } from "@/components/legal/CopyrightNotice";
 
 const GlossaryPage: React.FC = () => {
   // State for UI
@@ -46,7 +49,8 @@ const GlossaryPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#010822] overflow-x-hidden">
+    <RateLimitGuard action="glossary-access">
+      <div className="min-h-screen bg-[#010822] overflow-x-hidden">
       <SeoHead 
         currentPath={location.pathname} 
         currentHash={location.hash}
@@ -84,6 +88,9 @@ const GlossaryPage: React.FC = () => {
 
           <div className="flex flex-col lg:flex-row gap-8 mb-8">
             <div className="lg:w-3/4">
+              {/* Anti-scraping notice */}
+              <AntiScrapingNotice />
+
               {/* Search bar */}
               <GlossarySearch 
                 searchTerm={searchTerm} 
@@ -153,7 +160,11 @@ const GlossaryPage: React.FC = () => {
       <ContactForm />
       
       <Footer />
+      
+      {/* Copyright watermark */}
+      <CopyrightNotice variant="watermark" />
     </div>
+    </RateLimitGuard>
   );
 };
 

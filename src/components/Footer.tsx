@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "./ui/Container";
 import { Link, useLocation } from "react-router-dom";
+import { CopyrightNotice } from "./legal/CopyrightNotice";
 const Footer = () => {
   const location = useLocation();
   const isHomepage = location.pathname === '/';
@@ -110,10 +111,8 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="mt-8 pt-8 border-t border-white/10 text-center">
-          <p className="text-white/50 text-sm">
-            © {new Date().getFullYear()} Cointegrity. All rights reserved.
-          </p>
+        <div className="mt-8 pt-8 border-t border-white/10">
+          <CopyrightNotice variant="footer" />
         </div>
       </Container>
     </footer>;

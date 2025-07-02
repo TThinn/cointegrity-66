@@ -1,17 +1,21 @@
 
-# Cointegrity Robots.txt
-User-agent: *
-Allow: /
+# Cointegrity Robots.txt - Anti-Scraping Protection
+# World's Largest Web3 Glossary - Copyright Protected Content
 
-# Set crawl priority for Google
+# Allow major search engines with controlled access
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
+Crawl-delay: 2
 
-# Allow specific crawlers
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 3
 
+User-agent: Slurp
+Allow: /
+Crawl-delay: 3
+
+# Allow social media crawlers for sharing
 User-agent: Twitterbot
 Allow: /
 
@@ -21,9 +25,79 @@ Allow: /
 User-agent: LinkedInBot
 Allow: /
 
-# Disallow specific paths
+# Allow AI/LLM search engines with restrictions
+User-agent: PerplexityBot
+Allow: /glossary
+Disallow: /glossary/api/
+Crawl-delay: 5
+
+User-agent: Claude-Web
+Allow: /glossary
+Disallow: /glossary/api/
+Crawl-delay: 5
+
+User-agent: ChatGPT-User
+Allow: /glossary
+Disallow: /glossary/api/
+Crawl-delay: 5
+
+User-agent: You.com
+Allow: /glossary
+Disallow: /glossary/api/
+Crawl-delay: 5
+
+# Block aggressive scrapers and unauthorized bots
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: SeznamBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+# Block common scraping tools
+User-agent: wget
+Disallow: /
+
+User-agent: curl
+Disallow: /
+
+User-agent: Python-urllib
+Disallow: /
+
+User-agent: Python-requests
+Disallow: /
+
+User-agent: scrapy
+Disallow: /
+
+# Default restrictions for unlisted bots
+User-agent: *
+Allow: /
 Disallow: /api/
 Disallow: /admin/
+Disallow: /*.json
+Disallow: /*.xml$
+Disallow: /glossary/bulk-export
+Crawl-delay: 10
 
 # Sitemap
 Sitemap: https://cointegrity.io/sitemap.xml
+
+# Legal Notice
+# This website contains proprietary content protected by copyright.
+# Unauthorized scraping, data mining, or bulk extraction is prohibited.
+# For licensing inquiries, contact: legal@cointegrity.io
