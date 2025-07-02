@@ -183,8 +183,6 @@ serve(async (req) => {
     // Log successful validation
     await logSecurityEvent('FORM_SUBMISSION_VALIDATED', ipAddress, userAgent, true, undefined, requestData);
     
-    // TEMPORARILY DISABLED RECAPTCHA - UNCOMMENT TO RE-ENABLE
-    /*
     // Enhanced reCAPTCHA validation
     if (!recaptchaToken || recaptchaToken === 'recaptcha-not-available') {
       console.warn('No reCAPTCHA token provided');
@@ -232,11 +230,6 @@ serve(async (req) => {
         }
       }
     }
-    */
-    
-    // Temporary bypass for publishing - log that recaptcha is disabled
-    console.log('reCAPTCHA temporarily disabled for publishing');
-    await logSecurityEvent('RECAPTCHA_DISABLED_FOR_PUBLISHING', ipAddress, userAgent, true, 'reCAPTCHA disabled temporarily');
 
     // Sanitize input data
     const sanitizedData = {
