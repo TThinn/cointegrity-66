@@ -41,6 +41,8 @@ const ContactForm = () => {
   }, [isTyping]);
   
   useEffect(() => {
+    // TEMPORARILY DISABLED RECAPTCHA - UNCOMMENT TO RE-ENABLE
+    /*
     const loadRecaptcha = async () => {
       try {
         const script = document.createElement("script");
@@ -61,6 +63,9 @@ const ContactForm = () => {
       }
     };
     loadRecaptcha();
+    */
+    // Temporary fallback - set recaptcha as loaded to bypass loading
+    setRecaptchaLoaded(true);
   }, [setRecaptchaLoaded]);
   
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

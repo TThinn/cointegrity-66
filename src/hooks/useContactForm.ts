@@ -127,6 +127,8 @@ export const useContactForm = () => {
         message: sanitizeInput(formState.message)
       };
 
+      // TEMPORARILY DISABLED RECAPTCHA - UNCOMMENT TO RE-ENABLE
+      /*
       // Get reCAPTCHA token with enhanced error handling
       let token = "recaptcha-not-available";
       
@@ -161,6 +163,10 @@ export const useContactForm = () => {
           console.warn("Error getting reCAPTCHA token:", recaptchaError);
         }
       }
+      */
+      
+      // Temporary fallback token for publishing
+      let token = "recaptcha-disabled-for-publishing";
 
       console.log("Submitting form with enhanced validation:", { 
         name: sanitizedFormState.name,
