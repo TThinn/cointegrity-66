@@ -70,8 +70,8 @@ export const RateLimitGuard = ({
             <p>If you're a legitimate user, please wait and try again.</p>
             <p className="mt-4 text-xs">
               For API access or licensing: 
-              <a href="mailto:legal@cointegrity.io" className="text-red-300 hover:text-red-200 ml-1">
-                legal@cointegrity.io
+              <a href="mailto:hello@cointegrity.io" className="text-red-300 hover:text-red-200 ml-1">
+                hello@cointegrity.io
               </a>
             </p>
           </div>

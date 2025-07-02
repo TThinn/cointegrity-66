@@ -16,7 +16,7 @@ export const AntiScrapingNotice = () => {
             data mining is prohibited and may result in legal action.
           </p>
           <p className="text-purple-100/60 text-xs mt-2">
-            For licensing or API access, contact: <a href="mailto:legal@cointegrity.io" className="text-purple-300 hover:text-purple-200">legal@cointegrity.io</a>
+            For licensing or API access, contact: <a href="mailto:hello@cointegrity.io" className="text-purple-300 hover:text-purple-200">hello@cointegrity.io</a>
           </p>
         </div>
       </div>

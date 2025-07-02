@@ -100,4 +100,4 @@ Sitemap: https://cointegrity.io/sitemap.xml
 # Legal Notice
 # This website contains proprietary content protected by copyright.
 # Unauthorized scraping, data mining, or bulk extraction is prohibited.
-# For licensing inquiries, contact: legal@cointegrity.io
+# For licensing inquiries, contact: hello@cointegrity.io
