@@ -3,6 +3,7 @@ import Container from "./ui/Container";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useSectionUrlTracking } from "@/hooks/useSectionUrlTracking";
 
 interface HeaderProps {
 	backgroundType?: "dark" | "light";
@@ -18,6 +19,9 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 	const isHomepage =
 		location.pathname === "/" || location.pathname === "/web3-consulting";
 
+	// Initialize section URL tracking
+	useSectionUrlTracking({ activeSection, isHomepage });
+
 	useEffect(() => {
 		const handleScroll = () => {
 			// Handle background change on scroll
@@ -28,21 +32,37 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 				// Handle section highlighting on homepage
 				const sections = [
 					"about",
+					"process",
 					"services",
 					"partners",
 					"founders",
 					"testimonials",
+					"contact"
 				];
-				const currentSection = sections.find((section) => {
+				
+				// Find the section that's currently in view
+				let currentSection = "";
+				const viewportHeight = window.innerHeight;
+				const scrollThreshold = viewportHeight * 0.3; // 30% of viewport height
+				
+				for (const section of sections) {
 					const element = document.getElementById(section);
 					if (element) {
 						const rect = element.getBoundingClientRect();
-						return rect.top <= 100 && rect.bottom >= 100;
+						// Section is considered active if it's within the top 30% of the viewport
+						if (rect.top <= scrollThreshold && rect.bottom > scrollThreshold) {
+							currentSection = section;
+							break;
+						}
 					}
-					return false;
-				});
+				}
+				
+				// Handle edge case: if we're at the very top, clear the active section
+				if (offset < 200) {
+					currentSection = "";
+				}
 
-				setActiveSection(currentSection || "");
+				setActiveSection(currentSection);
 			}
 		};
 
