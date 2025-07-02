@@ -1,12 +1,5 @@
-import React, {
-	useLayoutEffect,
-	useRef,
-	useState,
-	useEffect,
-	useMemo,
-} from "react";
+import { useLayoutEffect, useRef, useState, useEffect, useMemo } from "react";
 import Container from "./ui/Container";
-import { Link } from "react-router-dom";
 const CTA_PARTICLE_COUNT_DESKTOP = 12; // Increased from 8 to make more visible
 const CTA_PARTICLE_COUNT_MOBILE = 5; // Increased from 3 to make more visible
 
