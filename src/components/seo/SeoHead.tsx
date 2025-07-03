@@ -168,10 +168,11 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
         <meta property="og:title" content={getSectionTitle()} />
         <meta property="og:description" content={getSectionDescription()} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://cointegrity.io/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png" />
-        <meta property="og:image:alt" content="Cointegrity Logo - Leading Web3 Consultancy" />
+        <meta property="og:image" content="https://cointegrity.io/lovable-uploads/9d8b6b70-8f0d-41a5-9422-063ee345718c.png" />
+        <meta property="og:image:alt" content="Cointegrity - Leading Web3 Consultancy Europe" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
         <meta property="og:url" content={getCanonicalUrl()} />
         <meta property="og:site_name" content="Cointegrity - European Web3 Leaders" />
         <meta property="og:locale" content="en_US" />
@@ -181,7 +182,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
         <meta name="twitter:site" content="@Cointegrity" />
         <meta name="twitter:title" content={getSectionTitle()} />
         <meta name="twitter:description" content={getSectionDescription()} />
-        <meta name="twitter:image" content="https://cointegrity.io/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png" />
+        <meta name="twitter:image" content="https://cointegrity.io/lovable-uploads/9d8b6b70-8f0d-41a5-9422-063ee345718c.png" />
         <meta name="twitter:image:alt" content="Cointegrity - European Web3 Market Leaders" />
         
         {/* LinkedIn with professional positioning */}
