@@ -1,40 +1,50 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
 
-// SMTP Configuration with validation
-const SMTP_HOSTNAME = Deno.env.get('SMTP_HOSTNAME') || '';
-const SMTP_PORT = Number(Deno.env.get('SMTP_PORT')) || 587;
-const SMTP_USERNAME = Deno.env.get('SMTP_USERNAME') || '';
-const SMTP_PASSWORD = Deno.env.get('SMTP_PASSWORD') || '';
+const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY') || '';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-// Enhanced configuration validation
-function validateSMTPConfiguration() {
-  const config = {
-    hostname: SMTP_HOSTNAME,
-    port: SMTP_PORT,
-    username: SMTP_USERNAME,
-    password: SMTP_PASSWORD ? '[SET]' : '[NOT SET]'
-  };
-  
-  console.log('SMTP Configuration Check:', config);
-  
-  if (!SMTP_HOSTNAME || !SMTP_USERNAME || !SMTP_PASSWORD) {
-    const missing = [];
-    if (!SMTP_HOSTNAME) missing.push('SMTP_HOSTNAME');
-    if (!SMTP_USERNAME) missing.push('SMTP_USERNAME');
-    if (!SMTP_PASSWORD) missing.push('SMTP_PASSWORD');
-    
-    console.error('Missing SMTP environment variables:', missing);
-    return { valid: false, missing };
+// Send email using Resend API
+async function sendEmailWithResend(sanitizedData: any, referenceNumber: string, emailHtml: string, emailText: string): Promise<void> {
+  if (!RESEND_API_KEY) {
+    throw new Error('RESEND_API_KEY not configured');
   }
+
+  const emailPayload = {
+    from: 'noreply@cointegrity.io',
+    to: [sanitizedData.email],
+    subject: `Confirmation: We've Received Your Request (${referenceNumber})`,
+    text: emailText,
+    html: emailHtml,
+  };
+
+  console.log('Sending confirmation email via Resend API...');
   
-  return { valid: true, missing: [] };
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(emailPayload),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error('Resend API error:', {
+      status: response.status,
+      statusText: response.statusText,
+      error: errorText
+    });
+    throw new Error(`Failed to send email via Resend: ${response.status} ${response.statusText} - ${errorText}`);
+  }
+
+  const result = await response.json();
+  console.log('Confirmation email sent successfully via Resend:', result);
 }
 
 function generateReferenceNumber() {
@@ -68,12 +78,6 @@ serve(async (req) => {
   }
 
   try {
-    // Validate SMTP configuration early
-    const smtpValidation = validateSMTPConfiguration();
-    if (!smtpValidation.valid) {
-      console.error(`[${timestamp}] SMTP configuration invalid:`, smtpValidation.missing);
-      throw new Error(`SMTP configuration incomplete. Missing: ${smtpValidation.missing.join(', ')}`);
-    }
 
     const requestBody = await req.json();
     const { name, email, company } = requestBody;
@@ -159,53 +163,22 @@ Your inquiry reference number: ${referenceNumber}
 Please include this reference in any future correspondence.
     `;
     
-    console.log(`[${timestamp}] Email content prepared, attempting SMTP send...`);
+    console.log(`[${timestamp}] Email content prepared, attempting Resend API send...`);
     
     try {
-      // Initialize SMTP client with detailed logging
-      console.log(`[${timestamp}] Initializing SMTP client...`);
-      const client = new SmtpClient();
+      // Send email using Resend API
+      await sendEmailWithResend(sanitizedData, referenceNumber, emailHtml, emailText);
+      console.log(`[${timestamp}] Confirmation email sent successfully via Resend API`);
       
-      // Connect to SMTP server with detailed logging
-      console.log(`[${timestamp}] Connecting to SMTP server: ${SMTP_HOSTNAME}:${SMTP_PORT}...`);
-      await client.connectTLS({
-        hostname: SMTP_HOSTNAME,
-        port: SMTP_PORT,
-        username: SMTP_USERNAME,
-        password: SMTP_PASSWORD,
-      });
-      console.log(`[${timestamp}] SMTP connection established successfully`);
-
-      // Send the email with detailed logging
-      console.log(`[${timestamp}] Sending confirmation email to: ${sanitizedData.email}`);
-      await client.send({
-        from: SMTP_USERNAME,
-        to: sanitizedData.email,
-        subject: `Confirmation: We've Received Your Request (${referenceNumber})`,
-        content: emailText,
-        html: emailHtml,
-      });
-
-      console.log(`[${timestamp}] Confirmation email sent successfully via SMTP`);
-      
-      // Close SMTP connection
-      await client.close();
-      console.log(`[${timestamp}] SMTP connection closed`);
-      
-    } catch (smtpError) {
-      console.error(`[${timestamp}] SMTP ERROR OCCURRED:`, {
-        name: smtpError.name,
-        message: smtpError.message,
-        stack: smtpError.stack?.substring(0, 500),
+    } catch (emailError) {
+      console.error(`[${timestamp}] EMAIL ERROR OCCURRED:`, {
+        name: emailError.name,
+        message: emailError.message,
+        stack: emailError.stack?.substring(0, 500),
         timestamp
       });
       
-      // Log specific SMTP error details
-      if (smtpError.message) {
-        console.error(`[${timestamp}] SMTP Error Message:`, smtpError.message);
-      }
-      
-      // Don't throw - log the error and return success response
+      // Don't throw - log the error and return success response to avoid breaking user flow
       console.warn(`[${timestamp}] Confirmation email failed to send, but returning success response to avoid breaking user flow`);
     }
     
