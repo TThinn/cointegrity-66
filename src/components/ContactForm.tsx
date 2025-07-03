@@ -80,7 +80,7 @@ const ContactForm = () => {
           <div className="text-left lg:text-left md:text-center sm:text-center">
             <h2 className="font-semibold uppercase tracking-wider text-[cb46b3] text-[#cb46b3]">DIGITAL ASSET SOLUTIONS</h2>
             <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-gray-800">
-              Partner With Us to Bring Your Project to Life
+              Bring Your Project to Life
             </h3>
             <p className="mt-2 text-lg text-gray-600">
               Have a project in mind or questions about our services? We're here to help you navigate the decentralized landscape.
