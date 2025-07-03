@@ -161,7 +161,7 @@ Timestamp: ${new Date().toISOString()}
 `;
 
   const emailPayload = {
-    from: 'contact@cointegrity.io',
+    from: 'hello@cointegrity.io',
     to: ['hello@cointegrity.io'],
     subject: `New Contact Form Submission from ${sanitizedData.name}`,
     text: emailContent,
