@@ -1,50 +1,47 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
 
-const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY') || '';
+const SMTP_HOST = Deno.env.get('SMTP_HOST') || '';
+const SMTP_PORT = parseInt(Deno.env.get('SMTP_PORT') || '587');
+const SMTP_USERNAME = Deno.env.get('SMTP_USERNAME') || '';
+const SMTP_PASSWORD = Deno.env.get('SMTP_PASSWORD') || '';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-// Send email using Resend API
-async function sendEmailWithResend(sanitizedData: any, referenceNumber: string, emailHtml: string, emailText: string): Promise<void> {
-  if (!RESEND_API_KEY) {
-    throw new Error('RESEND_API_KEY not configured');
+// Send email using SMTP
+async function sendEmailWithSMTP(sanitizedData: any, referenceNumber: string, emailHtml: string, emailText: string): Promise<void> {
+  if (!SMTP_HOST || !SMTP_USERNAME || !SMTP_PASSWORD) {
+    throw new Error('SMTP configuration not complete');
   }
 
-  const emailPayload = {
-    from: 'noreply@cointegrity.io',
-    to: [sanitizedData.email],
-    subject: `Confirmation: We've Received Your Request (${referenceNumber})`,
-    text: emailText,
-    html: emailHtml,
-  };
-
-  console.log('Sending confirmation email via Resend API...');
-  
-  const response = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${RESEND_API_KEY}`,
-      'Content-Type': 'application/json',
+  const client = new SMTPClient({
+    connection: {
+      hostname: SMTP_HOST,
+      port: SMTP_PORT,
+      tls: true,
+      auth: {
+        username: SMTP_USERNAME,
+        password: SMTP_PASSWORD,
+      },
     },
-    body: JSON.stringify(emailPayload),
   });
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    console.error('Resend API error:', {
-      status: response.status,
-      statusText: response.statusText,
-      error: errorText
-    });
-    throw new Error(`Failed to send email via Resend: ${response.status} ${response.statusText} - ${errorText}`);
-  }
+  console.log('Sending confirmation email via SMTP...');
+  
+  await client.send({
+    from: "hello@cointegrity.io",
+    to: sanitizedData.email,
+    subject: `Confirmation: We've Received Your Request (${referenceNumber})`,
+    content: emailText,
+    html: emailHtml,
+  });
 
-  const result = await response.json();
-  console.log('Confirmation email sent successfully via Resend:', result);
+  await client.close();
+  console.log('Confirmation email sent successfully via SMTP');
 }
 
 function generateReferenceNumber() {
@@ -163,12 +160,12 @@ Your inquiry reference number: ${referenceNumber}
 Please include this reference in any future correspondence.
     `;
     
-    console.log(`[${timestamp}] Email content prepared, attempting Resend API send...`);
+    console.log(`[${timestamp}] Email content prepared, attempting SMTP send...`);
     
     try {
-      // Send email using Resend API
-      await sendEmailWithResend(sanitizedData, referenceNumber, emailHtml, emailText);
-      console.log(`[${timestamp}] Confirmation email sent successfully via Resend API`);
+      // Send email using SMTP
+      await sendEmailWithSMTP(sanitizedData, referenceNumber, emailHtml, emailText);
+      console.log(`[${timestamp}] Confirmation email sent successfully via SMTP`);
       
     } catch (emailError) {
       console.error(`[${timestamp}] EMAIL ERROR OCCURRED:`, {

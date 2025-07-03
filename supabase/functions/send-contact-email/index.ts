@@ -1,8 +1,12 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.49.4';
+import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
 
-const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY') || '';
+const SMTP_HOST = Deno.env.get('SMTP_HOST') || '';
+const SMTP_PORT = parseInt(Deno.env.get('SMTP_PORT') || '587');
+const SMTP_USERNAME = Deno.env.get('SMTP_USERNAME') || '';
+const SMTP_PASSWORD = Deno.env.get('SMTP_PASSWORD') || '';
 const RECAPTCHA_SECRET = Deno.env.get('RECAPTCHA_SECRET') || '';
 const SUPABASE_URL = Deno.env.get('SUPABASE_URL') || '';
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '';
@@ -142,11 +146,23 @@ async function logSecurityEvent(eventType: string, ipAddress: string, userAgent:
   }
 }
 
-// Send email using Resend API
-async function sendEmailWithResend(sanitizedData: any, ipAddress: string, userAgent: string): Promise<void> {
-  if (!RESEND_API_KEY) {
-    throw new Error('RESEND_API_KEY not configured');
+// Send email using SMTP
+async function sendEmailWithSMTP(sanitizedData: any, ipAddress: string, userAgent: string): Promise<void> {
+  if (!SMTP_HOST || !SMTP_USERNAME || !SMTP_PASSWORD) {
+    throw new Error('SMTP configuration not complete');
   }
+
+  const client = new SMTPClient({
+    connection: {
+      hostname: SMTP_HOST,
+      port: SMTP_PORT,
+      tls: true,
+      auth: {
+        username: SMTP_USERNAME,
+        password: SMTP_PASSWORD,
+      },
+    },
+  });
 
   const emailContent = `
 Name: ${sanitizedData.name}
@@ -160,49 +176,32 @@ User Agent: ${userAgent.substring(0, 200)}
 Timestamp: ${new Date().toISOString()}
 `;
 
-  const emailPayload = {
-    from: 'noreply@cointegrity.io',
-    to: ['hello@cointegrity.io'],
-    subject: `New Contact Form Submission from ${sanitizedData.name}`,
-    text: emailContent,
-    html: `
-      <h3>New Contact Form Submission</h3>
-      <p><strong>Name:</strong> ${sanitizedData.name}</p>
-      <p><strong>Email:</strong> ${sanitizedData.email}</p>
-      <p><strong>Company:</strong> ${sanitizedData.company}</p>
-      <p><strong>Message:</strong></p>
-      <p>${sanitizedData.message.replace(/\n/g, '<br>')}</p>
-      <hr>
-      <p style="color: #666; font-size: 12px;">
-        IP: ${ipAddress}<br>
-        Timestamp: ${new Date().toISOString()}
-      </p>
-    `
-  };
+  const htmlContent = `
+    <h3>New Contact Form Submission</h3>
+    <p><strong>Name:</strong> ${sanitizedData.name}</p>
+    <p><strong>Email:</strong> ${sanitizedData.email}</p>
+    <p><strong>Company:</strong> ${sanitizedData.company}</p>
+    <p><strong>Message:</strong></p>
+    <p>${sanitizedData.message.replace(/\n/g, '<br>')}</p>
+    <hr>
+    <p style="color: #666; font-size: 12px;">
+      IP: ${ipAddress}<br>
+      Timestamp: ${new Date().toISOString()}
+    </p>
+  `;
 
-  console.log('Sending email via Resend API...');
+  console.log('Sending email via SMTP...');
   
-  const response = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${RESEND_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(emailPayload),
+  await client.send({
+    from: "hello@cointegrity.io",
+    to: "hello@cointegrity.io",
+    subject: `New Contact Form Submission from ${sanitizedData.name}`,
+    content: emailContent,
+    html: htmlContent,
   });
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    console.error('Resend API error:', {
-      status: response.status,
-      statusText: response.statusText,
-      error: errorText
-    });
-    throw new Error(`Failed to send email via Resend: ${response.status} ${response.statusText} - ${errorText}`);
-  }
-
-  const result = await response.json();
-  console.log('Email sent successfully via Resend:', result);
+  await client.close();
+  console.log('Email sent successfully via SMTP');
 }
 
 serve(async (req) => {
@@ -311,8 +310,8 @@ Timestamp: ${new Date().toISOString()}
     console.log('Attempting to send email...');
     
     try {
-      // Send email using Resend API
-      await sendEmailWithResend(sanitizedData, ipAddress, userAgent);
+      // Send email using SMTP
+      await sendEmailWithSMTP(sanitizedData, ipAddress, userAgent);
       await logSecurityEvent('EMAIL_SENT_SUCCESS', ipAddress, userAgent, true);
     } catch (emailError) {
       console.error('Email sending error:', emailError);
