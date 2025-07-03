@@ -1,12 +1,8 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.49.4';
 
-const SMTP_HOSTNAME = Deno.env.get('SMTP_HOSTNAME') || '';
-const SMTP_PORT = Number(Deno.env.get('SMTP_PORT')) || 587;
-const SMTP_USERNAME = Deno.env.get('SMTP_USERNAME') || '';
-const SMTP_PASSWORD = Deno.env.get('SMTP_PASSWORD') || '';
+const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY') || '';
 const RECAPTCHA_SECRET = Deno.env.get('RECAPTCHA_SECRET') || '';
 const SUPABASE_URL = Deno.env.get('SUPABASE_URL') || '';
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '';
@@ -58,7 +54,7 @@ function validateInput(data: any) {
   return errors;
 }
 
-// Enhanced rate limiting check
+// Enhanced rate limiting check (optional - won't fail if tables don't exist)
 async function checkRateLimit(ipAddress: string): Promise<boolean> {
   try {
     const now = new Date();
@@ -74,8 +70,8 @@ async function checkRateLimit(ipAddress: string): Promise<boolean> {
       .single();
     
     if (error && error.code !== 'PGRST116') { // PGRST116 = no rows returned
-      console.error('Rate limit check error:', error);
-      return false; // Fail safe - block if we can't check
+      console.warn('Rate limit check error (tables may not exist):', error);
+      return true; // Allow if we can't check
     }
     
     // If blocked, check if block period has expired
@@ -115,12 +111,12 @@ async function checkRateLimit(ipAddress: string): Promise<boolean> {
     
     return true;
   } catch (error) {
-    console.error('Rate limiting error:', error);
-    return false; // Fail safe
+    console.warn('Rate limiting error (optional feature):', error);
+    return true; // Allow if rate limiting fails
   }
 }
 
-// Security audit logging
+// Security audit logging (optional - won't fail if tables don't exist)
 async function logSecurityEvent(eventType: string, ipAddress: string, userAgent: string, success: boolean, errorMessage?: string, payload?: any) {
   try {
     // Remove sensitive data from payload
@@ -142,8 +138,71 @@ async function logSecurityEvent(eventType: string, ipAddress: string, userAgent:
         error_message: errorMessage
       });
   } catch (error) {
-    console.error('Failed to log security event:', error);
+    console.warn('Failed to log security event (optional feature):', error);
   }
+}
+
+// Send email using Resend API
+async function sendEmailWithResend(sanitizedData: any, ipAddress: string, userAgent: string): Promise<void> {
+  if (!RESEND_API_KEY) {
+    throw new Error('RESEND_API_KEY not configured');
+  }
+
+  const emailContent = `
+Name: ${sanitizedData.name}
+Email: ${sanitizedData.email}
+Company: ${sanitizedData.company}
+Message: ${sanitizedData.message}
+
+---
+IP Address: ${ipAddress}
+User Agent: ${userAgent.substring(0, 200)}
+Timestamp: ${new Date().toISOString()}
+`;
+
+  const emailPayload = {
+    from: 'contact@cointegrity.io',
+    to: ['hello@cointegrity.io'],
+    subject: `New Contact Form Submission from ${sanitizedData.name}`,
+    text: emailContent,
+    html: `
+      <h3>New Contact Form Submission</h3>
+      <p><strong>Name:</strong> ${sanitizedData.name}</p>
+      <p><strong>Email:</strong> ${sanitizedData.email}</p>
+      <p><strong>Company:</strong> ${sanitizedData.company}</p>
+      <p><strong>Message:</strong></p>
+      <p>${sanitizedData.message.replace(/\n/g, '<br>')}</p>
+      <hr>
+      <p style="color: #666; font-size: 12px;">
+        IP: ${ipAddress}<br>
+        Timestamp: ${new Date().toISOString()}
+      </p>
+    `
+  };
+
+  console.log('Sending email via Resend API...');
+  
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(emailPayload),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error('Resend API error:', {
+      status: response.status,
+      statusText: response.statusText,
+      error: errorText
+    });
+    throw new Error(`Failed to send email via Resend: ${response.status} ${response.statusText} - ${errorText}`);
+  }
+
+  const result = await response.json();
+  console.log('Email sent successfully via Resend:', result);
 }
 
 serve(async (req) => {
@@ -252,34 +311,15 @@ Timestamp: ${new Date().toISOString()}
     console.log('Attempting to send email...');
     
     try {
-      // Try to send via SMTP
-      console.log('Initializing SMTP client...');
-      const client = new SmtpClient();
-      
-      console.log('Connecting to SMTP server...');
-      await client.connectTLS({
-        hostname: SMTP_HOSTNAME,
-        port: SMTP_PORT,
-        username: SMTP_USERNAME,
-        password: SMTP_PASSWORD,
-      });
-
-      console.log('Sending email...');
-      await client.send({
-        from: SMTP_USERNAME,
-        to: "requests@cointegrity.io",
-        subject: `New Contact Form Submission from ${sanitizedData.name}`,
-        content: formattedMessage,
-      });
-
-      console.log('Email sent successfully');
-      await client.close();
-      
+      // Send email using Resend API
+      await sendEmailWithResend(sanitizedData, ipAddress, userAgent);
       await logSecurityEvent('EMAIL_SENT_SUCCESS', ipAddress, userAgent, true);
     } catch (emailError) {
-      console.error('SMTP error:', emailError);
+      console.error('Email sending error:', emailError);
       await logSecurityEvent('EMAIL_SEND_FAILED', ipAddress, userAgent, false, emailError.message);
-      // Continue with response even if email fails
+      
+      // Fail the request if email sending fails (unlike SMTP which continued)
+      throw new Error(`Failed to send email: ${emailError.message}`);
     }
 
     await logSecurityEvent('FORM_SUBMISSION_SUCCESS', ipAddress, userAgent, true);
