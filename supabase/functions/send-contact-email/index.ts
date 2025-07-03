@@ -77,8 +77,8 @@ async function sendEmail(sanitizedData: any, ipAddress: string): Promise<void> {
 		},
 		body: JSON.stringify({
 			from: "Acme <onboarding@resend.dev>",
-			to: ["delivered@resend.dev"],
-			subject: "hello world",
+			to: ["hello@cointegrity.io"],
+			subject: "Contact Form Submission",
 			html,
 		}),
 	});
