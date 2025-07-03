@@ -119,7 +119,7 @@ const Testimonials = () => {
                               border border-white/30 hover:bg-white/20 transition-all
                               transform hover:scale-105 duration-300 text-base font-semibold"
 								>
-									Partner with us
+									Connect with us
 								</button>
 							</a>
 						</div>
