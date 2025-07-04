@@ -3,8 +3,7 @@ import Container from "./ui/Container";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useSectionUrlTracking } from "@/hooks/useSectionUrlTracking";
-import { scrollToSection, getActiveSection } from "@/utils/scrollManager";
+import { getActiveSection } from "@/utils/scrollManager";
 
 interface HeaderProps {
 	backgroundType?: "dark" | "light";
@@ -20,8 +19,7 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 	const isHomepage =
 		location.pathname === "/" || location.pathname === "/web3-consulting";
 
-	// Initialize section URL tracking
-	useSectionUrlTracking({ activeSection, isHomepage });
+	// No longer using complex URL tracking
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -50,15 +48,9 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [isHomepage]);
 
-	// Function to handle navigation - only update URL, let useSectionUrlTracking handle scrolling
-	const handleSectionClick = (sectionId: string, fallbackPath: string) => {
-		if (isHomepage) {
-			// If on homepage, navigate to section hash
-			navigate(`/#${sectionId}`, { replace: true });
-		} else {
-			// If not on homepage, navigate to homepage with section hash
-			navigate(`/#${sectionId}`, { replace: true });
-		}
+	// Simplified navigation - direct hash navigation
+	const handleSectionClick = (sectionId: string) => {
+		navigate(`/#${sectionId}`);
 	};
 
 	// Helper function to determine if we should use Link or handle click
@@ -104,7 +96,7 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 					className={className}
 					onClick={(e) => {
 						e.preventDefault();
-						handleSectionClick(sectionId, to);
+						handleSectionClick(sectionId);
 						onClick?.();
 					}}
 					aria-label={ariaLabel}
