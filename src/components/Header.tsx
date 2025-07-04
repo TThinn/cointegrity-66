@@ -60,7 +60,7 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 			navigate("/", { replace: true });
 			setTimeout(() => {
 				scrollToSection(sectionId);
-			}, 150);
+			}, 50);
 		}
 	};
 

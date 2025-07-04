@@ -26,7 +26,12 @@ export const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({
     if (targetSection) {
       const element = document.getElementById(targetSection);
       if (element) {
-        element.scrollIntoView({
+        const elementTop = element.offsetTop;
+        const headerHeight = 80; // Match HEADER_HEIGHT from scrollManager
+        const scrollPosition = elementTop - headerHeight;
+        
+        window.scrollTo({
+          top: Math.max(0, scrollPosition),
           behavior: 'smooth'
         });
       }

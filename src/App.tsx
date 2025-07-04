@@ -41,7 +41,7 @@ const ScrollToTop = () => {
     if (location.hash) {
       handleHashNavigation(location.hash);
     } else {
-      // Scroll to top for non-hash navigation
+      // Instant scroll to top for route changes
       scrollToTop();
     }
   }, [location]);

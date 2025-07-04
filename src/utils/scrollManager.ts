@@ -6,9 +6,20 @@
 export const HEADER_HEIGHT = 80;
 
 /**
- * Scrolls to the top of the page smoothly
+ * Scrolls to the top of the page instantly (for navigation)
  */
 export const scrollToTop = (): void => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'auto'
+  });
+};
+
+/**
+ * Scrolls to the top of the page smoothly (for UI interactions)
+ */
+export const scrollToTopSmooth = (): void => {
   window.scrollTo({
     top: 0,
     left: 0,
@@ -17,11 +28,33 @@ export const scrollToTop = (): void => {
 };
 
 /**
- * Scrolls to a specific section with header offset
+ * Scrolls to a specific section with header offset instantly (for navigation)
  * @param sectionId - The ID of the section to scroll to
  * @param offset - Additional offset (defaults to HEADER_HEIGHT)
  */
 export const scrollToSection = (sectionId: string, offset: number = HEADER_HEIGHT): void => {
+  const element = document.getElementById(sectionId);
+  if (!element) {
+    console.warn(`Section with ID "${sectionId}" not found`);
+    return;
+  }
+
+  const elementTop = element.offsetTop;
+  const scrollPosition = elementTop - offset;
+
+  window.scrollTo({
+    top: Math.max(0, scrollPosition),
+    left: 0,
+    behavior: 'auto'
+  });
+};
+
+/**
+ * Scrolls to a specific section with header offset smoothly (for UI interactions)
+ * @param sectionId - The ID of the section to scroll to
+ * @param offset - Additional offset (defaults to HEADER_HEIGHT)
+ */
+export const scrollToSectionSmooth = (sectionId: string, offset: number = HEADER_HEIGHT): void => {
   const element = document.getElementById(sectionId);
   if (!element) {
     console.warn(`Section with ID "${sectionId}" not found`);
@@ -77,7 +110,7 @@ export const restoreScrollPosition = (): void => {
 };
 
 /**
- * Handles hash-based navigation with proper offset
+ * Handles hash-based navigation with proper offset (instant for navigation)
  * @param hash - The hash string (including #)
  */
 export const handleHashNavigation = (hash: string): void => {
@@ -88,9 +121,5 @@ export const handleHashNavigation = (hash: string): void => {
 
   // Remove the # symbol
   const sectionId = hash.substring(1);
-  
-  // Small delay to ensure DOM is ready
-  setTimeout(() => {
-    scrollToSection(sectionId);
-  }, 100);
+  scrollToSection(sectionId);
 };

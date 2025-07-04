@@ -39,10 +39,7 @@ export const useSectionUrlTracking = ({ activeSection, isHomepage }: UseSectionU
   // Handle hash navigation on mount
   useEffect(() => {
     if (isHomepage && location.hash) {
-      // Small delay to ensure components are mounted
-      setTimeout(() => {
-        handleHashNavigation(location.hash);
-      }, 100);
+      handleHashNavigation(location.hash);
     }
   }, [isHomepage, location.hash]);
 
