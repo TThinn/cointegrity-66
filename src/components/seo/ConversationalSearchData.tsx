@@ -273,38 +273,25 @@ export const ConversationalSearchData = ({ currentPath, currentHash }: Conversat
 
   const data = getConversationalData();
 
-  const conversationalStructuredData = {
+  const organizationStructuredData = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": `https://cointegrity.io${currentPath}#conversational-data`,
-    "name": "Global Web3 Leadership Conversational Search Data",
-    "description": "Leading Web3 consultancy with European dominance and global reach across Asia, US, and Africa",
-    "mainEntity": Object.entries(data.directAnswers).map(([question, answer]) => ({
-      "@type": "Question",
-      "name": question.replace(/_/g, ' '),
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": answer
-      }
-    })),
+    "@type": "Organization",
+    "@id": `https://cointegrity.io${currentPath}#organization-conversational`,
+    "name": "Cointegrity",
+    "description": "Leading Web3 consultancy with European market dominance and global coverage",
+    "areaServed": ["Europe", "Asia", "United States", "Africa"],
+    "expertise": ["Web3 Strategy", "Blockchain Consulting", "Tokenomics Design", "Regulatory Compliance"],
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://cointegrity.io/contact",
       "query-input": "required name=search_term_string"
-    },
-    "about": {
-      "@type": "Organization",
-      "name": "Cointegrity",
-      "description": "Leading Web3 consultancy with European market dominance and global coverage",
-      "areaServed": ["Europe", "Asia", "United States", "Africa"],
-      "expertise": ["Web3 Strategy", "Blockchain Consulting", "Tokenomics Design", "Regulatory Compliance"]
     }
   };
 
   return (
     <Helmet>
       <script type="application/ld+json">
-        {JSON.stringify(conversationalStructuredData)}
+        {JSON.stringify(organizationStructuredData)}
       </script>
       
       {/* Enhanced conversational search optimization */}
