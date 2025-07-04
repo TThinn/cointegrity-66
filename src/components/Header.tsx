@@ -4,6 +4,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSectionUrlTracking } from "@/hooks/useSectionUrlTracking";
+import { scrollToSection, getActiveSection } from "@/utils/scrollManager";
 
 interface HeaderProps {
 	backgroundType?: "dark" | "light";
@@ -29,10 +30,10 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 			setScrolled(offset > 50);
 
 			if (isHomepage) {
-				// Handle section highlighting on homepage
+				// Handle section highlighting on homepage using scroll manager
 				const sections = [
 					"about",
-					"process",
+					"process", 
 					"services",
 					"partners",
 					"founders",
@@ -40,28 +41,7 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 					"contact"
 				];
 				
-				// Find the section that's currently in view
-				let currentSection = "";
-				const viewportHeight = window.innerHeight;
-				const scrollThreshold = viewportHeight * 0.3; // 30% of viewport height
-				
-				for (const section of sections) {
-					const element = document.getElementById(section);
-					if (element) {
-						const rect = element.getBoundingClientRect();
-						// Section is considered active if it's within the top 30% of the viewport
-						if (rect.top <= scrollThreshold && rect.bottom > scrollThreshold) {
-							currentSection = section;
-							break;
-						}
-					}
-				}
-				
-				// Handle edge case: if we're at the very top, clear the active section
-				if (offset < 200) {
-					currentSection = "";
-				}
-
+				const currentSection = getActiveSection(sections);
 				setActiveSection(currentSection);
 			}
 		};
@@ -73,20 +53,14 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 	// Function to handle navigation - scroll on homepage, navigate to homepage then scroll if not on homepage
 	const handleSectionClick = (sectionId: string, fallbackPath: string) => {
 		if (isHomepage) {
-			// If on homepage, just scroll to section
-			const element = document.getElementById(sectionId);
-			if (element) {
-				element.scrollIntoView({ behavior: "smooth" });
-			}
+			// If on homepage, scroll to section with proper header offset
+			scrollToSection(sectionId);
 		} else {
 			// If not on homepage, navigate to homepage then scroll to section
 			navigate("/", { replace: true });
 			setTimeout(() => {
-				const element = document.getElementById(sectionId);
-				if (element) {
-					element.scrollIntoView({ behavior: "smooth" });
-				}
-			}, 100);
+				scrollToSection(sectionId);
+			}, 150);
 		}
 	};
 

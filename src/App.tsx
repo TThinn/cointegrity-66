@@ -1,12 +1,13 @@
 
 import React, { useEffect } from "react"
 import { Toaster } from "sonner"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 import { HelmetProvider } from "react-helmet-async"
 import ErrorBoundary from "./components/app/ErrorBoundary"
 import { initializeCacheManagement } from "./utils/cacheManager"
 import { initServiceWorker } from "./utils/serviceWorkerInit"
 import { initializeErrorHandling } from "./utils/errorLogger"
+import { scrollToTop, handleHashNavigation } from "./utils/scrollManager"
 
 // Page imports
 import Index from "./pages/Index"
@@ -31,6 +32,23 @@ import DeploymentDashboard from "./pages/DeploymentDashboard"
 import './index.css'
 import './App.css'
 
+// Component to handle scroll behavior on route changes
+const ScrollToTop = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Handle hash navigation
+    if (location.hash) {
+      handleHashNavigation(location.hash);
+    } else {
+      // Scroll to top for non-hash navigation
+      scrollToTop();
+    }
+  }, [location]);
+
+  return null;
+};
+
 const App = () => {
   // Simplified initialization
   useEffect(() => {
@@ -51,6 +69,7 @@ const App = () => {
     <ErrorBoundary>
       <HelmetProvider>
         <BrowserRouter>
+          <ScrollToTop />
           <div className="app-container">
             <Routes>
               <Route path="/" element={<Index />} />

@@ -1,5 +1,6 @@
 import { useEffect, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { handleHashNavigation } from "@/utils/scrollManager";
 
 interface UseSectionUrlTrackingProps {
   activeSection: string;
@@ -34,6 +35,16 @@ export const useSectionUrlTracking = ({ activeSection, isHomepage }: UseSectionU
       updateUrl(activeSection);
     }
   }, [activeSection, isHomepage, updateUrl]);
+
+  // Handle hash navigation on mount
+  useEffect(() => {
+    if (isHomepage && location.hash) {
+      // Small delay to ensure components are mounted
+      setTimeout(() => {
+        handleHashNavigation(location.hash);
+      }, 100);
+    }
+  }, [isHomepage, location.hash]);
 
   return {
     currentHash: location.hash,
