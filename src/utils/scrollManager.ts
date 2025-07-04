@@ -110,7 +110,7 @@ export const restoreScrollPosition = (): void => {
 };
 
 /**
- * Handles hash-based navigation with proper offset (instant for navigation)
+ * Handles hash-based navigation with proper offset and timing (instant for navigation)
  * @param hash - The hash string (including #)
  */
 export const handleHashNavigation = (hash: string): void => {
@@ -121,5 +121,9 @@ export const handleHashNavigation = (hash: string): void => {
 
   // Remove the # symbol
   const sectionId = hash.substring(1);
-  scrollToSection(sectionId);
+  
+  // Add a small delay to ensure the DOM is ready
+  setTimeout(() => {
+    scrollToSection(sectionId);
+  }, 100);
 };
