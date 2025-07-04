@@ -86,11 +86,11 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 			);
 		}
 
-		// For section navigation - use anchor links for smooth scroll
-		if (sectionId) {
+		// For section navigation on homepage - use anchor links for smooth scroll
+		if (sectionId && to.startsWith("#")) {
 			return (
 				<a
-					href={`#${sectionId}`}
+					href={to}
 					className={className}
 					onClick={onClick}
 					aria-label={ariaLabel}
@@ -100,7 +100,7 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 			);
 		}
 
-		// For internal navigation
+		// For all other navigation (including cross-page section links)
 		return (
 			<Link to={to} className={className} onClick={onClick}>
 				{children}
@@ -110,34 +110,34 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 
 	const navigation = [
 		{
-			href: isHomepage ? "#about" : "/#about",
+			href: "/#about",
 			label: "About Us",
 			section: "about",
-			sectionId: "about",
+			sectionId: isHomepage ? "about" : undefined,
 		},
 		{
-			href: isHomepage ? "#services" : "/#services",
+			href: "/#services",
 			label: "Services",
 			section: "services",
-			sectionId: "services",
+			sectionId: isHomepage ? "services" : undefined,
 		},
 		{
-			href: isHomepage ? "#partners" : "/#partners",
+			href: "/#partners",
 			label: "Partners",
 			section: "partners",
-			sectionId: "partners",
+			sectionId: isHomepage ? "partners" : undefined,
 		},
 		{
-			href: "/team",
+			href: "/#founders",
 			label: "Team",
 			section: "founders",
 			sectionId: isHomepage ? "founders" : undefined,
 		},
 		{
-			href: isHomepage ? "#testimonials" : "/#testimonials",
+			href: "/#testimonials",
 			label: "Testimonials",
 			section: "testimonials",
-			sectionId: "testimonials",
+			sectionId: isHomepage ? "testimonials" : undefined,
 		},
 	];
 
