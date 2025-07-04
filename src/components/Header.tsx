@@ -30,6 +30,7 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 			if (isHomepage) {
 				// Handle section highlighting on homepage using scroll manager
 				const sections = [
+					"Web3-Consulting",
 					"about",
 					"process", 
 					"services",
@@ -174,7 +175,7 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 		>
 			<Container>
 				<div className="flex items-center justify-between">
-					<Link to="/" className="relative z-10 micro-interaction">
+					<a href="/#Web3-Consulting" className="relative z-10 micro-interaction">
 						<div className="flex items-center">
 							<img
 								src="/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png"
@@ -182,7 +183,7 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 								className="h-10 w-auto"
 							/>
 						</div>
-					</Link>
+					</a>
 
 					<nav className="hidden md:flex items-center gap-1">
 						{navigation.map(({ href, label, section, sectionId }) => (
