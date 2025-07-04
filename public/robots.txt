@@ -7,6 +7,12 @@ User-agent: Googlebot
 Allow: /
 Crawl-delay: 2
 
+# Explicitly allow Googlebot-Image for favicon and image crawling
+User-agent: Googlebot-Image
+Allow: /lovable-uploads/
+Allow: /favicon.ico
+Allow: /site.webmanifest
+
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 3
