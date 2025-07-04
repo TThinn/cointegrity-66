@@ -141,7 +141,7 @@ const MicaReadyWaitlistPage = () => {
             </h1>
             <h2 className="text-2xl md:text-3xl font-semibold text-white/90 mb-4">Lightning-Fast MiCA Compliance in Minutes, Not Months</h2>
             <p className="text-white/80 max-w-3xl mx-auto text-base">
-              Get early access to our complete suite launching Q3 2025. From regulatory intelligence to full CASP authorization — secure your spot on the waiting list now. 
+              Get early access to our complete suite launching Q3 2025. From regulatory intelligence to full <a href="/glossary?search=CASP" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">CASP authorization</a> — secure your spot on the waiting list now. 
               Developed by Europe's <a href="/#about" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">leading Web3 consultancy</a> with proven <a href="/#testimonials" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">regulatory expertise</a>.
             </p>
           </div>
@@ -187,7 +187,7 @@ const MicaReadyWaitlistPage = () => {
                 </p>
                 
                 <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6 flex-grow">
-                  Stay ahead of evolving MiCA requirements with AI-powered intelligence across all 27 EU member states. Our advanced monitoring system tracks ESMA publications, national regulator updates, enforcement actions, and jurisdiction-specific implementation differences in real-time. Get personalized updates on transition period deadlines, grandfathering provisions, and regulatory arbitrage opportunities. Includes exclusive insights on processing times, approval rates, and fee structures by jurisdiction. Perfect for compliance officers, legal teams, VCs, and consultants who need authoritative regulatory intelligence without hours of research.
+                  Stay ahead of evolving <a href="/glossary?search=MiCA" className="text-inherit hover:text-blue-300 transition-colors hover:underline hover:decoration-blue-300">MiCA</a> requirements with AI-powered intelligence across all 27 EU member states. Our advanced monitoring system tracks <a href="/glossary?search=ESMA" className="text-inherit hover:text-blue-300 transition-colors hover:underline hover:decoration-blue-300">ESMA</a> publications, national regulator updates, enforcement actions, and jurisdiction-specific implementation differences in real-time. Get personalized updates on transition period deadlines, grandfathering provisions, and regulatory arbitrage opportunities. Includes exclusive insights on processing times, approval rates, and fee structures by jurisdiction. Perfect for compliance officers, legal teams, VCs, and consultants who need authoritative regulatory intelligence without hours of research.
                 </p>
                 
                 <div className="mb-6">
@@ -215,7 +215,7 @@ const MicaReadyWaitlistPage = () => {
                 </p>
                 
                 <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6 flex-grow">
-                  Eliminate regulatory uncertainty with our intelligent AI-powered screening system. Simply answer a series of targeted questions about your business model, services, and operations, and our advanced algorithm will analyze your responses against the complete MiCA regulatory framework. Get instant clarity on whether you need a CASP license, EMT authorization, or ART permit. Our comprehensive screening covers all crypto-asset activities including custody, trading, portfolio management, stablecoin issuance, and more. Save thousands in preliminary legal fees and get definitive answers in minutes, not weeks.
+                  Eliminate regulatory uncertainty with our intelligent AI-powered screening system. Simply answer a series of targeted questions about your business model, services, and operations, and our advanced algorithm will analyze your responses against the complete <a href="/glossary?search=MiCA" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">MiCA</a> regulatory framework. Get instant clarity on whether you need a <a href="/glossary?search=CASP" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">CASP</a> license, <a href="/glossary?search=EMT" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">EMT</a> authorization, or <a href="/glossary?search=ART" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">ART</a> permit. Our comprehensive screening covers all crypto-asset activities including custody, trading, portfolio management, stablecoin issuance, and more. Save thousands in preliminary legal fees and get definitive answers in minutes, not weeks.
                 </p>
                 
                 <div className="mb-6">
@@ -243,7 +243,7 @@ const MicaReadyWaitlistPage = () => {
                 </p>
                 
                 <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6 flex-grow">
-                  Transform your existing documentation into MiCA-compliant gold with our sophisticated AI review engine. Upload your current business plans, risk assessments, operational procedures, or VASP documentation, and our system will perform a comprehensive gap analysis against all MiCA requirements. Get detailed feedback on missing elements, regulatory weaknesses, and specific improvements needed for authorization success. Our AI understands the nuances of different member state requirements and provides tailored recommendations to strengthen your application. Reduce preparation time by 70% while dramatically improving your chances of regulatory approval.
+                  Transform your existing documentation into <a href="/glossary?search=MiCA" className="text-inherit hover:text-green-300 transition-colors hover:underline hover:decoration-green-300">MiCA</a>-compliant gold with our sophisticated AI review engine. Upload your current business plans, risk assessments, operational procedures, or <a href="/glossary?search=VASP" className="text-inherit hover:text-green-300 transition-colors hover:underline hover:decoration-green-300">VASP</a> documentation, and our system will perform a comprehensive gap analysis against all <a href="/glossary?search=MiCA" className="text-inherit hover:text-green-300 transition-colors hover:underline hover:decoration-green-300">MiCA</a> requirements. Get detailed feedback on missing elements, regulatory weaknesses, and specific improvements needed for authorization success. Our AI understands the nuances of different member state requirements and provides tailored recommendations to strengthen your application. Reduce preparation time by 70% while dramatically improving your chances of regulatory approval.
                 </p>
                 
                 <div className="mb-6">
@@ -300,7 +300,7 @@ const MicaReadyWaitlistPage = () => {
                 MiCA Compliance: Expert Answers to Your Questions
               </h2>
               <p className="text-white/80 text-lg">
-                Get authoritative answers from Europe's leading <a href="/web3-consulting" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">Web3 consultancy</a> with proven MiCA expertise
+                Get authoritative answers from Europe's leading <a href="/#services" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">Web3 consultancy</a> with proven <a href="/glossary?search=MiCA" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">MiCA expertise</a>
               </p>
             </div>
 
