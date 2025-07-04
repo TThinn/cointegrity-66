@@ -61,7 +61,14 @@ const validateWaitlistData = (formData: any) => {
   return errors;
 };
 
-// Input sanitization
+// Input sanitization for real-time input (preserves spaces)
+const sanitizeInputRealTime = (input: string): string => {
+  return input
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/<[^>]*>/g, '');
+};
+
+// Input sanitization for submission (trims whitespace)
 const sanitizeInput = (input: string): string => {
   return input
     .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
@@ -83,8 +90,8 @@ const MicaReadyWaitlistForm = ({ serviceInterest, buttonText, buttonClass }: Mic
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     
-    // Apply real-time input sanitization
-    const sanitizedValue = sanitizeInput(value);
+    // Apply real-time input sanitization (preserves spaces)
+    const sanitizedValue = sanitizeInputRealTime(value);
     
     setFormData(prev => ({
       ...prev,
