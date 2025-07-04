@@ -142,7 +142,7 @@ const MicaReadyWaitlistPage = () => {
             <h2 className="text-2xl md:text-3xl font-semibold text-white/90 mb-4">Lightning-Fast MiCA Compliance in Minutes, Not Months</h2>
             <p className="text-white/80 max-w-3xl mx-auto text-base">
               Get early access to our complete suite launching Q3 2025. From regulatory intelligence to full CASP authorization — secure your spot on the waiting list now. 
-              Developed by Europe's <a href="/#about" className="text-purple-300/60 hover:text-purple-300 transition-colors underline decoration-purple-300/30 hover:decoration-purple-300">leading Web3 consultancy</a> with proven <a href="/#testimonials" className="text-purple-300/60 hover:text-purple-300 transition-colors underline decoration-purple-300/30 hover:decoration-purple-300">regulatory expertise</a>.
+              Developed by Europe's <a href="/#about" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">leading Web3 consultancy</a> with proven <a href="/#testimonials" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">regulatory expertise</a>.
             </p>
           </div>
         </div>
@@ -300,7 +300,7 @@ const MicaReadyWaitlistPage = () => {
                 MiCA Compliance: Expert Answers to Your Questions
               </h2>
               <p className="text-white/80 text-lg">
-                Get authoritative answers from Europe's leading <a href="/web3-consulting" className="text-purple-300/60 hover:text-purple-300 transition-colors underline decoration-purple-300/30 hover:decoration-purple-300">Web3 consultancy</a> with proven MiCA expertise
+                Get authoritative answers from Europe's leading <a href="/web3-consulting" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">Web3 consultancy</a> with proven MiCA expertise
               </p>
             </div>
 
