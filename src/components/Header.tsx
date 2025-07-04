@@ -50,17 +50,14 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [isHomepage]);
 
-	// Function to handle navigation - scroll on homepage, navigate to homepage then scroll if not on homepage
+	// Function to handle navigation - only update URL, let useSectionUrlTracking handle scrolling
 	const handleSectionClick = (sectionId: string, fallbackPath: string) => {
 		if (isHomepage) {
-			// If on homepage, scroll to section with proper header offset
-			scrollToSection(sectionId);
+			// If on homepage, navigate to section hash
+			navigate(`/#${sectionId}`, { replace: true });
 		} else {
-			// If not on homepage, navigate to homepage then scroll to section
-			navigate("/", { replace: true });
-			setTimeout(() => {
-				scrollToSection(sectionId);
-			}, 50);
+			// If not on homepage, navigate to homepage with section hash
+			navigate(`/#${sectionId}`, { replace: true });
 		}
 	};
 
