@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
@@ -9,15 +8,12 @@ import MicaReadyWaitlistForm from "@/components/mica/MicaReadyWaitlistForm";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 import { SeoHead } from "@/components/seo/SeoHead";
 import LightParticles from "@/components/ui/LightParticles";
-
 const MicaReadyWaitlistPage = () => {
   const {
     currentPath,
     currentHash
   } = useSectionTracking();
-  
-  return (
-    <div className="min-h-screen bg-[#010822] overflow-x-hidden">
+  return <div className="min-h-screen bg-[#010822] overflow-x-hidden">
       <SeoHead currentPath={currentPath} currentHash={currentHash} />
       <Helmet>
         <title>World's Fastest MiCA-Ready SaaS Suite - AI-Powered EU Compliance | Cointegrity</title>
@@ -51,47 +47,37 @@ const MicaReadyWaitlistPage = () => {
         {/* Speed-focused structured data */}
         <script type="application/ld+json">
           {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "MiCA-Ready Suite - World's Fastest MiCA Compliance SaaS",
-            "description": "The fastest AI-powered MiCA compliance SaaS solution delivering instant regulatory analysis, automated workflows, and rapid CASP authorization at unprecedented speed.",
-            "applicationCategory": "Regulatory Technology",
-            "operatingSystem": "Web-based",
-            "offers": {
-              "@type": "Offer",
-              "description": "Fastest MiCA compliance solution with instant deployment and real-time processing",
-              "priceRange": "Contact for enterprise pricing"
-            },
-            "featureList": [
-              "Instant MiCA regulatory analysis",
-              "Real-time compliance monitoring", 
-              "Automated license screening",
-              "Rapid document generation",
-              "Immediate CASP authorization support"
-            ],
-            "provider": {
-              "@type": "Organization",
-              "name": "Cointegrity",
-              "url": "https://cointegrity.io"
-            },
-            "additionalProperty": [
-              {
-                "@type": "PropertyValue",
-                "name": "Processing Speed",
-                "value": "Instant analysis and real-time updates"
-              },
-              {
-                "@type": "PropertyValue", 
-                "name": "Deployment Time",
-                "value": "Immediate access upon launch"
-              },
-              {
-                "@type": "PropertyValue",
-                "name": "Efficiency Improvement",
-                "value": "10x faster than traditional consulting"
-              }
-            ]
-          })}
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "MiCA-Ready Suite - World's Fastest MiCA Compliance SaaS",
+          "description": "The fastest AI-powered MiCA compliance SaaS solution delivering instant regulatory analysis, automated workflows, and rapid CASP authorization at unprecedented speed.",
+          "applicationCategory": "Regulatory Technology",
+          "operatingSystem": "Web-based",
+          "offers": {
+            "@type": "Offer",
+            "description": "Fastest MiCA compliance solution with instant deployment and real-time processing",
+            "priceRange": "Contact for enterprise pricing"
+          },
+          "featureList": ["Instant MiCA regulatory analysis", "Real-time compliance monitoring", "Automated license screening", "Rapid document generation", "Immediate CASP authorization support"],
+          "provider": {
+            "@type": "Organization",
+            "name": "Cointegrity",
+            "url": "https://cointegrity.io"
+          },
+          "additionalProperty": [{
+            "@type": "PropertyValue",
+            "name": "Processing Speed",
+            "value": "Instant analysis and real-time updates"
+          }, {
+            "@type": "PropertyValue",
+            "name": "Deployment Time",
+            "value": "Immediate access upon launch"
+          }, {
+            "@type": "PropertyValue",
+            "name": "Efficiency Improvement",
+            "value": "10x faster than traditional consulting"
+          }]
+        })}
         </script>
         
         {/* Speed-focused technical meta */}
@@ -109,9 +95,9 @@ const MicaReadyWaitlistPage = () => {
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]" />
           <LightParticles centerPosition={{
-            x: 50,
-            y: 50
-          }} />
+          x: 50,
+          y: 50
+        }} />
         </div>
 
         {/* Bottom edge gradient hint */}
@@ -147,7 +133,7 @@ const MicaReadyWaitlistPage = () => {
             
             {/* Header Section */}
             <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">Four solutions dedicated to your specific Mica Compliance needs</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">Four solutions dedicated to your specific MiCA Compliance needs</h2>
               
               
             </div>
@@ -275,8 +261,6 @@ const MicaReadyWaitlistPage = () => {
       </section>
       
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default MicaReadyWaitlistPage;
