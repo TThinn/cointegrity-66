@@ -135,10 +135,10 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 			sectionId: isHomepage ? "founders" : undefined,
 		},
 		{
-			href: "/#testimonials",
-			label: "Testimonials",
-			section: "testimonials",
-			sectionId: isHomepage ? "testimonials" : undefined,
+			href: "/mica-ready-waitlist",
+			label: "MiCA",
+			section: "mica",
+			sectionId: undefined,
 		},
 	];
 

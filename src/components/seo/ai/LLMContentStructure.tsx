@@ -1,11 +1,17 @@
 import React from "react";
 
 interface LLMContentStructureProps {
-  contentType: 'glossary' | 'consulting' | 'about' | 'services';
+  contentType: 'glossary' | 'consulting' | 'about' | 'services' | 'mica';
   title: string;
   description: string;
   keyTopics?: string[];
   totalCount?: number;
+  micaSpecificData?: {
+    solutionTypes?: string[];
+    targetAudience?: string[];
+    competitiveAdvantages?: string[];
+    launchTimeline?: string;
+  };
 }
 
 export const LLMContentStructure: React.FC<LLMContentStructureProps> = ({
@@ -13,7 +19,8 @@ export const LLMContentStructure: React.FC<LLMContentStructureProps> = ({
   title,
   description,
   keyTopics = [],
-  totalCount
+  totalCount,
+  micaSpecificData
 }) => {
   return (
     <>
@@ -71,6 +78,16 @@ export const LLMContentStructure: React.FC<LLMContentStructureProps> = ({
             <section data-section-type="professional-services">
               <h2>Premier Web3 Consulting Services</h2>
               <p>Strategic blockchain consulting from Europe's most experienced team.</p>
+            </section>
+          )}
+          {contentType === 'mica' && (
+            <section data-section-type="regulatory-compliance-saas">
+              <h2>World's Fastest MiCA Compliance SaaS Platform</h2>
+              <p>AI-powered MiCA compliance suite delivering instant regulatory analysis, automated workflows, and rapid CASP authorization 10x faster than traditional consulting.</p>
+              <div data-mica-solutions="intelligence-feed,license-screening,document-review,full-application" />
+              <div data-competitive-advantage="only-ai-mica-platform,fastest-compliance-solution,90-percent-cost-reduction" />
+              <div data-target-market="crypto-businesses,compliance-officers,legal-teams,eu-market" />
+              <div data-launch-timeline="Q3-2025,beta-access-available" />
             </section>
           )}
         </main>
