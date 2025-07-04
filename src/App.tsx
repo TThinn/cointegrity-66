@@ -1,7 +1,7 @@
 
 import React, { useEffect } from "react"
 import { Toaster } from "sonner"
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom"
 import { HelmetProvider } from "react-helmet-async"
 import ErrorBoundary from "./components/app/ErrorBoundary"
 import { initializeCacheManagement } from "./utils/cacheManager"
@@ -51,10 +51,8 @@ const App = () => {
     // Initialize scroll management and URL updating
     initializeScrollManager();
     
-    // Initialize URL updater after DOM is ready
-    setTimeout(() => {
-      initializeUrlUpdater();
-    }, 100);
+    // Initialize URL updater immediately
+    initializeUrlUpdater();
     
     // Initialize service worker with delay
     setTimeout(() => {
@@ -72,6 +70,17 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/web3-consulting" element={<Index />} />
+              
+              {/* Section redirects for SEO */}
+              <Route path="/about" element={<Navigate to="/#about" replace />} />
+              <Route path="/services" element={<Navigate to="/#services" replace />} />
+              <Route path="/partners" element={<Navigate to="/#partners" replace />} />
+              <Route path="/process" element={<Navigate to="/#process" replace />} />
+              <Route path="/team" element={<Navigate to="/#founders" replace />} />
+              <Route path="/founders" element={<Navigate to="/#founders" replace />} />
+              <Route path="/testimonials" element={<Navigate to="/#testimonials" replace />} />
+              <Route path="/contact" element={<Navigate to="/#contact" replace />} />
+              
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/glossary" element={<GlossaryPage />} />
               <Route path="/blog" element={<BlogPage />} />

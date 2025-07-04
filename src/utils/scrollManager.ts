@@ -63,11 +63,14 @@ export const initializeScrollManager = (): void => {
  * Initialize IntersectionObserver for URL hash updates
  */
 export const initializeUrlUpdater = (): void => {
-  // Wait for the entire page to load to ensure all sections are available
-  window.addEventListener('load', () => {
+  const initObserver = () => {
     const sections = document.querySelectorAll('section[id]');
     
-    if (sections.length === 0) return; // Don't run if there are no sections to observe
+    if (sections.length === 0) {
+      // If sections aren't ready yet, try again after a short delay
+      setTimeout(initObserver, 200);
+      return;
+    }
 
     const observerOptions = {
       root: null, // observes intersections relative to the viewport
@@ -83,7 +86,7 @@ export const initializeUrlUpdater = (): void => {
           const newHash = `#${entry.target.id}`;
           // Only update the URL if the hash is different to prevent unnecessary history entries.
           if (window.location.hash !== newHash) {
-            history.replaceState(null, null, newHash);
+            history.replaceState(null, '', newHash);
           }
         }
       });
@@ -92,7 +95,14 @@ export const initializeUrlUpdater = (): void => {
     sections.forEach(section => {
       observer.observe(section);
     });
-  });
+  };
+
+  // Start immediately if DOM is ready, otherwise wait for load
+  if (document.readyState === 'complete') {
+    initObserver();
+  } else {
+    window.addEventListener('load', initObserver);
+  }
 };
 
 /**
