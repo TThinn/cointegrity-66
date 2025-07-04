@@ -17,7 +17,7 @@ export const scrollToTop = (): void => {
 };
 
 /**
- * Initialize scroll restoration and smooth scroll functionality
+ * Initialize scroll restoration and global navigation handler
  */
 export const initializeScrollManager = (): void => {
   // Set scroll restoration to manual to prevent browser auto-scroll jumps
@@ -25,18 +25,31 @@ export const initializeScrollManager = (): void => {
     history.scrollRestoration = 'manual';
   }
 
-  // Set up smooth scroll click handlers for anchor links
-  document.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
-    const link = target.closest('a[href^="#"]') as HTMLAnchorElement;
+  // Global navigation click handler for the entire application.
+  // It listens for clicks on the body, but only acts on menu links.
+  document.body.addEventListener('click', function(e) {
+    // Only proceed if the clicked element is a link with a hash.
+    const link = (e.target as HTMLElement).closest('a[href*="#"]') as HTMLAnchorElement;
+    if (!link) return;
+
+    const url = new URL(link.href);
+    const currentPath = window.location.pathname;
+    const targetPath = url.pathname;
+    const targetHash = url.hash;
+
+    // CASE 1: On a "Resources" page, clicking a link back to the one-pager (e.g., /#about).
+    // The target path is different from the current one.
+    if (targetPath !== currentPath) {
+      // Let the browser handle the navigation. It will go to the home page
+      // and automatically scroll to the hash. Do not prevent default behavior.
+      return;
+    }
+
+    // CASE 2: On the one-pager, clicking a link to a section on the same page (e.g., #about).
+    // The target path is the same, but there is a hash.
+    e.preventDefault(); // Stop the browser's default jump
+    const targetElement = document.querySelector(targetHash);
     
-    if (!link || link.getAttribute('href') === '#') return;
-    
-    e.preventDefault();
-    const targetId = link.getAttribute('href')?.substring(1);
-    if (!targetId) return;
-    
-    const targetElement = document.getElementById(targetId);
     if (targetElement) {
       targetElement.scrollIntoView({
         behavior: 'smooth',
@@ -50,25 +63,35 @@ export const initializeScrollManager = (): void => {
  * Initialize IntersectionObserver for URL hash updates
  */
 export const initializeUrlUpdater = (): void => {
-  const sections = document.querySelectorAll('section[id]');
-  
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.5
-  };
+  // Wait for the entire page to load to ensure all sections are available
+  window.addEventListener('load', () => {
+    const sections = document.querySelectorAll('section[id]');
+    
+    if (sections.length === 0) return; // Don't run if there are no sections to observe
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Update the URL without adding to browser history
-        history.replaceState(null, '', `#${entry.target.id}`);
-      }
+    const observerOptions = {
+      root: null, // observes intersections relative to the viewport
+      // The rootMargin is set to find the section that is in the middle of the screen.
+      // It creates a horizontal line at 45% from the top and 45% from the bottom.
+      rootMargin: '-45% 0px -45% 0px',
+      threshold: 0 // Triggers as soon as a single pixel enters this zone
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const newHash = `#${entry.target.id}`;
+          // Only update the URL if the hash is different to prevent unnecessary history entries.
+          if (window.location.hash !== newHash) {
+            history.replaceState(null, null, newHash);
+          }
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      observer.observe(section);
     });
-  }, observerOptions);
-
-  sections.forEach(section => {
-    observer.observe(section);
   });
 };
 

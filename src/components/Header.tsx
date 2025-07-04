@@ -110,19 +110,19 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 
 	const navigation = [
 		{
-			href: "/about",
+			href: isHomepage ? "#about" : "/#about",
 			label: "About Us",
 			section: "about",
 			sectionId: "about",
 		},
 		{
-			href: "/services",
+			href: isHomepage ? "#services" : "/#services",
 			label: "Services",
 			section: "services",
 			sectionId: "services",
 		},
 		{
-			href: "/partners",
+			href: isHomepage ? "#partners" : "/#partners",
 			label: "Partners",
 			section: "partners",
 			sectionId: "partners",
@@ -131,10 +131,10 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 			href: "/team",
 			label: "Team",
 			section: "founders",
-			sectionId: "founders",
+			sectionId: isHomepage ? "founders" : undefined,
 		},
 		{
-			href: "/testimonials",
+			href: isHomepage ? "#testimonials" : "/#testimonials",
 			label: "Testimonials",
 			section: "testimonials",
 			sectionId: "testimonials",
@@ -230,8 +230,8 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 						</div>
 
 						<NavLink
-							to="/contact"
-							sectionId="contact"
+							to={isHomepage ? "#contact" : "/#contact"}
+							sectionId={isHomepage ? "contact" : undefined}
 							className="pl-4 micro-interaction"
 						>
 							<Button variant="primary" size="sm">
@@ -283,8 +283,8 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 							</div>
 
 							<NavLink
-								to="/contact"
-								sectionId="contact"
+								to={isHomepage ? "#contact" : "/#contact"}
+								sectionId={isHomepage ? "contact" : undefined}
 								className="micro-interaction w-full py-4 text-xl text-white mt-4"
 								onClick={() => setIsOpen(false)}
 							>
