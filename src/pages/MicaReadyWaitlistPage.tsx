@@ -187,12 +187,12 @@ const MicaReadyWaitlistPage = () => {
                 </p>
                 
                 <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6 flex-grow">
-                  Stay ahead of the regulatory curve with AI-powered intelligence that never sleeps. Our advanced web scraping technology monitors ESMA, national regulators, and industry publications across all 27 EU member states, delivering personalized MiCA updates directly to your inbox. Get instant notifications about licensing changes, new guidance documents, enforcement actions, and market developments that could impact your business. Perfect for busy executives, compliance officers, and legal teams who need to stay informed without spending hours researching regulatory changes.
+                  Stay ahead of evolving MiCA requirements with AI-powered intelligence across all 27 EU member states. Our advanced monitoring system tracks ESMA publications, national regulator updates, enforcement actions, and jurisdiction-specific implementation differences in real-time. Get personalized updates on transition period deadlines, grandfathering provisions, and regulatory arbitrage opportunities. Includes exclusive insights on processing times, approval rates, and fee structures by jurisdiction. Perfect for compliance officers, legal teams, VCs, and consultants who need authoritative regulatory intelligence without hours of research.
                 </p>
                 
                 <div className="mb-6">
                   <div className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent font-semibold text-lg">Free Beta Access</div>
-                  <div className="text-white/60 text-sm">Perfect for law firms, consultants, VCs, compliance officers</div>
+                  <div className="text-white/60 text-sm">Includes personalized jurisdiction analysis • Real-time updates • Expert insights</div>
                 </div>
                 
                 <MicaReadyWaitlistForm serviceInterest="intelligence-feed" buttonText="Put me on the waiting list" buttonClass="w-full bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto" />
