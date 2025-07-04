@@ -176,6 +176,7 @@ Please include this reference in any future correspondence.
 				status: 200,
 				headers: {
 					"content-type": "application/json",
+					...corsHeaders,
 				},
 			});
 		} catch (emailError) {

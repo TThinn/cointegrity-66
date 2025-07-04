@@ -72,10 +72,6 @@ redirect_uri = ""
 # or any other third-party OIDC providers.
 url = ""
 
-[functions]
-# Port to use for Functions.
-port = 54321
-
 [functions.send-contact-email]
 verify_jwt = false
 

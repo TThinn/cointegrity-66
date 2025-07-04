@@ -76,7 +76,7 @@ async function sendEmail(sanitizedData: any, ipAddress: string): Promise<void> {
 			Authorization: `Bearer ${RESEND_API_KEY}`,
 		},
 		body: JSON.stringify({
-			from: "Acme <onboarding@resend.dev>",
+			from: "notifications@cointegrity.io",
 			to: ["hello@cointegrity.io"],
 			subject: "Contact Form Submission",
 			html,
@@ -154,6 +154,7 @@ serve(async (req: Request) => {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/x-www-form-urlencoded",
+							...corsHeaders,
 						},
 						body: `secret=${RECAPTCHA_SECRET}&response=${recaptchaToken}&remoteip=${ipAddress}`,
 					},
@@ -252,6 +253,7 @@ serve(async (req: Request) => {
 				status: 200,
 				headers: {
 					"content-type": "application/json",
+					...corsHeaders,
 				},
 			});
 		} catch (emailError) {
