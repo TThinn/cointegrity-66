@@ -64,11 +64,11 @@ export const MicaFaqItem: React.FC<MicaFaqItemProps> = ({
                 <p className="text-white/60 text-sm mb-2">Related resources:</p>
                 <div className="flex flex-wrap gap-4">
                   {relatedLinks.map((link, idx) => (
-                    <a
-                      key={idx}
-                      href={link.url}
-                      className="text-purple-400 hover:text-purple-300 text-sm opacity-0 hover:opacity-100 transition-opacity"
-                    >
+                      <a
+                        key={idx}
+                        href={link.url}
+                        className="text-purple-300/60 hover:text-purple-300 text-sm transition-colors underline decoration-purple-300/30 hover:decoration-purple-300"
+                      >
                       {link.text}
                     </a>
                   ))}

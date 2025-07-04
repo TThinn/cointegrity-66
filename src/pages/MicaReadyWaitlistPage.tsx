@@ -142,7 +142,7 @@ const MicaReadyWaitlistPage = () => {
             <h2 className="text-2xl md:text-3xl font-semibold text-white/90 mb-4">Lightning-Fast MiCA Compliance in Minutes, Not Months</h2>
             <p className="text-white/80 max-w-3xl mx-auto text-base">
               Get early access to our complete suite launching Q3 2025. From regulatory intelligence to full CASP authorization — secure your spot on the waiting list now. 
-              Developed by Europe's <a href="/#about" className="text-purple-400 hover:text-purple-300 opacity-0 hover:opacity-100 transition-opacity">leading Web3 consultancy</a> with proven <a href="/#testimonials" className="text-purple-400 hover:text-purple-300 opacity-0 hover:opacity-100 transition-opacity">regulatory expertise</a>.
+              Developed by Europe's <a href="/#about" className="text-purple-300/60 hover:text-purple-300 transition-colors underline decoration-purple-300/30 hover:decoration-purple-300">leading Web3 consultancy</a> with proven <a href="/#testimonials" className="text-purple-300/60 hover:text-purple-300 transition-colors underline decoration-purple-300/30 hover:decoration-purple-300">regulatory expertise</a>.
             </p>
           </div>
         </div>
@@ -187,8 +187,7 @@ const MicaReadyWaitlistPage = () => {
                 </p>
                 
                 <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6 flex-grow">
-                  Get AI-curated MiCA news and regulatory updates delivered to your inbox. Our automated scraper 
-                  monitors ESMA and national regulators 24/7, providing timely summaries of developments that impact your business.
+                  Stay ahead of the regulatory curve with AI-powered intelligence that never sleeps. Our advanced web scraping technology monitors ESMA, national regulators, and industry publications across all 27 EU member states, delivering personalized MiCA updates directly to your inbox. Get instant notifications about licensing changes, new guidance documents, enforcement actions, and market developments that could impact your business. Perfect for busy executives, compliance officers, and legal teams who need to stay informed without spending hours researching regulatory changes.
                 </p>
                 
                 <div className="mb-6">
@@ -216,8 +215,7 @@ const MicaReadyWaitlistPage = () => {
                 </p>
                 
                 <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6 flex-grow">
-                  Uncertain if your crypto business needs a MiCA license? Our AI-powered screening tool guides you 
-                  through a comprehensive decision tree to determine your regulatory obligations.
+                  Eliminate regulatory uncertainty with our intelligent AI-powered screening system. Simply answer a series of targeted questions about your business model, services, and operations, and our advanced algorithm will analyze your responses against the complete MiCA regulatory framework. Get instant clarity on whether you need a CASP license, EMT authorization, or ART permit. Our comprehensive screening covers all crypto-asset activities including custody, trading, portfolio management, stablecoin issuance, and more. Save thousands in preliminary legal fees and get definitive answers in minutes, not weeks.
                 </p>
                 
                 <div className="mb-6">
@@ -245,8 +243,7 @@ const MicaReadyWaitlistPage = () => {
                 </p>
                 
                 <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6 flex-grow">
-                  Already have VASP documentation or business plans? Our AI engine performs gap analysis against 
-                  MiCA requirements and suggests enhancements to bring your documents up to compliance standards.
+                  Transform your existing documentation into MiCA-compliant gold with our sophisticated AI review engine. Upload your current business plans, risk assessments, operational procedures, or VASP documentation, and our system will perform a comprehensive gap analysis against all MiCA requirements. Get detailed feedback on missing elements, regulatory weaknesses, and specific improvements needed for authorization success. Our AI understands the nuances of different member state requirements and provides tailored recommendations to strengthen your application. Reduce preparation time by 70% while dramatically improving your chances of regulatory approval.
                 </p>
                 
                 <div className="mb-6">
@@ -274,8 +271,7 @@ const MicaReadyWaitlistPage = () => {
                 </p>
                 
                 <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6 flex-grow">
-                  End-to-end MiCA application preparation with full AI-powered document generation, interactive wizard, 
-                  and expert review. Traditional consulting costs €100,000+ - we provide a comprehensive alternative.
+                  Get the complete MiCA authorization package with our revolutionary AI-powered suite that replaces expensive traditional consulting. Our comprehensive solution includes automated document generation, jurisdiction optimization, regulatory mapping, compliance monitoring, and expert review at every stage. Choose from 27 EU member states with our intelligent jurisdiction analyzer that considers your business model, timeline, and cost preferences. Generate professional-grade application documents in hours, not months. Includes ongoing compliance monitoring, regulatory update notifications, and direct access to our regulatory experts when needed. 10x faster and 90% cheaper than traditional consulting while maintaining the highest quality standards.
                 </p>
                 
                 <div className="mb-6">
@@ -304,7 +300,7 @@ const MicaReadyWaitlistPage = () => {
                 MiCA Compliance: Expert Answers to Your Questions
               </h2>
               <p className="text-white/80 text-lg">
-                Get authoritative answers from Europe's leading <a href="/web3-consulting" className="text-purple-400 hover:text-purple-300 opacity-0 hover:opacity-100 transition-opacity">Web3 consultancy</a> with proven MiCA expertise
+                Get authoritative answers from Europe's leading <a href="/web3-consulting" className="text-purple-300/60 hover:text-purple-300 transition-colors underline decoration-purple-300/30 hover:decoration-purple-300">Web3 consultancy</a> with proven MiCA expertise
               </p>
             </div>
 
@@ -317,9 +313,9 @@ const MicaReadyWaitlistPage = () => {
             {/* Hidden expert authority links */}
             <div className="mt-12 text-center">
               <p className="text-white/60 text-sm">
-                Need personalized MiCA guidance? Our <a href="/#founders" className="opacity-0 hover:opacity-100 transition-opacity text-purple-400 hover:text-purple-300">seasoned experts</a> provide 
-                comprehensive <a href="/#services" className="opacity-0 hover:opacity-100 transition-opacity text-purple-400 hover:text-purple-300">regulatory consulting</a> backed by 
-                proven <a href="/#testimonials" className="opacity-0 hover:opacity-100 transition-opacity text-purple-400 hover:text-purple-300">client success</a> across Europe and beyond.
+                Need personalized MiCA guidance? Our <a href="/#founders" className="text-purple-300/60 hover:text-purple-300 transition-colors underline decoration-purple-300/30 hover:decoration-purple-300">seasoned experts</a> provide 
+                comprehensive <a href="/#services" className="text-purple-300/60 hover:text-purple-300 transition-colors underline decoration-purple-300/30 hover:decoration-purple-300">regulatory consulting</a> backed by 
+                proven <a href="/#testimonials" className="text-purple-300/60 hover:text-purple-300 transition-colors underline decoration-purple-300/30 hover:decoration-purple-300">client success</a> across Europe and beyond.
               </p>
             </div>
           </div>
