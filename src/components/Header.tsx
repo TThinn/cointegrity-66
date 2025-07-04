@@ -48,12 +48,9 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [isHomepage]);
 
-	// Simplified navigation - direct hash navigation
-	const handleSectionClick = (sectionId: string) => {
-		navigate(`/#${sectionId}`);
-	};
+	// Simple navigation using anchor links
 
-	// Helper function to determine if we should use Link or handle click
+	// Helper function to determine if we should use Link or anchor
 	const NavLink = ({
 		to,
 		children,
@@ -89,20 +86,17 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 			);
 		}
 
-		// For section navigation
+		// For section navigation - use anchor links for smooth scroll
 		if (sectionId) {
 			return (
-				<button
+				<a
+					href={`#${sectionId}`}
 					className={className}
-					onClick={(e) => {
-						e.preventDefault();
-						handleSectionClick(sectionId);
-						onClick?.();
-					}}
+					onClick={onClick}
 					aria-label={ariaLabel}
 				>
 					{children}
-				</button>
+				</a>
 			);
 		}
 

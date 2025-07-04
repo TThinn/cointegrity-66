@@ -7,7 +7,7 @@ import ErrorBoundary from "./components/app/ErrorBoundary"
 import { initializeCacheManagement } from "./utils/cacheManager"
 import { initServiceWorker } from "./utils/serviceWorkerInit"
 import { initializeErrorHandling } from "./utils/errorLogger"
-import { scrollToTop, handleHashNavigation } from "./utils/scrollManager"
+import { scrollToTop, initializeScrollManager, initializeUrlUpdater } from "./utils/scrollManager"
 
 // Page imports
 import Index from "./pages/Index"
@@ -37,26 +37,31 @@ const ScrollToTop = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Handle hash navigation
-    if (location.hash) {
-      handleHashNavigation(location.hash);
-    } else {
-      // Instant scroll to top for route changes
+    // Only scroll to top for route changes (not hash changes)
+    if (!location.hash) {
       scrollToTop();
     }
-  }, [location]);
+  }, [location.pathname]);
 
   return null;
 };
 
 const App = () => {
-  // Simplified initialization
+  // Initialize all systems
   useEffect(() => {
     // Initialize error handling first
     initializeErrorHandling();
     
     // Initialize cache management
     initializeCacheManagement();
+    
+    // Initialize scroll management and URL updating
+    initializeScrollManager();
+    
+    // Initialize URL updater after DOM is ready
+    setTimeout(() => {
+      initializeUrlUpdater();
+    }, 100);
     
     // Initialize service worker with delay
     setTimeout(() => {

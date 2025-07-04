@@ -14,7 +14,7 @@ import { SeoHead } from "@/components/seo/SeoHead";
 import { ResourceHints } from "@/components/seo/ResourceHints";
 import { InvisibleInternalLinks } from "@/components/seo/InvisibleInternalLinks";
 import { useLocation } from "react-router-dom";
-import { useUrlHashUpdater } from "@/hooks/useUrlHashUpdater";
+
 
 /**
  * Main index page with semantic HTML structure
@@ -22,22 +22,6 @@ import { useUrlHashUpdater } from "@/hooks/useUrlHashUpdater";
 const Index = () => {
   const location = useLocation();
   
-  // Define the sections for URL hash updating
-  const sections = [
-    "about",
-    "process",
-    "services", 
-    "partners",
-    "founders",
-    "testimonials",
-    "contact"
-  ];
-  
-  // Initialize URL hash updating for homepage
-  useUrlHashUpdater({ 
-    isHomepage: true, 
-    sections 
-  });
   
   return (
     <div className="min-h-screen bg-[#010822] overflow-x-hidden" itemScope itemType="https://schema.org/WebPage">

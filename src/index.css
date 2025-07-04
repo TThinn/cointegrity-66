@@ -50,8 +50,12 @@
   }
   
   html {
-    scroll-behavior: smooth;
     font-family: 'Inter', sans-serif;
+  }
+  
+  /* Apply scroll margin to all elements with ID for smooth navigation */
+  [id] {
+    scroll-margin-top: 100px;
   }
 
   body {
