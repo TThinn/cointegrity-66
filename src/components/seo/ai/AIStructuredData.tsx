@@ -134,7 +134,13 @@ export const AIStructuredData: React.FC<AIStructuredDataProps> = ({
       "Web3 consulting, blockchain strategy, tokenomics design, regulatory compliance, MiCA compliance, crypto crime prevention"
   };
 
-  const allSchemas = [organizationSchema, knowledgeBaseSchema, faqSchema, articleSchema];
+  // Conditionally include schemas based on the current page
+  const allSchemas: any[] = [organizationSchema, knowledgeBaseSchema, articleSchema];
+  
+  // Only include general FAQ schema if NOT on MiCA page (MiCA has its own consolidated FAQ)
+  if (!pathWithoutSlash.includes('mica-ready-waitlist')) {
+    allSchemas.push(faqSchema);
+  }
 
   return (
     <Helmet>

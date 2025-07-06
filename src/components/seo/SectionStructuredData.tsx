@@ -15,12 +15,12 @@ import { GLOSSARY_HOWTO_STRUCTURED_DATA, WEB3_LEARNING_HOWTO_STRUCTURED_DATA } f
 import { GLOSSARY_ITEMLIST_STRUCTURED_DATA, POPULAR_TERMS_ITEMLIST } from "./glossaryItemListStructuredData";
 import { GLOSSARY_QA_STRUCTURED_DATA, GLOSSARY_QAPAGE_STRUCTURED_DATA } from "./glossaryQAStructuredData";
 import { ENHANCED_GLOSSARY_SCHEMAS } from "./enhancedGlossaryStructuredData";
+import { MICA_CONSOLIDATED_STRUCTURED_DATA } from "./micaStructuredData";
 
 // Return structured data objects instead of React components
 export const getStructuredData = (currentPath = "", currentHash = "") => {
   const baseData: any[] = [
     ENHANCED_BUSINESS_STRUCTURED_DATA,
-    FAQ_STRUCTURED_DATA,
     WEBSITE_STRUCTURED_DATA,
     ...SECTIONS_STRUCTURED_DATA,
     HOWTO_STRUCTURED_DATA,
@@ -28,6 +28,11 @@ export const getStructuredData = (currentPath = "", currentHash = "") => {
     ...ALL_GLOSSARY_STRUCTURED_DATA,
     generateBreadcrumbStructuredData(currentPath, currentHash)
   ];
+
+  // Only include general FAQ schema if NOT on MiCA page (MiCA has its own consolidated FAQ)
+  if (!currentPath.includes('mica-ready-waitlist')) {
+    baseData.push(FAQ_STRUCTURED_DATA);
+  }
 
   // Add testimonials schema on testimonials page
   if (currentPath.includes('testimonials') || currentHash === '#testimonials') {
@@ -55,6 +60,11 @@ export const getStructuredData = (currentPath = "", currentHash = "") => {
       ...GLOSSARY_QA_STRUCTURED_DATA.slice(0, 20), // Limit to prevent too much data
       ...ENHANCED_GLOSSARY_SCHEMAS
     );
+  }
+
+  // Add consolidated MiCA structured data for MiCA pages (prevents duplicates)
+  if (currentPath.includes('mica-ready-waitlist')) {
+    baseData.push(...MICA_CONSOLIDATED_STRUCTURED_DATA);
   }
 
   return baseData;
