@@ -29,27 +29,12 @@ export const getStructuredData = (currentPath = "", currentHash = "") => {
     generateBreadcrumbStructuredData(currentPath, currentHash)
   ];
 
-  // Only include general FAQ schema if NOT on MiCA page (MiCA has its own consolidated FAQ)
-  if (!currentPath.includes('mica-ready-waitlist')) {
-    baseData.push(FAQ_STRUCTURED_DATA);
-  }
-
-  // Add testimonials schema on testimonials page
-  if (currentPath.includes('testimonials') || currentHash === '#testimonials') {
-    baseData.push(TESTIMONIALS_STRUCTURED_DATA);
-  }
-
-  // Add service-specific FAQ schemas
-  if (currentPath.includes('services') || currentHash === '#services') {
-    baseData.push(
-      SERVICE_FAQ_STRUCTURED_DATA.strategicPositioning,
-      SERVICE_FAQ_STRUCTURED_DATA.tokenomics,
-      SERVICE_FAQ_STRUCTURED_DATA.regulatory
-    );
-  }
-
-  // Add enhanced glossary schemas for glossary pages
-  if (currentPath.includes('glossary')) {
+  // FAQ Schema Logic - Only ONE per page to prevent duplicates
+  if (currentPath.includes('mica-ready-waitlist')) {
+    // MiCA page: Use consolidated MiCA FAQ schema (includes all MiCA-specific data)
+    baseData.push(...MICA_CONSOLIDATED_STRUCTURED_DATA);
+  } else if (currentPath.includes('glossary')) {
+    // Glossary page: Use glossary-specific FAQ schema only
     baseData.push(
       GLOSSARY_FAQ_STRUCTURED_DATA,
       GLOSSARY_HOWTO_STRUCTURED_DATA,
@@ -60,11 +45,21 @@ export const getStructuredData = (currentPath = "", currentHash = "") => {
       ...GLOSSARY_QA_STRUCTURED_DATA.slice(0, 20), // Limit to prevent too much data
       ...ENHANCED_GLOSSARY_SCHEMAS
     );
+  } else if (currentPath.includes('services') || currentHash === '#services') {
+    // Services page/section: Use service-specific FAQ schemas only (3 separate ones for different topics)
+    baseData.push(
+      SERVICE_FAQ_STRUCTURED_DATA.strategicPositioning,
+      SERVICE_FAQ_STRUCTURED_DATA.tokenomics,
+      SERVICE_FAQ_STRUCTURED_DATA.regulatory
+    );
+  } else {
+    // All other pages: Use general FAQ schema only
+    baseData.push(FAQ_STRUCTURED_DATA);
   }
 
-  // Add consolidated MiCA structured data for MiCA pages (prevents duplicates)
-  if (currentPath.includes('mica-ready-waitlist')) {
-    baseData.push(...MICA_CONSOLIDATED_STRUCTURED_DATA);
+  // Add testimonials schema on testimonials page
+  if (currentPath.includes('testimonials') || currentHash === '#testimonials') {
+    baseData.push(TESTIMONIALS_STRUCTURED_DATA);
   }
 
   return baseData;

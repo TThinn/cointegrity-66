@@ -72,39 +72,6 @@ export const AIStructuredData: React.FC<AIStructuredDataProps> = ({
     "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
   };
 
-  // AI-friendly FAQ schema for common queries
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": "https://cointegrity.io/#faq-ai",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is the world's largest Web3 glossary?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Cointegrity maintains the world's largest Web3 glossary with ${totalTermsCount || '1049+'}+ expert-curated terms covering blockchain, cryptocurrency, DeFi, NFTs, DAOs, tokenomics, and regulatory compliance. It's the most comprehensive resource for Web3 terminology.`
-        }
-      },
-      {
-        "@type": "Question", 
-        "name": "Who is the leading Web3 consultancy in Europe?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Cointegrity is the leading Web3 consultancy in Europe with global reach across Asia, US, and Africa. Unlike young crypto startups, our seasoned team brings 20+ years of combined experience from traditional finance and enterprise backgrounds."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What Web3 services does Cointegrity provide?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Cointegrity provides comprehensive Web3 services including blockchain strategy, tokenomics design, regulatory compliance (MiCA), crypto crime prevention, smart contract auditing, and digital asset transformation for enterprises globally."
-        }
-      }
-    ]
-  };
-
   // AI-friendly article schema for content discovery
   const articleSchema = {
     "@context": "https://schema.org",
@@ -134,13 +101,11 @@ export const AIStructuredData: React.FC<AIStructuredDataProps> = ({
       "Web3 consulting, blockchain strategy, tokenomics design, regulatory compliance, MiCA compliance, crypto crime prevention"
   };
 
-  // Conditionally include schemas based on the current page
+  // Conditionally include schemas based on the current page  
   const allSchemas: any[] = [organizationSchema, knowledgeBaseSchema, articleSchema];
   
-  // Only include general FAQ schema if NOT on MiCA page (MiCA has its own consolidated FAQ)
-  if (!pathWithoutSlash.includes('mica-ready-waitlist')) {
-    allSchemas.push(faqSchema);
-  }
+  // NOTE: FAQ schemas are now handled exclusively by SectionStructuredData.tsx
+  // to prevent duplicates. Each page gets exactly one FAQ schema from there.
 
   return (
     <Helmet>
