@@ -36,7 +36,7 @@ export const BUSINESS_STRUCTURED_DATA = {
   "priceRange": "$$$",
   "openingHours": "Mo,Tu,We,Th,Fr 09:00-17:00",
   "telephone": "+4712345678",
-  "email": "contact@cointegrity.io",
+  "email": "hello@cointegrity.io",
   "keywords": "Web3 compliance, MiCA regulation, tokenomics, blockchain consulting, digital asset compliance, future of finance, decentralized finance, crypto regulation, Web3 strategy, token design",
   "slogan": "Shaping the Future of Finance",
   "foundingDate": "2022",

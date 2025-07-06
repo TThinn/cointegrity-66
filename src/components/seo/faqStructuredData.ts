@@ -41,7 +41,7 @@ export const FAQ_STRUCTURED_DATA = {
       "name": "How can I contact Cointegrity for a consultation?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You can contact Cointegrity through our website contact form, by emailing contact@cointegrity.io, or by calling +4712345678 during our business hours."
+        "text": "You can contact Cointegrity through our website contact form, by emailing hello@cointegrity.io, or by calling +4712345678 during our business hours."
       }
     },
     {

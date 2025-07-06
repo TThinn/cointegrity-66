@@ -36,7 +36,7 @@ export const ENHANCED_BUSINESS_STRUCTURED_DATA = {
     },
     {
       "@type": "ContactPoint",
-      "email": "contact@cointegrity.io",
+      "email": "hello@cointegrity.io",
       "contactType": "business inquiries",
       "availableLanguage": ["English"]
     }
