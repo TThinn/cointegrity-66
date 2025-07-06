@@ -21,6 +21,42 @@ User-agent: Slurp
 Allow: /
 Crawl-delay: 3
 
+# Allow additional major search engines
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 5
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 5
+
+User-agent: Applebot
+Allow: /
+Crawl-delay: 3
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 3
+
+# Allow archival and research bots
+User-agent: ia_archiver
+Allow: /
+Crawl-delay: 10
+
+User-agent: archive.org_bot
+Allow: /
+Crawl-delay: 10
+
+User-agent: Wayback
+Allow: /
+Crawl-delay: 10
+
+User-agent: CommonCrawl
+Allow: /
+Crawl-delay: 15
+Disallow: /api/
+Disallow: /admin/
+
 # Allow social media crawlers for sharing
 User-agent: Twitterbot
 Allow: /
