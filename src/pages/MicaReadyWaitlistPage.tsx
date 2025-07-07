@@ -13,12 +13,14 @@ import { micaFaqData } from "@/data/micaFaqData";
 import { MicaSpecificSEO } from "@/components/seo/ai/MicaSpecificSEO";
 import { HiddenInternalLinks } from "@/components/seo/HiddenInternalLinks";
 import { LLMContentStructure } from "@/components/seo/ai/LLMContentStructure";
+import { AdvancedPerformanceOptimization } from "@/components/seo/AdvancedPerformanceOptimization";
 const MicaReadyWaitlistPage = () => {
   const {
     currentPath,
     currentHash
   } = useSectionTracking();
   return <div className="min-h-screen bg-[#010822] overflow-x-hidden">
+       <AdvancedPerformanceOptimization priority={false} page="mica" />
        <SeoHead currentPath={currentPath} currentHash={currentHash} />
        <MicaSpecificSEO />
        <HiddenInternalLinks currentPath={currentPath} context="mica" />

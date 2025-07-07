@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
@@ -17,6 +17,11 @@ interface OptimizedImageProps {
   onClick?: () => void;
   quality?: number;
   useWebP?: boolean;
+  lazy?: boolean;
+  placeholder?: "blur" | "empty";
+  blurDataURL?: string;
+  style?: React.CSSProperties;
+  title?: string;
 }
 
 /**
@@ -36,8 +41,39 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   onClick,
   quality = 80,
   useWebP = true,
+  lazy = true,
+  placeholder = "empty",
+  blurDataURL,
+  style,
+  title,
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(priority || !lazy);
+  const [hasError, setHasError] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  // Intersection Observer for lazy loading
+  useEffect(() => {
+    if (!lazy || priority || isInView) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: "50px" }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [lazy, priority, isInView]);
   
   // Basic responsive sizing - can be expanded based on your needs
   const defaultSizes = sizes || "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw";
@@ -47,8 +83,14 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
     setIsLoaded(true);
   };
 
+  // Handle image error
+  const handleImageError = () => {
+    setHasError(true);
+  };
+
   // Convert image URL to WebP if supported and requested
   const getOptimizedSrc = () => {
+    if (!isInView) return '';
     if (!useWebP) return src;
 
     // Skip WebP conversion for GIFs or SVGs
@@ -58,54 +100,106 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
 
     // Handle various image formats
     if (src.startsWith('http') || src.startsWith('blob:') || src.startsWith('data:')) {
-      // For remote images, we can't convert to WebP on the fly
-      // In a production environment, you might use a CDN with WebP support
       return src;
     } else {
-      // For local images in the public folder
-      // In a real app, you'd have a server-side solution to convert images
-      // Here we'll just add a query param to simulate WebP conversion
-      return `${src}?format=webp&quality=${quality}`;
+      // Create optimized URL with WebP format and quality
+      const url = new URL(src, window.location.origin);
+      url.searchParams.set('format', 'webp');
+      url.searchParams.set('quality', quality.toString());
+      if (width) url.searchParams.set('w', width.toString());
+      return url.toString();
     }
   };
 
-  const optimizedSrc = getOptimizedSrc();
-
   // Generate srcset for responsive images
   const generateSrcSet = () => {
-    if (src.startsWith('http') || src.startsWith('blob:') || src.startsWith('data:')) {
-      return undefined; // Skip srcset for remote or data URIs
+    if (!isInView || src.startsWith('http') || src.startsWith('blob:') || src.startsWith('data:')) {
+      return undefined;
     }
 
     const widths = [320, 640, 768, 1024, 1280, 1920];
+    const baseUrl = new URL(src, window.location.origin);
+    baseUrl.searchParams.set('format', 'webp');
+    baseUrl.searchParams.set('quality', quality.toString());
+    
     return widths
-      .map(w => `${getOptimizedSrc()}&w=${w} ${w}w`)
+      .map(w => {
+        const url = new URL(baseUrl);
+        url.searchParams.set('w', w.toString());
+        return `${url.toString()} ${w}w`;
+      })
       .join(', ');
   };
 
   const srcSet = generateSrcSet();
+  const optimizedSrc = getOptimizedSrc();
 
-  const imageElement = (
+  // Show error placeholder if image failed to load
+  if (hasError) {
+    return (
+      <div 
+        ref={imgRef}
+        className={cn(
+          "flex items-center justify-center bg-gray-200 text-gray-400",
+          fill && "w-full h-full",
+          className
+        )}
+        style={style}
+      >
+        <span className="text-xs">Failed to load</span>
+      </div>
+    );
+  }
+
+  // Placeholder while loading
+  const placeholderElement = placeholder === "blur" && blurDataURL ? (
     <img
-      src={optimizedSrc}
-      alt={alt}
-      width={width}
-      height={height}
+      src={blurDataURL}
+      alt=""
       className={cn(
-        "transition-opacity duration-300",
-        !isLoaded && "opacity-0",
-        isLoaded && "opacity-100",
-        fill && "w-full h-full object-cover",
+        "absolute inset-0 w-full h-full object-cover transition-opacity duration-300",
+        isLoaded ? "opacity-0" : "opacity-100"
+      )}
+    />
+  ) : null;
+
+  const imageElement = isInView ? (
+    <div className="relative w-full h-full">
+      {placeholderElement}
+      <img
+        ref={imgRef}
+        src={optimizedSrc}
+        alt={alt}
+        width={width}
+        height={height}
+        className={cn(
+          "transition-opacity duration-300",
+          !isLoaded && "opacity-0",
+          isLoaded && "opacity-100",
+          fill && "w-full h-full",
+          className
+        )}
+        style={{ objectFit: fill ? objectFit : undefined, ...style }}
+        loading={priority ? "eager" : "lazy"}
+        sizes={defaultSizes}
+        onLoad={handleImageLoaded}
+        onError={handleImageError}
+        onClick={onClick}
+        srcSet={srcSet}
+        fetchPriority={priority ? "high" : "auto"}
+        decoding={priority ? "sync" : "async"}
+        title={title}
+      />
+    </div>
+  ) : (
+    <div 
+      ref={imgRef}
+      className={cn(
+        "bg-gray-100 animate-pulse",
+        fill && "w-full h-full",
         className
       )}
-      style={fill ? { objectFit } : {}}
-      loading={priority ? "eager" : "lazy"}
-      sizes={defaultSizes}
-      onLoad={handleImageLoaded}
-      onClick={onClick}
-      srcSet={srcSet}
-      fetchPriority={priority ? "high" : "auto"}
-      decoding={priority ? "sync" : "async"}
+      style={style}
     />
   );
 

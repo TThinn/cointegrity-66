@@ -8,6 +8,13 @@ import { initializeCacheManagement } from "./utils/cacheManager"
 import { initServiceWorker } from "./utils/serviceWorkerInit"
 import { initializeErrorHandling } from "./utils/errorLogger"
 import { scrollToTop, initializeScrollManager, initializeUrlUpdater } from "./utils/scrollManager"
+import { 
+  preloadCriticalResources, 
+  initPerformanceMonitoring, 
+  optimizeFontLoading,
+  setupAdvancedCaching,
+  scheduleNonCriticalTasks
+} from "./utils/performanceOptimizer"
 
 // Page imports
 import Index from "./pages/Index"
@@ -42,22 +49,24 @@ const ScrollToTop = () => {
 const App = () => {
   // Initialize all systems
   useEffect(() => {
-    // Initialize error handling first
+    // Critical initialization (immediately)
     initializeErrorHandling();
+    preloadCriticalResources();
+    optimizeFontLoading();
     
-    // Initialize cache management
-    initializeCacheManagement();
-    
-    // Initialize scroll management and URL updating
-    initializeScrollManager();
-    
-    // Initialize URL updater immediately
-    initializeUrlUpdater();
-    
-    // Initialize service worker with delay
+    // High priority initialization (next tick)
     setTimeout(() => {
-      initServiceWorker();
-    }, 500);
+      initializeCacheManagement();
+      initializeScrollManager();
+      initializeUrlUpdater();
+    }, 0);
+    
+    // Medium priority initialization (when main thread is free)
+    scheduleNonCriticalTasks([
+      () => initPerformanceMonitoring(),
+      () => setupAdvancedCaching(),
+      () => initServiceWorker()
+    ]);
     
   }, []);
 

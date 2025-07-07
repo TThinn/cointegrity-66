@@ -4,6 +4,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import Button from "./ui/CustomButtonComponent";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getActiveSection } from "@/utils/scrollManager";
+import OptimizedImage from "./ui/OptimizedImage";
 
 interface HeaderProps {
 	backgroundType?: "dark" | "light";
@@ -177,10 +178,14 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 				<div className="flex items-center justify-between">
 					<a href="/#Web3-Consulting" className="relative z-10 micro-interaction">
 						<div className="flex items-center">
-							<img
+							<OptimizedImage
 								src="/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png"
 								alt="Cointegrity Logo"
 								className="h-10 w-auto"
+								priority={true}
+								sizes="40px"
+								width={120}
+								height={40}
 							/>
 						</div>
 					</a>

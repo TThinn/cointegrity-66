@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Container from "./ui/Container";
+import OptimizedImage from "./ui/OptimizedImage";
 
 const Accreditations = () => {
   const [pausedRow1, setPausedRow1] = useState(false);
@@ -118,11 +119,19 @@ const Accreditations = () => {
           <div className="mb-20">
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 place-items-center">
               {brands.map(brand => <a key={brand.id} href={brand.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center h-24 w-full hover:opacity-80 transition-opacity">
-                  <img src={brand.logo} alt={brand.name} className="max-h-20 w-auto object-contain opacity-60" style={{
-                maxWidth: brand.name === "EY" ? "80px" : "160px",
-                height: "auto",
-                verticalAlign: "middle"
-              }} title={brand.name} />
+                  <OptimizedImage 
+                    src={brand.logo} 
+                    alt={brand.name} 
+                    className="max-h-20 w-auto object-contain opacity-60" 
+                    style={{
+                      maxWidth: brand.name === "EY" ? "80px" : "160px",
+                      height: "auto",
+                      verticalAlign: "middle"
+                    }} 
+                    title={brand.name}
+                    priority={false}
+                    sizes="(max-width: 640px) 80px, (max-width: 1024px) 120px, 160px"
+                  />
                 </a>)}
             </div>
           </div>

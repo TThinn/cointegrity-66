@@ -2,6 +2,7 @@ import React from "react";
 import Container from "./ui/Container";
 import { Link, useLocation } from "react-router-dom";
 import { CopyrightNotice } from "./legal/CopyrightNotice";
+import OptimizedImage from "./ui/OptimizedImage";
 const Footer = () => {
   const location = useLocation();
   const isHomepage = location.pathname === '/';
@@ -71,7 +72,15 @@ const Footer = () => {
           {/* Logo and intro */}
           <div className="mb-8 md:mb-0 w-full md:w-1/3 pr-0 md:pr-8">
             <NavLink to="/" className="inline-block mb-4">
-              <img src="/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png" alt="Cointegrity Logo" className="h-10 w-auto" />
+              <OptimizedImage 
+                src="/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png" 
+                alt="Cointegrity Logo" 
+                className="h-10 w-auto"
+                priority={false}
+                sizes="40px"
+                width={120}
+                height={40}
+              />
             </NavLink>
             <p className="text-white/70 mb-4">Expert Web3 Consultancy specializing in blockchain strategy, regulatory compliance, and Web3 implementation services for organizations navigating digital asset transformation and decentralized infrastructure.</p>
           </div>

@@ -13,6 +13,7 @@ import Process from "@/components/Process";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { ResourceHints } from "@/components/seo/ResourceHints";
 import { InvisibleInternalLinks } from "@/components/seo/InvisibleInternalLinks";
+import { AdvancedPerformanceOptimization } from "@/components/seo/AdvancedPerformanceOptimization";
 import { useLocation } from "react-router-dom";
 
 
@@ -25,6 +26,9 @@ const Index = () => {
   
   return (
     <div className="min-h-screen bg-[#010822] overflow-x-hidden" itemScope itemType="https://schema.org/WebPage">
+      {/* Advanced performance optimization */}
+      <AdvancedPerformanceOptimization priority={true} page="home" />
+      
       {/* Resource hints for proper initialization order */}
       <ResourceHints />
       

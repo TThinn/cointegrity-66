@@ -3,6 +3,7 @@ import React from "react";
 import { Linkedin, X } from "lucide-react";
 import { Founder } from "./foundersData";
 import FounderDialog from "./FounderDialog";
+import OptimizedImage from "../ui/OptimizedImage";
 
 interface FounderCardProps {
   founder: Founder;
@@ -65,11 +66,15 @@ const FounderCard: React.FC<FounderCardProps> = ({ founder, index }) => {
       >
         <div className="relative mb-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 overflow-hidden rounded-full mx-auto">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800 opacity-10 rounded-full"></div>
-          <img 
+          <OptimizedImage 
             src={founder.image} 
             alt={founder.name} 
-            className={`${isAbsolutePositioned ? 'absolute' : ''} w-full h-full object-cover`}
+            className={`${isAbsolutePositioned ? 'absolute' : ''} w-full h-full`}
             style={imageStyles}
+            fill={true}
+            objectFit="cover"
+            priority={false}
+            sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, (max-width: 1024px) 112px, (max-width: 1280px) 128px, 144px"
           />
         </div>
         
