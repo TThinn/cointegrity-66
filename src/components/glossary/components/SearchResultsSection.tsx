@@ -14,12 +14,12 @@ export const SearchResultsSection: React.FC<SearchResultsSectionProps> = ({
   terms,
   searchTerm
 }) => {
-  // Separate direct matches from other results - take top results as direct matches
-  const directMatches = terms.slice(0, 3).filter(term => isDirectMatch(term, searchTerm));
-  const relatedTerms = terms.filter(term => !directMatches.includes(term));
+  // Separate direct matches from other results using enhanced matching
+  const directMatches = terms.filter(term => isDirectMatch(term, searchTerm));
+  const relatedTerms = terms.filter(term => !isDirectMatch(term, searchTerm));
   
-  console.log(`🎯 Direct matches for "${searchTerm}":`, directMatches.map(t => t.term));
-  console.log(`🔗 Related terms for "${searchTerm}":`, relatedTerms.slice(0, 10).map(t => t.term));
+  console.log(`🎯 Enhanced PARENTHESES Direct matches for "${searchTerm}":`, directMatches.map(t => t.term));
+  console.log(`🔗 Related terms for "${searchTerm}":`, relatedTerms.map(t => t.term));
   
   return (
     <div className="mb-8">

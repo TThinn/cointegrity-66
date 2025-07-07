@@ -158,7 +158,7 @@ export const optimizeFontLoading = () => {
 };
 
 /**
- * Setup advanced caching strategy with enhanced preloading
+ * Setup advanced caching strategy
  */
 export const setupAdvancedCaching = () => {
   if ('serviceWorker' in navigator) {
@@ -167,14 +167,6 @@ export const setupAdvancedCaching = () => {
       updateViaCache: 'none'
     }).then((registration) => {
       console.log('Service Worker registered:', registration);
-      
-      // Preload critical routes
-      caches.open('cointegrity-dynamic-v2.1.0').then(cache => {
-        cache.addAll([
-          '/glossary',
-          '/mica-ready-waitlist'
-        ]);
-      });
       
       // Check for updates every 24 hours
       setInterval(() => {

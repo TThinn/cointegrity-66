@@ -37,6 +37,7 @@ const GlossaryPage: React.FC = () => {
     letters,
     isLoading,
     totalTermsCount,
+    transformationProgress,
     isSearching
   } = useGlossaryData(searchTerm, activeCategory, initialDataSource);
   

@@ -38,11 +38,8 @@ export default defineConfig(({ mode }) => {
             'vendor-forms': ['react-hook-form', '@hookform/resolvers', 'zod'],
             'vendor-icons': ['lucide-react'],
             
-            // Feature chunks  
+            // Feature chunks
             'chunk-seo': ['react-helmet-async'],
-            'chunk-supabase': ['@supabase/supabase-js'],
-            
-            // Glossary is now lazy loaded, so it will be in its own chunk automatically
           },
           chunkFileNames: 'js/[name]-[hash].js',
           entryFileNames: 'js/[name]-[hash].js',

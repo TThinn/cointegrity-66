@@ -1,9 +1,5 @@
 import { useState, useCallback } from "react";
-// Lazy load Supabase to reduce bundle size
-const getSupabase = async () => {
-  const { supabase } = await import("@/integrations/supabase/client");
-  return supabase;
-};
+import { supabase } from "@/integrations/supabase/client";
 import { PlaceholderData } from "@/utils/contactPlaceholders";
 import { showSuccessToast, showErrorToast } from "@/components/ui/custom-toast";
 import { useNavigate } from "react-router-dom";
@@ -174,8 +170,7 @@ export const useContactForm = () => {
         recaptchaTokenType: token.startsWith('recaptcha-') ? token : 'valid-token'
       });
 
-      // Lazy load Supabase and call the edge function with sanitized data
-      const supabase = await getSupabase();
+      // Call the edge function with sanitized data
       const { data: mainData, error: mainError } = await supabase.functions.invoke('send-contact-email', {
         body: {
           ...sanitizedFormState,
