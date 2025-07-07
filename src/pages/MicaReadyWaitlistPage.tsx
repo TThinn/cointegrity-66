@@ -18,22 +18,16 @@ const MicaReadyWaitlistPage = () => {
     currentPath,
     currentHash
   } = useSectionTracking();
-   return <div className="min-h-screen bg-[#010822] overflow-x-hidden">
+  return <div className="min-h-screen bg-[#010822] overflow-x-hidden">
        <SeoHead currentPath={currentPath} currentHash={currentHash} />
        <MicaSpecificSEO />
        <HiddenInternalLinks currentPath={currentPath} context="mica" />
-       <LLMContentStructure 
-         contentType="mica"
-         title="World's Fastest MiCA Compliance SaaS Suite"
-         description="AI-powered MiCA compliance delivering instant regulatory analysis, automated workflows, and rapid CASP authorization 10x faster than traditional consulting"
-         keyTopics={["MiCA compliance", "CASP authorization", "EU crypto regulation", "regulatory technology", "automated compliance"]}
-         micaSpecificData={{
-           solutionTypes: ["Intelligence Feed", "License Screening", "Document Review", "Full Application Support"],
-           targetAudience: ["crypto businesses", "compliance officers", "legal teams", "EU market entrants"],
-           competitiveAdvantages: ["10x faster", "90% cost reduction", "AI-powered", "European expertise"],
-           launchTimeline: "Q3 2025 with beta access"
-         }}
-       />
+       <LLMContentStructure contentType="mica" title="World's Fastest MiCA Compliance SaaS Suite" description="AI-powered MiCA compliance delivering instant regulatory analysis, automated workflows, and rapid CASP authorization 10x faster than traditional consulting" keyTopics={["MiCA compliance", "CASP authorization", "EU crypto regulation", "regulatory technology", "automated compliance"]} micaSpecificData={{
+      solutionTypes: ["Intelligence Feed", "License Screening", "Document Review", "Full Application Support"],
+      targetAudience: ["crypto businesses", "compliance officers", "legal teams", "EU market entrants"],
+      competitiveAdvantages: ["10x faster", "90% cost reduction", "AI-powered", "European expertise"],
+      launchTimeline: "Q3 2025 with beta access"
+    }} />
        <Helmet>
         <title>World's Fastest MiCA-Ready SaaS Suite - AI-Powered EU Compliance | Cointegrity</title>
         <meta name="description" content="The fastest MiCA compliance SaaS solution available. AI-powered MiCA-Ready Suite delivers instant regulatory intelligence, automated licensing workflows, and rapid CASP authorization - 10x faster than traditional consulting at 90% cost reduction." />
@@ -139,7 +133,7 @@ const MicaReadyWaitlistPage = () => {
               AI-Powered MiCA 
               <span className="bg-gradient-to-r from-[#d946ef] to-[#9333ea] bg-clip-text text-transparent"> Compliance</span>
             </h1>
-            <h2 className="text-2xl md:text-3xl font-semibold text-white/90 mb-4">Lightning-Fast MiCA Compliance in Minutes, Not Months</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold text-white/90 mb-4">The Complete Suite for Every MiCA Challenge</h2>
             <p className="text-white/80 max-w-3xl mx-auto text-base">
               Get early access to our complete suite launching Q3 2025. From regulatory intelligence to full <a href="/glossary?search=CASP" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">CASP authorization</a> — secure your spot on the waiting list now. 
               Developed by Europe's <a href="/#about" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">leading Web3 consultancy</a> with proven <a href="/#testimonials" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">regulatory expertise</a>.
@@ -305,9 +299,7 @@ const MicaReadyWaitlistPage = () => {
             </div>
 
             <div className="space-y-4">
-              {micaFaqData.map((faq, index) => (
-                <MicaFaqItem key={index} {...faq} />
-              ))}
+              {micaFaqData.map((faq, index) => <MicaFaqItem key={index} {...faq} />)}
             </div>
 
             {/* Hidden expert authority links */}
