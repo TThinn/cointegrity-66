@@ -1,6 +1,10 @@
 
 import React, { useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+// Lazy load Supabase to reduce bundle size
+const getSupabase = async () => {
+  const { supabase } = await import("@/integrations/supabase/client");
+  return supabase;
+};
 import { toast } from "sonner";
 import Button from "@/components/ui/CustomButtonComponent";
 import { Loader2, CheckCircle } from "lucide-react";
@@ -133,6 +137,9 @@ const MicaReadyWaitlistForm = ({ serviceInterest, buttonText, buttonClass }: Mic
         role: sanitizedData.role,
         service_interest: sanitizedData.service_interest
       });
+
+      // Lazy load Supabase
+      const supabase = await getSupabase();
 
       const { error } = await supabase
         .from('waitlist')

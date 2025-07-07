@@ -1,6 +1,10 @@
 
 import { useState } from 'react';
-import { supabase } from '@/integrations/supabase/client';
+// Lazy load Supabase to reduce bundle size
+const getSupabase = async () => {
+  const { supabase } = await import('@/integrations/supabase/client');
+  return supabase;
+};
 import { showSuccessToast, showErrorToast } from '@/components/ui/custom-toast';
 
 // Enhanced email validation
@@ -67,6 +71,9 @@ export const useNewsletterSignup = () => {
         sanitizedEmail: sanitizedEmail,
         source: 'blog_page'
       });
+
+      // Lazy load Supabase
+      const supabase = await getSupabase();
 
       const { error } = await supabase
         .from('newsletter_subscriptions')

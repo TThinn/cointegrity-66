@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { CategoryType, DataSourceType, GlossaryTerm } from "../types";
-import { glossaryTerms } from "@/data/glossaryTerms";
+import { loadGlossaryTerms } from "@/data/glossaryTermsLazy";
 import { batchTransformTerms } from "../utils/termTransformation";
 import { scoreTermMatch } from "../utils/termScoring";
 
@@ -16,9 +16,35 @@ export const useGlossaryData = (
   const [dataSource, setDataSource] = useState<DataSourceType>(initialDataSource);
   const [isLoading, setIsLoading] = useState(true);
   const [transformationProgress, setTransformationProgress] = useState(0);
+  const [glossaryTerms, setGlossaryTerms] = useState<GlossaryTerm[]>([]);
+
+  // Load glossary terms lazily
+  useEffect(() => {
+    let isMounted = true;
+    
+    const loadTerms = async () => {
+      try {
+        const terms = await loadGlossaryTerms();
+        if (isMounted) {
+          setGlossaryTerms(terms);
+          console.log(`Loaded ${terms.length} glossary terms lazily`);
+        }
+      } catch (error) {
+        console.error('Failed to load glossary terms:', error);
+      }
+    };
+
+    loadTerms();
+    
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   // Get the appropriate data based on the selected source and apply transformations
   const rawData = useMemo(() => {
+    if (glossaryTerms.length === 0) return [];
+    
     console.log(`Using ${dataSource} data source`);
     console.log(`Original data source length: ${glossaryTerms.length}`);
     
@@ -32,7 +58,7 @@ export const useGlossaryData = (
     
     console.log(`Transformed ${transformedTerms.length} terms with questions`);
     return transformedTerms;
-  }, [dataSource]);
+  }, [dataSource, glossaryTerms]);
 
   // Log data loading on component mount
   useEffect(() => {

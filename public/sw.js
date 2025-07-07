@@ -1,6 +1,6 @@
 
 // Advanced Service Worker with multiple caching strategies
-const VERSION = '2.1.0';
+const VERSION = '2.2.0';
 const STATIC_CACHE = `cointegrity-static-v${VERSION}`;
 const DYNAMIC_CACHE = `cointegrity-dynamic-v${VERSION}`;
 const IMAGE_CACHE = `cointegrity-images-v${VERSION}`;
@@ -13,6 +13,16 @@ const CRITICAL_ASSETS = [
   '/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png', // Logo
   '/manifest.json',
   '/favicon.ico'
+];
+
+// Priority partner logos for faster loading
+const PRIORITY_IMAGES = [
+  '/lovable-uploads/ETH.png',
+  '/lovable-uploads/Binance.png', 
+  '/lovable-uploads/Meta.png',
+  '/lovable-uploads/Blackrock.png',
+  '/lovable-uploads/Google_Cloud.png',
+  '/lovable-uploads/Mircrosoft.png'
 ];
 
 // Cache strategies by resource type
@@ -31,6 +41,10 @@ self.addEventListener('install', (event) => {
       caches.open(STATIC_CACHE).then(cache => {
         console.log('Service Worker: Caching critical assets');
         return cache.addAll(CRITICAL_ASSETS);
+      }),
+      caches.open(IMAGE_CACHE).then(cache => {
+        console.log('Service Worker: Preloading priority images');
+        return cache.addAll(PRIORITY_IMAGES);
       }),
       self.skipWaiting()
     ]).catch((error) => {
