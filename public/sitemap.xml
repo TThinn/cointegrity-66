@@ -19,45 +19,45 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-  <!-- Section URLs for SEO -->
+  <!-- Canonical section URLs with hash fragments for one-page website -->
   <url>
-    <loc>https://cointegrity.io/about</loc>
+    <loc>https://cointegrity.io/#about</loc>
     <lastmod>2024-12-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cointegrity.io/services</loc>
+    <loc>https://cointegrity.io/#services</loc>
     <lastmod>2024-12-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cointegrity.io/partners</loc>
+    <loc>https://cointegrity.io/#partners</loc>
     <lastmod>2024-12-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cointegrity.io/process</loc>
+    <loc>https://cointegrity.io/#process</loc>
     <lastmod>2024-12-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cointegrity.io/team</loc>
+    <loc>https://cointegrity.io/#founders</loc>
     <lastmod>2024-12-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cointegrity.io/testimonials</loc>
+    <loc>https://cointegrity.io/#testimonials</loc>
     <lastmod>2024-12-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cointegrity.io/contact</loc>
+    <loc>https://cointegrity.io/#contact</loc>
     <lastmod>2024-12-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>

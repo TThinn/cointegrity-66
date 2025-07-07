@@ -71,16 +71,7 @@ const App = () => {
               <Route path="/" element={<Index />} />
               <Route path="/web3-consulting" element={<Index />} />
               
-              {/* Section redirects for SEO */}
-              <Route path="/about" element={<Navigate to="/#about" replace />} />
-              <Route path="/services" element={<Navigate to="/#services" replace />} />
-              <Route path="/partners" element={<Navigate to="/#partners" replace />} />
-              <Route path="/process" element={<Navigate to="/#process" replace />} />
-              <Route path="/team" element={<Navigate to="/#founders" replace />} />
-              <Route path="/founders" element={<Navigate to="/#founders" replace />} />
-              <Route path="/hero" element={<Navigate to="/#Web3-Consulting" replace />} />
-              <Route path="/testimonials" element={<Navigate to="/#testimonials" replace />} />
-              <Route path="/contact" element={<Navigate to="/#contact" replace />} />
+              {/* Removed section redirects to fix Google Search Console indexing issues */}
               
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/glossary" element={<GlossaryPage />} />
