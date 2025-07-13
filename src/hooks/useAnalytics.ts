@@ -8,12 +8,25 @@ type EventOptions = {
 };
 
 export const useAnalytics = () => {
+  const checkConsent = (): boolean => {
+    if (typeof window === 'undefined') return false;
+    
+    // Check if Cookiebot exists and user has given statistics consent
+    return window.Cookiebot?.hasResponse && window.Cookiebot?.consent.statistics || false;
+  };
+
   /**
-   * Track a page view with Google Analytics (with safety checks)
+   * Track a page view with Google Analytics (with consent checks)
    * @param path - The page path
    * @param title - The page title
    */
   const pageView = (path: string, title?: string) => {
+    // Check consent first
+    if (!checkConsent()) {
+      console.warn('📊 Analytics: No consent for statistics, skipping page view');
+      return;
+    }
+
     // Safety check for gtag availability
     if (typeof window === 'undefined' || !window.gtag) {
       console.warn('📊 Analytics: gtag not available, skipping page view');
@@ -33,11 +46,17 @@ export const useAnalytics = () => {
   };
 
   /**
-   * Track an event with Google Analytics (with safety checks)
+   * Track an event with Google Analytics (with consent checks)
    * @param action - The action name
    * @param options - Additional event parameters
    */
   const trackEvent = (action: string, options: EventOptions = {}) => {
+    // Check consent first
+    if (!checkConsent()) {
+      console.warn('📊 Analytics: No consent for statistics, skipping event');
+      return;
+    }
+
     // Safety check for gtag availability
     if (typeof window === 'undefined' || !window.gtag) {
       console.warn('📊 Analytics: gtag not available, skipping event');
@@ -60,12 +79,18 @@ export const useAnalytics = () => {
   };
 
   /**
-   * Track a conversion (with safety checks)
+   * Track a conversion (with consent checks)
    * @param action - The conversion action
    * @param id - Optional conversion ID
    * @param options - Additional conversion parameters
    */
   const trackConversion = (action: string, id?: string, options: EventOptions = {}) => {
+    // Check consent first
+    if (!checkConsent()) {
+      console.warn('📊 Analytics: No consent for statistics, skipping conversion');
+      return;
+    }
+
     // Safety check for gtag availability
     if (typeof window === 'undefined' || !window.gtag) {
       console.warn('📊 Analytics: gtag not available, skipping conversion');

@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './styles/main.css';
+import { initWebVitals } from './utils/webVitalsInit';
 
 // Simple app initialization
 const initializeApp = () => {
@@ -18,6 +19,9 @@ const initializeApp = () => {
       <App />
     </React.StrictMode>
   );
+
+  // Initialize web vitals after app render
+  initWebVitals();
 };
 
 // Initialize when DOM is ready

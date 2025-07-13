@@ -4,6 +4,7 @@ import { Toaster } from "sonner"
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom"
 import { HelmetProvider } from "react-helmet-async"
 import ErrorBoundary from "./components/app/ErrorBoundary"
+import { ConsentManager } from "./components/ConsentManager"
 import { initializeCacheManagement } from "./utils/cacheManager"
 import { initServiceWorker } from "./utils/serviceWorkerInit"
 import { initializeErrorHandling } from "./utils/errorLogger"
@@ -74,6 +75,7 @@ const App = () => {
     <ErrorBoundary>
       <HelmetProvider>
         <BrowserRouter>
+          <ConsentManager />
           <ScrollToTop />
           <div className="app-container">
             <Routes>
