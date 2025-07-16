@@ -37,17 +37,39 @@ export function linkGlossaryTerms(text: string): string {
     return linkedText;
   }
   
-  // Process terms from longest to shortest to avoid partial matches
-  sortedTerms.forEach(term => {
-    // Skip very short terms to avoid over-linking
-    if (term.length < 3) return;
+  // Create all possible term variations for perfect matching
+  const termVariationsMap = new Map();
+  
+  glossaryTerms.forEach(glossaryTerm => {
+    const termName = glossaryTerm.term;
     
-    // Create a more flexible regex that handles various cases
-    const escapedTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const regex = new RegExp(`\\b${escapedTerm}\\b`, 'gi');
+    // Add the main term
+    termVariationsMap.set(termName.toLowerCase(), { term: termName, glossaryTerm });
+    
+    // Extract acronyms or short forms from parentheses (e.g., "DAO" from "Decentralized Autonomous Organization (DAO)")
+    const parenthesesMatch = termName.match(/\(([^)]+)\)/);
+    if (parenthesesMatch) {
+      const acronym = parenthesesMatch[1];
+      termVariationsMap.set(acronym.toLowerCase(), { term: termName, glossaryTerm });
+    }
+  });
+  
+  // Sort all variations by length (longest first) to avoid partial matches
+  const sortedVariations = Array.from(termVariationsMap.keys()).sort((a, b) => b.length - a.length);
+  
+  // Process each variation for perfect matches only
+  sortedVariations.forEach(variation => {
+    const { term: originalTerm } = termVariationsMap.get(variation);
+    
+    // Skip very short terms to avoid over-linking
+    if (variation.length < 3) return;
+    
+    // Create exact match regex (case-insensitive)
+    const escapedVariation = variation.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`\\b${escapedVariation}\\b`, 'gi');
     
     linkedText = linkedText.replace(regex, (match) => {
-      // Don't link if already inside HTML tags
+      // Don't link if already inside HTML tags or existing links
       const beforeMatch = linkedText.substring(0, linkedText.indexOf(match));
       const openTags = (beforeMatch.match(/<[^>]*$/g) || []).length;
       const closeTags = (beforeMatch.match(/>/g) || []).length;
@@ -57,8 +79,13 @@ export function linkGlossaryTerms(text: string): string {
         return match;
       }
       
-      const termSlug = createGlossaryAnchor(term);
-      return `<a href="/glossary#${termSlug}" class="glossary-link" title="Learn more about ${term}">${match}</a>`;
+      // Check if we're already inside a link
+      if (beforeMatch.includes('<a ') && !beforeMatch.includes('</a>')) {
+        return match;
+      }
+      
+      const termSlug = createGlossaryAnchor(originalTerm);
+      return `<a href="/glossary#${termSlug}" class="glossary-link" title="Learn more about ${originalTerm}">${match}</a>`;
     });
   });
   
