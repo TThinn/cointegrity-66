@@ -3,9 +3,15 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './styles/main.css';
 import { initWebVitals } from './utils/webVitalsInit';
+import { SecurityProvider } from './components/security/SecurityProvider';
+import { initializeSecurityHeaders, initializeSecurityMonitoring } from './utils/securityHeaders';
 
 // Simple app initialization
 const initializeApp = () => {
+  // Initialize security measures first
+  initializeSecurityHeaders();
+  initializeSecurityMonitoring();
+
   const rootElement = document.getElementById("root");
 
   if (!rootElement) {
@@ -16,7 +22,9 @@ const initializeApp = () => {
   
   root.render(
     <React.StrictMode>
-      <App />
+      <SecurityProvider>
+        <App />
+      </SecurityProvider>
     </React.StrictMode>
   );
 

@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import Button from "@/components/ui/CustomButtonComponent";
 import { Loader2, CheckCircle } from "lucide-react";
+import { useSecureFormSubmission } from "@/hooks/useSecureFormSubmission";
 import {
   Dialog,
   DialogContent,
@@ -83,9 +84,19 @@ const MicaReadyWaitlistForm = ({ serviceInterest, buttonText, buttonClass }: Mic
     company: '',
     role: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  const { isSubmitting, submitSecurely, startSubmission } = useSecureFormSubmission({
+    onSuccess: () => {
+      setIsSubmitted(true);
+      toast.success("Welcome to the waitlist! We'll be in touch soon.");
+      setFormData({ name: '', email: '', company: '', role: '' });
+    },
+    onError: (error) => {
+      toast.error(error);
+    }
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -101,73 +112,36 @@ const MicaReadyWaitlistForm = ({ serviceInterest, buttonText, buttonClass }: Mic
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    startSubmission();
     
-    // Prevent multiple submissions
-    if (isSubmitting) {
-      return;
-    }
-    
-    setIsSubmitting(true);
-
-    try {
-      // Enhanced client-side validation
-      const validationErrors = validateWaitlistData(formData);
-      if (validationErrors.length > 0) {
-        toast.error(validationErrors[0]);
-        return;
-      }
-
-      // Additional sanitization before submission
-      const sanitizedData = {
-        name: sanitizeInput(formData.name),
-        email: sanitizeInput(formData.email.toLowerCase()),
-        company: sanitizeInput(formData.company),
-        role: formData.role ? sanitizeInput(formData.role) : null,
+    await submitSecurely(
+      {
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        role: formData.role || '',
         service_interest: serviceInterest
-      };
+      },
+      async (sanitizedData) => {
+        const { error } = await supabase
+          .from('waitlist')
+          .insert([sanitizedData]);
 
-      console.log('Submitting waitlist form with validation:', {
-        name: sanitizedData.name,
-        email: sanitizedData.email,
-        company: sanitizedData.company,
-        role: sanitizedData.role,
-        service_interest: sanitizedData.service_interest
-      });
-
-      const { error } = await supabase
-        .from('waitlist')
-        .insert([sanitizedData]);
-
-      if (error) {
-        console.error('Error inserting waitlist entry:', error);
-        
-        if (error.code === '23505') {
-          toast.error("This email is already on our waitlist!");
-        } else if (error.message.includes('check constraint')) {
-          toast.error("Please check your input and try again.");
-        } else {
-          toast.error("Something went wrong. Please try again.");
+        if (error) {
+          console.error('Error inserting waitlist entry:', error);
+          
+          if (error.code === '23505') {
+            throw new Error("This email is already on our waitlist!");
+          } else if (error.message.includes('check constraint')) {
+            throw new Error("Please check your input and try again.");
+          } else {
+            throw new Error("Something went wrong. Please try again.");
+          }
         }
-        return;
+
+        return { success: true };
       }
-
-      setIsSubmitted(true);
-      toast.success("Welcome to the waitlist! We'll be in touch soon.");
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        role: ''
-      });
-
-    } catch (error) {
-      console.error('Unexpected waitlist error:', error);
-      toast.error("Something went wrong. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    );
   };
 
   const handleClose = () => {
