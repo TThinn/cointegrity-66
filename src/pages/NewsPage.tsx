@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { ExternalLink, Rss } from 'lucide-react';
 import { newsData, NewsItem } from '@/data/newsData';
 
-export const NewsPage = () => {
+const NewsPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -177,3 +177,5 @@ export const NewsPage = () => {
     </>
   );
 };
+
+export default NewsPage;
