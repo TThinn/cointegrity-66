@@ -176,6 +176,7 @@ Disallow: /deployment-dashboard
 Disallow: /debug/
 Disallow: /*.json
 Disallow: /*.xml$
+Allow: /sitemap.xml
 Disallow: /glossary/bulk-export
 Crawl-delay: 10
 

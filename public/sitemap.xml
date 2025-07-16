@@ -86,26 +86,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://cointegrity.io/guides</loc>
-    <lastmod>2024-12-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://cointegrity.io/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png</image:loc>
-      <image:caption>Web3 Implementation Guides</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://cointegrity.io/case-studies</loc>
-    <lastmod>2024-12-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://cointegrity.io/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png</image:loc>
-      <image:caption>Web3 Case Studies</image:caption>
-    </image:image>
-  </url>
-  <url>
     <loc>https://cointegrity.io/mica-ready-waitlist</loc>
     <lastmod>2024-12-20</lastmod>
     <changefreq>monthly</changefreq>
