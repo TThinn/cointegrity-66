@@ -171,6 +171,9 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
+Disallow: /deployment-test
+Disallow: /deployment-dashboard
+Disallow: /debug/
 Disallow: /*.json
 Disallow: /*.xml$
 Disallow: /glossary/bulk-export
