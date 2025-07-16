@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Glossary link styles */
+.glossary-link {
+  @apply text-pink-400 hover:text-pink-300 underline decoration-pink-400/50 hover:decoration-pink-300 decoration-1 underline-offset-2 transition-colors;
+}
+
 @layer base {
   :root {
     --background: 221 84% 5%;
