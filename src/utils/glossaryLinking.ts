@@ -1,33 +1,6 @@
 import { glossaryTerms } from "@/data/glossaryTerms";
-
-// Create a map of terms for efficient lookup
-const termMap = new Map();
-const termVariations = new Map();
-
-// Initialize the term maps
-glossaryTerms.forEach(term => {
-  const normalizedTerm = term.term.toLowerCase();
-  termMap.set(normalizedTerm, term);
-  
-  // Add variations for better matching
-  const variations = [
-    term.term,
-    term.term.toLowerCase(),
-    term.term.replace(/\s+/g, '-'),
-    term.term.replace(/[^\w\s]/g, ''), // Remove special characters
-  ];
-  
-  variations.forEach(variation => {
-    if (variation && variation.length > 2) {
-      termVariations.set(variation.toLowerCase(), term);
-    }
-  });
-});
-
-// Sort terms by length (longest first) for better matching
-const sortedTerms = glossaryTerms
-  .map(term => term.term)
-  .sort((a, b) => b.length - a.length);
+import React from 'react';
+import { GlossaryTooltip } from '@/components/blog/GlossaryTooltip';
 
 export function linkGlossaryTerms(text: string): string {
   let linkedText = text;
@@ -64,9 +37,10 @@ export function linkGlossaryTerms(text: string): string {
     // Skip very short terms to avoid over-linking
     if (variation.length < 3) return;
     
-    // Create exact match regex (case-insensitive)
+    // Create exact match regex that avoids contractions (case-insensitive)
     const escapedVariation = variation.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const regex = new RegExp(`\\b${escapedVariation}\\b`, 'gi');
+    // Use negative lookahead to avoid matching words followed by apostrophes (contractions)
+    const regex = new RegExp(`\\b${escapedVariation}\\b(?!')`, 'gi');
     
     linkedText = linkedText.replace(regex, (match) => {
       // Don't link if already inside HTML tags or existing links

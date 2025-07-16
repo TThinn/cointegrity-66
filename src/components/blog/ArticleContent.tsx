@@ -3,7 +3,7 @@ import { Calendar, Clock, ExternalLink, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { BlogArticle } from "@/data/blogData";
 import NewsletterCTA from "./NewsletterCTA";
-import { linkGlossaryTerms } from "@/utils/glossaryLinking";
+import { GlossaryLinkedText } from "./GlossaryLinkedText";
 
 interface ArticleContentProps {
   article: BlogArticle;
@@ -26,48 +26,48 @@ const ArticleContent = ({ article }: ArticleContentProps) => {
         
         // Handle headers
         if (paragraph.startsWith('## ')) {
-          const headerText = linkGlossaryTerms(paragraph.substring(3));
           return (
             <h2 
               key={index} 
               className="text-2xl font-bold text-white mt-8 mb-4"
-              dangerouslySetInnerHTML={{ __html: headerText }}
-            />
+            >
+              <GlossaryLinkedText>{paragraph.substring(3)}</GlossaryLinkedText>
+            </h2>
           );
         }
         
         if (paragraph.startsWith('### ')) {
-          const headerText = linkGlossaryTerms(paragraph.substring(4));
           return (
             <h3 
               key={index} 
               className="text-xl font-bold text-white mt-6 mb-3"
-              dangerouslySetInnerHTML={{ __html: headerText }}
-            />
+            >
+              <GlossaryLinkedText>{paragraph.substring(4)}</GlossaryLinkedText>
+            </h3>
           );
         }
         
         // Handle blockquotes
         if (paragraph.startsWith('> ')) {
-          const quoteText = linkGlossaryTerms(paragraph.substring(2));
           return (
             <blockquote 
               key={index} 
               className="border-l-4 border-pink-500 pl-4 my-4 text-white/90 italic bg-white/5 p-4 rounded-r-lg"
-              dangerouslySetInnerHTML={{ __html: quoteText }}
-            />
+            >
+              <GlossaryLinkedText>{paragraph.substring(2)}</GlossaryLinkedText>
+            </blockquote>
           );
         }
         
         // Handle bold text
         if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
-          const boldText = linkGlossaryTerms(paragraph.substring(2, paragraph.length - 2));
           return (
             <p 
               key={index} 
               className="text-white/90 mb-4 font-bold"
-              dangerouslySetInnerHTML={{ __html: boldText }}
-            />
+            >
+              <GlossaryLinkedText>{paragraph.substring(2, paragraph.length - 2)}</GlossaryLinkedText>
+            </p>
           );
         }
         
@@ -78,24 +78,24 @@ const ArticleContent = ({ article }: ArticleContentProps) => {
         
         // Handle italics
         if (paragraph.startsWith('*') && paragraph.endsWith('*') && !paragraph.startsWith('**')) {
-          const italicText = linkGlossaryTerms(paragraph.substring(1, paragraph.length - 1));
           return (
             <p 
               key={index} 
               className="text-white/80 mb-4 italic text-center"
-              dangerouslySetInnerHTML={{ __html: italicText }}
-            />
+            >
+              <GlossaryLinkedText>{paragraph.substring(1, paragraph.length - 1)}</GlossaryLinkedText>
+            </p>
           );
         }
         
         // Regular paragraphs with glossary linking
-        const linkedText = linkGlossaryTerms(paragraph);
         return (
           <p 
             key={index} 
             className="text-white/90 mb-4 leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: linkedText }}
-          />
+          >
+            <GlossaryLinkedText>{paragraph}</GlossaryLinkedText>
+          </p>
         );
       })
       .filter(Boolean);
