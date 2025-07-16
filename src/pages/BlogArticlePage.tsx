@@ -5,9 +5,9 @@ import Footer from "@/components/Footer";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 import ArticleContent from "@/components/blog/ArticleContent";
-import { getBlogArticleBySlug } from "@/data/blogData";
+import { getBlogArticleBySlug, type BlogArticle } from "@/data/blogData";
 
-const BlogArticlePage = () => {
+const BlogArticlePage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const { currentPath, currentHash } = useSectionTracking();
   
