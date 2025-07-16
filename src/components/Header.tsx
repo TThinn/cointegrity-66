@@ -147,6 +147,7 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 		{ href: "/mica-ready-waitlist", label: "MiCA-Ready" },
 		{ href: "/glossary", label: "Glossary" },
 		{ href: "/blog", label: "Blog" },
+		{ href: "/news", label: "News" },
 		{ href: "/guides", label: "Guides" },
 		{ href: "/case-studies", label: "Case Studies" },
 	];
