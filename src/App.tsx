@@ -24,6 +24,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy"
 import GlossaryPage from "./pages/GlossaryPage"
 import ThankYouPage from "./pages/ThankYouPage"
 import BlogPage from "./pages/BlogPage"
+import BlogArticlePage from "./pages/BlogArticlePage"
 import GuidesPage from "./pages/GuidesPage"
 import CaseStudiesPage from "./pages/CaseStudiesPage"
 import MicaReadyWaitlistPage from "./pages/MicaReadyWaitlistPage"
@@ -87,6 +88,7 @@ const App = () => {
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/glossary" element={<GlossaryPage />} />
               <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogArticlePage />} />
               <Route path="/guides" element={<GuidesPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/thank-you" element={<ThankYouPage />} />
