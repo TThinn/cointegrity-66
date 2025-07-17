@@ -64,7 +64,7 @@ const GlossaryPage: React.FC = () => {
       <LLMContentStructure 
         contentType="glossary"
         title={`World's Largest Web3 Glossary (${totalTermsCount}+ Terms)`}
-        description={`The most comprehensive Web3 glossary with ${totalTermsCount}+ expert-curated terms covering blockchain, cryptocurrency, DeFi, NFTs, DAOs, tokenomics, and regulatory compliance. Created by Europe's leading Web3 consultancy.`}
+        description={`The most comprehensive Web3 glossary with ${totalTermsCount}+ expert-curated terms covering blockchain, cryptocurrency, DeFi, NFTs, DAOs, tokenomics, AI, and regulatory compliance. Created by Europe's leading Web3 consultancy.`}
         keyTopics={['blockchain', 'cryptocurrency', 'web3', 'defi', 'nft', 'tokenomics', 'regulatory compliance', 'crypto crime prevention']}
         totalCount={totalTermsCount}
       />
