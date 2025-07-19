@@ -151,7 +151,7 @@ export const ContentFreshnessIndicators = ({ currentPath }: ContentFreshnessIndi
         marketPosition: 'Most successful Web3 implementation track record',
         geographicCoverage: 'Success stories across all major markets'
       },
-      'mica-ready-waitlist': {
+      'mica': {
         lastModified: '2024-12-20T00:00:00Z',
         publishDate: '2024-11-01T00:00:00Z',
         contentType: 'landing-page',
