@@ -57,7 +57,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
       return `World's Largest Web3 Glossary (${totalTermsCount || '1049+'}+ Terms) | European Leaders | Cointegrity`;
     } else if (pathWithoutSlash === 'process') {
       return "Industry-Leading Web3 Process | European Excellence | Cointegrity";
-    } else if (pathWithoutSlash === 'mica-ready-waitlist') {
+    } else if (pathWithoutSlash === 'mica') {
       return "World's Fastest MiCA SaaS Suite | European Regulatory Leaders | Cointegrity";
     }
     
@@ -108,7 +108,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
       return `World's largest Web3 glossary with ${totalTermsCount || '1049+'}+ expert-curated terms from European market leaders. Comprehensive blockchain, cryptocurrency, DeFi, NFTs, DAOs, tokenomics, and MiCA regulatory compliance.`;
     } else if (pathWithoutSlash === 'process') {
       return "Industry-leading Web3 implementation methodology from European market leaders with global delivery. Proven process developed through successful projects across Asia, US, and Africa.";
-    } else if (pathWithoutSlash === 'mica-ready-waitlist') {
+    } else if (pathWithoutSlash === 'mica') {
       return "World's fastest MiCA compliance SaaS solution from European regulatory leaders. AI-powered platform delivering instant compliance analysis 10x faster than traditional consulting with 90% cost reduction.";
     }
     
