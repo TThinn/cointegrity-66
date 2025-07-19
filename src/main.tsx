@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
@@ -5,19 +6,24 @@ import './styles/main.css';
 import { initWebVitals } from './utils/webVitalsInit';
 import { SecurityProvider } from './components/security/SecurityProvider';
 import { initializeSecurityHeaders, initializeSecurityMonitoring } from './utils/securityHeaders';
+import { detectCrawler } from './utils/crawlerDetection';
 
-// Simple app initialization
+// Optimized app initialization
 const initializeApp = () => {
-  // Check if this is a crawler first
-  const userAgent = navigator.userAgent?.toLowerCase() || '';
-  const isBot = ['bot', 'crawler', 'spider', 'nightwatch', 'googlebot', 'bingbot'].some(term => 
-    userAgent.includes(term)
-  );
+  const userAgent = navigator.userAgent || '';
+  const crawlerInfo = detectCrawler(userAgent);
   
-  // Skip security initialization for crawlers to ensure immediate content access
-  if (!isBot) {
-    initializeSecurityHeaders();
-    initializeSecurityMonitoring();
+  // Skip all security initialization for crawlers
+  if (crawlerInfo.isLegitimate) {
+    console.log('[Init] Crawler detected, skipping security initialization');
+  } else {
+    // Only initialize security for regular users, with error handling
+    try {
+      initializeSecurityHeaders();
+      initializeSecurityMonitoring();
+    } catch (error) {
+      console.warn('[Init] Security initialization failed, continuing without it:', error);
+    }
   }
 
   const rootElement = document.getElementById("root");
@@ -36,8 +42,14 @@ const initializeApp = () => {
     </React.StrictMode>
   );
 
-  // Initialize web vitals after app render
-  initWebVitals();
+  // Initialize web vitals after app render (with delay to reduce initial load)
+  setTimeout(() => {
+    try {
+      initWebVitals();
+    } catch (error) {
+      console.warn('[Init] Web vitals initialization failed:', error);
+    }
+  }, 2000);
 };
 
 // Initialize when DOM is ready
