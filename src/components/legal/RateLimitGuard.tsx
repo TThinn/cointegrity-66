@@ -22,6 +22,28 @@ export const RateLimitGuard = ({
 
   useEffect(() => {
     const checkRateLimit = () => {
+      // Check if user agent suggests legitimate crawler
+      const userAgent = navigator.userAgent?.toLowerCase() || '';
+      const legitimateCrawlers = [
+        'googlebot', 'bingbot', 'slurp', 'yandexbot', 'baiduspider', 
+        'applebot', 'duckduckbot', 'perplexitybot', 'claude-web', 
+        'chatgpt-user', 'searchgpt', 'claude-bot', 'twitterbot',
+        'facebookexternalhit', 'linkedinbot'
+      ];
+      
+      const isLegitmateCrawler = legitimateCrawlers.some(crawler => 
+        userAgent.includes(crawler)
+      );
+      
+      // Skip rate limiting for legitimate crawlers
+      if (isLegitmateCrawler) {
+        setRateLimitState({
+          blocked: false,
+          warning: false
+        });
+        return;
+      }
+      
       const result = globalRateLimiter.checkLimit(action);
       const suspicious = globalRateLimiter.checkSuspiciousActivity();
       

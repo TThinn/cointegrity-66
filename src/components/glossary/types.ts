@@ -2,7 +2,7 @@
 import { GlossaryTerm as SourceGlossaryTerm } from "@/data/glossaryTerms";
 
 // Extract category types from the source definition and add crypto_crime
-export type CategoryType = SourceGlossaryTerm['categories'][0] | 'crypto_crime';
+export type CategoryType = SourceGlossaryTerm['categories'][0] | 'crypto_crime' | 'gaming_entertainment';
 
 // Define the structure for category metadata entries
 export type CategoryMetaType = { 
@@ -39,7 +39,8 @@ export const categoryMeta: CategoryMetaType[] = [
   { value: "layer2_solutions", label: "Layer 2 Solutions", description: "Scaling solutions built on top of blockchains" },
   { value: "tokenization", label: "Tokenization", description: "Converting assets to tokens" },
   { value: "crypto_economics", label: "Cryptoeconomics", description: "Economic principles of cryptocurrencies" },
-  { value: "crypto_crime", label: "Crypto Crime", description: "Cryptocurrency-related criminal activities and illicit use cases" }
+  { value: "crypto_crime", label: "Crypto Crime", description: "Cryptocurrency-related criminal activities and illicit use cases" },
+  { value: "gaming_entertainment", label: "Gaming & Entertainment", description: "Gaming and entertainment applications" }
 ];
 
 // Define a data source selection type - simplified to only include available sources

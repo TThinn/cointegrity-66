@@ -29,46 +29,66 @@ export const SecurityProvider: React.FC<SecurityProviderProps> = ({ children }) 
 
   const checkSecurity = async (): Promise<boolean> => {
     try {
-      // Check rate limiting
-      const rateLimit = rateLimiter.checkLimit('security-check');
-      if (!rateLimit.allowed) {
-        setSecurityLevel('high');
-        setIsSecure(false);
-        return false;
+      // Check if user agent suggests legitimate crawler
+      const userAgent = navigator.userAgent?.toLowerCase() || '';
+      const legitimateCrawlers = [
+        'googlebot', 'bingbot', 'slurp', 'yandexbot', 'baiduspider', 
+        'applebot', 'duckduckbot', 'perplexitybot', 'claude-web', 
+        'chatgpt-user', 'searchgpt', 'claude-bot', 'twitterbot',
+        'facebookexternalhit', 'linkedinbot', 'ia_archiver', 
+        'archive.org_bot', 'wayback', 'commoncrawl'
+      ];
+      
+      const isLegitmateCrawler = legitimateCrawlers.some(crawler => 
+        userAgent.includes(crawler)
+      );
+      
+      // Skip security checks for legitimate crawlers
+      if (isLegitmateCrawler) {
+        setIsSecure(true);
+        setSecurityLevel('low');
+        return true;
       }
 
-      // Check for suspicious activity
+      // Check rate limiting (more lenient)
+      const rateLimit = rateLimiter.checkLimit('security-check');
+      if (!rateLimit.allowed) {
+        setSecurityLevel('medium'); // Reduced from 'high'
+        setIsSecure(true); // Don't block, just warn
+        return true; // Changed to allow access
+      }
+
+      // Check for suspicious activity (less aggressive)
       const { suspicious, patterns } = rateLimiter.checkSuspiciousActivity();
-      if (suspicious) {
-        setSecurityLevel(patterns.length > 2 ? 'high' : 'medium');
+      if (suspicious && patterns.length > 5) { // Increased threshold
+        setSecurityLevel('medium');
         await securityGuard.logSecurityEvent({
           type: 'bot_detection',
           details: { patterns },
-          severity: 'medium',
+          severity: 'low', // Reduced severity
           userAgent: navigator.userAgent
         });
       }
 
-      // Basic bot detection
+      // More lenient bot detection
       const botCheck = securityGuard.checkBotBehavior(navigator.userAgent);
-      if (!botCheck.passed) {
-        setSecurityLevel('high');
-        setIsSecure(false);
+      if (!botCheck.passed && botCheck.action === 'block') {
+        setSecurityLevel('medium'); // Reduced from 'high'
         await securityGuard.logSecurityEvent({
           type: 'bot_detection',
           details: { reason: botCheck.reason },
-          severity: 'high',
+          severity: 'medium',
           userAgent: navigator.userAgent
         });
-        return false;
+        // Don't block - just log for monitoring
       }
 
       setIsSecure(true);
       return true;
     } catch (error) {
       console.error('Security check failed:', error);
-      setIsSecure(false);
-      return false;
+      setIsSecure(true); // Fail open for SEO
+      return true;
     }
   };
 

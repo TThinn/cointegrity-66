@@ -61,33 +61,73 @@ class SecurityGuard {
     return { passed: true };
   }
 
-  // Check for bot behavior
+  // Check for bot behavior - SEO friendly
   checkBotBehavior(userAgent?: string, timing?: number): SecurityCheck {
     if (!userAgent) {
-      return { passed: false, reason: 'Missing user agent', action: 'warn' };
+      return { passed: true };
     }
 
-    // Check for common bot patterns
-    const botPatterns = [
-      /bot/i,
-      /crawler/i,
-      /spider/i,
-      /scraper/i,
-      /curl/i,
-      /wget/i,
-      /python/i,
-      /requests/i
+    // Allow legitimate SEO crawlers and bots
+    const legitimateBotPatterns = [
+      /googlebot/i,
+      /bingbot/i,
+      /slurp/i,
+      /yandexbot/i,
+      /baiduspider/i,
+      /applebot/i,
+      /duckduckbot/i,
+      /perplexitybot/i,
+      /claude-web/i,
+      /chatgpt-user/i,
+      /you\.com/i,
+      /searchgpt/i,
+      /claude-bot/i,
+      /twitterbot/i,
+      /facebookexternalhit/i,
+      /linkedinbot/i,
+      /ia_archiver/i,
+      /archive\.org_bot/i,
+      /wayback/i,
+      /commoncrawl/i
     ];
 
-    for (const pattern of botPatterns) {
-      if (pattern.test(userAgent)) {
-        return { passed: false, reason: 'Bot detected', action: 'block' };
-      }
+    // Check if it's a legitimate bot first
+    const isLegitimateBot = legitimateBotPatterns.some(pattern => 
+      pattern.test(userAgent)
+    );
+
+    if (isLegitimateBot) {
+      return { passed: true };
     }
 
-    // Check timing attacks (too fast)
-    if (timing && timing < 1000) {
-      return { passed: false, reason: 'Submission too fast', action: 'warn' };
+    // Only block obviously malicious patterns
+    const maliciousBotPatterns = [
+      /scrapy/i,
+      /selenium/i,
+      /phantom/i,
+      /python-requests.*scraper/i,
+      /aggressive.*scraper/i,
+    ];
+
+    const isMaliciousBot = maliciousBotPatterns.some(pattern => 
+      pattern.test(userAgent)
+    );
+
+    if (isMaliciousBot) {
+      return {
+        passed: false,
+        reason: 'Detected malicious scraper behavior',
+        action: 'block'
+      };
+    }
+
+    // Be more lenient with timing for SEO crawlers
+    if (timing && timing < 500) {
+      return {
+        passed: false,
+        reason: 'Submission too fast (possible bot)',
+        action: 'warn'
+      };
     }
 
     return { passed: true };

@@ -22,6 +22,7 @@ import Index from "./pages/Index"
 import NotFound from "./pages/NotFound"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
 import GlossaryPage from "./pages/GlossaryPage"
+import GlossaryTermPage from "./pages/GlossaryTermPage"
 import ThankYouPage from "./pages/ThankYouPage"
 import BlogPage from "./pages/BlogPage"
 import BlogArticlePage from "./pages/BlogArticlePage"
@@ -87,6 +88,7 @@ const App = () => {
               
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/glossary" element={<GlossaryPage />} />
+              <Route path="/glossary/:slug" element={<GlossaryTermPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/blog/:slug" element={<BlogArticlePage />} />
               <Route path="/news" element={<NewsPage />} />
