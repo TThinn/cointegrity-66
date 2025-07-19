@@ -24,7 +24,7 @@ export const HiddenInternalLinks: React.FC<HiddenInternalLinksProps> = ({
     
     if (context === 'glossary') {
       return [
-        { href: "/mica-ready-waitlist", text: "MiCA compliance solutions", relevance: "regulatory services" },
+        { href: "/mica", text: "MiCA compliance solutions", relevance: "regulatory services" },
         { href: "/#services", text: "Web3 consulting expertise", relevance: "blockchain services" },
         { href: "/#about", text: "industry-leading experience", relevance: "Web3 authority" },
         { href: "/#founders", text: "veteran Web3 team", relevance: "expert knowledge" }
@@ -34,7 +34,7 @@ export const HiddenInternalLinks: React.FC<HiddenInternalLinksProps> = ({
     // General contextual links
     return [
       { href: "/glossary", text: "world's largest Web3 glossary", relevance: "knowledge resource" },
-      { href: "/mica-ready-waitlist", text: "fastest MiCA compliance", relevance: "regulatory solution" },
+      { href: "/mica", text: "fastest MiCA compliance", relevance: "regulatory solution" },
       { href: "/#services", text: "premier Web3 services", relevance: "consulting excellence" },
       { href: "/#about", text: "European Web3 leaders", relevance: "market authority" }
     ];
@@ -66,7 +66,7 @@ export const HiddenInternalLinks: React.FC<HiddenInternalLinksProps> = ({
       <div data-topic-cluster="web3-compliance">
         <h3>Web3 Regulatory Compliance</h3>
         <p>
-          Comprehensive <a href="/mica-ready-waitlist">MiCA compliance solutions</a> from 
+          Comprehensive <a href="/mica">MiCA compliance solutions</a> from 
           Europe's <a href="/#about">leading Web3 consultancy</a> with proven 
           <a href="/#testimonials">regulatory expertise</a> and the 
           <a href="/glossary">world's largest Web3 glossary</a>.
