@@ -1,7 +1,7 @@
 
 import { GlossaryTerm as SourceGlossaryTerm } from "@/data/glossaryTerms";
 
-// Extract category types from the source definition and add crypto_crime
+// Extract category types from the source definition
 export type CategoryType = SourceGlossaryTerm['categories'][0];
 
 // Define the structure for category metadata entries
@@ -11,7 +11,7 @@ export type CategoryMetaType = {
   description: string 
 };
 
-// Category metadata for display - UPDATED WITH CRYPTO CRIME
+// Category metadata for display
 export const categoryMeta: CategoryMetaType[] = [
   { value: "all", label: "All Terms", description: "Browse all glossary terms" },
   { value: "blockchain_technology", label: "Blockchain Technology", description: "Foundational blockchain concepts" },

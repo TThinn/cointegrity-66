@@ -47,7 +47,7 @@ const createCategoryTermSet = (category: string, displayName: string, descriptio
   };
 };
 
-// Get unique categories from glossary terms - UPDATED WITH CRYPTO CRIME
+// Get unique categories from glossary terms
 const getUniqueCategories = (): Array<{
   key: string;
   displayName: string;
@@ -125,11 +125,6 @@ const getUniqueCategories = (): Array<{
       displayName: "Metaverse",
       description: "Terminology for virtual worlds, digital real estate, interoperability standards, and metaverse economics."
     },
-    {
-      key: "crypto_crime",
-      displayName: "Crypto Crime",
-      description: "Terms related to cryptocurrency-based criminal activities, money laundering, sanctions evasion, and blockchain forensics for law enforcement."
-    }
     // Add all your new categories here with appropriate descriptions
   ];
 };
