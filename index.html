@@ -44,7 +44,75 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Static content for crawlers that don't execute JavaScript -->
+      <noscript>
+        <header>
+          <h1>Cointegrity - Leading Web3 & Blockchain Consultancy</h1>
+          <nav>
+            <a href="/">Home</a>
+            <a href="/services">Services</a>
+            <a href="/about">About</a>
+            <a href="/glossary">Web3 Glossary</a>
+            <a href="/contact">Contact</a>
+          </nav>
+        </header>
+        <main>
+          <section>
+            <h1>Simplifying Web3 Complexity</h1>
+            <h2>The consultancy that bridges traditional business expertise with Web3 innovation - whether you're entering, investing in, or optimizing for Web3</h2>
+          </section>
+          <section>
+            <h2>About Cointegrity</h2>
+            <p>We are the leading Web3 consultancy in Europe, specializing in blockchain technology and digital asset transformation. Our team combines 20+ years of traditional finance and enterprise experience with cutting-edge Web3 expertise.</p>
+          </section>
+          <section>
+            <h2>Our Services</h2>
+            <ul>
+              <li>Web3 Strategy & Implementation</li>
+              <li>Blockchain Development</li>
+              <li>Digital Asset Management</li>
+              <li>Smart Contract Development</li>
+              <li>DeFi Solutions</li>
+              <li>NFT Strategy</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Contact Us</h2>
+            <p>Ready to transform your business with Web3? Contact our expert team today.</p>
+            <p>Email: hello@cointegrity.io</p>
+          </section>
+        </main>
+      </noscript>
+      
+      <!-- Fallback content for JavaScript-enabled crawlers -->
+      <div id="crawler-content" style="position: absolute; left: -9999px; visibility: hidden;">
+        <h1>Cointegrity - Web3 & Blockchain Consultancy</h1>
+        <h2>Simplifying Web3 Complexity</h2>
+        <p>The consultancy that bridges traditional business expertise with Web3 innovation - whether you're entering, investing in, or optimizing for Web3</p>
+        <h3>Leading Web3 Consultancy in Europe</h3>
+        <p>We are Europe's most experienced Web3 consultancy, combining 20+ years of traditional finance and enterprise expertise with cutting-edge blockchain innovation. Our seasoned executive team helps businesses navigate the complexities of Web3 transformation.</p>
+        <h3>Our Web3 Services</h3>
+        <ul>
+          <li>Web3 Strategy & Digital Transformation</li>
+          <li>Blockchain Architecture & Development</li>
+          <li>Smart Contract Development & Auditing</li>
+          <li>DeFi Protocol Development</li>
+          <li>Digital Asset Management</li>
+          <li>NFT Strategy & Implementation</li>
+          <li>Tokenomics Design</li>
+          <li>Regulatory Compliance (MiCA Ready)</li>
+        </ul>
+        <h3>Why Choose Cointegrity</h3>
+        <p>Unlike young crypto startups, our team consists of veteran executives from traditional finance and enterprise backgrounds. We bring institutional-grade expertise to Web3 innovation, ensuring your projects are built on solid foundations.</p>
+        <h3>Global Reach, European Leadership</h3>
+        <p>Based in Europe with global operations across Asia, United States, and Africa. We lead the European Web3 market while serving clients worldwide.</p>
+        <h3>Contact Information</h3>
+        <p>Ready to transform your business with Web3? Contact our expert team today.</p>
+        <p>Email: hello@cointegrity.io</p>
+        <p>Visit our comprehensive Web3 glossary at /glossary</p>
+      </div>
+    </div>
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
