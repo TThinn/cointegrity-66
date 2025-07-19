@@ -30,7 +30,7 @@ export const getStructuredData = (currentPath = "", currentHash = "") => {
   ];
 
   // FAQ Schema Logic - Only ONE per page to prevent duplicates
-  if (currentPath.includes('mica-ready-waitlist')) {
+  if (currentPath.includes('mica')) {
     // MiCA page: Use consolidated MiCA FAQ schema (includes all MiCA-specific data)
     baseData.push(...MICA_CONSOLIDATED_STRUCTURED_DATA);
   } else if (currentPath.includes('glossary')) {
