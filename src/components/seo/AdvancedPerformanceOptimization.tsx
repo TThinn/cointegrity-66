@@ -23,7 +23,7 @@ export const AdvancedPerformanceOptimization = ({
         
         const micaLink = document.createElement('link');
         micaLink.rel = 'prefetch';
-        micaLink.href = '/mica-ready-waitlist';
+        micaLink.href = '/mica';
         document.head.appendChild(micaLink);
       }
     };
