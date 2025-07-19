@@ -86,7 +86,7 @@ export const ConversationalSearchData = ({ currentPath, currentHash }: Conversat
           "understand_professional_background", "verify_expertise_depth", "choose_experienced_partners"
         ]
       },
-      'mica-ready-waitlist': {
+      'mica': {
         intentQueries: [
           "Fastest MiCA compliance solution",
           "Quickest EU crypto licensing platform",
