@@ -93,7 +93,7 @@ export const RelatedContentRecommendations = ({ currentPath, currentHash }: Rela
           { url: '/about', title: 'Our Expertise', relevance: 'medium', contentType: 'about' }
         ]
       },
-      'mica-ready-waitlist': {
+      'mica': {
         topics: ['MiCA Compliance', 'EU Regulation', 'AI Solutions', 'Regulatory Technology', 'CASP Licensing'],
         relatedPages: [
           { url: '/services', title: 'Regulatory Services', relevance: 'high', contentType: 'service' },
