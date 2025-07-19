@@ -8,9 +8,17 @@ import { initializeSecurityHeaders, initializeSecurityMonitoring } from './utils
 
 // Simple app initialization
 const initializeApp = () => {
-  // Initialize security measures first
-  initializeSecurityHeaders();
-  initializeSecurityMonitoring();
+  // Check if this is a crawler first
+  const userAgent = navigator.userAgent?.toLowerCase() || '';
+  const isBot = ['bot', 'crawler', 'spider', 'nightwatch', 'googlebot', 'bingbot'].some(term => 
+    userAgent.includes(term)
+  );
+  
+  // Skip security initialization for crawlers to ensure immediate content access
+  if (!isBot) {
+    initializeSecurityHeaders();
+    initializeSecurityMonitoring();
+  }
 
   const rootElement = document.getElementById("root");
 

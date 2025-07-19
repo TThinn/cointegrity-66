@@ -80,11 +80,14 @@ export const initializeSecurityMonitoring = () => {
         // Log to original console
         (originalConsole as any)[key](...args);
         
-        // Check for suspicious console usage patterns
-        if (key === 'log' && args.some(arg => 
-          typeof arg === 'string' && 
-          (arg.includes('document.cookie') || arg.includes('localStorage') || arg.includes('sessionStorage'))
-        )) {
+        // Check for suspicious console usage patterns (skip for crawlers)
+        if (key === 'log' && 
+            !navigator.userAgent?.toLowerCase().includes('bot') &&
+            !navigator.userAgent?.toLowerCase().includes('crawler') &&
+            args.some(arg => 
+              typeof arg === 'string' && 
+              (arg.includes('document.cookie') || arg.includes('localStorage') || arg.includes('sessionStorage'))
+            )) {
           console.warn('[Security] Suspicious console activity detected');
         }
       };

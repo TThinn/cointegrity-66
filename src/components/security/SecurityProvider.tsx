@@ -29,21 +29,22 @@ export const SecurityProvider: React.FC<SecurityProviderProps> = ({ children }) 
 
   const checkSecurity = async (): Promise<boolean> => {
     try {
-      // Check if user agent suggests legitimate crawler
+      // Immediately check if this is a crawler to bypass all security
       const userAgent = navigator.userAgent?.toLowerCase() || '';
       const legitimateCrawlers = [
         'googlebot', 'bingbot', 'slurp', 'yandexbot', 'baiduspider', 
         'applebot', 'duckduckbot', 'perplexitybot', 'claude-web', 
         'chatgpt-user', 'searchgpt', 'claude-bot', 'twitterbot',
         'facebookexternalhit', 'linkedinbot', 'ia_archiver', 
-        'archive.org_bot', 'wayback', 'commoncrawl'
+        'archive.org_bot', 'wayback', 'commoncrawl', 'crawler',
+        'spider', 'bot', 'nightwatch'
       ];
       
       const isLegitmateCrawler = legitimateCrawlers.some(crawler => 
         userAgent.includes(crawler)
       );
       
-      // Skip security checks for legitimate crawlers
+      // Completely skip ALL security checks for crawlers - immediate pass
       if (isLegitmateCrawler) {
         setIsSecure(true);
         setSecurityLevel('low');
@@ -102,11 +103,24 @@ export const SecurityProvider: React.FC<SecurityProviderProps> = ({ children }) 
   };
 
   useEffect(() => {
-    // Initial security check
+    // Check if this is a crawler first
+    const userAgent = navigator.userAgent?.toLowerCase() || '';
+    const isBot = ['bot', 'crawler', 'spider', 'nightwatch', 'googlebot', 'bingbot'].some(term => 
+      userAgent.includes(term)
+    );
+    
+    if (isBot) {
+      // Skip all security checks for bots/crawlers
+      setIsSecure(true);
+      setSecurityLevel('low');
+      return;
+    }
+
+    // Only run security checks for regular users
     checkSecurity();
 
-    // Set up periodic security monitoring
-    const interval = setInterval(checkSecurity, 60000); // Check every minute
+    // Set up periodic security monitoring (only for non-bots)
+    const interval = setInterval(checkSecurity, 60000);
 
     return () => clearInterval(interval);
   }, []);
