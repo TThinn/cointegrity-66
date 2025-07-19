@@ -136,7 +136,7 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 			sectionId: isHomepage ? "founders" : undefined,
 		},
 		{
-			href: "/mica-ready-waitlist",
+			href: "/mica",
 			label: "MiCA",
 			section: "mica",
 			sectionId: undefined,
@@ -144,7 +144,7 @@ const Header = ({ backgroundType = "dark" }: HeaderProps) => {
 	];
 
 	const resourcesItems = [
-		{ href: "/mica-ready-waitlist", label: "MiCA-Ready" },
+		{ href: "/mica", label: "MiCA-Ready" },
 		{ href: "/glossary", label: "Glossary" },
 		{ href: "/blog", label: "Blog" },
 		{ href: "/news", label: "News" },
