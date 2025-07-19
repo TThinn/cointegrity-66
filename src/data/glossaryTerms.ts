@@ -12315,7 +12315,7 @@ trending: 8
 {
 term: "P2E",
 definition: "Play-to-Earn, a gaming model where players can earn cryptocurrency or valuable in-game assets through gameplay. P2E games use blockchain technology to create player-owned economies where time and skill can be monetized. Popular P2E games include Axie Infinity, The Sandbox, and Decentraland. This model has attracted players from developing countries who can earn meaningful income through gaming, though it also raises questions about sustainability and game design.",
-categories: ["gaming_entertainment"],
+categories: ["gaming_metaverse"],
 related: ["Blockchain Gaming", "Player Economy", "Earning Rewards"],
 trending: 7
 },
@@ -12616,7 +12616,7 @@ trending: 5
 {
 term: "SLP",
 definition: "Smooth Love Potion, a token used in the Axie Infinity play-to-earn game ecosystem, or alternatively referring to Simple Ledger Protocol on Bitcoin Cash. In the Axie Infinity context, SLP is earned through gameplay and used for breeding new Axies. The token represents the intersection of gaming and cryptocurrency, where in-game activities generate real economic value. SLP's value fluctuates based on game popularity and token supply/demand dynamics.",
-categories: ["gaming_entertainment"],
+categories: ["gaming_metaverse"],
 related: ["Gaming Token", "Play-to-Earn", "In-game Currency"],
 trending: 6
 },
