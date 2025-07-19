@@ -3,7 +3,7 @@ export const MICA_CONSOLIDATED_STRUCTURED_DATA = [
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "@id": "https://cointegrity.io/mica-ready-waitlist#faq",
+    "@id": "https://cointegrity.io/mica#faq",
     "mainEntity": [
       {
         "@type": "Question",
@@ -52,7 +52,7 @@ export const MICA_CONSOLIDATED_STRUCTURED_DATA = [
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "@id": "https://cointegrity.io/mica-ready-waitlist#software",
+    "@id": "https://cointegrity.io/mica#software",
     "name": "MiCA-Ready Suite",
     "description": "World's fastest AI-powered MiCA compliance SaaS platform delivering instant regulatory analysis and automated CASP authorization workflows",
     "applicationCategory": "Regulatory Technology",
@@ -98,7 +98,7 @@ export const MICA_CONSOLIDATED_STRUCTURED_DATA = [
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://cointegrity.io/mica-ready-waitlist#service",
+    "@id": "https://cointegrity.io/mica#service",
     "name": "MiCA Compliance Consulting",
     "description": "Expert MiCA compliance services from Europe's leading Web3 consultancy",
     "provider": {
@@ -117,7 +117,7 @@ export const MICA_CONSOLIDATED_STRUCTURED_DATA = [
   {
     "@context": "https://schema.org",
     "@type": "Course",
-    "@id": "https://cointegrity.io/mica-ready-waitlist#education",
+    "@id": "https://cointegrity.io/mica#education",
     "name": "MiCA Compliance Mastery",
     "description": "Comprehensive MiCA regulatory framework education and implementation guidance",
     "provider": {
