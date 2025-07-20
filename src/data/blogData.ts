@@ -23,6 +23,84 @@ export interface BlogArticle {
 
 export const blogArticles: BlogArticle[] = [
   {
+    id: "crypto-circuit-hostage-session",
+    title: "A record-breaking \"hostage\" session in the House, and a Viral HR lesson",
+    subtitle: "July 14-20, 2025",
+    excerpt: "American politicians engaged in dramatic legislative combat while Europe's bankers quietly plugged into the crypto matrix. Plus, a $2.17 billion theft recap and why a Coldplay concert provided viral corporate governance lessons.",
+    content: `Every so often, a week comes along that feels less like a relaxing summer holiday week and more like a final exam for the entire financial industry - and this one had questions for everyone. In one window, American politicians were engaged in a form of legislative combat so dramatic it bordered on performance art. In another, Europe's most sober bankers were quietly plugging themselves into the crypto matrix. A third tab, blinking red, served as a stark reminder that for every billion dollars of progress, there's a billion-dollar security breach waiting to happen.
+
+And somewhere in the background, a Coldplay concert provided a viral lesson in corporate governance, because surprisingly enough, there is nowhere to hide from a Kiss Cam, even though you try… Let's try to make some sense of it.
+
+## **How the Sausage Was Made, Washington Edition**
+
+To call last week's events in Washington D.C. "Crypto Week" is to do a profound disservice to the sheer, unadulterated chaos that unfolded. But in reality, did anyone expect anything less? Just asking for a friend..
+
+The centerpiece of the drama was the **GENIUS Act**. What should have been a legislative slam dunk, arriving in the House with broad bipartisan support, immediately descended into a nine-hour procedural knife fight. The dissent was led by members of the House Freedom Caucus, with figures like Marjorie Taylor Greene, Chip Roy and Scott Perry at the forefront, who were suddenly gripped by a terrifying vision of a dystopian future run by a central bank digital currency.
+
+As it turns out, the shortest route between two points in the House is a nine-hour scenic roadtrip on the longest, most twisty roads in U.S. history. The deadlock required a personal summons to the White House from President Trump to break. The bill ultimately passed the House on Thursday and, in a swift conclusion to the week's events, It was signed into law by President Trump on Friday. The spectacle demonstrated that digital assets have officially graduated from a niche technology to prime-time political theatre.
+
+But the week's legislative push didn't end there. The House also passed two other significant bills:
+
+- **The Digital Asset Market Clarity Act (CLARITY Act):** Now awaiting Senate consideration, this bill aims to end the regulatory tug-of-war between the SEC and CFTC by defining when a digital asset is a security versus a commodity.
+
+- **The Anti-CBDC Surveillance State Act:** Addressing the very fears that stalled the GENIUS Act, this legislation would prohibit the Federal Reserve from issuing a CBDC directly to consumers, aiming to prevent potential government overreach and financial surveillance.
+
+This trio of bills marks the most significant legislative push for crypto regulation in U.S. history, setting the stage for even more debate as two of the acts move to the Senate.
+
+## **The Quiet Revolution: Banking's Triple Play**
+
+While Congress provided the fireworks, the real transformation was unfolding across three distinct paths of modern finance, each representing a different strategy for bringing traditional banking onto the blockchain - and each a separate version of the term "Future of Finance".
+
+### **The German Approach: Crypto Services for Traditional Banking**
+
+Germany's banking titans are taking the most straightforward route - expanding their traditional services to include crypto custody and trading. But while Deutsche Bank is planning its entry, Commerzbank is already executing - expanding its footprint. Deutsche Bank announced it will build its future institutional custody platform by leveraging the expertise of specialists, partnering with Austria's Bitpanda and Swiss firm Taurus to offer secure storage for assets like Bitcoin and Ethereum. In a parallel move, Commerzbank, which already offers crypto trading, revealed it is now broadening its own digital asset custody license. This expansion moves them beyond simple trading to establish a full suite of secure storage and management solutions for their corporate clients, signaling a definitive shift where regulated crypto products are becoming a standard offering in mainstream German banking.
+
+### **The Tokenized Stocks "Revolution": Kraken and Beyond**
+
+After years of percolating in crypto circles, the concept of tokenized stocks is finally gaining real traction, with regulatory ambiguity giving way to cautious action. KuCoin became the latest major exchange to signal this shift, announcing it would follow the path already paved by firms like Kraken and Robinhood in offering 24/7 equity trading. The key difference in KuCoin's move is its choice to launch its xStocks on the Solana blockchain, tapping into a high-speed network for trading with stablecoins. The technology itself has been ready for years; the real news is the growing perception of a clear-enough regulatory runway, finally inviting major players to participate.
+
+### **The True Revolution: Tokenized Deposits**
+
+The third and most profound shift involves major banks in the US and UK exploring tokenized deposits - digital representations of actual bank deposits that live on blockchain rails. JPMorgan's JPMD token, launched as a pilot on Coinbase's Base network, represents actual dollars held in regulated bank accounts but moves with the speed and programmability of crypto. Unlike stablecoins, which are issued by non-bank entities, tokenized deposits remain fully within the traditional banking system while gaining blockchain functionality. Bank of England Governor Andrew Bailey explicitly endorsed this approach over stablecoins, telling UK banks he'd "much rather [they] go down the tokenized deposit streets and say, how do we digitize our money". Beneath the technical details, the true innovation lies in fundamentally reimagining how bank deposits work in a digital age, offering the regulatory protections of traditional banking with the 24/7 settlement capabilities of blockchain infrastructure.
+
+## **The MiCA Scoreboard**
+
+This week, the official tally of MiCA-licensed firms ticked up to 53, slowly clarifying which players are operating inside Europe's new regulatory perimeter. The growing list of the compliant, however, casts a brighter spotlight on the industry giants still on the outside. This growing club of the compliant, however, casts a brighter spotlight on the industry giants still on the outside. The continued absence of major players like Binance and Tether underscores that the path to a MiCA license is a complex, high-stakes negotiation with regulators that not everyone is yet willing or able to complete.
+
+While some global players grapple with the high bar for entry, others see a clear opportunity. This week, Ripple publicly confirmed its intention to pursue a MiCA license, signaling a strategic move to expand its crypto and stablecoin operations across the European Economic Area. It's a telling move that underscores a fundamental shift in the market: as the rules of the road become clearer, regulatory compliance is transforming from a burden into a competitive advantage. The European crypto landscape is slowly being redrawn, not by disruptive technology alone, but by the strategic decisions of major firms choosing their side on the regulatory chessboard.
+
+## **A Brutal Reality Check**
+
+Just as the industry was patting itself on the back, the Chainalysis mid-year report arrived like an unwelcome guest at a dinner party. The report revealed that a staggering **$2.17 billion** had been stolen from crypto platforms in the first six months of 2025 alone, a figure that already eclipses the total for all of 2024.
+
+The primary architects of this digital grand larceny were North Korea's Lazarus Group, whose $1.5 billion theft from the Bybit exchange was a brutal lesson in infrastructure security. Perhaps more grimly, the report noted a sharp rise in "wrench attacks" - a chillingly direct industry term for using physical violence to steal private keys. It's a sobering reminder that as digital assets become more valuable, the methods used to steal them become increasingly analog and brutal.
+
+## **Until Next Week's Circus**
+
+The math is getting harder to ignore. When the President has to personally intervene to pass a stablecoin bill, when Germany's largest banks are quietly building crypto infrastructure, and when North Korean hackers are operating at $1.5 billion scale, we're past the point of calling any of this experimental.
+
+The kiss cam incident will be forgotten by next month. The Congressional dramatics will fade into legislative footnotes. But the infrastructure being built this week - the tokenized deposits, the MiCA licenses, the institutional custody platforms - that's the foundation everyone will be standing on in five years' time, wondering how it all happened so quickly and so quietly. It has been an interesting week for sure!
+
+---
+
+*Next week: We'll analyze the Senate's response to the House crypto bills and their implications for European markets.*
+
+*Cointegrity helps European companies navigate the crypto regulatory landscape and build sustainable Web3 strategies. [cointegrity.io](https://www.cointegrity.io/)*`,
+    author: {
+      name: "Torstein",
+      avatar: "/lovable-uploads/f8ee235e-8951-4727-9a4d-4071d2c60ce3.png"
+    },
+    publishDate: "2025-07-20",
+    category: "Weekly Intelligence",
+    readingTime: 12,
+    tags: ["Regulation", "GENIUS Act", "Banking", "MiCA", "Security"],
+    slug: "crypto-circuit-hostage-session",
+    substackUrl: "https://cointegrity.substack.com/p/a-record-breaking-hostage-session",
+    seoTitle: "A record-breaking \"hostage\" session in the House, and a Viral HR lesson - July 14-20, 2025",
+    seoDescription: "American politicians engaged in dramatic legislative combat while Europe's bankers quietly plugged into the crypto matrix. Weekly intelligence from Cointegrity.",
+    featuredImage: cryptoCircuitFeatured
+  },
+  {
     id: "crypto-circuit-launch-edition",
     title: "The Crypto Circuit: Launch Edition - When Banks Go Digital and Regulators Get Real",
     subtitle: "July 6-13, 2025 Edition",
