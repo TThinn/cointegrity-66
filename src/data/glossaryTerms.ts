@@ -12957,11 +12957,11 @@ trending: 7
   trending: 8
 },
   {
-  term: "Custody",
-  definition: "The safekeeping and management of cryptocurrency assets on behalf of clients by specialized financial institutions or service providers. In traditional finance, custody involves holding securities and other assets, but cryptocurrency custody presents unique challenges due to the digital nature of private keys and the irreversible nature of blockchain transactions. Cryptocurrency custody services range from centralized solutions provided by exchanges and specialized firms like BitGo, Coinbase Custody, and Fidelity Digital Assets, to self-custody wallets where individuals maintain direct control of their private keys. Institutional custody providers typically employ multi-signature security, hardware security modules (HSMs), cold storage solutions, and comprehensive insurance policies to protect client assets. The custody landscape includes qualified custodians regulated under traditional financial frameworks, as well as newer digital asset custodians operating under state trust company licenses or federal banking charters. The choice between self-custody and third-party custody involves trade-offs between security, convenience, regulatory compliance, and control, with institutional investors often requiring professional custody services to meet fiduciary obligations while retail users may prefer self-custody for maximum sovereignty over their assets.",
-  categories: ["wallets_security", "cefi", "regulatory_frameworks"],
-  related: ["Private Keys", "Cold Storage", "Multi-signature", "Institutional Services", "Self-custody", "Digital Asset Security", "Qualified Custodian"],
-  trending: 9
+  term: "Tokenized Stocks",
+  definition: "Digital tokens that represent fractional or whole ownership in traditional publicly traded stocks, enabling investors to trade equity positions on blockchain networks using cryptocurrency. These tokens are typically backed 1:1 by actual shares held in custody by regulated financial institutions, allowing 24/7 trading beyond traditional market hours and fractional ownership with smaller investment amounts. Major platforms offering tokenized stocks include Kraken, Robinhood (through its crypto services), and KuCoin's integration with Solana-based stock tokens for popular companies like Tesla, Apple, and GameStop. However, tokenized stocks face significant regulatory challenges as they blur the lines between traditional securities and cryptocurrency assets, requiring compliance with both securities laws and crypto regulations while navigating complex frameworks around dividend distribution, voting rights, and cross-border securities trading.",
+  categories: ["tokenization", "cefi", "regulatory_frameworks"],
+  related: ["Fractional Ownership", "Securities Tokenization", "24/7 Trading", "Solana", "Regulatory Compliance"],
+  trending: 7
 }
 
 
