@@ -12927,7 +12927,36 @@ definition: "You Only Live Once, an expression used to justify high-risk cryptoc
 categories: ["exchanges_trading"],
 related: ["High Risk", "All-or-Nothing", "Speculative Investing"],
 trending: 7
+},
+  {
+  term: "Wrench Attack",
+  definition: "A form of physical coercion where attackers use threats, violence, intimidation, or kidnapping to force cryptocurrency holders to surrender access to their digital assets by revealing private keys, passwords, or transferring funds on the spot. The term originates from an XKCD webcomic illustrating that sophisticated encryption can be bypassed simply by threatening someone with a '$5 wrench' to extract their password. Unlike cyberattacks that target digital infrastructure, wrench attacks exploit human vulnerabilities and bypass even the most robust cryptographic security measures through physical force. These attacks have escalated dramatically since 2021, with 2025 seeing a surge in frequency, particularly targeting high-net-worth individuals, crypto company executives, and their family members. Notable incidents include the kidnapping of Ledger co-founder David Balland and attempted abduction of a crypto CEO's family in Paris, demonstrating that even top industry figures are not immune to these increasingly violent crimes.",
+  categories: ["compliance", "wallets_security"],
+  related: ["Physical Security", "Private Keys", "Cryptocurrency Theft", "Personal Security", "Crypto Crime"],
+  trending: 9
+},
+{
+  term: "GENIUS Act",
+  definition: "The first major federal legislation regulating cryptocurrency in the United States, signed into law by President Trump in July 2025. Formally establishing a comprehensive regulatory framework for the $250 billion stablecoin market, the GENIUS Act requires stablecoins to be backed 100% by liquid assets like U.S. dollars or short-term Treasuries with monthly public disclosures of reserve composition. The legislation prioritizes consumer protection by requiring strict marketing rules, prohibiting misleading claims about government backing or federal insurance, and ensuring stablecoin holders have priority claims over other creditors in case of issuer insolvency. The Act aligns state and federal stablecoin frameworks for consistent regulation nationwide while strengthening the U.S. dollar's reserve currency status and positioning America as the global leader in digital asset innovation.",
+  categories: ["regulatory_frameworks", "compliance", "tokenomics"],
+  related: ["Stablecoin Regulation", "Federal Reserve", "Consumer Protection", "Digital Asset Framework", "U.S. Dollar"],
+  trending: 10
+},
+{
+  term: "CLARITY Act",
+  definition: "The Digital Asset Market Clarity Act of 2025, a comprehensive 236-page bill that establishes the first clear national regulatory framework for digital commodities in the United States. The legislation resolves the longstanding jurisdictional confusion by clearly defining when a cryptocurrency is a security (regulated by the SEC) or a commodity (regulated by the CFTC), creating a dual-track system based on asset characteristics and blockchain maturity. Digital commodities on mature, decentralized blockchains can qualify for trade on exchanges and may be exempt from SEC registration requirements if they meet specific criteria including sales volume thresholds. The Act requires digital commodity exchanges, brokers, and dealers to comply with Bank Secrecy Act anti-money laundering provisions while establishing requirements for trade monitoring, recordkeeping, and customer asset protection. This legislation provides the regulatory clarity that crypto firms have long sought, enabling better compliance, customer protection, and institutional adoption.",
+  categories: ["regulatory_frameworks", "compliance"],
+  related: ["Digital Commodities", "SEC Regulation", "CFTC Oversight", "Blockchain Maturity", "Regulatory Clarity"],
+  trending: 9
+},
+{
+  term: "Anti-CBDC Surveillance State Act",
+  definition: "Federal legislation that prohibits the Federal Reserve from issuing a Central Bank Digital Currency (CBDC) directly to individuals or maintaining individual accounts, requiring explicit Congressional authorization for any CBDC development. The Act amends the Federal Reserve Act to prevent unelected bureaucrats from unilaterally creating a digital dollar that could be used to surveil, control, or deplatform American citizens. Strongly supported by the Trump administration as protecting financial privacy and constitutional liberties, the legislation ensures that any digital currency issued by the Federal Reserve cannot bypass traditional banking intermediaries or create direct government-to-citizen payment relationships. The Act represents a clear rejection of the surveillance state potential of CBDCs while affirming that financial freedom and privacy are non-negotiable principles in American monetary policy.",
+  categories: ["regulatory_frameworks", "compliance", "privacy_technology"],
+  related: ["Central Bank Digital Currency", "Federal Reserve", "Financial Privacy", "Government Surveillance", "Monetary Policy"],
+  trending: 8
 }
+
 
 ];
 
