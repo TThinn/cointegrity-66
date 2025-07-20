@@ -12957,12 +12957,13 @@ trending: 7
   trending: 8
 },
   {
-  term: "Tokenized Stocks",
-  definition: "Digital tokens that represent fractional or whole ownership in traditional publicly traded stocks, enabling investors to trade equity positions on blockchain networks using cryptocurrency. These tokens are typically backed 1:1 by actual shares held in custody by regulated financial institutions, allowing 24/7 trading beyond traditional market hours and fractional ownership with smaller investment amounts. Major platforms offering tokenized stocks include Kraken, Robinhood (through its crypto services), and KuCoin's integration with Solana-based stock tokens for popular companies like Tesla, Apple, and GameStop. However, tokenized stocks face significant regulatory challenges as they blur the lines between traditional securities and cryptocurrency assets, requiring compliance with both securities laws and crypto regulations while navigating complex frameworks around dividend distribution, voting rights, and cross-border securities trading.",
+  term: "Tokenized Deposits",
+  definition: "Digital tokens that represent traditional bank deposits, enabling the programmability and blockchain benefits of decentralized finance while maintaining the stability and regulatory backing of traditional banking. Unlike stablecoins which are typically issued by non-bank entities, tokenized deposits are issued directly by regulated banks and represent actual deposit accounts with full FDIC insurance protection and regulatory oversight. These tokens allow banks to offer their deposits on blockchain networks, enabling 24/7 settlement, programmable payments, and integration with DeFi protocols while preserving traditional banking relationships. Major developments include JPMorgan's JPM Coin for institutional settlements, various central bank digital currency (CBDC) pilots, and emerging commercial bank initiatives to tokenize customer deposits on public blockchains. Tokenized deposits represent a significant evolution in banking infrastructure, bridging traditional finance with blockchain technology while maintaining regulatory compliance, deposit insurance, and the stability that institutions require for treasury management and cross-border payments.",
   categories: ["tokenization", "cefi", "regulatory_frameworks"],
-  related: ["Fractional Ownership", "Securities Tokenization", "24/7 Trading", "Solana", "Regulatory Compliance"],
-  trending: 7
+  related: ["Bank Deposits", "FDIC Insurance", "JPM Coin", "CBDC", "Traditional Finance Bridge", "Regulatory Compliance"],
+  trending: 8
 }
+
 
 
 ];
