@@ -9,8 +9,8 @@ export const GLOSSARY_STRUCTURED_DATA = {
   "@type": "DefinedTermSet",
   "@id": "https://cointegrity.io/glossary#termset",
   "name": "World's Largest Web3 Glossary, Dictionary & Vocabulary",
-  "alternateName": ["Web3 Glossary", "Web3 Dictionary", "Web3 Vocabulary", "Crypto Dictionary", "Blockchain Terminology", "Cryptocurrency Glossary", "Web3 Terms"],
-  "description": "World's most comprehensive Web3 glossary, dictionary and vocabulary with expert-curated terms covering blockchain terminology, cryptocurrency definitions, crypto dictionary entries, DeFi protocols, NFTs, DAOs, tokenomics, artificial intelligence, regulatory compliance, and crypto crime prevention by Europe's leading consultancy.",
+  "alternateName": ["Web3 Glossary", "Web3 Dictionary", "Web3 Vocabulary", "Web3 Lingo", "Web3 Jargon", "Crypto Dictionary", "Blockchain Terminology", "Cryptocurrency Glossary", "Web3 Terms"],
+  "description": "World's most comprehensive Web3 glossary, dictionary, vocabulary, lingo and jargon with expert-curated terms covering blockchain terminology, cryptocurrency definitions, crypto dictionary entries, DeFi protocols, NFTs, DAOs, tokenomics, artificial intelligence, regulatory compliance, and crypto crime prevention by Europe's leading consultancy.",
   "inLanguage": "en-US"
 };
 
