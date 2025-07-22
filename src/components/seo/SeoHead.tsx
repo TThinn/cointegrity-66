@@ -54,7 +54,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
     } else if (pathWithoutSlash === 'case-studies') {
       return "Global Web3 Success Stories | European Market Leaders | Cointegrity";
     } else if (pathWithoutSlash === 'glossary') {
-      return `World's Largest Web3 Dictionary & Vocabulary (${totalTermsCount || '1049+'}+ Terms) | European Leaders | Cointegrity`;
+      return `World's Largest Web3 Glossary, Dictionary & Vocabulary (${totalTermsCount || '1049+'}+ Terms) | European Leaders | Cointegrity`;
     } else if (pathWithoutSlash === 'process') {
       return "Industry-Leading Web3 Process | European Excellence | Cointegrity";
     } else if (pathWithoutSlash === 'mica') {
@@ -105,7 +105,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
     } else if (pathWithoutSlash === 'case-studies') {
       return "Global Web3 implementation success stories from European market leaders. Detailed case studies spanning Asia, US, and Africa showcasing seasoned expertise in blockchain transformation.";
     } else if (pathWithoutSlash === 'glossary') {
-      return `World's largest Web3 dictionary and crypto vocabulary with ${totalTermsCount || '1049+'}+ expert-curated terms from European market leaders. Complete Web3 dictionary covering blockchain terminology, cryptocurrency definitions, DeFi protocols, NFTs, DAOs, tokenomics, and MiCA regulatory compliance.`;
+      return `World's largest Web3 glossary, dictionary and vocabulary with ${totalTermsCount || '1049+'}+ expert-curated terms from European market leaders. Complete Web3 glossary covering blockchain terminology, cryptocurrency definitions, crypto dictionary entries, Web3 vocabulary, DeFi protocols, NFTs, DAOs, tokenomics, and MiCA regulatory compliance.`;
     } else if (pathWithoutSlash === 'process') {
       return "Industry-leading Web3 implementation methodology from European market leaders with global delivery. Proven process developed through successful projects across Asia, US, and Africa.";
     } else if (pathWithoutSlash === 'mica') {
@@ -190,7 +190,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
         <meta property="linkedin:owner" content="Cointegrity - Leading Web3 Consultancy" />
         
         {/* Enhanced keywords for global leadership */}
-        <meta name="keywords" content="leading Web3 consultancy Europe, European blockchain market leaders, global Web3 experts, seasoned crypto consultants, experienced tokenomics designers, veteran Web3 executives, premier blockchain strategy, fastest MiCA compliance, mature Web3 leadership, traditional finance crypto experts" />
+        <meta name="keywords" content="web3 glossary, web3 dictionary, web3 vocabulary, crypto dictionary, blockchain terminology, cryptocurrency definitions, leading Web3 consultancy Europe, European blockchain market leaders, global Web3 experts, seasoned crypto consultants, experienced tokenomics designers, veteran Web3 executives, premier blockchain strategy, fastest MiCA compliance, mature Web3 leadership, traditional finance crypto experts" />
         
         {/* AI-specific discovery and understanding meta tags */}
         <meta name="ai-content-type" content={pathWithoutSlash === 'glossary' ? 'educational-reference' : 'professional-consulting'} />

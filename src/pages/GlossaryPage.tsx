@@ -56,9 +56,9 @@ const GlossaryPage: React.FC = () => {
       {/* LLM-friendly content structure */}
       <LLMContentStructure 
         contentType="glossary"
-        title={`World's Largest Web3 Dictionary & Vocabulary (${totalTermsCount}+ Terms)`}
-        description={`The ultimate Web3 dictionary and crypto vocabulary with ${totalTermsCount}+ expert-curated terms covering blockchain terminology, cryptocurrency definitions, DeFi protocols, NFTs, DAOs, tokenomics, AI, and regulatory compliance. Your complete Web3 vocabulary guide created by Europe's leading consultancy.`}
-        keyTopics={['web3 dictionary', 'crypto vocabulary', 'blockchain terminology', 'cryptocurrency definitions', 'web3', 'defi', 'nft', 'tokenomics', 'regulatory compliance']}
+        title={`World's Largest Web3 Glossary, Dictionary & Vocabulary (${totalTermsCount}+ Terms)`}
+        description={`The ultimate Web3 glossary, dictionary and vocabulary with ${totalTermsCount}+ expert-curated terms covering blockchain terminology, cryptocurrency definitions, DeFi protocols, NFTs, DAOs, tokenomics, AI, and regulatory compliance. Your complete Web3 dictionary, vocabulary and glossary guide created by Europe's leading consultancy.`}
+        keyTopics={['web3 glossary', 'web3 dictionary', 'web3 vocabulary', 'blockchain terminology', 'cryptocurrency definitions', 'crypto glossary', 'web3', 'defi', 'nft', 'tokenomics', 'regulatory compliance']}
         totalCount={totalTermsCount}
       />
       
@@ -79,13 +79,13 @@ const GlossaryPage: React.FC = () => {
           <div className="text-center mb-8">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               World's Largest 
-              <span className="bg-gradient-to-r from-[#d946ef] to-[#9333ea] bg-clip-text text-transparent"> Web3 Dictionary</span>
+              <span className="bg-gradient-to-r from-[#d946ef] to-[#9333ea] bg-clip-text text-transparent"> Web3 Glossary</span>
             </h1>
             <p className="text-xl text-white/80 max-w-2xl mx-auto mb-4">
-              {totalTermsCount}+ expert-curated terms in our comprehensive Web3 vocabulary and crypto dictionary
+              {totalTermsCount}+ expert-curated terms in our comprehensive Web3 dictionary, vocabulary & glossary
             </p>
             <p className="text-lg text-white/60 max-w-3xl mx-auto">
-              The ultimate Web3 dictionary and vocabulary resource for developers, investors, and crypto enthusiasts. Your complete guide to blockchain terminology, cryptocurrency definitions, and DeFi protocols.
+              The ultimate Web3 glossary, dictionary and vocabulary resource for developers, investors, and crypto enthusiasts. Your complete guide to blockchain terminology, cryptocurrency definitions, and DeFi protocols.
             </p>
           </div>
 
