@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import { CategoryType, DataSourceType } from "@/components/glossary/types";
 import { GlossarySearch } from "@/components/glossary/GlossarySearch";
 import { CategorySelector } from "@/components/glossary/CategorySelector";
-import { AlphabeticalIndex } from "@/components/glossary/AlphabeticalIndex";
+
 import { GlossaryTermsList } from "@/components/glossary/GlossaryTermsList";
 import ContactForm from "@/components/ContactForm";
 import { useGlossaryData } from "@/components/glossary/useGlossaryData";
@@ -41,13 +41,6 @@ const GlossaryPage: React.FC = () => {
     isSearching
   } = useGlossaryData(searchTerm, activeCategory, initialDataSource);
   
-  // For smooth scrolling to sections
-  const scrollToSection = (letter: string) => {
-    const element = document.getElementById(`section-${letter}`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <RateLimitGuard action="glossary-access">
@@ -63,9 +56,9 @@ const GlossaryPage: React.FC = () => {
       {/* LLM-friendly content structure */}
       <LLMContentStructure 
         contentType="glossary"
-        title={`World's Largest Web3 Glossary (${totalTermsCount}+ Terms)`}
-        description={`The most comprehensive Web3 glossary with ${totalTermsCount}+ expert-curated terms covering blockchain, cryptocurrency, DeFi, NFTs, DAOs, tokenomics, AI, and regulatory compliance. Created by Europe's leading Web3 consultancy.`}
-        keyTopics={['blockchain', 'cryptocurrency', 'web3', 'defi', 'nft', 'tokenomics', 'regulatory compliance', 'crypto crime prevention']}
+        title={`World's Largest Web3 Dictionary & Vocabulary (${totalTermsCount}+ Terms)`}
+        description={`The ultimate Web3 dictionary and crypto vocabulary with ${totalTermsCount}+ expert-curated terms covering blockchain terminology, cryptocurrency definitions, DeFi protocols, NFTs, DAOs, tokenomics, AI, and regulatory compliance. Your complete Web3 vocabulary guide created by Europe's leading consultancy.`}
+        keyTopics={['web3 dictionary', 'crypto vocabulary', 'blockchain terminology', 'cryptocurrency definitions', 'web3', 'defi', 'nft', 'tokenomics', 'regulatory compliance']}
         totalCount={totalTermsCount}
       />
       
@@ -86,79 +79,66 @@ const GlossaryPage: React.FC = () => {
           <div className="text-center mb-8">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               World's Largest 
-              <span className="bg-gradient-to-r from-[#d946ef] to-[#9333ea] bg-clip-text text-transparent"> Web3 Glossary</span>
+              <span className="bg-gradient-to-r from-[#d946ef] to-[#9333ea] bg-clip-text text-transparent"> Web3 Dictionary</span>
             </h1>
             <p className="text-xl text-white/80 max-w-2xl mx-auto mb-4">
-              {totalTermsCount}+ expert-curated terms covering blockchain, cryptocurrency, DeFi, NFTs and Web3
+              {totalTermsCount}+ expert-curated terms in our comprehensive Web3 vocabulary and crypto dictionary
             </p>
             <p className="text-lg text-white/60 max-w-3xl mx-auto">
-              The most comprehensive Web3 terminology resource for developers, investors, and crypto enthusiasts. From basic blockchain concepts to advanced DeFi protocols.
+              The ultimate Web3 dictionary and vocabulary resource for developers, investors, and crypto enthusiasts. Your complete guide to blockchain terminology, cryptocurrency definitions, and DeFi protocols.
             </p>
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-8 mb-8">
-            <div className="lg:w-3/4">
-              {/* Anti-scraping notice */}
-              <AntiScrapingNotice />
+          <div className="w-full mb-8">
+            {/* Anti-scraping notice */}
+            <AntiScrapingNotice />
 
-              {/* Search bar */}
-              <GlossarySearch 
-                searchTerm={searchTerm} 
-                setSearchTerm={setSearchTerm}
-                totalCount={totalTermsCount}
-                filteredCount={filteredTerms.length}
+            {/* Search bar */}
+            <GlossarySearch 
+              searchTerm={searchTerm} 
+              setSearchTerm={setSearchTerm}
+              totalCount={totalTermsCount}
+              filteredCount={filteredTerms.length}
+            />
+
+            {/* Category selector - simplified, always visible */}
+            <div className="mb-6">
+              <CategorySelector 
+                activeCategory={activeCategory}
+                setActiveCategory={setActiveCategory}
+                viewType={isSearching ? "list" : "grid"}
               />
-
-              {/* Category selector - simplified, always visible */}
-              <div className="mb-6">
-                <CategorySelector 
-                  activeCategory={activeCategory}
-                  setActiveCategory={setActiveCategory}
-                  viewType={isSearching ? "list" : "grid"}
-                />
-                
-                {activeCategory !== "all" && (
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    onClick={() => setActiveCategory("all")}
-                    className="mt-2 bg-white/5 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
-                  >
-                    Clear filter
-                  </Button>
-                )}
-              </div>
-
-              {/* Search results info */}
-              {isSearching && (
-                <div className="mb-4 p-3 bg-purple-900/20 border border-purple-500/30 rounded-lg">
-                  <p className="text-sm text-purple-200">
-                    📊 Two-Stage Search Results: {filteredTerms.length} terms found for "{searchTerm}"
-                    {activeCategory !== "all" && ` in ${activeCategory} category`}
-                  </p>
-                </div>
+              
+              {activeCategory !== "all" && (
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => setActiveCategory("all")}
+                  className="mt-2 bg-white/5 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
+                >
+                  Clear filter
+                </Button>
               )}
-
-              {/* Glossary terms list */}
-              <GlossaryTermsList 
-                letters={letters} 
-                groupedTerms={groupedTerms} 
-                isLoading={isLoading}
-                isSearching={isSearching}
-                searchTerm={searchTerm}
-              />
             </div>
 
-            {/* Alphabetical index sidebar - hidden during search */}
-            {!isSearching && (
-              <div className="lg:w-1/4">
-                <AlphabeticalIndex 
-                  letters={letters}
-                  groupedTerms={groupedTerms}
-                  scrollToSection={scrollToSection}
-                />
+            {/* Search results info */}
+            {isSearching && (
+              <div className="mb-4 p-3 bg-purple-900/20 border border-purple-500/30 rounded-lg">
+                <p className="text-sm text-purple-200">
+                  📊 Two-Stage Search Results: {filteredTerms.length} terms found for "{searchTerm}"
+                  {activeCategory !== "all" && ` in ${activeCategory} category`}
+                </p>
               </div>
             )}
+
+            {/* Glossary terms list */}
+            <GlossaryTermsList 
+              letters={letters} 
+              groupedTerms={groupedTerms} 
+              isLoading={isLoading}
+              isSearching={isSearching}
+              searchTerm={searchTerm}
+            />
           </div>
         </div>
 
