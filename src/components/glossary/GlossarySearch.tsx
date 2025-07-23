@@ -9,13 +9,15 @@ interface GlossarySearchProps {
   setSearchTerm: (term: string) => void;
   totalCount: number;
   filteredCount: number;
+  onSearch?: () => void;
 }
 
 export const GlossarySearch: React.FC<GlossarySearchProps> = ({ 
   searchTerm, 
   setSearchTerm,
   totalCount,
-  filteredCount
+  filteredCount,
+  onSearch
 }) => {
   // Local state for input value - only commits to searchTerm on Enter or button click
   const [inputValue, setInputValue] = useState(searchTerm);
@@ -23,6 +25,10 @@ export const GlossarySearch: React.FC<GlossarySearchProps> = ({
 
   const handleSearch = () => {
     setSearchTerm(inputValue.trim());
+    if (inputValue.trim() && onSearch) {
+      // Small delay to ensure the search results are rendered before scrolling
+      setTimeout(onSearch, 100);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {

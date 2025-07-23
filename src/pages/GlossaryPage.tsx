@@ -6,9 +6,8 @@ import { Button } from "@/components/ui/button";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { useLocation } from "react-router-dom";
 import Footer from "@/components/Footer";
-import { CategoryType, DataSourceType } from "@/components/glossary/types";
+import { DataSourceType } from "@/components/glossary/types";
 import { GlossarySearch } from "@/components/glossary/GlossarySearch";
-import { CategorySelector } from "@/components/glossary/CategorySelector";
 
 import { GlossaryTermsList } from "@/components/glossary/GlossaryTermsList";
 import ContactForm from "@/components/ContactForm";
@@ -22,13 +21,12 @@ import { LLMContentStructure } from "@/components/seo/ai/LLMContentStructure";
 const GlossaryPage: React.FC = () => {
   // State for UI
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeCategory, setActiveCategory] = useState<CategoryType | "all">("all");
   const location = useLocation();
 
   // Get initial data source preference from local storage
   const initialDataSource: DataSourceType = "original";
   
-  // Get glossary data
+  // Get glossary data - always use "all" for categories since we removed the visual selector
   const { 
     dataSource, 
     changeDataSource,
@@ -39,7 +37,16 @@ const GlossaryPage: React.FC = () => {
     totalTermsCount,
     transformationProgress,
     isSearching
-  } = useGlossaryData(searchTerm, activeCategory, initialDataSource);
+  } = useGlossaryData(searchTerm, "all", initialDataSource);
+
+  // Auto-scroll functionality when search is performed
+  const handleSearch = () => {
+    // Scroll to position search box under header (approximately 100px from top)
+    window.scrollTo({
+      top: window.innerHeight - 200, // Move search box to top, accounting for header
+      behavior: 'smooth'
+    });
+  };
   
 
   return (
@@ -50,7 +57,7 @@ const GlossaryPage: React.FC = () => {
         currentHash={location.hash}
         totalTermsCount={totalTermsCount}
         searchTerm={searchTerm}
-        activeCategory={activeCategory}
+        activeCategory="all"
       />
       
       {/* LLM-friendly content structure */}
@@ -96,34 +103,14 @@ const GlossaryPage: React.FC = () => {
               setSearchTerm={setSearchTerm}
               totalCount={totalTermsCount}
               filteredCount={filteredTerms.length}
+              onSearch={handleSearch}
             />
-
-            {/* Category selector - simplified, always visible */}
-            <div className="mb-6">
-              <CategorySelector 
-                activeCategory={activeCategory}
-                setActiveCategory={setActiveCategory}
-                viewType={isSearching ? "list" : "grid"}
-              />
-              
-              {activeCategory !== "all" && (
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  onClick={() => setActiveCategory("all")}
-                  className="mt-2 bg-white/5 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
-                >
-                  Clear filter
-                </Button>
-              )}
-            </div>
 
             {/* Search results info */}
             {isSearching && (
               <div className="mb-4 p-3 bg-purple-900/20 border border-purple-500/30 rounded-lg">
                 <p className="text-sm text-purple-200">
                   📊 Two-Stage Search Results: {filteredTerms.length} terms found for "{searchTerm}"
-                  {activeCategory !== "all" && ` in ${activeCategory} category`}
                 </p>
               </div>
             )}
