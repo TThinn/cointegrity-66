@@ -90,10 +90,7 @@ const GlossaryPage: React.FC = () => {
           </div>
 
           <div className="w-full mb-8">
-            {/* Anti-scraping notice */}
-            <AntiScrapingNotice />
-
-            {/* Search bar */}
+            {/* Search bar - now prominently displayed */}
             <GlossarySearch 
               searchTerm={searchTerm} 
               setSearchTerm={setSearchTerm}
@@ -145,6 +142,11 @@ const GlossaryPage: React.FC = () => {
         {/* Scroll indicator */}
         <ScrollIndicator targetSection="contact-form" />
       </section>
+      
+      {/* Anti-scraping notice - moved below hero section */}
+      <SectionContainer className="pt-8 pb-4">
+        <AntiScrapingNotice />
+      </SectionContainer>
       
       {/* Contact form - using the same component as the main page */}
       <ContactForm />
