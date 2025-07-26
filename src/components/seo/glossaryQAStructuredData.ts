@@ -19,11 +19,19 @@ export const generateGlossaryQAStructuredData = () => {
         "name": `What is ${term.term}?`,
         "text": `What is ${term.term} in the context of Web3 and blockchain technology?`,
         "answerCount": 1,
+        "datePublished": "2024-01-01T00:00:00Z",
+        "author": {
+          "@type": "Organization",
+          "name": "Cointegrity",
+          "url": "https://cointegrity.io",
+          "expertise": "Web3 and Blockchain Consulting"
+        },
         "acceptedAnswer": {
           "@type": "Answer",
           "@id": `https://cointegrity.io/glossary#answer-${term.term.toLowerCase().replace(/\s+/g, '-')}`,
+          "url": `https://cointegrity.io/glossary#${term.term.toLowerCase().replace(/\s+/g, '-')}`,
           "text": term.definition.replace(/<[^>]*>/g, ''), // Remove HTML tags
-          "dateCreated": "2024-01-01",
+          "dateCreated": "2024-01-01T00:00:00Z",
           "upvoteCount": 1,
           "author": {
             "@type": "Organization",
@@ -35,6 +43,7 @@ export const generateGlossaryQAStructuredData = () => {
         "suggestedAnswer": term.related ? term.related.slice(0, 3).map(relatedTerm => ({
           "@type": "Answer",
           "text": `See also: ${relatedTerm}`,
+          "datePublished": "2024-01-01T00:00:00Z",
           "author": {
             "@type": "Organization",
             "name": "Cointegrity",
@@ -82,9 +91,18 @@ export const GLOSSARY_QAPAGE_STRUCTURED_DATA = {
     "name": "What is included in the world's largest Web3 glossary?",
     "text": "What terms and concepts are covered in the comprehensive Web3 glossary?",
     "answerCount": 1,
+    "datePublished": "2024-01-01T00:00:00Z",
+    "author": {
+      "@type": "Organization",
+      "name": "Cointegrity",
+      "url": "https://cointegrity.io",
+      "expertise": "Web3 and Blockchain Consulting"
+    },
     "acceptedAnswer": {
       "@type": "Answer",
+      "url": "https://cointegrity.io/glossary",
       "text": `The glossary includes over ${glossaryTerms.length} expert-curated terms covering blockchain technology, cryptocurrency types, DeFi protocols, NFTs, smart contracts, tokenomics, regulatory frameworks, and emerging Web3 technologies. Each term includes comprehensive definitions, related concepts, and practical applications.`,
+      "dateCreated": "2024-01-01T00:00:00Z",
       "author": {
         "@type": "Organization",
         "name": "Cointegrity",
