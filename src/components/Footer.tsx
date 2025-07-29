@@ -72,15 +72,7 @@ const Footer = () => {
           {/* Logo and intro */}
           <div className="mb-8 md:mb-0 w-full md:w-1/3 pr-0 md:pr-8">
             <NavLink to="/" className="inline-block mb-4">
-              <OptimizedImage 
-                src="/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png" 
-                alt="Cointegrity Logo" 
-                className="h-10 w-auto"
-                priority={false}
-                sizes="40px"
-                width={120}
-                height={40}
-              />
+              <OptimizedImage src="/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png" alt="Cointegrity Logo" className="h-10 w-auto" priority={false} sizes="40px" width={120} height={40} />
             </NavLink>
             <p className="text-white/70 mb-4">Expert Web3 Consultancy specializing in blockchain strategy, regulatory compliance, and Web3 implementation services for organizations navigating digital asset transformation and decentralized infrastructure.</p>
           </div>
@@ -107,9 +99,7 @@ const Footer = () => {
             
             <div className="flex mt-4 space-x-4">
               <NavLink to="https://twitter.com/cointegrity" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                <svg className="w-6 h-6 text-white/70 hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
-                </svg>
+                
               </NavLink>
               <NavLink to="https://linkedin.com/company/cointegrity" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <svg className="w-6 h-6 text-white/70 hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
