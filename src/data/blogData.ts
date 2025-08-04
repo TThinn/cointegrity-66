@@ -23,6 +23,116 @@ export interface BlogArticle {
 
 export const blogArticles: BlogArticle[] = [
   {
+    id: "crypto-circuit-money-machine",
+    title: "The Money Machine Awakens",
+    subtitle: "Week 31 - 2025",
+    excerpt: "Ethereum turned 10 this week - from a scrappy experiment to Wall Street's invisible backbone - and celebrated by watching Asia tokenize skyscrapers while stablecoin issuers post numbers that rival sovereign wealth funds. When your birthday gift is institutional adoption at a trillion-dollar scale, you know you've made it.",
+    content: `Welcome back to the Circuit. Ethereum turned 10 this week - from a scrappy experiment to Wall Street's invisible backbone - and celebrated by watching Asia tokenize skyscrapers while stablecoin issuers post numbers that rival sovereign wealth funds. When your birthday gift is institutional adoption at a trillion-dollar scale, you know you've made it.
+
+This week's reality check: **The digital money printing press is officially running at full capacity, and Asia is building the infrastructure to back it up.**
+
+## **Asia's Pragmatic Revolution: From Stablecoins to Skyscrapers**
+
+**Hong Kong's stablecoin licensing went live August 1st**, but the real story is in the implementation details. The HKMA expects only a "handful" of approvals by early 2026 from 40 applicants - that's regulatory caution that might actually work.
+
+So, what got our attention? **Ongoing monitoring requirements that extend beyond traditional KYC**. Hong Kong now mandates unified systems that can ingest fiat transactions, on-chain activity, and hybrid payment flows. Unless issuers can demonstrate effective risk mitigation, **they must verify the identity of every stablecoin holder** - even those with no direct customer relationship.
+
+**Japan delivered the week's most pragmatic move**: Parliament amended the Payment Services Act to let stablecoin issuers hold up to 50% of reserves in government bonds instead of just cash. No fanfare, no political theater - just policy that makes stablecoin issuance profitable while maintaining safety.
+
+But Japan delivered with a twist: **MUFG, Japan's largest bank, just tokenized a skyscraper in Osaka worth ¥100 billion**. This isn't a pilot or sandbox experiment - it's real estate becoming liquid, tradable, and accessible to retail and institutional investors globally. **When Asia's biggest banks turn concrete into code, that's infrastructure realignment, not innovation theater**.
+
+**Singapore** closed offshore loopholes with new FSMA amendments requiring all exchanges serving Singapore residents to secure MAS approval. The message: "You want our customers? You follow our rules."
+
+## **Tether's $4.9B Quarter: The Money Printing Empire**
+
+The numbers that dropped this week aren't just impressive - they're economically significant at a sovereign level. **Tether posted $4.9 billion in Q2 profits** - a 277% increase year-over-year. They now hold $127 billion in U.S. Treasuries, making them the **18th-largest holder of American debt, bigger than South Korea**.
+
+**Tether's business model isn't about remittances or retail payments - it's about professional liquidity management**. Professional liquidity management covers 93% of all stablecoin transactions. Not coffee. Not peer-to-peer transfers. This is infrastructure-level capital movement.
+
+**The uncomfortable truth Europe won't admit**: MiCA didn't contain Tether - it created a regulatory moat that protects them. Every European crypto user still wants USDT liquidity; they just use offshore platforms to get it.
+
+## **The Payment Rails Revolution: Wall Street Goes Full Crypto**
+
+**The infrastructure news this week was seismic**. FIS, the $82 billion infrastructure giant behind 95% of the world's top banks, **partnered with Circle to integrate USDC directly into their payment rails**. FIS moves $10+ trillion annually across 20,000 institutions and 1 million merchants—and now Circle gets direct access to that massive client base.
+
+**Coinbase scored the integration coup of the year**: J.P. Morgan partnered with them to allow 80 million Chase customers to fund Coinbase with Chase credit cards. In 2026, they'll redeem Chase reward points for USDC and link bank accounts directly. That's $5+ billion in points moving toward digital assets.
+
+**PayPal launched "Pay with Crypto"**, letting U.S. merchants accept 100+ cryptocurrencies at checkout with instant conversion to USD or stablecoins, no volatility risk, and merchants can earn up to 4% yield by storing funds in PYUSD.
+
+When payment giants worth $800+ billion combined decide blockchain settlement is the future, that's infrastructure realignment, not experimentation.
+
+## **SEC's Project Crypto: The Great American Pivot**
+
+**Paul Atkins launched "Project Crypto" July 31st**, and the industry collectively exhaled. Key takeaways that have the compliance community talking:
+
+**Commission-wide initiative to modernize U.S. capital markets with on-chain infrastructure**. The goal: establish the U.S. as the world's crypto capital with regulatory clarity so "people can innovate without feeling scared they're going to get fined or jailed".
+
+**Super-licenses are coming**: platforms able to list both securities and non-securities tokens under one roof with a single license. "Plain and simple: securities intermediaries should be able to offer a broad range of products and services under one roof with a single license".
+
+**Self-custodial wallets as a core American value**, with plans to adapt or exempt legacy custody rules that hinder innovation. **Innovation exemptions and sandbox-style frameworks** for developers to build, launch, then comply later under principles-based guidance.
+
+**Delphine Forma captured the mood perfectly**: "It is time to change the rules from the past and provide regulatory clarity for people to be able to innovate without feeling scared"
+
+## **The MiCA ↔ PSD2 Stablecoin Compliance Nightmare**
+
+When you thought the difference in regulation could not be larger.. The EBA added another layer. The EBA guidance released this week suggests EMT transfers will require **dual licensing under both MiCA and PSD2 starting March 2026**.
+
+**This breaks MiCA's "one rulebook" promise**. The EBA highlights that EMT transfers and custody will require two licenses - a MiCA CASP license **and** a PSD2 payment license - for exactly the same economic activity.
+
+**Why this matters**: It will "chill euro stablecoin growth" because if CASPs need additional licenses, many startups will scale back EMT custody and transfer services, potentially increasing transfers with unbacked crypto-assets like BTC.
+
+The upcoming PSD3/PSR negotiations need to deliver targeted carve-outs so that EMT custody and most EMT transfers are only covered under MiCA.
+
+## **CARF Goes Global: Tax Transparency's Digital Expansion**
+
+**Dion Seymour and Max Bernt covered major CARF developments this week**. The OECD released updated FAQs bringing "long-awaited clarity on DeFi, NFTs, and due diligence in M&A".
+
+**Key DeFi clarification**: Non-custodial platforms can still fall under CARF if they have "control or significant influence over a platform effectuating transactions" (COSI). But jurisdictions may defer enforcement until more guidance is issued.
+
+**The White House Digital Assets report gave the clearest indication yet** on U.S. CARF implementation. Treasury and IRS should consider proposing regulations that "take stakeholder concerns into account and minimize burdens on brokers".
+
+## **Institutional DeFi Goes Live: Eurex's $15 Trillion Revolution**
+
+**Things are moving in the tokenized assets space**: Eurex Clearing became the first central counterparty (CCP) in the world to launch live DLT-enabled collateral mobilization this week. **Built with HQLAx, used by J.P. Morgan and PGGM, approved by BaFin**.
+
+**This is real collateral, moving between real institutions, to cover real margin calls - in real time**. Moving collateral across custodians traditionally takes hours; now it's instant thanks to DLT.
+
+CCPs clear over $15 trillion per day - that's 100x the notional volume of the entire crypto market. When that infrastructure goes blockchain-native, it's not innovation theater - it's the foundation of the next financial system.
+
+## **What Actually Matters**
+
+Strip away the regulatory theater and compliance confusion, and **here's what changed this week**:
+
+- **America pivoted decisively**: Project Crypto signals the end of regulation-by-enforcement and the beginning of infrastructure-first policy
+
+- **Payment infrastructure got rebuilt**: FIS, Coinbase, Circle, and PayPal aren't experimenting anymore - they're executing at scale
+
+- **Money printing scaled**: Tether's Q2 numbers prove stablecoin issuance is finance's most profitable business despite regulatory hostility
+
+- **Europe created compliance chaos**: The MiCA-PSD2 overlap threatens to kill the very ecosystem MiCA was designed to foster
+
+- **Institutional DeFi went live**: Eurex's $15 trillion infrastructure proves blockchain can enhance traditional finance at scale
+
+The BIS can call stablecoins "not money" all they want. When payment networks process stablecoin transactions at 150 million merchants, CCPs settle trillions on DLT rails, and America provides regulatory clarity while Europe creates compliance nightmares, **academic theory loses to market reality**.
+
+**Bottom line**: The digital financial system isn't coming - it's here, it's profitable, and it's absorbing traditional finance faster than regulators can understand it. The question isn't whether crypto goes mainstream. It's whether anyone building pure TradFi can compete with systems that never sleep.
+
+*What regulatory arbitrage opportunities are you tracking between U.S. clarity and European chaos?*`,
+    author: {
+      name: "Torstein",
+      avatar: "/lovable-uploads/f8ee235e-8951-4727-9a4d-4071d2c60ce3.png"
+    },
+    publishDate: "2025-08-03",
+    category: "Weekly Intelligence",
+    readingTime: 12,
+    tags: ["Ethereum", "Stablecoins", "Asia", "Regulation", "Institutional", "DeFi"],
+    slug: "crypto-circuit-money-machine",
+    substackUrl: "https://cointegrity.substack.com/p/the-crypto-circuit-the-money-machine",
+    seoTitle: "The Money Machine Awakens - Week 31 2025 - The Crypto Circuit",
+    seoDescription: "Ethereum turns 10 as Asia tokenizes skyscrapers, Tether posts $4.9B profits, and Wall Street goes full crypto. Weekly intelligence from Cointegrity.",
+    featuredImage: cryptoCircuitFeatured
+  },
+  {
     id: "crypto-circuit-gwyneth-paltrow",
     title: "When Gwyneth Paltrow becomes a data spokesperson and the stablecoin proliferation debate gets real",
     subtitle: "July 21-27, 2025 Edition",
