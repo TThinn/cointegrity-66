@@ -74,7 +74,7 @@ export const NewsArticlePage = () => {
         <meta property="og:title" content={article.title} />
         <meta property="og:description" content={article.excerpt} />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://cointegrity.com/news/${article.id}`} />
+        <meta property="og:url" content={`https://cointegrity.io/news/${article.id}`} />
         {article.image && <meta property="og:image" content={article.image} />}
         <meta property="article:published_time" content={article.publishedAt} />
         <meta property="article:author" content={article.author} />
@@ -90,7 +90,7 @@ export const NewsArticlePage = () => {
         {article.image && <meta name="twitter:image" content={article.image} />}
         
         {/* Canonical URL */}
-        <link rel="canonical" href={`https://cointegrity.com/news/${article.id}`} />
+        <link rel="canonical" href={`https://cointegrity.io/news/${article.id}`} />
       </Helmet>
 
       <SectionContainer className="py-8">

@@ -74,7 +74,7 @@ const NewsPage = () => {
         <meta property="og:title" content="News & Updates - Cointegrity" />
         <meta property="og:description" content="Stay updated with the latest news from Cointegrity. Read about our partnerships, product updates, events, and industry insights." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://cointegrity.com/news" />
+        <meta property="og:url" content="https://cointegrity.io/news" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -82,7 +82,7 @@ const NewsPage = () => {
         <meta name="twitter:description" content="Stay updated with the latest news from Cointegrity. Read about our partnerships, product updates, events, and industry insights." />
         
         {/* Canonical URL */}
-        <link rel="canonical" href="https://cointegrity.com/news" />
+        <link rel="canonical" href="https://cointegrity.io/news" />
       </Helmet>
 
       <SectionContainer className="py-12">

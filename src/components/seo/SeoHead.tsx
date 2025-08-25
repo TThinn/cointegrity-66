@@ -13,6 +13,7 @@ import { ConversationalSearchData } from "./ConversationalSearchData";
 import { EntityRelationshipData } from "./EntityRelationshipData";
 import { GlossaryEnhancedSEO } from "./GlossaryEnhancedSEO";
 import { AIStructuredData } from "./ai/AIStructuredData";
+import { HomepageFAQStructuredData } from "./HomepageFAQStructuredData";
 
 interface SeoHeadProps {
   currentPath: string;
@@ -256,6 +257,9 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
         searchTerm={searchTerm}
         activeCategory={activeCategory}
       />
+      
+      {/* Homepage FAQ structured data */}
+      {(currentPath === '/' || currentPath === '') && <HomepageFAQStructuredData />}
     </>
   );
 };

@@ -10,6 +10,8 @@ import Partners from "@/components/Partners";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Process from "@/components/Process";
+import WhyChooseUs from "@/components/homepage/WhyChooseUs";
+import HomepageFAQ from "@/components/homepage/HomepageFAQ";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { ResourceHints } from "@/components/seo/ResourceHints";
 import { InvisibleInternalLinks } from "@/components/seo/InvisibleInternalLinks";
@@ -44,9 +46,11 @@ const Index = () => {
         <AboutUs />
         <Process />
         <Services />
+        <WhyChooseUs />
         <Partners />
         <Founders />
         <Testimonials />
+        <HomepageFAQ />
         <ContactForm />
       </main>
       <Footer />
