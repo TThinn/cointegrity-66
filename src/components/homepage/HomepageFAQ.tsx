@@ -13,8 +13,21 @@ const faqs = [
     answer: "Traditional consulting takes 6-18 months. Our AI-powered approach reduces this to 2-6 months for most projects, with MiCA compliance delivered in as little as 3-4 months depending on jurisdiction."
   },
   {
-    question: "Do I need MiCA compliance for my crypto business?",
-    answer: "If you operate in or target EU markets, issue crypto-assets, or provide crypto services like custody, trading, or portfolio management, you likely need MiCA compliance. Our AI screening tool at <a href='https://micahub.net' target='_blank' rel='noopener noreferrer' className='text-[#cb46b3] hover:underline'>Micahub.net</a> can determine your exact requirements in minutes."
+    question: "Do I need a MiCA license for my crypto business?",
+    answer: (
+      <>
+        If you operate in or target EU markets, issue crypto-assets, or provide crypto services like custody, trading, or portfolio management, you likely need MiCA compliance. Our AI screening tool at{" "}
+        <a 
+          href="https://micahub.net" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="text-[#cb46b3] hover:underline"
+        >
+          Micahub.net
+        </a>{" "}
+        can determine your exact requirements in minutes.
+      </>
+    )
   },
   {
     question: "What's included in your Web3 consulting process?",
@@ -77,9 +90,9 @@ const HomepageFAQ = () => {
               </CollapsibleTrigger>
               <CollapsibleContent className="px-6 pb-6 bg-white/60 backdrop-blur-sm rounded-b-lg border-x border-b border-white/40 -mt-1">
                 <div className="pt-4 border-t border-gray-200">
-                  <p className="text-gray-600 leading-relaxed">
+                  <div className="text-gray-600 leading-relaxed">
                     {faq.answer}
-                  </p>
+                  </div>
                 </div>
               </CollapsibleContent>
             </Collapsible>

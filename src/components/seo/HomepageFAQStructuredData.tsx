@@ -25,7 +25,7 @@ export const HomepageFAQStructuredData: React.FC = () => {
       },
       {
         "@type": "Question",
-        "name": "Do I need MiCA compliance for my crypto business?",
+        "name": "Do I need a MiCA license for my crypto business?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "If you operate in or target EU markets, issue crypto-assets, or provide crypto services like custody, trading, or portfolio management, you likely need MiCA compliance. Our AI screening tool at <a href='https://micahub.net' target='_blank' rel='noopener noreferrer' className='text-[#cb46b3] hover:underline'>Micahub.net</a> can determine your exact requirements in minutes."

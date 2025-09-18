@@ -55,9 +55,15 @@ const WhyChooseUs = () => {
           {reasons.map((reason, index) => (
             <div 
               key={index}
-              className="p-6 bg-white/60 backdrop-blur-sm rounded-lg border border-white/40 hover:bg-white/80 transition-all duration-300 hover:translate-y-[-4px] group"
+              className="p-6 bg-white/20 backdrop-blur-sm rounded-lg hover:translate-y-[-4px] transition-all duration-300"
+              style={{
+                animationDelay: `0.1s`,
+                boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
+                border: "1px solid rgba(255, 255, 255, 0.7)"
+              }}
             >
-              <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4 bg-gradient-to-br from-[#cb46b3]/20 to-[#cb46b3]/40">
+              <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" 
+                  style={{ background: `linear-gradient(135deg, #cb46b320, #cb46b340)` }}>
                 {reason.icon}
               </div>
               <h4 className="text-lg font-semibold text-gray-800 mb-3">
@@ -70,24 +76,39 @@ const WhyChooseUs = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <div className="inline-flex items-center gap-2 text-sm text-gray-500 mb-6">
+        <div className="text-center mt-16">
+          <div className="inline-flex items-center gap-2 text-sm text-gray-500 mb-8">
             <CheckCircle className="h-4 w-4 text-[#cb46b3]" />
             <span>Trusted by Fortune 500 companies and government agencies</span>
           </div>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a 
-              href="#contact" 
-              className="inline-flex items-center justify-center px-8 py-3 bg-[#cb46b3] text-white rounded-full hover:bg-[#b23d9f] transition-all duration-300 transform hover:scale-105"
+          
+          <div className="relative max-w-md mx-auto">
+            <div 
+              className="p-8 rounded-2xl backdrop-blur-sm bg-white/20"
+              style={{
+                boxShadow: "0 8px 30px rgba(0, 0, 0, 0.1)",
+                border: "1px solid rgba(255, 255, 255, 0.3)",
+                maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)"
+              }}
             >
-              Start Your Web3 Journey
-            </a>
-            <a 
-              href="/mica-ready-waitlist" 
-              className="inline-flex items-center justify-center px-8 py-3 bg-white/60 backdrop-blur-sm text-gray-800 rounded-full border border-gray-200 hover:bg-white/80 transition-all duration-300"
-            >
-              Join MiCA Beta Waitlist
-            </a>
+              <h4 className="text-xl font-semibold text-gray-800 mb-4">
+                Ready to Transform Your Web3 Strategy?
+              </h4>
+              <div className="flex flex-col gap-3">
+                <a 
+                  href="#contact" 
+                  className="inline-flex items-center justify-center px-8 py-3 bg-[#cb46b3] text-white rounded-full hover:bg-[#b23d9f] transition-all duration-300 transform hover:scale-105"
+                >
+                  Start Your Web3 Journey
+                </a>
+                <a 
+                  href="/mica-ready-waitlist" 
+                  className="inline-flex items-center justify-center px-8 py-3 bg-white/60 backdrop-blur-sm text-gray-800 rounded-full border border-gray-200 hover:bg-white/80 transition-all duration-300"
+                >
+                  Join MiCA Beta Waitlist
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </Container>

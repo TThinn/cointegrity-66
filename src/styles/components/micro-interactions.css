@@ -1,3 +1,4 @@
+/* Micro-interaction styles moved to index.css to avoid conflicts */
 
 .micro-interaction {
   position: relative;
@@ -19,16 +20,6 @@
 
 .micro-interaction:hover::after {
   transform: scaleX(1);
-}
-
-@layer components {
-  .micro-interaction {
-    @apply transition-transform duration-300 ease-in-out;
-  }
-
-  .micro-interaction:hover {
-    @apply transform -translate-y-[2px];
-  }
 }
 
 .border-gradient {
