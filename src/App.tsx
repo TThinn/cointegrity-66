@@ -31,6 +31,7 @@ import { NewsArticlePage } from "./pages/NewsArticlePage"
 import GuidesPage from "./pages/GuidesPage"
 import CaseStudiesPage from "./pages/CaseStudiesPage"
 import MicaReadyWaitlistPage from "./pages/MicaReadyWaitlistPage"
+import ClientHunitPage from "./pages/ClientHunitPage"
 
 import './index.css'
 import './App.css'
@@ -97,6 +98,7 @@ const App = () => {
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/thank-you" element={<ThankYouPage />} />
               <Route path="/mica-ready-waitlist" element={<MicaReadyWaitlistPage />} />
+              <Route path="/client/Hunit" element={<ClientHunitPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <Toaster 

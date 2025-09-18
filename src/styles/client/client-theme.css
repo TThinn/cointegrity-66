@@ -1,0 +1,214 @@
+/* Client Theme Styles - Custom design system for client portal */
+
+/* CSS Custom Properties */
+:root {
+  --client-bg: #FBFAF4;
+  --client-text-primary: #091717;
+  --client-text-secondary: #2E565D;
+  --client-text-muted: #6B7280;
+  --client-accent: #20808D;
+  --client-border: #E5E3D4;
+  --client-card-bg: #FFFFFF;
+  --client-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --client-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --client-transition: all 200ms ease-in-out;
+}
+
+/* Base Styles */
+.client-page {
+  background-color: var(--client-bg);
+  color: var(--client-text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+.client-container {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.client-section {
+  padding: 48px 0;
+}
+
+@media (min-width: 768px) {
+  .client-section {
+    padding: 64px 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .client-section {
+    padding: 80px 0;
+  }
+}
+
+/* Typography */
+.client-heading-lg {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--client-text-primary);
+  margin-bottom: 1rem;
+}
+
+.client-heading-md {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--client-text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.client-heading-sm {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--client-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.client-text {
+  line-height: 1.8;
+  color: var(--client-text-primary);
+}
+
+.client-text-muted {
+  line-height: 1.8;
+  color: var(--client-text-muted);
+}
+
+/* Components */
+.client-card {
+  background: var(--client-card-bg);
+  border: 1px solid var(--client-border);
+  border-radius: 32px;
+  box-shadow: var(--client-shadow);
+  padding: 2rem;
+  transition: var(--client-transition);
+}
+
+.client-card:hover {
+  box-shadow: var(--client-shadow-lg);
+}
+
+.client-button {
+  background-color: var(--client-accent);
+  color: white;
+  border: none;
+  border-radius: 24px;
+  padding: 24px 48px;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--client-transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.client-button:hover {
+  background-color: #1a6b76;
+  transform: translateY(-1px);
+}
+
+.client-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--client-accent), 0 0 0 4px rgba(32, 128, 141, 0.1);
+}
+
+.client-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.client-button-secondary {
+  background-color: transparent;
+  color: var(--client-accent);
+  border: 1px solid var(--client-accent);
+  border-radius: 24px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--client-transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.client-button-secondary:hover {
+  background-color: var(--client-accent);
+  color: white;
+}
+
+.client-input {
+  width: 100%;
+  background: var(--client-card-bg);
+  border: 1px solid var(--client-border);
+  border-radius: 24px;
+  padding: 16px 24px;
+  font-size: 17px;
+  color: var(--client-text-primary);
+  transition: var(--client-transition);
+}
+
+.client-input:focus {
+  outline: none;
+  border-color: var(--client-accent);
+  box-shadow: 0 0 0 2px rgba(32, 128, 141, 0.1);
+}
+
+.client-input::placeholder {
+  color: var(--client-text-muted);
+}
+
+.client-label {
+  display: block;
+  font-weight: 500;
+  color: var(--client-text-primary);
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.client-header {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--client-border);
+  margin-bottom: 2rem;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .client-heading-lg {
+    font-size: 2rem;
+  }
+  
+  .client-heading-md {
+    font-size: 1.75rem;
+  }
+  
+  .client-heading-sm {
+    font-size: 1.25rem;
+  }
+  
+  .client-button {
+    padding: 20px 32px;
+    font-size: 16px;
+  }
+  
+  .client-card {
+    padding: 1.5rem;
+  }
+}
