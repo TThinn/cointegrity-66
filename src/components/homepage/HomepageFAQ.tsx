@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     question: "Do I need MiCA compliance for my crypto business?",
-    answer: "If you operate in or target EU markets, issue crypto-assets, or provide crypto services like custody, trading, or portfolio management, you likely need MiCA compliance. Our AI screening tool can determine your exact requirements in minutes."
+    answer: "If you operate in or target EU markets, issue crypto-assets, or provide crypto services like custody, trading, or portfolio management, you likely need MiCA compliance. Our AI screening tool at <a href='https://micahub.net' target='_blank' rel='noopener noreferrer' className='text-[#cb46b3] hover:underline'>Micahub.net</a> can determine your exact requirements in minutes."
   },
   {
     question: "What's included in your Web3 consulting process?",
