@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { User } from '@supabase/supabase-js';
-import { ChevronDown, Globe, Zap, Shield, DollarSign, TrendingUp, Lock, Network, Users, Phone } from 'lucide-react';
+import { ChevronDown, Globe, Zap, Shield, DollarSign, TrendingUp, Lock, Network, Users, Phone, Clock, AlertTriangle, Coins, Target, BarChart3, Layers } from 'lucide-react';
 import ClientLogin from '@/components/client/ClientLogin';
 import Footer from '@/components/Footer';
 import '@/styles/client/client-theme.css';
@@ -105,7 +105,7 @@ const ClientHunitPage = () => {
             <div className="flex items-center space-x-8">
               <h1 className="text-xl font-semibold text-client-text-primary">Hunit</h1>
               <nav className="hidden md:flex space-x-6">
-                {['Hero', 'CBDCs', 'Blockchain', 'Banking', 'Local Currency', 'Trade Finance', 'Rupee Systems', 'Crypto', 'Networks', 'Compliance'].map((label, index) => (
+                {['Hero', 'Challenges', 'Opportunity', 'Solutions', 'Local Currency', 'Trade Finance', 'Rupee Systems', 'Crypto', 'Networks', 'Compliance'].map((label, index) => (
                   <button
                     key={index}
                     onClick={() => scrollToSection(index)}
@@ -162,96 +162,292 @@ const ClientHunitPage = () => {
       <div className="client-container">
         <div className="space-y-16 py-16">
           
-          {/* Section 1: Central Bank Digital Currencies */}
+          {/* Section 1: Current Challenges */}
           <section ref={el => sectionsRef.current[1] = el} className="client-card">
             <div className="flex items-start space-x-6">
-              <div className="p-4 bg-client-accent/10 rounded-2xl">
-                <Globe className="w-8 h-8 text-client-accent" />
+              <div className="p-4 bg-red-50 rounded-2xl">
+                <AlertTriangle className="w-8 h-8 text-red-600" />
               </div>
               <div className="flex-1">
-                <h2 className="client-heading-md mb-4">Central Bank Digital Currencies (CBDCs)</h2>
+                <h2 className="client-heading-md mb-4">Current Challenges in Cross-Border Oil Payments</h2>
                 <p className="client-text mb-6">
-                  Digital versions of sovereign currencies offer unprecedented efficiency for cross-border settlements. 
-                  The Reserve Bank of India's Digital Rupee pilot and emerging African CBDC initiatives create new 
-                  pathways for direct government-to-government oil trade settlements.
+                  Traditional cross-border payment systems create significant friction in the $17B India-Africa oil trade, 
+                  imposing delays, costs, and risks that impact both importers and exporters.
                 </p>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold text-client-text-primary mb-2">Key Benefits</h4>
-                    <ul className="space-y-2 text-client-text-secondary">
-                      <li>• Instant settlement capabilities</li>
-                      <li>• Reduced correspondent banking fees</li>
-                      <li>• Enhanced transparency</li>
-                      <li>• Regulatory compliance built-in</li>
-                    </ul>
+                
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                  <div className="bg-client-bg p-4 rounded-xl">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <Clock className="w-5 h-5 text-red-600" />
+                      <h4 className="font-semibold text-client-text-primary">Time Delays</h4>
+                    </div>
+                    <p className="text-sm text-client-text-secondary">3-5 days settlement time through correspondent banking networks</p>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-client-text-primary mb-2">Implementation Timeline</h4>
-                    <ul className="space-y-2 text-client-text-secondary">
-                      <li>• 2024: Pilot programs expansion</li>
-                      <li>• 2025: Cross-border CBDC bridges</li>
-                      <li>• 2026: Commercial oil trade integration</li>
-                    </ul>
+                  
+                  <div className="bg-client-bg p-4 rounded-xl">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <DollarSign className="w-5 h-5 text-red-600" />
+                      <h4 className="font-semibold text-client-text-primary">High Costs</h4>
+                    </div>
+                    <p className="text-sm text-client-text-secondary">2-4% in transaction fees, FX spreads, and intermediary charges</p>
                   </div>
+                  
+                  <div className="bg-client-bg p-4 rounded-xl">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <AlertTriangle className="w-5 h-5 text-red-600" />
+                      <h4 className="font-semibold text-client-text-primary">Geopolitical Risk</h4>
+                    </div>
+                    <p className="text-sm text-client-text-secondary">Sanctions exposure and correspondent banking restrictions</p>
+                  </div>
+                  
+                  <div className="bg-client-bg p-4 rounded-xl">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <Coins className="w-5 h-5 text-red-600" />
+                      <h4 className="font-semibold text-client-text-primary">Currency Inefficiency</h4>
+                    </div>
+                    <p className="text-sm text-client-text-secondary">Multiple currency conversions through USD intermediation</p>
+                  </div>
+                  
+                  <div className="bg-client-bg p-4 rounded-xl md:col-span-2 lg:col-span-1">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <Shield className="w-5 h-5 text-red-600" />
+                      <h4 className="font-semibold text-client-text-primary">Compliance Complexity</h4>
+                    </div>
+                    <p className="text-sm text-client-text-secondary">Multi-jurisdictional regulatory requirements and reporting</p>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-client-accent/10 to-client-text-secondary/10 p-6 rounded-xl border-l-4 border-client-accent">
+                  <blockquote className="text-lg italic text-client-text-primary mb-2">
+                    "The current SWIFT-based system was designed for a different era. Today's oil trade requires speed, efficiency, and direct settlement capabilities that legacy infrastructure simply cannot provide."
+                  </blockquote>
+                  <cite className="text-client-text-secondary">— Global Trade Finance Report 2024</cite>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Section 2: Blockchain Settlement Systems */}
+          {/* Section 2: Market Opportunity */}
           <section ref={el => sectionsRef.current[2] = el} className="client-card">
             <div className="flex items-start space-x-6">
-              <div className="p-4 bg-client-accent/10 rounded-2xl">
-                <Network className="w-8 h-8 text-client-accent" />
+              <div className="p-4 bg-green-50 rounded-2xl">
+                <TrendingUp className="w-8 h-8 text-green-600" />
               </div>
               <div className="flex-1">
-                <h2 className="client-heading-md mb-4">Blockchain-Based Settlement Systems</h2>
+                <h2 className="client-heading-md mb-4">The India-Africa Oil Trade Opportunity</h2>
                 <p className="client-text mb-6">
-                  Distributed ledger technology enables direct peer-to-peer settlements between Indian oil importers 
-                  and African producers, eliminating multiple intermediaries and reducing settlement times from days to minutes.
+                  The rapidly growing India-Africa oil trade corridor presents unprecedented opportunities for 
+                  payment system innovation and cost optimization.
                 </p>
-                <div className="grid md:grid-cols-3 gap-4">
-                  <div className="bg-client-bg p-4 rounded-xl">
-                    <h5 className="font-medium text-client-text-primary mb-2">Smart Contracts</h5>
-                    <p className="text-sm text-client-text-secondary">Automated execution based on delivery confirmations</p>
+                
+                {/* Key Statistics */}
+                <div className="grid md:grid-cols-3 gap-6 mb-8">
+                  <div className="text-center bg-client-bg p-6 rounded-xl">
+                    <div className="text-3xl font-bold text-client-accent mb-2">$17B</div>
+                    <div className="text-client-text-primary font-medium mb-1">Annual Trade Volume</div>
+                    <div className="text-sm text-client-text-secondary">Current India-Africa oil trade value</div>
                   </div>
-                  <div className="bg-client-bg p-4 rounded-xl">
-                    <h5 className="font-medium text-client-text-primary mb-2">Multi-Signature</h5>
-                    <p className="text-sm text-client-text-secondary">Enhanced security through distributed authorization</p>
+                  
+                  <div className="text-center bg-client-bg p-6 rounded-xl">
+                    <div className="text-3xl font-bold text-client-accent mb-2">20%</div>
+                    <div className="text-client-text-primary font-medium mb-1">India's Oil Imports</div>
+                    <div className="text-sm text-client-text-secondary">Share from African countries</div>
                   </div>
-                  <div className="bg-client-bg p-4 rounded-xl">
-                    <h5 className="font-medium text-client-text-primary mb-2">Immutable Records</h5>
-                    <p className="text-sm text-client-text-secondary">Transparent audit trails for compliance</p>
+                  
+                  <div className="text-center bg-client-bg p-6 rounded-xl">
+                    <div className="text-3xl font-bold text-client-accent mb-2">15%</div>
+                    <div className="text-client-text-primary font-medium mb-1">Annual Growth</div>
+                    <div className="text-sm text-client-text-secondary">Projected trade expansion</div>
+                  </div>
+                </div>
+
+                {/* Opportunity Highlights */}
+                <div className="grid md:grid-cols-3 gap-6 mb-6">
+                  <div className="bg-client-bg p-6 rounded-xl">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <BarChart3 className="w-6 h-6 text-client-accent" />
+                      <h4 className="font-semibold text-client-text-primary">Growing Trade Volume</h4>
+                    </div>
+                    <p className="text-client-text-secondary">Expanding partnerships with Nigeria, Angola, and emerging producers</p>
+                  </div>
+                  
+                  <div className="bg-client-bg p-6 rounded-xl">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <Target className="w-6 h-6 text-client-accent" />
+                      <h4 className="font-semibold text-client-text-primary">Efficiency Potential</h4>
+                    </div>
+                    <p className="text-client-text-secondary">$340-680M annual savings through payment optimization</p>
+                  </div>
+                  
+                  <div className="bg-client-bg p-6 rounded-xl">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <Users className="w-6 h-6 text-client-accent" />
+                      <h4 className="font-semibold text-client-text-primary">Strategic Partnerships</h4>
+                    </div>
+                    <p className="text-client-text-secondary">Government-to-government agreements enabling direct settlements</p>
+                  </div>
+                </div>
+
+                {/* Top African Oil Exporters Chart */}
+                <div className="bg-client-bg p-6 rounded-xl">
+                  <h4 className="font-semibold text-client-text-primary mb-4">Top African Oil Exporters to India (2024)</h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-client-text-secondary">Nigeria</span>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-32 bg-client-border rounded-full h-2">
+                          <div className="bg-client-accent h-2 rounded-full" style={{width: '65%'}}></div>
+                        </div>
+                        <span className="text-client-text-primary font-medium">$6.2B</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-client-text-secondary">Angola</span>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-32 bg-client-border rounded-full h-2">
+                          <div className="bg-client-accent h-2 rounded-full" style={{width: '45%'}}></div>
+                        </div>
+                        <span className="text-client-text-primary font-medium">$4.3B</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-client-text-secondary">South Africa</span>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-32 bg-client-border rounded-full h-2">
+                          <div className="bg-client-accent h-2 rounded-full" style={{width: '25%'}}></div>
+                        </div>
+                        <span className="text-client-text-primary font-medium">$2.4B</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-client-text-secondary">Ghana</span>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-32 bg-client-border rounded-full h-2">
+                          <div className="bg-client-accent h-2 rounded-full" style={{width: '15%'}}></div>
+                        </div>
+                        <span className="text-client-text-primary font-medium">$1.4B</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Section 3: Correspondent Banking Alternatives */}
+          {/* Section 3: Solution Overview */}
           <section ref={el => sectionsRef.current[3] = el} className="client-card">
             <div className="flex items-start space-x-6">
-              <div className="p-4 bg-client-accent/10 rounded-2xl">
-                <Zap className="w-8 h-8 text-client-accent" />
+              <div className="p-4 bg-blue-50 rounded-2xl">
+                <Layers className="w-8 h-8 text-blue-600" />
               </div>
               <div className="flex-1">
-                <h2 className="client-heading-md mb-4">Correspondent Banking Alternatives</h2>
-                <p className="client-text mb-6">
-                  Direct banking relationships and specialized trade finance institutions provide faster, 
-                  cost-effective alternatives to traditional correspondent banking networks for oil trade settlements.
+                <h2 className="client-heading-md mb-4">Alternative Payment Rail Options</h2>
+                <p className="client-text mb-8">
+                  Three primary pathways emerge for transforming India-Africa oil trade payments, 
+                  each offering distinct advantages for different trade scenarios and risk profiles.
                 </p>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-client-accent rounded-full"></div>
-                    <span className="client-text">Export-Import Bank of India direct partnerships</span>
+                
+                <div className="grid lg:grid-cols-3 gap-6 mb-8">
+                  {/* PAPSS */}
+                  <div className="bg-client-bg p-6 rounded-xl border-2 border-client-border hover:border-client-accent transition-colors">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <Globe className="w-6 h-6 text-client-accent" />
+                      <h3 className="client-heading-sm">PAPSS Integration</h3>
+                    </div>
+                    <p className="client-text mb-4 text-sm">
+                      Pan-African Payment and Settlement System enables direct local currency settlements 
+                      across African countries.
+                    </p>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Multi-country coverage</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Central bank endorsed</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Local currency focus</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-client-accent rounded-full"></div>
-                    <span className="client-text">African Development Bank trade facilities</span>
+
+                  {/* Blockchain */}
+                  <div className="bg-client-bg p-6 rounded-xl border-2 border-client-border hover:border-client-accent transition-colors">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <Network className="w-6 h-6 text-client-accent" />
+                      <h3 className="client-heading-sm">Enterprise Blockchain</h3>
+                    </div>
+                    <p className="client-text mb-4 text-sm">
+                      Private blockchain networks with smart contracts for automated, 
+                      programmable oil trade settlements.
+                    </p>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Instant settlement</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Smart contract automation</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Immutable audit trail</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-client-accent rounded-full"></div>
-                    <span className="client-text">Specialized commodity trading banks</span>
+
+                  {/* Stablecoin */}
+                  <div className="bg-client-bg p-6 rounded-xl border-2 border-client-border hover:border-client-accent transition-colors">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <Coins className="w-6 h-6 text-client-accent" />
+                      <h3 className="client-heading-sm">Stablecoin Infrastructure</h3>
+                    </div>
+                    <p className="client-text mb-4 text-sm">
+                      Regulated stablecoins and CBDCs provide stable value transfers 
+                      with programmable compliance features.
+                    </p>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">24/7 availability</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Regulatory compliance</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Price stability</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Hybrid Approach Highlight */}
+                <div className="bg-gradient-to-r from-client-accent/10 to-blue-500/10 p-6 rounded-xl border border-client-accent/30">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <div className="p-2 bg-client-accent/20 rounded-lg">
+                      <Zap className="w-6 h-6 text-client-accent" />
+                    </div>
+                    <h3 className="client-heading-sm text-client-accent">Recommended: Hybrid Approach</h3>
+                  </div>
+                  <p className="client-text mb-4">
+                    Combining regional payment systems (PAPSS) with blockchain infrastructure creates 
+                    the optimal balance of coverage, speed, and compliance for India-Africa oil trade.
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <h4 className="font-semibold text-client-text-primary mb-2">Regional Layer (PAPSS)</h4>
+                      <p className="text-sm text-client-text-secondary">Handles local currency settlements and regulatory compliance within Africa</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-client-text-primary mb-2">Blockchain Layer</h4>
+                      <p className="text-sm text-client-text-secondary">Provides cross-border automation and India-Africa connectivity</p>
+                    </div>
                   </div>
                 </div>
               </div>
