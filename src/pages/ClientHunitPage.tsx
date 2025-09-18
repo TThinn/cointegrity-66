@@ -1,9 +1,32 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { User } from '@supabase/supabase-js';
-import { ChevronDown, Globe, Zap, Shield, DollarSign, TrendingUp, Lock, Network, Users, Phone, Clock, AlertTriangle, Coins, Target, BarChart3, Layers } from 'lucide-react';
+import { ChevronDown, Phone } from 'lucide-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faClock, 
+  faDollarSign, 
+  faExclamationTriangle, 
+  faCoins, 
+  faShield, 
+  faGlobe, 
+  faNetworkWired, 
+  faLayers, 
+  faChartLine, 
+  faBullseye, 
+  faUsers, 
+  faLock, 
+  faZap, 
+  faChartBar,
+  faRocket,
+  faHandshake
+} from '@fortawesome/free-solid-svg-icons';
 import ClientLogin from '@/components/client/ClientLogin';
 import Footer from '@/components/Footer';
+import AnimatedCounter from '@/components/client/AnimatedCounter';
+import NavigationDots from '@/components/client/NavigationDots';
+import TradeVolumeChart from '@/components/client/TradeVolumeChart';
+import PaymentFlowSVG from '@/components/client/PaymentFlowSVG';
 import '@/styles/client/client-theme.css';
 
 const ClientHunitPage = () => {
@@ -14,8 +37,13 @@ const ClientHunitPage = () => {
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
 
   const sections = [
-    'hero', 'cbdc', 'blockchain', 'correspondent', 'local-currency', 
-    'trade-finance', 'rupee-systems', 'crypto', 'regional-networks', 'compliance'
+    'hero', 'challenges', 'opportunity', 'solutions', 'papss', 'blockchain', 
+    'implementation', 'value-prop', 'next-steps', 'compliance'
+  ];
+
+  const sectionLabels = [
+    'Hero', 'Challenges', 'Opportunity', 'Solutions', 'PAPSS', 'Blockchain', 
+    'Implementation', 'Value Prop', 'Next Steps', 'Compliance'
   ];
 
   useEffect(() => {
@@ -88,8 +116,14 @@ const ClientHunitPage = () => {
     return <ClientLogin />;
   }
 
-  return (
     <div className="client-page">
+      {/* Navigation Dots */}
+      <NavigationDots 
+        sections={sectionLabels}
+        activeSection={activeSection}
+        onSectionClick={scrollToSection}
+      />
+
       {/* Progress Bar */}
       <div className="fixed top-0 left-0 w-full h-1 bg-client-border z-50">
         <div 
@@ -104,12 +138,12 @@ const ClientHunitPage = () => {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-8">
               <h1 className="text-xl font-semibold text-client-text-primary">Hunit</h1>
-              <nav className="hidden md:flex space-x-6">
-                {['Hero', 'Challenges', 'Opportunity', 'Solutions', 'PAPSS', 'Blockchain', 'Implementation', 'Value Prop', 'Next Steps', 'Compliance'].map((label, index) => (
+              <nav className="hidden md:flex space-x-4 lg:space-x-6">
+                {sectionLabels.map((label, index) => (
                   <button
                     key={index}
                     onClick={() => scrollToSection(index)}
-                    className={`text-sm transition-colors ${
+                    className={`text-xs lg:text-sm transition-colors ${
                       activeSection === index 
                         ? 'text-client-accent font-medium' 
                         : 'text-client-text-secondary hover:text-client-accent'
@@ -122,7 +156,7 @@ const ClientHunitPage = () => {
             </div>
             <button 
               onClick={handleLogout}
-              className="client-button-secondary"
+              className="client-button-secondary text-sm"
             >
               Logout
             </button>
@@ -133,23 +167,23 @@ const ClientHunitPage = () => {
       {/* Hero Section */}
       <section 
         ref={el => sectionsRef.current[0] = el}
-        className="pt-20 pb-16 bg-gradient-to-br from-client-bg to-client-card-bg"
+        className="pt-24 pb-16 bg-gradient-to-br from-client-bg to-client-card-bg animate-fadeInUp"
       >
         <div className="client-container">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-client-text-primary mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-client-text-primary mb-6 leading-tight animate-slideInLeft">
               Beyond SWIFT: Alternative Payment Rails for 
               <span className="text-client-accent"> India-Africa Oil Trade</span>
             </h1>
-            <p className="text-xl text-client-text-secondary mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-client-text-secondary mb-8 leading-relaxed animate-slideInRight">
               Strategic Options for Efficient, Secure, and Compliant Cross-Border Settlements
             </p>
-            <p className="text-lg text-client-text-muted mb-12">
+            <p className="text-base md:text-lg text-client-text-muted mb-12 animate-fadeInUp">
               Explore innovative payment solutions to transform $17B annual India-Africa oil trade
             </p>
             <button 
               onClick={() => scrollToSection(1)}
-              className="client-button inline-flex items-center space-x-2"
+              className="client-button inline-flex items-center space-x-2 animate-bounce"
             >
               <span>Explore Solutions</span>
               <ChevronDown className="w-5 h-5" />
@@ -160,13 +194,13 @@ const ClientHunitPage = () => {
 
       {/* Content Sections */}
       <div className="client-container">
-        <div className="space-y-16 py-16">
+        <div className="space-y-8 md:space-y-16 py-8 md:py-16">
           
           {/* Section 1: Current Challenges */}
-          <section ref={el => sectionsRef.current[1] = el} className="client-card">
-            <div className="flex items-start space-x-6">
-              <div className="p-4 bg-red-50 rounded-2xl">
-                <AlertTriangle className="w-8 h-8 text-red-600" />
+          <section ref={el => sectionsRef.current[1] = el} className="client-card animate-fadeInUp">
+            <div className="flex flex-col lg:flex-row lg:items-start space-y-6 lg:space-y-0 lg:space-x-6">
+              <div className="p-4 bg-red-50 rounded-2xl flex-shrink-0 self-start">
+                <FontAwesomeIcon icon={faExclamationTriangle} className="w-8 h-8 text-red-600 icon-bounce" />
               </div>
               <div className="flex-1">
                 <h2 className="client-heading-md mb-4">Current Challenges in Cross-Border Oil Payments</h2>
@@ -175,42 +209,47 @@ const ClientHunitPage = () => {
                   imposing delays, costs, and risks that impact both importers and exporters.
                 </p>
                 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-                  <div className="bg-client-bg p-4 rounded-xl">
+                {/* Payment Flow Diagram */}
+                <div className="mb-8">
+                  <PaymentFlowSVG />
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                  <div className="client-card bg-client-bg p-4 hover:shadow-md transition-all">
                     <div className="flex items-center space-x-3 mb-2">
-                      <Clock className="w-5 h-5 text-red-600" />
+                      <FontAwesomeIcon icon={faClock} className="w-5 h-5 text-red-600" />
                       <h4 className="font-semibold text-client-text-primary">Time Delays</h4>
                     </div>
                     <p className="text-sm text-client-text-secondary">3-5 days settlement time through correspondent banking networks</p>
                   </div>
                   
-                  <div className="bg-client-bg p-4 rounded-xl">
+                  <div className="client-card bg-client-bg p-4 hover:shadow-md transition-all">
                     <div className="flex items-center space-x-3 mb-2">
-                      <DollarSign className="w-5 h-5 text-red-600" />
+                      <FontAwesomeIcon icon={faDollarSign} className="w-5 h-5 text-red-600" />
                       <h4 className="font-semibold text-client-text-primary">High Costs</h4>
                     </div>
                     <p className="text-sm text-client-text-secondary">2-4% in transaction fees, FX spreads, and intermediary charges</p>
                   </div>
                   
-                  <div className="bg-client-bg p-4 rounded-xl">
+                  <div className="client-card bg-client-bg p-4 hover:shadow-md transition-all">
                     <div className="flex items-center space-x-3 mb-2">
-                      <AlertTriangle className="w-5 h-5 text-red-600" />
+                      <FontAwesomeIcon icon={faExclamationTriangle} className="w-5 h-5 text-red-600" />
                       <h4 className="font-semibold text-client-text-primary">Geopolitical Risk</h4>
                     </div>
                     <p className="text-sm text-client-text-secondary">Sanctions exposure and correspondent banking restrictions</p>
                   </div>
                   
-                  <div className="bg-client-bg p-4 rounded-xl">
+                  <div className="client-card bg-client-bg p-4 hover:shadow-md transition-all">
                     <div className="flex items-center space-x-3 mb-2">
-                      <Coins className="w-5 h-5 text-red-600" />
+                      <FontAwesomeIcon icon={faCoins} className="w-5 h-5 text-red-600" />
                       <h4 className="font-semibold text-client-text-primary">Currency Inefficiency</h4>
                     </div>
                     <p className="text-sm text-client-text-secondary">Multiple currency conversions through USD intermediation</p>
                   </div>
                   
-                  <div className="bg-client-bg p-4 rounded-xl md:col-span-2 lg:col-span-1">
+                  <div className="client-card bg-client-bg p-4 hover:shadow-md transition-all md:col-span-2 lg:col-span-1">
                     <div className="flex items-center space-x-3 mb-2">
-                      <Shield className="w-5 h-5 text-red-600" />
+                      <FontAwesomeIcon icon={faShield} className="w-5 h-5 text-red-600" />
                       <h4 className="font-semibold text-client-text-primary">Compliance Complexity</h4>
                     </div>
                     <p className="text-sm text-client-text-secondary">Multi-jurisdictional regulatory requirements and reporting</p>
@@ -218,7 +257,7 @@ const ClientHunitPage = () => {
                 </div>
 
                 <div className="bg-gradient-to-r from-client-accent/10 to-client-text-secondary/10 p-6 rounded-xl border-l-4 border-client-accent">
-                  <blockquote className="text-lg italic text-client-text-primary mb-2">
+                  <blockquote className="text-base md:text-lg italic text-client-text-primary mb-2">
                     "The current SWIFT-based system was designed for a different era. Today's oil trade requires speed, efficiency, and direct settlement capabilities that legacy infrastructure simply cannot provide."
                   </blockquote>
                   <cite className="text-client-text-secondary">— Global Trade Finance Report 2024</cite>
@@ -228,10 +267,10 @@ const ClientHunitPage = () => {
           </section>
 
           {/* Section 2: Market Opportunity */}
-          <section ref={el => sectionsRef.current[2] = el} className="client-card">
-            <div className="flex items-start space-x-6">
-              <div className="p-4 bg-green-50 rounded-2xl">
-                <TrendingUp className="w-8 h-8 text-green-600" />
+          <section ref={el => sectionsRef.current[2] = el} className="client-card animate-fadeInUp">
+            <div className="flex flex-col lg:flex-row lg:items-start space-y-6 lg:space-y-0 lg:space-x-6">
+              <div className="p-4 bg-green-50 rounded-2xl flex-shrink-0 self-start">
+                <FontAwesomeIcon icon={faChartLine} className="w-8 h-8 text-green-600 icon-pulse" />
               </div>
               <div className="flex-1">
                 <h2 className="client-heading-md mb-4">The India-Africa Oil Trade Opportunity</h2>
@@ -240,48 +279,56 @@ const ClientHunitPage = () => {
                   payment system innovation and cost optimization.
                 </p>
                 
-                {/* Key Statistics */}
-                <div className="grid md:grid-cols-3 gap-6 mb-8">
-                  <div className="text-center bg-client-bg p-6 rounded-xl">
-                    <div className="text-3xl font-bold text-client-accent mb-2">$17B</div>
+                {/* Key Statistics with Animated Counters */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                  <div className="text-center client-card bg-client-bg p-6 hover:shadow-md transition-all">
+                    <div className="text-2xl md:text-3xl font-bold text-client-accent mb-2">
+                      $<AnimatedCounter end={17} />B
+                    </div>
                     <div className="text-client-text-primary font-medium mb-1">Annual Trade Volume</div>
                     <div className="text-sm text-client-text-secondary">Current India-Africa oil trade value</div>
                   </div>
                   
-                  <div className="text-center bg-client-bg p-6 rounded-xl">
-                    <div className="text-3xl font-bold text-client-accent mb-2">20%</div>
+                  <div className="text-center client-card bg-client-bg p-6 hover:shadow-md transition-all">
+                    <div className="text-2xl md:text-3xl font-bold text-client-accent mb-2">
+                      <AnimatedCounter end={20} />%
+                    </div>
                     <div className="text-client-text-primary font-medium mb-1">India's Oil Imports</div>
                     <div className="text-sm text-client-text-secondary">Share from African countries</div>
                   </div>
                   
-                  <div className="text-center bg-client-bg p-6 rounded-xl">
-                    <div className="text-3xl font-bold text-client-accent mb-2">15%</div>
+                  <div className="text-center client-card bg-client-bg p-6 hover:shadow-md transition-all">
+                    <div className="text-2xl md:text-3xl font-bold text-client-accent mb-2">
+                      <AnimatedCounter end={15} />%
+                    </div>
                     <div className="text-client-text-primary font-medium mb-1">Annual Growth</div>
                     <div className="text-sm text-client-text-secondary">Projected trade expansion</div>
                   </div>
                 </div>
 
                 {/* Opportunity Highlights */}
-                <div className="grid md:grid-cols-3 gap-6 mb-6">
-                  <div className="bg-client-bg p-6 rounded-xl">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                  <div className="client-card bg-client-bg p-6 hover:shadow-md transition-all">
                     <div className="flex items-center space-x-3 mb-3">
-                      <BarChart3 className="w-6 h-6 text-client-accent" />
+                      <FontAwesomeIcon icon={faChartBar} className="w-6 h-6 text-client-accent" />
                       <h4 className="font-semibold text-client-text-primary">Growing Trade Volume</h4>
                     </div>
                     <p className="text-client-text-secondary">Expanding partnerships with Nigeria, Angola, and emerging producers</p>
                   </div>
                   
-                  <div className="bg-client-bg p-6 rounded-xl">
+                  <div className="client-card bg-client-bg p-6 hover:shadow-md transition-all">
                     <div className="flex items-center space-x-3 mb-3">
-                      <Target className="w-6 h-6 text-client-accent" />
+                      <FontAwesomeIcon icon={faBullseye} className="w-6 h-6 text-client-accent" />
                       <h4 className="font-semibold text-client-text-primary">Efficiency Potential</h4>
                     </div>
-                    <p className="text-client-text-secondary">$340-680M annual savings through payment optimization</p>
+                    <p className="text-client-text-secondary">
+                      $<AnimatedCounter end={340} />M-$<AnimatedCounter end={680} />M annual savings through payment optimization
+                    </p>
                   </div>
                   
-                  <div className="bg-client-bg p-6 rounded-xl">
+                  <div className="client-card bg-client-bg p-6 hover:shadow-md transition-all">
                     <div className="flex items-center space-x-3 mb-3">
-                      <Users className="w-6 h-6 text-client-accent" />
+                      <FontAwesomeIcon icon={faHandshake} className="w-6 h-6 text-client-accent" />
                       <h4 className="font-semibold text-client-text-primary">Strategic Partnerships</h4>
                     </div>
                     <p className="text-client-text-secondary">Government-to-government agreements enabling direct settlements</p>
@@ -289,46 +336,9 @@ const ClientHunitPage = () => {
                 </div>
 
                 {/* Top African Oil Exporters Chart */}
-                <div className="bg-client-bg p-6 rounded-xl">
+                <div className="client-card bg-client-bg p-6 hover:shadow-md transition-all">
                   <h4 className="font-semibold text-client-text-primary mb-4">Top African Oil Exporters to India (2024)</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-client-text-secondary">Nigeria</span>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-32 bg-client-border rounded-full h-2">
-                          <div className="bg-client-accent h-2 rounded-full" style={{width: '65%'}}></div>
-                        </div>
-                        <span className="text-client-text-primary font-medium">$6.2B</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-client-text-secondary">Angola</span>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-32 bg-client-border rounded-full h-2">
-                          <div className="bg-client-accent h-2 rounded-full" style={{width: '45%'}}></div>
-                        </div>
-                        <span className="text-client-text-primary font-medium">$4.3B</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-client-text-secondary">South Africa</span>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-32 bg-client-border rounded-full h-2">
-                          <div className="bg-client-accent h-2 rounded-full" style={{width: '25%'}}></div>
-                        </div>
-                        <span className="text-client-text-primary font-medium">$2.4B</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-client-text-secondary">Ghana</span>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-32 bg-client-border rounded-full h-2">
-                          <div className="bg-client-accent h-2 rounded-full" style={{width: '15%'}}></div>
-                        </div>
-                        <span className="text-client-text-primary font-medium">$1.4B</span>
-                      </div>
-                    </div>
-                  </div>
+                  <TradeVolumeChart />
                 </div>
               </div>
             </div>

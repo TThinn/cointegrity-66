@@ -38,11 +38,19 @@
   .client-section {
     padding: 64px 0;
   }
+  
+  .client-container {
+    padding: 0 24px;
+  }
 }
 
 @media (min-width: 1024px) {
   .client-section {
     padding: 80px 0;
+  }
+  
+  .client-container {
+    padding: 0 32px;
   }
 }
 
@@ -50,31 +58,49 @@
 .client-heading-lg {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 500;
-  font-size: 2.5rem;
+  font-size: 2rem;
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--client-text-primary);
   margin-bottom: 1rem;
 }
 
+@media (min-width: 768px) {
+  .client-heading-lg {
+    font-size: 2.5rem;
+  }
+}
+
 .client-heading-md {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 500;
-  font-size: 2rem;
+  font-size: 1.75rem;
   line-height: 1.3;
   letter-spacing: -0.02em;
   color: var(--client-text-primary);
   margin-bottom: 0.75rem;
 }
 
+@media (min-width: 768px) {
+  .client-heading-md {
+    font-size: 2rem;
+  }
+}
+
 .client-heading-sm {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 1.4;
   letter-spacing: -0.02em;
   color: var(--client-text-primary);
   margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .client-heading-sm {
+    font-size: 1.5rem;
+  }
 }
 
 .client-text {
@@ -87,27 +113,53 @@
   color: var(--client-text-muted);
 }
 
-/* Components */
+/* Interactive Components */
 .client-card {
   background: var(--client-card-bg);
   border: 1px solid var(--client-border);
   border-radius: 32px;
   box-shadow: var(--client-shadow);
-  padding: 2rem;
+  padding: 1.5rem;
   transition: var(--client-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .client-card {
+    padding: 2rem;
+  }
 }
 
 .client-card:hover {
   box-shadow: var(--client-shadow-lg);
+  transform: translateY(-2px);
 }
 
+.client-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--client-accent), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.client-card:hover::before {
+  opacity: 1;
+}
+
+/* Buttons */
 .client-button {
   background-color: var(--client-accent);
   color: white;
   border: none;
   border-radius: 24px;
-  padding: 24px 48px;
-  font-size: 17px;
+  padding: 20px 32px;
+  font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   transition: var(--client-transition);
@@ -115,11 +167,36 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .client-button {
+    padding: 24px 48px;
+    font-size: 17px;
+  }
+}
+
+.client-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.client-button:hover::before {
+  left: 100%;
 }
 
 .client-button:hover {
   background-color: #1a6b76;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(32, 128, 141, 0.3);
 }
 
 .client-button:focus {
@@ -147,13 +224,32 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.client-button-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--client-accent);
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.client-button-secondary:hover::before {
+  width: 100%;
 }
 
 .client-button-secondary:hover {
-  background-color: var(--client-accent);
   color: white;
+  transform: translateY(-1px);
 }
 
+/* Form Elements */
 .client-input {
   width: 100%;
   background: var(--client-card-bg);
@@ -189,26 +285,126 @@
   margin-bottom: 2rem;
 }
 
-/* Responsive Typography */
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0,0,0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -8px, 0);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+/* Animation utility classes */
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+/* Icon animations */
+.icon-bounce:hover {
+  animation: bounce 0.6s ease-in-out;
+}
+
+.icon-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Progressive disclosure */
+.expandable-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.expandable-content.expanded {
+  max-height: 500px;
+}
+
+/* Touch-friendly mobile interactions */
 @media (max-width: 768px) {
-  .client-heading-lg {
-    font-size: 2rem;
-  }
-  
-  .client-heading-md {
-    font-size: 1.75rem;
-  }
-  
-  .client-heading-sm {
-    font-size: 1.25rem;
-  }
-  
-  .client-button {
-    padding: 20px 32px;
-    font-size: 16px;
+  .client-button, .client-button-secondary {
+    min-height: 48px;
+    touch-action: manipulation;
   }
   
   .client-card {
-    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Stack cards vertically on mobile */
+  .grid {
+    display: block;
+  }
+  
+  .grid > * {
+    margin-bottom: 1rem;
+  }
+  
+  .grid > *:last-child {
+    margin-bottom: 0;
   }
 }
