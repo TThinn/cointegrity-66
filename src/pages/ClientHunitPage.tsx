@@ -1058,10 +1058,7 @@ const ClientHunitPage = () => {
               <button className="client-button">
                 Schedule Consultation
               </button>
-              <button className="client-button-secondary flex items-center justify-center gap-2">
-                <Phone className="w-5 h-5" />
-                Contact Expert
-              </button>
+              
             </div>
           </div>
         </div>
