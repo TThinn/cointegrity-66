@@ -14,14 +14,25 @@
   --client-transition: all 200ms ease-in-out;
 }
 
+/* Global overrides for client pages */
+body:has(.client-page) {
+  background-color: #FBFAF4 !important;
+  color: #091717 !important;
+}
+
 /* Base Styles */
 .client-page {
-  background-color: var(--client-bg);
-  color: var(--client-text-primary);
+  background-color: var(--client-bg) !important;
+  color: var(--client-text-primary) !important;
   font-family: 'Inter', sans-serif;
   font-size: 17px;
   line-height: 1.7;
   min-height: 100vh;
+}
+
+/* Ensure all child elements inherit proper colors */
+.client-page * {
+  color: inherit;
 }
 
 .client-container {
