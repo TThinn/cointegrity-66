@@ -24,7 +24,7 @@ import {
   faGem
 } from '@fortawesome/free-solid-svg-icons';
 import ClientLogin from '@/components/client/ClientLogin';
-import Footer from '@/components/Footer';
+import ClientFooter from '@/components/ClientFooter';
 import AnimatedCounter from '@/components/client/AnimatedCounter';
 import NavigationDots from '@/components/client/NavigationDots';
 import TradeVolumeChart from '@/components/client/TradeVolumeChart';
@@ -1126,7 +1126,7 @@ const ClientHunitPage = () => {
         </div>
       </section>
 
-      <Footer />
+      <ClientFooter />
     </div>
   );
 };
