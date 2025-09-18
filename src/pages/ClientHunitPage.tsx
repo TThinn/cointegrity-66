@@ -11,7 +11,7 @@ import {
   faShield, 
   faGlobe, 
   faNetworkWired, 
-  faLayers, 
+  faLayerGroup, 
   faChartLine, 
   faBullseye, 
   faUsers, 
@@ -19,7 +19,9 @@ import {
   faZap, 
   faChartBar,
   faRocket,
-  faHandshake
+  faHandshake,
+  faArrowTrendUp,
+  faGem
 } from '@fortawesome/free-solid-svg-icons';
 import ClientLogin from '@/components/client/ClientLogin';
 import Footer from '@/components/Footer';
@@ -116,6 +118,7 @@ const ClientHunitPage = () => {
     return <ClientLogin />;
   }
 
+  return (
     <div className="client-page">
       {/* Navigation Dots */}
       <NavigationDots 
@@ -348,7 +351,7 @@ const ClientHunitPage = () => {
           <section ref={el => sectionsRef.current[3] = el} className="client-card">
             <div className="flex items-start space-x-6">
               <div className="p-4 bg-blue-50 rounded-2xl">
-                <Layers className="w-8 h-8 text-blue-600" />
+                <FontAwesomeIcon icon={faLayerGroup} className="w-8 h-8 text-blue-600" />
               </div>
               <div className="flex-1">
                 <h2 className="client-heading-md mb-4">Alternative Payment Rail Options</h2>
@@ -361,7 +364,7 @@ const ClientHunitPage = () => {
                   {/* PAPSS */}
                   <div className="bg-client-bg p-6 rounded-xl border-2 border-client-border hover:border-client-accent transition-colors">
                     <div className="flex items-center space-x-3 mb-4">
-                      <Globe className="w-6 h-6 text-client-accent" />
+                      <FontAwesomeIcon icon={faGlobe} className="w-6 h-6 text-client-accent" />
                       <h3 className="client-heading-sm">PAPSS Integration</h3>
                     </div>
                     <p className="client-text mb-4 text-sm">
@@ -387,7 +390,7 @@ const ClientHunitPage = () => {
                   {/* Blockchain */}
                   <div className="bg-client-bg p-6 rounded-xl border-2 border-client-border hover:border-client-accent transition-colors">
                     <div className="flex items-center space-x-3 mb-4">
-                      <Network className="w-6 h-6 text-client-accent" />
+                      <FontAwesomeIcon icon={faNetworkWired} className="w-6 h-6 text-client-accent" />
                       <h3 className="client-heading-sm">Enterprise Blockchain</h3>
                     </div>
                     <p className="client-text mb-4 text-sm">
@@ -413,7 +416,7 @@ const ClientHunitPage = () => {
                   {/* Stablecoin */}
                   <div className="bg-client-bg p-6 rounded-xl border-2 border-client-border hover:border-client-accent transition-colors">
                     <div className="flex items-center space-x-3 mb-4">
-                      <Coins className="w-6 h-6 text-client-accent" />
+                      <FontAwesomeIcon icon={faCoins} className="w-6 h-6 text-client-accent" />
                       <h3 className="client-heading-sm">Stablecoin Infrastructure</h3>
                     </div>
                     <p className="client-text mb-4 text-sm">
@@ -441,7 +444,7 @@ const ClientHunitPage = () => {
                 <div className="bg-gradient-to-r from-client-accent/10 to-blue-500/10 p-6 rounded-xl border border-client-accent/30">
                   <div className="flex items-center space-x-3 mb-4">
                     <div className="p-2 bg-client-accent/20 rounded-lg">
-                      <Zap className="w-6 h-6 text-client-accent" />
+                      <FontAwesomeIcon icon={faZap} className="w-6 h-6 text-client-accent" />
                     </div>
                     <h3 className="client-heading-sm text-client-accent">Recommended: Hybrid Approach</h3>
                   </div>
@@ -468,7 +471,7 @@ const ClientHunitPage = () => {
           <section ref={el => sectionsRef.current[4] = el} className="client-card">
             <div className="flex items-start space-x-6">
               <div className="p-4 bg-purple-50 rounded-2xl">
-                <Globe className="w-8 h-8 text-purple-600" />
+                <FontAwesomeIcon icon={faGlobe} className="w-8 h-8 text-purple-600" />
               </div>
               <div className="flex-1">
                 <h2 className="client-heading-md mb-4">PAPSS: The Pan-African Payment Solution</h2>
@@ -480,25 +483,25 @@ const ClientHunitPage = () => {
                 {/* Key Features */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                   <div className="bg-client-bg p-4 rounded-xl text-center">
-                    <Clock className="w-6 h-6 text-client-accent mx-auto mb-2" />
+                    <FontAwesomeIcon icon={faClock} className="w-6 h-6 text-client-accent mx-auto mb-2" />
                     <h4 className="font-semibold text-client-text-primary mb-1">Real-Time Settlement</h4>
                     <p className="text-sm text-client-text-secondary">120 seconds average</p>
                   </div>
                   
                   <div className="bg-client-bg p-4 rounded-xl text-center">
-                    <Coins className="w-6 h-6 text-client-accent mx-auto mb-2" />
+                    <FontAwesomeIcon icon={faCoins} className="w-6 h-6 text-client-accent mx-auto mb-2" />
                     <h4 className="font-semibold text-client-text-primary mb-1">Local Currency</h4>
                     <p className="text-sm text-client-text-secondary">Direct transactions</p>
                   </div>
                   
                   <div className="bg-client-bg p-4 rounded-xl text-center">
-                    <Shield className="w-6 h-6 text-client-accent mx-auto mb-2" />
+                    <FontAwesomeIcon icon={faShield} className="w-6 h-6 text-client-accent mx-auto mb-2" />
                     <h4 className="font-semibold text-client-text-primary mb-1">Built-in Compliance</h4>
                     <p className="text-sm text-client-text-secondary">Automated screening</p>
                   </div>
                   
                   <div className="bg-client-bg p-4 rounded-xl text-center">
-                    <Network className="w-6 h-6 text-client-accent mx-auto mb-2" />
+                    <FontAwesomeIcon icon={faNetworkWired} className="w-6 h-6 text-client-accent mx-auto mb-2" />
                     <h4 className="font-semibold text-client-text-primary mb-1">ISO 20022</h4>
                     <p className="text-sm text-client-text-secondary">Global messaging</p>
                   </div>
@@ -555,7 +558,7 @@ const ClientHunitPage = () => {
           <section ref={el => sectionsRef.current[5] = el} className="client-card">
             <div className="flex items-start space-x-6">
               <div className="p-4 bg-indigo-50 rounded-2xl">
-                <Network className="w-8 h-8 text-indigo-600" />
+                <FontAwesomeIcon icon={faNetworkWired} className="w-8 h-8 text-indigo-600" />
               </div>
               <div className="flex-1">
                 <h2 className="client-heading-md mb-4">Enterprise Blockchain Payment Platforms</h2>
@@ -611,7 +614,7 @@ const ClientHunitPage = () => {
                 <div className="grid md:grid-cols-3 gap-6">
                   <div className="bg-client-bg p-6 rounded-xl">
                     <div className="flex items-center space-x-3 mb-3">
-                      <Lock className="w-6 h-6 text-client-accent" />
+                      <FontAwesomeIcon icon={faLock} className="w-6 h-6 text-client-accent" />
                       <h4 className="font-semibold text-client-text-primary">Enterprise-Grade Security</h4>
                     </div>
                     <p className="text-client-text-secondary">Multi-signature wallets, hardware security modules, and institutional custody standards</p>
@@ -619,7 +622,7 @@ const ClientHunitPage = () => {
                   
                   <div className="bg-client-bg p-6 rounded-xl">
                     <div className="flex items-center space-x-3 mb-3">
-                      <Network className="w-6 h-6 text-client-accent" />
+                      <FontAwesomeIcon icon={faNetworkWired} className="w-6 h-6 text-client-accent" />
                       <h4 className="font-semibold text-client-text-primary">Interoperability</h4>
                     </div>
                     <p className="text-client-text-secondary">Cross-chain compatibility and traditional banking system integration</p>
@@ -627,7 +630,7 @@ const ClientHunitPage = () => {
                   
                   <div className="bg-client-bg p-6 rounded-xl">
                     <div className="flex items-center space-x-3 mb-3">
-                      <Shield className="w-6 h-6 text-client-accent" />
+                      <FontAwesomeIcon icon={faShield} className="w-6 h-6 text-client-accent" />
                       <h4 className="font-semibold text-client-text-primary">Regulatory Compliance</h4>
                     </div>
                     <p className="text-client-text-secondary">Built-in AML/KYC, transaction monitoring, and regulatory reporting</p>
@@ -641,7 +644,7 @@ const ClientHunitPage = () => {
           <section ref={el => sectionsRef.current[6] = el} className="client-card">
             <div className="flex items-start space-x-6">
               <div className="p-4 bg-orange-50 rounded-2xl">
-                <Layers className="w-8 h-8 text-orange-600" />
+                <FontAwesomeIcon icon={faLayerGroup} className="w-8 h-8 text-orange-600" />
               </div>
               <div className="flex-1">
                 <h2 className="client-heading-md mb-4">Implementation Roadmap</h2>
@@ -767,7 +770,7 @@ const ClientHunitPage = () => {
                 {/* Timeline Note */}
                 <div className="bg-client-bg p-4 rounded-xl">
                   <div className="flex items-center space-x-3">
-                    <Clock className="w-5 h-5 text-client-accent" />
+                    <FontAwesomeIcon icon={faClock} className="w-5 h-5 text-client-accent" />
                     <div>
                       <h4 className="font-medium text-client-text-primary">Typical Implementation Timeline</h4>
                       <p className="text-sm text-client-text-secondary">4-6 months for full deployment with parallel operation during transition period</p>
@@ -782,7 +785,7 @@ const ClientHunitPage = () => {
           <section ref={el => sectionsRef.current[7] = el} className="client-card">
             <div className="flex items-start space-x-6">
               <div className="p-4 bg-green-50 rounded-2xl">
-                <TrendingUp className="w-8 h-8 text-green-600" />
+                <FontAwesomeIcon icon={faArrowTrendUp} className="w-8 h-8 text-green-600" />
               </div>
               <div className="flex-1">
                 <h2 className="client-heading-md mb-4">Key Advantages of Alternative Payment Rails</h2>
@@ -795,7 +798,7 @@ const ClientHunitPage = () => {
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                   <div className="bg-client-bg p-6 rounded-xl">
                     <div className="flex items-center space-x-3 mb-4">
-                      <DollarSign className="w-6 h-6 text-green-600" />
+                      <FontAwesomeIcon icon={faDollarSign} className="w-6 h-6 text-green-600" />
                       <h3 className="font-semibold text-client-text-primary">Cost Reduction</h3>
                     </div>
                     <div className="space-y-2">
@@ -816,7 +819,7 @@ const ClientHunitPage = () => {
 
                   <div className="bg-client-bg p-6 rounded-xl">
                     <div className="flex items-center space-x-3 mb-4">
-                      <Zap className="w-6 h-6 text-blue-600" />
+                      <FontAwesomeIcon icon={faZap} className="w-6 h-6 text-blue-600" />
                       <h3 className="font-semibold text-client-text-primary">Speed Improvement</h3>
                     </div>
                     <div className="space-y-2">
@@ -837,7 +840,7 @@ const ClientHunitPage = () => {
 
                   <div className="bg-client-bg p-6 rounded-xl">
                     <div className="flex items-center space-x-3 mb-4">
-                      <Shield className="w-6 h-6 text-purple-600" />
+                      <FontAwesomeIcon icon={faShield} className="w-6 h-6 text-purple-600" />
                       <h3 className="font-semibold text-client-text-primary">Risk Mitigation</h3>
                     </div>
                     <div className="space-y-2">
@@ -858,7 +861,7 @@ const ClientHunitPage = () => {
 
                   <div className="bg-client-bg p-6 rounded-xl">
                     <div className="flex items-center space-x-3 mb-4">
-                      <Lock className="w-6 h-6 text-indigo-600" />
+                      <FontAwesomeIcon icon={faLock} className="w-6 h-6 text-indigo-600" />
                       <h3 className="font-semibold text-client-text-primary">Compliance Automation</h3>
                     </div>
                     <div className="space-y-2">
@@ -879,7 +882,7 @@ const ClientHunitPage = () => {
 
                   <div className="bg-client-bg p-6 rounded-xl">
                     <div className="flex items-center space-x-3 mb-4">
-                      <Globe className="w-6 h-6 text-teal-600" />
+                      <FontAwesomeIcon icon={faGlobe} className="w-6 h-6 text-teal-600" />
                       <h3 className="font-semibold text-client-text-primary">Currency Sovereignty</h3>
                     </div>
                     <div className="space-y-2">
@@ -900,7 +903,7 @@ const ClientHunitPage = () => {
 
                   <div className="bg-client-bg p-6 rounded-xl">
                     <div className="flex items-center space-x-3 mb-4">
-                      <Target className="w-6 h-6 text-red-600" />
+                      <FontAwesomeIcon icon={faBullseye} className="w-6 h-6 text-red-600" />
                       <h3 className="font-semibold text-client-text-primary">Strategic Independence</h3>
                     </div>
                     <div className="space-y-2">
@@ -946,7 +949,7 @@ const ClientHunitPage = () => {
           <section ref={el => sectionsRef.current[8] = el} className="client-card">
             <div className="flex items-start space-x-6">
               <div className="p-4 bg-blue-50 rounded-2xl">
-                <Users className="w-8 h-8 text-blue-600" />
+                <FontAwesomeIcon icon={faUsers} className="w-8 h-8 text-blue-600" />
               </div>
               <div className="flex-1">
                 <h2 className="client-heading-md mb-4">Partner with Cointegrity</h2>
@@ -959,7 +962,7 @@ const ClientHunitPage = () => {
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
                   <div className="bg-client-bg p-6 rounded-xl border-2 border-client-border hover:border-client-accent transition-colors">
                     <div className="flex items-center space-x-3 mb-4">
-                      <BarChart3 className="w-6 h-6 text-client-accent" />
+                      <FontAwesomeIcon icon={faChartBar} className="w-6 h-6 text-client-accent" />
                       <h3 className="font-semibold text-client-text-primary">Strategic Assessment</h3>
                     </div>
                     <p className="text-client-text-secondary mb-4">
@@ -976,7 +979,7 @@ const ClientHunitPage = () => {
 
                   <div className="bg-client-bg p-6 rounded-xl border-2 border-client-border hover:border-client-accent transition-colors">
                     <div className="flex items-center space-x-3 mb-4">
-                      <Zap className="w-6 h-6 text-client-accent" />
+                      <FontAwesomeIcon icon={faZap} className="w-6 h-6 text-client-accent" />
                       <h3 className="font-semibold text-client-text-primary">Proof of Concept</h3>
                     </div>
                     <p className="text-client-text-secondary mb-4">
@@ -993,7 +996,7 @@ const ClientHunitPage = () => {
 
                   <div className="bg-client-bg p-6 rounded-xl border-2 border-client-border hover:border-client-accent transition-colors">
                     <div className="flex items-center space-x-3 mb-4">
-                      <Network className="w-6 h-6 text-client-accent" />
+                      <FontAwesomeIcon icon={faNetworkWired} className="w-6 h-6 text-client-accent" />
                       <h3 className="font-semibold text-client-text-primary">Partnership Facilitation</h3>
                     </div>
                     <p className="text-client-text-secondary mb-4">
@@ -1010,7 +1013,7 @@ const ClientHunitPage = () => {
 
                   <div className="bg-client-bg p-6 rounded-xl border-2 border-client-border hover:border-client-accent transition-colors">
                     <div className="flex items-center space-x-3 mb-4">
-                      <Users className="w-6 h-6 text-client-accent" />
+                      <FontAwesomeIcon icon={faUsers} className="w-6 h-6 text-client-accent" />
                       <h3 className="font-semibold text-client-text-primary">Executive Workshop</h3>
                     </div>
                     <p className="text-client-text-secondary mb-4">
@@ -1041,7 +1044,7 @@ const ClientHunitPage = () => {
                           <span>+91-11-4567-8900</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <Users className="w-4 h-4" />
+                          <FontAwesomeIcon icon={faUsers} className="w-4 h-4" />
                           <span>partnerships@cointegrity.com</span>
                         </div>
                       </div>
@@ -1064,7 +1067,7 @@ const ClientHunitPage = () => {
           <section ref={el => sectionsRef.current[9] = el} className="client-card">
             <div className="flex items-start space-x-6">
               <div className="p-4 bg-client-accent/10 rounded-2xl">
-                <Shield className="w-8 h-8 text-client-accent" />
+                <FontAwesomeIcon icon={faShield} className="w-8 h-8 text-client-accent" />
               </div>
               <div className="flex-1">
                 <h2 className="client-heading-md mb-4">Regulatory Compliance Framework</h2>
