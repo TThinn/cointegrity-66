@@ -136,7 +136,7 @@ const ClientHunitPage = () => {
       </div>
 
       {/* Fixed Navigation Header */}
-      <header className="fixed top-1 left-0 right-0 bg-client-bg/90 backdrop-blur-sm border-b border-client-border z-40">
+      <header className="fixed top-1 left-0 right-0 client-header-bar border-b border-client-border z-40">
         <div className="client-container">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-8">
@@ -170,7 +170,7 @@ const ClientHunitPage = () => {
       {/* Hero Section */}
       <section 
         ref={el => sectionsRef.current[0] = el}
-        className="pt-24 pb-16 bg-gradient-to-br from-client-bg to-client-card-bg animate-fadeInUp"
+        className="pt-24 pb-16 client-hero-bg animate-fadeInUp"
       >
         <div className="client-container">
           <div className="max-w-4xl mx-auto text-center">
