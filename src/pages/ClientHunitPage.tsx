@@ -657,7 +657,7 @@ const ClientHunitPage = () => {
                 <div className="space-y-6 mb-8">
                   <div className="flex items-start space-x-4">
                     <div className="flex flex-col items-center">
-                      <div className="w-10 h-10 bg-client-accent rounded-full flex items-center justify-center text-white font-bold">1</div>
+                      <div className="w-10 h-10 bg-client-accent rounded-full flex items-center justify-center text-client-card-bg font-bold">1</div>
                       <div className="w-px h-16 bg-client-border mt-2"></div>
                     </div>
                     <div className="flex-1 pb-8">
@@ -685,7 +685,7 @@ const ClientHunitPage = () => {
 
                   <div className="flex items-start space-x-4">
                     <div className="flex flex-col items-center">
-                      <div className="w-10 h-10 bg-client-accent rounded-full flex items-center justify-center text-white font-bold">2</div>
+                      <div className="w-10 h-10 bg-client-accent rounded-full flex items-center justify-center text-client-card-bg font-bold">2</div>
                       <div className="w-px h-16 bg-client-border mt-2"></div>
                     </div>
                     <div className="flex-1 pb-8">
@@ -713,7 +713,7 @@ const ClientHunitPage = () => {
 
                   <div className="flex items-start space-x-4">
                     <div className="flex flex-col items-center">
-                      <div className="w-10 h-10 bg-client-accent rounded-full flex items-center justify-center text-white font-bold">3</div>
+                      <div className="w-10 h-10 bg-client-accent rounded-full flex items-center justify-center text-client-card-bg font-bold">3</div>
                       <div className="w-px h-16 bg-client-border mt-2"></div>
                     </div>
                     <div className="flex-1 pb-8">
@@ -741,7 +741,7 @@ const ClientHunitPage = () => {
 
                   <div className="flex items-start space-x-4">
                     <div className="flex flex-col items-center">
-                      <div className="w-10 h-10 bg-client-accent rounded-full flex items-center justify-center text-white font-bold">4</div>
+                      <div className="w-10 h-10 bg-client-accent rounded-full flex items-center justify-center text-client-card-bg font-bold">4</div>
                     </div>
                     <div className="flex-1">
                       <h3 className="font-semibold text-client-text-primary mb-2">Deployment Phase (Weeks 21-24)</h3>
@@ -1030,11 +1030,11 @@ const ClientHunitPage = () => {
                 </div>
 
                 {/* Contact Information */}
-                <div className="bg-gradient-to-r from-client-accent to-client-text-secondary p-6 rounded-xl text-white">
+                <div className="bg-client-card-bg border border-client-border p-6 rounded-xl">
                   <div className="grid md:grid-cols-2 gap-6 items-center">
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">Ready to Get Started?</h3>
-                      <p className="text-white/90 mb-4">
+                      <h3 className="text-xl font-semibold mb-2 text-client-text-primary">Ready to Get Started?</h3>
+                      <p className="text-client-text-secondary mb-4">
                         Schedule a confidential consultation to discuss your specific 
                         India-Africa oil trade payment transformation needs.
                       </p>
@@ -1050,10 +1050,10 @@ const ClientHunitPage = () => {
                       </div>
                     </div>
                     <div className="text-center md:text-right">
-                      <button className="bg-white text-client-accent px-8 py-3 rounded-2xl font-semibold hover:bg-white/90 transition-colors mb-3 block w-full md:w-auto">
+                      <button className="client-button mb-3 block w-full md:w-auto">
                         Schedule Consultation
                       </button>
-                      <button className="border-2 border-white text-white px-8 py-3 rounded-2xl font-semibold hover:bg-white/10 transition-colors block w-full md:w-auto">
+                      <button className="client-button-secondary block w-full md:w-auto">
                         Download White Paper
                       </button>
                     </div>
@@ -1103,21 +1103,21 @@ const ClientHunitPage = () => {
       </div>
 
       {/* Contact CTA Section */}
-      <section className="bg-gradient-to-r from-client-accent to-client-text-secondary py-16">
+      <section className="bg-client-bg py-16">
         <div className="client-container">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-white mb-6">
+            <h2 className="text-3xl font-bold text-client-text-primary mb-6">
               Ready to Transform Your Oil Trade Payments?
             </h2>
-            <p className="text-xl text-white/90 mb-8">
+            <p className="text-xl text-client-text-secondary mb-8">
               Partner with us to implement cutting-edge payment solutions that reduce costs, 
               increase efficiency, and ensure regulatory compliance.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-client-accent px-8 py-4 rounded-2xl font-semibold hover:bg-white/90 transition-colors">
+              <button className="client-button">
                 Schedule Consultation
               </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
+              <button className="client-button-secondary flex items-center justify-center gap-2">
                 <Phone className="w-5 h-5" />
                 Contact Expert
               </button>
