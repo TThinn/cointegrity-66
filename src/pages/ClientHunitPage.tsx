@@ -102,7 +102,7 @@ const ClientHunitPage = () => {
         <div className="client-container">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-8">
-              <img src="/lovable-uploads/Cointegrity_LogoIcon.png" alt="Cointegrity" className="h-8 w-auto" />
+              <h1 className="text-xl font-semibold text-client-text-primary">Hunit</h1>
               <nav className="hidden md:flex space-x-4 lg:space-x-6">
                 {sectionLabels.map((label, index) => <button key={index} onClick={() => scrollToSection(index)} className={`text-xs lg:text-sm transition-colors ${activeSection === index ? 'text-client-accent font-medium' : 'text-client-text-secondary hover:text-client-accent'}`}>
                     {label}
@@ -117,7 +117,7 @@ const ClientHunitPage = () => {
       </header>
 
       {/* Hero Section */}
-      <section ref={el => sectionsRef.current[0] = el} className="min-h-screen flex items-center justify-center client-hero-bg animate-fadeInUp">
+      <section ref={el => sectionsRef.current[0] = el} className="pt-24 pb-16 client-hero-bg animate-fadeInUp">
         <div className="client-container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-client-text-primary mb-6 leading-tight animate-slideInLeft">
@@ -130,7 +130,7 @@ const ClientHunitPage = () => {
             <p className="text-base md:text-lg text-client-text-muted mb-12 animate-fadeInUp">
               Explore innovative payment solutions to transform $17B annual India-Africa oil trade
             </p>
-            <button onClick={() => scrollToSection(1)} className="client-button inline-flex items-center space-x-2">
+            <button onClick={() => scrollToSection(1)} className="client-button inline-flex items-center space-x-2 animate-bounce">
               <span>Explore Solutions</span>
               <ChevronDown className="w-5 h-5" />
             </button>
@@ -156,12 +156,8 @@ const ClientHunitPage = () => {
                 </p>
                 
                 {/* Payment Flow Diagram */}
-                <div className="mb-8 bg-white p-6 rounded-xl border border-client-border">
-                  <img 
-                    src="/lovable-uploads/payment-flow-diagram.png" 
-                    alt="Payment Flow Comparison - Traditional SWIFT vs Alternative Payment Rails" 
-                    className="w-full h-auto rounded-lg"
-                  />
+                <div className="mb-8">
+                  <PaymentFlowSVG />
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
@@ -997,9 +993,9 @@ const ClientHunitPage = () => {
                       </div>
                     </div>
                     <div className="text-center md:text-right">
-                      <a href="/#contact" className="client-button mb-3 block w-full md:w-auto inline-flex items-center justify-center">
+                      <button className="client-button mb-3 block w-full md:w-auto">
                         Schedule Consultation
-                      </a>
+                      </button>
                       
                     </div>
                   </div>
@@ -1059,9 +1055,9 @@ const ClientHunitPage = () => {
               increase efficiency, and ensure regulatory compliance.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/#contact" className="client-button inline-flex items-center justify-center">
+              <button className="client-button">
                 Schedule Consultation
-              </a>
+              </button>
               
             </div>
           </div>
