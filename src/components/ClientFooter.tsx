@@ -37,9 +37,10 @@ const ClientFooter = () => {
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <OptimizedImage
-                  src="/lovable-uploads/Cointegrity_Logo_Colour_White.png"
+                  src="/lovable-uploads/Cointegrity_LogoIcon.png"
                   alt="Cointegrity Logo"
                   className="h-8 w-auto"
+                  style={{ filter: 'hue-rotate(180deg) saturate(1.2)' }}
                 />
               </div>
               <p className="client-text-muted text-sm leading-relaxed">
