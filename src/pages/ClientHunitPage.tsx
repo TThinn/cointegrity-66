@@ -105,7 +105,7 @@ const ClientHunitPage = () => {
             <div className="flex items-center space-x-8">
               <h1 className="text-xl font-semibold text-client-text-primary">Hunit</h1>
               <nav className="hidden md:flex space-x-6">
-                {['Hero', 'Challenges', 'Opportunity', 'Solutions', 'Local Currency', 'Trade Finance', 'Rupee Systems', 'Crypto', 'Networks', 'Compliance'].map((label, index) => (
+                {['Hero', 'Challenges', 'Opportunity', 'Solutions', 'PAPSS', 'Blockchain', 'Implementation', 'Value Prop', 'Next Steps', 'Compliance'].map((label, index) => (
                   <button
                     key={index}
                     onClick={() => scrollToSection(index)}
@@ -454,126 +454,313 @@ const ClientHunitPage = () => {
             </div>
           </section>
 
-          {/* Section 4: Local Currency Settlement */}
+          {/* Section 4: PAPSS Details */}
           <section ref={el => sectionsRef.current[4] = el} className="client-card">
             <div className="flex items-start space-x-6">
-              <div className="p-4 bg-client-accent/10 rounded-2xl">
-                <DollarSign className="w-8 h-8 text-client-accent" />
+              <div className="p-4 bg-purple-50 rounded-2xl">
+                <Globe className="w-8 h-8 text-purple-600" />
               </div>
               <div className="flex-1">
-                <h2 className="client-heading-md mb-4">Local Currency Settlement Mechanisms</h2>
+                <h2 className="client-heading-md mb-4">PAPSS: The Pan-African Payment Solution</h2>
                 <p className="client-text mb-6">
-                  Bilateral currency agreements enable direct INR-to-local currency settlements, 
-                  reducing USD dependency and foreign exchange risks for both trading partners.
+                  The Pan-African Payment and Settlement System represents Africa's most ambitious 
+                  financial infrastructure project, enabling seamless cross-border payments across the continent.
                 </p>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold text-client-text-primary mb-3">Current Agreements</h4>
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-client-text-secondary">Nigeria (Naira)</span>
-                        <span className="text-client-accent">Active</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-client-text-secondary">South Africa (Rand)</span>
-                        <span className="text-client-accent">Pilot</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-client-text-secondary">Angola (Kwanza)</span>
-                        <span className="text-orange-500">Negotiating</span>
-                      </div>
+                
+                {/* Key Features */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                  <div className="bg-client-bg p-4 rounded-xl text-center">
+                    <Clock className="w-6 h-6 text-client-accent mx-auto mb-2" />
+                    <h4 className="font-semibold text-client-text-primary mb-1">Real-Time Settlement</h4>
+                    <p className="text-sm text-client-text-secondary">120 seconds average</p>
+                  </div>
+                  
+                  <div className="bg-client-bg p-4 rounded-xl text-center">
+                    <Coins className="w-6 h-6 text-client-accent mx-auto mb-2" />
+                    <h4 className="font-semibold text-client-text-primary mb-1">Local Currency</h4>
+                    <p className="text-sm text-client-text-secondary">Direct transactions</p>
+                  </div>
+                  
+                  <div className="bg-client-bg p-4 rounded-xl text-center">
+                    <Shield className="w-6 h-6 text-client-accent mx-auto mb-2" />
+                    <h4 className="font-semibold text-client-text-primary mb-1">Built-in Compliance</h4>
+                    <p className="text-sm text-client-text-secondary">Automated screening</p>
+                  </div>
+                  
+                  <div className="bg-client-bg p-4 rounded-xl text-center">
+                    <Network className="w-6 h-6 text-client-accent mx-auto mb-2" />
+                    <h4 className="font-semibold text-client-text-primary mb-1">ISO 20022</h4>
+                    <p className="text-sm text-client-text-secondary">Global messaging</p>
+                  </div>
+                </div>
+
+                {/* Coverage Map */}
+                <div className="bg-client-bg p-6 rounded-xl mb-6">
+                  <h4 className="font-semibold text-client-text-primary mb-4">Key Oil Exporters Coverage</h4>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      <span className="text-client-text-secondary">Nigeria - Active</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      <span className="text-client-text-secondary">Algeria - Active</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      <span className="text-client-text-secondary">Egypt - Active</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <span className="text-client-text-secondary">Ghana - Pilot</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <span className="text-client-text-secondary">Tunisia - Pilot</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                      <span className="text-client-text-secondary">Morocco - Planned</span>
                     </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-client-text-primary mb-3">Benefits</h4>
-                    <ul className="space-y-2 text-client-text-secondary">
-                      <li>• 15-20% cost reduction</li>
-                      <li>• Faster settlement (2-3 days)</li>
-                      <li>• Reduced FX exposure</li>
-                      <li>• Support for local economies</li>
-                    </ul>
+                </div>
+
+                {/* India Gateway Potential */}
+                <div className="bg-gradient-to-r from-client-accent/10 to-purple-500/10 p-6 rounded-xl border border-client-accent/30">
+                  <h4 className="font-semibold text-client-text-primary mb-3">India Gateway Integration Potential</h4>
+                  <p className="text-client-text-secondary mb-4">
+                    RBI discussions with AfCFTA Secretariat suggest potential for India-PAPSS gateway, 
+                    enabling direct INR-to-African currency settlements through the continental payment system.
+                  </p>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-client-accent rounded-full"></div>
+                    <span className="text-sm text-client-text-secondary">Expected timeline: Q2 2025 pilot program</span>
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Section 5: Trade Finance Platforms */}
+          {/* Section 5: Blockchain Solutions */}
           <section ref={el => sectionsRef.current[5] = el} className="client-card">
             <div className="flex items-start space-x-6">
-              <div className="p-4 bg-client-accent/10 rounded-2xl">
-                <TrendingUp className="w-8 h-8 text-client-accent" />
+              <div className="p-4 bg-indigo-50 rounded-2xl">
+                <Network className="w-8 h-8 text-indigo-600" />
               </div>
               <div className="flex-1">
-                <h2 className="client-heading-md mb-4">Digital Trade Finance Platforms</h2>
+                <h2 className="client-heading-md mb-4">Enterprise Blockchain Payment Platforms</h2>
                 <p className="client-text mb-6">
-                  Integrated platforms combining letters of credit, trade financing, and settlement mechanisms 
-                  streamline the entire oil trade lifecycle from contract to payment.
+                  Enterprise-grade blockchain platforms provide secure, compliant, and scalable infrastructure 
+                  for cross-border oil trade settlements with institutional-level security and regulatory features.
                 </p>
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="font-semibold text-client-text-primary mb-4">Platform Features</h4>
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-3">
-                        <Shield className="w-4 h-4 text-client-accent" />
-                        <span className="text-client-text-secondary">Digital Letters of Credit</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <Lock className="w-4 h-4 text-client-accent" />
-                        <span className="text-client-text-secondary">Escrow Services</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <Users className="w-4 h-4 text-client-accent" />
-                        <span className="text-client-text-secondary">Multi-party Workflows</span>
-                      </div>
-                    </div>
+                
+                {/* Platform Comparison Table */}
+                <div className="bg-client-bg p-6 rounded-xl mb-6">
+                  <h4 className="font-semibold text-client-text-primary mb-4">Platform Comparison</h4>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b border-client-border">
+                          <th className="text-left py-3 text-client-text-primary font-medium">Platform</th>
+                          <th className="text-left py-3 text-client-text-primary font-medium">Key Strength</th>
+                          <th className="text-left py-3 text-client-text-primary font-medium">Settlement Time</th>
+                          <th className="text-left py-3 text-client-text-primary font-medium">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b border-client-border/50">
+                          <td className="py-3 font-medium text-client-text-primary">Fireblocks</td>
+                          <td className="py-3 text-client-text-secondary">Multi-party computation security</td>
+                          <td className="py-3 text-client-text-secondary">2-5 minutes</td>
+                          <td className="py-3"><span className="text-green-600 bg-green-50 px-2 py-1 rounded-full text-xs">Available</span></td>
+                        </tr>
+                        <tr className="border-b border-client-border/50">
+                          <td className="py-3 font-medium text-client-text-primary">BitGo</td>
+                          <td className="py-3 text-client-text-secondary">Institutional custody & compliance</td>
+                          <td className="py-3 text-client-text-secondary">1-3 minutes</td>
+                          <td className="py-3"><span className="text-green-600 bg-green-50 px-2 py-1 rounded-full text-xs">Available</span></td>
+                        </tr>
+                        <tr className="border-b border-client-border/50">
+                          <td className="py-3 font-medium text-client-text-primary">Circle</td>
+                          <td className="py-3 text-client-text-secondary">USDC stablecoin integration</td>
+                          <td className="py-3 text-client-text-secondary">10-30 seconds</td>
+                          <td className="py-3"><span className="text-green-600 bg-green-50 px-2 py-1 rounded-full text-xs">Available</span></td>
+                        </tr>
+                        <tr>
+                          <td className="py-3 font-medium text-client-text-primary">Nuvei</td>
+                          <td className="py-3 text-client-text-secondary">Local payment method integration</td>
+                          <td className="py-3 text-client-text-secondary">5-15 minutes</td>
+                          <td className="py-3"><span className="text-yellow-600 bg-yellow-50 px-2 py-1 rounded-full text-xs">Beta</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-client-text-primary mb-4">Key Players</h4>
-                    <ul className="space-y-2 text-client-text-secondary">
-                      <li>• JPMorgan Onyx Platform</li>
-                      <li>• TradeIX Marco Polo</li>
-                      <li>• HSBC Trade Connect</li>
-                      <li>• Local fintech solutions</li>
-                    </ul>
+                </div>
+
+                {/* Key Advantages */}
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="bg-client-bg p-6 rounded-xl">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <Lock className="w-6 h-6 text-client-accent" />
+                      <h4 className="font-semibold text-client-text-primary">Enterprise-Grade Security</h4>
+                    </div>
+                    <p className="text-client-text-secondary">Multi-signature wallets, hardware security modules, and institutional custody standards</p>
+                  </div>
+                  
+                  <div className="bg-client-bg p-6 rounded-xl">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <Network className="w-6 h-6 text-client-accent" />
+                      <h4 className="font-semibold text-client-text-primary">Interoperability</h4>
+                    </div>
+                    <p className="text-client-text-secondary">Cross-chain compatibility and traditional banking system integration</p>
+                  </div>
+                  
+                  <div className="bg-client-bg p-6 rounded-xl">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <Shield className="w-6 h-6 text-client-accent" />
+                      <h4 className="font-semibold text-client-text-primary">Regulatory Compliance</h4>
+                    </div>
+                    <p className="text-client-text-secondary">Built-in AML/KYC, transaction monitoring, and regulatory reporting</p>
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Section 6: Rupee-Based Payment Systems */}
+          {/* Section 6: Implementation */}
           <section ref={el => sectionsRef.current[6] = el} className="client-card">
             <div className="flex items-start space-x-6">
-              <div className="p-4 bg-client-accent/10 rounded-2xl">
-                <Globe className="w-8 h-8 text-client-accent" />
+              <div className="p-4 bg-orange-50 rounded-2xl">
+                <Layers className="w-8 h-8 text-orange-600" />
               </div>
               <div className="flex-1">
-                <h2 className="client-heading-md mb-4">Rupee-Based Payment Systems</h2>
-                <p className="client-text mb-6">
-                  India's push for INR internationalization creates opportunities for direct rupee-denominated 
-                  oil purchases, supported by rupee nostro accounts and trade credit arrangements.
+                <h2 className="client-heading-md mb-4">Implementation Roadmap</h2>
+                <p className="client-text mb-8">
+                  A structured 4-phase approach ensures successful deployment of alternative payment rails 
+                  with minimal disruption to existing oil trade operations.
                 </p>
-                <div className="bg-client-bg p-6 rounded-xl">
-                  <h4 className="font-semibold text-client-text-primary mb-4">RBI Special Rupee Vostro Account (SRVA) Mechanism</h4>
-                  <div className="grid md:grid-cols-3 gap-4">
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-client-accent/20 rounded-full flex items-center justify-center mx-auto mb-2">
-                        <span className="text-client-accent font-bold">1</span>
-                      </div>
-                      <p className="text-sm text-client-text-secondary">Setup SRVA with African banks</p>
+                
+                {/* Timeline Phases */}
+                <div className="space-y-6 mb-8">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex flex-col items-center">
+                      <div className="w-10 h-10 bg-client-accent rounded-full flex items-center justify-center text-white font-bold">1</div>
+                      <div className="w-px h-16 bg-client-border mt-2"></div>
                     </div>
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-client-accent/20 rounded-full flex items-center justify-center mx-auto mb-2">
-                        <span className="text-client-accent font-bold">2</span>
+                    <div className="flex-1 pb-8">
+                      <h3 className="font-semibold text-client-text-primary mb-2">Assessment Phase (Weeks 1-4)</h3>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <h4 className="font-medium text-client-text-primary mb-2">Regulatory Analysis</h4>
+                          <ul className="text-sm text-client-text-secondary space-y-1">
+                            <li>• RBI compliance requirements</li>
+                            <li>• African regulatory frameworks</li>
+                            <li>• Cross-border compliance mapping</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-medium text-client-text-primary mb-2">Volume Assessment</h4>
+                          <ul className="text-sm text-client-text-secondary space-y-1">
+                            <li>• Historical transaction analysis</li>
+                            <li>• Peak volume identification</li>
+                            <li>• Cost-benefit modeling</li>
+                          </ul>
+                        </div>
                       </div>
-                      <p className="text-sm text-client-text-secondary">Direct INR payments for oil</p>
                     </div>
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-client-accent/20 rounded-full flex items-center justify-center mx-auto mb-2">
-                        <span className="text-client-accent font-bold">3</span>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="flex flex-col items-center">
+                      <div className="w-10 h-10 bg-client-accent rounded-full flex items-center justify-center text-white font-bold">2</div>
+                      <div className="w-px h-16 bg-client-border mt-2"></div>
+                    </div>
+                    <div className="flex-1 pb-8">
+                      <h3 className="font-semibold text-client-text-primary mb-2">Design Phase (Weeks 5-10)</h3>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <h4 className="font-medium text-client-text-primary mb-2">Architecture Design</h4>
+                          <ul className="text-sm text-client-text-secondary space-y-1">
+                            <li>• System architecture blueprint</li>
+                            <li>• Integration points mapping</li>
+                            <li>• Failover mechanisms</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-medium text-client-text-primary mb-2">Security Framework</h4>
+                          <ul className="text-sm text-client-text-secondary space-y-1">
+                            <li>• Multi-signature setup</li>
+                            <li>• Key management protocols</li>
+                            <li>• Audit trail design</li>
+                          </ul>
+                        </div>
                       </div>
-                      <p className="text-sm text-client-text-secondary">Rupee utilization for trade</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="flex flex-col items-center">
+                      <div className="w-10 h-10 bg-client-accent rounded-full flex items-center justify-center text-white font-bold">3</div>
+                      <div className="w-px h-16 bg-client-border mt-2"></div>
+                    </div>
+                    <div className="flex-1 pb-8">
+                      <h3 className="font-semibold text-client-text-primary mb-2">Implementation Phase (Weeks 11-20)</h3>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <h4 className="font-medium text-client-text-primary mb-2">Platform Configuration</h4>
+                          <ul className="text-sm text-client-text-secondary space-y-1">
+                            <li>• Blockchain network setup</li>
+                            <li>• Smart contract deployment</li>
+                            <li>• API gateway configuration</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-medium text-client-text-primary mb-2">System Integration</h4>
+                          <ul className="text-sm text-client-text-secondary space-y-1">
+                            <li>• ERP system connectivity</li>
+                            <li>• Banking system integration</li>
+                            <li>• Real-time monitoring setup</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="flex flex-col items-center">
+                      <div className="w-10 h-10 bg-client-accent rounded-full flex items-center justify-center text-white font-bold">4</div>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-client-text-primary mb-2">Deployment Phase (Weeks 21-24)</h3>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <h4 className="font-medium text-client-text-primary mb-2">Team Training</h4>
+                          <ul className="text-sm text-client-text-secondary space-y-1">
+                            <li>• Operations team certification</li>
+                            <li>• Risk management training</li>
+                            <li>• Emergency procedures</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-medium text-client-text-primary mb-2">Pilot Program</h4>
+                          <ul className="text-sm text-client-text-secondary space-y-1">
+                            <li>• Small-volume test transactions</li>
+                            <li>• Performance monitoring</li>
+                            <li>• Gradual volume scaling</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Timeline Note */}
+                <div className="bg-client-bg p-4 rounded-xl">
+                  <div className="flex items-center space-x-3">
+                    <Clock className="w-5 h-5 text-client-accent" />
+                    <div>
+                      <h4 className="font-medium text-client-text-primary">Typical Implementation Timeline</h4>
+                      <p className="text-sm text-client-text-secondary">4-6 months for full deployment with parallel operation during transition period</p>
                     </div>
                   </div>
                 </div>
@@ -581,66 +768,282 @@ const ClientHunitPage = () => {
             </div>
           </section>
 
-          {/* Section 7: Cryptocurrency Solutions */}
+          {/* Section 7: Value Proposition */}
           <section ref={el => sectionsRef.current[7] = el} className="client-card">
             <div className="flex items-start space-x-6">
-              <div className="p-4 bg-client-accent/10 rounded-2xl">
-                <Network className="w-8 h-8 text-client-accent" />
+              <div className="p-4 bg-green-50 rounded-2xl">
+                <TrendingUp className="w-8 h-8 text-green-600" />
               </div>
               <div className="flex-1">
-                <h2 className="client-heading-md mb-4">Cryptocurrency & Stablecoin Solutions</h2>
-                <p className="client-text mb-6">
-                  Regulated digital assets and stablecoins provide 24/7 settlement capabilities with 
-                  programmable compliance features, ideal for high-value oil trade transactions.
+                <h2 className="client-heading-md mb-4">Key Advantages of Alternative Payment Rails</h2>
+                <p className="client-text mb-8">
+                  Alternative payment systems deliver measurable improvements across cost, speed, risk, 
+                  and strategic dimensions for India-Africa oil trade operations.
                 </p>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold text-client-text-primary mb-3">Stablecoin Options</h4>
-                    <ul className="space-y-2 text-client-text-secondary">
-                      <li>• USD-pegged stablecoins (USDC, USDT)</li>
-                      <li>• INR-backed digital rupee</li>
-                      <li>• Commodity-backed tokens</li>
-                      <li>• Central bank digital currencies</li>
-                    </ul>
+                
+                {/* Main Benefits Grid */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                  <div className="bg-client-bg p-6 rounded-xl">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <DollarSign className="w-6 h-6 text-green-600" />
+                      <h3 className="font-semibold text-client-text-primary">Cost Reduction</h3>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-sm text-client-text-secondary">Transaction fees</span>
+                        <span className="text-sm font-medium text-green-600">-60% to -80%</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-sm text-client-text-secondary">FX spreads</span>
+                        <span className="text-sm font-medium text-green-600">-40% to -70%</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-sm text-client-text-secondary">Operational costs</span>
+                        <span className="text-sm font-medium text-green-600">-50% to -60%</span>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-client-text-primary mb-3">Regulatory Considerations</h4>
-                    <ul className="space-y-2 text-client-text-secondary">
-                      <li>• RBI crypto framework compliance</li>
-                      <li>• African regulatory sandboxes</li>
-                      <li>• Anti-money laundering protocols</li>
-                      <li>• Cross-border reporting requirements</li>
-                    </ul>
+
+                  <div className="bg-client-bg p-6 rounded-xl">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <Zap className="w-6 h-6 text-blue-600" />
+                      <h3 className="font-semibold text-client-text-primary">Speed Improvement</h3>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-sm text-client-text-secondary">Settlement time</span>
+                        <span className="text-sm font-medium text-blue-600">Minutes vs Days</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-sm text-client-text-secondary">Confirmation</span>
+                        <span className="text-sm font-medium text-blue-600">Real-time</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-sm text-client-text-secondary">Working capital</span>
+                        <span className="text-sm font-medium text-blue-600">3-5 day improvement</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-client-bg p-6 rounded-xl">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <Shield className="w-6 h-6 text-purple-600" />
+                      <h3 className="font-semibold text-client-text-primary">Risk Mitigation</h3>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Reduced counterparty risk</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Lower sanctions exposure</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Operational resilience</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-client-bg p-6 rounded-xl">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <Lock className="w-6 h-6 text-indigo-600" />
+                      <h3 className="font-semibold text-client-text-primary">Compliance Automation</h3>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Automated AML screening</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Real-time monitoring</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Regulatory reporting</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-client-bg p-6 rounded-xl">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <Globe className="w-6 h-6 text-teal-600" />
+                      <h3 className="font-semibold text-client-text-primary">Currency Sovereignty</h3>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Direct INR-African currency</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Reduced USD dependency</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Local economy support</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-client-bg p-6 rounded-xl">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <Target className="w-6 h-6 text-red-600" />
+                      <h3 className="font-semibold text-client-text-primary">Strategic Independence</h3>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Alternative to SWIFT</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">Geopolitical resilience</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-client-text-secondary">South-South cooperation</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ROI Highlight */}
+                <div className="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-xl border border-green-200">
+                  <h3 className="font-semibold text-client-text-primary mb-4">Return on Investment Projection</h3>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-green-600 mb-1">$340M - $680M</div>
+                      <div className="text-sm text-client-text-secondary">Annual cost savings potential</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-blue-600 mb-1">6-12 months</div>
+                      <div className="text-sm text-client-text-secondary">Payback period</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-purple-600 mb-1">300-500%</div>
+                      <div className="text-sm text-client-text-secondary">3-year ROI</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Section 8: Regional Payment Networks */}
+          {/* Section 8: Next Steps */}
           <section ref={el => sectionsRef.current[8] = el} className="client-card">
             <div className="flex items-start space-x-6">
-              <div className="p-4 bg-client-accent/10 rounded-2xl">
-                <Users className="w-8 h-8 text-client-accent" />
+              <div className="p-4 bg-blue-50 rounded-2xl">
+                <Users className="w-8 h-8 text-blue-600" />
               </div>
               <div className="flex-1">
-                <h2 className="client-heading-md mb-4">Regional Payment Networks</h2>
-                <p className="client-text mb-6">
-                  Leveraging existing regional payment infrastructures like UPI, NPCI, and African fintech networks 
-                  to create seamless cross-border payment corridors for oil trade.
+                <h2 className="client-heading-md mb-4">Partner with Cointegrity</h2>
+                <p className="client-text mb-8">
+                  Transform your India-Africa oil trade operations with our comprehensive suite of 
+                  consulting services and strategic partnership facilitation.
                 </p>
-                <div className="space-y-6">
-                  <div className="bg-client-bg p-4 rounded-xl">
-                    <h4 className="font-semibold text-client-text-primary mb-2">India Stack Integration</h4>
-                    <p className="text-client-text-secondary">Extending UPI and NPCI capabilities for international B2B settlements</p>
+                
+                {/* Engagement Options */}
+                <div className="grid md:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-client-bg p-6 rounded-xl border-2 border-client-border hover:border-client-accent transition-colors">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <BarChart3 className="w-6 h-6 text-client-accent" />
+                      <h3 className="font-semibold text-client-text-primary">Strategic Assessment</h3>
+                    </div>
+                    <p className="text-client-text-secondary mb-4">
+                      Comprehensive analysis of your current payment infrastructure, regulatory requirements, 
+                      and optimization opportunities.
+                    </p>
+                    <ul className="space-y-2 text-sm text-client-text-secondary">
+                      <li>• Cost-benefit analysis</li>
+                      <li>• Regulatory compliance audit</li>
+                      <li>• Risk assessment</li>
+                      <li>• Implementation roadmap</li>
+                    </ul>
                   </div>
-                  <div className="bg-client-bg p-4 rounded-xl">
-                    <h4 className="font-semibold text-client-text-primary mb-2">African Fintech Partnerships</h4>
-                    <p className="text-client-text-secondary">Collaborations with Flutterwave, Paystack, and Interswitch for seamless integration</p>
+
+                  <div className="bg-client-bg p-6 rounded-xl border-2 border-client-border hover:border-client-accent transition-colors">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <Zap className="w-6 h-6 text-client-accent" />
+                      <h3 className="font-semibold text-client-text-primary">Proof of Concept</h3>
+                    </div>
+                    <p className="text-client-text-secondary mb-4">
+                      Limited-scale pilot program to demonstrate alternative payment rail capabilities 
+                      with your specific trade partners.
+                    </p>
+                    <ul className="space-y-2 text-sm text-client-text-secondary">
+                      <li>• Small-volume test transactions</li>
+                      <li>• Performance benchmarking</li>
+                      <li>• Integration testing</li>
+                      <li>• Results documentation</li>
+                    </ul>
                   </div>
-                  <div className="bg-client-bg p-4 rounded-xl">
-                    <h4 className="font-semibold text-client-text-primary mb-2">Pan-African Payment System (PAPSS)</h4>
-                    <p className="text-client-text-secondary">Utilizing continental payment infrastructure for multi-country oil trade</p>
+
+                  <div className="bg-client-bg p-6 rounded-xl border-2 border-client-border hover:border-client-accent transition-colors">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <Network className="w-6 h-6 text-client-accent" />
+                      <h3 className="font-semibold text-client-text-primary">Partnership Facilitation</h3>
+                    </div>
+                    <p className="text-client-text-secondary mb-4">
+                      Direct introductions and relationship management with African oil producers, 
+                      payment platforms, and regulatory bodies.
+                    </p>
+                    <ul className="space-y-2 text-sm text-client-text-secondary">
+                      <li>• Producer relationship development</li>
+                      <li>• Platform vendor negotiations</li>
+                      <li>• Regulatory engagement</li>
+                      <li>• Contract structuring</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-client-bg p-6 rounded-xl border-2 border-client-border hover:border-client-accent transition-colors">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <Users className="w-6 h-6 text-client-accent" />
+                      <h3 className="font-semibold text-client-text-primary">Executive Workshop</h3>
+                    </div>
+                    <p className="text-client-text-secondary mb-4">
+                      Interactive sessions for your leadership team covering strategic implications, 
+                      risk management, and implementation best practices.
+                    </p>
+                    <ul className="space-y-2 text-sm text-client-text-secondary">
+                      <li>• Strategy alignment sessions</li>
+                      <li>• Risk mitigation planning</li>
+                      <li>• Technology deep-dives</li>
+                      <li>• Implementation planning</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Contact Information */}
+                <div className="bg-gradient-to-r from-client-accent to-client-text-secondary p-6 rounded-xl text-white">
+                  <div className="grid md:grid-cols-2 gap-6 items-center">
+                    <div>
+                      <h3 className="text-xl font-semibold mb-2">Ready to Get Started?</h3>
+                      <p className="text-white/90 mb-4">
+                        Schedule a confidential consultation to discuss your specific 
+                        India-Africa oil trade payment transformation needs.
+                      </p>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-center space-x-2">
+                          <Phone className="w-4 h-4" />
+                          <span>+91-11-4567-8900</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Users className="w-4 h-4" />
+                          <span>partnerships@cointegrity.com</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-center md:text-right">
+                      <button className="bg-white text-client-accent px-8 py-3 rounded-2xl font-semibold hover:bg-white/90 transition-colors mb-3 block w-full md:w-auto">
+                        Schedule Consultation
+                      </button>
+                      <button className="border-2 border-white text-white px-8 py-3 rounded-2xl font-semibold hover:bg-white/10 transition-colors block w-full md:w-auto">
+                        Download White Paper
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
