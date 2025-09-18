@@ -1,15 +1,16 @@
 
 /* Section alternating backgrounds */
-section:nth-of-type(odd) {
+/* Section alternating backgrounds (disabled on client pages) */
+body:not(:has(.client-page)) section:nth-of-type(odd) {
   background-color: #000624;
 }
 
-section:nth-of-type(even) {
+body:not(:has(.client-page)) section:nth-of-type(even) {
   background-color: #001b42;
 }
 
 /* Improved section separation */
-section {
+body:not(:has(.client-page)) section {
   position: relative;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }

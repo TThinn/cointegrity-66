@@ -65,6 +65,31 @@ body:has(.client-page) {
   background: linear-gradient(135deg, var(--client-bg) 0%, var(--client-card-bg) 100%);
 }
 
+/* Neutralize global section backgrounds on client pages */
+.client-page section {
+  background-color: var(--client-bg) !important;
+  border-bottom: 1px solid var(--client-border) !important;
+}
+.client-page section.client-card {
+  background-color: var(--client-card-bg) !important;
+  border-color: var(--client-border) !important;
+}
+
+/* Client utility classes */
+.client-bg { background-color: var(--client-bg) !important; }
+.bg-client-bg { background-color: var(--client-bg) !important; }
+.bg-client-card-bg { background-color: var(--client-card-bg) !important; }
+.bg-client-border { background-color: var(--client-border) !important; }
+.bg-client-text-primary { background-color: var(--client-text-primary) !important; }
+.text-client-text-primary { color: var(--client-text-primary) !important; }
+.text-client-text-secondary { color: var(--client-text-secondary) !important; }
+.text-client-text-muted { color: var(--client-text-muted) !important; }
+.text-client-secondary { color: var(--client-text-secondary) !important; }
+.text-client-card-bg { color: var(--client-card-bg) !important; }
+.bg-client-accent { background-color: var(--client-accent) !important; }
+.text-client-accent { color: var(--client-accent) !important; }
+.border-client-border { border-color: var(--client-border) !important; }
+
 /* Base Styles */
 .client-page {
   background-color: var(--client-bg) !important;
