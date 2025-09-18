@@ -1,6 +1,7 @@
 import React from "react";
 import { CheckCircle, Zap, Shield, Clock, Globe, Users } from "lucide-react";
 import Container from "@/components/ui/Container";
+import ServicesCTA from "@/components/services/ServicesCTA";
 
 const reasons = [
   {
@@ -82,34 +83,7 @@ const WhyChooseUs = () => {
             <span>Trusted by Fortune 500 companies and government agencies</span>
           </div>
           
-          <div className="relative max-w-md mx-auto">
-            <div 
-              className="p-8 rounded-2xl backdrop-blur-sm bg-white/20"
-              style={{
-                boxShadow: "0 8px 30px rgba(0, 0, 0, 0.1)",
-                border: "1px solid rgba(255, 255, 255, 0.3)",
-                maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)"
-              }}
-            >
-              <h4 className="text-xl font-semibold text-gray-800 mb-4">
-                Ready to Transform Your Web3 Strategy?
-              </h4>
-              <div className="flex flex-col gap-3">
-                <a 
-                  href="#contact" 
-                  className="inline-flex items-center justify-center px-8 py-3 bg-[#cb46b3] text-white rounded-full hover:bg-[#b23d9f] transition-all duration-300 transform hover:scale-105"
-                >
-                  Start Your Web3 Journey
-                </a>
-                <a 
-                  href="/mica-ready-waitlist" 
-                  className="inline-flex items-center justify-center px-8 py-3 bg-white/60 backdrop-blur-sm text-gray-800 rounded-full border border-gray-200 hover:bg-white/80 transition-all duration-300"
-                >
-                  Join MiCA Beta Waitlist
-                </a>
-              </div>
-            </div>
-          </div>
+          <ServicesCTA />
         </div>
       </Container>
     </section>
