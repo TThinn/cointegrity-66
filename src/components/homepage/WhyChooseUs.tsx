@@ -27,7 +27,7 @@ const reasons = [
   {
     icon: <Users className="h-6 w-6 text-[#cb46b3]" />,
     title: "Multidisciplinary Team",
-    description: "Lawyers, developers, economists, and industry experts working together seamlessly"
+    description: "Developers, economists, AI specialists and industry experts working together seamlessly"
   },
   {
     icon: <CheckCircle className="h-6 w-6 text-[#cb46b3]" />,

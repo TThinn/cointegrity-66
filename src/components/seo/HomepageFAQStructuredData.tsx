@@ -52,7 +52,7 @@ export const HomepageFAQStructuredData: React.FC = () => {
         "name": "Can you help with both technical and legal aspects of Web3?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, we provide comprehensive support covering technical development, legal compliance, business strategy, and market entry. Our multidisciplinary team includes lawyers, developers, economists, and industry experts."
+          "text": "Yes, we provide comprehensive support covering technical development, legal compliance, business strategy, and market entry. Our multidisciplinary team includes developers, economists, AI specialists, and industry experts."
         }
       }
     ]

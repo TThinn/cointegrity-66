@@ -39,7 +39,7 @@ const faqs = [
   },
   {
     question: "Can you help with both technical and legal aspects of Web3?",
-    answer: "Yes, we provide comprehensive support covering technical development, legal compliance, business strategy, and market entry. Our multidisciplinary team includes lawyers, developers, economists, and industry experts."
+    answer: "Yes, we provide comprehensive support covering technical development, legal compliance, business strategy, and market entry. Our multidisciplinary team includes developers, economists, AI specialists, and industry experts."
   }
 ];
 
