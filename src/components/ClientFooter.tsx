@@ -37,7 +37,7 @@ const ClientFooter = () => {
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <OptimizedImage
-                  src="/lovable-uploads/Cointegrity_Logo_Colour_White.png"
+                  src="/lovable-uploads/Cointegrity_LogoIcon_Green.png"
                   alt="Cointegrity Logo"
                   className="h-8 w-auto"
                 />

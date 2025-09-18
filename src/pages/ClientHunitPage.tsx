@@ -9,7 +9,6 @@ import ClientFooter from '@/components/ClientFooter';
 import AnimatedCounter from '@/components/client/AnimatedCounter';
 import NavigationDots from '@/components/client/NavigationDots';
 import TradeVolumeChart from '@/components/client/TradeVolumeChart';
-import PaymentFlowSVG from '@/components/client/PaymentFlowSVG';
 import '@/styles/client/client-theme.css';
 const ClientHunitPage = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -102,7 +101,11 @@ const ClientHunitPage = () => {
         <div className="client-container">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-8">
-              <h1 className="text-xl font-semibold text-client-text-primary">Hunit</h1>
+              <img 
+                src="/lovable-uploads/Cointegrity_Logo_White_Header.png" 
+                alt="Cointegrity" 
+                className="h-8 w-auto"
+              />
               <nav className="hidden md:flex space-x-4 lg:space-x-6">
                 {sectionLabels.map((label, index) => <button key={index} onClick={() => scrollToSection(index)} className={`text-xs lg:text-sm transition-colors ${activeSection === index ? 'text-client-accent font-medium' : 'text-client-text-secondary hover:text-client-accent'}`}>
                     {label}
@@ -117,7 +120,7 @@ const ClientHunitPage = () => {
       </header>
 
       {/* Hero Section */}
-      <section ref={el => sectionsRef.current[0] = el} className="pt-24 pb-16 client-hero-bg animate-fadeInUp">
+      <section ref={el => sectionsRef.current[0] = el} className="pt-24 pb-16 client-hero-bg animate-fadeInUp min-h-screen flex items-center">
         <div className="client-container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-client-text-primary mb-6 leading-tight animate-slideInLeft">
@@ -130,9 +133,8 @@ const ClientHunitPage = () => {
             <p className="text-base md:text-lg text-client-text-muted mb-12 animate-fadeInUp">
               Explore innovative payment solutions to transform $17B annual India-Africa oil trade
             </p>
-            <button onClick={() => scrollToSection(1)} className="client-button inline-flex items-center space-x-2 animate-bounce">
-              <span>Explore Solutions</span>
-              <ChevronDown className="w-5 h-5" />
+            <button onClick={() => scrollToSection(1)} className="text-client-accent hover:text-client-text-primary transition-colors inline-flex items-center space-x-2">
+              <ChevronDown className="w-6 h-6" />
             </button>
           </div>
         </div>
@@ -157,7 +159,11 @@ const ClientHunitPage = () => {
                 
                 {/* Payment Flow Diagram */}
                 <div className="mb-8">
-                  <PaymentFlowSVG />
+                  <img 
+                    src="/lovable-uploads/payment-flow-illustration.png" 
+                    alt="Payment Flow Illustration" 
+                    className="w-full max-w-2xl mx-auto rounded-lg shadow-sm"
+                  />
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
@@ -993,9 +999,9 @@ const ClientHunitPage = () => {
                       </div>
                     </div>
                     <div className="text-center md:text-right">
-                      <button className="client-button mb-3 block w-full md:w-auto">
+                      <a href="/#contact" className="client-button mb-3 block w-full md:w-auto">
                         Schedule Consultation
-                      </button>
+                      </a>
                       
                     </div>
                   </div>
@@ -1055,9 +1061,9 @@ const ClientHunitPage = () => {
               increase efficiency, and ensure regulatory compliance.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="client-button">
+              <a href="/#contact" className="client-button">
                 Schedule Consultation
-              </button>
+              </a>
               
             </div>
           </div>
