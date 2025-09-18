@@ -78,7 +78,7 @@ const WhyChooseUs = () => {
         </div>
 
         <div className="text-center mt-16">
-          <div className="inline-flex items-center gap-2 text-sm text-gray-500 mb-8">
+          <div className="inline-flex items-center gap-2 text-sm text-gray-500 mb-4">
             <CheckCircle className="h-4 w-4 text-[#cb46b3]" />
             <span>Trusted by Fortune 500 companies and government agencies</span>
           </div>
