@@ -3,26 +3,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { User } from '@supabase/supabase-js';
 import { ChevronDown, Phone } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faClock, 
-  faDollarSign, 
-  faExclamationTriangle, 
-  faCoins, 
-  faShield, 
-  faGlobe, 
-  faNetworkWired, 
-  faLayerGroup, 
-  faChartLine, 
-  faBullseye, 
-  faUsers, 
-  faLock, 
-  faZap, 
-  faChartBar,
-  faRocket,
-  faHandshake,
-  faArrowTrendUp,
-  faGem
-} from '@fortawesome/free-solid-svg-icons';
+import { faClock, faDollarSign, faExclamationTriangle, faCoins, faShield, faGlobe, faNetworkWired, faLayerGroup, faChartLine, faBullseye, faUsers, faLock, faZap, faChartBar, faRocket, faHandshake, faArrowTrendUp, faGem } from '@fortawesome/free-solid-svg-icons';
 import ClientLogin from '@/components/client/ClientLogin';
 import ClientFooter from '@/components/ClientFooter';
 import AnimatedCounter from '@/components/client/AnimatedCounter';
@@ -30,50 +11,43 @@ import NavigationDots from '@/components/client/NavigationDots';
 import TradeVolumeChart from '@/components/client/TradeVolumeChart';
 import PaymentFlowSVG from '@/components/client/PaymentFlowSVG';
 import '@/styles/client/client-theme.css';
-
 const ClientHunitPage = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
-
-  const sections = [
-    'hero', 'challenges', 'opportunity', 'solutions', 'papss', 'blockchain', 
-    'implementation', 'value-prop', 'next-steps', 'compliance'
-  ];
-
-  const sectionLabels = [
-    'Hero', 'Challenges', 'Opportunity', 'Solutions', 'PAPSS', 'Blockchain', 
-    'Implementation', 'Value Prop', 'Next Steps', 'Compliance'
-  ];
-
+  const sections = ['hero', 'challenges', 'opportunity', 'solutions', 'papss', 'blockchain', 'implementation', 'value-prop', 'next-steps', 'compliance'];
+  const sectionLabels = ['Hero', 'Challenges', 'Opportunity', 'Solutions', 'PAPSS', 'Blockchain', 'Implementation', 'Value Prop', 'Next Steps', 'Compliance'];
   useEffect(() => {
     // Check current session
     const checkUser = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+      const {
+        data: {
+          session
+        }
+      } = await supabase.auth.getSession();
       setUser(session?.user ?? null);
       setLoading(false);
     };
-
     checkUser();
 
     // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        setUser(session?.user ?? null);
-        setLoading(false);
+    const {
+      data: {
+        subscription
       }
-    );
-
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
     return () => subscription.unsubscribe();
   }, []);
-
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (scrollTop / docHeight) * 100;
+      const progress = scrollTop / docHeight * 100;
       setScrollProgress(progress);
 
       // Update active section
@@ -86,53 +60,41 @@ const ClientHunitPage = () => {
         }
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const scrollToSection = (index: number) => {
     const section = sectionsRef.current[index];
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+      section.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   };
-
   const handleLogout = async () => {
     await supabase.auth.signOut();
   };
-
   if (loading) {
-    return (
-      <div className="client-page">
+    return <div className="client-page">
         <div className="client-container">
           <div className="flex items-center justify-center min-h-screen">
             <div className="text-client-secondary">Loading...</div>
           </div>
         </div>
-      </div>
-    );
+      </div>;
   }
-
   if (!user) {
     return <ClientLogin />;
   }
-
-  return (
-    <div className="client-page">
+  return <div className="client-page">
       {/* Navigation Dots */}
-      <NavigationDots 
-        sections={sectionLabels}
-        activeSection={activeSection}
-        onSectionClick={scrollToSection}
-      />
+      <NavigationDots sections={sectionLabels} activeSection={activeSection} onSectionClick={scrollToSection} />
 
       {/* Progress Bar */}
       <div className="fixed top-0 left-0 w-full h-1 bg-client-border z-50">
-        <div 
-          className="h-full bg-client-accent transition-all duration-200"
-          style={{ width: `${scrollProgress}%` }}
-        />
+        <div className="h-full bg-client-accent transition-all duration-200" style={{
+        width: `${scrollProgress}%`
+      }} />
       </div>
 
       {/* Fixed Navigation Header */}
@@ -142,25 +104,12 @@ const ClientHunitPage = () => {
             <div className="flex items-center space-x-8">
               <h1 className="text-xl font-semibold text-client-text-primary">Hunit</h1>
               <nav className="hidden md:flex space-x-4 lg:space-x-6">
-                {sectionLabels.map((label, index) => (
-                  <button
-                    key={index}
-                    onClick={() => scrollToSection(index)}
-                    className={`text-xs lg:text-sm transition-colors ${
-                      activeSection === index 
-                        ? 'text-client-accent font-medium' 
-                        : 'text-client-text-secondary hover:text-client-accent'
-                    }`}
-                  >
+                {sectionLabels.map((label, index) => <button key={index} onClick={() => scrollToSection(index)} className={`text-xs lg:text-sm transition-colors ${activeSection === index ? 'text-client-accent font-medium' : 'text-client-text-secondary hover:text-client-accent'}`}>
                     {label}
-                  </button>
-                ))}
+                  </button>)}
               </nav>
             </div>
-            <button 
-              onClick={handleLogout}
-              className="client-button-secondary text-sm"
-            >
+            <button onClick={handleLogout} className="client-button-secondary text-sm">
               Logout
             </button>
           </div>
@@ -168,10 +117,7 @@ const ClientHunitPage = () => {
       </header>
 
       {/* Hero Section */}
-      <section 
-        ref={el => sectionsRef.current[0] = el}
-        className="pt-24 pb-16 client-hero-bg animate-fadeInUp"
-      >
+      <section ref={el => sectionsRef.current[0] = el} className="pt-24 pb-16 client-hero-bg animate-fadeInUp">
         <div className="client-container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-client-text-primary mb-6 leading-tight animate-slideInLeft">
@@ -184,10 +130,7 @@ const ClientHunitPage = () => {
             <p className="text-base md:text-lg text-client-text-muted mb-12 animate-fadeInUp">
               Explore innovative payment solutions to transform $17B annual India-Africa oil trade
             </p>
-            <button 
-              onClick={() => scrollToSection(1)}
-              className="client-button inline-flex items-center space-x-2 animate-bounce"
-            >
+            <button onClick={() => scrollToSection(1)} className="client-button inline-flex items-center space-x-2 animate-bounce">
               <span>Explore Solutions</span>
               <ChevronDown className="w-5 h-5" />
             </button>
@@ -1041,11 +984,11 @@ const ClientHunitPage = () => {
                       <div className="space-y-2 text-sm">
                         <div className="flex items-center space-x-2">
                           <Phone className="w-4 h-4" />
-                          <span>+91-11-4567-8900</span>
+                          <span>+47 986 44 144</span>
                         </div>
                         <div className="flex items-center space-x-2">
                           <FontAwesomeIcon icon={faUsers} className="w-4 h-4" />
-                          <span>partnerships@cointegrity.com</span>
+                          <span>hello@cointegrity.io</span>
                         </div>
                       </div>
                     </div>
@@ -1053,9 +996,7 @@ const ClientHunitPage = () => {
                       <button className="client-button mb-3 block w-full md:w-auto">
                         Schedule Consultation
                       </button>
-                      <button className="client-button-secondary block w-full md:w-auto">
-                        Download White Paper
-                      </button>
+                      
                     </div>
                   </div>
                 </div>
@@ -1127,8 +1068,6 @@ const ClientHunitPage = () => {
       </section>
 
       <ClientFooter />
-    </div>
-  );
+    </div>;
 };
-
 export default ClientHunitPage;
