@@ -90,6 +90,44 @@ body:has(.client-page) {
 .text-client-accent { color: var(--client-accent) !important; }
 .border-client-border { border-color: var(--client-border) !important; }
 
+/* Enforce palette on client pages: neutralize non-spec colors */
+.client-page .bg-red-50,
+.client-page .bg-green-50,
+.client-page .bg-blue-50,
+.client-page .bg-purple-50,
+.client-page .bg-indigo-50 { 
+  background-color: var(--client-card-bg) !important; 
+  border: 1px solid var(--client-border) !important; 
+}
+
+.client-page .text-red-600,
+.client-page .text-green-600,
+.client-page .text-blue-600,
+.client-page .text-purple-600,
+.client-page .text-indigo-600 {
+  color: var(--client-accent) !important;
+}
+
+.client-page .bg-red-500,
+.client-page .bg-green-500,
+.client-page .bg-blue-500,
+.client-page .bg-purple-500,
+.client-page .bg-indigo-500 {
+  background-color: var(--client-accent) !important;
+}
+
+/* Remove decorative gradients on client pages */
+.client-page .bg-gradient-to-r,
+.client-page .bg-gradient-to-l,
+.client-page .bg-gradient-to-b,
+.client-page .bg-gradient-to-t,
+.client-page .bg-gradient-to-br,
+.client-page .bg-gradient-to-bl,
+.client-page .bg-gradient-to-tr,
+.client-page .bg-gradient-to-tl {
+  background-image: none !important;
+}
+
 /* Base Styles */
 .client-page {
   background-color: var(--client-bg) !important;

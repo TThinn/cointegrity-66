@@ -44,7 +44,7 @@ const TradeVolumeChart: React.FC = () => {
           display: false,
         },
         ticks: {
-          color: '#6B7280',
+          color: '#2E565D',
           font: {
             size: 12,
           },
@@ -55,7 +55,7 @@ const TradeVolumeChart: React.FC = () => {
           color: 'rgba(229, 227, 212, 0.5)',
         },
         ticks: {
-          color: '#6B7280',
+          color: '#2E565D',
           font: {
             size: 12,
           },

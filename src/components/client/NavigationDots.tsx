@@ -26,11 +26,11 @@ const NavigationDots: React.FC<NavigationDotsProps> = ({
             aria-label={`Go to ${section} section`}
           >
             <div className="absolute right-6 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-              <div className="bg-client-text-primary text-white px-2 py-1 rounded text-xs whitespace-nowrap">
+              <div className="bg-client-card-bg text-client-text-primary border border-client-border shadow-sm px-2 py-1 rounded text-xs whitespace-nowrap">
                 {section}
               </div>
               <div className="absolute left-0 top-1/2 transform -translate-y-1/2 translate-x-full">
-                <div className="w-2 h-2 bg-client-text-primary transform rotate-45"></div>
+                <div className="w-2 h-2 bg-client-card-bg border border-client-border transform rotate-45"></div>
               </div>
             </div>
           </button>
