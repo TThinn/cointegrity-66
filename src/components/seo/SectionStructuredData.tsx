@@ -46,14 +46,13 @@ export const getStructuredData = (currentPath = "", currentHash = "") => {
       ...ENHANCED_GLOSSARY_SCHEMAS
     );
   } else if (currentPath.includes('services') || currentHash === '#services') {
-    // Services page/section: Use service-specific FAQ schemas only (3 separate ones for different topics)
-    baseData.push(
-      SERVICE_FAQ_STRUCTURED_DATA.strategicPositioning,
-      SERVICE_FAQ_STRUCTURED_DATA.tokenomics,
-      SERVICE_FAQ_STRUCTURED_DATA.regulatory
-    );
+    // Services page/section: Use consolidated service FAQ schema (single schema)
+    baseData.push(SERVICE_FAQ_STRUCTURED_DATA);
+  } else if (currentPath === '/' || currentPath === '') {
+    // Homepage: Use general FAQ schema only
+    baseData.push(FAQ_STRUCTURED_DATA);
   } else {
-    // All other pages: Use general FAQ schema only
+    // Other pages: Use general FAQ schema only
     baseData.push(FAQ_STRUCTURED_DATA);
   }
 
