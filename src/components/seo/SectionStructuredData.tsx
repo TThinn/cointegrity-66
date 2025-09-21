@@ -1,5 +1,4 @@
 
-import { BUSINESS_STRUCTURED_DATA } from "./businessStructuredData";
 import { FAQ_STRUCTURED_DATA } from "./faqStructuredData";
 import { WEBSITE_STRUCTURED_DATA } from "./websiteStructuredData";
 import { SECTIONS_STRUCTURED_DATA } from "./sectionsStructuredData";
