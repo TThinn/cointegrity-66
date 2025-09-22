@@ -171,6 +171,7 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
+Disallow: /client/
 Disallow: /deployment-test
 Disallow: /deployment-dashboard
 Disallow: /debug/

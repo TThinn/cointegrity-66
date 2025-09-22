@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-route
 import { HelmetProvider } from "react-helmet-async"
 import ErrorBoundary from "./components/app/ErrorBoundary"
 import { ConsentManager } from "./components/ConsentManager"
+import { FEATURES } from "./config/features"
 import { initializeCacheManagement } from "./utils/cacheManager"
 import { initServiceWorker } from "./utils/serviceWorkerInit"
 import { initializeErrorHandling } from "./utils/errorLogger"
@@ -31,7 +32,7 @@ import { NewsArticlePage } from "./pages/NewsArticlePage"
 import GuidesPage from "./pages/GuidesPage"
 import CaseStudiesPage from "./pages/CaseStudiesPage"
 import MicaReadyWaitlistPage from "./pages/MicaReadyWaitlistPage"
-import ClientHunitPage from "./pages/ClientHunitPage"
+// import ClientHunitPage from "./pages/ClientHunitPage" // Disabled via feature flag
 
 import './index.css'
 import './App.css'
@@ -98,7 +99,15 @@ const App = () => {
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/thank-you" element={<ThankYouPage />} />
               <Route path="/mica-ready-waitlist" element={<MicaReadyWaitlistPage />} />
-              <Route path="/client/Hunit" element={<ClientHunitPage />} />
+              {/* Hunit client route - disabled via feature flag */}
+              {FEATURES.HUNIT_ENABLED && (
+                <Route 
+                  path="/client/Hunit" 
+                  element={React.createElement(
+                    React.lazy(() => import("./pages/ClientHunitPage"))
+                  )} 
+                />
+              )}
               <Route path="*" element={<NotFound />} />
             </Routes>
             <Toaster 
