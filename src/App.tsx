@@ -86,6 +86,9 @@ const App = () => {
               <Route path="/" element={<Index />} />
               <Route path="/web3-consulting" element={<Index />} />
               
+              {/* MiCA redirect - ensures /mica links redirect to waitlist page */}
+              <Route path="/mica" element={<Navigate to="/mica-ready-waitlist" replace />} />
+              
               {/* Removed section redirects to fix Google Search Console indexing issues */}
               
               <Route path="/privacy" element={<PrivacyPolicy />} />
