@@ -55,8 +55,8 @@ export const getStructuredData = (currentPath = "", currentHash = "") => {
     baseData.push(FAQ_STRUCTURED_DATA);
   }
 
-  // Add testimonials schema on testimonials page
-  if (currentPath.includes('testimonials') || currentHash === '#testimonials') {
+  // Add testimonials schema on testimonials page (but not on glossary pages)
+  if ((currentPath === '/testimonials' || currentHash === '#testimonials') && !currentPath.includes('glossary')) {
     baseData.push(TESTIMONIALS_STRUCTURED_DATA);
   }
 
