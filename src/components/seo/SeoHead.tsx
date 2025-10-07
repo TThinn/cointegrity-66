@@ -13,6 +13,7 @@ import { ConversationalSearchData } from "./ConversationalSearchData";
 import { EntityRelationshipData } from "./EntityRelationshipData";
 import { GlossaryEnhancedSEO } from "./GlossaryEnhancedSEO";
 import { AIStructuredData } from "./ai/AIStructuredData";
+import { glossaryTerms } from "@/data/glossaryTerms";
 
 interface SeoHeadProps {
   currentPath: string;
@@ -54,7 +55,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
     } else if (pathWithoutSlash === 'case-studies') {
       return "Global Web3 Success Stories | European Market Leaders | Cointegrity";
     } else if (pathWithoutSlash === 'glossary') {
-      return `World's Largest Web3 Glossary, Dictionary & Vocabulary (${totalTermsCount || '1049+'}+ Terms) | European Leaders | Cointegrity`;
+      return `World's Largest Web3 Glossary, Dictionary & Vocabulary (${totalTermsCount || glossaryTerms.length}+ Terms) | European Leaders | Cointegrity`;
     } else if (pathWithoutSlash === 'process') {
       return "Industry-Leading Web3 Process | European Excellence | Cointegrity";
     } else if (pathWithoutSlash === 'mica') {
@@ -105,7 +106,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
     } else if (pathWithoutSlash === 'case-studies') {
       return "Global Web3 implementation success stories from European market leaders. Detailed case studies spanning Asia, US, and Africa showcasing seasoned expertise in blockchain transformation.";
     } else if (pathWithoutSlash === 'glossary') {
-      return `World's largest Web3 glossary, dictionary and vocabulary with ${totalTermsCount || '1049+'}+ expert-curated terms from European market leaders. Complete Web3 glossary covering blockchain terminology, cryptocurrency definitions, crypto dictionary entries, Web3 vocabulary, DeFi protocols, NFTs, DAOs, tokenomics, and MiCA regulatory compliance.`;
+      return `World's largest Web3 glossary, dictionary and vocabulary with ${totalTermsCount || glossaryTerms.length}+ expert-curated terms from European market leaders. Complete Web3 glossary covering blockchain terminology, cryptocurrency definitions, crypto dictionary entries, Web3 vocabulary, DeFi protocols, NFTs, DAOs, tokenomics, and MiCA regulatory compliance.`;
     } else if (pathWithoutSlash === 'process') {
       return "Industry-leading Web3 implementation methodology from European market leaders with global delivery. Proven process developed through successful projects across Asia, US, and Africa.";
     } else if (pathWithoutSlash === 'mica') {

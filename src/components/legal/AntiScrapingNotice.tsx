@@ -1,5 +1,6 @@
 import React from "react";
 import { Shield } from "lucide-react";
+import { glossaryTerms } from "@/data/glossaryTerms";
 
 export const AntiScrapingNotice = () => {
   return (
@@ -11,7 +12,7 @@ export const AntiScrapingNotice = () => {
             🛡️ Protected Content Notice
           </p>
           <p className="text-purple-100/80 leading-relaxed">
-            This glossary contains <strong>1,439+ proprietary terms</strong> curated by Cointegrity's experts. 
+            This glossary contains <strong>{glossaryTerms.length.toLocaleString()}+ proprietary terms</strong> curated by Cointegrity's experts.
             Content is protected by copyright law. Unauthorized scraping, bulk downloading, or 
             data mining is prohibited and may result in legal action.
           </p>
