@@ -125,10 +125,8 @@ export const GLOSSARY_AGGREGATE_RATING_SCHEMA = {
   "reviewCount": 75
 };
 
-// Export all enhanced schemas
+// Export all enhanced schemas (removed Review and AggregateRating schemas to fix Google validation errors)
 export const ENHANCED_GLOSSARY_SCHEMAS = [
   ENHANCED_WEBSITE_SCHEMA,
-  GLOSSARY_REVIEW_SCHEMA,
-  GLOSSARY_LEARNING_RESOURCE_SCHEMA,
-  GLOSSARY_AGGREGATE_RATING_SCHEMA
+  GLOSSARY_LEARNING_RESOURCE_SCHEMA
 ];

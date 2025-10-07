@@ -5,15 +5,6 @@ export const TESTIMONIALS_STRUCTURED_DATA = {
   "@id": "https://cointegrity.io/#organization",
   "name": "Cointegrity",
   "url": "https://cointegrity.io",
-  "itemReviewed": {
-    "@type": "Service",
-    "name": "Web3 Blockchain Consulting Services",
-    "provider": {
-      "@type": "Organization",
-      "name": "Cointegrity",
-      "url": "https://cointegrity.io"
-    }
-  },
   "review": [
     {
       "@type": "Review",
