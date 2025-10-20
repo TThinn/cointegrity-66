@@ -1112,6 +1112,95 @@ Everything that used to live in silos is now running on the same line of logic.
     seoTitle: "Programmable Money Goes SaaS - The Crypto Circuit Week 40",
     seoDescription: "Stripe's Bridge turns stablecoin issuance into SaaS while EBA shifts to algorithmic supervision. ACE Digital lists as the Nordics' first regulated Bitcoin treasury with active risk management.",
     featuredImage: cryptoCircuitFeatured
+  },
+  {
+    id: "biggest-insider-trade",
+    title: "The Biggest Insider Trade Ever Recorded?",
+    subtitle: "Week 41",
+    excerpt: "Last week, we talked about risk management. We talked about how the real winners aren't the ones smoking hopium, but the ones building engineered treasury strategies with proper hedging and actual risk controls. Little did we know the exam would be scheduled for Friday night.",
+    content: `Last week, we talked about risk management. We talked about how the real winners aren't the ones smoking hopium, but the ones building engineered treasury strategies with proper hedging and actual risk controls. **Little did we know the exam would be scheduled for Friday night.**
+
+This week's newsletter focuses almost entirely on one event: **the largest liquidation cascade in crypto history.** But first, let's quickly address three stories that deserve attention before we descend into the chaos.
+
+## **Quick Hits: Aster, BVNK, and the Barron Rumors**
+
+**Aster's DeFiLlama delisting** sparked a debate only crypto can produce. When a derivatives DEX backed by YZi Labs (formerly Binance Labs) rockets to the top of volume charts, overtaking Hyperliquid, eyebrows raise. When DefiLlama's founder publicly states that Aster's volumes suspiciously mirrored Binance's perpetuals market and delists them, those eyebrows go orbital. The community split: some screamed "centralization," others asked, "Was the volume real?" Aster reported $41 billion in 24-hour volume versus Hyperliquid's $9 billion. **But open interest, the metric requiring actual collateral and funding payments, told a different story**: Hyperliquid led with $14.68 billion versus Aster's $4.86 billion. Volume can be gamed; open interest is harder to fake.
+
+**The BVNK bidding war** makes you sit up. Just 24 hours after Citi's investment, Fortune reported that **Coinbase and Mastercard are in advanced talks to acquire the London-based stablecoin firm for $1.5-2.5 billion**. That's a 2-3x markup from December 2024's $750 million valuation. BVNK is boring middleware enabling companies to move money across chains and stablecoins through a single API. They've hit $20 billion in payment volume. The race to own corporate treasury rails is heating up, and the window to build a moat is closing.
+
+**And then there's Barron.** Social media speculation linking Barron Trump to the whale trade is completely unsubstantiated. On-chain evidence points to a Satoshi-era whale holding Bitcoin since 2011, not a 19-year-old NYU student. While Barron has legitimate crypto ventures, he co-founded World Liberty Financial with an estimated $150 million stake; there's zero blockchain evidence linking him to the Hyperliquid addresses. Social media is doing what it does best: turning coincidence into conspiracy.
+
+## **Deep Dive: Anatomy of a $20 Billion Liquidation**
+
+**Friday, October 10th, 2025, will go down in history.** At approximately 7:00 PM EST, President Trump announced a 100% tariff on all Chinese goods. The crypto market reacted with brutal efficiency. **In 20 minutes, Bitcoin crashed from $117,000 to $104,000.** The liquidation cascade wiped out $19.2 billion in positions and sent 1.64 million accounts to zero.
+
+**The infrastructure cracked.** Binance reported issues and promised compensation. Hyperliquid was forced into mass liquidations and auto-deleveraging. Lighter exchange went offline for hours. Open interest collapsed: Bitcoin futures from $67B to $33B, Ethereum from $38B to $19B.
+
+**But here's the kicker: funding rates went absolutely insane.** As panic selling drove prices down and short positions dominated, perpetual funding rates spiked to levels I have never witnessed before. Some markets briefly touched 10,000%+ APY, while others sustained thousands of percent APY for hours. This wasn't a bug; it was the system working exactly as designed. Funding rates are the mechanism that keeps perpetual futures prices anchored to spot. When imbalances get extreme, the rates adjust to incentivize the other side. **The fact that DeFi perp markets handled this stress test without breaking, while some CEXs struggled, is a powerful validation of decentralized derivatives infrastructure.**
+
+## **The Whale: A $1.1 Billion Short, 30 Minutes Before**
+
+On-chain analysis revealed a trading sequence so perfectly timed it ignited speculation about insider knowledge. **A Satoshi-era whale executed massive short positions on a newly opened Hyperliquid account, totaling $1.1 billion, just 30 minutes before Trump's announcement.**
+
+### **The Timeline**
+
+**October 8**: Sold 3,000 BTC for 363.87M USDC at $121,291.
+
+**October 10**: Deposited 80M USDC, opened 6x short on 3,477 BTC ($419M). Added 30M USDC, opened 12x short on 76,242 ETH ($330M).
+
+**Final Position (30 mins before announcement)**:
+- BTC Short: 10x leveraged, 6,189 BTC, $752.9M (liquidation at $130,810)
+- ETH Short: 12x leveraged, 81,203 ETH, $353.1M (liquidation at $4,589)
+- **Total: $1.1 billion in shorts**
+
+**The Profits**: $190-200 million in one day.
+
+### **The Addresses**
+
+**Primary Holding Address (426M USDC)**: 0x4f9A37Bc2A4a2861682c0e9BE1F9417Df03CC27C
+
+**Hyperliquid Shorting Address**: 0xb317D2BC2D3d2Df5Fa441B5bAE0AB9d8b07283ae
+
+This whale originally accumulated 86,000 BTC in 2011. In August 2025, they sold 35,991 BTC for $4.43 billion to buy 886,371 ETH. They still hold 49,634 BTC across four wallets, worth ~$5.43 billion. **This is someone who has been in the game for over a decade.**
+
+## **Was This Insider Trading?**
+
+The truth is, we don't know. But **opening a $1.1 billion short 30 minutes before a market-moving presidential announcement is either the luckiest trade in history or something else entirely**. In traditional finance, this instantly triggers an SEC investigation. In crypto, we watch it unfold on-chain with full transparency, but no regulatory framework to address it. This is both the beauty and the curse of decentralized markets.
+
+## **The USDe Depeg: Synthetic Stress Test**
+
+**Ethena's USDe stablecoin lost its peg, dropping to $0.65 on Binance.** For a token designed to maintain 1:1 with the dollar, this was catastrophic, even if temporary. Ethena blamed Binance's oracle system for pulling data from thin order books. On other exchanges, USDe held better.
+
+In a statement released on Sunday, **Binance took responsibility and announced that it has "fully covered" user losses** from the depegging of USDE, BNSOL, and WBETH. The exchange stated: *"Compensation has been distributed in two batches, totaling approximately USD 283 million."* Binance clarified that the extreme market downturn occurred before the de-pegging, with prices hitting their lowest point between 21:20-21:21 UTC, while severe de-pegging occurred after 21:36 UTC. **The $283 million compensation is one of the largest single-user protection payouts in crypto exchange history.**
+
+But the damage to confidence was done. USDe is the third-largest stablecoin, and it's synthetic, backed by derivatives, not cash reserves. When it depegged, the Terra/LUNA ghosts returned.
+
+## **The Geopolitical Backdrop: China's Silent Treatment**
+
+Adding another layer to this crisis is the complete breakdown in US-China communication. **Trade Representative Jamison Greer revealed on Sunday that when the US reached out to China for a phone call following the rare earth export controls expansion, Beijing simply "deferred."** In other words, China isn't picking up the phone. This isn't just a trade war; it's a communication blackout at the highest levels. When two of the world's largest economies stop talking, markets don't just get nervous, they panic. The fact that this crash happened in the context of complete diplomatic silence makes the recovery path even more uncertain.
+
+## **Monday's Reckoning**
+
+The market has stabilized, but Monday will bring news. We expect to hear about treasury companies caught on the wrong side, those long on leverage via perpetuals without proper hedging. Some will have been liquidated. **The companies that thrive will be those holding spot or employing sophisticated derivatives strategies with actual risk management.** This is the separation of wheat from chaff.
+
+## **The Read-Through**
+
+This week reinforced every theme we've been hammering on. **Risk management is not optional.** The old playbook of buying and holding is dead. The new playbook requires derivatives overlays, DeFi integration, hedged positions, and treasury-as-a-service models. **Infrastructure beats noise.** The BVNK bidding war signals that companies building boring, compliant, scalable rails attract billion-dollar valuations. **Transparency is a double-edged sword.** The whale trade is visible because blockchain is transparent. In traditional finance, this would be hidden. In crypto, it's a public spectacle. **The China-USA trade war is far from over.** Markets recovered most losses, but underlying tension remains, especially when the two sides won't even talk.
+
+This was a week that tested everyone. Some systems held. Some broke. Some traders made fortunes. Others lost everything. But the people building real, sustainable businesses, focused on infrastructure, compliance, risk management, and long-term value, will still be here for the next cycle. **The gamblers come and go. The builders remain.**`,
+    author: {
+      name: "Torstein",
+      avatar: undefined
+    },
+    publishDate: "2025-10-13",
+    category: "Market Analysis",
+    readingTime: 10,
+    tags: ["Bitcoin", "Trading", "Risk Management", "DeFi", "Liquidations", "Stablecoins", "Geopolitics", "Treasury"],
+    slug: "biggest-insider-trade",
+    substackUrl: "https://cointegrity.substack.com/p/the-biggest-insider-trade-ever-recorded",
+    seoTitle: "The Biggest Insider Trade Ever Recorded? - The Crypto Circuit Week 41",
+    seoDescription: "$19.2B liquidation cascade after Trump's tariff announcement. Satoshi-era whale's $1.1B short 30 minutes before the crash nets $200M. USDe depegs to $0.65 as funding rates hit 10,000% APY.",
+    featuredImage: cryptoCircuitFeatured
   }
 ];
 
