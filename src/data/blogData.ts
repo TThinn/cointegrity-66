@@ -553,6 +553,88 @@ And yes, Coinbase's UK movie trailer was peak cringe, but when those Base integr
     seoTitle: "Treasury Wars: Everyone Wants Bitcoin; Few Can Hold It Right - The Crypto Circuit Week 32",
     seoDescription: "Harvard invests $116M in Bitcoin ETFs while retirement funds crack open. MiCA's custody trap reshapes Europe's crypto landscape. Infrastructure wins over speculation.",
     featuredImage: cryptoCircuitFeatured
+  },
+  {
+    id: "paperwork-to-protocols",
+    title: "From Paperwork to Protocols",
+    subtitle: "Week 33",
+    excerpt: "The week delivered more proof that crypto isn't an 'experiment'; it's infrastructure in full acceleration. Exchanges are going public, banks are locking in custody, DeFi lending is exploding, and regulators are quietly admitting they can't police this market without automation. Meanwhile, gaming is showing why it's the one part of Web3 that doesn't need a hype cycle to matter.",
+    content: `The week delivered more proof that crypto isn't an "experiment"; it's infrastructure in full acceleration. Exchanges are going public, banks are locking in custody, DeFi lending is exploding, and regulators are quietly admitting they can't police this market without automation. Meanwhile, gaming is showing why it's the one part of Web3 that doesn't need a hype cycle to matter.
+
+**Exchanges and corporates came to play.** Bullish's NYSE debut turned heads, raising $1.11B and briefly hitting a $13B valuation. No stealth listings, no SPAC gimmicks; a straight IPO, and the tape rewarded it. Citigroup broke cover on stablecoin custody, while Fiserv and Bank of America began prepping payment integration. BIT Mining lined up a $300M Solana treasury strategy, and Upexi crossed 2M SOL. These aren't "pilots"; they're balance sheet allocations that treat tokens as operating capital.
+
+**DeFi lending went vertical.** Coinbase's new on-chain borrowing push (BTC collateralized USDC loans via Morpho on Base) launched just as Dune data showed exponential growth across decentralized lending protocols. This isn't yield farming nostalgia; it's institutional DeFi, with liquidity stratified by risk.
+
+## **Deep Dive: RegTech's Inflection Point**
+
+For years, compliance was seen as a drag; a cost center, a necessary evil. This week showed why it's about to become the most important product surface in crypto.
+
+**The EBA's AML/CFT SupTech report landed on Aug 12**, laying out how supervisors under the new AMLA framework are expected to monitor crypto firms. Buried in the report is a blunt message: **manual monitoring doesn't scale**. Supervisors expect machine-readable reporting, continuous feeds, and cross-system data integration. In other words, regulators are demanding automation because they recognize that human auditors can't keep pace with 24/7 markets.
+
+At the same time, industry frustration is boiling over. **Benedikt Faupel (Bitpanda) called out MiCA's evolution from "clarity to complexity,"** warning that costs have surged and legal uncertainty persists.
+
+That frustration was captured bluntly by **Miguel Ángel Zapatero (Crossmint)**:
+
+*"They just want the big players in. No space for smaller players who cannot afford all the bureaucracy."*
+
+It's not paranoia; MiCA is reshaping the market toward a smaller, heavily licensed operator set.
+
+**Patrick Hansen (Circle) flagged another problem**: the EBA's suggestion that EMT transfers could require dual licensing under both MiCA and PSD2 from March 2026. His verdict: a "regulatory own goal" that undercuts MiCA's "one rulebook" promise.
+
+### **This is where RegTech 2.0 comes in**
+
+The new wave isn't dashboards and consultants; it's automation at the protocol level:
+
+- **AI-driven monitoring** already cuts transaction false positives by 35–40%.
+- **Automated filings** are turning Article 97 templates (which read like 10-page legal opinions for complex tokens) into near push-button processes.
+- **Cross-chain anomaly detection** is being built into supervisory tools themselves, not just internal compliance teams.
+
+And companies are shipping. On Aug 15, **Zscaler rolled out an MCP server** that exposes its security stack as callable AI tools for agents and copilots. For crypto, this is the template: wrap custody, risk, and surveillance APIs inside the Model Context Protocol so AI agents can act safely under policy guardrails.
+
+**The strategic shift is obvious**: compliance is no longer a tax; it's a moat. Firms that can demonstrate audit-grade automation will clear licenses faster, cut costs, and win institutional clients. Those that can't will drown in paperwork.
+
+**The uncomfortable truth**: MiCA's complexity is not an accident; it's a filter. RegTech is the only way through.
+
+Watch this space; we're not just analyzing the bottleneck, **we're building the way through it.**
+
+## **MiCA's Scoreboard Stayed Messy**
+
+53 licenses remain the published count, with Bitpanda and Crypto Finance GmbH as reference points, but public registers still lag, and national rules diverge. ESMA is pushing for uniform governance standards over raw license volume. If you're drafting Article 97 filings, expect them to read like legal opinions; 10+ pages when token mechanics get complex. This is the bottleneck RegTech will have to break.
+
+## **Rumors and Returns**
+
+**Backpack's acquisition of FTX EU** sparked speculation about an FTX revival. Nothing concrete yet, but the fact that the brand isn't radioactive anymore says plenty about the industry's short memory when liquidity is on the table.
+
+## **Gaming Kept Building**
+
+July saw **$60M in funding (+94% MoM)**, daily active wallets climbed 27% to 4.9M, and the week added milestones: Shrapnel closed $19.5M to prep its 2026 launch, Craft World absorbed half of Ronin's transactions, FIFA Rivals hit 1M downloads in seven weeks, and Ubisoft's Might & Magic: Fates lined up a Sept 3 presale.
+
+That's the market reality; **gaming is Web3's most consistent growth driver**. This makes Cointegrity's new collaboration with the Blockchain Gaming Alliance (BGA) perfectly timed.
+
+## **The Uncomfortable Truth About Stablecoins**
+
+With Tether posting $4.9B in quarterly profit and now holding $127B in Treasuries, it's no longer credible to talk about them as "retail tokens." As Anton Golub framed it in his newsletter: **93% of all stablecoin volume is professional liquidity management**. Visa, Mastercard, and JPMorgan are integrating them directly into payment pipes. The academic argument about "not money" is theater; the infrastructure is already here.
+
+## **Security Stayed Ugly**
+
+**BtcTurk lost $48M** across eight networks in a hot-wallet breach. This, on top of $2.17B stolen in H1, makes clear that cross-chain laundering and adversaries with sovereign-scale funding are the baseline. "Adequate monitoring" means real-time, multi-chain surveillance with CEX freeze coordination; anything less is just wishful thinking.
+
+## **The Bottom Line**
+
+The week showed the market's new rhythm: IPOs instead of SPACs, DeFi lending as a credit market instead of a casino, RegTech as automation instead of paperwork, and gaming as growth instead of speculation. Stablecoins and tokenized assets are running the rails, banks are finally building, and compliance is the new product surface. The noise hasn't gone away — but the signal is louder.`,
+    author: {
+      name: "Torstein",
+      avatar: undefined
+    },
+    publishDate: "2025-08-18",
+    category: "Regulation",
+    readingTime: 8,
+    tags: ["MiCA", "RegTech", "Compliance", "DeFi", "Gaming", "Stablecoins", "Banking"],
+    slug: "paperwork-to-protocols",
+    substackUrl: "https://cointegrity.substack.com/p/from-paperwork-to-protocols",
+    seoTitle: "From Paperwork to Protocols - The Crypto Circuit Week 33",
+    seoDescription: "Bullish's $1.11B NYSE IPO, DeFi lending explosion, and RegTech's automation revolution. Why MiCA's complexity is creating a compliance moat, not a barrier.",
+    featuredImage: cryptoCircuitFeatured
   }
 ];
 
