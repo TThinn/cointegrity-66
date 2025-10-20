@@ -886,6 +886,112 @@ September wasn't supposed to work this well for infrastructure building, but whe
     seoTitle: "When the Wrappers Unwrapped - The Crypto Circuit Week 38",
     seoDescription: "Swiss banks execute first cross-institutional blockchain payments. IMF releases tokenization framework. MiCA's political tensions exposed as 25% of Bitcoin treasury companies trade below NAV.",
     featuredImage: cryptoCircuitFeatured
+  },
+  {
+    id: "aster-went-orbital",
+    title: "The Week Aster Went Orbital",
+    subtitle: "Week 39",
+    excerpt: "Aster lit the afterburners, Hyperliquid leaked trust, and the market remembered: liquidity moves at the speed of narrative - and response.",
+    content: `Aster lit the afterburners, Hyperliquid leaked trust, and the market remembered: **liquidity moves at the speed of narrative - and response.**
+
+## **Deep Dive - Aster vs. Hyperliquid: When Gravity Shifted**
+
+### **Aster's Breakout**
+
+Between Sep 24–27, **Aster went from new kid to top-3 perp DEX**, clocking $25.8B 24h on Wednesday and $42.9B by Saturday, over $100B for the week. It offered traders what they wanted: extreme leverage, hidden orders, multi-chain rails. The CZ advisory role (limited to product/tech) and YZi Labs' minority stake gave it credibility, reinforced by ex-Binance talent.
+
+**The kicker?** When a price glitch on Sep 25 liquidated users, the team responded instantly, compensating in USDT, refunding fees, and restoring trust. **In crypto, the way you handle failure is sometimes more important than the features you launch.**
+
+### **Hyperliquid's Rough Patch**
+
+Its week was marked by a HyperDrive exploit (~$773k), a HyperVault rug (~$3.6m), and **over $200m USDC outflows in 24h**. Add in looming HYPE unlocks, nearly $500m/month over the next two years with buybacks covering just a fraction, and it was the wrong week to show weakness.
+
+**The read**: Aster didn't just catch a hype cycle. It executed well, at the exact moment its closest rival hit turbulence. In attention markets, that's all it takes for gravity to shift.
+
+## **Macro - Bad Weather, Good Drama**
+
+- BTC slipped under $110k (Sep 25); ETH followed to $3.9k.
+- Fear & Greed hit 28; $1.5B+ liquidations cleared Sep 21–22.
+- $22B options expiry (Sep 27) passed without fireworks; BTC closed near $109.5k.
+- ETF flows were brutal: US BTC ETFs −$258m (Sep 25), ETH ETFs −$795m on the week.
+- BNB touched a fresh ATH above $1,080 before easing.
+
+Against that backdrop, Aster's rise stood out.
+
+## **Policy & Supervision - The Pipes Keep Getting Laid**
+
+### **US**
+
+The CFTC is considering letting **USDC/USDT be treated like cash/T-bills in derivatives markets** (comments due Oct 20). If passed, stablecoins become part of the plumbing, not just trading chips.
+
+### **EU**
+
+**Nine major banks** (ING, UniCredit, Danske, SEB, KBC, CaixaBank, DekaBank, RBI, Banca Sella) announced a Netherlands-based company to issue a **MiCA-compliant euro stablecoin by 2026**. It's a strong signal, but with 99%+ of stablecoins today dollar-denominated, the open question is whether creating a new euro token can actually shift usage, or just add fragmentation. A welcome initiative, but a steep hill to climb.
+
+**Gemini won MiCA authorization in Malta**, pairing it with MiFID II. That's a regulated stack, passportable across Europe.
+
+**Supervisory noise**: ESMA flagged Malta in a peer review; AMF, Consob, and Austria's FMA called for tighter scrutiny. Passporting may be possible, but not without consistency.
+
+### **UK**
+
+Banks keep pushing tokenized deposits despite BoE's cautious tone. It's their way of keeping bank money relevant without handing the rails to stablecoin issuers.
+
+### **Asia**
+
+HKMA's stablecoin regime is live, though Beijing has told mainland brokers to pause some RWA tokenization in Hong Kong. Vietnam, Australia, and the UK all moved licensing frameworks closer to banking-style oversight.
+
+## **Banks & Rails - Europe's "We'll Do Our Own Euro"**
+
+The EU bank stablecoin is a real attempt at rails, not wrappers. If it works, it could give corporates and banks a euro-denominated settlement layer under MiCA. But the dominance of USD stablecoins looms large; liquidity and network effects don't flip overnight.
+
+## **Treasury Corner - Beyond HODL**
+
+The "old" playbook was simple: buy BTC, maybe another asset like ETH or SOL. **The new one is more engineered**: derivatives overlays, DeFi integration, hedged positions, lending programs, and treasury-as-a-service models.
+
+Equity markets are rewarding treasuries that diversify revenue and manage risk. Miners and hybrids with multiple streams have outperformed, while the OG "just Bitcoin" balance sheets are slipping.
+
+Recent examples, like **Fitell's $100M Solana-focused facility using derivatives and DeFi**, show where the space is heading: treasuries as active managers, not passive holders. Those without risk systems will consolidate or vanish.
+
+## **Exploits & Failures - Trust Moves Faster Than Code**
+
+- **Hyperliquid**: HyperDrive exploit (~$773k), HyperVault rug (~$3.6m) → >$200m USDC outflows.
+- **UXLINK**: $11.3m drained from multi-sig wallets.
+- **Yala protocol**: $7.6m via compromised temp keys.
+- **Shibarium bridge**: ~$4.1m loss with validator power abuse suspected.
+- **Crypto.com**: incident tied to Scattered Spider; funds safe, but a reminder that social engineering bypasses all dashboards.
+
+This week reinforced a simple truth: **in crypto, your mean-time-to-response is your product.**
+
+## **Under the Radar**
+
+- **ETF plumbing**: SEC streamlining may speed new crypto ETFs despite current outflows.
+- **FTX Recovery Trust**: $1.6B third distribution hits Sep 30, could shift near-term flows.
+- **XRP ETF**: First US-listed ETF launched Sep 21 with $37.7m day one, then fell with the market.
+
+## **The Read-Through**
+
+This week's storylines are heading in the direction we have been pointing all along: **rails over wrappers, competence over noise.**
+
+- Aster grew because it shipped and handled a failure well.
+- Hyperliquid stumbled, and capital noticed.
+- Banks are finally building, whether with euro stablecoins or tokenized deposits, though catching up to the USD rails is no small task.
+- Treasuries are evolving into engineered machines, not slogans.
+- Security incidents reminded everyone that trust is fragile, and speed of response is king.
+
+Looking forward to what next week will bring, I have given up guessing;-)`,
+    author: {
+      name: "Torstein",
+      avatar: undefined
+    },
+    publishDate: "2025-09-28",
+    category: "Market Analysis",
+    readingTime: 9,
+    tags: ["DeFi", "Aster", "Hyperliquid", "Treasury", "MiCA", "Stablecoins", "Banking", "Security"],
+    slug: "aster-went-orbital",
+    substackUrl: "https://cointegrity.substack.com/p/the-week-aster-went-orbital",
+    seoTitle: "The Week Aster Went Orbital - The Crypto Circuit Week 39",
+    seoDescription: "Aster's $100B weekly volume surge as Hyperliquid bleeds $200M. Nine EU banks launch euro stablecoin. Treasury strategies evolve beyond simple HODL as response time becomes the product.",
+    featuredImage: cryptoCircuitFeatured
   }
 ];
 
