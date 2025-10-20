@@ -992,6 +992,126 @@ Looking forward to what next week will bring, I have given up guessing;-)`,
     seoTitle: "The Week Aster Went Orbital - The Crypto Circuit Week 39",
     seoDescription: "Aster's $100B weekly volume surge as Hyperliquid bleeds $200M. Nine EU banks launch euro stablecoin. Treasury strategies evolve beyond simple HODL as response time becomes the product.",
     featuredImage: cryptoCircuitFeatured
+  },
+  {
+    id: "programmable-money-saas",
+    title: "Programmable Money Goes SaaS",
+    subtitle: "Week 40",
+    excerpt: "Europe's banks finally started to move. The last six months have seen pilots, consortia, and even tokenized deposits creeping out of PowerPoint. Then, just as the engines started humming, Stripe turned issuance into SaaS.",
+    content: `Europe's banks finally started to move.
+The last six months have seen pilots, consortia, and even tokenized deposits creeping out of PowerPoint. Then, just as the engines started humming, **Stripe turned issuance into SaaS.**
+
+**"Open Issuance" isn't another stablecoin. It's a toolkit.** Stripe's Bridge division now lets corporates spin up branded coins, connect them to BlackRock-style reserve managers, and plug into payment networks the way Shopify plugged into e-commerce. It's the playbook of a company that understands rails: make the hard part modular, and sell the switches.
+
+While banks were still debating "token strategy" decks, Stripe quietly shipped the future. **One API, reserve transparency, programmable money, and compliance baked in.** The barrier to becoming a "stablecoin issuer" just dropped to the cost of a developer and a legal memo.
+
+**That's the story, but the subtext is louder: issuance just became a commodity.**
+The margin doesn't sit in the coin; it sits in the network. Stripe gets to own the layer where programmable commerce meets AI-driven payments, the layer where treasuries, wallets, and bots start talking to each other without human hands.
+
+**And here's where the timing borders on cosmic.**
+The EBA's 2026 Work Programme, published the same week, reads like a regulator building its own operating system. MiCA supervision will shift from file-based reviews to real-time dashboards of "significant tokens." AI risk monitoring moves under DORA's umbrella. Supervisors will get algorithmic tooling; ESMA, EBA, and the ECB are standing up a shared digital observatory. **In other words: even compliance is getting an API.**
+
+Banks are moving, yes, but the game board just flipped. The question isn't whether they innovate. It's whether they can plug in. The future's not waiting for another strategy sprint; it's shipping pull requests.
+
+**So the mood shouldn't be panic.** If anything, this is the alignment moment: Stripe, banks, and supervisors are finally converging on the same stack. **Programmable issuance meets programmable supervision.**
+If Europe plays it right, this isn't a loss; it's an integration moment.
+
+## **Public Treasuries Grow Up - Oslo Joins the Circuit**
+
+While Stripe was selling APIs, **ACE Digital quietly listed on Euronext Growth Oslo**, the Nordics' first pure Bitcoin-treasury company to hit a public exchange.
+**Ticker: ACED.**
+**Market cap: about NOK 126 million at debut.**
+
+On paper, it looks like another MicroStrategy echo. In practice, it's the opposite.
+**ACE isn't trying to out-hodl anyone; it's building a treasury engine.**
+
+The company runs an active derivatives overlay, using options and futures to hedge downside risk and harvest basis yield, **turning what used to be a passive bet into an actual portfolio strategy.**
+
+That's the difference between speculating and managing exposure.
+**MicroStrategy prayed. ACE handles the risk.**
+
+For years, "Bitcoin treasury" meant locking coins on a balance sheet and hoping the market gods were kind.
+
+**ACE represents the next phase: disciplined, regulated, and transparent**, a company using derivatives the way they were designed to be used, not as leverage toys but as stability tools.
+
+In that sense, the ACE listing isn't just a Nordic footnote; it's the coming-of-age moment for corporate crypto treasuries.
+
+**The sector has stopped pretending to be a cult and started acting like finance.**
+
+## **Supervision Goes Algorithmic**
+
+The EBA Work Programme deserves a full spotlight of its own.
+Buried in 80 pages of bureaucratic prose is a radical statement: **the EBA will move from document supervision to data supervision.**
+That means:
+
+- Continuous monitoring of EMTs and ARTs (stablecoins and asset-referenced tokens).
+- Cross-authority AI risk mapping under DORA.
+- Live oversight of MiCA whitepapers.
+- And, critically, joint enforcement playbooks with ESMA and the ECB.
+
+**It's not a "framework." It's a control panel.**
+
+Banks and fintechs will soon be living inside supervisory dashboards that refresh in real time.
+
+If Stripe made issuance programmable, the EBA just made supervision executable.
+
+## **Compliance Corner**
+
+While the technologists shipped, the lawyers didn't sleep either:
+
+- **Coinbase lost its EU procedural challenge**, cementing the Commission's AML authority over crypto exchanges.
+- **Celsius got a decisive ruling**: tokens in platform custody are property of the estate, not the user. A line that MiCA's custody rules now have to digest, and that has been a huge discussion point for a long time.
+- **Binance France** saw prosecutors widen their AML probe scope.
+- **Revolut Lithuania** took a €1.5 million hit for onboarding gaps.
+- And the **UK FCA tightened the leash on crypto promotions**, a timely contrast to MiCA's principles-based advertising regime.
+
+The compliance honeymoon is officially over. **The adults just entered the room.**
+
+## **Security Corner**
+
+**SBI Crypto reported a $21 million exploit** this week, traced to actors with DPRK fingerprints. A reminder that treasuries and custody infrastructures are now the main prize. Smart contracts aren't the only things being tested; so is corporate perimeter hygiene.
+
+## **AI, the Parallel Plot (Now Crossing the Main Line)**
+
+While Stripe was automating money, **Nvidia was quietly laying the power grid for it.**
+**Another $100 billion into OpenAI's orbit.**
+Five new Stargate data centers targeting 10 gigawatts of compute, enough to light a small country or train a thousand agentic minds.
+
+Everyone's focused on the models. Few notice the rails.
+**Because here's the thing: AI can't transact.**
+Not really.
+An autonomous agent can scrape data, write code, even draft a legal brief, but it can't hold money, execute a contract, or clear a payment inside the legacy system. **Banks were never built for machines. Blockchains were.**
+
+**That's the real convergence story hiding in plain sight.**
+AI is learning to reason, and blockchains already know how to settle.
+Together they close the loop: **decision → transaction → verification → audit.**
+That's not theory; that's the missing infrastructure for agentic commerce, and it's exactly the terrain Stripe, Circle, and others are quietly building on.
+
+Regulators are spinning up dashboards. Corporations are hoarding GPUs.
+And between them, a new economy is forming, where bots pay bots, treasuries move in code, and compliance runs in parallel threads.
+
+**Money is becoming machine-readable.**
+**Compliance, machine-actionable.**
+**And this time, convergence isn't coming. It's already compiling.**
+
+## **Closing Thought - "Full Circle"**
+
+Banks are coding. Platforms are regulating. Machines are transacting.
+Everything that used to live in silos is now running on the same line of logic.
+**The circuit's closed, and the system just came alive…**`,
+    author: {
+      name: "Torstein",
+      avatar: undefined
+    },
+    publishDate: "2025-10-06",
+    category: "Infrastructure",
+    readingTime: 8,
+    tags: ["Stripe", "Stablecoins", "Banking", "MiCA", "AI", "Treasury", "Regulation", "Compliance"],
+    slug: "programmable-money-saas",
+    substackUrl: "https://cointegrity.substack.com/p/programmable-money-goes-saas",
+    seoTitle: "Programmable Money Goes SaaS - The Crypto Circuit Week 40",
+    seoDescription: "Stripe's Bridge turns stablecoin issuance into SaaS while EBA shifts to algorithmic supervision. ACE Digital lists as the Nordics' first regulated Bitcoin treasury with active risk management.",
+    featuredImage: cryptoCircuitFeatured
   }
 ];
 
