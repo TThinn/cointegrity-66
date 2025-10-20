@@ -59,7 +59,7 @@ export function linkGlossaryTerms(text: string): string {
       }
       
       const termSlug = createGlossaryAnchor(originalTerm);
-      return `<a href="/glossary#${termSlug}" class="glossary-link" title="Learn more about ${originalTerm}">${match}</a>`;
+      return `<a href="/glossary/${termSlug}" class="glossary-link" title="Learn more about ${originalTerm}">${match}</a>`;
     });
   });
   
@@ -67,5 +67,5 @@ export function linkGlossaryTerms(text: string): string {
 }
 
 export function createGlossaryAnchor(term: string): string {
-  return term.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+  return term.toLowerCase().replace(/[^a-z0-9]/g, '-');
 }

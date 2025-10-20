@@ -10,12 +10,12 @@ export const generateGlossaryQAStructuredData = () => {
     .map(term => ({
       "@context": "https://schema.org",
       "@type": "QAPage",
-      "@id": `https://cointegrity.io/glossary#qa-${term.term.toLowerCase().replace(/\s+/g, '-')}`,
+      "@id": `https://cointegrity.io/glossary/${term.term.toLowerCase().replace(/[^a-z0-9]/g, '-')}#qa`,
       "name": `Q&A: ${term.term}`,
       "description": `Question and answer about ${term.term} in Web3 and blockchain context`,
       "mainEntity": {
         "@type": "Question",
-        "@id": `https://cointegrity.io/glossary#question-${term.term.toLowerCase().replace(/\s+/g, '-')}`,
+        "@id": `https://cointegrity.io/glossary/${term.term.toLowerCase().replace(/[^a-z0-9]/g, '-')}#question`,
         "name": `What is ${term.term}?`,
         "text": `What is ${term.term} in the context of Web3 and blockchain technology?`,
         "answerCount": 1,
@@ -28,8 +28,8 @@ export const generateGlossaryQAStructuredData = () => {
         },
         "acceptedAnswer": {
           "@type": "Answer",
-          "@id": `https://cointegrity.io/glossary#answer-${term.term.toLowerCase().replace(/\s+/g, '-')}`,
-          "url": `https://cointegrity.io/glossary#${term.term.toLowerCase().replace(/\s+/g, '-')}`,
+          "@id": `https://cointegrity.io/glossary/${term.term.toLowerCase().replace(/[^a-z0-9]/g, '-')}#answer`,
+          "url": `https://cointegrity.io/glossary/${term.term.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
           "text": term.definition.replace(/<[^>]*>/g, ''), // Remove HTML tags
           "dateCreated": "2024-01-01T00:00:00Z",
           "upvoteCount": 1,
@@ -70,7 +70,7 @@ export const generateGlossaryQAStructuredData = () => {
             "@type": "ListItem",
             "position": 3,
             "name": term.term,
-            "item": `https://cointegrity.io/glossary#${term.term.toLowerCase().replace(/\s+/g, '-')}`
+            "item": `https://cointegrity.io/glossary/${term.term.toLowerCase().replace(/[^a-z0-9]/g, '-')}`
           }
         ]
       }

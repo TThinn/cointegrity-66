@@ -27,7 +27,7 @@ export const TermCard: React.FC<TermCardProps> = ({
       >
         <div className="p-6">
           <div className="flex justify-between items-start flex-wrap mb-4">
-            <h3 className="text-xl font-semibold text-white" id={term.term.toLowerCase().replace(/\s+/g, '-')}>
+            <h3 className="text-xl font-semibold text-white" id={term.term.toLowerCase().replace(/[^a-z0-9]/g, '-')}>
               {term.term}
               {/* Show indicators for search results */}
               {isSearching && (

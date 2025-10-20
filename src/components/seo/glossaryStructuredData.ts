@@ -18,7 +18,7 @@ export const GLOSSARY_STRUCTURED_DATA = {
 export const GLOSSARY_TERM_STRUCTURED_DATA = glossaryTerms.map(term => ({
   "@context": "https://schema.org",
   "@type": "DefinedTerm",
-  "@id": `https://cointegrity.io/glossary#${term.term.toLowerCase().replace(/\s+/g, '-')}`,
+  "@id": `https://cointegrity.io/glossary/${term.term.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
   "name": term.term,
   "description": term.definition.replace(/<[^>]*>/g, ''), // Remove HTML tags for structured data
   "inDefinedTermSet": {
@@ -43,7 +43,7 @@ const createCategoryTermSet = (category: string, displayName: string, descriptio
     "inLanguage": "en-US",
     "hasPart": categoryTerms.map(term => ({
       "@type": "DefinedTerm",
-      "@id": `https://cointegrity.io/glossary#${term.term.toLowerCase().replace(/\s+/g, '-')}`
+      "@id": `https://cointegrity.io/glossary/${term.term.toLowerCase().replace(/[^a-z0-9]/g, '-')}`
     }))
   };
 };

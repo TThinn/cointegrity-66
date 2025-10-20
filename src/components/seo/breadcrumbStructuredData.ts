@@ -54,8 +54,8 @@ export const generateBreadcrumbStructuredData = (
         "name": termName,
         "item": {
           "@type": "DefinedTerm",
-          "@id": `${baseUrl}/glossary#${termName.toLowerCase().replace(/\s+/g, '-')}`,
-          "url": `${baseUrl}/glossary#${termName.toLowerCase().replace(/\s+/g, '-')}`,
+          "@id": `${baseUrl}/glossary/${termName.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
+          "url": `${baseUrl}/glossary/${termName.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
           "name": termName
         }
       });

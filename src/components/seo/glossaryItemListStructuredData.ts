@@ -18,10 +18,10 @@ export const generateGlossaryItemListStructuredData = () => {
       "position": index + 1,
       "name": term.term,
       "description": term.definition.replace(/<[^>]*>/g, '').substring(0, 200) + '...',
-      "url": `https://cointegrity.io/glossary#${term.term.toLowerCase().replace(/\s+/g, '-')}`,
+      "url": `https://cointegrity.io/glossary/${term.term.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
       "item": {
         "@type": "DefinedTerm",
-        "@id": `https://cointegrity.io/glossary#${term.term.toLowerCase().replace(/\s+/g, '-')}`,
+        "@id": `https://cointegrity.io/glossary/${term.term.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
         "name": term.term,
         "description": term.definition.replace(/<[^>]*>/g, '')
       }
@@ -50,10 +50,10 @@ export const generateGlossaryItemListStructuredData = () => {
           "position": index + 1,
           "name": term.term,
           "description": term.definition.replace(/<[^>]*>/g, '').substring(0, 150) + '...',
-          "url": `https://cointegrity.io/glossary#${term.term.toLowerCase().replace(/\s+/g, '-')}`,
+          "url": `https://cointegrity.io/glossary/${term.term.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
           "item": {
             "@type": "DefinedTerm",
-            "@id": `https://cointegrity.io/glossary#${term.term.toLowerCase().replace(/\s+/g, '-')}`,
+            "@id": `https://cointegrity.io/glossary/${term.term.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
             "name": term.term,
             "description": term.definition.replace(/<[^>]*>/g, '')
           }
@@ -83,7 +83,7 @@ export const POPULAR_TERMS_ITEMLIST = {
     "@type": "ListItem",
     "position": index + 1,
     "name": term,
-    "url": `https://cointegrity.io/glossary#${term.toLowerCase().replace(/\s+/g, '-')}`
+    "url": `https://cointegrity.io/glossary/${term.toLowerCase().replace(/[^a-z0-9]/g, '-')}`
   }))
 };
 
