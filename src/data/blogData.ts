@@ -635,6 +635,93 @@ The week showed the market's new rhythm: IPOs instead of SPACs, DeFi lending as 
     seoTitle: "From Paperwork to Protocols - The Crypto Circuit Week 33",
     seoDescription: "Bullish's $1.11B NYSE IPO, DeFi lending explosion, and RegTech's automation revolution. Why MiCA's complexity is creating a compliance moat, not a barrier.",
     featuredImage: cryptoCircuitFeatured
+  },
+  {
+    id: "week-pipes-sang",
+    title: "The Week the Pipes Sang",
+    subtitle: "Week 34",
+    excerpt: "You don't need fireworks when the plumbing starts humming. This week the money layer made three very specific sounds: banks clicked 'deploy,' supervisors swapped PDFs for telemetry, and the stablecoin map kept redrawing itself like a tide line. Somewhere between a Reuters headline and a compliance memo, the future quietly shipped.",
+    content: `You don't need fireworks when the plumbing starts humming. This week the money layer made three very specific sounds: banks clicked "deploy," supervisors swapped PDFs for telemetry, and the stablecoin map kept redrawing itself like a tide line. Somewhere between a Reuters headline and a compliance memo, the future quietly shipped.
+
+## **Throughline**
+
+Money moves where it's easiest to settle and hardest to fake. That's the plot. Everything else is licensing noise or influencer oxygen. **If it doesn't settle itself, it isn't on‑chain, period!**
+
+## **Story of the Week - Circle's Boring Coup**
+
+Circle didn't thump its chest; it tuned the pipes. The distribution strategy we've been tracking, **win the dull parts of finance first**, kept compounding. USDC keeps picking up sockets in banks, processors, and treasuries, and the compliance voice in Europe is increasingly their voice. Patrick Hansen's PSD2↔MiCA warning didn't just land; it set the agenda for every EU payments PM who still thought "one rulebook" meant one team. **The meta‑lesson: APIs out‑compete press releases.**
+
+**Operator take**: If your stablecoin plan depends on a single issuer, it isn't a plan. Route by counterparty jurisdiction and treasury SOPs; carry at least one public‑square dollar, one regional fiat, and one corridor bet (CNH/JPY/GBP). Automate rebalancing by fee, latency, and sanction fog; not vibes.
+
+## **The Three Clicks (what actually shipped)**
+
+### **Click 1 - Capital markets got faster**
+
+DBS placed tokenized structured notes on public rails; OCBC pushed tokenized CP with automated lifecycle; State Street stepped in as third‑party custodian on JPM's digital debt stack. No theatrical pilots; just instruments clearing on code. **The speed story isn't TPS; it's T0 settlement and custody events that reconcile themselves.**
+
+### **Click 2 - Sovereigns drew corridors**
+
+Wyoming's FRNT is live (multi‑chain, commission‑governed); the UAE lit up ADI testnet with national champions and a dirham rail in sight; Beijing started saying the quiet part out loud: yuan‑stable to pull trade gravity east. **Corridors decide who settles where; liquidity follows.**
+
+### **Click 3 - Supervisors asked for telemetry**
+
+GENIUS Act RFC wants measurable anti‑abuse outcomes; AMLA/ESMA guidance keeps pushing toward machine‑readable everything. Translation: screenshots are out, attestations are in. Or, as a certain audit chair likes to text me: **"Audit or GTFO."** Translation: screenshots are out, attestations are in. If your "AI compliance" can't show a false‑positive curve on demand, it's marketing.
+
+## **Deep Dive - The Great Stablecoin Chain Grab (Arc vs. Tempo)**
+
+There isn't "one chain to rule them all," there are corridors. **The Arc (banks & sovereigns)** is building compliance‑native rails: tokenized deposits, on‑chain notes, state stables. **Tempo (fintech rails)** is shipping the checkout button and dev kits; Circle is already the house band. The grab isn't about "winning" a chain; it's about owning routes between payers, pools, and policy.
+
+**Where it lands in 12 months:**
+- Corporates settle invoices on public rails with bank‑grade lifecycle hooks.
+- Retail keeps using the fintech dollar they already trust.
+- States lock domestic flows to their preferred rails.
+
+Interoperability stops being a bridge and becomes a procurement checklist. Members‑only money loses to the public square.
+
+**Cheat codes (build)**: standardize contract interfaces, design for wallet identity, and wire kill‑switches for vendor/API failure. If a corridor lacks licensed liquidity, your SLA is fiction.
+
+## **Under the Radar (the little hinges)**
+
+**Custody × Dealers**: Traditional custody co‑signing automated on‑chain actions (JPM DDS + State Street) is the real scalability unlock. It's how lifecycle events stop waking humans at 03:00.
+
+**HKMA's narrow funnel**: Holder‑identity expectations + governance heft = a small, safe first cohort. Great for trust; bad for MVPs.
+
+**Amdax's Euronext wrapper**: A listed BTC treasury company is an EU‑native way to hold the asset without touching the raw edges. Expect copycats the moment passporting is clean.
+
+## **Nordic Reality Check - Exposure vs. Rails**
+
+DNB, the Nordics' biggest bank, just green‑lit a crypto fund that blends pure bitcoin exposure with equities. Good wealth product; not a settlement strategy. While DBS is settling tokenized notes T0 and OCBC/Onyx are automating lifecycle hooks, the UAE is wiring a dirham rail; **rails work**. The Nordics are showing up with exposure while others lay infrastructure. That's two very different sports: one optimizes tracking error, the other sets corridor rules. If Oslo wants a seat at the table where routes get decided, it needs to ship wallets, attestations, and bank‑grade DvP; not term sheets for "broad exposure."
+
+## **Security Corner - The Voice on the Line**
+
+This week's breaches rhymed: voice‑phish, OAuth consent, CRM data out the side door. Assume the phish comes from a real phone number, the OAuth screen is legit, and the payload is your address book.
+
+**Runbook to actually run:**
+1. Kill "trust the caller." Staff must call back on a known number; no exceptions.
+2. Alert on OAuth grant events to anything outside your allowlist.
+3. Rotate secrets quarterly, not annually.
+4. Drill the vishing scenario with a stopwatch and a fake VP; measure, don't hope.
+
+**Scale note (this week)**: A single victim was socially engineered out of ~$91.4M in BTC via support‑impersonation, with funds laundered through mixers; one of the largest single‑victim thefts ever reported. Treat callback rules and hardware‑wallet hygiene as board‑level controls for HNW and corporate custody.
+
+## **Closing Riff - Why This Week Mattered**
+
+Rails shipped, corridors got drawn, and supervisors asked for telemetry instead of slideware. That combination isn't a news cycle; **it's a stack trace**. If you're selling exposure, optimize tracking error. If you're moving money, ship rails: attested wallets, measurable controls, and corridor‑aware treasury playbooks. That's who sets rules the rest comply with.
+
+See you where invoices settle; on the rails, not the slides.`,
+    author: {
+      name: "Torstein",
+      avatar: undefined
+    },
+    publishDate: "2025-08-25",
+    category: "Infrastructure",
+    readingTime: 8,
+    tags: ["Infrastructure", "Stablecoins", "Circle", "USDC", "Banking", "Regulation", "Compliance", "Security"],
+    slug: "week-pipes-sang",
+    substackUrl: "https://cointegrity.substack.com/p/the-week-the-pipes-sang",
+    seoTitle: "The Week the Pipes Sang - The Crypto Circuit Week 34",
+    seoDescription: "Circle's distribution strategy compounds as banks deploy, supervisors demand telemetry, and stablecoin corridors reshape global settlement. Infrastructure over speculation.",
+    featuredImage: cryptoCircuitFeatured
   }
 ];
 
