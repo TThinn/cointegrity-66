@@ -5,7 +5,7 @@
 
 /* Glossary link styles */
 .glossary-link {
-  @apply text-pink-300/80 hover:text-pink-200 underline decoration-pink-300/40 hover:decoration-pink-200/60 decoration-1 underline-offset-2 transition-colors;
+  @apply text-foreground/90 hover:text-foreground underline decoration-pink-400/30 hover:decoration-pink-300/50 decoration-1 underline-offset-2 transition-colors;
 }
 
 @layer base {
