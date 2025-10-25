@@ -28,7 +28,7 @@ const MicaReadyWaitlistPage = () => {
       solutionTypes: ["Intelligence Feed", "License Screening", "Document Review", "Full Application Support"],
       targetAudience: ["crypto businesses", "compliance officers", "legal teams", "EU market entrants"],
       competitiveAdvantages: ["10x faster", "90% cost reduction", "AI-powered", "European expertise"],
-      launchTimeline: "Q3 2025 with beta access"
+      launchTimeline: "Q4 2025 with beta access"
     }} />
        <Helmet>
         <title>World's Fastest MiCA-Ready SaaS Suite - AI-Powered EU Compliance | Cointegrity</title>
@@ -137,7 +137,7 @@ const MicaReadyWaitlistPage = () => {
             </h1>
             <h2 className="text-2xl md:text-3xl font-semibold text-white/90 mb-4">The Complete Suite for Every MiCA Challenge</h2>
             <p className="text-white/80 max-w-3xl mx-auto text-base">
-              Get early access to our complete suite launching Q3 2025. From regulatory intelligence to full <a href="/glossary?search=CASP" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">CASP authorization</a> — secure your spot on the waiting list now. 
+              Start with a <a href="https://micahub.net" target="_blank" rel="noopener noreferrer" className="text-inherit font-semibold hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">free initial screening at Micahub.net</a> to determine your licensing needs, or get early access to our complete suite launching Q4 2025. From regulatory intelligence to full <a href="/glossary?search=CASP" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">CASP authorization</a> — secure your spot on the waiting list now. 
               Developed by Europe's <a href="/#about" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">leading Web3 consultancy</a> with proven <a href="/#testimonials" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">regulatory expertise</a>.
             </p>
           </div>
@@ -214,12 +214,23 @@ const MicaReadyWaitlistPage = () => {
                   Eliminate regulatory uncertainty with our intelligent AI-powered screening system. Simply answer a series of targeted questions about your business model, services, and operations, and our advanced algorithm will analyze your responses against the complete <a href="/glossary?search=MiCA" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">MiCA</a> regulatory framework. Get instant clarity on whether you need a <a href="/glossary?search=CASP" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">CASP</a> license, <a href="/glossary?search=EMT" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">EMT</a> authorization, or <a href="/glossary?search=ART" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">ART</a> permit. Our comprehensive screening covers all crypto-asset activities including custody, trading, portfolio management, stablecoin issuance, and more. Save thousands in preliminary legal fees and get definitive answers in minutes, not weeks.
                 </p>
                 
-                <div className="mb-6">
-                  <div className="bg-gradient-to-r from-purple-400 to-purple-500 bg-clip-text text-transparent font-semibold text-lg">Coming - Pay-per-screening</div>
-                  <div className="text-white/60 text-sm">Ideal for early-stage projects, uncertain businesses</div>
+                <div className="mb-4">
+                  <a 
+                    href="https://micahub.net" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-full inline-block text-center bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity"
+                  >
+                    Try Free Screening Now at Micahub.net →
+                  </a>
                 </div>
                 
-                <MicaReadyWaitlistForm serviceInterest="license-screening" buttonText="Put me on the waiting list" buttonClass="w-full bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto" />
+                <div className="mb-6">
+                  <div className="bg-gradient-to-r from-purple-400 to-purple-500 bg-clip-text text-transparent font-semibold text-lg">Coming Q4 2025 - Advanced Screening</div>
+                  <div className="text-white/60 text-sm">Comprehensive paid analysis with full regulatory intelligence</div>
+                </div>
+                
+                <MicaReadyWaitlistForm serviceInterest="license-screening" buttonText="Join Waitlist for Advanced Suite" buttonClass="w-full bg-gradient-to-r from-purple-500/80 via-purple-600/80 to-purple-700/80 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto border border-purple-400/30" />
               </div>
 
               {/* Box 3: Document Review & Enhancement - Green Theme */}
