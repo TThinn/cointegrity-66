@@ -7,6 +7,32 @@ interface GlossaryLinkedTextProps {
 }
 
 export const GlossaryLinkedText: React.FC<GlossaryLinkedTextProps> = ({ children }) => {
+  // Process inline markdown (bold) before glossary linking
+  const processMarkdown = (text: string): Array<{ type: 'text' | 'bold'; content: string }> => {
+    const parts: Array<{ type: 'text' | 'bold'; content: string }> = [];
+    const boldRegex = /\*\*(.*?)\*\*/g;
+    let lastIndex = 0;
+    let match;
+    
+    while ((match = boldRegex.exec(text)) !== null) {
+      // Add text before the bold
+      if (match.index > lastIndex) {
+        parts.push({ type: 'text', content: text.slice(lastIndex, match.index) });
+      }
+      
+      // Add bold text
+      parts.push({ type: 'bold', content: match[1] });
+      lastIndex = match.index + match[0].length;
+    }
+    
+    // Add remaining text
+    if (lastIndex < text.length) {
+      parts.push({ type: 'text', content: text.slice(lastIndex) });
+    }
+    
+    return parts.length > 0 ? parts : [{ type: 'text', content: text }];
+  };
+
   const processTextWithGlossaryLinks = (text: string): React.ReactNode[] => {
     // Create all possible term variations for perfect matching
     const termVariationsMap = new Map();
@@ -97,7 +123,15 @@ export const GlossaryLinkedText: React.FC<GlossaryLinkedTextProps> = ({ children
     return result;
   };
 
-  const processedContent = processTextWithGlossaryLinks(children);
+  // Process markdown first, then apply glossary links to each part
+  const markdownParts = processMarkdown(children);
+  const processedContent = markdownParts.map((part, index) => {
+    if (part.type === 'bold') {
+      const linkedContent = processTextWithGlossaryLinks(part.content);
+      return <strong key={index}>{linkedContent}</strong>;
+    }
+    return <React.Fragment key={index}>{processTextWithGlossaryLinks(part.content)}</React.Fragment>;
+  });
   
   return <>{processedContent}</>;
 };

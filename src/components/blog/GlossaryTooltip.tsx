@@ -17,7 +17,7 @@ export const GlossaryTooltip: React.FC<GlossaryTooltipProps> = ({
       <HoverCardTrigger asChild>
         <a 
           href={`/glossary/${term.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
-          className="glossary-link text-primary underline decoration-dotted underline-offset-4 hover:decoration-solid transition-all duration-200"
+          className="glossary-link underline decoration-dotted underline-offset-4 hover:decoration-solid transition-all duration-200"
         >
           {children}
         </a>
