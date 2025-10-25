@@ -166,7 +166,42 @@ const MicaReadyWaitlistPage = () => {
 
             {/* Service Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto">
-              {/* Box 1: MiCA Intelligence Feed - Blue Theme */}
+              {/* Box 1: MiCA License Screening - Purple Theme */}
+              <div className="p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 border border-white/30 hover:border-white/50 flex flex-col">
+                <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" style={{
+                background: `linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(147, 51, 234, 0.3))`
+              }}>
+                  <svg className="h-8 w-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-[clamp(1.1rem,1rem+0.3vw,1.3rem)] font-semibold mb-3 text-white">
+                  MiCA License Screening
+                </h3>
+                <p className="text-lg font-semibold bg-gradient-to-r from-purple-400 to-purple-500 bg-clip-text text-transparent mb-4">
+                  Do You Need a License?
+                </p>
+                
+                <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6 flex-grow">
+                  Eliminate regulatory uncertainty with our intelligent AI-powered screening system. Simply answer a series of targeted questions about your business model, services, and operations, and our advanced algorithm will analyze your responses against the complete <a href="/glossary?search=MiCA" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">MiCA</a> regulatory framework. Get instant clarity on whether you need a <a href="/glossary?search=CASP" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">CASP</a> license, <a href="/glossary?search=EMT" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">EMT</a> authorization, or <a href="/glossary?search=ART" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">ART</a> permit. Our comprehensive screening covers all crypto-asset activities including custody, trading, portfolio management, stablecoin issuance, and more. Save thousands in preliminary legal fees and get definitive answers in minutes, not weeks.
+                </p>
+                
+                <div className="mb-6">
+                  <div className="bg-gradient-to-r from-purple-400 to-purple-500 bg-clip-text text-transparent font-semibold text-lg">Free Screening Available Now</div>
+                  <div className="text-white/60 text-sm">Get instant clarity on your licensing requirements</div>
+                </div>
+                
+                <a 
+                  href="https://micahub.net" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-full inline-block text-center bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto"
+                >
+                  Try Free Screening Now →
+                </a>
+              </div>
+
+              {/* Box 2: MiCA Intelligence Feed - Blue Theme */}
               <div className="p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 border border-white/30 hover:border-white/50 flex flex-col">
                 <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" style={{
                 background: `linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.3))`
@@ -192,45 +227,6 @@ const MicaReadyWaitlistPage = () => {
                 </div>
                 
                 <MicaReadyWaitlistForm serviceInterest="intelligence-feed" buttonText="Put me on the waiting list" buttonClass="w-full bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto" />
-              </div>
-
-              {/* Box 2: MiCA License Screening - Purple Theme */}
-              <div className="p-6 rounded-lg backdrop-blur-sm hover:translate-y-[-4px] transition-all duration-300 border border-white/30 hover:border-white/50 flex flex-col">
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" style={{
-                background: `linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(147, 51, 234, 0.3))`
-              }}>
-                  <svg className="h-8 w-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-[clamp(1.1rem,1rem+0.3vw,1.3rem)] font-semibold mb-3 text-white">
-                  MiCA License Screening
-                </h3>
-                <p className="text-lg font-semibold bg-gradient-to-r from-purple-400 to-purple-500 bg-clip-text text-transparent mb-4">
-                  Do You Need a License?
-                </p>
-                
-                <p className="text-[clamp(0.8rem,0.75rem+0.2vw,1rem)] leading-[1.3] text-gray-200 mb-6 flex-grow">
-                  Eliminate regulatory uncertainty with our intelligent AI-powered screening system. Simply answer a series of targeted questions about your business model, services, and operations, and our advanced algorithm will analyze your responses against the complete <a href="/glossary?search=MiCA" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">MiCA</a> regulatory framework. Get instant clarity on whether you need a <a href="/glossary?search=CASP" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">CASP</a> license, <a href="/glossary?search=EMT" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">EMT</a> authorization, or <a href="/glossary?search=ART" className="text-inherit hover:text-purple-300 transition-colors hover:underline hover:decoration-purple-300">ART</a> permit. Our comprehensive screening covers all crypto-asset activities including custody, trading, portfolio management, stablecoin issuance, and more. Save thousands in preliminary legal fees and get definitive answers in minutes, not weeks.
-                </p>
-                
-                <div className="mb-4">
-                  <a 
-                    href="https://micahub.net" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-full inline-block text-center bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity"
-                  >
-                    Try Free Screening Now at Micahub.net →
-                  </a>
-                </div>
-                
-                <div className="mb-6">
-                  <div className="bg-gradient-to-r from-purple-400 to-purple-500 bg-clip-text text-transparent font-semibold text-lg">Coming Q4 2025 - Advanced Screening</div>
-                  <div className="text-white/60 text-sm">Comprehensive paid analysis with full regulatory intelligence</div>
-                </div>
-                
-                <MicaReadyWaitlistForm serviceInterest="license-screening" buttonText="Join Waitlist for Advanced Suite" buttonClass="w-full bg-gradient-to-r from-purple-500/80 via-purple-600/80 to-purple-700/80 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-auto border border-purple-400/30" />
               </div>
 
               {/* Box 3: Document Review & Enhancement - Green Theme */}
