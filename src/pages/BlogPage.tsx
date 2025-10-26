@@ -12,7 +12,7 @@ import { blogArticles, getLatestArticles } from "@/data/blogData";
 const BlogPage = () => {
   const { currentPath, currentHash } = useSectionTracking();
   const { email, setEmail, isLoading, subscribe } = useNewsletterSignup();
-  const latestArticles = getLatestArticles();
+  const latestArticles = blogArticles;
 
   return (
     <div className="min-h-screen bg-[#010822] overflow-x-hidden">
