@@ -33,6 +33,11 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
   const pathWithoutSlash = currentPath.replace(/^\/+/, '');
   
   const getSectionTitle = () => {
+    // Handle blog article paths (these will be overridden by BlogArticleSEO)
+    if (pathWithoutSlash.startsWith('blog/')) {
+      return "Cointegrity Blog | Web3 Insights & Analysis";
+    }
+    
     // Handle path-based pages first with enhanced global leadership positioning
     if (pathWithoutSlash === 'web3-consulting') {
       return "Leading Web3 Consultancy Europe | Global Blockchain Strategy | Cointegrity";
@@ -84,6 +89,11 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
   };
   
   const getSectionDescription = () => {
+    // Handle blog article paths (these will be overridden by BlogArticleSEO)
+    if (pathWithoutSlash.startsWith('blog/')) {
+      return "Expert Web3 insights, blockchain analysis, and crypto industry intelligence from Europe's leading consultancy.";
+    }
+    
     // Handle path-based pages first with enhanced global positioning
     if (pathWithoutSlash === 'web3-consulting') {
       return "Europe's leading Web3 consultancy with global reach across Asia, US, and Africa. Seasoned experts deliver blockchain strategy, tokenomics design, and MiCA compliance with 20+ years combined experience.";

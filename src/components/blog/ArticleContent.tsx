@@ -102,7 +102,25 @@ const ArticleContent = ({ article }: ArticleContentProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#010822] pt-24">
+    <article 
+      className="min-h-screen bg-[#010822] pt-24"
+      itemScope 
+      itemType="https://schema.org/BlogPosting"
+    >
+      {/* Hidden semantic content for bots and screen readers */}
+      <div className="sr-only" data-bot-content="true">
+        <h1 itemProp="headline">{article.title}</h1>
+        {article.subtitle && <p itemProp="alternativeHeadline">{article.subtitle}</p>}
+        <meta itemProp="datePublished" content={article.publishDate} />
+        <meta itemProp="author" content={article.author.name} />
+        <meta itemProp="articleSection" content={article.category} />
+        <meta itemProp="wordCount" content={String(article.content.split(/\s+/).length)} />
+        <div itemProp="articleBody">
+          {article.content}
+        </div>
+        <div itemProp="keywords">{article.tags.join(', ')}</div>
+      </div>
+      
       <div className="max-w-4xl mx-auto px-6 py-12">
         {/* Back navigation */}
         <Link 
@@ -202,7 +220,7 @@ const ArticleContent = ({ article }: ArticleContentProps) => {
         {/* Newsletter CTA */}
         <NewsletterCTA />
       </div>
-    </div>
+    </article>
   );
 };
 

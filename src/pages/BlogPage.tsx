@@ -1,5 +1,5 @@
-
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SeoHead } from "@/components/seo/SeoHead";
@@ -13,6 +13,35 @@ const BlogPage = () => {
   const { currentPath, currentHash } = useSectionTracking();
   const { email, setEmail, isLoading, subscribe } = useNewsletterSignup();
   const latestArticles = blogArticles;
+  
+  // Generate ItemList structured data for blog listing
+  const blogListingStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": latestArticles.map((article, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "BlogPosting",
+        "headline": article.title,
+        "description": article.excerpt,
+        "url": `https://cointegrity.io/blog/${article.slug}`,
+        "datePublished": article.publishDate,
+        "author": {
+          "@type": "Person",
+          "name": article.author.name
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Cointegrity"
+        },
+        ...(article.featuredImage && {
+          "image": article.featuredImage
+        })
+      }
+    })),
+    "numberOfItems": latestArticles.length
+  };
 
   return (
     <div className="min-h-screen bg-[#010822] overflow-x-hidden">
@@ -20,6 +49,14 @@ const BlogPage = () => {
         currentPath={currentPath} 
         currentHash={currentHash}
       />
+      
+      {/* Blog listing structured data */}
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(blogListingStructuredData)}
+        </script>
+      </Helmet>
+      
       <Header />
       
       <BlogHeader />

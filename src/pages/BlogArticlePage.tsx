@@ -3,6 +3,7 @@ import { useParams, Navigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SeoHead } from "@/components/seo/SeoHead";
+import { BlogArticleSEO } from "@/components/seo/BlogArticleSEO";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
 import ArticleContent from "@/components/blog/ArticleContent";
 import { getBlogArticleBySlug, type BlogArticle } from "@/data/blogData";
@@ -23,6 +24,7 @@ const BlogArticlePage: React.FC = () => {
         currentPath={currentPath} 
         currentHash={currentHash}
       />
+      <BlogArticleSEO article={article} />
       <Header />
       <ArticleContent article={article} />
       <Footer />

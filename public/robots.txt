@@ -71,6 +71,9 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 Allow: /glossary
+Allow: /glossary/*
+Allow: /blog
+Allow: /blog/*
 Allow: /web3-consulting
 Allow: /about
 Allow: /services
@@ -81,6 +84,9 @@ Crawl-delay: 3
 User-agent: Claude-Web
 Allow: /
 Allow: /glossary
+Allow: /glossary/*
+Allow: /blog
+Allow: /blog/*
 Allow: /web3-consulting
 Allow: /about
 Allow: /services
@@ -91,6 +97,9 @@ Crawl-delay: 3
 User-agent: ChatGPT-User
 Allow: /
 Allow: /glossary
+Allow: /glossary/*
+Allow: /blog
+Allow: /blog/*
 Allow: /web3-consulting
 Allow: /about
 Allow: /services
@@ -101,6 +110,9 @@ Crawl-delay: 3
 User-agent: You.com
 Allow: /
 Allow: /glossary
+Allow: /glossary/*
+Allow: /blog
+Allow: /blog/*
 Allow: /web3-consulting
 Allow: /about
 Allow: /services
@@ -111,6 +123,9 @@ Crawl-delay: 3
 User-agent: SearchGPT
 Allow: /
 Allow: /glossary
+Allow: /glossary/*
+Allow: /blog
+Allow: /blog/*
 Allow: /web3-consulting
 Allow: /about
 Allow: /services
@@ -121,6 +136,9 @@ Crawl-delay: 3
 User-agent: Claude-Bot
 Allow: /
 Allow: /glossary
+Allow: /glossary/*
+Allow: /blog
+Allow: /blog/*
 Allow: /web3-consulting
 Allow: /about
 Allow: /services
