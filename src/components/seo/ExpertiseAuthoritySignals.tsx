@@ -91,22 +91,52 @@ export const ExpertiseAuthoritySignals = ({ currentPath, currentHash }: Expertis
         ]
       },
       'team': {
-        expertise: ['Leadership Profiles', 'Technical Expertise', 'Industry Experience'],
-        certifications: ['Team Leadership', 'Technical Excellence', 'Industry Recognition'],
-        experience: 'Combined 20+ years of industry leadership',
+        expertise: ['Leadership Profiles', 'Technical Expertise', 'Industry Experience', 'MiCA Regulation', 'Web3 Taxation', 'DeFi Compliance'],
+        certifications: ['Team Leadership', 'Technical Excellence', 'Industry Recognition', 'EY Blockchain Expert', 'MiCA Compliance Specialist'],
+        experience: 'Combined 20+ years of industry leadership including EY, MetaGravity, NBX, Amazon',
         authorityMetrics: {
           clientsServed: 100,
           projectsCompleted: 250,
           yearsExperience: 20,
-          industryRecognition: ['Team Excellence', 'Industry Leaders']
+          industryRecognition: ['Team Excellence', 'Industry Leaders', 'EY Nordic Blockchain Lead', 'INTERPOL Expert', 'UN Blockchain Advisor']
         },
-        contentExpertise: ['Team Leadership', 'Technical Skills', 'Industry Knowledge'],
+        contentExpertise: ['Team Leadership', 'Technical Skills', 'Industry Knowledge', 'Regulatory Compliance', 'MiCA Implementation'],
         subjectMatterExperts: [
           {
-            name: 'Leadership Team',
-            role: 'Company Founders & Leaders',
-            expertise: ['Strategic Leadership', 'Technical Innovation', 'Market Expertise'],
-            credentials: ['Executive Experience', 'Industry Recognition', 'Technical Certification']
+            name: 'Torstein W. Thinn',
+            role: 'Co-Founder & Chairman',
+            expertise: ['Cryptocurrency Regulation', 'AI Trading', 'Financial Innovation', 'Crypto Exchange Operations'],
+            credentials: ['Former NBX CFO', 'First Crypto Regulatory Task Force', 'MSc Finance NHH']
+          },
+          {
+            name: 'Ruben Junger',
+            role: 'Co-Founder & Web3 Strategist',
+            expertise: ['Web3 Strategy', 'Tokenomics', 'NFT Launches', 'Go-to-Market Strategy'],
+            credentials: ['Former MetaGravity Global Head of Web3', 'PG Group Launchpad CCO']
+          },
+          {
+            name: 'Magnus Jones',
+            role: 'Regulatory Strategist',
+            expertise: ['MiCA Regulation', 'Web3 Taxation', 'DeFi Compliance', 'NFT Legal Frameworks', 'Blockchain Forensics', 'Government Strategy'],
+            credentials: ['Former EY Nordic Blockchain Lead (9 years)', 'INTERPOL Metaverse Expert', 'UN Crypto Group', 'GBBC Ambassador', 'First DeFi/NFT Tax Guidance Creator']
+          },
+          {
+            name: 'Feliks Olko',
+            role: 'Co-Founder & Technical Strategist',
+            expertise: ['Metaverse Infrastructure', 'Distributed Computing', 'Web3 Technology', 'Virtual Worlds'],
+            credentials: ['Former MetaGravity VP', 'Harvard CS Certified', 'MSc Banking']
+          },
+          {
+            name: 'Michal A. Gromek',
+            role: 'Co-Founder & Financial Crime Advisor',
+            expertise: ['Financial Crime Prevention', 'Virtual Asset Compliance', 'AML Compliance'],
+            credentials: ['120+ Expert Team Leader', 'Nasdaq Compliance Officer', 'G7 Cybersecurity Director']
+          },
+          {
+            name: 'Felix Nordén',
+            role: 'Co-Founder & Tech Lead',
+            expertise: ['AI/ML', 'NLP', 'Smart Contracts', 'Web3 Development'],
+            credentials: ['Former Amazon/Twitch Scientist', '150+ Smart Contracts Deployed', 'Neo Tokyo Dev Lead']
           }
         ]
       },
@@ -218,6 +248,11 @@ export const ExpertiseAuthoritySignals = ({ currentPath, currentHash }: Expertis
       <meta name="clients-served" content={authority.authorityMetrics.clientsServed.toString()} />
       <meta name="projects-completed" content={authority.authorityMetrics.projectsCompleted.toString()} />
       <meta name="years-experience" content={authority.authorityMetrics.yearsExperience.toString()} />
+      
+      {/* Hidden data attributes for founder names (for search engines) */}
+      <meta name="data-founders" content="Torstein W. Thinn, Ruben Junger, Magnus Jones, Feliks Olko, Michal A. Gromek, Felix Nordén" />
+      <meta name="data-mica-expert" content="Magnus Jones" />
+      <meta name="data-regulatory-experts" content="Magnus Jones, Michal A. Gromek" />
     </Helmet>
   );
 };

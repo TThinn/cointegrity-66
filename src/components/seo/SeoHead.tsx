@@ -14,6 +14,7 @@ import { EntityRelationshipData } from "./EntityRelationshipData";
 import { GlossaryEnhancedSEO } from "./GlossaryEnhancedSEO";
 import { AIStructuredData } from "./ai/AIStructuredData";
 import { glossaryTerms } from "@/data/glossaryTerms";
+import { FoundersSEO } from "./FoundersSEO";
 
 interface SeoHeadProps {
   currentPath: string;
@@ -267,6 +268,9 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
         searchTerm={searchTerm}
         activeCategory={activeCategory}
       />
+      
+      {/* Founders section SEO (includes Magnus Jones for search) */}
+      <FoundersSEO currentPath={currentPath} currentHash={currentHash} />
       
       {/* FAQ structured data now handled in SectionStructuredData.tsx */}
     </>

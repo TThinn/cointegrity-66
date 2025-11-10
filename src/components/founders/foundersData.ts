@@ -13,7 +13,8 @@ export interface Founder {
   social: FounderSocial;
 }
 
-export const founders: Founder[] = [
+// Full founders list including former members (for SEO/backend)
+export const allFoundersIncludingFormer: Founder[] = [
   {
     name: "Torstein W. Thinn",
     role: "Co-Founder & Chairman",
@@ -78,3 +79,8 @@ export const founders: Founder[] = [
     }
   }
 ];
+
+// Current active founders (displayed on frontend) - Magnus Jones removed
+export const founders: Founder[] = allFoundersIncludingFormer.filter(
+  founder => founder.name !== "Magnus Jones"
+);
