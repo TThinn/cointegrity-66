@@ -146,8 +146,11 @@ const HomepageFAQ = () => {
   };
 
   return (
-    <section className="py-20 relative overflow-hidden mesh-gradient">
-      <div className="absolute inset-0 grid-pattern opacity-20" />
+    <section className="py-20 relative overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#010822] to-[#010822]"></div>
+        <div className="absolute left-1/4 top-1/3 w-[600px] h-[600px] bg-[#0a1a3a]/10 rounded-full blur-[100px]"></div>
+      </div>
       <Container className="relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3] mb-4">
