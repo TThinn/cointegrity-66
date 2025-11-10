@@ -146,16 +146,17 @@ const HomepageFAQ = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-[#FDF9FC] to-[#FEFCFD]">
-      <Container>
+    <section className="py-20 relative overflow-hidden mesh-gradient">
+      <div className="absolute inset-0 grid-pattern opacity-20" />
+      <Container className="relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm uppercase tracking-wider font-medium text-[#cb46b3] mb-4">
             Frequently Asked Questions
           </h2>
-          <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-800 mb-6">
+          <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-6">
             Everything You Need to Know About Our Web3 Services
           </h3>
-          <p className="text-gray-600">
+          <p className="text-gray-300">
             Get answers to common questions about our consulting process, timelines, and expertise.
           </p>
         </div>
@@ -167,9 +168,9 @@ const HomepageFAQ = () => {
               open={openItems.includes(index)}
               onOpenChange={() => toggleItem(index)}
             >
-              <CollapsibleTrigger className="w-full text-left p-6 bg-white/60 backdrop-blur-sm rounded-lg border border-white/40 hover:bg-white/80 transition-all duration-300 group">
+              <CollapsibleTrigger className="w-full text-left p-6 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:bg-white/10 transition-all duration-300 group">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-lg font-semibold text-gray-800 pr-4">
+                  <h4 className="text-lg font-semibold text-white pr-4">
                     {faq.question}
                   </h4>
                   <ChevronDown 
@@ -179,9 +180,9 @@ const HomepageFAQ = () => {
                   />
                 </div>
               </CollapsibleTrigger>
-              <CollapsibleContent className="px-6 pb-6 bg-white/60 backdrop-blur-sm rounded-b-lg border-x border-b border-white/40 -mt-1">
-                <div className="pt-4 border-t border-gray-200">
-                  <div className="text-gray-600 leading-relaxed">
+              <CollapsibleContent className="px-6 pb-6 bg-white/5 backdrop-blur-sm rounded-b-lg border-x border-b border-white/10 -mt-1">
+                <div className="pt-4 border-t border-white/10">
+                  <div className="text-gray-300 leading-relaxed">
                     {faq.answer}
                   </div>
                 </div>
@@ -191,7 +192,7 @@ const HomepageFAQ = () => {
         </div>
 
         <div className="text-center mt-12">
-          <p className="text-gray-600 mb-4">
+          <p className="text-gray-300 mb-4">
             Still have questions? We're here to help.
           </p>
           <div
