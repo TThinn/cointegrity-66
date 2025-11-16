@@ -1,4 +1,5 @@
 import { glossaryTerms } from '../src/data/glossaryTerms';
+import { blogArticles } from '../src/data/blogData';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -105,6 +106,20 @@ const generateSitemap = () => {
       <image:caption>Cointegrity Web3 Blog</image:caption>
     </image:image>
   </url>
+`;
+
+  // Add all blog article pages
+  blogArticles.forEach((article) => {
+    sitemap += `  <url>
+    <loc>${baseUrl}/blog/${article.slug}</loc>
+    <lastmod>${article.publishDate}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+`;
+  });
+
+  sitemap += `
   <url>
     <loc>${baseUrl}/mica-ready-waitlist</loc>
     <lastmod>${currentDate}</lastmod>
@@ -129,8 +144,8 @@ const generateSitemap = () => {
   const sitemapPath = path.join(__dirname, '../public/sitemap.xml');
   fs.writeFileSync(sitemapPath, sitemap, 'utf-8');
   
-  console.log(`✅ Sitemap generated successfully with ${glossaryTerms.length} glossary terms`);
-  console.log(`📄 Total URLs in sitemap: ${glossaryTerms.length + 12}`);
+  console.log(`✅ Sitemap generated successfully with ${glossaryTerms.length} glossary terms and ${blogArticles.length} blog articles`);
+  console.log(`📄 Total URLs in sitemap: ${glossaryTerms.length + blogArticles.length + 12}`);
   console.log(`📍 Sitemap saved to: ${sitemapPath}`);
 };
 

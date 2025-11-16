@@ -23,6 +23,92 @@ export interface BlogArticle {
 
 export const blogArticles: BlogArticle[] = [
   {
+    id: "the-great-normalization",
+    title: "The Great Normalization",
+    subtitle: "Week 45",
+    excerpt: "The week of November 2–9 might be remembered as the moment crypto's hardware started ghosting Bitcoin for AI and its software started dressing up in a three-piece suit. Bitcoin miners discovered they could make 25x more money serving ChatGPT than securing the blockchain.",
+    content: `The week of November 2–9, 2025, might be remembered as the moment crypto's hardware started ghosting Bitcoin for AI and its software started dressing up in a three-piece suit. While speculators stared at red candles, the industry was busy reconfiguring its physical and regulatory infrastructure with all the drama of a systems upgrade. Bitcoin miners discovered they could make 25x more money serving ChatGPT than securing the blockchain. The Fed made stablecoins sound like monetary policy. And DeFi learned, again, that synthetic assets backed by other synthetic assets tend to explode when someone sneezes.
+
+The revolution, it turns out, is being privatized.
+
+## The Great Mining Makeover (Or: Why Mine When You Can Compute?)
+
+The most consequential story this week isn't about tokens, it's about the physical rails being ripped up and relaid. On November 5, Europe's largest Bitcoin miner, Northern Data, announced it was scrapping a $200 million mining unit to chase the "AI Gold Rush." They weren't alone. Iris Energy signed a $9.7 billion, five-year deal with Microsoft for AI compute. Core Scientific, fresh out of bankruptcy, inked a $10.2 billion contract with CoreWeave. Hut 8 launched "Highrise AI." Bitdeer is converting its Wyoming operations to AI.
+
+The math is brutal and simple: post-halving margins have miners earning crypto pennies, while AI/HPC generates 25x more revenue per megawatt. The Web3 infrastructure layer is being reallocated to the highest-value use case, which currently isn't Web3. It's as if the highway system decided cargo trucks were too boring and pivoted to Formula 1.
+
+This isn't miners abandoning crypto, it's miners becoming "digital infrastructure providers." The same data centers that once hashed blocks are now training models. The long-term consequence? Bitcoin's security model faces a geographic and economic squeeze while AI gets a fast-track to scale, bypassing data center construction delays. If you own power and cooling, you're now agnostic about what you monetize. The "decentralized" narrative meets the "most profitable" narrative, and decentralization is losing.
+
+## The Fed's Stablecoin Brain Teaser
+
+On November 7, Fed Governor Stephen Miran, the FOMC member most likely to show up in a hoodie, delivered a speech that broke more economic brains than a semester of Modern Monetary Theory. His thesis: stablecoin adoption will lower interest rates.
+
+"Even conservative estimates imply an increase in the net supply of loanable funds," Miran stated, sounding like a crypto native explaining yield farming to his baffled grandparents at Thanksgiving.
+
+Let that sink in: the most dovish Fed governor just made the institutional bull case for crypto by arguing it strengthens dollar hegemony and gives the Fed cover to keep rates low. The cognitive dissonance in traditional finance circles was audible from space. It's as if the hippies showed up to the country club and were handed the keys to the wine cellar because their kombucha business is now the club's largest revenue stream.
+
+Meanwhile, a $300 billion selloff erased a solid chunk of the 2025 gains. While retail traders panic-sold meme coins, the Fed was building the intellectual framework for stablecoins as systemic infrastructure. The market may be down, but the Overton window has been yeeted into the next time zone.
+
+## DeFi's Synthetic Identity Crisis
+
+While regulators and AI builders forged ahead, DeFi's shadow banking sector experienced a textbook cascade failure. On November 4, Stream Finance disclosed a $93 million loss from an external fund manager. But this wasn't contained; it was amplified by the ecosystem's favorite party trick: hyper-composability.
+
+Assets tied to Stream's synthetic xUSD, xBTC, and xETH tokens were leveraged and re-collateralized across Euler, Silo, Morpho, and Sonic. The contagion map shows $285 million in potential exposure. Liquidity provider Elixir, with $68 million exposure, immediately halted support for its own synthetic stablecoin, deUSD. On November 6, the separate synthetic stablecoin USDX depegged below $0.60.
+
+This is the "off-chain fund manager meets on-chain leverage" problem. A TradFi failure (bad manager) got multiplied by DeFi architecture (unlimited rehypothecation). The result: a shock that sent Bitcoin down 7% for the week and triggered the largest spot Bitcoin ETF outflows since August.
+
+The market's reaction highlighted a contradiction. On the same week the Fed praised regulated stablecoins as strategic assets, Cathie Wood trimmed her Bitcoin bull case by $300,000, arguing stablecoins are "usurping" Bitcoin's payment use case. Both are right. The "digital payments" narrative is now owned by regulated stablecoins backed by the U.S. government. Bitcoin's narrative is contracting to "digital gold," a thesis that doesn't hold up well during DeFi contagion events.
+
+## Regulatory Simplification (Or: When Even Switzerland Gets Cold Feet)
+
+While the Fed was philosophizing, Europe was streamlining. A Financial Times report revealed Brussels is weighing centralized crypto supervision under MiCA, one regulator to rule them all, one regulator to prevent forum shopping. This comes as Revolut formally announced on November 5 that Cyprus will be its European crypto hub, passporting 280+ tokens and 22% staking yields across 30 EEA countries.
+
+But the real regulatory plot twist came from Switzerland, which on November 6 postponed its CARF implementation until at least 2027. The National Council voted 18-0 to delay the crypto reporting framework because "other key markets" aren't ready. This is peak Swiss strategy: be exactly as transparent as everyone else, but never first. Swiss firms sighed in relief; compliance officers elsewhere wept into their spreadsheets.
+
+On November 3, Zerohash Europe secured a MiCA license from the Dutch Authority for the Financial Markets, a B2B infrastructure play that lets it offer stablecoin rails to banks and fintechs across the EEA. The regulated "rails" for institutional crypto integration are now being built, one license at a time.
+
+## AI Learns a Humility Lesson
+
+While institutions built infrastructure, the AI-blockchain intersection produced a delightful schadenfreude. BingX launched "AI Arena" on November 7, where top LLMs were given $10,000 to trade crypto live. Most "significantly underperformed," proving that losing money faster than humans is indeed "automation potential."
+
+More substantively, DefiLlama launched LlamaAI on November 7, a natural language analytics tool designed to 'minimize hallucinations' when querying on-chain data, while Moonshot AI released Kimi K2 Thinking, specifically optimized for blockchain data analysis. And Injective unveiled a no-code AI development platform on November 5. The infrastructure is arriving. The trading bots are just still terrible at their jobs.
+
+The real convergence isn't AI trading crypto. It's AI using crypto as native payment rails. When agents need to settle $30 trillion in commerce by 2030, they won't use ACH. They'll use programmable money. The fact that today's AI traders lose money is a feature; it means the strategy layer and settlement layer are still separate, which is exactly how mature markets work.
+
+## What Everyone Missed: Intent is Everything
+
+While everyone watched token prices and institutional deals, the most significant architectural shift in years happened quietly on the "rails."
+
+On one end, protocols like Anoma, CowSwap, and UniswapX are making transactions "intent-centric." Instead of specifying every step ("swap A for B on this DEX, then bridge"), users state their end goal ("I want the best price for 1 ETH in USDC"). A network of "solvers" competes to fulfill it across multiple venues. This abstracts away multi-chain complexity and is the foundational tech for next-gen wallets. It's boring. It's technical. It's exactly what mature markets look like.
+
+On the other, Solana's DEX landscape is undergoing a quiet revolution. Private DEXs, essentially dark pools for DeFi, now capture one-third of all trading volume. Unlike public DEXs where every trade is visible and front-runnable, private DEXs create isolated liquidity environments: no MEV, no copy-trade bots, just instant order matching on Solana's low-latency rails. HumidiFi leads with 60% of this market, followed by Tessera and SolFi. Even Jupiter, Solana's dominant aggregator, now routes more volume through these private AMMs than public ones, crushing Raydium's market share from 57% to 25% in a year.
+
+This isn't DeFi dying, it's splitting. Public pools for retail flow, private pools for institutions. Same transparency at settlement, but premium execution for those who can pay. The risk? Prismatic liquidity that favors insiders. Either way, it's the biggest architectural shift on Solana nobody's talking about.
+
+## The Bottom Line
+
+Crypto is bifurcating into three parallel industries: regulated institutional finance (stablecoins, tokenized funds), permissionless developer tech (L1s, DeFi protocols), and retail speculation (celebrity coins, meme tokens). They share a name but increasingly little else.
+
+The infrastructure is being built by people who've read the settlement docs, not the white papers. The Fed is making the macro case. Regulators are coordinating globally. And AI is discovering that losing money still requires humans, for now.
+
+The casino is still burning. But the financial infrastructure is being built next door, with a separate entrance and a dress code. The revolution will not be televised. It will be notarized.
+
+Until next week.`,
+    author: {
+      name: "Torstein",
+      avatar: undefined,
+    },
+    publishDate: "2024-11-09",
+    category: "Weekly Intelligence",
+    readingTime: 8,
+    tags: ["Bitcoin Mining", "AI Infrastructure", "Federal Reserve", "Stablecoins", "DeFi", "MiCA", "Regulation", "Intent-Centric", "Solana"],
+    slug: "the-great-normalization",
+    substackUrl: "https://cointegrity.substack.com/p/the-great-normalization",
+    seoTitle: "The Great Normalization - Week 45 | The Crypto Circuit",
+    seoDescription: "Bitcoin miners pivot to AI compute for 25x returns, the Fed makes the case for stablecoins lowering interest rates, and DeFi faces synthetic asset contagion. Weekly intelligence from Cointegrity.",
+    featuredImage: cryptoCircuitFeatured,
+  },
+  {
     id: "the-great-consolidation",
     title: "The Great Consolidation",
     subtitle: "Week 44",
