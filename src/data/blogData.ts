@@ -23,6 +23,106 @@ export interface BlogArticle {
 
 export const blogArticles: BlogArticle[] = [
   {
+    id: "the-week-of-controlled-demolition",
+    title: "The Week of Controlled Demolition",
+    subtitle: "Week 47",
+    excerpt: "This week taught us that when Bitcoin decides to test gravity, it does so with the subtlety of a wrecking ball in a china shop. While the world's largest cryptocurrency embarked on its worst monthly performance since the 2022 crypto winter, something far more interesting was happening: the systematic cleanup of Europe's regulatory landscape and the quiet emergence of infrastructure that will define the next decade of finance.",
+    content: `"In crypto, we don't have market corrections; we have controlled demolitions where everyone pretends they're surprised by the building falling down exactly as planned."
+
+This week taught us that when Bitcoin decides to test gravity, it does so with the subtlety of a wrecking ball in a china shop. While the world's largest cryptocurrency embarked on its worst monthly performance since the 2022 crypto winter, losing nearly $800 billion in market value, something far more interesting was happening in the shadows: the systematic cleanup of Europe's regulatory landscape and the quiet emergence of infrastructure that will define the next decade of finance.
+
+## What We've Been Up To
+
+This past week, we participated in the 25th Digital Assets Roundtable Expert (#DARTE) session in Helsinki, which focused on pressing regulatory questions surrounding MiCA, PSD2, and stablecoin issuance. We also contributed to a joint response to the UK's Financial Conduct Authority on the application of its handbook to regulated crypto-asset activities.
+
+## Market Carnage by the Numbers
+
+**$1.9B -** Liquidated in 4 hours
+
+**396K -** Traders liquidated
+
+**$903M -** Bitcoin ETF outflows
+
+**35% -** Open interest drop
+
+## A Ghost from Crypto Past: The Mt. Gox Saga Continues
+
+After more than a decade of waiting, Mt. Gox moved again. On November 18, 10,608 BTC (worth approximately $953 million) was transferred, the first major activity in eight months. With the final repayment deadline extended to October 2026, this remains a powerful reminder of the industry's long journey toward maturity.
+
+## The Great Unwinding: When Leverage Meets Reality
+
+Bitcoin's journey from $125,000 in October to touching $81,600 this week wasn't just a correction, it was a masterclass in how quickly the market can remind leveraged traders that gravity still works. Over $1.9 billion in liquidations occurred in just four hours, with more than 396,000 traders learning the hard way that "number go up" isn't a perpetual motion machine.
+
+"The real story isn't that Bitcoin fell 30%, it's that the infrastructure kept working perfectly throughout the chaos. No exchanges went down, no stablecoins depegged, and DeFi protocols functioned exactly as designed."
+
+### The Infrastructure Acceleration: While You Were Panicking
+
+While Bitcoin was busy testing support levels, some of the most important infrastructure developments of the year were happening completely under the radar.
+
+### The Great Polish VASP Cleanup
+
+While we were all distracted by Bitcoin's price action, Poland was conducting the largest regulatory cleanup operation in European crypto history. Over 500 Virtual Asset Service Providers (VASPs) were quietly removed from the national registry as the country prepares for MiCA's full implementation. This isn't just bureaucratic housekeeping, it's the systematic elimination of regulatory arbitrage and a clear signal that the era of regulatory tourism in Europe is ending.
+
+### Kraken's $800M War Chest
+
+Kraken quietly raised $800 million from some of the sharpest capital in the world: Citadel, DRW, Jane Street, and HongShan (Sequoia China). This isn't just a funding round; it's strategic preparation for a future where most financial activity happens on-chain.
+
+### Societe Generale's Digital Bond on Canton Network
+
+Societe Generale issued its first U.S. digital bond on the Canton Network, using Broadridge's tokenization capability and SG-FORGE's infrastructure. The SOFR-linked security was purchased by DRW, marking one of the first institutional digital bond issuances in the U.S. powered by atomic, privacy-preserving settlement.
+
+### Saudi Arabia's Real Estate Revolution
+
+Saudi Arabia launched the first national-scale real estate tokenization infrastructure, using SettleMint's blockchain to enable fractional ownership of property assets. This full-scale deployment will eventually connect to an open API framework for PropTech companies, banks, and developers.
+
+### Aave's European Empire
+
+Aave secured MiCA approval through Ireland, unlocking pan-EEA passporting for regulated euro-to-stablecoin infrastructure. This means zero-fee EUR conversions to GHO and other digital assets across 30 countries from a single license, Circle's USDC playbook, but under a harmonized regulatory umbrella.
+
+### The ZK-Proof Revolution: From Theory to Production
+
+The ZKsync "Atlas" upgrade went live this week, demonstrating 43,000 transactions per second (TPS) with transaction costs of just $0.0001, a 70% reduction in gas fees. Total Value Locked (TVL) in ZK-rollups has surpassed $3.3 billion, with Deutsche Bank integrating ZKsync for cross-chain settlements and HSBC's Orion Platform using ZK-proofs to slash post-trade reconciliation efforts by 60%.
+
+### The Gaming World's Own Controlled Demolition
+
+It wasn't just the crypto world that saw a controlled demolition this week. Embark Studios released "Arc Raiders," which surpassed 700,000 concurrent players in its first week. Meanwhile, "Black Ops 7" peaked at just 100,332 concurrent players on Steam and now holds the title of the worst user-rated Call of Duty game ever. This is a classic David vs. Goliath story, and a powerful reminder that in the world of technology and entertainment, even the most entrenched giants can be disrupted by a superior product.
+
+## The Bigger Picture: Infrastructure Doesn't Care About Your Feelings
+
+Here's what connects all these seemingly disparate stories: infrastructure development continues regardless of price action. While traders debate whether this is the bottom or if the bull market is over, builders keep building systems that will process trillions of dollars in value transfer.
+
+These cases aren't speculative bets on future adoption. They're foundational infrastructure being deployed because the economics make sense regardless of what Bitcoin does on any given Tuesday.
+
+"This is the real story of 2025: the systematic replacement of speculative infrastructure with operational infrastructure. The pipes are being built, tested, and deployed by people who understand that the real revolution happens in the plumbing, not the headlines."
+
+## Questions for the Week Ahead
+
+As we head into another week of controlled demolition and genuine progress, here are the questions that will keep me up at night:
+
+- If 500+ companies can be removed from the Polish registry without market disruption, how many other regulatory time bombs are ticking across Europe?
+
+- When infrastructure development continues regardless of price action, what are we really measuring when we stare at charts all day?
+
+- When the next bull market comes, will it be driven by speculation about future adoption, or by the operational reality of infrastructure that's already been built?
+
+The answers to these questions won't be found in technical analysis or social media sentiment. They'll be found in the quiet conversations between builders, the gradual deployment of infrastructure, and the slow but inevitable shift from betting on the future to building it.
+
+Because in the end, controlled demolition isn't about destruction, it's about making space for something better to be built in its place.`,
+    author: {
+      name: "Torstein",
+      avatar: "/lovable-uploads/4e58e92f-3bc5-42cb-ada9-d7b8af5e4c7b.png"
+    },
+    publishDate: "2024-11-23",
+    category: "Market Analysis",
+    readingTime: 8,
+    tags: ["Bitcoin", "Market Analysis", "MiCA", "Infrastructure", "Regulation", "DeFi", "ZK-Proofs", "Stablecoins"],
+    slug: "the-week-of-controlled-demolition",
+    substackUrl: "https://cointegrity.substack.com/p/the-week-of-controlled-demolition",
+    seoTitle: "The Week of Controlled Demolition - Week 47 | Crypto Circuit",
+    seoDescription: "Bitcoin's worst monthly performance since 2022, Poland's massive VASP cleanup, Kraken's $800M raise, and the infrastructure developments that continued building through the chaos.",
+    featuredImage: cryptoCircuitFeatured
+  },
+  {
     id: "the-week-of-manufactured-chaos",
     title: "The Week of Manufactured Chaos",
     subtitle: "Week 46",
