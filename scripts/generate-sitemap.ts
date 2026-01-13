@@ -38,14 +38,16 @@ const generateSitemap = () => {
   </url>
 `;
 
-  // Add all glossary term pages
+  // Add all glossary term pages (all terms in sitemap for SEO, even if not all pre-rendered)
   glossaryTerms.forEach((glossaryTerm) => {
     const slug = generateSlug(glossaryTerm.term);
+    // Higher priority for trending terms
+    const priority = glossaryTerm.trending && glossaryTerm.trending >= 8 ? 0.8 : 0.7;
     sitemap += `  <url>
     <loc>${baseUrl}/glossary/${slug}</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>${priority}</priority>
   </url>
 `;
   });
@@ -95,12 +97,12 @@ const generateSitemap = () => {
     <priority>0.9</priority>
   </url>
   
-  <!-- Resource pages -->
+  <!-- Blog index -->
   <url>
     <loc>${baseUrl}/blog</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
     <image:image>
       <image:loc>${baseUrl}/lovable-uploads/68d5ee22-66d4-4e4d-b0dc-e03f0a45adab.png</image:loc>
       <image:caption>Cointegrity Web3 Blog</image:caption>
@@ -114,12 +116,13 @@ const generateSitemap = () => {
     <loc>${baseUrl}/blog/${article.slug}</loc>
     <lastmod>${article.publishDate}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 `;
   });
 
   sitemap += `
+  <!-- Other pages -->
   <url>
     <loc>${baseUrl}/mica-ready-waitlist</loc>
     <lastmod>${currentDate}</lastmod>
@@ -144,9 +147,11 @@ const generateSitemap = () => {
   const sitemapPath = path.join(__dirname, '../public/sitemap.xml');
   fs.writeFileSync(sitemapPath, sitemap, 'utf-8');
   
-  console.log(`✅ Sitemap generated successfully with ${glossaryTerms.length} glossary terms and ${blogArticles.length} blog articles`);
-  console.log(`📄 Total URLs in sitemap: ${glossaryTerms.length + blogArticles.length + 12}`);
-  console.log(`📍 Sitemap saved to: ${sitemapPath}`);
+  console.log('✅ Sitemap generated successfully!');
+  console.log(`   📖 Glossary terms: ${glossaryTerms.length}`);
+  console.log(`   📝 Blog articles: ${blogArticles.length}`);
+  console.log(`   📄 Total URLs: ${glossaryTerms.length + blogArticles.length + 12}`);
+  console.log(`   📍 Saved to: ${sitemapPath}`);
 };
 
 // Run the generator
