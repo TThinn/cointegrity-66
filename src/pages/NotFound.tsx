@@ -4,12 +4,16 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useAnalytics } from "@/hooks/useAnalytics";
+import { isClient } from "@/utils/ssrSafe";
 
 const NotFound = () => {
   const location = useLocation();
   const { trackEvent } = useAnalytics();
 
   useEffect(() => {
+    // Skip during SSG
+    if (!isClient) return;
+    
     console.error(
       "404 Error: User attempted to access non-existent route:",
       location.pathname
