@@ -8,12 +8,16 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, CheckCircle } from "lucide-react";
 import Container from "@/components/ui/Container";
 import { useAnalytics } from "@/hooks/useAnalytics";
+import { isClient } from "@/utils/ssrSafe";
 
 const ThankYouPage = () => {
   const location = useLocation();
   const { trackEvent, pageView } = useAnalytics();
   
   useEffect(() => {
+    // Skip during SSG
+    if (!isClient) return;
+    
     // Track the page view
     pageView('/thank-you');
     

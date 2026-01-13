@@ -2,6 +2,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { detectCrawler } from '@/utils/crawlerDetection';
 import { rateLimiter } from '@/utils/rateLimiter';
+import { isClient, getSafeUserAgent } from '@/utils/ssrSafe';
 
 interface SecurityContextType {
   isSecure: boolean;
@@ -30,9 +31,16 @@ export const SecurityProvider: React.FC<SecurityProviderProps> = ({ children }) 
   const [isCrawler, setIsCrawler] = useState(false);
 
   const checkSecurity = async (): Promise<boolean> => {
+    // Skip security checks during SSG
+    if (!isClient) {
+      setIsSecure(true);
+      setSecurityLevel('low');
+      return true;
+    }
+
     try {
       // Quick crawler check at the start
-      const userAgent = navigator.userAgent || '';
+      const userAgent = getSafeUserAgent();
       const crawlerInfo = detectCrawler(userAgent);
       
       if (crawlerInfo.isLegitimate) {
@@ -67,6 +75,9 @@ export const SecurityProvider: React.FC<SecurityProviderProps> = ({ children }) 
   };
 
   const reportSecurityEvent = async (event: string, details?: any) => {
+    // Skip during SSG
+    if (!isClient) return;
+    
     // Simplified logging - don't spam the logs
     if (Math.random() < 0.1) { // Only log 10% of events to reduce noise
       console.log(`[Security Event] ${event}:`, details);
@@ -74,6 +85,9 @@ export const SecurityProvider: React.FC<SecurityProviderProps> = ({ children }) 
   };
 
   useEffect(() => {
+    // Skip during SSG
+    if (!isClient) return;
+    
     // Single security check on mount
     checkSecurity();
 
