@@ -15,7 +15,7 @@ export const prerenderBlog = async (): Promise<void> => {
   for (const article of blogArticles) {
     try {
       const html = generateBlogArticleHtml(article);
-      const filePath = `blog/${article.slug}.html`;
+      const filePath = `blog/${article.slug}/index.html`;
       writeDistFile(filePath, html);
       successCount++;
       console.log(`  ✓ ${article.slug}`);
