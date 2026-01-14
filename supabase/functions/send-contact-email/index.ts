@@ -212,20 +212,21 @@ serve(async (req: Request) => {
 					"",
 					undefined,
 				);
-			} catch (recaptchaError) {
-				console.warn("reCAPTCHA verification error:", recaptchaError);
+			} catch (recaptchaError: unknown) {
+				const recaptchaErr = recaptchaError instanceof Error ? recaptchaError : new Error(String(recaptchaError));
+				console.warn("reCAPTCHA verification error:", recaptchaErr);
 				logSecurityEvent(
 					"RECAPTCHA_ERROR",
 					ipAddress,
 					userAgent,
 					false,
-					recaptchaError.message,
+					recaptchaErr.message,
 					undefined,
 				);
 
 				// Only proceed in development environment
 				if (!req.headers.get("origin")?.includes("lovableproject.com")) {
-					throw recaptchaError;
+					throw recaptchaErr;
 				}
 			}
 		}
@@ -256,39 +257,41 @@ serve(async (req: Request) => {
 					...corsHeaders,
 				},
 			});
-		} catch (emailError) {
-			console.error("Email sending error:", emailError);
+		} catch (emailError: unknown) {
+			const emailErr = emailError instanceof Error ? emailError : new Error(String(emailError));
+			console.error("Email sending error:", emailErr);
 			logSecurityEvent(
 				"EMAIL_SEND_FAILED",
 				ipAddress,
 				userAgent,
 				false,
-				emailError.message,
+				emailErr.message,
 				undefined,
 			);
 
 			// Fail the request if email sending fails (unlike SMTP which continued)
-			throw new Error(`Failed to send email: ${emailError.message}`);
+			throw new Error(`Failed to send email: ${emailErr.message}`);
 		}
-	} catch (error) {
-		console.error("Error in send-contact-email function:", error);
+	} catch (error: unknown) {
+		const err = error instanceof Error ? error : new Error(String(error));
+		console.error("Error in send-contact-email function:", err);
 
 		logSecurityEvent(
 			"FORM_SUBMISSION_ERROR",
 			ipAddress,
 			userAgent,
 			false,
-			error.message,
+			err.message,
 			undefined,
 		);
 
 		return new Response(
 			JSON.stringify({
-				error: error.message || "Failed to send email",
+				error: err.message || "Failed to send email",
 				timestamp: new Date().toISOString(),
 			}),
 			{
-				status: error.status || 500,
+				status: 500,
 				headers: { "Content-Type": "application/json", ...corsHeaders },
 			},
 		);
