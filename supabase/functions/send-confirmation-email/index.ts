@@ -179,11 +179,12 @@ Please include this reference in any future correspondence.
 					...corsHeaders,
 				},
 			});
-		} catch (emailError) {
+		} catch (emailError: unknown) {
+			const err = emailError instanceof Error ? emailError : new Error(String(emailError));
 			console.error(`[${timestamp}] EMAIL ERROR OCCURRED:`, {
-				name: emailError.name,
-				message: emailError.message,
-				stack: emailError.stack?.substring(0, 500),
+				name: err.name,
+				message: err.message,
+				stack: err.stack?.substring(0, 500),
 				timestamp,
 			});
 
@@ -208,21 +209,22 @@ Please include this reference in any future correspondence.
 			status: 200,
 			headers: { "Content-Type": "application/json", ...corsHeaders },
 		});
-	} catch (error) {
+	} catch (error: unknown) {
+		const err = error instanceof Error ? error : new Error(String(error));
 		const errorTimestamp = new Date().toISOString();
 		console.error(`[${errorTimestamp}] FUNCTION ERROR:`, {
-			name: error.name,
-			message: error.message,
-			stack: error.stack?.substring(0, 500),
+			name: err.name,
+			message: err.message,
+			stack: err.stack?.substring(0, 500),
 			timestamp: errorTimestamp,
 		});
 
 		// Return detailed error response
 		const errorResponse = {
-			error: error.message || "Failed to process confirmation email",
+			error: err.message || "Failed to process confirmation email",
 			timestamp: errorTimestamp,
 			success: false,
-			type: error.name || "UnknownError",
+			type: err.name || "UnknownError",
 		};
 
 		console.error(
@@ -231,7 +233,7 @@ Please include this reference in any future correspondence.
 		);
 
 		return new Response(JSON.stringify(errorResponse), {
-			status: error.status || 500,
+			status: 500,
 			headers: { "Content-Type": "application/json", ...corsHeaders },
 		});
 	}
