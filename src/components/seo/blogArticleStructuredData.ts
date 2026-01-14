@@ -2,7 +2,7 @@ import { BlogArticle } from "@/data/blogData";
 
 export const getBlogArticleStructuredData = (article: BlogArticle) => {
   const baseUrl = "https://cointegrity.io";
-  const articleUrl = `${baseUrl}/blog/${article.slug}`;
+  const articleUrl = `${baseUrl}/blog/${article.slug}/`;
   
   // Convert content to plain text for articleBody
   const plainTextContent = article.content
@@ -64,7 +64,7 @@ export const getBlogArticleStructuredData = (article: BlogArticle) => {
     "isAccessibleForFree": true,
     "isPartOf": {
       "@type": "Blog",
-      "@id": `${baseUrl}/blog`,
+      "@id": `${baseUrl}/blog/`,
       "name": "Cointegrity Blog - The Crypto Circuit",
       "description": "Leading Web3 insights from European market leaders"
     },
@@ -88,7 +88,7 @@ export const getBlogArticleStructuredData = (article: BlogArticle) => {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": `${baseUrl}/blog`
+        "item": `${baseUrl}/blog/`
       },
       {
         "@type": "ListItem",

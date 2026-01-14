@@ -8,7 +8,7 @@ interface BlogArticleSEOProps {
 }
 
 export const BlogArticleSEO: React.FC<BlogArticleSEOProps> = ({ article }) => {
-  const canonicalUrl = `https://cointegrity.io/blog/${article.slug}`;
+  const canonicalUrl = `https://cointegrity.io/blog/${article.slug}/`;
   const structuredData = getBlogArticleStructuredData(article);
   
   // Generate clean plain text excerpt for description
