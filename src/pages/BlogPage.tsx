@@ -25,7 +25,7 @@ const BlogPage = () => {
         "@type": "BlogPosting",
         "headline": article.title,
         "description": article.excerpt,
-        "url": `https://cointegrity.io/blog/${article.slug}`,
+        "url": `https://cointegrity.io/blog/${article.slug}/`,
         "datePublished": article.publishDate,
         "author": {
           "@type": "Person",

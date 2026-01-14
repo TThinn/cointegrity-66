@@ -59,7 +59,7 @@ export function linkGlossaryTerms(text: string): string {
       }
       
       const termSlug = createGlossaryAnchor(originalTerm);
-      return `<a href="/glossary/${termSlug}" class="glossary-link" title="Learn more about ${originalTerm}">${match}</a>`;
+      return `<a href="/glossary/${termSlug}/" class="glossary-link" title="Learn more about ${originalTerm}">${match}</a>`;
     });
   });
   

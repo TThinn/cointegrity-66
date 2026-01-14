@@ -107,7 +107,7 @@ ${bodyContent}
   
   <footer style="margin-top: 3em; padding-top: 2em; border-top: 1px solid #eee; text-align: center; color: #666;">
     <p>&copy; ${new Date().getFullYear()} Cointegrity. All rights reserved.</p>
-    <p><a href="/glossary">Web3 Glossary</a> | <a href="/blog">Blog</a> | <a href="/#contact">Contact</a></p>
+    <p><a href="/glossary/">Web3 Glossary</a> | <a href="/blog/">Blog</a> | <a href="/#contact">Contact</a></p>
   </footer>
   
   <!-- Redirect JS-enabled browsers to React app for full experience -->
@@ -192,7 +192,7 @@ export const generateBlogArticleHtml = (article: BlogArticle): string => {
       <div class="related">
         <h3>Topics Covered</h3>
         <ul>
-          ${article.tags.map(tag => `<li><a href="/glossary/${generateSlug(tag)}">${escapeHtml(tag)}</a></li>`).join('\n          ')}
+          ${article.tags.map(tag => `<li><a href="/glossary/${generateSlug(tag)}/">${escapeHtml(tag)}</a></li>`).join('\n          ')}
         </ul>
       </div>
       
@@ -207,7 +207,7 @@ export const generateBlogArticleHtml = (article: BlogArticle): string => {
     canonicalUrl,
     structuredData,
     bodyContent,
-    `/blog/${article.slug}`,
+    `/blog/${article.slug}/`,
     'article',
     additionalMeta
   );
@@ -230,7 +230,7 @@ export const generateGlossaryTermHtml = (term: GlossaryTerm): string => {
     "inDefinedTermSet": {
       "@type": "DefinedTermSet",
       "name": "Cointegrity Web3 Glossary",
-      "url": `${BASE_URL}/glossary`
+      "url": `${BASE_URL}/glossary/`
     }
   };
   
@@ -239,7 +239,7 @@ export const generateGlossaryTermHtml = (term: GlossaryTerm): string => {
       <div class="related">
         <h2>Related Terms</h2>
         <ul>
-          ${term.related.map(r => `<li><a href="/glossary/${generateSlug(r)}">${escapeHtml(r)}</a></li>`).join('\n          ')}
+          ${term.related.map(r => `<li><a href="/glossary/${generateSlug(r)}/">${escapeHtml(r)}</a></li>`).join('\n          ')}
         </ul>
       </div>`
     : '';
@@ -254,7 +254,7 @@ export const generateGlossaryTermHtml = (term: GlossaryTerm): string => {
   const bodyContent = `
     <article itemscope itemtype="https://schema.org/DefinedTerm">
       <nav style="margin-bottom: 1em; font-size: 0.9em;">
-        <a href="/">Home</a> &gt; <a href="/glossary">Glossary</a> &gt; <span>${escapeHtml(term.term)}</span>
+        <a href="/">Home</a> &gt; <a href="/glossary/">Glossary</a> &gt; <span>${escapeHtml(term.term)}</span>
       </nav>
       
       <h1 itemprop="name">${escapeHtml(term.term)}</h1>
@@ -277,7 +277,7 @@ export const generateGlossaryTermHtml = (term: GlossaryTerm): string => {
     canonicalUrl,
     structuredData,
     bodyContent,
-    `/glossary/${slug}`,
+    `/glossary/${slug}/`,
     'article'
   );
 };
@@ -307,14 +307,14 @@ export const generateBlogIndexHtml = (articles: BlogArticle[]): string => {
     "blogPost": articles.slice(0, 10).map(article => ({
       "@type": "BlogPosting",
       "headline": article.title,
-      "url": `${BASE_URL}/blog/${article.slug}`,
+      "url": `${BASE_URL}/blog/${article.slug}/`,
       "datePublished": article.publishDate
     }))
   };
   
   const articlesHtml = articles.map(article => `
     <article style="margin-bottom: 2em; padding-bottom: 2em; border-bottom: 1px solid #eee;">
-      <h2><a href="/blog/${article.slug}">${escapeHtml(article.title)}</a></h2>
+      <h2><a href="/blog/${article.slug}/">${escapeHtml(article.title)}</a></h2>
       ${article.subtitle ? `<p style="color: #666; font-style: italic;">${escapeHtml(article.subtitle)}</p>` : ''}
       <div class="meta">
         <time datetime="${article.publishDate}">${formatDate(article.publishDate)}</time>
@@ -322,7 +322,7 @@ export const generateBlogIndexHtml = (articles: BlogArticle[]): string => {
         &bull; ${escapeHtml(article.category)}
       </div>
       <p>${escapeHtml(article.excerpt)}</p>
-      <a href="/blog/${article.slug}" style="font-weight: bold;">Read more →</a>
+      <a href="/blog/${article.slug}/" style="font-weight: bold;">Read more →</a>
     </article>
   `).join('\n');
   
@@ -344,7 +344,7 @@ export const generateBlogIndexHtml = (articles: BlogArticle[]): string => {
     canonicalUrl,
     structuredData,
     bodyContent,
-    '/blog',
+    '/blog/',
     'website'
   );
 };
@@ -366,7 +366,7 @@ export const generateGlossaryIndexHtml = (terms: GlossaryTerm[]): string => {
     "hasPart": terms.slice(0, 50).map(term => ({
       "@type": "DefinedTerm",
       "name": term.term,
-      "url": `${BASE_URL}/glossary/${generateSlug(term.term)}`
+      "url": `${BASE_URL}/glossary/${generateSlug(term.term)}/`
     }))
   };
   
@@ -389,7 +389,7 @@ export const generateGlossaryIndexHtml = (terms: GlossaryTerm[]): string => {
     <section id="letter-${letter}" style="margin-bottom: 2em;">
       <h2 style="color: #00cc88; border-bottom: 2px solid #00cc88; padding-bottom: 0.3em;">${letter}</h2>
       <ul style="list-style: none; padding: 0; columns: 2; column-gap: 2em;">
-        ${groupedTerms[letter].map(term => `<li style="margin-bottom: 0.5em;"><a href="/glossary/${generateSlug(term.term)}">${escapeHtml(term.term)}</a></li>`).join('')}
+        ${groupedTerms[letter].map(term => `<li style="margin-bottom: 0.5em;"><a href="/glossary/${generateSlug(term.term)}/">${escapeHtml(term.term)}</a></li>`).join('')}
       </ul>
     </section>
   `).join('\n');
@@ -415,7 +415,7 @@ export const generateGlossaryIndexHtml = (terms: GlossaryTerm[]): string => {
     canonicalUrl,
     structuredData,
     bodyContent,
-    '/glossary',
+    '/glossary/',
     'website'
   );
 };

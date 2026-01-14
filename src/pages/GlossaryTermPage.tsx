@@ -39,11 +39,11 @@ const GlossaryTermPage: React.FC = () => {
   );
 
   if (!term) {
-    return <Navigate to="/glossary" replace />;
+    return <Navigate to="/glossary/" replace />;
   }
 
   const termSlug = term.term.toLowerCase().replace(/[^a-z0-9]/g, '-');
-  const canonicalUrl = `https://cointegrity.io/glossary/${termSlug}`;
+  const canonicalUrl = `https://cointegrity.io/glossary/${termSlug}/`;
 
   return (
     <div className="min-h-screen bg-background">
@@ -78,7 +78,7 @@ const GlossaryTermPage: React.FC = () => {
               "@type": "DefinedTermSet",
               "name": "Cointegrity Web3 Glossary",
               "description": "Comprehensive Web3 and blockchain terminology",
-              "url": "https://cointegrity.io/glossary"
+              "url": "https://cointegrity.io/glossary/"
             },
             "url": canonicalUrl,
             "category": term.categories?.[0] || "Web3",
@@ -110,7 +110,7 @@ const GlossaryTermPage: React.FC = () => {
           {/* Breadcrumb */}
           <nav className="mb-8">
             <Link 
-              to="/glossary" 
+              to="/glossary/" 
               className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -198,7 +198,7 @@ const GlossaryTermPage: React.FC = () => {
                       return (
                         <Link
                           key={relatedTerm.term}
-                          to={`/glossary/${relatedSlug}`}
+                          to={`/glossary/${relatedSlug}/`}
                           className="block p-4 rounded-lg border border-border hover:border-primary/50 transition-colors"
                         >
                           <h3 className="font-semibold mb-2">{relatedTerm.term}</h3>
@@ -212,7 +212,7 @@ const GlossaryTermPage: React.FC = () => {
                 
                 <div className="mt-6 text-center">
                   <Link 
-                    to="/glossary"
+                    to="/glossary/"
                     className="inline-flex items-center text-primary hover:text-primary/80 transition-colors"
                   >
                     View all terms in our glossary

@@ -43,7 +43,7 @@ const BlogCard = ({ article }: BlogCardProps) => {
       </div>
 
       <h2 className="text-xl font-bold text-white mb-3 group-hover:text-pink-300 transition-colors">
-        <Link to={`/blog/${article.slug}`}>
+        <Link to={`/blog/${article.slug}/`}>
           {article.title}
         </Link>
       </h2>
@@ -74,7 +74,7 @@ const BlogCard = ({ article }: BlogCardProps) => {
 
         <div className="flex items-center gap-2">
           <Link 
-            to={`/blog/${article.slug}`}
+            to={`/blog/${article.slug}/`}
             className="text-pink-400 hover:text-pink-300 transition-colors text-sm font-medium"
           >
             Read More →

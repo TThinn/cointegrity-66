@@ -101,7 +101,9 @@ export const ensureDirectoryExists = (dirPath: string): void => {
  * Generate a canonical URL for a path
  */
 export const generateCanonicalUrl = (pagePath: string): string => {
-  return `${BASE_URL}${pagePath}`;
+  // Ensure trailing slash for directory-style URLs
+  const normalizedPath = pagePath.endsWith('/') ? pagePath : `${pagePath}/`;
+  return `${BASE_URL}${normalizedPath}`;
 };
 
 /**
