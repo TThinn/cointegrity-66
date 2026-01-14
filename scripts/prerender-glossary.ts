@@ -72,7 +72,7 @@ export const prerenderGlossary = async (maxTerms: number = 200): Promise<void> =
     try {
       const html = generateGlossaryTermHtml(term);
       const slug = generateSlug(term.term);
-      const filePath = `glossary/${slug}.html`;
+      const filePath = `glossary/${slug}/index.html`;
       writeDistFile(filePath, html);
       successCount++;
     } catch (error) {

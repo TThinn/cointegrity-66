@@ -31,7 +31,7 @@ const generateSitemap = () => {
   
   <!-- Main glossary page -->
   <url>
-    <loc>${baseUrl}/glossary</loc>
+    <loc>${baseUrl}/glossary/</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -44,7 +44,7 @@ const generateSitemap = () => {
     // Higher priority for trending terms
     const priority = glossaryTerm.trending && glossaryTerm.trending >= 8 ? 0.8 : 0.7;
     sitemap += `  <url>
-    <loc>${baseUrl}/glossary/${slug}</loc>
+    <loc>${baseUrl}/glossary/${slug}/</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>${priority}</priority>
@@ -99,7 +99,7 @@ const generateSitemap = () => {
   
   <!-- Blog index -->
   <url>
-    <loc>${baseUrl}/blog</loc>
+    <loc>${baseUrl}/blog/</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -113,7 +113,7 @@ const generateSitemap = () => {
   // Add all blog article pages
   blogArticles.forEach((article) => {
     sitemap += `  <url>
-    <loc>${baseUrl}/blog/${article.slug}</loc>
+    <loc>${baseUrl}/blog/${article.slug}/</loc>
     <lastmod>${article.publishDate}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

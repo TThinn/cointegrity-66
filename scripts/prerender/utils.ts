@@ -64,7 +64,7 @@ export const markdownToHtml = (markdown: string): string => {
     // Italic
     .replace(/\*([^*]+)\*/g, '<em>$1</em>')
     // Links - convert glossary links
-    .replace(/\[([^\]]+)\]\(\/glossary\/([^)]+)\)/g, '<a href="/glossary/$2">$1</a>')
+    .replace(/\[([^\]]+)\]\(\/glossary\/([^)]+)\)/g, '<a href="/glossary/$2/">$1</a>')
     // Regular links
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
     // Line breaks - convert double newlines to paragraphs

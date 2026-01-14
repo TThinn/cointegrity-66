@@ -1,4 +1,4 @@
-import cryptoCircuitFeatured from "@/assets/crypto-circuit-featured.jpg";
+const cryptoCircuitFeatured = "/images/crypto-circuit-featured.jpg";
 
 export interface BlogArticle {
   id: string;

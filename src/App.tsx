@@ -93,13 +93,14 @@ const App = () => {
               
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/glossary" element={<GlossaryPage />} />
+              <Route path="/glossary/" element={<GlossaryPage />} />
               <Route path="/glossary/:slug" element={<GlossaryTermPage />} />
+              <Route path="/glossary/:slug/" element={<GlossaryTermPage />} />
               <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/" element={<BlogPage />} />
               <Route path="/blog/:slug" element={<BlogArticlePage />} />
+              <Route path="/blog/:slug/" element={<BlogArticlePage />} />
               <Route path="/news" element={<NewsPage />} />
-              <Route path="/news/:id" element={<NewsArticlePage />} />
-              <Route path="/guides" element={<GuidesPage />} />
-              <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/thank-you" element={<ThankYouPage />} />
               <Route path="/mica-ready-waitlist" element={<MicaReadyWaitlistPage />} />
               {/* Hunit client route - disabled via feature flag */}
