@@ -34,12 +34,5 @@ export const prerenderBlog = async (): Promise<void> => {
     console.error('  ✗ Failed to render blog index:', error);
   }
   
-  console.log(`\n📊 Blog pre-rendering complete: ${successCount} articles, ${errorCount} errors`);
+console.log(`\n📊 Blog pre-rendering complete: ${successCount} articles, ${errorCount} errors`);
 };
-
-// Run if called directly
-if (require.main === module) {
-  prerenderBlog().then(() => {
-    console.log('✅ Blog pre-rendering finished');
-  });
-}

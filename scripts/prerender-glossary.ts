@@ -93,12 +93,5 @@ export const prerenderGlossary = async (maxTerms: number = 200): Promise<void> =
     console.error('  ✗ Failed to render glossary index:', error);
   }
   
-  console.log(`\n📊 Glossary pre-rendering complete: ${successCount} terms, ${errorCount} errors`);
+console.log(`\n📊 Glossary pre-rendering complete: ${successCount} terms, ${errorCount} errors`);
 };
-
-// Run if called directly
-if (require.main === module) {
-  prerenderGlossary().then(() => {
-    console.log('✅ Glossary pre-rendering finished');
-  });
-}
