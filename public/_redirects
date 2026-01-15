@@ -1,0 +1,12 @@
+# Lovable/Netlify-style redirects
+# Pre-rendered static HTML files for SEO (served first when they exist)
+# The build process creates these files in dist/
+
+# Blog routes - serve pre-rendered HTML
+/blog/*  /blog/:splat  200
+
+# Glossary routes - serve pre-rendered HTML  
+/glossary/*  /glossary/:splat  200
+
+# SPA fallback for all other routes
+/*  /index.html  200
