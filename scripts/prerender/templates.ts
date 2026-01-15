@@ -110,16 +110,14 @@ ${bodyContent}
     <p><a href="/glossary/">Web3 Glossary</a> | <a href="/blog/">Blog</a> | <a href="/#contact">Contact</a></p>
   </footer>
   
-  <!-- Redirect JS-enabled browsers to React app for full experience -->
-  <script>
-    if (typeof window !== 'undefined') {
-      window.location.replace('${redirectPath}' + window.location.hash);
-    }
-  </script>
-  
+  <!-- 
+    This static HTML is served to search engines and crawlers.
+    JavaScript-enabled browsers will hydrate with the React app.
+    The static content above provides full SEO value.
+  -->
   <noscript>
     <div class="cta">
-      <p>For the best experience with interactive features, <a href="${redirectPath}">view this page</a> with JavaScript enabled.</p>
+      <p>For interactive features, <a href="${redirectPath}">enable JavaScript</a> or continue reading above.</p>
     </div>
   </noscript>
 </body>
